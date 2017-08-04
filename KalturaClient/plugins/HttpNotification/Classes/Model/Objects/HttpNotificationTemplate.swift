@@ -1,0 +1,197 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2017  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+
+/**
+ * This class was generated using exec.php
+ * against an XML schema provided by Kaltura.
+ * 
+ * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
+ */
+
+open class HttpNotificationTemplate: EventNotificationTemplate {
+
+	/**  Remote server URL  */
+	public var url: String? = nil
+	/**  Request method.  */
+	public var method: HttpNotificationMethod? = nil
+	/**  Data to send.  */
+	public var data: HttpNotificationData? = nil
+	/**  The maximum number of seconds to allow cURL functions to execute.  */
+	public var timeout: Int? = nil
+	/**  The number of seconds to wait while trying to connect.   Must be larger than
+	  zero.  */
+	public var connectTimeout: Int? = nil
+	/**  A username to use for the connection.  */
+	public var username: String? = nil
+	/**  A password to use for the connection.  */
+	public var password: String? = nil
+	/**  The HTTP authentication method to use.  */
+	public var authenticationMethod: HttpNotificationAuthenticationMethod? = nil
+	/**  The SSL version (2 or 3) to use.   By default PHP will try to determine this
+	  itself, although in some cases this must be set manually.  */
+	public var sslVersion: HttpNotificationSslVersion? = nil
+	/**  SSL certificate to verify the peer with.  */
+	public var sslCertificate: String? = nil
+	/**  The format of the certificate.  */
+	public var sslCertificateType: HttpNotificationCertificateType? = nil
+	/**  The password required to use the certificate.  */
+	public var sslCertificatePassword: String? = nil
+	/**  The identifier for the crypto engine of the private SSL key specified in ssl
+	  key.  */
+	public var sslEngine: String? = nil
+	/**  The identifier for the crypto engine used for asymmetric crypto operations.  */
+	public var sslEngineDefault: String? = nil
+	/**  The key type of the private SSL key specified in ssl key - PEM / DER / ENG.  */
+	public var sslKeyType: HttpNotificationSslKeyType? = nil
+	/**  Private SSL key.  */
+	public var sslKey: String? = nil
+	/**  The secret password needed to use the private SSL key specified in ssl key.  */
+	public var sslKeyPassword: String? = nil
+	/**  Adds a e-mail custom header  */
+	public var customHeaders: Array<KeyValue>? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["url"] != nil {
+			url = dict["url"] as? String
+		}
+		if dict["method"] != nil {
+			method = HttpNotificationMethod(rawValue: (dict["method"] as? Int)!)
+		}
+		if dict["data"] != nil {
+		data = try JSONParser.parse(object: dict["data"] as! [String: Any])		}
+		if dict["timeout"] != nil {
+			timeout = dict["timeout"] as? Int
+		}
+		if dict["connectTimeout"] != nil {
+			connectTimeout = dict["connectTimeout"] as? Int
+		}
+		if dict["username"] != nil {
+			username = dict["username"] as? String
+		}
+		if dict["password"] != nil {
+			password = dict["password"] as? String
+		}
+		if dict["authenticationMethod"] != nil {
+			authenticationMethod = HttpNotificationAuthenticationMethod(rawValue: (dict["authenticationMethod"] as? Int)!)
+		}
+		if dict["sslVersion"] != nil {
+			sslVersion = HttpNotificationSslVersion(rawValue: (dict["sslVersion"] as? Int)!)
+		}
+		if dict["sslCertificate"] != nil {
+			sslCertificate = dict["sslCertificate"] as? String
+		}
+		if dict["sslCertificateType"] != nil {
+			sslCertificateType = HttpNotificationCertificateType(rawValue: "\(dict["sslCertificateType"]!)")
+		}
+		if dict["sslCertificatePassword"] != nil {
+			sslCertificatePassword = dict["sslCertificatePassword"] as? String
+		}
+		if dict["sslEngine"] != nil {
+			sslEngine = dict["sslEngine"] as? String
+		}
+		if dict["sslEngineDefault"] != nil {
+			sslEngineDefault = dict["sslEngineDefault"] as? String
+		}
+		if dict["sslKeyType"] != nil {
+			sslKeyType = HttpNotificationSslKeyType(rawValue: "\(dict["sslKeyType"]!)")
+		}
+		if dict["sslKey"] != nil {
+			sslKey = dict["sslKey"] as? String
+		}
+		if dict["sslKeyPassword"] != nil {
+			sslKeyPassword = dict["sslKeyPassword"] as? String
+		}
+		if dict["customHeaders"] != nil {
+			customHeaders = try JSONParser.parse(array: dict["customHeaders"] as! [Any])
+		}
+
+	}
+
+	public override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(url != nil) {
+			dict["url"] = url!
+		}
+		if(method != nil) {
+			dict["method"] = method!.rawValue
+		}
+		if(data != nil) {
+			dict["data"] = data!.toDictionary()
+		}
+		if(timeout != nil) {
+			dict["timeout"] = timeout!
+		}
+		if(connectTimeout != nil) {
+			dict["connectTimeout"] = connectTimeout!
+		}
+		if(username != nil) {
+			dict["username"] = username!
+		}
+		if(password != nil) {
+			dict["password"] = password!
+		}
+		if(authenticationMethod != nil) {
+			dict["authenticationMethod"] = authenticationMethod!.rawValue
+		}
+		if(sslVersion != nil) {
+			dict["sslVersion"] = sslVersion!.rawValue
+		}
+		if(sslCertificate != nil) {
+			dict["sslCertificate"] = sslCertificate!
+		}
+		if(sslCertificateType != nil) {
+			dict["sslCertificateType"] = sslCertificateType!.rawValue
+		}
+		if(sslCertificatePassword != nil) {
+			dict["sslCertificatePassword"] = sslCertificatePassword!
+		}
+		if(sslEngine != nil) {
+			dict["sslEngine"] = sslEngine!
+		}
+		if(sslEngineDefault != nil) {
+			dict["sslEngineDefault"] = sslEngineDefault!
+		}
+		if(sslKeyType != nil) {
+			dict["sslKeyType"] = sslKeyType!.rawValue
+		}
+		if(sslKey != nil) {
+			dict["sslKey"] = sslKey!
+		}
+		if(sslKeyPassword != nil) {
+			dict["sslKeyPassword"] = sslKeyPassword!
+		}
+		if(customHeaders != nil) {
+			dict["customHeaders"] = customHeaders!.map { value in value.toDictionary() }
+		}
+		return dict
+	}
+}
+
