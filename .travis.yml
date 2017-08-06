@@ -7,15 +7,9 @@ osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 before_script: pod --project-directory=Example install
 script:
-  - echo -en "travis_fold:start:clean\r"
   - xcodebuild clean -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
-  - echo -en "travis_fold:end:clean\r"
-  - echo -en "travis_fold:start:build\r"
   - xcodebuild build -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
-  - echo -en "travis_fold:end:build\r"
-  - echo -en "travis_fold:start:test\r"
   - xcodebuild test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
-  - echo -en "travis_fold:end:test\r"
 #script: xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
 notifications:
   email:
