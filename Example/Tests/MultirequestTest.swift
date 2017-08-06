@@ -110,6 +110,7 @@ class MultirequestTest: BaseTest {
                             
                             self.entryIds.append((createdEntry?.id)!)
                             
+                            sleep(2)
                             done()
                         })
                     self.executor.send(request: requestBuilder.build(self.client!))
