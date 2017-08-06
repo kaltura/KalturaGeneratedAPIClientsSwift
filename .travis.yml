@@ -5,11 +5,12 @@ xcode_project: Example/KalturaClient.xcodeproj
 xcode_scheme: KalturaClient_Tests
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
-before_script: pod --project-directory=Example install
+before_script:
+  - pod --project-directory=Example install
+  - gem install xcpretty
 script:
-  - xcodebuild clean -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
-  - xcodebuild build -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
-  - xcodebuild test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
+  - xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' | xcpretty
+#  - echo -en "travis_fold:end:test\r"
 #script: xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
 notifications:
   email:
