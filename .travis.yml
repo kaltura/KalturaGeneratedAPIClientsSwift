@@ -3,7 +3,7 @@ env:
 language: objective-c
 xcode_project: Example/KalturaClient.xcodeproj
 xcode_scheme: KalturaClient_Tests
-osx_image: xcode9
+osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 before_script: pod --project-directory=Example install
 script: xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1'
