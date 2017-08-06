@@ -1,0 +1,17 @@
+env:
+    - RUN_ENV=development
+language: objective-c
+xcode_project: KalturaClient.xcodeproj
+osx_image: xcode9
+xcode_sdk: iphonesimulator10.3
+script: xcodebuild clean build test -project KalturaClient.xcodeproj
+notifications:
+  email:
+    recipients:
+      - moshe.maor@kaltura.com
+      - jess.portnoy@kaltura.com
+      - Jonathan.Kanarek@kaltura.com
+      - nir.belinky@kaltura.com
+      - Rivka.Peleg@kaltura.com
+    on_success: change
+    on_failure: always
