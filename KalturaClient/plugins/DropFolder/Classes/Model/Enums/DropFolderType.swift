@@ -33,7 +33,6 @@
  */
 public enum DropFolderType: String {
 	case FEED = "FeedDropFolder.FEED"
-	case WEBEX = "WebexDropFolder.WEBEX"
 	case LOCAL = "1"
 	case FTP = "2"
 	case SCP = "3"

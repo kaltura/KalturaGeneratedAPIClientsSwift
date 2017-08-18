@@ -52,7 +52,7 @@ open class ResponseProfile: DetachedResponseProfile {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = Int((dict["id"] as? String)!)
+			id = dict["id"] as? Int
 		}
 		if dict["systemName"] != nil {
 			systemName = dict["systemName"] as? String

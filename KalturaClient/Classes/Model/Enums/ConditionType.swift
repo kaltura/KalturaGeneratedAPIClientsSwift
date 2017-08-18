@@ -32,7 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType: String {
-	case ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark"
 	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
 	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
 	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"

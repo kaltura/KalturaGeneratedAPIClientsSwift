@@ -64,11 +64,15 @@ public final class UserEntryService{
 		return request
 	}
 
-	public static func list(filter: UserEntryFilter) -> RequestBuilder<UserEntryListResponse> {
+	public static func list() -> RequestBuilder<UserEntryListResponse> {
+		return list(filter: nil)
+	}
+
+	public static func list(filter: UserEntryFilter?) -> RequestBuilder<UserEntryListResponse> {
 		return list(filter: filter, pager: nil)
 	}
 
-	public static func list(filter: UserEntryFilter, pager: FilterPager?) -> RequestBuilder<UserEntryListResponse> {
+	public static func list(filter: UserEntryFilter?, pager: FilterPager?) -> RequestBuilder<UserEntryListResponse> {
 		let request: RequestBuilder<UserEntryListResponse> = RequestBuilder<UserEntryListResponse>(service: "userentry", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)

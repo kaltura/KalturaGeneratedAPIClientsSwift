@@ -35,36 +35,13 @@
 
 /**  The KalturaFilterPager object enables paging management to be applied upon
   service list actions.  */
-open class FilterPager: ObjectBase {
+open class FilterPager: Pager {
 
-	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
-	public var pageSize: Int? = nil
-	/**  The page number for which {pageSize} of objects should be retrieved (Default is
-	  1).  */
-	public var pageIndex: Int? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["pageSize"] != nil {
-			pageSize = dict["pageSize"] as? Int
-		}
-		if dict["pageIndex"] != nil {
-			pageIndex = dict["pageIndex"] as? Int
-		}
-
 	}
 
-	public override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(pageSize != nil) {
-			dict["pageSize"] = pageSize!
-		}
-		if(pageIndex != nil) {
-			dict["pageIndex"] = pageIndex!
-		}
-		return dict
-	}
 }
 

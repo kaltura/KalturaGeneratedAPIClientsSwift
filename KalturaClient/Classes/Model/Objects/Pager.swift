@@ -25,16 +25,46 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DistributionProviderType: String {
-	case FACEBOOK = "facebookDistribution.FACEBOOK"
-	case IDETIC = "ideticDistribution.IDETIC"
-	case YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API"
-	case GENERIC = "1"
-	case SYNDICATION = "2"
+
+/**  The KalturaPager object enables paging management to be applied upon service
+  list/search actions.  */
+open class Pager: ObjectBase {
+
+	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
+	public var pageSize: Int? = nil
+	/**  The page number for which {pageSize} of objects should be retrieved (Default is
+	  1).  */
+	public var pageIndex: Int? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["pageSize"] != nil {
+			pageSize = dict["pageSize"] as? Int
+		}
+		if dict["pageIndex"] != nil {
+			pageIndex = dict["pageIndex"] as? Int
+		}
+
+	}
+
+	public override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(pageSize != nil) {
+			dict["pageSize"] = pageSize!
+		}
+		if(pageIndex != nil) {
+			dict["pageIndex"] = pageIndex!
+		}
+		return dict
+	}
 }
+

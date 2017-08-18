@@ -31,10 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmSchemeName: String {
-	case PLAYREADY_CENC = "drm.PLAYREADY_CENC"
-	case WIDEVINE_CENC = "drm.WIDEVINE_CENC"
-	case FAIRPLAY = "fairplay.FAIRPLAY"
-	case PLAYREADY = "playReady.PLAYREADY"
-	case WIDEVINE = "widevine.WIDEVINE"
+public enum DrmSchemeName {
+	/** Place holder for future values */
 }

@@ -25,16 +25,21 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DistributionProviderType: String {
-	case FACEBOOK = "facebookDistribution.FACEBOOK"
-	case IDETIC = "ideticDistribution.IDETIC"
-	case YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API"
-	case GENERIC = "1"
-	case SYNDICATION = "2"
+
+open class EntryIndexAdvancedFilter: IndexAdvancedFilter {
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

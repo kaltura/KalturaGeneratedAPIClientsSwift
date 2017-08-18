@@ -119,6 +119,15 @@ extension LiveStreamService{
 		return request
 	}
 
+	public static func createRecordedEntry(entryId: String, mediaServerIndex: EntryServerNodeType, liveEntryStatus: EntryServerNodeStatus) -> RequestBuilder<LiveEntry> {
+		let request: RequestBuilder<LiveEntry> = RequestBuilder<LiveEntry>(service: "livestream", action: "createRecordedEntry")
+			.setBody(key: "entryId", value: entryId)
+			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setBody(key: "liveEntryStatus", value: liveEntryStatus.rawValue)
+
+		return request
+	}
+
 	/**  Delete a live stream entry.  */
 	public static func delete(entryId: String) -> RequestBuilder<Void> {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "delete")
@@ -182,14 +191,19 @@ extension LiveStreamService{
 		return registerMediaServer(entryId: entryId, hostname: hostname, mediaServerIndex: mediaServerIndex, applicationName: applicationName, liveEntryStatus: EntryServerNodeStatus(rawValue: 1))
 	}
 
-	/**  Register media server to live entry  */
 	public static func registerMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType, applicationName: String?, liveEntryStatus: EntryServerNodeStatus?) -> RequestBuilder<LiveEntry> {
+		return registerMediaServer(entryId: entryId, hostname: hostname, mediaServerIndex: mediaServerIndex, applicationName: applicationName, liveEntryStatus: liveEntryStatus, shouldCreateRecordedEntry: true)
+	}
+
+	/**  Register media server to live entry  */
+	public static func registerMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType, applicationName: String?, liveEntryStatus: EntryServerNodeStatus?, shouldCreateRecordedEntry: Bool?) -> RequestBuilder<LiveEntry> {
 		let request: RequestBuilder<LiveEntry> = RequestBuilder<LiveEntry>(service: "livestream", action: "registerMediaServer")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "hostname", value: hostname)
 			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
 			.setBody(key: "applicationName", value: applicationName)
 			.setBody(key: "liveEntryStatus", value: liveEntryStatus?.rawValue)
+			.setBody(key: "shouldCreateRecordedEntry", value: shouldCreateRecordedEntry)
 
 		return request
 	}
