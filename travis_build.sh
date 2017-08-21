@@ -23,7 +23,7 @@ trap 'error_handler' ERR
 bash -c "while true; do tail -100 $BUILD_OUTPUT; sleep $SLEEP; done" &
 PING_LOOP_PID=$!
 
-xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' $BUILD_OUTPUT> 2>&1
+xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' > $BUILD_OUTPUT 2>&1
 
 
 # The build finished without returning an error so dump a tail of the output
