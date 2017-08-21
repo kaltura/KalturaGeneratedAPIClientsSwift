@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -50,6 +50,7 @@ public enum BatchJobType: String {
 	case INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext"
 	case TAG_RESOLVE = "tagSearch.TagResolve"
 	case VIRUS_SCAN = "virusScan.VirusScan"
+	case WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync"
 	case IMPORT = "1"
 	case DELETE = "2"
 	case FLATTEN = "3"

@@ -26,13 +26,12 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmProviderType: String {
-	case FAIRPLAY = "fairplay.FAIRPLAY"
 	case PLAY_READY = "playReady.PLAY_READY"
 	case WIDEVINE = "widevine.WIDEVINE"
 	case CENC = "1"

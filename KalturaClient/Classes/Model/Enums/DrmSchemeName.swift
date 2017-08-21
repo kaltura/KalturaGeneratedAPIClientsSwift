@@ -26,11 +26,14 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmSchemeName {
-	/** Place holder for future values */
+public enum DrmSchemeName: String {
+	case PLAYREADY_CENC = "drm.PLAYREADY_CENC"
+	case WIDEVINE_CENC = "drm.WIDEVINE_CENC"
+	case PLAYREADY = "playReady.PLAYREADY"
+	case WIDEVINE = "widevine.WIDEVINE"
 }

@@ -26,12 +26,13 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum RuleActionType: String {
+	case DRM_POLICY = "drm.DRM_POLICY"
 	case BLOCK = "1"
 	case PREVIEW = "2"
 	case LIMIT_FLAVORS = "3"
