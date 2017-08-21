@@ -9,7 +9,7 @@ before_script:
   - pod --project-directory=Example install
   - gem install xcpretty
 script:
-  - xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' > /tmp/xcodebuild.log 2>&1
+  - xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' 2>&1|tee /tmp/xcodebuild.log 
   - cat /tmp/xcodebuild.log | xcpretty
 notifications:
   email:
