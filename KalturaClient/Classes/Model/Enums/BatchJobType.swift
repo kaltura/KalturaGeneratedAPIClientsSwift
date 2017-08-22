@@ -50,7 +50,6 @@ public enum BatchJobType: String {
 	case INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext"
 	case TAG_RESOLVE = "tagSearch.TagResolve"
 	case VIRUS_SCAN = "virusScan.VirusScan"
-	case WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync"
 	case IMPORT = "1"
 	case DELETE = "2"
 	case FLATTEN = "3"

@@ -86,10 +86,10 @@ open class BatchJobBaseFilter: Filter {
 		try super.populate(dict);
 		// set members values:
 		if dict["idEqual"] != nil {
-			idEqual = dict["idEqual"] as? Int64
+			idEqual = Int64((dict["idEqual"] as? String)!)
 		}
 		if dict["idGreaterThanOrEqual"] != nil {
-			idGreaterThanOrEqual = dict["idGreaterThanOrEqual"] as? Int64
+			idGreaterThanOrEqual = Int64((dict["idGreaterThanOrEqual"] as? String)!)
 		}
 		if dict["partnerIdEqual"] != nil {
 			partnerIdEqual = dict["partnerIdEqual"] as? Int

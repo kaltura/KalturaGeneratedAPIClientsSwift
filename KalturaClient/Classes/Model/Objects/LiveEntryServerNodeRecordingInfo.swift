@@ -25,12 +25,41 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmSchemeName {
-	/** Place holder for future values */
+
+open class LiveEntryServerNodeRecordingInfo: ObjectBase {
+
+	public var recordedEntryId: String? = nil
+	public var duration: Int? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["recordedEntryId"] != nil {
+			recordedEntryId = dict["recordedEntryId"] as? String
+		}
+		if dict["duration"] != nil {
+			duration = dict["duration"] as? Int
+		}
+
+	}
+
+	public override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(recordedEntryId != nil) {
+			dict["recordedEntryId"] = recordedEntryId!
+		}
+		if(duration != nil) {
+			dict["duration"] = duration!
+		}
+		return dict
+	}
 }
+

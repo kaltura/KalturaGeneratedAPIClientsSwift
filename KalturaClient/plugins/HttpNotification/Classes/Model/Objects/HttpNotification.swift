@@ -61,7 +61,7 @@ open class HttpNotification: ObjectBase {
 			eventObjectType = EventNotificationEventObjectType(rawValue: "\(dict["eventObjectType"]!)")
 		}
 		if dict["eventNotificationJobId"] != nil {
-			eventNotificationJobId = dict["eventNotificationJobId"] as? Int64
+			eventNotificationJobId = Int64((dict["eventNotificationJobId"] as? String)!)
 		}
 		if dict["templateId"] != nil {
 			templateId = dict["templateId"] as? Int

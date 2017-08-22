@@ -43,7 +43,7 @@ open class LiveReportExportResponse: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["referenceJobId"] != nil {
-			referenceJobId = dict["referenceJobId"] as? Int64
+			referenceJobId = Int64((dict["referenceJobId"] as? String)!)
 		}
 		if dict["reportEmail"] != nil {
 			reportEmail = dict["reportEmail"] as? String

@@ -203,23 +203,6 @@ s.subspec 'externalMedia' do |ssp|
  ssp.dependency 'KalturaClient/Core'
 end
 
-s.subspec 'drm' do |ssp|
- ssp.source_files = 'KalturaClient/Plugins/drm/**/*'
- ssp.dependency 'KalturaClient/Core'
-end
-
-s.subspec 'widevine' do |ssp|
- ssp.source_files = 'KalturaClient/Plugins/widevine/**/*'
- ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/drm'
-end
-
-s.subspec 'playReady' do |ssp|
- ssp.source_files = 'KalturaClient/Plugins/playReady/**/*'
- ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/drm'
-end
-
 s.subspec 'kontiki' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/kontiki/**/*'
  ssp.dependency 'KalturaClient/Core'
