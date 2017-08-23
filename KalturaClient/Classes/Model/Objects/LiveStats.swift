@@ -67,7 +67,7 @@ open class LiveStats: ObjectBase {
 			secondsViewed = dict["secondsViewed"] as? Int
 		}
 		if dict["startEvent"] != nil {
-			startEvent = dict["startEvent"] as? Int64
+			startEvent = Int64((dict["startEvent"] as? String)!)
 		}
 		if dict["timestamp"] != nil {
 			timestamp = dict["timestamp"] as? Int

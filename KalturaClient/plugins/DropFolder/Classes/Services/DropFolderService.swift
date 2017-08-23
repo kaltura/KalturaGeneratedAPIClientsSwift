@@ -52,19 +52,18 @@ public final class DropFolderService{
 		return request
 	}
 
-	public static func freeExclusiveDropFolder(dropFolderId: Int, status: Int) -> RequestBuilder<DropFolder> {
-		return freeExclusiveDropFolder(dropFolderId: dropFolderId, status: status, errorCode: nil)
+	public static func freeExclusiveDropFolder(dropFolderId: Int) -> RequestBuilder<DropFolder> {
+		return freeExclusiveDropFolder(dropFolderId: dropFolderId, errorCode: nil)
 	}
 
-	public static func freeExclusiveDropFolder(dropFolderId: Int, status: Int, errorCode: String?) -> RequestBuilder<DropFolder> {
-		return freeExclusiveDropFolder(dropFolderId: dropFolderId, status: status, errorCode: errorCode, errorDescription: nil)
+	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?) -> RequestBuilder<DropFolder> {
+		return freeExclusiveDropFolder(dropFolderId: dropFolderId, errorCode: errorCode, errorDescription: nil)
 	}
 
 	/**  freeExclusive KalturaDropFolder object  */
-	public static func freeExclusiveDropFolder(dropFolderId: Int, status: Int, errorCode: String?, errorDescription: String?) -> RequestBuilder<DropFolder> {
+	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?, errorDescription: String?) -> RequestBuilder<DropFolder> {
 		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "freeExclusiveDropFolder")
 			.setBody(key: "dropFolderId", value: dropFolderId)
-			.setBody(key: "status", value: status)
 			.setBody(key: "errorCode", value: errorCode)
 			.setBody(key: "errorDescription", value: errorDescription)
 

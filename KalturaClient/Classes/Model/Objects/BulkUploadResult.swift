@@ -64,7 +64,7 @@ open class BulkUploadResult: ObjectBase {
 			id = dict["id"] as? Int
 		}
 		if dict["bulkUploadJobId"] != nil {
-			bulkUploadJobId = dict["bulkUploadJobId"] as? Int64
+			bulkUploadJobId = Int64((dict["bulkUploadJobId"] as? String)!)
 		}
 		if dict["lineIndex"] != nil {
 			lineIndex = dict["lineIndex"] as? Int

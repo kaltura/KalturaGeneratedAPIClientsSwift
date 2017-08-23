@@ -37,6 +37,7 @@ open class LiveEntryServerNode: EntryServerNode {
 
 	/**  parameters of the stream we got  */
 	public var streams: Array<LiveStreamParams>? = nil
+	public var recordingInfo: Array<LiveEntryServerNodeRecordingInfo>? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -45,6 +46,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		if dict["streams"] != nil {
 			streams = try JSONParser.parse(array: dict["streams"] as! [Any])
 		}
+		if dict["recordingInfo"] != nil {
+			recordingInfo = try JSONParser.parse(array: dict["recordingInfo"] as! [Any])
+		}
 
 	}
 
@@ -52,6 +56,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		var dict: [String: Any] = super.toDictionary()
 		if(streams != nil) {
 			dict["streams"] = streams!.map { value in value.toDictionary() }
+		}
+		if(recordingInfo != nil) {
+			dict["recordingInfo"] = recordingInfo!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

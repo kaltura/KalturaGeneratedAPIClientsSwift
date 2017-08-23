@@ -85,7 +85,7 @@ open class BatchJob: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? Int64
+			id = Int64((dict["id"] as? String)!)
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
