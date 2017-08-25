@@ -35,6 +35,15 @@
 
 open class BatchJobListResponse: ListResponse {
 
+	public class BatchJobListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<BatchJob.BatchJobTokenizer> {
+			get {
+				return ArrayTokenizedObject<BatchJob.BatchJobTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<BatchJob>? = nil
 
 

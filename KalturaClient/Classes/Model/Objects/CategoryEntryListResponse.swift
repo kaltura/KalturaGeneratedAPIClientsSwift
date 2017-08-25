@@ -35,6 +35,15 @@
 
 open class CategoryEntryListResponse: ListResponse {
 
+	public class CategoryEntryListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<CategoryEntry.CategoryEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<CategoryEntry.CategoryEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<CategoryEntry>? = nil
 
 

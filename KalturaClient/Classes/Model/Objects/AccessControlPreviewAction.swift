@@ -35,9 +35,22 @@
 
 open class AccessControlPreviewAction: RuleAction {
 
+	public class AccessControlPreviewActionTokenizer: RuleAction.RuleActionTokenizer {
+		
+		public var limit: BaseTokenizedObject {
+			get {
+				return self.append("limit") 
+			}
+		}
+	}
+
 	public var limit: Int? = nil
 
 
+	public func setMultiRequestToken(limit: String) {
+		self.dict["limit"] = limit
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

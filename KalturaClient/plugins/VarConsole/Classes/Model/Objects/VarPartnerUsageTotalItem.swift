@@ -35,6 +35,9 @@
 
 open class VarPartnerUsageTotalItem: VarPartnerUsageItem {
 
+	public class VarPartnerUsageTotalItemTokenizer: VarPartnerUsageItem.VarPartnerUsageItemTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

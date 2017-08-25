@@ -35,12 +35,35 @@
 
 open class ConvertEntryFlavorsObjectTask: ObjectTask {
 
+	public class ConvertEntryFlavorsObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+		
+		public var reconvert: BaseTokenizedObject {
+			get {
+				return self.append("reconvert") 
+			}
+		}
+	}
+
 	/**  Comma separated list of flavor param ids to convert  */
 	public var flavorParamsIds: String? = nil
 	/**  Should reconvert when flavor already exists?  */
 	public var reconvert: Bool? = nil
 
 
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
+	public func setMultiRequestToken(reconvert: String) {
+		self.dict["reconvert"] = reconvert
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

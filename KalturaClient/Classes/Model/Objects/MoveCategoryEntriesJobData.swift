@@ -35,6 +35,51 @@
 
 open class MoveCategoryEntriesJobData: JobData {
 
+	public class MoveCategoryEntriesJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcCategoryId: BaseTokenizedObject {
+			get {
+				return self.append("srcCategoryId") 
+			}
+		}
+		
+		public var destCategoryId: BaseTokenizedObject {
+			get {
+				return self.append("destCategoryId") 
+			}
+		}
+		
+		public var lastMovedCategoryId: BaseTokenizedObject {
+			get {
+				return self.append("lastMovedCategoryId") 
+			}
+		}
+		
+		public var lastMovedCategoryPageIndex: BaseTokenizedObject {
+			get {
+				return self.append("lastMovedCategoryPageIndex") 
+			}
+		}
+		
+		public var lastMovedCategoryEntryPageIndex: BaseTokenizedObject {
+			get {
+				return self.append("lastMovedCategoryEntryPageIndex") 
+			}
+		}
+		
+		public var moveFromChildren: BaseTokenizedObject {
+			get {
+				return self.append("moveFromChildren") 
+			}
+		}
+		
+		public var destCategoryFullIds: BaseTokenizedObject {
+			get {
+				return self.append("destCategoryFullIds") 
+			}
+		}
+	}
+
 	/**  Source category id  */
 	public var srcCategoryId: Int? = nil
 	/**  Destination category id  */
@@ -54,6 +99,34 @@ open class MoveCategoryEntriesJobData: JobData {
 	public var destCategoryFullIds: String? = nil
 
 
+	public func setMultiRequestToken(srcCategoryId: String) {
+		self.dict["srcCategoryId"] = srcCategoryId
+	}
+	
+	public func setMultiRequestToken(destCategoryId: String) {
+		self.dict["destCategoryId"] = destCategoryId
+	}
+	
+	public func setMultiRequestToken(lastMovedCategoryId: String) {
+		self.dict["lastMovedCategoryId"] = lastMovedCategoryId
+	}
+	
+	public func setMultiRequestToken(lastMovedCategoryPageIndex: String) {
+		self.dict["lastMovedCategoryPageIndex"] = lastMovedCategoryPageIndex
+	}
+	
+	public func setMultiRequestToken(lastMovedCategoryEntryPageIndex: String) {
+		self.dict["lastMovedCategoryEntryPageIndex"] = lastMovedCategoryEntryPageIndex
+	}
+	
+	public func setMultiRequestToken(moveFromChildren: String) {
+		self.dict["moveFromChildren"] = moveFromChildren
+	}
+	
+	public func setMultiRequestToken(destCategoryFullIds: String) {
+		self.dict["destCategoryFullIds"] = destCategoryFullIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

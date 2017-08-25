@@ -37,8 +37,29 @@
   service is being used mostly by the CW component  */
 public final class SearchService{
 
-	public static func externalLogin(searchSource: SearchProviderType, userName: String, password: String) -> RequestBuilder<SearchAuthData> {
-		let request: RequestBuilder<SearchAuthData> = RequestBuilder<SearchAuthData>(service: "search", action: "externalLogin")
+	public class ExternalLoginTokenizer: ClientTokenizer  {
+		
+		public var searchSource: BaseTokenizedObject {
+			get {
+				return self.append("searchSource") 
+			}
+		}
+		
+		public var userName: BaseTokenizedObject {
+			get {
+				return self.append("userName") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+	}
+
+	public static func externalLogin(searchSource: SearchProviderType, userName: String, password: String) -> RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer> {
+		let request: RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer> = RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer>(service: "search", action: "externalLogin")
 			.setBody(key: "searchSource", value: searchSource.rawValue)
 			.setBody(key: "userName", value: userName)
 			.setBody(key: "password", value: password)
@@ -46,34 +67,73 @@ public final class SearchService{
 		return request
 	}
 
+	public class GetMediaInfoTokenizer: ClientTokenizer  {
+		
+		public var searchResult: SearchResult.SearchResultTokenizer {
+			get {
+				return SearchResult.SearchResultTokenizer(self.append("searchResult")) 
+			}
+		}
+	}
+
 	/**  Retrieve extra information about media found in search action   Some providers
 	  return only part of the fields needed to create entry from, use this action to
 	  get the rest of the fields.  */
-	public static func getMediaInfo(searchResult: SearchResult) -> RequestBuilder<SearchResult> {
-		let request: RequestBuilder<SearchResult> = RequestBuilder<SearchResult>(service: "search", action: "getMediaInfo")
+	public static func getMediaInfo(searchResult: SearchResult) -> RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer> {
+		let request: RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer> = RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer>(service: "search", action: "getMediaInfo")
 			.setBody(key: "searchResult", value: searchResult)
 
 		return request
 	}
 
-	public static func search(search_: Search) -> RequestBuilder<SearchResultResponse> {
+	public class SearchTokenizer: ClientTokenizer  {
+		
+		public var search_: Search.SearchTokenizer {
+			get {
+				return Search.SearchTokenizer(self.append("search_")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func search(search_: Search) -> RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer> {
 		return search(search_: search_, pager: nil)
 	}
 
 	/**  Search for media in one of the supported media providers  */
-	public static func search(search_: Search, pager: FilterPager?) -> RequestBuilder<SearchResultResponse> {
-		let request: RequestBuilder<SearchResultResponse> = RequestBuilder<SearchResultResponse>(service: "search", action: "search")
+	public static func search(search_: Search, pager: FilterPager?) -> RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer> {
+		let request: RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer> = RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer>(service: "search", action: "search")
 			.setBody(key: "search", value: search_)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class SearchUrlTokenizer: ClientTokenizer  {
+		
+		public var mediaType: BaseTokenizedObject {
+			get {
+				return self.append("mediaType") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	/**  Search for media given a specific URL   Kaltura supports a searchURL action on
 	  some of the media providers.   This action will return a KalturaSearchResult
 	  object based on a given URL (assuming the media provider is supported)  */
-	public static func searchUrl(mediaType: MediaType, url: String) -> RequestBuilder<SearchResult> {
-		let request: RequestBuilder<SearchResult> = RequestBuilder<SearchResult>(service: "search", action: "searchUrl")
+	public static func searchUrl(mediaType: MediaType, url: String) -> RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer> {
+		let request: RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer> = RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer>(service: "search", action: "searchUrl")
 			.setBody(key: "mediaType", value: mediaType.rawValue)
 			.setBody(key: "url", value: url)
 

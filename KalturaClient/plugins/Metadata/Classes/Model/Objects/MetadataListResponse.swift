@@ -35,6 +35,15 @@
 
 open class MetadataListResponse: ListResponse {
 
+	public class MetadataListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Metadata.MetadataTokenizer> {
+			get {
+				return ArrayTokenizedObject<Metadata.MetadataTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Metadata>? = nil
 
 

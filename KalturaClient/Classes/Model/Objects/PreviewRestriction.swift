@@ -35,10 +35,23 @@
 
 open class PreviewRestriction: SessionRestriction {
 
+	public class PreviewRestrictionTokenizer: SessionRestriction.SessionRestrictionTokenizer {
+		
+		public var previewLength: BaseTokenizedObject {
+			get {
+				return self.append("previewLength") 
+			}
+		}
+	}
+
 	/**  The preview restriction length  */
 	public var previewLength: Int? = nil
 
 
+	public func setMultiRequestToken(previewLength: String) {
+		self.dict["previewLength"] = previewLength
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

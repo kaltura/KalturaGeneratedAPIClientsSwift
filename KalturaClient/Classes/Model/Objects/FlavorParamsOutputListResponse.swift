@@ -35,6 +35,15 @@
 
 open class FlavorParamsOutputListResponse: ListResponse {
 
+	public class FlavorParamsOutputListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<FlavorParamsOutput.FlavorParamsOutputTokenizer> {
+			get {
+				return ArrayTokenizedObject<FlavorParamsOutput.FlavorParamsOutputTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<FlavorParamsOutput>? = nil
 
 

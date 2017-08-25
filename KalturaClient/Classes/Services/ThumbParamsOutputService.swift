@@ -36,25 +36,49 @@
 /**  Thumbnail Params Output service  */
 public final class ThumbParamsOutputService{
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get thumb params output object by ID  */
-	public static func get(id: Int) -> RequestBuilder<ThumbParamsOutput> {
-		let request: RequestBuilder<ThumbParamsOutput> = RequestBuilder<ThumbParamsOutput>(service: "thumbparamsoutput", action: "get")
+	public static func get(id: Int) -> RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> = RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer>(service: "thumbparamsoutput", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ThumbParamsOutputListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ThumbParamsOutputFilter.ThumbParamsOutputFilterTokenizer {
+			get {
+				return ThumbParamsOutputFilter.ThumbParamsOutputFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ThumbParamsOutputFilter?) -> RequestBuilder<ThumbParamsOutputListResponse> {
+	public static func list(filter: ThumbParamsOutputFilter?) -> RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List thumb params output objects by filter and pager  */
-	public static func list(filter: ThumbParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<ThumbParamsOutputListResponse> {
-		let request: RequestBuilder<ThumbParamsOutputListResponse> = RequestBuilder<ThumbParamsOutputListResponse>(service: "thumbparamsoutput", action: "list")
+	public static func list(filter: ThumbParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> = RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer>(service: "thumbparamsoutput", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

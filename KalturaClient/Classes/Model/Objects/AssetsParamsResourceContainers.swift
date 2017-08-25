@@ -35,6 +35,15 @@
 
 open class AssetsParamsResourceContainers: Resource {
 
+	public class AssetsParamsResourceContainersTokenizer: Resource.ResourceTokenizer {
+		
+		public var resources: ArrayTokenizedObject<AssetParamsResourceContainer.AssetParamsResourceContainerTokenizer> {
+			get {
+				return ArrayTokenizedObject<AssetParamsResourceContainer.AssetParamsResourceContainerTokenizer>(self.append("resources"))
+			} 
+		}
+	}
+
 	/**  Array of resources associated with asset params ids  */
 	public var resources: Array<AssetParamsResourceContainer>? = nil
 

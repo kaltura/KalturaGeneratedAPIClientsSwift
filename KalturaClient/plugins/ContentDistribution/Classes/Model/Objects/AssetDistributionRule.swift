@@ -35,6 +35,21 @@
 
 open class AssetDistributionRule: ObjectBase {
 
+	public class AssetDistributionRuleTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var validationError: BaseTokenizedObject {
+			get {
+				return self.append("validationError") 
+			}
+		}
+		
+		public var assetDistributionConditions: ArrayTokenizedObject<AssetDistributionCondition.AssetDistributionConditionTokenizer> {
+			get {
+				return ArrayTokenizedObject<AssetDistributionCondition.AssetDistributionConditionTokenizer>(self.append("assetDistributionConditions"))
+			} 
+		}
+	}
+
 	/**  The validation error description that will be set on the "data" property on
 	  KalturaDistributionValidationErrorMissingAsset if rule was not fulfilled  */
 	public var validationError: String? = nil
@@ -42,6 +57,10 @@ open class AssetDistributionRule: ObjectBase {
 	public var assetDistributionConditions: Array<AssetDistributionCondition>? = nil
 
 
+	public func setMultiRequestToken(validationError: String) {
+		self.dict["validationError"] = validationError
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

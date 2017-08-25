@@ -35,6 +35,153 @@
 
 open class UiConf: ObjectBase {
 
+	public class UiConfTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var objType: BaseTokenizedObject {
+			get {
+				return self.append("objType") 
+			}
+		}
+		
+		public var objTypeAsString: BaseTokenizedObject {
+			get {
+				return self.append("objTypeAsString") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var htmlParams: BaseTokenizedObject {
+			get {
+				return self.append("htmlParams") 
+			}
+		}
+		
+		public var swfUrl: BaseTokenizedObject {
+			get {
+				return self.append("swfUrl") 
+			}
+		}
+		
+		public var confFilePath: BaseTokenizedObject {
+			get {
+				return self.append("confFilePath") 
+			}
+		}
+		
+		public var confFile: BaseTokenizedObject {
+			get {
+				return self.append("confFile") 
+			}
+		}
+		
+		public var confFileFeatures: BaseTokenizedObject {
+			get {
+				return self.append("confFileFeatures") 
+			}
+		}
+		
+		public var config: BaseTokenizedObject {
+			get {
+				return self.append("config") 
+			}
+		}
+		
+		public var confVars: BaseTokenizedObject {
+			get {
+				return self.append("confVars") 
+			}
+		}
+		
+		public var useCdn: BaseTokenizedObject {
+			get {
+				return self.append("useCdn") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var swfUrlVersion: BaseTokenizedObject {
+			get {
+				return self.append("swfUrlVersion") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var creationMode: BaseTokenizedObject {
+			get {
+				return self.append("creationMode") 
+			}
+		}
+		
+		public var html5Url: BaseTokenizedObject {
+			get {
+				return self.append("html5Url") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var partnerTags: BaseTokenizedObject {
+			get {
+				return self.append("partnerTags") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	/**  Name of the uiConf, this is not a primary key  */
 	public var name: String? = nil
@@ -65,6 +212,102 @@ open class UiConf: ObjectBase {
 	public var partnerTags: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(objType: String) {
+		self.dict["objType"] = objType
+	}
+	
+	public func setMultiRequestToken(objTypeAsString: String) {
+		self.dict["objTypeAsString"] = objTypeAsString
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(htmlParams: String) {
+		self.dict["htmlParams"] = htmlParams
+	}
+	
+	public func setMultiRequestToken(swfUrl: String) {
+		self.dict["swfUrl"] = swfUrl
+	}
+	
+	public func setMultiRequestToken(confFilePath: String) {
+		self.dict["confFilePath"] = confFilePath
+	}
+	
+	public func setMultiRequestToken(confFile: String) {
+		self.dict["confFile"] = confFile
+	}
+	
+	public func setMultiRequestToken(confFileFeatures: String) {
+		self.dict["confFileFeatures"] = confFileFeatures
+	}
+	
+	public func setMultiRequestToken(config: String) {
+		self.dict["config"] = config
+	}
+	
+	public func setMultiRequestToken(confVars: String) {
+		self.dict["confVars"] = confVars
+	}
+	
+	public func setMultiRequestToken(useCdn: String) {
+		self.dict["useCdn"] = useCdn
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(swfUrlVersion: String) {
+		self.dict["swfUrlVersion"] = swfUrlVersion
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(creationMode: String) {
+		self.dict["creationMode"] = creationMode
+	}
+	
+	public func setMultiRequestToken(html5Url: String) {
+		self.dict["html5Url"] = html5Url
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(partnerTags: String) {
+		self.dict["partnerTags"] = partnerTags
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

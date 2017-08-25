@@ -35,10 +35,33 @@
 
 open class BulkUploadResultCategoryEntry: BulkUploadResult {
 
+	public class BulkUploadResultCategoryEntryTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	public var categoryId: Int? = nil
 	public var entryId: String? = nil
 
 
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

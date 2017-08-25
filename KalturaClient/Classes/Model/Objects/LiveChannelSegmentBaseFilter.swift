@@ -35,6 +35,69 @@
 
 open class LiveChannelSegmentBaseFilter: RelatedFilter {
 
+	public class LiveChannelSegmentBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var channelIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("channelIdEqual") 
+			}
+		}
+		
+		public var channelIdIn: BaseTokenizedObject {
+			get {
+				return self.append("channelIdIn") 
+			}
+		}
+		
+		public var startTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var startTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var createdAtGreaterThanOrEqual: Int? = nil
 	public var createdAtLessThanOrEqual: Int? = nil
 	public var updatedAtGreaterThanOrEqual: Int? = nil
@@ -47,6 +110,46 @@ open class LiveChannelSegmentBaseFilter: RelatedFilter {
 	public var startTimeLessThanOrEqual: Double? = nil
 
 
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(channelIdEqual: String) {
+		self.dict["channelIdEqual"] = channelIdEqual
+	}
+	
+	public func setMultiRequestToken(channelIdIn: String) {
+		self.dict["channelIdIn"] = channelIdIn
+	}
+	
+	public func setMultiRequestToken(startTimeGreaterThanOrEqual: String) {
+		self.dict["startTimeGreaterThanOrEqual"] = startTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startTimeLessThanOrEqual: String) {
+		self.dict["startTimeLessThanOrEqual"] = startTimeLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

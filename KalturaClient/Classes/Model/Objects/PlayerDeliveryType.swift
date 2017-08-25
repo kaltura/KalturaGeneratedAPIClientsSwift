@@ -35,6 +35,39 @@
 
 open class PlayerDeliveryType: ObjectBase {
 
+	public class PlayerDeliveryTypeTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var flashvars: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("flashvars"))
+			} 
+		}
+		
+		public var minVersion: BaseTokenizedObject {
+			get {
+				return self.append("minVersion") 
+			}
+		}
+		
+		public var enabledByDefault: BaseTokenizedObject {
+			get {
+				return self.append("enabledByDefault") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var label: String? = nil
 	public var flashvars: Array<KeyValue>? = nil
@@ -42,6 +75,22 @@ open class PlayerDeliveryType: ObjectBase {
 	public var enabledByDefault: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(minVersion: String) {
+		self.dict["minVersion"] = minVersion
+	}
+	
+	public func setMultiRequestToken(enabledByDefault: String) {
+		self.dict["enabledByDefault"] = enabledByDefault
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

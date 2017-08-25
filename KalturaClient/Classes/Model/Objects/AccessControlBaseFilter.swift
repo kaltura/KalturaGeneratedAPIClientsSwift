@@ -35,6 +35,45 @@
 
 open class AccessControlBaseFilter: RelatedFilter {
 
+	public class AccessControlBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var systemNameEqual: String? = nil
@@ -43,6 +82,30 @@ open class AccessControlBaseFilter: RelatedFilter {
 	public var createdAtLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

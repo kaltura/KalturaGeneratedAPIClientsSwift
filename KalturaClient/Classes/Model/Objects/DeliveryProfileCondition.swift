@@ -35,6 +35,15 @@
 
 open class DeliveryProfileCondition: Condition {
 
+	public class DeliveryProfileConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var deliveryProfileIds: ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer>(self.append("deliveryProfileIds"))
+			} 
+		}
+	}
+
 	/**  The delivery ids that are accepted by this condition  */
 	public var deliveryProfileIds: Array<IntegerValue>? = nil
 

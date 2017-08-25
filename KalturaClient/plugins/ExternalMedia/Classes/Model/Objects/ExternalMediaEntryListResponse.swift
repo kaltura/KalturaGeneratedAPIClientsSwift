@@ -35,6 +35,15 @@
 
 open class ExternalMediaEntryListResponse: ListResponse {
 
+	public class ExternalMediaEntryListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ExternalMediaEntry.ExternalMediaEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<ExternalMediaEntry.ExternalMediaEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ExternalMediaEntry>? = nil
 
 

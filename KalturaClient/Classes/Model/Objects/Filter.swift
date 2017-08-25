@@ -35,10 +35,29 @@
 
 open class Filter: ObjectBase {
 
+	public class FilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var orderBy: BaseTokenizedObject {
+			get {
+				return self.append("orderBy") 
+			}
+		}
+		
+		public var advancedSearch: SearchItem.SearchItemTokenizer {
+			get {
+				return SearchItem.SearchItemTokenizer(self.append("advancedSearch")) 
+			}
+		}
+	}
+
 	public var orderBy: String? = nil
 	public var advancedSearch: SearchItem? = nil
 
 
+	public func setMultiRequestToken(orderBy: String) {
+		self.dict["orderBy"] = orderBy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

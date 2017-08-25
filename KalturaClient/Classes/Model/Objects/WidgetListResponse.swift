@@ -35,6 +35,15 @@
 
 open class WidgetListResponse: ListResponse {
 
+	public class WidgetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Widget.WidgetTokenizer> {
+			get {
+				return ArrayTokenizedObject<Widget.WidgetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Widget>? = nil
 
 

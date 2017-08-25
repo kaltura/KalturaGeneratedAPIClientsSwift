@@ -35,6 +35,9 @@
 
 open class ScpDropFolderBaseFilter: SshDropFolderFilter {
 
+	public class ScpDropFolderBaseFilterTokenizer: SshDropFolderFilter.SshDropFolderFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

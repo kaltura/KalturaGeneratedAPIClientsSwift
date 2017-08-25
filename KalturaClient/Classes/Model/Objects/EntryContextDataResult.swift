@@ -35,6 +35,105 @@
 
 open class EntryContextDataResult: ContextDataResult {
 
+	public class EntryContextDataResultTokenizer: ContextDataResult.ContextDataResultTokenizer {
+		
+		public var isSiteRestricted: BaseTokenizedObject {
+			get {
+				return self.append("isSiteRestricted") 
+			}
+		}
+		
+		public var isCountryRestricted: BaseTokenizedObject {
+			get {
+				return self.append("isCountryRestricted") 
+			}
+		}
+		
+		public var isSessionRestricted: BaseTokenizedObject {
+			get {
+				return self.append("isSessionRestricted") 
+			}
+		}
+		
+		public var isIpAddressRestricted: BaseTokenizedObject {
+			get {
+				return self.append("isIpAddressRestricted") 
+			}
+		}
+		
+		public var isUserAgentRestricted: BaseTokenizedObject {
+			get {
+				return self.append("isUserAgentRestricted") 
+			}
+		}
+		
+		public var previewLength: BaseTokenizedObject {
+			get {
+				return self.append("previewLength") 
+			}
+		}
+		
+		public var isScheduledNow: BaseTokenizedObject {
+			get {
+				return self.append("isScheduledNow") 
+			}
+		}
+		
+		public var isAdmin: BaseTokenizedObject {
+			get {
+				return self.append("isAdmin") 
+			}
+		}
+		
+		public var streamerType: BaseTokenizedObject {
+			get {
+				return self.append("streamerType") 
+			}
+		}
+		
+		public var mediaProtocol: BaseTokenizedObject {
+			get {
+				return self.append("mediaProtocol") 
+			}
+		}
+		
+		public var storageProfilesXML: BaseTokenizedObject {
+			get {
+				return self.append("storageProfilesXML") 
+			}
+		}
+		
+		public var accessControlMessages: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("accessControlMessages"))
+			} 
+		}
+		
+		public var accessControlActions: ArrayTokenizedObject<RuleAction.RuleActionTokenizer> {
+			get {
+				return ArrayTokenizedObject<RuleAction.RuleActionTokenizer>(self.append("accessControlActions"))
+			} 
+		}
+		
+		public var flavorAssets: ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>(self.append("flavorAssets"))
+			} 
+		}
+		
+		public var msDuration: BaseTokenizedObject {
+			get {
+				return self.append("msDuration") 
+			}
+		}
+		
+		public var pluginData: DictionaryTokenizedObject<PluginData.PluginDataTokenizer> {
+			get {
+				return DictionaryTokenizedObject<PluginData.PluginDataTokenizer>(self.append("pluginData"))
+			}
+		}
+	}
+
 	public var isSiteRestricted: Bool? = nil
 	public var isCountryRestricted: Bool? = nil
 	public var isSessionRestricted: Bool? = nil
@@ -62,6 +161,54 @@ open class EntryContextDataResult: ContextDataResult {
 	public var pluginData: Dictionary<String, PluginData>? = nil
 
 
+	public func setMultiRequestToken(isSiteRestricted: String) {
+		self.dict["isSiteRestricted"] = isSiteRestricted
+	}
+	
+	public func setMultiRequestToken(isCountryRestricted: String) {
+		self.dict["isCountryRestricted"] = isCountryRestricted
+	}
+	
+	public func setMultiRequestToken(isSessionRestricted: String) {
+		self.dict["isSessionRestricted"] = isSessionRestricted
+	}
+	
+	public func setMultiRequestToken(isIpAddressRestricted: String) {
+		self.dict["isIpAddressRestricted"] = isIpAddressRestricted
+	}
+	
+	public func setMultiRequestToken(isUserAgentRestricted: String) {
+		self.dict["isUserAgentRestricted"] = isUserAgentRestricted
+	}
+	
+	public func setMultiRequestToken(previewLength: String) {
+		self.dict["previewLength"] = previewLength
+	}
+	
+	public func setMultiRequestToken(isScheduledNow: String) {
+		self.dict["isScheduledNow"] = isScheduledNow
+	}
+	
+	public func setMultiRequestToken(isAdmin: String) {
+		self.dict["isAdmin"] = isAdmin
+	}
+	
+	public func setMultiRequestToken(streamerType: String) {
+		self.dict["streamerType"] = streamerType
+	}
+	
+	public func setMultiRequestToken(mediaProtocol: String) {
+		self.dict["mediaProtocol"] = mediaProtocol
+	}
+	
+	public func setMultiRequestToken(storageProfilesXML: String) {
+		self.dict["storageProfilesXML"] = storageProfilesXML
+	}
+	
+	public func setMultiRequestToken(msDuration: String) {
+		self.dict["msDuration"] = msDuration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

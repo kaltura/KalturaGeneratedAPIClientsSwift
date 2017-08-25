@@ -35,10 +35,33 @@
 
 open class MetadataSearchItem: SearchOperator {
 
+	public class MetadataSearchItemTokenizer: SearchOperator.SearchOperatorTokenizer {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var orderBy: BaseTokenizedObject {
+			get {
+				return self.append("orderBy") 
+			}
+		}
+	}
+
 	public var metadataProfileId: Int? = nil
 	public var orderBy: String? = nil
 
 
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(orderBy: String) {
+		self.dict["orderBy"] = orderBy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

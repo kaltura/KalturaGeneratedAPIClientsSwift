@@ -35,6 +35,9 @@
 
 open class BatchJobFilter: BatchJobBaseFilter {
 
+	public class BatchJobFilterTokenizer: BatchJobBaseFilter.BatchJobBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

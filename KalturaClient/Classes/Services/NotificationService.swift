@@ -36,9 +36,24 @@
 /**  Notification Service  */
 public final class NotificationService{
 
+	public class GetClientNotificationTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+	}
+
 	/**  Return the notifications for a specific entry id and type  */
-	public static func getClientNotification(entryId: String, type: NotificationType) -> RequestBuilder<ClientNotification> {
-		let request: RequestBuilder<ClientNotification> = RequestBuilder<ClientNotification>(service: "notification", action: "getClientNotification")
+	public static func getClientNotification(entryId: String, type: NotificationType) -> RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer> {
+		let request: RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer> = RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer>(service: "notification", action: "getClientNotification")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "type", value: type.rawValue)
 

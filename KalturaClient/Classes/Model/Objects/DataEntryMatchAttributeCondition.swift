@@ -37,9 +37,22 @@
   KalturaDataEntryMatchAttribute enum to provide attribute name. /  */
 open class DataEntryMatchAttributeCondition: SearchMatchAttributeCondition {
 
+	public class DataEntryMatchAttributeConditionTokenizer: SearchMatchAttributeCondition.SearchMatchAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: DataEntryMatchAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

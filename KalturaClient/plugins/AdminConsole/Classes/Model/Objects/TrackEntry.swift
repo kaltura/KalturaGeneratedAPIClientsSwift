@@ -35,6 +35,111 @@
 
 open class TrackEntry: ObjectBase {
 
+	public class TrackEntryTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var trackEventType: BaseTokenizedObject {
+			get {
+				return self.append("trackEventType") 
+			}
+		}
+		
+		public var psVersion: BaseTokenizedObject {
+			get {
+				return self.append("psVersion") 
+			}
+		}
+		
+		public var context: BaseTokenizedObject {
+			get {
+				return self.append("context") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var hostName: BaseTokenizedObject {
+			get {
+				return self.append("hostName") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var changedProperties: BaseTokenizedObject {
+			get {
+				return self.append("changedProperties") 
+			}
+		}
+		
+		public var paramStr1: BaseTokenizedObject {
+			get {
+				return self.append("paramStr1") 
+			}
+		}
+		
+		public var paramStr2: BaseTokenizedObject {
+			get {
+				return self.append("paramStr2") 
+			}
+		}
+		
+		public var paramStr3: BaseTokenizedObject {
+			get {
+				return self.append("paramStr3") 
+			}
+		}
+		
+		public var ks: BaseTokenizedObject {
+			get {
+				return self.append("ks") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var userIp: BaseTokenizedObject {
+			get {
+				return self.append("userIp") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var trackEventType: TrackEntryEventType? = nil
 	public var psVersion: String? = nil
@@ -54,6 +159,74 @@ open class TrackEntry: ObjectBase {
 	public var userIp: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(trackEventType: String) {
+		self.dict["trackEventType"] = trackEventType
+	}
+	
+	public func setMultiRequestToken(psVersion: String) {
+		self.dict["psVersion"] = psVersion
+	}
+	
+	public func setMultiRequestToken(context: String) {
+		self.dict["context"] = context
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(hostName: String) {
+		self.dict["hostName"] = hostName
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(changedProperties: String) {
+		self.dict["changedProperties"] = changedProperties
+	}
+	
+	public func setMultiRequestToken(paramStr1: String) {
+		self.dict["paramStr1"] = paramStr1
+	}
+	
+	public func setMultiRequestToken(paramStr2: String) {
+		self.dict["paramStr2"] = paramStr2
+	}
+	
+	public func setMultiRequestToken(paramStr3: String) {
+		self.dict["paramStr3"] = paramStr3
+	}
+	
+	public func setMultiRequestToken(ks: String) {
+		self.dict["ks"] = ks
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(userIp: String) {
+		self.dict["userIp"] = userIp
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

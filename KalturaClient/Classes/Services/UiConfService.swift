@@ -37,82 +37,166 @@
   components  This service is used by the KMC-ApplicationStudio  */
 public final class UiConfService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var uiConf: UiConf.UiConfTokenizer {
+			get {
+				return UiConf.UiConfTokenizer(self.append("uiConf")) 
+			}
+		}
+	}
+
 	/**  UIConf Add action allows you to add a UIConf to Kaltura DB  */
-	public static func add(uiConf: UiConf) -> RequestBuilder<UiConf> {
-		let request: RequestBuilder<UiConf> = RequestBuilder<UiConf>(service: "uiconf", action: "add")
+	public static func add(uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer> {
+		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer>(service: "uiconf", action: "add")
 			.setBody(key: "uiConf", value: uiConf)
 
 		return request
 	}
 
+	public class CloneTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Clone an existing UIConf  */
-	public static func clone(id: Int) -> RequestBuilder<UiConf> {
-		let request: RequestBuilder<UiConf> = RequestBuilder<UiConf>(service: "uiconf", action: "clone")
+	public static func clone(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer>(service: "uiconf", action: "clone")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete an existing UIConf  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "uiconf", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retrieve a UIConf by id  */
-	public static func get(id: Int) -> RequestBuilder<UiConf> {
-		let request: RequestBuilder<UiConf> = RequestBuilder<UiConf>(service: "uiconf", action: "get")
+	public static func get(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> {
+		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer>(service: "uiconf", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetAvailableTypesTokenizer: ClientTokenizer  {
+	}
+
 	/**  Retrieve a list of all available versions by object type  */
-	public static func getAvailableTypes() -> RequestBuilder<Array<UiConfTypeInfo>> {
-		let request: ArrayRequestBuilder<UiConfTypeInfo> = ArrayRequestBuilder<UiConfTypeInfo>(service: "uiconf", action: "getAvailableTypes")
+	public static func getAvailableTypes() -> ArrayRequestBuilder<UiConfTypeInfo, ArrayTokenizedObject<UiConfTypeInfo.UiConfTypeInfoTokenizer>, GetAvailableTypesTokenizer> {
+		let request: ArrayRequestBuilder<UiConfTypeInfo, ArrayTokenizedObject<UiConfTypeInfo.UiConfTypeInfoTokenizer>, GetAvailableTypesTokenizer> = ArrayRequestBuilder<UiConfTypeInfo, ArrayTokenizedObject<UiConfTypeInfo.UiConfTypeInfoTokenizer>, GetAvailableTypesTokenizer>(service: "uiconf", action: "getAvailableTypes")
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<UiConfListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: UiConfFilter.UiConfFilterTokenizer {
+			get {
+				return UiConfFilter.UiConfFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: UiConfFilter?) -> RequestBuilder<UiConfListResponse> {
+	public static func list(filter: UiConfFilter?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Retrieve a list of available UIConfs  */
-	public static func list(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse> {
-		let request: RequestBuilder<UiConfListResponse> = RequestBuilder<UiConfListResponse>(service: "uiconf", action: "list")
+	public static func list(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> = RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer>(service: "uiconf", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func listTemplates() -> RequestBuilder<UiConfListResponse> {
+	public class ListTemplatesTokenizer: ClientTokenizer  {
+		
+		public var filter: UiConfFilter.UiConfFilterTokenizer {
+			get {
+				return UiConfFilter.UiConfFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func listTemplates() -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> {
 		return listTemplates(filter: nil)
 	}
 
-	public static func listTemplates(filter: UiConfFilter?) -> RequestBuilder<UiConfListResponse> {
+	public static func listTemplates(filter: UiConfFilter?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> {
 		return listTemplates(filter: filter, pager: nil)
 	}
 
 	/**  retrieve a list of available template UIConfs  */
-	public static func listTemplates(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse> {
-		let request: RequestBuilder<UiConfListResponse> = RequestBuilder<UiConfListResponse>(service: "uiconf", action: "listTemplates")
+	public static func listTemplates(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> {
+		let request: RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> = RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer>(service: "uiconf", action: "listTemplates")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var uiConf: UiConf.UiConfTokenizer {
+			get {
+				return UiConf.UiConfTokenizer(self.append("uiConf")) 
+			}
+		}
+	}
+
 	/**  Update an existing UIConf  */
-	public static func update(id: Int, uiConf: UiConf) -> RequestBuilder<UiConf> {
-		let request: RequestBuilder<UiConf> = RequestBuilder<UiConf>(service: "uiconf", action: "update")
+	public static func update(id: Int, uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer>(service: "uiconf", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "uiConf", value: uiConf)
 

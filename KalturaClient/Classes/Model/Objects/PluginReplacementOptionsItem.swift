@@ -35,6 +35,9 @@
 
 open class PluginReplacementOptionsItem: ObjectBase {
 
+	public class PluginReplacementOptionsItemTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

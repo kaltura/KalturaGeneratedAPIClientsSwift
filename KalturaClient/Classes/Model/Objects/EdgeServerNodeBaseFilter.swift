@@ -35,11 +35,44 @@
 
 open class EdgeServerNodeBaseFilter: DeliveryServerNodeFilter {
 
+	public class EdgeServerNodeBaseFilterTokenizer: DeliveryServerNodeFilter.DeliveryServerNodeFilterTokenizer {
+		
+		public var playbackDomainLike: BaseTokenizedObject {
+			get {
+				return self.append("playbackDomainLike") 
+			}
+		}
+		
+		public var playbackDomainMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("playbackDomainMultiLikeOr") 
+			}
+		}
+		
+		public var playbackDomainMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("playbackDomainMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var playbackDomainLike: String? = nil
 	public var playbackDomainMultiLikeOr: String? = nil
 	public var playbackDomainMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(playbackDomainLike: String) {
+		self.dict["playbackDomainLike"] = playbackDomainLike
+	}
+	
+	public func setMultiRequestToken(playbackDomainMultiLikeOr: String) {
+		self.dict["playbackDomainMultiLikeOr"] = playbackDomainMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(playbackDomainMultiLikeAnd: String) {
+		self.dict["playbackDomainMultiLikeAnd"] = playbackDomainMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

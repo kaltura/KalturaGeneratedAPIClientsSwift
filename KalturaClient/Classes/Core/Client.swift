@@ -40,14 +40,63 @@
 		
 		super.init()
 		
-		clientTag = "swift:17-08-24"
+		clientTag = "swift:17-08-25"
 		apiVersion = "3.3.0"
 	}
 }
 
-extension RequestBuilderData{
+public class ClientTokenizer: BaseTokenizedObject {
+	
+	public var clientTag: BaseTokenizedObject {
+		get {
+			return self.append("clientTag")
+		}
+	}
+	
+	public var apiVersion: BaseTokenizedObject {
+		get {
+			return self.append("apiVersion")
+		}
+	}
+	
 	/**
+	 * Impersonated partner id
 	 */
+	public var partnerId: BaseTokenizedObject {
+		get {
+			return self.append("partnerId")
+		}
+	}
+	
+	/**
+	 * Kaltura API session
+	 */
+	public var ks: BaseTokenizedObject {
+		get {
+			return self.append("ks")
+		}
+	}
+	
+	/**
+	 * Kaltura API session
+	 */
+	public var sessionId: BaseTokenizedObject {
+		get {
+			return self.append("ks")
+		}
+	}
+	
+	/**
+	 * Response profile - this attribute will be automatically unset after every API call.
+	 */
+	public var responseProfile: BaseTokenizedObject {
+		get {
+			return self.append("responseProfile")
+		}
+	}
+}
+
+extension RequestBuilderData{
 	public var clientTag: String?{
 		get{
 			return params["clientTag"] as? String
@@ -57,8 +106,6 @@ extension RequestBuilderData{
 		}
 	}
 	
-	/**
-	 */
 	public var apiVersion: String?{
 		get{
 			return params["apiVersion"] as? String

@@ -36,21 +36,42 @@
 /**  Search caption asset items  */
 public final class CaptionAssetItemService{
 
-	public static func search() -> RequestBuilder<CaptionAssetItemListResponse> {
+	public class SearchTokenizer: ClientTokenizer  {
+		
+		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
+			get {
+				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
+			}
+		}
+		
+		public var captionAssetItemFilter: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer {
+			get {
+				return CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer(self.append("captionAssetItemFilter")) 
+			}
+		}
+		
+		public var captionAssetItemPager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("captionAssetItemPager")) 
+			}
+		}
+	}
+
+	public static func search() -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> {
 		return search(entryFilter: nil)
 	}
 
-	public static func search(entryFilter: BaseEntryFilter?) -> RequestBuilder<CaptionAssetItemListResponse> {
+	public static func search(entryFilter: BaseEntryFilter?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> {
 		return search(entryFilter: entryFilter, captionAssetItemFilter: nil)
 	}
 
-	public static func search(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?) -> RequestBuilder<CaptionAssetItemListResponse> {
+	public static func search(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> {
 		return search(entryFilter: entryFilter, captionAssetItemFilter: captionAssetItemFilter, captionAssetItemPager: nil)
 	}
 
 	/**  Search caption asset items by filter, pager and free text  */
-	public static func search(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<CaptionAssetItemListResponse> {
-		let request: RequestBuilder<CaptionAssetItemListResponse> = RequestBuilder<CaptionAssetItemListResponse>(service: "captionsearch_captionassetitem", action: "search")
+	public static func search(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> {
+		let request: RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> = RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer>(service: "captionsearch_captionassetitem", action: "search")
 			.setBody(key: "entryFilter", value: entryFilter)
 			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
 			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)
@@ -58,21 +79,42 @@ public final class CaptionAssetItemService{
 		return request
 	}
 
-	public static func searchEntries() -> RequestBuilder<BaseEntryListResponse> {
+	public class SearchEntriesTokenizer: ClientTokenizer  {
+		
+		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
+			get {
+				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
+			}
+		}
+		
+		public var captionAssetItemFilter: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer {
+			get {
+				return CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer(self.append("captionAssetItemFilter")) 
+			}
+		}
+		
+		public var captionAssetItemPager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("captionAssetItemPager")) 
+			}
+		}
+	}
+
+	public static func searchEntries() -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> {
 		return searchEntries(entryFilter: nil)
 	}
 
-	public static func searchEntries(entryFilter: BaseEntryFilter?) -> RequestBuilder<BaseEntryListResponse> {
+	public static func searchEntries(entryFilter: BaseEntryFilter?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> {
 		return searchEntries(entryFilter: entryFilter, captionAssetItemFilter: nil)
 	}
 
-	public static func searchEntries(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?) -> RequestBuilder<BaseEntryListResponse> {
+	public static func searchEntries(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> {
 		return searchEntries(entryFilter: entryFilter, captionAssetItemFilter: captionAssetItemFilter, captionAssetItemPager: nil)
 	}
 
 	/**  Search caption asset items by filter, pager and free text  */
-	public static func searchEntries(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<BaseEntryListResponse> {
-		let request: RequestBuilder<BaseEntryListResponse> = RequestBuilder<BaseEntryListResponse>(service: "captionsearch_captionassetitem", action: "searchEntries")
+	public static func searchEntries(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> {
+		let request: RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> = RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer>(service: "captionsearch_captionassetitem", action: "searchEntries")
 			.setBody(key: "entryFilter", value: entryFilter)
 			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
 			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)

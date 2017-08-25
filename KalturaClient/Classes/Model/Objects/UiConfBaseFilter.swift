@@ -35,6 +35,129 @@
 
 open class UiConfBaseFilter: Filter {
 
+	public class UiConfBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var nameLike: BaseTokenizedObject {
+			get {
+				return self.append("nameLike") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var objTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("objTypeEqual") 
+			}
+		}
+		
+		public var objTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("objTypeIn") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var creationModeEqual: BaseTokenizedObject {
+			get {
+				return self.append("creationModeEqual") 
+			}
+		}
+		
+		public var creationModeIn: BaseTokenizedObject {
+			get {
+				return self.append("creationModeIn") 
+			}
+		}
+		
+		public var versionEqual: BaseTokenizedObject {
+			get {
+				return self.append("versionEqual") 
+			}
+		}
+		
+		public var versionMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("versionMultiLikeOr") 
+			}
+		}
+		
+		public var versionMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("versionMultiLikeAnd") 
+			}
+		}
+		
+		public var partnerTagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("partnerTagsMultiLikeOr") 
+			}
+		}
+		
+		public var partnerTagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("partnerTagsMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var nameLike: String? = nil
@@ -57,6 +180,86 @@ open class UiConfBaseFilter: Filter {
 	public var partnerTagsMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(nameLike: String) {
+		self.dict["nameLike"] = nameLike
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(objTypeEqual: String) {
+		self.dict["objTypeEqual"] = objTypeEqual
+	}
+	
+	public func setMultiRequestToken(objTypeIn: String) {
+		self.dict["objTypeIn"] = objTypeIn
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(creationModeEqual: String) {
+		self.dict["creationModeEqual"] = creationModeEqual
+	}
+	
+	public func setMultiRequestToken(creationModeIn: String) {
+		self.dict["creationModeIn"] = creationModeIn
+	}
+	
+	public func setMultiRequestToken(versionEqual: String) {
+		self.dict["versionEqual"] = versionEqual
+	}
+	
+	public func setMultiRequestToken(versionMultiLikeOr: String) {
+		self.dict["versionMultiLikeOr"] = versionMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(versionMultiLikeAnd: String) {
+		self.dict["versionMultiLikeAnd"] = versionMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(partnerTagsMultiLikeOr: String) {
+		self.dict["partnerTagsMultiLikeOr"] = partnerTagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(partnerTagsMultiLikeAnd: String) {
+		self.dict["partnerTagsMultiLikeAnd"] = partnerTagsMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

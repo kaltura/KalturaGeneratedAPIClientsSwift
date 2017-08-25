@@ -35,24 +35,60 @@
 
 public final class LiveReportsService{
 
-	public static func exportToCsv(reportType: LiveReportExportType, params: LiveReportExportParams) -> RequestBuilder<LiveReportExportResponse> {
-		let request: RequestBuilder<LiveReportExportResponse> = RequestBuilder<LiveReportExportResponse>(service: "livereports", action: "exportToCsv")
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var params: LiveReportExportParams.LiveReportExportParamsTokenizer {
+			get {
+				return LiveReportExportParams.LiveReportExportParamsTokenizer(self.append("params")) 
+			}
+		}
+	}
+
+	public static func exportToCsv(reportType: LiveReportExportType, params: LiveReportExportParams) -> RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer> {
+		let request: RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer> = RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer>(service: "livereports", action: "exportToCsv")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "params", value: params)
 
 		return request
 	}
 
-	public static func getEvents(reportType: LiveReportType) -> RequestBuilder<Array<ReportGraph>> {
+	public class GetEventsTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var filter: LiveReportInputFilter.LiveReportInputFilterTokenizer {
+			get {
+				return LiveReportInputFilter.LiveReportInputFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func getEvents(reportType: LiveReportType) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> {
 		return getEvents(reportType: reportType, filter: nil)
 	}
 
-	public static func getEvents(reportType: LiveReportType, filter: LiveReportInputFilter?) -> RequestBuilder<Array<ReportGraph>> {
+	public static func getEvents(reportType: LiveReportType, filter: LiveReportInputFilter?) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> {
 		return getEvents(reportType: reportType, filter: filter, pager: nil)
 	}
 
-	public static func getEvents(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> RequestBuilder<Array<ReportGraph>> {
-		let request: ArrayRequestBuilder<ReportGraph> = ArrayRequestBuilder<ReportGraph>(service: "livereports", action: "getEvents")
+	public static func getEvents(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> {
+		let request: ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> = ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer>(service: "livereports", action: "getEvents")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
@@ -60,16 +96,37 @@ public final class LiveReportsService{
 		return request
 	}
 
-	public static func getReport(reportType: LiveReportType) -> RequestBuilder<LiveStatsListResponse> {
+	public class GetReportTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var filter: LiveReportInputFilter.LiveReportInputFilterTokenizer {
+			get {
+				return LiveReportInputFilter.LiveReportInputFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func getReport(reportType: LiveReportType) -> RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> {
 		return getReport(reportType: reportType, filter: nil)
 	}
 
-	public static func getReport(reportType: LiveReportType, filter: LiveReportInputFilter?) -> RequestBuilder<LiveStatsListResponse> {
+	public static func getReport(reportType: LiveReportType, filter: LiveReportInputFilter?) -> RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> {
 		return getReport(reportType: reportType, filter: filter, pager: nil)
 	}
 
-	public static func getReport(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> RequestBuilder<LiveStatsListResponse> {
-		let request: RequestBuilder<LiveStatsListResponse> = RequestBuilder<LiveStatsListResponse>(service: "livereports", action: "getReport")
+	public static func getReport(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> {
+		let request: RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> = RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer>(service: "livereports", action: "getReport")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
@@ -77,9 +134,18 @@ public final class LiveReportsService{
 		return request
 	}
 
+	public class ServeReportTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Will serve a requested report  */
-	public static func serveReport(id: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "livereports", action: "serveReport")
+	public static func serveReport(id: String) -> RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer>(service: "livereports", action: "serveReport")
 			.setBody(key: "id", value: id)
 
 		return request

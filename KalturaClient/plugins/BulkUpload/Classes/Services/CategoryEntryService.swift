@@ -36,8 +36,23 @@
 /**  Add &amp; Manage CategoryEntry - assign entry to category  */
 extension CategoryEntryService{
 
+	public class ActivateTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+	}
+
 	/**  activate CategoryEntry when it is pending moderation  */
-	public static func activate(entryId: String, categoryId: Int) -> RequestBuilder<Void> {
+	public static func activate(entryId: String, categoryId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "activate")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
@@ -45,28 +60,67 @@ extension CategoryEntryService{
 		return request
 	}
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var categoryEntry: CategoryEntry.CategoryEntryTokenizer {
+			get {
+				return CategoryEntry.CategoryEntryTokenizer(self.append("categoryEntry")) 
+			}
+		}
+	}
+
 	/**  Add new CategoryEntry  */
-	public static func add(categoryEntry: CategoryEntry) -> RequestBuilder<CategoryEntry> {
-		let request: RequestBuilder<CategoryEntry> = RequestBuilder<CategoryEntry>(service: "categoryentry", action: "add")
+	public static func add(categoryEntry: CategoryEntry) -> RequestBuilder<CategoryEntry, CategoryEntry.CategoryEntryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<CategoryEntry, CategoryEntry.CategoryEntryTokenizer, AddTokenizer> = RequestBuilder<CategoryEntry, CategoryEntry.CategoryEntryTokenizer, AddTokenizer>(service: "categoryentry", action: "add")
 			.setBody(key: "categoryEntry", value: categoryEntry)
 
 		return request
 	}
 
-	public static func addFromBulkUpload(bulkUploadData: BulkServiceData) -> RequestBuilder<BulkUpload> {
+	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
+		
+		public var bulkUploadData: BulkServiceData.BulkServiceDataTokenizer {
+			get {
+				return BulkServiceData.BulkServiceDataTokenizer(self.append("bulkUploadData")) 
+			}
+		}
+		
+		public var bulkUploadCategoryEntryData: BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer {
+			get {
+				return BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer(self.append("bulkUploadCategoryEntryData")) 
+			}
+		}
+	}
+
+	public static func addFromBulkUpload(bulkUploadData: BulkServiceData) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		return addFromBulkUpload(bulkUploadData: bulkUploadData, bulkUploadCategoryEntryData: nil)
 	}
 
-	public static func addFromBulkUpload(bulkUploadData: BulkServiceData, bulkUploadCategoryEntryData: BulkUploadCategoryEntryData?) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "categoryentry", action: "addFromBulkUpload")
+	public static func addFromBulkUpload(bulkUploadData: BulkServiceData, bulkUploadCategoryEntryData: BulkUploadCategoryEntryData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "categoryentry", action: "addFromBulkUpload")
 			.setBody(key: "bulkUploadData", value: bulkUploadData)
 			.setBody(key: "bulkUploadCategoryEntryData", value: bulkUploadCategoryEntryData)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+	}
+
 	/**  Delete CategoryEntry  */
-	public static func delete(entryId: String, categoryId: Int) -> RequestBuilder<Void> {
+	public static func delete(entryId: String, categoryId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
@@ -74,13 +128,34 @@ extension CategoryEntryService{
 		return request
 	}
 
-	public static func index(entryId: String, categoryId: Int) -> RequestBuilder<Int> {
+	public class IndexTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var shouldUpdate: BaseTokenizedObject {
+			get {
+				return self.append("shouldUpdate") 
+			}
+		}
+	}
+
+	public static func index(entryId: String, categoryId: Int) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		return index(entryId: entryId, categoryId: categoryId, shouldUpdate: true)
 	}
 
 	/**  Index CategoryEntry by Id  */
-	public static func index(entryId: String, categoryId: Int, shouldUpdate: Bool?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "categoryentry", action: "index")
+	public static func index(entryId: String, categoryId: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "categoryentry", action: "index")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "shouldUpdate", value: shouldUpdate)
@@ -88,25 +163,55 @@ extension CategoryEntryService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<CategoryEntryListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: CategoryEntryFilter.CategoryEntryFilterTokenizer {
+			get {
+				return CategoryEntryFilter.CategoryEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<CategoryEntryListResponse, CategoryEntryListResponse.CategoryEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: CategoryEntryFilter?) -> RequestBuilder<CategoryEntryListResponse> {
+	public static func list(filter: CategoryEntryFilter?) -> RequestBuilder<CategoryEntryListResponse, CategoryEntryListResponse.CategoryEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all categoryEntry  */
-	public static func list(filter: CategoryEntryFilter?, pager: FilterPager?) -> RequestBuilder<CategoryEntryListResponse> {
-		let request: RequestBuilder<CategoryEntryListResponse> = RequestBuilder<CategoryEntryListResponse>(service: "categoryentry", action: "list")
+	public static func list(filter: CategoryEntryFilter?, pager: FilterPager?) -> RequestBuilder<CategoryEntryListResponse, CategoryEntryListResponse.CategoryEntryListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CategoryEntryListResponse, CategoryEntryListResponse.CategoryEntryListResponseTokenizer, ListTokenizer> = RequestBuilder<CategoryEntryListResponse, CategoryEntryListResponse.CategoryEntryListResponseTokenizer, ListTokenizer>(service: "categoryentry", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class RejectTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+	}
+
 	/**  activate CategoryEntry when it is pending moderation  */
-	public static func reject(entryId: String, categoryId: Int) -> RequestBuilder<Void> {
+	public static func reject(entryId: String, categoryId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "reject")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
@@ -114,8 +219,23 @@ extension CategoryEntryService{
 		return request
 	}
 
+	public class SyncPrivacyContextTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+	}
+
 	/**  update privacy context from the category  */
-	public static func syncPrivacyContext(entryId: String, categoryId: Int) -> RequestBuilder<Void> {
+	public static func syncPrivacyContext(entryId: String, categoryId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "syncPrivacyContext")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)

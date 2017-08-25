@@ -35,6 +35,105 @@
 
 open class ScheduleEventRecurrence: ObjectBase {
 
+	public class ScheduleEventRecurrenceTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var frequency: BaseTokenizedObject {
+			get {
+				return self.append("frequency") 
+			}
+		}
+		
+		public var until: BaseTokenizedObject {
+			get {
+				return self.append("until") 
+			}
+		}
+		
+		public var timeZone: BaseTokenizedObject {
+			get {
+				return self.append("timeZone") 
+			}
+		}
+		
+		public var count: BaseTokenizedObject {
+			get {
+				return self.append("count") 
+			}
+		}
+		
+		public var interval: BaseTokenizedObject {
+			get {
+				return self.append("interval") 
+			}
+		}
+		
+		public var bySecond: BaseTokenizedObject {
+			get {
+				return self.append("bySecond") 
+			}
+		}
+		
+		public var byMinute: BaseTokenizedObject {
+			get {
+				return self.append("byMinute") 
+			}
+		}
+		
+		public var byHour: BaseTokenizedObject {
+			get {
+				return self.append("byHour") 
+			}
+		}
+		
+		public var byDay: BaseTokenizedObject {
+			get {
+				return self.append("byDay") 
+			}
+		}
+		
+		public var byMonthDay: BaseTokenizedObject {
+			get {
+				return self.append("byMonthDay") 
+			}
+		}
+		
+		public var byYearDay: BaseTokenizedObject {
+			get {
+				return self.append("byYearDay") 
+			}
+		}
+		
+		public var byWeekNumber: BaseTokenizedObject {
+			get {
+				return self.append("byWeekNumber") 
+			}
+		}
+		
+		public var byMonth: BaseTokenizedObject {
+			get {
+				return self.append("byMonth") 
+			}
+		}
+		
+		public var byOffset: BaseTokenizedObject {
+			get {
+				return self.append("byOffset") 
+			}
+		}
+		
+		public var weekStartDay: BaseTokenizedObject {
+			get {
+				return self.append("weekStartDay") 
+			}
+		}
+	}
+
 	public var name: String? = nil
 	public var frequency: ScheduleEventRecurrenceFrequency? = nil
 	public var until: Int? = nil
@@ -85,6 +184,70 @@ open class ScheduleEventRecurrence: ObjectBase {
 	public var weekStartDay: ScheduleEventRecurrenceDay? = nil
 
 
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(frequency: String) {
+		self.dict["frequency"] = frequency
+	}
+	
+	public func setMultiRequestToken(until: String) {
+		self.dict["until"] = until
+	}
+	
+	public func setMultiRequestToken(timeZone: String) {
+		self.dict["timeZone"] = timeZone
+	}
+	
+	public func setMultiRequestToken(count: String) {
+		self.dict["count"] = count
+	}
+	
+	public func setMultiRequestToken(interval: String) {
+		self.dict["interval"] = interval
+	}
+	
+	public func setMultiRequestToken(bySecond: String) {
+		self.dict["bySecond"] = bySecond
+	}
+	
+	public func setMultiRequestToken(byMinute: String) {
+		self.dict["byMinute"] = byMinute
+	}
+	
+	public func setMultiRequestToken(byHour: String) {
+		self.dict["byHour"] = byHour
+	}
+	
+	public func setMultiRequestToken(byDay: String) {
+		self.dict["byDay"] = byDay
+	}
+	
+	public func setMultiRequestToken(byMonthDay: String) {
+		self.dict["byMonthDay"] = byMonthDay
+	}
+	
+	public func setMultiRequestToken(byYearDay: String) {
+		self.dict["byYearDay"] = byYearDay
+	}
+	
+	public func setMultiRequestToken(byWeekNumber: String) {
+		self.dict["byWeekNumber"] = byWeekNumber
+	}
+	
+	public func setMultiRequestToken(byMonth: String) {
+		self.dict["byMonth"] = byMonth
+	}
+	
+	public func setMultiRequestToken(byOffset: String) {
+		self.dict["byOffset"] = byOffset
+	}
+	
+	public func setMultiRequestToken(weekStartDay: String) {
+		self.dict["weekStartDay"] = weekStartDay
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

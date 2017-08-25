@@ -35,6 +35,75 @@
 
 open class ConvartableJobData: JobData {
 
+	public class ConvartableJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncLocalPath") 
+			}
+		}
+		
+		public var actualSrcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("actualSrcFileSyncLocalPath") 
+			}
+		}
+		
+		public var srcFileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncRemoteUrl") 
+			}
+		}
+		
+		public var srcFileSyncs: ArrayTokenizedObject<SourceFileSyncDescriptor.SourceFileSyncDescriptorTokenizer> {
+			get {
+				return ArrayTokenizedObject<SourceFileSyncDescriptor.SourceFileSyncDescriptorTokenizer>(self.append("srcFileSyncs"))
+			} 
+		}
+		
+		public var engineVersion: BaseTokenizedObject {
+			get {
+				return self.append("engineVersion") 
+			}
+		}
+		
+		public var flavorParamsOutputId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsOutputId") 
+			}
+		}
+		
+		public var flavorParamsOutput: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+			get {
+				return FlavorParamsOutput.FlavorParamsOutputTokenizer(self.append("flavorParamsOutput")) 
+			}
+		}
+		
+		public var mediaInfoId: BaseTokenizedObject {
+			get {
+				return self.append("mediaInfoId") 
+			}
+		}
+		
+		public var currentOperationSet: BaseTokenizedObject {
+			get {
+				return self.append("currentOperationSet") 
+			}
+		}
+		
+		public var currentOperationIndex: BaseTokenizedObject {
+			get {
+				return self.append("currentOperationIndex") 
+			}
+		}
+		
+		public var pluginData: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("pluginData"))
+			} 
+		}
+	}
+
 	public var srcFileSyncLocalPath: String? = nil
 	/**  The translated path as used by the scheduler  */
 	public var actualSrcFileSyncLocalPath: String? = nil
@@ -49,6 +118,38 @@ open class ConvartableJobData: JobData {
 	public var pluginData: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
+		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(actualSrcFileSyncLocalPath: String) {
+		self.dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(srcFileSyncRemoteUrl: String) {
+		self.dict["srcFileSyncRemoteUrl"] = srcFileSyncRemoteUrl
+	}
+	
+	public func setMultiRequestToken(engineVersion: String) {
+		self.dict["engineVersion"] = engineVersion
+	}
+	
+	public func setMultiRequestToken(flavorParamsOutputId: String) {
+		self.dict["flavorParamsOutputId"] = flavorParamsOutputId
+	}
+	
+	public func setMultiRequestToken(mediaInfoId: String) {
+		self.dict["mediaInfoId"] = mediaInfoId
+	}
+	
+	public func setMultiRequestToken(currentOperationSet: String) {
+		self.dict["currentOperationSet"] = currentOperationSet
+	}
+	
+	public func setMultiRequestToken(currentOperationIndex: String) {
+		self.dict["currentOperationIndex"] = currentOperationIndex
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

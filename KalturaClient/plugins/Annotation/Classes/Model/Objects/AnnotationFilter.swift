@@ -35,6 +35,9 @@
 
 open class AnnotationFilter: AnnotationBaseFilter {
 
+	public class AnnotationFilterTokenizer: AnnotationBaseFilter.AnnotationBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

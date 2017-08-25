@@ -35,6 +35,9 @@
 
 open class MediaServerNodeBaseFilter: DeliveryServerNodeFilter {
 
+	public class MediaServerNodeBaseFilterTokenizer: DeliveryServerNodeFilter.DeliveryServerNodeFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

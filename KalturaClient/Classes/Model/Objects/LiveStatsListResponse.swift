@@ -35,6 +35,15 @@
 
 open class LiveStatsListResponse: ListResponse {
 
+	public class LiveStatsListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: LiveStats.LiveStatsTokenizer {
+			get {
+				return LiveStats.LiveStatsTokenizer(self.append("objects")) 
+			}
+		}
+	}
+
 	public var objects: LiveStats? = nil
 
 

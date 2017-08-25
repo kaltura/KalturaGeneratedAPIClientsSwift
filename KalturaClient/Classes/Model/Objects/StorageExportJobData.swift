@@ -35,10 +35,33 @@
 
 open class StorageExportJobData: StorageJobData {
 
+	public class StorageExportJobDataTokenizer: StorageJobData.StorageJobDataTokenizer {
+		
+		public var force: BaseTokenizedObject {
+			get {
+				return self.append("force") 
+			}
+		}
+		
+		public var createLink: BaseTokenizedObject {
+			get {
+				return self.append("createLink") 
+			}
+		}
+	}
+
 	public var force: Bool? = nil
 	public var createLink: Bool? = nil
 
 
+	public func setMultiRequestToken(force: String) {
+		self.dict["force"] = force
+	}
+	
+	public func setMultiRequestToken(createLink: String) {
+		self.dict["createLink"] = createLink
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,39 @@
 
 open class CaptionAssetItem: ObjectBase {
 
+	public class CaptionAssetItemTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var asset: CaptionAsset.CaptionAssetTokenizer {
+			get {
+				return CaptionAsset.CaptionAssetTokenizer(self.append("asset")) 
+			}
+		}
+		
+		public var entry: BaseEntry.BaseEntryTokenizer {
+			get {
+				return BaseEntry.BaseEntryTokenizer(self.append("entry")) 
+			}
+		}
+		
+		public var startTime: BaseTokenizedObject {
+			get {
+				return self.append("startTime") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+		
+		public var content: BaseTokenizedObject {
+			get {
+				return self.append("content") 
+			}
+		}
+	}
+
 	/**  The Caption Asset object  */
 	public var asset: CaptionAsset? = nil
 	/**  The entry object  */
@@ -44,6 +77,18 @@ open class CaptionAssetItem: ObjectBase {
 	public var content: String? = nil
 
 
+	public func setMultiRequestToken(startTime: String) {
+		self.dict["startTime"] = startTime
+	}
+	
+	public func setMultiRequestToken(endTime: String) {
+		self.dict["endTime"] = endTime
+	}
+	
+	public func setMultiRequestToken(content: String) {
+		self.dict["content"] = content
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

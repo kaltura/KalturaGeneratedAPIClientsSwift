@@ -35,6 +35,57 @@
 
 open class Playlist: BaseEntry {
 
+	public class PlaylistTokenizer: BaseEntry.BaseEntryTokenizer {
+		
+		public var playlistContent: BaseTokenizedObject {
+			get {
+				return self.append("playlistContent") 
+			}
+		}
+		
+		public var filters: ArrayTokenizedObject<MediaEntryFilterForPlaylist.MediaEntryFilterForPlaylistTokenizer> {
+			get {
+				return ArrayTokenizedObject<MediaEntryFilterForPlaylist.MediaEntryFilterForPlaylistTokenizer>(self.append("filters"))
+			} 
+		}
+		
+		public var totalResults: BaseTokenizedObject {
+			get {
+				return self.append("totalResults") 
+			}
+		}
+		
+		public var playlistType: BaseTokenizedObject {
+			get {
+				return self.append("playlistType") 
+			}
+		}
+		
+		public var plays: BaseTokenizedObject {
+			get {
+				return self.append("plays") 
+			}
+		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var executeUrl: BaseTokenizedObject {
+			get {
+				return self.append("executeUrl") 
+			}
+		}
+	}
+
 	/**  Content of the playlist -    XML if the playlistType is dynamic    text if the
 	  playlistType is static    url if the playlistType is mRss  */
 	public var playlistContent: String? = nil
@@ -53,6 +104,34 @@ open class Playlist: BaseEntry {
 	public var executeUrl: String? = nil
 
 
+	public func setMultiRequestToken(playlistContent: String) {
+		self.dict["playlistContent"] = playlistContent
+	}
+	
+	public func setMultiRequestToken(totalResults: String) {
+		self.dict["totalResults"] = totalResults
+	}
+	
+	public func setMultiRequestToken(playlistType: String) {
+		self.dict["playlistType"] = playlistType
+	}
+	
+	public func setMultiRequestToken(plays: String) {
+		self.dict["plays"] = plays
+	}
+	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(executeUrl: String) {
+		self.dict["executeUrl"] = executeUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

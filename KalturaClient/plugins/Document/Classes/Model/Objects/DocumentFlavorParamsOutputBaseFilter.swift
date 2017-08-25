@@ -35,6 +35,9 @@
 
 open class DocumentFlavorParamsOutputBaseFilter: FlavorParamsOutputFilter {
 
+	public class DocumentFlavorParamsOutputBaseFilterTokenizer: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,45 @@
 
 open class PartnerStatistics: ObjectBase {
 
+	public class PartnerStatisticsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var packageBandwidthAndStorage: BaseTokenizedObject {
+			get {
+				return self.append("packageBandwidthAndStorage") 
+			}
+		}
+		
+		public var hosting: BaseTokenizedObject {
+			get {
+				return self.append("hosting") 
+			}
+		}
+		
+		public var bandwidth: BaseTokenizedObject {
+			get {
+				return self.append("bandwidth") 
+			}
+		}
+		
+		public var usage: BaseTokenizedObject {
+			get {
+				return self.append("usage") 
+			}
+		}
+		
+		public var usagePercent: BaseTokenizedObject {
+			get {
+				return self.append("usagePercent") 
+			}
+		}
+		
+		public var reachedLimitDate: BaseTokenizedObject {
+			get {
+				return self.append("reachedLimitDate") 
+			}
+		}
+	}
+
 	/**  Package total allowed bandwidth and storage  */
 	public var packageBandwidthAndStorage: Int? = nil
 	/**  Partner total hosting in GB on the disk  */
@@ -50,6 +89,30 @@ open class PartnerStatistics: ObjectBase {
 	public var reachedLimitDate: Int? = nil
 
 
+	public func setMultiRequestToken(packageBandwidthAndStorage: String) {
+		self.dict["packageBandwidthAndStorage"] = packageBandwidthAndStorage
+	}
+	
+	public func setMultiRequestToken(hosting: String) {
+		self.dict["hosting"] = hosting
+	}
+	
+	public func setMultiRequestToken(bandwidth: String) {
+		self.dict["bandwidth"] = bandwidth
+	}
+	
+	public func setMultiRequestToken(usage: String) {
+		self.dict["usage"] = usage
+	}
+	
+	public func setMultiRequestToken(usagePercent: String) {
+		self.dict["usagePercent"] = usagePercent
+	}
+	
+	public func setMultiRequestToken(reachedLimitDate: String) {
+		self.dict["reachedLimitDate"] = reachedLimitDate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

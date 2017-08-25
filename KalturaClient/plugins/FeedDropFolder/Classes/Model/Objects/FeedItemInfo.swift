@@ -35,6 +35,63 @@
 
 open class FeedItemInfo: ObjectBase {
 
+	public class FeedItemInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var itemXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemXPath") 
+			}
+		}
+		
+		public var itemPublishDateXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemPublishDateXPath") 
+			}
+		}
+		
+		public var itemUniqueIdentifierXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemUniqueIdentifierXPath") 
+			}
+		}
+		
+		public var itemContentFileSizeXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemContentFileSizeXPath") 
+			}
+		}
+		
+		public var itemContentUrlXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemContentUrlXPath") 
+			}
+		}
+		
+		public var itemContentBitrateXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemContentBitrateXPath") 
+			}
+		}
+		
+		public var itemHashXPath: BaseTokenizedObject {
+			get {
+				return self.append("itemHashXPath") 
+			}
+		}
+		
+		public var itemContentXpath: BaseTokenizedObject {
+			get {
+				return self.append("itemContentXpath") 
+			}
+		}
+		
+		public var contentBitrateAttributeName: BaseTokenizedObject {
+			get {
+				return self.append("contentBitrateAttributeName") 
+			}
+		}
+	}
+
 	public var itemXPath: String? = nil
 	public var itemPublishDateXPath: String? = nil
 	public var itemUniqueIdentifierXPath: String? = nil
@@ -46,6 +103,42 @@ open class FeedItemInfo: ObjectBase {
 	public var contentBitrateAttributeName: String? = nil
 
 
+	public func setMultiRequestToken(itemXPath: String) {
+		self.dict["itemXPath"] = itemXPath
+	}
+	
+	public func setMultiRequestToken(itemPublishDateXPath: String) {
+		self.dict["itemPublishDateXPath"] = itemPublishDateXPath
+	}
+	
+	public func setMultiRequestToken(itemUniqueIdentifierXPath: String) {
+		self.dict["itemUniqueIdentifierXPath"] = itemUniqueIdentifierXPath
+	}
+	
+	public func setMultiRequestToken(itemContentFileSizeXPath: String) {
+		self.dict["itemContentFileSizeXPath"] = itemContentFileSizeXPath
+	}
+	
+	public func setMultiRequestToken(itemContentUrlXPath: String) {
+		self.dict["itemContentUrlXPath"] = itemContentUrlXPath
+	}
+	
+	public func setMultiRequestToken(itemContentBitrateXPath: String) {
+		self.dict["itemContentBitrateXPath"] = itemContentBitrateXPath
+	}
+	
+	public func setMultiRequestToken(itemHashXPath: String) {
+		self.dict["itemHashXPath"] = itemHashXPath
+	}
+	
+	public func setMultiRequestToken(itemContentXpath: String) {
+		self.dict["itemContentXpath"] = itemContentXpath
+	}
+	
+	public func setMultiRequestToken(contentBitrateAttributeName: String) {
+		self.dict["contentBitrateAttributeName"] = contentBitrateAttributeName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

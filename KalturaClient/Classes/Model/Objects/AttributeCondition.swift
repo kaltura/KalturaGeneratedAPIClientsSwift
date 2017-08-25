@@ -35,9 +35,22 @@
 
 open class AttributeCondition: SearchItem {
 
+	public class AttributeConditionTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	public var value: String? = nil
 
 
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

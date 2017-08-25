@@ -36,21 +36,42 @@
 /**  Utility service for the Multi-publishers console  */
 public final class VarConsoleService{
 
-	public static func getPartnerUsage() -> RequestBuilder<PartnerUsageListResponse> {
+	public class GetPartnerUsageTokenizer: ClientTokenizer  {
+		
+		public var partnerFilter: PartnerFilter.PartnerFilterTokenizer {
+			get {
+				return PartnerFilter.PartnerFilterTokenizer(self.append("partnerFilter")) 
+			}
+		}
+		
+		public var usageFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("usageFilter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func getPartnerUsage() -> RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> {
 		return getPartnerUsage(partnerFilter: nil)
 	}
 
-	public static func getPartnerUsage(partnerFilter: PartnerFilter?) -> RequestBuilder<PartnerUsageListResponse> {
+	public static func getPartnerUsage(partnerFilter: PartnerFilter?) -> RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> {
 		return getPartnerUsage(partnerFilter: partnerFilter, usageFilter: nil)
 	}
 
-	public static func getPartnerUsage(partnerFilter: PartnerFilter?, usageFilter: ReportInputFilter?) -> RequestBuilder<PartnerUsageListResponse> {
+	public static func getPartnerUsage(partnerFilter: PartnerFilter?, usageFilter: ReportInputFilter?) -> RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> {
 		return getPartnerUsage(partnerFilter: partnerFilter, usageFilter: usageFilter, pager: nil)
 	}
 
 	/**  Function which calulates partner usage of a group of a VAR's sub-publishers  */
-	public static func getPartnerUsage(partnerFilter: PartnerFilter?, usageFilter: ReportInputFilter?, pager: FilterPager?) -> RequestBuilder<PartnerUsageListResponse> {
-		let request: RequestBuilder<PartnerUsageListResponse> = RequestBuilder<PartnerUsageListResponse>(service: "varconsole_varconsole", action: "getPartnerUsage")
+	public static func getPartnerUsage(partnerFilter: PartnerFilter?, usageFilter: ReportInputFilter?, pager: FilterPager?) -> RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> {
+		let request: RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> = RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer>(service: "varconsole_varconsole", action: "getPartnerUsage")
 			.setBody(key: "partnerFilter", value: partnerFilter)
 			.setBody(key: "usageFilter", value: usageFilter)
 			.setBody(key: "pager", value: pager)
@@ -58,8 +79,23 @@ public final class VarConsoleService{
 		return request
 	}
 
+	public class UpdateStatusTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
 	/**  Function to change a sub-publisher's status  */
-	public static func updateStatus(id: Int, status: PartnerStatus) -> RequestBuilder<Void> {
+	public static func updateStatus(id: Int, status: PartnerStatus) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "varconsole_varconsole", action: "updateStatus")
 			.setBody(key: "id", value: id)
 			.setBody(key: "status", value: status.rawValue)

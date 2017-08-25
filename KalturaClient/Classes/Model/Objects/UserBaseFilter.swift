@@ -35,6 +35,105 @@
 
 open class UserBaseFilter: RelatedFilter {
 
+	public class UserBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+		
+		public var screenNameLike: BaseTokenizedObject {
+			get {
+				return self.append("screenNameLike") 
+			}
+		}
+		
+		public var screenNameStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("screenNameStartsWith") 
+			}
+		}
+		
+		public var emailLike: BaseTokenizedObject {
+			get {
+				return self.append("emailLike") 
+			}
+		}
+		
+		public var emailStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("emailStartsWith") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var firstNameStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("firstNameStartsWith") 
+			}
+		}
+		
+		public var lastNameStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("lastNameStartsWith") 
+			}
+		}
+		
+		public var isAdminEqual: BaseTokenizedObject {
+			get {
+				return self.append("isAdminEqual") 
+			}
+		}
+	}
+
 	public var partnerIdEqual: Int? = nil
 	public var typeEqual: UserType? = nil
 	public var typeIn: String? = nil
@@ -53,6 +152,70 @@ open class UserBaseFilter: RelatedFilter {
 	public var isAdminEqual: Bool? = nil
 
 
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
+	public func setMultiRequestToken(screenNameLike: String) {
+		self.dict["screenNameLike"] = screenNameLike
+	}
+	
+	public func setMultiRequestToken(screenNameStartsWith: String) {
+		self.dict["screenNameStartsWith"] = screenNameStartsWith
+	}
+	
+	public func setMultiRequestToken(emailLike: String) {
+		self.dict["emailLike"] = emailLike
+	}
+	
+	public func setMultiRequestToken(emailStartsWith: String) {
+		self.dict["emailStartsWith"] = emailStartsWith
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(firstNameStartsWith: String) {
+		self.dict["firstNameStartsWith"] = firstNameStartsWith
+	}
+	
+	public func setMultiRequestToken(lastNameStartsWith: String) {
+		self.dict["lastNameStartsWith"] = lastNameStartsWith
+	}
+	
+	public func setMultiRequestToken(isAdminEqual: String) {
+		self.dict["isAdminEqual"] = isAdminEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

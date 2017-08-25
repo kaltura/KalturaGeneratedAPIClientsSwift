@@ -35,12 +35,35 @@
 
 open class ResponseProfileHolder: BaseResponseProfile {
 
+	public class ResponseProfileHolderTokenizer: BaseResponseProfile.BaseResponseProfileTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+	}
+
 	/**  Auto generated numeric identifier  */
 	public var id: Int? = nil
 	/**  Unique system name  */
 	public var systemName: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

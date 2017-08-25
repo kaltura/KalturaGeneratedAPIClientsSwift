@@ -35,6 +35,111 @@
 
 open class ControlPanelCommand: ObjectBase {
 
+	public class ControlPanelCommandTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var createdBy: BaseTokenizedObject {
+			get {
+				return self.append("createdBy") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var updatedBy: BaseTokenizedObject {
+			get {
+				return self.append("updatedBy") 
+			}
+		}
+		
+		public var createdById: BaseTokenizedObject {
+			get {
+				return self.append("createdById") 
+			}
+		}
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var workerId: BaseTokenizedObject {
+			get {
+				return self.append("workerId") 
+			}
+		}
+		
+		public var workerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("workerConfiguredId") 
+			}
+		}
+		
+		public var workerName: BaseTokenizedObject {
+			get {
+				return self.append("workerName") 
+			}
+		}
+		
+		public var batchIndex: BaseTokenizedObject {
+			get {
+				return self.append("batchIndex") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var targetType: BaseTokenizedObject {
+			get {
+				return self.append("targetType") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var cause: BaseTokenizedObject {
+			get {
+				return self.append("cause") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+	}
+
 	/**  The id of the Category  */
 	public var id: Int? = nil
 	/**  Creation date as Unix timestamp (In seconds)  */
@@ -71,6 +176,74 @@ open class ControlPanelCommand: ObjectBase {
 	public var errorDescription: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(createdBy: String) {
+		self.dict["createdBy"] = createdBy
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(updatedBy: String) {
+		self.dict["updatedBy"] = updatedBy
+	}
+	
+	public func setMultiRequestToken(createdById: String) {
+		self.dict["createdById"] = createdById
+	}
+	
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(workerId: String) {
+		self.dict["workerId"] = workerId
+	}
+	
+	public func setMultiRequestToken(workerConfiguredId: String) {
+		self.dict["workerConfiguredId"] = workerConfiguredId
+	}
+	
+	public func setMultiRequestToken(workerName: String) {
+		self.dict["workerName"] = workerName
+	}
+	
+	public func setMultiRequestToken(batchIndex: String) {
+		self.dict["batchIndex"] = batchIndex
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(targetType: String) {
+		self.dict["targetType"] = targetType
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(cause: String) {
+		self.dict["cause"] = cause
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

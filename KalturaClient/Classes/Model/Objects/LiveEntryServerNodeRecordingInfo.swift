@@ -35,10 +35,33 @@
 
 open class LiveEntryServerNodeRecordingInfo: ObjectBase {
 
+	public class LiveEntryServerNodeRecordingInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var recordedEntryId: BaseTokenizedObject {
+			get {
+				return self.append("recordedEntryId") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+	}
+
 	public var recordedEntryId: String? = nil
 	public var duration: Int? = nil
 
 
+	public func setMultiRequestToken(recordedEntryId: String) {
+		self.dict["recordedEntryId"] = recordedEntryId
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

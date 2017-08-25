@@ -35,6 +35,15 @@
 
 open class UploadTokenListResponse: ListResponse {
 
+	public class UploadTokenListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<UploadToken.UploadTokenTokenizer> {
+			get {
+				return ArrayTokenizedObject<UploadToken.UploadTokenTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<UploadToken>? = nil
 
 

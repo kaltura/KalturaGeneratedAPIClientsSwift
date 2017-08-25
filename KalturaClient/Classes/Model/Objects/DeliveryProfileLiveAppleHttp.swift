@@ -35,10 +35,33 @@
 
 open class DeliveryProfileLiveAppleHttp: DeliveryProfile {
 
+	public class DeliveryProfileLiveAppleHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var disableExtraAttributes: BaseTokenizedObject {
+			get {
+				return self.append("disableExtraAttributes") 
+			}
+		}
+		
+		public var forceProxy: BaseTokenizedObject {
+			get {
+				return self.append("forceProxy") 
+			}
+		}
+	}
+
 	public var disableExtraAttributes: Bool? = nil
 	public var forceProxy: Bool? = nil
 
 
+	public func setMultiRequestToken(disableExtraAttributes: String) {
+		self.dict["disableExtraAttributes"] = disableExtraAttributes
+	}
+	
+	public func setMultiRequestToken(forceProxy: String) {
+		self.dict["forceProxy"] = forceProxy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

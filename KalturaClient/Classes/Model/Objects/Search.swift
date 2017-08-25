@@ -35,6 +35,39 @@
 
 open class Search: ObjectBase {
 
+	public class SearchTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var keyWords: BaseTokenizedObject {
+			get {
+				return self.append("keyWords") 
+			}
+		}
+		
+		public var searchSource: BaseTokenizedObject {
+			get {
+				return self.append("searchSource") 
+			}
+		}
+		
+		public var mediaType: BaseTokenizedObject {
+			get {
+				return self.append("mediaType") 
+			}
+		}
+		
+		public var extraData: BaseTokenizedObject {
+			get {
+				return self.append("extraData") 
+			}
+		}
+		
+		public var authData: BaseTokenizedObject {
+			get {
+				return self.append("authData") 
+			}
+		}
+	}
+
 	public var keyWords: String? = nil
 	public var searchSource: SearchProviderType? = nil
 	public var mediaType: MediaType? = nil
@@ -45,6 +78,26 @@ open class Search: ObjectBase {
 	public var authData: String? = nil
 
 
+	public func setMultiRequestToken(keyWords: String) {
+		self.dict["keyWords"] = keyWords
+	}
+	
+	public func setMultiRequestToken(searchSource: String) {
+		self.dict["searchSource"] = searchSource
+	}
+	
+	public func setMultiRequestToken(mediaType: String) {
+		self.dict["mediaType"] = mediaType
+	}
+	
+	public func setMultiRequestToken(extraData: String) {
+		self.dict["extraData"] = extraData
+	}
+	
+	public func setMultiRequestToken(authData: String) {
+		self.dict["authData"] = authData
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

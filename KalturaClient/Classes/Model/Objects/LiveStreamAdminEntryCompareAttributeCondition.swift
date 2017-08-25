@@ -38,9 +38,22 @@
   /  */
 open class LiveStreamAdminEntryCompareAttributeCondition: SearchComparableAttributeCondition {
 
+	public class LiveStreamAdminEntryCompareAttributeConditionTokenizer: SearchComparableAttributeCondition.SearchComparableAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: LiveStreamAdminEntryCompareAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

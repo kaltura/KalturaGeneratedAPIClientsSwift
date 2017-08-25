@@ -35,12 +35,55 @@
 
 open class CategoryUserAdvancedFilter: SearchItem {
 
+	public class CategoryUserAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var memberIdEq: BaseTokenizedObject {
+			get {
+				return self.append("memberIdEq") 
+			}
+		}
+		
+		public var memberIdIn: BaseTokenizedObject {
+			get {
+				return self.append("memberIdIn") 
+			}
+		}
+		
+		public var memberPermissionsMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("memberPermissionsMatchOr") 
+			}
+		}
+		
+		public var memberPermissionsMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("memberPermissionsMatchAnd") 
+			}
+		}
+	}
+
 	public var memberIdEq: String? = nil
 	public var memberIdIn: String? = nil
 	public var memberPermissionsMatchOr: String? = nil
 	public var memberPermissionsMatchAnd: String? = nil
 
 
+	public func setMultiRequestToken(memberIdEq: String) {
+		self.dict["memberIdEq"] = memberIdEq
+	}
+	
+	public func setMultiRequestToken(memberIdIn: String) {
+		self.dict["memberIdIn"] = memberIdIn
+	}
+	
+	public func setMultiRequestToken(memberPermissionsMatchOr: String) {
+		self.dict["memberPermissionsMatchOr"] = memberPermissionsMatchOr
+	}
+	
+	public func setMultiRequestToken(memberPermissionsMatchAnd: String) {
+		self.dict["memberPermissionsMatchAnd"] = memberPermissionsMatchAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

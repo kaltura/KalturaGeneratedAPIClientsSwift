@@ -35,6 +35,45 @@
 
 open class GroupUser: ObjectBase {
 
+	public class GroupUserTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var groupId: BaseTokenizedObject {
+			get {
+				return self.append("groupId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+	}
+
 	public var userId: String? = nil
 	public var groupId: String? = nil
 	public var status: GroupUserStatus? = nil
@@ -45,6 +84,30 @@ open class GroupUser: ObjectBase {
 	public var updatedAt: Int? = nil
 
 
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(groupId: String) {
+		self.dict["groupId"] = groupId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

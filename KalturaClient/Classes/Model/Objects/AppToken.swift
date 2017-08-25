@@ -35,6 +35,81 @@
 
 open class AppToken: ObjectBase {
 
+	public class AppTokenTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var token: BaseTokenizedObject {
+			get {
+				return self.append("token") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var expiry: BaseTokenizedObject {
+			get {
+				return self.append("expiry") 
+			}
+		}
+		
+		public var sessionType: BaseTokenizedObject {
+			get {
+				return self.append("sessionType") 
+			}
+		}
+		
+		public var sessionUserId: BaseTokenizedObject {
+			get {
+				return self.append("sessionUserId") 
+			}
+		}
+		
+		public var sessionDuration: BaseTokenizedObject {
+			get {
+				return self.append("sessionDuration") 
+			}
+		}
+		
+		public var sessionPrivileges: BaseTokenizedObject {
+			get {
+				return self.append("sessionPrivileges") 
+			}
+		}
+		
+		public var hashType: BaseTokenizedObject {
+			get {
+				return self.append("hashType") 
+			}
+		}
+	}
+
 	/**  The id of the application token  */
 	public var id: String? = nil
 	/**  The application token  */
@@ -61,6 +136,54 @@ open class AppToken: ObjectBase {
 	public var hashType: AppTokenHashType? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(token: String) {
+		self.dict["token"] = token
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(expiry: String) {
+		self.dict["expiry"] = expiry
+	}
+	
+	public func setMultiRequestToken(sessionType: String) {
+		self.dict["sessionType"] = sessionType
+	}
+	
+	public func setMultiRequestToken(sessionUserId: String) {
+		self.dict["sessionUserId"] = sessionUserId
+	}
+	
+	public func setMultiRequestToken(sessionDuration: String) {
+		self.dict["sessionDuration"] = sessionDuration
+	}
+	
+	public func setMultiRequestToken(sessionPrivileges: String) {
+		self.dict["sessionPrivileges"] = sessionPrivileges
+	}
+	
+	public func setMultiRequestToken(hashType: String) {
+		self.dict["hashType"] = hashType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

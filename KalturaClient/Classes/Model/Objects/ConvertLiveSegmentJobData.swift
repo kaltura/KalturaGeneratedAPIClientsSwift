@@ -35,6 +35,57 @@
 
 open class ConvertLiveSegmentJobData: JobData {
 
+	public class ConvertLiveSegmentJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var mediaServerIndex: BaseTokenizedObject {
+			get {
+				return self.append("mediaServerIndex") 
+			}
+		}
+		
+		public var fileIndex: BaseTokenizedObject {
+			get {
+				return self.append("fileIndex") 
+			}
+		}
+		
+		public var srcFilePath: BaseTokenizedObject {
+			get {
+				return self.append("srcFilePath") 
+			}
+		}
+		
+		public var destFilePath: BaseTokenizedObject {
+			get {
+				return self.append("destFilePath") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+		
+		public var destDataFilePath: BaseTokenizedObject {
+			get {
+				return self.append("destDataFilePath") 
+			}
+		}
+	}
+
 	/**  Live stream entry id  */
 	public var entryId: String? = nil
 	public var assetId: String? = nil
@@ -52,6 +103,38 @@ open class ConvertLiveSegmentJobData: JobData {
 	public var destDataFilePath: String? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(mediaServerIndex: String) {
+		self.dict["mediaServerIndex"] = mediaServerIndex
+	}
+	
+	public func setMultiRequestToken(fileIndex: String) {
+		self.dict["fileIndex"] = fileIndex
+	}
+	
+	public func setMultiRequestToken(srcFilePath: String) {
+		self.dict["srcFilePath"] = srcFilePath
+	}
+	
+	public func setMultiRequestToken(destFilePath: String) {
+		self.dict["destFilePath"] = destFilePath
+	}
+	
+	public func setMultiRequestToken(endTime: String) {
+		self.dict["endTime"] = endTime
+	}
+	
+	public func setMultiRequestToken(destDataFilePath: String) {
+		self.dict["destDataFilePath"] = destDataFilePath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

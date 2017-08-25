@@ -35,6 +35,75 @@
 
 open class ControlPanelCommandBaseFilter: Filter {
 
+	public class ControlPanelCommandBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var createdByIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdByIdEqual") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+		
+		public var targetTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("targetTypeEqual") 
+			}
+		}
+		
+		public var targetTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("targetTypeIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
@@ -48,6 +117,50 @@ open class ControlPanelCommandBaseFilter: Filter {
 	public var statusIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdByIdEqual: String) {
+		self.dict["createdByIdEqual"] = createdByIdEqual
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
+	public func setMultiRequestToken(targetTypeEqual: String) {
+		self.dict["targetTypeEqual"] = targetTypeEqual
+	}
+	
+	public func setMultiRequestToken(targetTypeIn: String) {
+		self.dict["targetTypeIn"] = targetTypeIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class RecordScheduleEventBaseFilter: EntryScheduleEventFilter {
 
+	public class RecordScheduleEventBaseFilterTokenizer: EntryScheduleEventFilter.EntryScheduleEventFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

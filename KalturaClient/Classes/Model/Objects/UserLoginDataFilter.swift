@@ -35,6 +35,9 @@
 
 open class UserLoginDataFilter: UserLoginDataBaseFilter {
 
+	public class UserLoginDataFilterTokenizer: UserLoginDataBaseFilter.UserLoginDataBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,10 +35,23 @@
 
 open class DirectoryRestriction: BaseRestriction {
 
+	public class DirectoryRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var directoryRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("directoryRestrictionType") 
+			}
+		}
+	}
+
 	/**  Kaltura directory restriction type  */
 	public var directoryRestrictionType: DirectoryRestrictionType? = nil
 
 
+	public func setMultiRequestToken(directoryRestrictionType: String) {
+		self.dict["directoryRestrictionType"] = directoryRestrictionType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

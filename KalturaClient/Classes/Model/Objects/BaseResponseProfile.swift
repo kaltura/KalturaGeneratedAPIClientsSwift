@@ -35,6 +35,9 @@
 
 open class BaseResponseProfile: ObjectBase {
 
+	public class BaseResponseProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

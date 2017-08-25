@@ -35,6 +35,9 @@
 
 open class SiteCondition: MatchCondition {
 
+	public class SiteConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -36,25 +36,61 @@
 /**  api for getting reports data by the report type and some inputFilter  */
 public final class ReportService{
 
-	public static func execute(id: Int) -> RequestBuilder<ReportResponse> {
+	public class ExecuteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var params: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("params"))
+			} 
+		}
+	}
+
+	public static func execute(id: Int) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
 		return execute(id: id, params: nil)
 	}
 
-	public static func execute(id: Int, params: Array<KeyValue>?) -> RequestBuilder<ReportResponse> {
-		let request: RequestBuilder<ReportResponse> = RequestBuilder<ReportResponse>(service: "report", action: "execute")
+	public static func execute(id: Int, params: Array<KeyValue>?) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
+		let request: RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> = RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer>(service: "report", action: "execute")
 			.setBody(key: "id", value: id)
 			.setBody(key: "params", value: params)
 
 		return request
 	}
 
-	public static func getBaseTotal(reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<Array<ReportBaseTotal>> {
+	public class GetBaseTotalTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
+			}
+		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+	}
+
+	public static func getBaseTotal(reportType: ReportType, reportInputFilter: ReportInputFilter) -> ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer> {
 		return getBaseTotal(reportType: reportType, reportInputFilter: reportInputFilter, objectIds: nil)
 	}
 
 	/**  report getBaseTotal action allows to get a the total base for storage reports  */
-	public static func getBaseTotal(reportType: ReportType, reportInputFilter: ReportInputFilter, objectIds: String?) -> RequestBuilder<Array<ReportBaseTotal>> {
-		let request: ArrayRequestBuilder<ReportBaseTotal> = ArrayRequestBuilder<ReportBaseTotal>(service: "report", action: "getBaseTotal")
+	public static func getBaseTotal(reportType: ReportType, reportInputFilter: ReportInputFilter, objectIds: String?) -> ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer> {
+		let request: ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer> = ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer>(service: "report", action: "getBaseTotal")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "reportInputFilter", value: reportInputFilter)
 			.setBody(key: "objectIds", value: objectIds)
@@ -62,17 +98,44 @@ public final class ReportService{
 		return request
 	}
 
-	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<Array<ReportGraph>> {
+	public class GetGraphsTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
+			}
+		}
+		
+		public var dimension: BaseTokenizedObject {
+			get {
+				return self.append("dimension") 
+			}
+		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+	}
+
+	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetGraphsTokenizer> {
 		return getGraphs(reportType: reportType, reportInputFilter: reportInputFilter, dimension: nil)
 	}
 
-	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?) -> RequestBuilder<Array<ReportGraph>> {
+	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetGraphsTokenizer> {
 		return getGraphs(reportType: reportType, reportInputFilter: reportInputFilter, dimension: dimension, objectIds: nil)
 	}
 
 	/**  report getGraphs action allows to get a graph data for a specific report.  */
-	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, objectIds: String?) -> RequestBuilder<Array<ReportGraph>> {
-		let request: ArrayRequestBuilder<ReportGraph> = ArrayRequestBuilder<ReportGraph>(service: "report", action: "getGraphs")
+	public static func getGraphs(reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, objectIds: String?) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetGraphsTokenizer> {
+		let request: ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetGraphsTokenizer> = ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetGraphsTokenizer>(service: "report", action: "getGraphs")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "reportInputFilter", value: reportInputFilter)
 			.setBody(key: "dimension", value: dimension)
@@ -81,17 +144,50 @@ public final class ReportService{
 		return request
 	}
 
-	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager) -> RequestBuilder<ReportTable> {
+	public class GetTableTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+		
+		public var order: BaseTokenizedObject {
+			get {
+				return self.append("order") 
+			}
+		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+	}
+
+	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager) -> RequestBuilder<ReportTable, ReportTable.ReportTableTokenizer, GetTableTokenizer> {
 		return getTable(reportType: reportType, reportInputFilter: reportInputFilter, pager: pager, order: nil)
 	}
 
-	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager, order: String?) -> RequestBuilder<ReportTable> {
+	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager, order: String?) -> RequestBuilder<ReportTable, ReportTable.ReportTableTokenizer, GetTableTokenizer> {
 		return getTable(reportType: reportType, reportInputFilter: reportInputFilter, pager: pager, order: order, objectIds: nil)
 	}
 
 	/**  report getTable action allows to get a graph data for a specific report.  */
-	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager, order: String?, objectIds: String?) -> RequestBuilder<ReportTable> {
-		let request: RequestBuilder<ReportTable> = RequestBuilder<ReportTable>(service: "report", action: "getTable")
+	public static func getTable(reportType: ReportType, reportInputFilter: ReportInputFilter, pager: FilterPager, order: String?, objectIds: String?) -> RequestBuilder<ReportTable, ReportTable.ReportTableTokenizer, GetTableTokenizer> {
+		let request: RequestBuilder<ReportTable, ReportTable.ReportTableTokenizer, GetTableTokenizer> = RequestBuilder<ReportTable, ReportTable.ReportTableTokenizer, GetTableTokenizer>(service: "report", action: "getTable")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "reportInputFilter", value: reportInputFilter)
 			.setBody(key: "pager", value: pager)
@@ -101,13 +197,34 @@ public final class ReportService{
 		return request
 	}
 
-	public static func getTotal(reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<ReportTotal> {
+	public class GetTotalTokenizer: ClientTokenizer  {
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
+			}
+		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+	}
+
+	public static func getTotal(reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<ReportTotal, ReportTotal.ReportTotalTokenizer, GetTotalTokenizer> {
 		return getTotal(reportType: reportType, reportInputFilter: reportInputFilter, objectIds: nil)
 	}
 
 	/**  report getTotal action allows to get a graph data for a specific report.  */
-	public static func getTotal(reportType: ReportType, reportInputFilter: ReportInputFilter, objectIds: String?) -> RequestBuilder<ReportTotal> {
-		let request: RequestBuilder<ReportTotal> = RequestBuilder<ReportTotal>(service: "report", action: "getTotal")
+	public static func getTotal(reportType: ReportType, reportInputFilter: ReportInputFilter, objectIds: String?) -> RequestBuilder<ReportTotal, ReportTotal.ReportTotalTokenizer, GetTotalTokenizer> {
+		let request: RequestBuilder<ReportTotal, ReportTotal.ReportTotalTokenizer, GetTotalTokenizer> = RequestBuilder<ReportTotal, ReportTotal.ReportTotalTokenizer, GetTotalTokenizer>(service: "report", action: "getTotal")
 			.setBody(key: "reportType", value: reportType.rawValue)
 			.setBody(key: "reportInputFilter", value: reportInputFilter)
 			.setBody(key: "objectIds", value: objectIds)
@@ -115,25 +232,82 @@ public final class ReportService{
 		return request
 	}
 
-	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<String> {
+	public class GetUrlForReportAsCsvTokenizer: ClientTokenizer  {
+		
+		public var reportTitle: BaseTokenizedObject {
+			get {
+				return self.append("reportTitle") 
+			}
+		}
+		
+		public var reportText: BaseTokenizedObject {
+			get {
+				return self.append("reportText") 
+			}
+		}
+		
+		public var headers: BaseTokenizedObject {
+			get {
+				return self.append("headers") 
+			}
+		}
+		
+		public var reportType: BaseTokenizedObject {
+			get {
+				return self.append("reportType") 
+			}
+		}
+		
+		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
+			get {
+				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
+			}
+		}
+		
+		public var dimension: BaseTokenizedObject {
+			get {
+				return self.append("dimension") 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+		
+		public var order: BaseTokenizedObject {
+			get {
+				return self.append("order") 
+			}
+		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+	}
+
+	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
 		return getUrlForReportAsCsv(reportTitle: reportTitle, reportText: reportText, headers: headers, reportType: reportType, reportInputFilter: reportInputFilter, dimension: nil)
 	}
 
-	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?) -> RequestBuilder<String> {
+	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
 		return getUrlForReportAsCsv(reportTitle: reportTitle, reportText: reportText, headers: headers, reportType: reportType, reportInputFilter: reportInputFilter, dimension: dimension, pager: nil)
 	}
 
-	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?) -> RequestBuilder<String> {
+	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
 		return getUrlForReportAsCsv(reportTitle: reportTitle, reportText: reportText, headers: headers, reportType: reportType, reportInputFilter: reportInputFilter, dimension: dimension, pager: pager, order: nil)
 	}
 
-	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?, order: String?) -> RequestBuilder<String> {
+	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?, order: String?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
 		return getUrlForReportAsCsv(reportTitle: reportTitle, reportText: reportText, headers: headers, reportType: reportType, reportInputFilter: reportInputFilter, dimension: dimension, pager: pager, order: order, objectIds: nil)
 	}
 
 	/**  will create a Csv file for the given report and return the URL to access it  */
-	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?, order: String?, objectIds: String?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "report", action: "getUrlForReportAsCsv")
+	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?, order: String?, objectIds: String?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer>(service: "report", action: "getUrlForReportAsCsv")
 			.setBody(key: "reportTitle", value: reportTitle)
 			.setBody(key: "reportText", value: reportText)
 			.setBody(key: "headers", value: headers)
@@ -147,9 +321,18 @@ public final class ReportService{
 		return request
 	}
 
+	public class ServeTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Will serve a requested report  */
-	public static func serve(id: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "report", action: "serve")
+	public static func serve(id: String) -> RequestBuilder<String, BaseTokenizedObject, ServeTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ServeTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeTokenizer>(service: "report", action: "serve")
 			.setBody(key: "id", value: id)
 
 		return request

@@ -35,6 +35,57 @@
 
 open class AccessControlProfileBaseFilter: RelatedFilter {
 
+	public class AccessControlProfileBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var systemNameEqual: String? = nil
@@ -45,6 +96,38 @@ open class AccessControlProfileBaseFilter: RelatedFilter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

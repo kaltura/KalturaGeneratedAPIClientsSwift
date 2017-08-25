@@ -35,6 +35,9 @@
 
 open class RokuSyndicationFeed: ConstantXsltSyndicationFeed {
 
+	public class RokuSyndicationFeedTokenizer: ConstantXsltSyndicationFeed.ConstantXsltSyndicationFeedTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

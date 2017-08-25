@@ -35,6 +35,93 @@
 
 open class BulkUploadResultUser: BulkUploadResult {
 
+	public class BulkUploadResultUserTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var screenName: BaseTokenizedObject {
+			get {
+				return self.append("screenName") 
+			}
+		}
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var dateOfBirth: BaseTokenizedObject {
+			get {
+				return self.append("dateOfBirth") 
+			}
+		}
+		
+		public var country: BaseTokenizedObject {
+			get {
+				return self.append("country") 
+			}
+		}
+		
+		public var state: BaseTokenizedObject {
+			get {
+				return self.append("state") 
+			}
+		}
+		
+		public var city: BaseTokenizedObject {
+			get {
+				return self.append("city") 
+			}
+		}
+		
+		public var zip: BaseTokenizedObject {
+			get {
+				return self.append("zip") 
+			}
+		}
+		
+		public var gender: BaseTokenizedObject {
+			get {
+				return self.append("gender") 
+			}
+		}
+		
+		public var firstName: BaseTokenizedObject {
+			get {
+				return self.append("firstName") 
+			}
+		}
+		
+		public var lastName: BaseTokenizedObject {
+			get {
+				return self.append("lastName") 
+			}
+		}
+		
+		public var group: BaseTokenizedObject {
+			get {
+				return self.append("group") 
+			}
+		}
+	}
+
 	public var userId: String? = nil
 	public var screenName: String? = nil
 	public var email: String? = nil
@@ -51,6 +138,62 @@ open class BulkUploadResultUser: BulkUploadResult {
 	public var group: String? = nil
 
 
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(screenName: String) {
+		self.dict["screenName"] = screenName
+	}
+	
+	public func setMultiRequestToken(email: String) {
+		self.dict["email"] = email
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(dateOfBirth: String) {
+		self.dict["dateOfBirth"] = dateOfBirth
+	}
+	
+	public func setMultiRequestToken(country: String) {
+		self.dict["country"] = country
+	}
+	
+	public func setMultiRequestToken(state: String) {
+		self.dict["state"] = state
+	}
+	
+	public func setMultiRequestToken(city: String) {
+		self.dict["city"] = city
+	}
+	
+	public func setMultiRequestToken(zip: String) {
+		self.dict["zip"] = zip
+	}
+	
+	public func setMultiRequestToken(gender: String) {
+		self.dict["gender"] = gender
+	}
+	
+	public func setMultiRequestToken(firstName: String) {
+		self.dict["firstName"] = firstName
+	}
+	
+	public func setMultiRequestToken(lastName: String) {
+		self.dict["lastName"] = lastName
+	}
+	
+	public func setMultiRequestToken(group: String) {
+		self.dict["group"] = group
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

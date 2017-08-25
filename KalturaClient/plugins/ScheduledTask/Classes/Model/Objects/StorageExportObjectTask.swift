@@ -35,10 +35,23 @@
 
 open class StorageExportObjectTask: ObjectTask {
 
+	public class StorageExportObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var storageId: BaseTokenizedObject {
+			get {
+				return self.append("storageId") 
+			}
+		}
+	}
+
 	/**  Storage profile id  */
 	public var storageId: String? = nil
 
 
+	public func setMultiRequestToken(storageId: String) {
+		self.dict["storageId"] = storageId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

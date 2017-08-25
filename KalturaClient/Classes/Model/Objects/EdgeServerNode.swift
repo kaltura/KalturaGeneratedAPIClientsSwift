@@ -35,12 +35,35 @@
 
 open class EdgeServerNode: DeliveryServerNode {
 
+	public class EdgeServerNodeTokenizer: DeliveryServerNode.DeliveryServerNodeTokenizer {
+		
+		public var playbackDomain: BaseTokenizedObject {
+			get {
+				return self.append("playbackDomain") 
+			}
+		}
+		
+		public var config: BaseTokenizedObject {
+			get {
+				return self.append("config") 
+			}
+		}
+	}
+
 	/**  Delivery server playback Domain  */
 	public var playbackDomain: String? = nil
 	/**  Overdie edge server default configuration - json format  */
 	public var config: String? = nil
 
 
+	public func setMultiRequestToken(playbackDomain: String) {
+		self.dict["playbackDomain"] = playbackDomain
+	}
+	
+	public func setMultiRequestToken(config: String) {
+		self.dict["config"] = config
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

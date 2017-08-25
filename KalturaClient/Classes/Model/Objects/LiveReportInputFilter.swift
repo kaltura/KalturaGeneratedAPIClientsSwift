@@ -35,6 +35,39 @@
 
 open class LiveReportInputFilter: ObjectBase {
 
+	public class LiveReportInputFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var entryIds: BaseTokenizedObject {
+			get {
+				return self.append("entryIds") 
+			}
+		}
+		
+		public var fromTime: BaseTokenizedObject {
+			get {
+				return self.append("fromTime") 
+			}
+		}
+		
+		public var toTime: BaseTokenizedObject {
+			get {
+				return self.append("toTime") 
+			}
+		}
+		
+		public var live: BaseTokenizedObject {
+			get {
+				return self.append("live") 
+			}
+		}
+		
+		public var orderBy: BaseTokenizedObject {
+			get {
+				return self.append("orderBy") 
+			}
+		}
+	}
+
 	public var entryIds: String? = nil
 	public var fromTime: Int? = nil
 	public var toTime: Int? = nil
@@ -42,6 +75,26 @@ open class LiveReportInputFilter: ObjectBase {
 	public var orderBy: LiveReportOrderBy? = nil
 
 
+	public func setMultiRequestToken(entryIds: String) {
+		self.dict["entryIds"] = entryIds
+	}
+	
+	public func setMultiRequestToken(fromTime: String) {
+		self.dict["fromTime"] = fromTime
+	}
+	
+	public func setMultiRequestToken(toTime: String) {
+		self.dict["toTime"] = toTime
+	}
+	
+	public func setMultiRequestToken(live: String) {
+		self.dict["live"] = live
+	}
+	
+	public func setMultiRequestToken(orderBy: String) {
+		self.dict["orderBy"] = orderBy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

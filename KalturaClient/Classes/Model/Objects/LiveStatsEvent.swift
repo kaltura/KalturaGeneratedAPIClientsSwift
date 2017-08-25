@@ -37,6 +37,75 @@
   analytics system  */
 open class LiveStatsEvent: ObjectBase {
 
+	public class LiveStatsEventTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var eventType: BaseTokenizedObject {
+			get {
+				return self.append("eventType") 
+			}
+		}
+		
+		public var sessionId: BaseTokenizedObject {
+			get {
+				return self.append("sessionId") 
+			}
+		}
+		
+		public var eventIndex: BaseTokenizedObject {
+			get {
+				return self.append("eventIndex") 
+			}
+		}
+		
+		public var bufferTime: BaseTokenizedObject {
+			get {
+				return self.append("bufferTime") 
+			}
+		}
+		
+		public var bitrate: BaseTokenizedObject {
+			get {
+				return self.append("bitrate") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+		
+		public var isLive: BaseTokenizedObject {
+			get {
+				return self.append("isLive") 
+			}
+		}
+		
+		public var startTime: BaseTokenizedObject {
+			get {
+				return self.append("startTime") 
+			}
+		}
+		
+		public var deliveryType: BaseTokenizedObject {
+			get {
+				return self.append("deliveryType") 
+			}
+		}
+	}
+
 	public var partnerId: Int? = nil
 	public var entryId: String? = nil
 	/**  an integer representing the type of event being sent from the player  */
@@ -60,6 +129,50 @@ open class LiveStatsEvent: ObjectBase {
 	public var deliveryType: PlaybackProtocol? = nil
 
 
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(eventType: String) {
+		self.dict["eventType"] = eventType
+	}
+	
+	public func setMultiRequestToken(sessionId: String) {
+		self.dict["sessionId"] = sessionId
+	}
+	
+	public func setMultiRequestToken(eventIndex: String) {
+		self.dict["eventIndex"] = eventIndex
+	}
+	
+	public func setMultiRequestToken(bufferTime: String) {
+		self.dict["bufferTime"] = bufferTime
+	}
+	
+	public func setMultiRequestToken(bitrate: String) {
+		self.dict["bitrate"] = bitrate
+	}
+	
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
+	public func setMultiRequestToken(isLive: String) {
+		self.dict["isLive"] = isLive
+	}
+	
+	public func setMultiRequestToken(startTime: String) {
+		self.dict["startTime"] = startTime
+	}
+	
+	public func setMultiRequestToken(deliveryType: String) {
+		self.dict["deliveryType"] = deliveryType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

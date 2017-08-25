@@ -35,6 +35,15 @@
 
 open class AuthenticatedCondition: Condition {
 
+	public class AuthenticatedConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var privileges: ArrayTokenizedObject<StringValue.StringValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringValue.StringValueTokenizer>(self.append("privileges"))
+			} 
+		}
+	}
+
 	/**  The privelege needed to remove the restriction  */
 	public var privileges: Array<StringValue>? = nil
 

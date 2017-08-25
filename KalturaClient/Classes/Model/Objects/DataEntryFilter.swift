@@ -35,6 +35,9 @@
 
 open class DataEntryFilter: DataEntryBaseFilter {
 
+	public class DataEntryFilterTokenizer: DataEntryBaseFilter.DataEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

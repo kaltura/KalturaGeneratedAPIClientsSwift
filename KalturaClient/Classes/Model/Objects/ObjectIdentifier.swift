@@ -36,11 +36,24 @@
 /**  Configuration for extended item in the Kaltura MRSS feeds  */
 open class ObjectIdentifier: ObjectBase {
 
+	public class ObjectIdentifierTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var extendedFeatures: BaseTokenizedObject {
+			get {
+				return self.append("extendedFeatures") 
+			}
+		}
+	}
+
 	/**  Comma separated string of enum values denoting which features of the item need
 	  to be included in the MRSS  */
 	public var extendedFeatures: String? = nil
 
 
+	public func setMultiRequestToken(extendedFeatures: String) {
+		self.dict["extendedFeatures"] = extendedFeatures
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

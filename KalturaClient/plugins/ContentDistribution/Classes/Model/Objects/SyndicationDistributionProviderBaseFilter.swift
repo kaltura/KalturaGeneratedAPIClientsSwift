@@ -35,6 +35,9 @@
 
 open class SyndicationDistributionProviderBaseFilter: DistributionProviderFilter {
 
+	public class SyndicationDistributionProviderBaseFilterTokenizer: DistributionProviderFilter.DistributionProviderFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

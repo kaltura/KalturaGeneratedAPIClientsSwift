@@ -35,6 +35,69 @@
 
 open class CategoryUser: ObjectBase {
 
+	public class CategoryUserTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var permissionLevel: BaseTokenizedObject {
+			get {
+				return self.append("permissionLevel") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var updateMethod: BaseTokenizedObject {
+			get {
+				return self.append("updateMethod") 
+			}
+		}
+		
+		public var categoryFullIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryFullIds") 
+			}
+		}
+		
+		public var permissionNames: BaseTokenizedObject {
+			get {
+				return self.append("permissionNames") 
+			}
+		}
+	}
+
 	public var categoryId: Int? = nil
 	/**  User id  */
 	public var userId: String? = nil
@@ -57,6 +120,46 @@ open class CategoryUser: ObjectBase {
 	public var permissionNames: String? = nil
 
 
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(permissionLevel: String) {
+		self.dict["permissionLevel"] = permissionLevel
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(updateMethod: String) {
+		self.dict["updateMethod"] = updateMethod
+	}
+	
+	public func setMultiRequestToken(categoryFullIds: String) {
+		self.dict["categoryFullIds"] = categoryFullIds
+	}
+	
+	public func setMultiRequestToken(permissionNames: String) {
+		self.dict["permissionNames"] = permissionNames
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

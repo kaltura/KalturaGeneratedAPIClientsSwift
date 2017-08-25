@@ -35,6 +35,9 @@
 
 open class RemoteDropFolderBaseFilter: DropFolderFilter {
 
+	public class RemoteDropFolderBaseFilterTokenizer: DropFolderFilter.DropFolderFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

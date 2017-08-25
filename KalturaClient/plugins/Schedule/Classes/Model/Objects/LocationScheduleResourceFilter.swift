@@ -35,6 +35,9 @@
 
 open class LocationScheduleResourceFilter: LocationScheduleResourceBaseFilter {
 
+	public class LocationScheduleResourceFilterTokenizer: LocationScheduleResourceBaseFilter.LocationScheduleResourceBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class GenericDistributionProviderActionFilter: GenericDistributionProviderActionBaseFilter {
 
+	public class GenericDistributionProviderActionFilterTokenizer: GenericDistributionProviderActionBaseFilter.GenericDistributionProviderActionBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,129 @@
 
 open class EntryDistributionBaseFilter: RelatedFilter {
 
+	public class EntryDistributionBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var submittedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("submittedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var submittedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("submittedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+		
+		public var distributionProfileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileIdEqual") 
+			}
+		}
+		
+		public var distributionProfileIdIn: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileIdIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var dirtyStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("dirtyStatusEqual") 
+			}
+		}
+		
+		public var dirtyStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("dirtyStatusIn") 
+			}
+		}
+		
+		public var sunriseGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sunriseGreaterThanOrEqual") 
+			}
+		}
+		
+		public var sunriseLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sunriseLessThanOrEqual") 
+			}
+		}
+		
+		public var sunsetGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sunsetGreaterThanOrEqual") 
+			}
+		}
+		
+		public var sunsetLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sunsetLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
@@ -57,6 +180,86 @@ open class EntryDistributionBaseFilter: RelatedFilter {
 	public var sunsetLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(submittedAtGreaterThanOrEqual: String) {
+		self.dict["submittedAtGreaterThanOrEqual"] = submittedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(submittedAtLessThanOrEqual: String) {
+		self.dict["submittedAtLessThanOrEqual"] = submittedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
+	public func setMultiRequestToken(distributionProfileIdEqual: String) {
+		self.dict["distributionProfileIdEqual"] = distributionProfileIdEqual
+	}
+	
+	public func setMultiRequestToken(distributionProfileIdIn: String) {
+		self.dict["distributionProfileIdIn"] = distributionProfileIdIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(dirtyStatusEqual: String) {
+		self.dict["dirtyStatusEqual"] = dirtyStatusEqual
+	}
+	
+	public func setMultiRequestToken(dirtyStatusIn: String) {
+		self.dict["dirtyStatusIn"] = dirtyStatusIn
+	}
+	
+	public func setMultiRequestToken(sunriseGreaterThanOrEqual: String) {
+		self.dict["sunriseGreaterThanOrEqual"] = sunriseGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(sunriseLessThanOrEqual: String) {
+		self.dict["sunriseLessThanOrEqual"] = sunriseLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(sunsetGreaterThanOrEqual: String) {
+		self.dict["sunsetGreaterThanOrEqual"] = sunsetGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(sunsetLessThanOrEqual: String) {
+		self.dict["sunsetLessThanOrEqual"] = sunsetLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,15 @@
 
 open class StorageProfileListResponse: ListResponse {
 
+	public class StorageProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<StorageProfile.StorageProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<StorageProfile.StorageProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<StorageProfile>? = nil
 
 

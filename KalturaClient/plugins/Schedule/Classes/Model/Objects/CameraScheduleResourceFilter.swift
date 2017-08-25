@@ -35,6 +35,9 @@
 
 open class CameraScheduleResourceFilter: CameraScheduleResourceBaseFilter {
 
+	public class CameraScheduleResourceFilterTokenizer: CameraScheduleResourceBaseFilter.CameraScheduleResourceBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

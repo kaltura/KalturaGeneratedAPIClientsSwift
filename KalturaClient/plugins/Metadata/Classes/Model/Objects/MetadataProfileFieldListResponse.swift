@@ -35,6 +35,15 @@
 
 open class MetadataProfileFieldListResponse: ListResponse {
 
+	public class MetadataProfileFieldListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<MetadataProfileField.MetadataProfileFieldTokenizer> {
+			get {
+				return ArrayTokenizedObject<MetadataProfileField.MetadataProfileFieldTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<MetadataProfileField>? = nil
 
 

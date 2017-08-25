@@ -35,6 +35,15 @@
 
 open class UiConfAdminListResponse: ListResponse {
 
+	public class UiConfAdminListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<UiConfAdmin.UiConfAdminTokenizer> {
+			get {
+				return ArrayTokenizedObject<UiConfAdmin.UiConfAdminTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<UiConfAdmin>? = nil
 
 

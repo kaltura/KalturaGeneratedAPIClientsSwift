@@ -35,6 +35,9 @@
 
 open class ThumbCuePointFilter: ThumbCuePointBaseFilter {
 
+	public class ThumbCuePointFilterTokenizer: ThumbCuePointBaseFilter.ThumbCuePointBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

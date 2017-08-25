@@ -35,6 +35,9 @@
 
 open class UrlTokenizerCht: UrlTokenizer {
 
+	public class UrlTokenizerChtTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

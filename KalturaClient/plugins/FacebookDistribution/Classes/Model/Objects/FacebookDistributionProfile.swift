@@ -35,6 +35,51 @@
 
 open class FacebookDistributionProfile: ConfigurableDistributionProfile {
 
+	public class FacebookDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var apiAuthorizeUrl: BaseTokenizedObject {
+			get {
+				return self.append("apiAuthorizeUrl") 
+			}
+		}
+		
+		public var pageId: BaseTokenizedObject {
+			get {
+				return self.append("pageId") 
+			}
+		}
+		
+		public var pageAccessToken: BaseTokenizedObject {
+			get {
+				return self.append("pageAccessToken") 
+			}
+		}
+		
+		public var userAccessToken: BaseTokenizedObject {
+			get {
+				return self.append("userAccessToken") 
+			}
+		}
+		
+		public var state: BaseTokenizedObject {
+			get {
+				return self.append("state") 
+			}
+		}
+		
+		public var permissions: BaseTokenizedObject {
+			get {
+				return self.append("permissions") 
+			}
+		}
+		
+		public var reRequestPermissions: BaseTokenizedObject {
+			get {
+				return self.append("reRequestPermissions") 
+			}
+		}
+	}
+
 	public var apiAuthorizeUrl: String? = nil
 	public var pageId: String? = nil
 	public var pageAccessToken: String? = nil
@@ -44,6 +89,34 @@ open class FacebookDistributionProfile: ConfigurableDistributionProfile {
 	public var reRequestPermissions: Int? = nil
 
 
+	public func setMultiRequestToken(apiAuthorizeUrl: String) {
+		self.dict["apiAuthorizeUrl"] = apiAuthorizeUrl
+	}
+	
+	public func setMultiRequestToken(pageId: String) {
+		self.dict["pageId"] = pageId
+	}
+	
+	public func setMultiRequestToken(pageAccessToken: String) {
+		self.dict["pageAccessToken"] = pageAccessToken
+	}
+	
+	public func setMultiRequestToken(userAccessToken: String) {
+		self.dict["userAccessToken"] = userAccessToken
+	}
+	
+	public func setMultiRequestToken(state: String) {
+		self.dict["state"] = state
+	}
+	
+	public func setMultiRequestToken(permissions: String) {
+		self.dict["permissions"] = permissions
+	}
+	
+	public func setMultiRequestToken(reRequestPermissions: String) {
+		self.dict["reRequestPermissions"] = reRequestPermissions
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

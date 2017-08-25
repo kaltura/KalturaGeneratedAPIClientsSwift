@@ -35,11 +35,44 @@
 
 open class ImportMetadataJobData: JobData {
 
+	public class ImportMetadataJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("srcFileUrl") 
+			}
+		}
+		
+		public var destFileLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileLocalPath") 
+			}
+		}
+		
+		public var metadataId: BaseTokenizedObject {
+			get {
+				return self.append("metadataId") 
+			}
+		}
+	}
+
 	public var srcFileUrl: String? = nil
 	public var destFileLocalPath: String? = nil
 	public var metadataId: Int? = nil
 
 
+	public func setMultiRequestToken(srcFileUrl: String) {
+		self.dict["srcFileUrl"] = srcFileUrl
+	}
+	
+	public func setMultiRequestToken(destFileLocalPath: String) {
+		self.dict["destFileLocalPath"] = destFileLocalPath
+	}
+	
+	public func setMultiRequestToken(metadataId: String) {
+		self.dict["metadataId"] = metadataId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

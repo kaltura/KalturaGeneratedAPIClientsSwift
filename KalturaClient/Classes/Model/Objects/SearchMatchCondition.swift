@@ -35,9 +35,22 @@
 
 open class SearchMatchCondition: SearchCondition {
 
+	public class SearchMatchConditionTokenizer: SearchCondition.SearchConditionTokenizer {
+		
+		public var not: BaseTokenizedObject {
+			get {
+				return self.append("not") 
+			}
+		}
+	}
+
 	public var not: Bool? = nil
 
 
+	public func setMultiRequestToken(not: String) {
+		self.dict["not"] = not
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

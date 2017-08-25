@@ -36,10 +36,23 @@
 /**  Used to ingest media that dropped through drop folder  */
 open class DropFolderFileResource: GenericDataCenterContentResource {
 
+	public class DropFolderFileResourceTokenizer: GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+	}
+
 	/**  Id of the drop folder file object  */
 	public var dropFolderFileId: Int? = nil
 
 
+	public func setMultiRequestToken(dropFolderFileId: String) {
+		self.dict["dropFolderFileId"] = dropFolderFileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

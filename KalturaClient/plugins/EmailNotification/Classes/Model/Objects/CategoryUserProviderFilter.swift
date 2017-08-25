@@ -35,6 +35,81 @@
 
 open class CategoryUserProviderFilter: Filter {
 
+	public class CategoryUserProviderFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updateMethodEqual: BaseTokenizedObject {
+			get {
+				return self.append("updateMethodEqual") 
+			}
+		}
+		
+		public var updateMethodIn: BaseTokenizedObject {
+			get {
+				return self.append("updateMethodIn") 
+			}
+		}
+		
+		public var permissionNamesMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMatchAnd") 
+			}
+		}
+		
+		public var permissionNamesMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMatchOr") 
+			}
+		}
+	}
+
 	public var userIdEqual: String? = nil
 	public var userIdIn: String? = nil
 	public var statusEqual: CategoryUserStatus? = nil
@@ -49,6 +124,54 @@ open class CategoryUserProviderFilter: Filter {
 	public var permissionNamesMatchOr: String? = nil
 
 
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updateMethodEqual: String) {
+		self.dict["updateMethodEqual"] = updateMethodEqual
+	}
+	
+	public func setMultiRequestToken(updateMethodIn: String) {
+		self.dict["updateMethodIn"] = updateMethodIn
+	}
+	
+	public func setMultiRequestToken(permissionNamesMatchAnd: String) {
+		self.dict["permissionNamesMatchAnd"] = permissionNamesMatchAnd
+	}
+	
+	public func setMultiRequestToken(permissionNamesMatchOr: String) {
+		self.dict["permissionNamesMatchOr"] = permissionNamesMatchOr
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

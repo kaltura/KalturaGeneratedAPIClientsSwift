@@ -35,10 +35,23 @@
 
 open class GeoDistanceCondition: MatchCondition {
 
+	public class GeoDistanceConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+		
+		public var geoCoderType: BaseTokenizedObject {
+			get {
+				return self.append("geoCoderType") 
+			}
+		}
+	}
+
 	/**  The ip geo coder engine to be used  */
 	public var geoCoderType: GeoCoderType? = nil
 
 
+	public func setMultiRequestToken(geoCoderType: String) {
+		self.dict["geoCoderType"] = geoCoderType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

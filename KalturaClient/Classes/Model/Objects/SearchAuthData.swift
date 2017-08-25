@@ -35,6 +35,27 @@
 
 open class SearchAuthData: ObjectBase {
 
+	public class SearchAuthDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var authData: BaseTokenizedObject {
+			get {
+				return self.append("authData") 
+			}
+		}
+		
+		public var loginUrl: BaseTokenizedObject {
+			get {
+				return self.append("loginUrl") 
+			}
+		}
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+	}
+
 	/**  The authentication data that further should be used for search  */
 	public var authData: String? = nil
 	/**  Login URL when user need to sign-in and authorize the search  */
@@ -43,6 +64,18 @@ open class SearchAuthData: ObjectBase {
 	public var message: String? = nil
 
 
+	public func setMultiRequestToken(authData: String) {
+		self.dict["authData"] = authData
+	}
+	
+	public func setMultiRequestToken(loginUrl: String) {
+		self.dict["loginUrl"] = loginUrl
+	}
+	
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

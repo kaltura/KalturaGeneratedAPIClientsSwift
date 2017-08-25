@@ -36,14 +36,35 @@
 /**  Manage details for the administrative user  */
 public final class AdminUserService{
 
-	public static func login(email: String, password: String) -> RequestBuilder<String> {
+	public class LoginTokenizer: ClientTokenizer  {
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public override var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+	}
+
+	public static func login(email: String, password: String) -> RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> {
 		return login(email: email, password: password, partnerId: nil)
 	}
 
 	/**  Get an admin session using admin email and password (Used for login to the KMC
 	  application)  */
-	public static func login(email: String, password: String, partnerId: Int?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "adminuser", action: "login")
+	public static func login(email: String, password: String, partnerId: Int?) -> RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> = RequestBuilder<String, BaseTokenizedObject, LoginTokenizer>(service: "adminuser", action: "login")
 			.setBody(key: "email", value: email)
 			.setBody(key: "password", value: password)
 			.setBody(key: "partnerId", value: partnerId)
@@ -51,16 +72,40 @@ public final class AdminUserService{
 		return request
 	}
 
+	public class ResetPasswordTokenizer: ClientTokenizer  {
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+	}
+
 	/**  Reset admin user password and send it to the users email address  */
-	public static func resetPassword(email: String) -> RequestBuilder<Void> {
+	public static func resetPassword(email: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "adminuser", action: "resetPassword")
 			.setBody(key: "email", value: email)
 
 		return request
 	}
 
+	public class SetInitialPasswordTokenizer: ClientTokenizer  {
+		
+		public var hashKey: BaseTokenizedObject {
+			get {
+				return self.append("hashKey") 
+			}
+		}
+		
+		public var newPassword: BaseTokenizedObject {
+			get {
+				return self.append("newPassword") 
+			}
+		}
+	}
+
 	/**  Set initial users password  */
-	public static func setInitialPassword(hashKey: String, newPassword: String) -> RequestBuilder<Void> {
+	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "adminuser", action: "setInitialPassword")
 			.setBody(key: "hashKey", value: hashKey)
 			.setBody(key: "newPassword", value: newPassword)
@@ -68,17 +113,44 @@ public final class AdminUserService{
 		return request
 	}
 
-	public static func updatePassword(email: String, password: String) -> RequestBuilder<AdminUser> {
+	public class UpdatePasswordTokenizer: ClientTokenizer  {
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var newEmail: BaseTokenizedObject {
+			get {
+				return self.append("newEmail") 
+			}
+		}
+		
+		public var newPassword: BaseTokenizedObject {
+			get {
+				return self.append("newPassword") 
+			}
+		}
+	}
+
+	public static func updatePassword(email: String, password: String) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
 		return updatePassword(email: email, password: password, newEmail: "")
 	}
 
-	public static func updatePassword(email: String, password: String, newEmail: String?) -> RequestBuilder<AdminUser> {
+	public static func updatePassword(email: String, password: String, newEmail: String?) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
 		return updatePassword(email: email, password: password, newEmail: newEmail, newPassword: "")
 	}
 
 	/**  Update admin user password and email  */
-	public static func updatePassword(email: String, password: String, newEmail: String?, newPassword: String?) -> RequestBuilder<AdminUser> {
-		let request: RequestBuilder<AdminUser> = RequestBuilder<AdminUser>(service: "adminuser", action: "updatePassword")
+	public static func updatePassword(email: String, password: String, newEmail: String?, newPassword: String?) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
+		let request: RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> = RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer>(service: "adminuser", action: "updatePassword")
 			.setBody(key: "email", value: email)
 			.setBody(key: "password", value: password)
 			.setBody(key: "newEmail", value: newEmail)

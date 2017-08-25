@@ -35,6 +35,9 @@
 
 open class ShortLinkFilter: ShortLinkBaseFilter {
 
+	public class ShortLinkFilterTokenizer: ShortLinkBaseFilter.ShortLinkBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

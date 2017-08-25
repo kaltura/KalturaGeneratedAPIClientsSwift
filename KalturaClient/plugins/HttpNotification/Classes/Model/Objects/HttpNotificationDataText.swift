@@ -35,6 +35,15 @@
 
 open class HttpNotificationDataText: HttpNotificationData {
 
+	public class HttpNotificationDataTextTokenizer: HttpNotificationData.HttpNotificationDataTokenizer {
+		
+		public var content: StringValue.StringValueTokenizer {
+			get {
+				return StringValue.StringValueTokenizer(self.append("content")) 
+			}
+		}
+	}
+
 	public var content: StringValue? = nil
 
 

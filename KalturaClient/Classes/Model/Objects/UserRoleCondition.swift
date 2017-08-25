@@ -35,10 +35,23 @@
 
 open class UserRoleCondition: Condition {
 
+	public class UserRoleConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var roleIds: BaseTokenizedObject {
+			get {
+				return self.append("roleIds") 
+			}
+		}
+	}
+
 	/**  Comma separated list of role ids  */
 	public var roleIds: String? = nil
 
 
+	public func setMultiRequestToken(roleIds: String) {
+		self.dict["roleIds"] = roleIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

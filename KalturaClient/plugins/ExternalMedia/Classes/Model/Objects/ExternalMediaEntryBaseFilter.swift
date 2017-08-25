@@ -35,12 +35,55 @@
 
 open class ExternalMediaEntryBaseFilter: MediaEntryFilter {
 
+	public class ExternalMediaEntryBaseFilterTokenizer: MediaEntryFilter.MediaEntryFilterTokenizer {
+		
+		public var externalSourceTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("externalSourceTypeEqual") 
+			}
+		}
+		
+		public var externalSourceTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("externalSourceTypeIn") 
+			}
+		}
+		
+		public var assetParamsIdsMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdsMatchOr") 
+			}
+		}
+		
+		public var assetParamsIdsMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdsMatchAnd") 
+			}
+		}
+	}
+
 	public var externalSourceTypeEqual: ExternalMediaSourceType? = nil
 	public var externalSourceTypeIn: String? = nil
 	public var assetParamsIdsMatchOr: String? = nil
 	public var assetParamsIdsMatchAnd: String? = nil
 
 
+	public func setMultiRequestToken(externalSourceTypeEqual: String) {
+		self.dict["externalSourceTypeEqual"] = externalSourceTypeEqual
+	}
+	
+	public func setMultiRequestToken(externalSourceTypeIn: String) {
+		self.dict["externalSourceTypeIn"] = externalSourceTypeIn
+	}
+	
+	public func setMultiRequestToken(assetParamsIdsMatchOr: String) {
+		self.dict["assetParamsIdsMatchOr"] = assetParamsIdsMatchOr
+	}
+	
+	public func setMultiRequestToken(assetParamsIdsMatchAnd: String) {
+		self.dict["assetParamsIdsMatchAnd"] = assetParamsIdsMatchAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

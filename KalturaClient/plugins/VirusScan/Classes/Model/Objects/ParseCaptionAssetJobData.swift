@@ -35,9 +35,22 @@
 
 open class ParseCaptionAssetJobData: JobData {
 
+	public class ParseCaptionAssetJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var captionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetId") 
+			}
+		}
+	}
+
 	public var captionAssetId: String? = nil
 
 
+	public func setMultiRequestToken(captionAssetId: String) {
+		self.dict["captionAssetId"] = captionAssetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

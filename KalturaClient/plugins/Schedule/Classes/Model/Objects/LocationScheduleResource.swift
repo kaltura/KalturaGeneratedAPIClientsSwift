@@ -35,6 +35,9 @@
 
 open class LocationScheduleResource: ScheduleResource {
 
+	public class LocationScheduleResourceTokenizer: ScheduleResource.ScheduleResourceTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

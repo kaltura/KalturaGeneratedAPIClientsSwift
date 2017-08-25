@@ -35,12 +35,35 @@
 
 open class DeliveryProfileRtmp: DeliveryProfile {
 
+	public class DeliveryProfileRtmpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var enforceRtmpe: BaseTokenizedObject {
+			get {
+				return self.append("enforceRtmpe") 
+			}
+		}
+		
+		public var prefix: BaseTokenizedObject {
+			get {
+				return self.append("prefix") 
+			}
+		}
+	}
+
 	/**  enforceRtmpe  */
 	public var enforceRtmpe: Bool? = nil
 	/**  a prefix that is added to all stream urls (replaces storageProfile::rtmpPrefix)  */
 	public var prefix: String? = nil
 
 
+	public func setMultiRequestToken(enforceRtmpe: String) {
+		self.dict["enforceRtmpe"] = enforceRtmpe
+	}
+	
+	public func setMultiRequestToken(prefix: String) {
+		self.dict["prefix"] = prefix
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

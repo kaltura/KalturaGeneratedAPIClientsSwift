@@ -35,6 +35,9 @@
 
 open class PartnerFilter: PartnerBaseFilter {
 
+	public class PartnerFilterTokenizer: PartnerBaseFilter.PartnerBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

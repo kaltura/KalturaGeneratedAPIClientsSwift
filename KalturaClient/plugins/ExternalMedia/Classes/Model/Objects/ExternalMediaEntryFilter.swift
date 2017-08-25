@@ -35,6 +35,9 @@
 
 open class ExternalMediaEntryFilter: ExternalMediaEntryBaseFilter {
 
+	public class ExternalMediaEntryFilterTokenizer: ExternalMediaEntryBaseFilter.ExternalMediaEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

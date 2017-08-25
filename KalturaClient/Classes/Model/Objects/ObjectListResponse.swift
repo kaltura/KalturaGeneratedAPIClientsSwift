@@ -35,6 +35,15 @@
 
 open class ObjectListResponse: ListResponse {
 
+	public class ObjectListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer> {
+			get {
+				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ObjectBase>? = nil
 
 

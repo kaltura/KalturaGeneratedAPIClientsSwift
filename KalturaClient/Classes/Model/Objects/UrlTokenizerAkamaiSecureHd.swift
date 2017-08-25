@@ -35,6 +35,39 @@
 
 open class UrlTokenizerAkamaiSecureHd: UrlTokenizer {
 
+	public class UrlTokenizerAkamaiSecureHdTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var paramName: BaseTokenizedObject {
+			get {
+				return self.append("paramName") 
+			}
+		}
+		
+		public var aclPostfix: BaseTokenizedObject {
+			get {
+				return self.append("aclPostfix") 
+			}
+		}
+		
+		public var customPostfixes: BaseTokenizedObject {
+			get {
+				return self.append("customPostfixes") 
+			}
+		}
+		
+		public var useCookieHosts: BaseTokenizedObject {
+			get {
+				return self.append("useCookieHosts") 
+			}
+		}
+		
+		public var rootDir: BaseTokenizedObject {
+			get {
+				return self.append("rootDir") 
+			}
+		}
+	}
+
 	public var paramName: String? = nil
 	public var aclPostfix: String? = nil
 	public var customPostfixes: String? = nil
@@ -42,6 +75,26 @@ open class UrlTokenizerAkamaiSecureHd: UrlTokenizer {
 	public var rootDir: String? = nil
 
 
+	public func setMultiRequestToken(paramName: String) {
+		self.dict["paramName"] = paramName
+	}
+	
+	public func setMultiRequestToken(aclPostfix: String) {
+		self.dict["aclPostfix"] = aclPostfix
+	}
+	
+	public func setMultiRequestToken(customPostfixes: String) {
+		self.dict["customPostfixes"] = customPostfixes
+	}
+	
+	public func setMultiRequestToken(useCookieHosts: String) {
+		self.dict["useCookieHosts"] = useCookieHosts
+	}
+	
+	public func setMultiRequestToken(rootDir: String) {
+		self.dict["rootDir"] = rootDir
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,15 @@
 
 open class ShortLinkListResponse: ListResponse {
 
+	public class ShortLinkListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ShortLink.ShortLinkTokenizer> {
+			get {
+				return ArrayTokenizedObject<ShortLink.ShortLinkTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ShortLink>? = nil
 
 

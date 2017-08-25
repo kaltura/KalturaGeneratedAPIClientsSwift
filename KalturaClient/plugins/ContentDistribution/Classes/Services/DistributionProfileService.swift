@@ -36,75 +36,162 @@
 /**  Distribution Profile service  */
 public final class DistributionProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
+			get {
+				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
+			}
+		}
+	}
+
 	/**  Add new Distribution Profile  */
-	public static func add(distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile> {
-		let request: RequestBuilder<DistributionProfile> = RequestBuilder<DistributionProfile>(service: "contentdistribution_distributionprofile", action: "add")
+	public static func add(distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer>(service: "contentdistribution_distributionprofile", action: "add")
 			.setBody(key: "distributionProfile", value: distributionProfile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Distribution Profile by id  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_distributionprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Distribution Profile by id  */
-	public static func get(id: Int) -> RequestBuilder<DistributionProfile> {
-		let request: RequestBuilder<DistributionProfile> = RequestBuilder<DistributionProfile>(service: "contentdistribution_distributionprofile", action: "get")
+	public static func get(id: Int) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer>(service: "contentdistribution_distributionprofile", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<DistributionProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: DistributionProfileFilter.DistributionProfileFilterTokenizer {
+			get {
+				return DistributionProfileFilter.DistributionProfileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DistributionProfileFilter?) -> RequestBuilder<DistributionProfileListResponse> {
+	public static func list(filter: DistributionProfileFilter?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all distribution providers  */
-	public static func list(filter: DistributionProfileFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse> {
-		let request: RequestBuilder<DistributionProfileListResponse> = RequestBuilder<DistributionProfileListResponse>(service: "contentdistribution_distributionprofile", action: "list")
+	public static func list(filter: DistributionProfileFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer>(service: "contentdistribution_distributionprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func listByPartner() -> RequestBuilder<DistributionProfileListResponse> {
+	public class ListByPartnerTokenizer: ClientTokenizer  {
+		
+		public var filter: PartnerFilter.PartnerFilterTokenizer {
+			get {
+				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func listByPartner() -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> {
 		return listByPartner(filter: nil)
 	}
 
-	public static func listByPartner(filter: PartnerFilter?) -> RequestBuilder<DistributionProfileListResponse> {
+	public static func listByPartner(filter: PartnerFilter?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> {
 		return listByPartner(filter: filter, pager: nil)
 	}
 
-	public static func listByPartner(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse> {
-		let request: RequestBuilder<DistributionProfileListResponse> = RequestBuilder<DistributionProfileListResponse>(service: "contentdistribution_distributionprofile", action: "listByPartner")
+	public static func listByPartner(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> {
+		let request: RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> = RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer>(service: "contentdistribution_distributionprofile", action: "listByPartner")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
+			get {
+				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
+			}
+		}
+	}
+
 	/**  Update Distribution Profile by id  */
-	public static func update(id: Int, distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile> {
-		let request: RequestBuilder<DistributionProfile> = RequestBuilder<DistributionProfile>(service: "contentdistribution_distributionprofile", action: "update")
+	public static func update(id: Int, distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer>(service: "contentdistribution_distributionprofile", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "distributionProfile", value: distributionProfile)
 
 		return request
 	}
 
+	public class UpdateStatusTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
 	/**  Update Distribution Profile status by id  */
-	public static func updateStatus(id: Int, status: DistributionProfileStatus) -> RequestBuilder<DistributionProfile> {
-		let request: RequestBuilder<DistributionProfile> = RequestBuilder<DistributionProfile>(service: "contentdistribution_distributionprofile", action: "updateStatus")
+	public static func updateStatus(id: Int, status: DistributionProfileStatus) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer> {
+		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer>(service: "contentdistribution_distributionprofile", action: "updateStatus")
 			.setBody(key: "id", value: id)
 			.setBody(key: "status", value: status.rawValue)
 

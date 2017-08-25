@@ -36,10 +36,23 @@
 /**  Evaluates PHP statement, depends on the execution context  */
 open class EvalStringField: StringField {
 
+	public class EvalStringFieldTokenizer: StringField.StringFieldTokenizer {
+		
+		public var code: BaseTokenizedObject {
+			get {
+				return self.append("code") 
+			}
+		}
+	}
+
 	/**  PHP code  */
 	public var code: String? = nil
 
 
+	public func setMultiRequestToken(code: String) {
+		self.dict["code"] = code
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

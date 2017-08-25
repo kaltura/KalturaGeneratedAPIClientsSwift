@@ -36,14 +36,29 @@
 /**  api for getting analytics data  */
 public final class AnalyticsService{
 
-	public static func query(filter: AnalyticsFilter) -> RequestBuilder<ReportResponse> {
+	public class QueryTokenizer: ClientTokenizer  {
+		
+		public var filter: AnalyticsFilter.AnalyticsFilterTokenizer {
+			get {
+				return AnalyticsFilter.AnalyticsFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func query(filter: AnalyticsFilter) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer> {
 		return query(filter: filter, pager: nil)
 	}
 
 	/**  report query action allows to get a analytics data for specific query
 	  dimensions, metrics and filters.  */
-	public static func query(filter: AnalyticsFilter, pager: FilterPager?) -> RequestBuilder<ReportResponse> {
-		let request: RequestBuilder<ReportResponse> = RequestBuilder<ReportResponse>(service: "analytics", action: "query")
+	public static func query(filter: AnalyticsFilter, pager: FilterPager?) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer> {
+		let request: RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer> = RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer>(service: "analytics", action: "query")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

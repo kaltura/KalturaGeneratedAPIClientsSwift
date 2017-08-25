@@ -35,6 +35,33 @@
 
 open class QuestionCuePoint: CuePoint {
 
+	public class QuestionCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var optionalAnswers: DictionaryTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer> {
+			get {
+				return DictionaryTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer>(self.append("optionalAnswers"))
+			}
+		}
+		
+		public var hint: BaseTokenizedObject {
+			get {
+				return self.append("hint") 
+			}
+		}
+		
+		public var question: BaseTokenizedObject {
+			get {
+				return self.append("question") 
+			}
+		}
+		
+		public var explanation: BaseTokenizedObject {
+			get {
+				return self.append("explanation") 
+			}
+		}
+	}
+
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
 	public var optionalAnswers: Dictionary<String, OptionalAnswer>? = nil
 	public var hint: String? = nil
@@ -42,6 +69,18 @@ open class QuestionCuePoint: CuePoint {
 	public var explanation: String? = nil
 
 
+	public func setMultiRequestToken(hint: String) {
+		self.dict["hint"] = hint
+	}
+	
+	public func setMultiRequestToken(question: String) {
+		self.dict["question"] = question
+	}
+	
+	public func setMultiRequestToken(explanation: String) {
+		self.dict["explanation"] = explanation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,11 +35,44 @@
 
 open class EntryCuePointSearchFilter: SearchItem {
 
+	public class EntryCuePointSearchFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var cuePointsFreeText: BaseTokenizedObject {
+			get {
+				return self.append("cuePointsFreeText") 
+			}
+		}
+		
+		public var cuePointTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("cuePointTypeIn") 
+			}
+		}
+		
+		public var cuePointSubTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("cuePointSubTypeEqual") 
+			}
+		}
+	}
+
 	public var cuePointsFreeText: String? = nil
 	public var cuePointTypeIn: String? = nil
 	public var cuePointSubTypeEqual: Int? = nil
 
 
+	public func setMultiRequestToken(cuePointsFreeText: String) {
+		self.dict["cuePointsFreeText"] = cuePointsFreeText
+	}
+	
+	public func setMultiRequestToken(cuePointTypeIn: String) {
+		self.dict["cuePointTypeIn"] = cuePointTypeIn
+	}
+	
+	public func setMultiRequestToken(cuePointSubTypeEqual: String) {
+		self.dict["cuePointSubTypeEqual"] = cuePointSubTypeEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

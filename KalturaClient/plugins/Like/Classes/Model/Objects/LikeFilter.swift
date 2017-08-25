@@ -35,6 +35,9 @@
 
 open class LikeFilter: LikeBaseFilter {
 
+	public class LikeFilterTokenizer: LikeBaseFilter.LikeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

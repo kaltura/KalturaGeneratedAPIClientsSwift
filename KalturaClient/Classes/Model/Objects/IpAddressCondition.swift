@@ -35,12 +35,35 @@
 
 open class IpAddressCondition: MatchCondition {
 
+	public class IpAddressConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+		
+		public var acceptInternalIps: BaseTokenizedObject {
+			get {
+				return self.append("acceptInternalIps") 
+			}
+		}
+		
+		public var httpHeader: BaseTokenizedObject {
+			get {
+				return self.append("httpHeader") 
+			}
+		}
+	}
+
 	/**  allow internal ips  */
 	public var acceptInternalIps: Bool? = nil
 	/**  http header name for extracting the ip  */
 	public var httpHeader: String? = nil
 
 
+	public func setMultiRequestToken(acceptInternalIps: String) {
+		self.dict["acceptInternalIps"] = acceptInternalIps
+	}
+	
+	public func setMultiRequestToken(httpHeader: String) {
+		self.dict["httpHeader"] = httpHeader
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

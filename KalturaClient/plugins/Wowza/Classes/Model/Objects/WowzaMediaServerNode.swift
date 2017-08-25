@@ -35,6 +35,45 @@
 
 open class WowzaMediaServerNode: MediaServerNode {
 
+	public class WowzaMediaServerNodeTokenizer: MediaServerNode.MediaServerNodeTokenizer {
+		
+		public var appPrefix: BaseTokenizedObject {
+			get {
+				return self.append("appPrefix") 
+			}
+		}
+		
+		public var transcoder: BaseTokenizedObject {
+			get {
+				return self.append("transcoder") 
+			}
+		}
+		
+		public var GPUID: BaseTokenizedObject {
+			get {
+				return self.append("GPUID") 
+			}
+		}
+		
+		public var liveServicePort: BaseTokenizedObject {
+			get {
+				return self.append("liveServicePort") 
+			}
+		}
+		
+		public var liveServiceProtocol: BaseTokenizedObject {
+			get {
+				return self.append("liveServiceProtocol") 
+			}
+		}
+		
+		public var liveServiceInternalDomain: BaseTokenizedObject {
+			get {
+				return self.append("liveServiceInternalDomain") 
+			}
+		}
+	}
+
 	/**  Wowza Media server app prefix  */
 	public var appPrefix: String? = nil
 	/**  Wowza Media server transcoder configuration overide  */
@@ -49,6 +88,30 @@ open class WowzaMediaServerNode: MediaServerNode {
 	public var liveServiceInternalDomain: String? = nil
 
 
+	public func setMultiRequestToken(appPrefix: String) {
+		self.dict["appPrefix"] = appPrefix
+	}
+	
+	public func setMultiRequestToken(transcoder: String) {
+		self.dict["transcoder"] = transcoder
+	}
+	
+	public func setMultiRequestToken(GPUID: String) {
+		self.dict["GPUID"] = GPUID
+	}
+	
+	public func setMultiRequestToken(liveServicePort: String) {
+		self.dict["liveServicePort"] = liveServicePort
+	}
+	
+	public func setMultiRequestToken(liveServiceProtocol: String) {
+		self.dict["liveServiceProtocol"] = liveServiceProtocol
+	}
+	
+	public func setMultiRequestToken(liveServiceInternalDomain: String) {
+		self.dict["liveServiceInternalDomain"] = liveServiceInternalDomain
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

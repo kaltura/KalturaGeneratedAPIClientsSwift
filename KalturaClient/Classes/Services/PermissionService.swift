@@ -36,59 +36,119 @@
 /**  Permission service lets you create and manage user permissions  */
 public final class PermissionService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var permission: Permission.PermissionTokenizer {
+			get {
+				return Permission.PermissionTokenizer(self.append("permission")) 
+			}
+		}
+	}
+
 	/**  Adds a new permission object to the account.  */
-	public static func add(permission: Permission) -> RequestBuilder<Permission> {
-		let request: RequestBuilder<Permission> = RequestBuilder<Permission>(service: "permission", action: "add")
+	public static func add(permission: Permission) -> RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer> {
+		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer>(service: "permission", action: "add")
 			.setBody(key: "permission", value: permission)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var permissionName: BaseTokenizedObject {
+			get {
+				return self.append("permissionName") 
+			}
+		}
+	}
+
 	/**  Deletes an existing permission object.  */
-	public static func delete(permissionName: String) -> RequestBuilder<Permission> {
-		let request: RequestBuilder<Permission> = RequestBuilder<Permission>(service: "permission", action: "delete")
+	public static func delete(permissionName: String) -> RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer>(service: "permission", action: "delete")
 			.setBody(key: "permissionName", value: permissionName)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var permissionName: BaseTokenizedObject {
+			get {
+				return self.append("permissionName") 
+			}
+		}
 	}
 
 	/**  Retrieves a permission object using its ID.  */
-	public static func get(permissionName: String) -> RequestBuilder<Permission> {
-		let request: RequestBuilder<Permission> = RequestBuilder<Permission>(service: "permission", action: "get")
+	public static func get(permissionName: String) -> RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer> {
+		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer>(service: "permission", action: "get")
 			.setBody(key: "permissionName", value: permissionName)
 
 		return request
 	}
 
+	public class GetCurrentPermissionsTokenizer: ClientTokenizer  {
+	}
+
 	/**  Retrieves a list of permissions that apply to the current KS.  */
-	public static func getCurrentPermissions() -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "permission", action: "getCurrentPermissions")
+	public static func getCurrentPermissions() -> RequestBuilder<String, BaseTokenizedObject, GetCurrentPermissionsTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetCurrentPermissionsTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetCurrentPermissionsTokenizer>(service: "permission", action: "getCurrentPermissions")
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<PermissionListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: PermissionFilter.PermissionFilterTokenizer {
+			get {
+				return PermissionFilter.PermissionFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: PermissionFilter?) -> RequestBuilder<PermissionListResponse> {
+	public static func list(filter: PermissionFilter?) -> RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Lists permission objects that are associated with an account.   Blocked
 	  permissions are listed unless you use a filter to exclude them.   Blocked
 	  permissions are listed unless you use a filter to exclude them.  */
-	public static func list(filter: PermissionFilter?, pager: FilterPager?) -> RequestBuilder<PermissionListResponse> {
-		let request: RequestBuilder<PermissionListResponse> = RequestBuilder<PermissionListResponse>(service: "permission", action: "list")
+	public static func list(filter: PermissionFilter?, pager: FilterPager?) -> RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> = RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer>(service: "permission", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var permissionName: BaseTokenizedObject {
+			get {
+				return self.append("permissionName") 
+			}
+		}
+		
+		public var permission: Permission.PermissionTokenizer {
+			get {
+				return Permission.PermissionTokenizer(self.append("permission")) 
+			}
+		}
+	}
+
 	/**  Updates an existing permission object.  */
-	public static func update(permissionName: String, permission: Permission) -> RequestBuilder<Permission> {
-		let request: RequestBuilder<Permission> = RequestBuilder<Permission>(service: "permission", action: "update")
+	public static func update(permissionName: String, permission: Permission) -> RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer>(service: "permission", action: "update")
 			.setBody(key: "permissionName", value: permissionName)
 			.setBody(key: "permission", value: permission)
 

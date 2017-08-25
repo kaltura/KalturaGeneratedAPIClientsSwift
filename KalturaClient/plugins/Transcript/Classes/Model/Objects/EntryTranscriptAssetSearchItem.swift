@@ -35,11 +35,44 @@
 
 open class EntryTranscriptAssetSearchItem: SearchItem {
 
+	public class EntryTranscriptAssetSearchItemTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var contentLike: BaseTokenizedObject {
+			get {
+				return self.append("contentLike") 
+			}
+		}
+		
+		public var contentMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("contentMultiLikeOr") 
+			}
+		}
+		
+		public var contentMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("contentMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var contentLike: String? = nil
 	public var contentMultiLikeOr: String? = nil
 	public var contentMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(contentLike: String) {
+		self.dict["contentLike"] = contentLike
+	}
+	
+	public func setMultiRequestToken(contentMultiLikeOr: String) {
+		self.dict["contentMultiLikeOr"] = contentMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(contentMultiLikeAnd: String) {
+		self.dict["contentMultiLikeAnd"] = contentMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,93 @@
 
 open class BulkUploadJobData: JobData {
 
+	public class BulkUploadJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var uploadedBy: BaseTokenizedObject {
+			get {
+				return self.append("uploadedBy") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var resultsFileLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("resultsFileLocalPath") 
+			}
+		}
+		
+		public var resultsFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("resultsFileUrl") 
+			}
+		}
+		
+		public var numOfEntries: BaseTokenizedObject {
+			get {
+				return self.append("numOfEntries") 
+			}
+		}
+		
+		public var numOfObjects: BaseTokenizedObject {
+			get {
+				return self.append("numOfObjects") 
+			}
+		}
+		
+		public var filePath: BaseTokenizedObject {
+			get {
+				return self.append("filePath") 
+			}
+		}
+		
+		public var bulkUploadObjectType: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadObjectType") 
+			}
+		}
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+		
+		public var objectData: BulkUploadObjectData.BulkUploadObjectDataTokenizer {
+			get {
+				return BulkUploadObjectData.BulkUploadObjectDataTokenizer(self.append("objectData")) 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var emailRecipients: BaseTokenizedObject {
+			get {
+				return self.append("emailRecipients") 
+			}
+		}
+		
+		public var numOfErrorObjects: BaseTokenizedObject {
+			get {
+				return self.append("numOfErrorObjects") 
+			}
+		}
+	}
+
 	public var userId: String? = nil
 	/**  The screen name of the user  */
 	public var uploadedBy: String? = nil
@@ -64,6 +151,58 @@ open class BulkUploadJobData: JobData {
 	public var numOfErrorObjects: Int? = nil
 
 
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(uploadedBy: String) {
+		self.dict["uploadedBy"] = uploadedBy
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(resultsFileLocalPath: String) {
+		self.dict["resultsFileLocalPath"] = resultsFileLocalPath
+	}
+	
+	public func setMultiRequestToken(resultsFileUrl: String) {
+		self.dict["resultsFileUrl"] = resultsFileUrl
+	}
+	
+	public func setMultiRequestToken(numOfEntries: String) {
+		self.dict["numOfEntries"] = numOfEntries
+	}
+	
+	public func setMultiRequestToken(numOfObjects: String) {
+		self.dict["numOfObjects"] = numOfObjects
+	}
+	
+	public func setMultiRequestToken(filePath: String) {
+		self.dict["filePath"] = filePath
+	}
+	
+	public func setMultiRequestToken(bulkUploadObjectType: String) {
+		self.dict["bulkUploadObjectType"] = bulkUploadObjectType
+	}
+	
+	public func setMultiRequestToken(fileName: String) {
+		self.dict["fileName"] = fileName
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(emailRecipients: String) {
+		self.dict["emailRecipients"] = emailRecipients
+	}
+	
+	public func setMultiRequestToken(numOfErrorObjects: String) {
+		self.dict["numOfErrorObjects"] = numOfErrorObjects
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

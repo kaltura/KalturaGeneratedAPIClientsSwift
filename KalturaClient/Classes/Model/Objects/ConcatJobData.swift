@@ -35,6 +35,45 @@
 
 open class ConcatJobData: JobData {
 
+	public class ConcatJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFiles: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("srcFiles"))
+			} 
+		}
+		
+		public var destFilePath: BaseTokenizedObject {
+			get {
+				return self.append("destFilePath") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var offset: BaseTokenizedObject {
+			get {
+				return self.append("offset") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var concatenatedDuration: BaseTokenizedObject {
+			get {
+				return self.append("concatenatedDuration") 
+			}
+		}
+	}
+
 	/**  Source files to be concatenated  */
 	public var srcFiles: Array<StringHolder>? = nil
 	/**  Output file  */
@@ -49,6 +88,26 @@ open class ConcatJobData: JobData {
 	public var concatenatedDuration: Double? = nil
 
 
+	public func setMultiRequestToken(destFilePath: String) {
+		self.dict["destFilePath"] = destFilePath
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(offset: String) {
+		self.dict["offset"] = offset
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(concatenatedDuration: String) {
+		self.dict["concatenatedDuration"] = concatenatedDuration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

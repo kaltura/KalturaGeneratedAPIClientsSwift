@@ -35,6 +35,9 @@
 
 open class LiveStreamAdminEntry: LiveStreamEntry {
 
+	public class LiveStreamAdminEntryTokenizer: LiveStreamEntry.LiveStreamEntryTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

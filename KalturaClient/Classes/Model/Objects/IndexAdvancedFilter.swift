@@ -35,10 +35,33 @@
 
 open class IndexAdvancedFilter: SearchItem {
 
+	public class IndexAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var indexIdGreaterThan: BaseTokenizedObject {
+			get {
+				return self.append("indexIdGreaterThan") 
+			}
+		}
+		
+		public var depthGreaterThanEqual: BaseTokenizedObject {
+			get {
+				return self.append("depthGreaterThanEqual") 
+			}
+		}
+	}
+
 	public var indexIdGreaterThan: Int? = nil
 	public var depthGreaterThanEqual: Int? = nil
 
 
+	public func setMultiRequestToken(indexIdGreaterThan: String) {
+		self.dict["indexIdGreaterThan"] = indexIdGreaterThan
+	}
+	
+	public func setMultiRequestToken(depthGreaterThanEqual: String) {
+		self.dict["depthGreaterThanEqual"] = depthGreaterThanEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

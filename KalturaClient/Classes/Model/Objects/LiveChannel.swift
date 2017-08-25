@@ -35,12 +35,35 @@
 
 open class LiveChannel: LiveEntry {
 
+	public class LiveChannelTokenizer: LiveEntry.LiveEntryTokenizer {
+		
+		public var playlistId: BaseTokenizedObject {
+			get {
+				return self.append("playlistId") 
+			}
+		}
+		
+		public var repeat_: BaseTokenizedObject {
+			get {
+				return self.append("repeat_") 
+			}
+		}
+	}
+
 	/**  Playlist id to be played  */
 	public var playlistId: String? = nil
 	/**  Indicates that the segments should be repeated for ever  */
 	public var repeat_: Bool? = nil
 
 
+	public func setMultiRequestToken(playlistId: String) {
+		self.dict["playlistId"] = playlistId
+	}
+	
+	public func setMultiRequestToken(repeat_: String) {
+		self.dict["repeat"] = repeat_
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

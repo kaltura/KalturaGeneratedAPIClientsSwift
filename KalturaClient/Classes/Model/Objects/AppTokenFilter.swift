@@ -35,6 +35,9 @@
 
 open class AppTokenFilter: AppTokenBaseFilter {
 
+	public class AppTokenFilterTokenizer: AppTokenBaseFilter.AppTokenBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

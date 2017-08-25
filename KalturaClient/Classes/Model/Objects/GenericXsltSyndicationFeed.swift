@@ -35,10 +35,29 @@
 
 open class GenericXsltSyndicationFeed: GenericSyndicationFeed {
 
+	public class GenericXsltSyndicationFeedTokenizer: GenericSyndicationFeed.GenericSyndicationFeedTokenizer {
+		
+		public var xslt: BaseTokenizedObject {
+			get {
+				return self.append("xslt") 
+			}
+		}
+		
+		public var itemXpathsToExtend: ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer>(self.append("itemXpathsToExtend"))
+			} 
+		}
+	}
+
 	public var xslt: String? = nil
 	public var itemXpathsToExtend: Array<ExtendingItemMrssParameter>? = nil
 
 
+	public func setMultiRequestToken(xslt: String) {
+		self.dict["xslt"] = xslt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

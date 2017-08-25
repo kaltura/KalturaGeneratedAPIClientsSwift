@@ -35,15 +35,27 @@
 
 public final class UploadService{
 
-	public static func getUploadedFileTokenByFileName(fileName: String) -> RequestBuilder<UploadResponse> {
-		let request: RequestBuilder<UploadResponse> = RequestBuilder<UploadResponse>(service: "upload", action: "getUploadedFileTokenByFileName")
+	public class GetUploadedFileTokenByFileNameTokenizer: ClientTokenizer  {
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+	}
+
+	public static func getUploadedFileTokenByFileName(fileName: String) -> RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer> {
+		let request: RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer> = RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer>(service: "upload", action: "getUploadedFileTokenByFileName")
 			.setBody(key: "fileName", value: fileName)
 
 		return request
 	}
 
-	public static func upload(fileData: RequestFile) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "upload", action: "upload")
+	public class UploadTokenizer: ClientTokenizer  {
+	}
+
+	public static func upload(fileData: RequestFile) -> RequestBuilder<String, BaseTokenizedObject, UploadTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, UploadTokenizer> = RequestBuilder<String, BaseTokenizedObject, UploadTokenizer>(service: "upload", action: "upload")
 			.setFile(key: "fileData", value: fileData)
 
 		return request

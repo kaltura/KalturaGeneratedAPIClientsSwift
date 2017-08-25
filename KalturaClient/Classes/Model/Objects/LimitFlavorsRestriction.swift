@@ -35,12 +35,35 @@
 
 open class LimitFlavorsRestriction: BaseRestriction {
 
+	public class LimitFlavorsRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var limitFlavorsRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("limitFlavorsRestrictionType") 
+			}
+		}
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+	}
+
 	/**  Limit flavors restriction type (Allow or deny)  */
 	public var limitFlavorsRestrictionType: LimitFlavorsRestrictionType? = nil
 	/**  Comma separated list of flavor params ids to allow to deny  */
 	public var flavorParamsIds: String? = nil
 
 
+	public func setMultiRequestToken(limitFlavorsRestrictionType: String) {
+		self.dict["limitFlavorsRestrictionType"] = limitFlavorsRestrictionType
+	}
+	
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

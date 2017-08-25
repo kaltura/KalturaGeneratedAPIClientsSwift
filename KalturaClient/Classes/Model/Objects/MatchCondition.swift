@@ -35,10 +35,29 @@
 
 open class MatchCondition: Condition {
 
+	public class MatchConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var values: ArrayTokenizedObject<StringValue.StringValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringValue.StringValueTokenizer>(self.append("values"))
+			} 
+		}
+		
+		public var matchType: BaseTokenizedObject {
+			get {
+				return self.append("matchType") 
+			}
+		}
+	}
+
 	public var values: Array<StringValue>? = nil
 	public var matchType: MatchConditionType? = nil
 
 
+	public func setMultiRequestToken(matchType: String) {
+		self.dict["matchType"] = matchType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

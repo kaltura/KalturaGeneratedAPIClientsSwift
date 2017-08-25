@@ -35,6 +35,9 @@
 
 open class EmailNotificationParameter: EventNotificationParameter {
 
+	public class EmailNotificationParameterTokenizer: EventNotificationParameter.EventNotificationParameterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

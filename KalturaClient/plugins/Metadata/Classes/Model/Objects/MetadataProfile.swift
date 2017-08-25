@@ -35,6 +35,99 @@
 
 open class MetadataProfile: ObjectBase {
 
+	public class MetadataProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var metadataObjectType: BaseTokenizedObject {
+			get {
+				return self.append("metadataObjectType") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var xsd: BaseTokenizedObject {
+			get {
+				return self.append("xsd") 
+			}
+		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
+		
+		public var xslt: BaseTokenizedObject {
+			get {
+				return self.append("xslt") 
+			}
+		}
+		
+		public var createMode: BaseTokenizedObject {
+			get {
+				return self.append("createMode") 
+			}
+		}
+		
+		public var disableReIndexing: BaseTokenizedObject {
+			get {
+				return self.append("disableReIndexing") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var metadataObjectType: MetadataObjectType? = nil
@@ -52,6 +145,66 @@ open class MetadataProfile: ObjectBase {
 	public var disableReIndexing: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(metadataObjectType: String) {
+		self.dict["metadataObjectType"] = metadataObjectType
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(xsd: String) {
+		self.dict["xsd"] = xsd
+	}
+	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
+	public func setMultiRequestToken(xslt: String) {
+		self.dict["xslt"] = xslt
+	}
+	
+	public func setMultiRequestToken(createMode: String) {
+		self.dict["createMode"] = createMode
+	}
+	
+	public func setMultiRequestToken(disableReIndexing: String) {
+		self.dict["disableReIndexing"] = disableReIndexing
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

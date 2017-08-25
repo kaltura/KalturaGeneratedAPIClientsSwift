@@ -35,6 +35,15 @@
 
 open class RemotePathListResponse: ListResponse {
 
+	public class RemotePathListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<RemotePath.RemotePathTokenizer> {
+			get {
+				return ArrayTokenizedObject<RemotePath.RemotePathTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<RemotePath>? = nil
 
 

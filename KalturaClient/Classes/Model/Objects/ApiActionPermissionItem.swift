@@ -35,10 +35,33 @@
 
 open class ApiActionPermissionItem: PermissionItem {
 
+	public class ApiActionPermissionItemTokenizer: PermissionItem.PermissionItemTokenizer {
+		
+		public var service: BaseTokenizedObject {
+			get {
+				return self.append("service") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+	}
+
 	public var service: String? = nil
 	public var action: String? = nil
 
 
+	public func setMultiRequestToken(service: String) {
+		self.dict["service"] = service
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

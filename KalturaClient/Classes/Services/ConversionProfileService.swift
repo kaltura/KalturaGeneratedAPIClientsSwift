@@ -36,70 +36,145 @@
 /**  Add &amp; Manage Conversion Profiles  */
 public final class ConversionProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var conversionProfile: ConversionProfile.ConversionProfileTokenizer {
+			get {
+				return ConversionProfile.ConversionProfileTokenizer(self.append("conversionProfile")) 
+			}
+		}
+	}
+
 	/**  Add new Conversion Profile  */
-	public static func add(conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile> {
-		let request: RequestBuilder<ConversionProfile> = RequestBuilder<ConversionProfile>(service: "conversionprofile", action: "add")
+	public static func add(conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer>(service: "conversionprofile", action: "add")
 			.setBody(key: "conversionProfile", value: conversionProfile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Conversion Profile by ID  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "conversionprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Conversion Profile by ID  */
-	public static func get(id: Int) -> RequestBuilder<ConversionProfile> {
-		let request: RequestBuilder<ConversionProfile> = RequestBuilder<ConversionProfile>(service: "conversionprofile", action: "get")
+	public static func get(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer>(service: "conversionprofile", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func getDefault() -> RequestBuilder<ConversionProfile> {
+	public class GetDefaultTokenizer: ClientTokenizer  {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+	}
+
+	public static func getDefault() -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer> {
 		return getDefault(type: nil)
 	}
 
 	/**  Get the partner's default conversion profile  */
-	public static func getDefault(type: ConversionProfileType?) -> RequestBuilder<ConversionProfile> {
-		let request: RequestBuilder<ConversionProfile> = RequestBuilder<ConversionProfile>(service: "conversionprofile", action: "getDefault")
+	public static func getDefault(type: ConversionProfileType?) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer> {
+		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer>(service: "conversionprofile", action: "getDefault")
 			.setBody(key: "type", value: type?.rawValue)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ConversionProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ConversionProfileFilter.ConversionProfileFilterTokenizer {
+			get {
+				return ConversionProfileFilter.ConversionProfileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ConversionProfileFilter?) -> RequestBuilder<ConversionProfileListResponse> {
+	public static func list(filter: ConversionProfileFilter?) -> RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List Conversion Profiles by filter with paging support  */
-	public static func list(filter: ConversionProfileFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileListResponse> {
-		let request: RequestBuilder<ConversionProfileListResponse> = RequestBuilder<ConversionProfileListResponse>(service: "conversionprofile", action: "list")
+	public static func list(filter: ConversionProfileFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer>(service: "conversionprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class SetAsDefaultTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Set Conversion Profile to be the partner default  */
-	public static func setAsDefault(id: Int) -> RequestBuilder<ConversionProfile> {
-		let request: RequestBuilder<ConversionProfile> = RequestBuilder<ConversionProfile>(service: "conversionprofile", action: "setAsDefault")
+	public static func setAsDefault(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> {
+		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer>(service: "conversionprofile", action: "setAsDefault")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var conversionProfile: ConversionProfile.ConversionProfileTokenizer {
+			get {
+				return ConversionProfile.ConversionProfileTokenizer(self.append("conversionProfile")) 
+			}
+		}
+	}
+
 	/**  Update Conversion Profile by ID  */
-	public static func update(id: Int, conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile> {
-		let request: RequestBuilder<ConversionProfile> = RequestBuilder<ConversionProfile>(service: "conversionprofile", action: "update")
+	public static func update(id: Int, conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer>(service: "conversionprofile", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "conversionProfile", value: conversionProfile)
 

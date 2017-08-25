@@ -36,6 +36,15 @@
 /**  JobData representing the static receipient array  */
 open class EmailNotificationStaticRecipientJobData: EmailNotificationRecipientJobData {
 
+	public class EmailNotificationStaticRecipientJobDataTokenizer: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+		
+		public var emailRecipients: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("emailRecipients"))
+			} 
+		}
+	}
+
 	/**  Email to emails and names  */
 	public var emailRecipients: Array<KeyValue>? = nil
 

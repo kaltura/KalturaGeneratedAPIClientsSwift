@@ -35,6 +35,93 @@
 
 open class BulkUploadResultCategory: BulkUploadResult {
 
+	public class BulkUploadResultCategoryTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var relativePath: BaseTokenizedObject {
+			get {
+				return self.append("relativePath") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var appearInList: BaseTokenizedObject {
+			get {
+				return self.append("appearInList") 
+			}
+		}
+		
+		public var privacy: BaseTokenizedObject {
+			get {
+				return self.append("privacy") 
+			}
+		}
+		
+		public var inheritanceType: BaseTokenizedObject {
+			get {
+				return self.append("inheritanceType") 
+			}
+		}
+		
+		public var userJoinPolicy: BaseTokenizedObject {
+			get {
+				return self.append("userJoinPolicy") 
+			}
+		}
+		
+		public var defaultPermissionLevel: BaseTokenizedObject {
+			get {
+				return self.append("defaultPermissionLevel") 
+			}
+		}
+		
+		public var owner: BaseTokenizedObject {
+			get {
+				return self.append("owner") 
+			}
+		}
+		
+		public var contributionPolicy: BaseTokenizedObject {
+			get {
+				return self.append("contributionPolicy") 
+			}
+		}
+		
+		public var partnerSortValue: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValue") 
+			}
+		}
+		
+		public var moderation: BaseTokenizedObject {
+			get {
+				return self.append("moderation") 
+			}
+		}
+	}
+
 	public var relativePath: String? = nil
 	public var name: String? = nil
 	public var referenceId: String? = nil
@@ -51,6 +138,62 @@ open class BulkUploadResultCategory: BulkUploadResult {
 	public var moderation: Bool? = nil
 
 
+	public func setMultiRequestToken(relativePath: String) {
+		self.dict["relativePath"] = relativePath
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(appearInList: String) {
+		self.dict["appearInList"] = appearInList
+	}
+	
+	public func setMultiRequestToken(privacy: String) {
+		self.dict["privacy"] = privacy
+	}
+	
+	public func setMultiRequestToken(inheritanceType: String) {
+		self.dict["inheritanceType"] = inheritanceType
+	}
+	
+	public func setMultiRequestToken(userJoinPolicy: String) {
+		self.dict["userJoinPolicy"] = userJoinPolicy
+	}
+	
+	public func setMultiRequestToken(defaultPermissionLevel: String) {
+		self.dict["defaultPermissionLevel"] = defaultPermissionLevel
+	}
+	
+	public func setMultiRequestToken(owner: String) {
+		self.dict["owner"] = owner
+	}
+	
+	public func setMultiRequestToken(contributionPolicy: String) {
+		self.dict["contributionPolicy"] = contributionPolicy
+	}
+	
+	public func setMultiRequestToken(partnerSortValue: String) {
+		self.dict["partnerSortValue"] = partnerSortValue
+	}
+	
+	public func setMultiRequestToken(moderation: String) {
+		self.dict["moderation"] = moderation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

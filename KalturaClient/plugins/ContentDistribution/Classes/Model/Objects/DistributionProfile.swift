@@ -35,6 +35,153 @@
 
 open class DistributionProfile: ObjectBase {
 
+	public class DistributionProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var providerType: BaseTokenizedObject {
+			get {
+				return self.append("providerType") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var submitEnabled: BaseTokenizedObject {
+			get {
+				return self.append("submitEnabled") 
+			}
+		}
+		
+		public var updateEnabled: BaseTokenizedObject {
+			get {
+				return self.append("updateEnabled") 
+			}
+		}
+		
+		public var deleteEnabled: BaseTokenizedObject {
+			get {
+				return self.append("deleteEnabled") 
+			}
+		}
+		
+		public var reportEnabled: BaseTokenizedObject {
+			get {
+				return self.append("reportEnabled") 
+			}
+		}
+		
+		public var autoCreateFlavors: BaseTokenizedObject {
+			get {
+				return self.append("autoCreateFlavors") 
+			}
+		}
+		
+		public var autoCreateThumb: BaseTokenizedObject {
+			get {
+				return self.append("autoCreateThumb") 
+			}
+		}
+		
+		public var optionalFlavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("optionalFlavorParamsIds") 
+			}
+		}
+		
+		public var requiredFlavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("requiredFlavorParamsIds") 
+			}
+		}
+		
+		public var optionalThumbDimensions: ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer>(self.append("optionalThumbDimensions"))
+			} 
+		}
+		
+		public var requiredThumbDimensions: ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer>(self.append("requiredThumbDimensions"))
+			} 
+		}
+		
+		public var optionalAssetDistributionRules: ArrayTokenizedObject<AssetDistributionRule.AssetDistributionRuleTokenizer> {
+			get {
+				return ArrayTokenizedObject<AssetDistributionRule.AssetDistributionRuleTokenizer>(self.append("optionalAssetDistributionRules"))
+			} 
+		}
+		
+		public var requiredAssetDistributionRules: ArrayTokenizedObject<AssetDistributionRule.AssetDistributionRuleTokenizer> {
+			get {
+				return ArrayTokenizedObject<AssetDistributionRule.AssetDistributionRuleTokenizer>(self.append("requiredAssetDistributionRules"))
+			} 
+		}
+		
+		public var sunriseDefaultOffset: BaseTokenizedObject {
+			get {
+				return self.append("sunriseDefaultOffset") 
+			}
+		}
+		
+		public var sunsetDefaultOffset: BaseTokenizedObject {
+			get {
+				return self.append("sunsetDefaultOffset") 
+			}
+		}
+		
+		public var recommendedStorageProfileForDownload: BaseTokenizedObject {
+			get {
+				return self.append("recommendedStorageProfileForDownload") 
+			}
+		}
+		
+		public var recommendedDcForDownload: BaseTokenizedObject {
+			get {
+				return self.append("recommendedDcForDownload") 
+			}
+		}
+		
+		public var recommendedDcForExecute: BaseTokenizedObject {
+			get {
+				return self.append("recommendedDcForExecute") 
+			}
+		}
+	}
+
 	/**  Auto generated unique id  */
 	public var id: Int? = nil
 	/**  Profile creation date as Unix timestamp (In seconds)  */
@@ -80,6 +227,86 @@ open class DistributionProfile: ObjectBase {
 	public var recommendedDcForExecute: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(providerType: String) {
+		self.dict["providerType"] = providerType
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(submitEnabled: String) {
+		self.dict["submitEnabled"] = submitEnabled
+	}
+	
+	public func setMultiRequestToken(updateEnabled: String) {
+		self.dict["updateEnabled"] = updateEnabled
+	}
+	
+	public func setMultiRequestToken(deleteEnabled: String) {
+		self.dict["deleteEnabled"] = deleteEnabled
+	}
+	
+	public func setMultiRequestToken(reportEnabled: String) {
+		self.dict["reportEnabled"] = reportEnabled
+	}
+	
+	public func setMultiRequestToken(autoCreateFlavors: String) {
+		self.dict["autoCreateFlavors"] = autoCreateFlavors
+	}
+	
+	public func setMultiRequestToken(autoCreateThumb: String) {
+		self.dict["autoCreateThumb"] = autoCreateThumb
+	}
+	
+	public func setMultiRequestToken(optionalFlavorParamsIds: String) {
+		self.dict["optionalFlavorParamsIds"] = optionalFlavorParamsIds
+	}
+	
+	public func setMultiRequestToken(requiredFlavorParamsIds: String) {
+		self.dict["requiredFlavorParamsIds"] = requiredFlavorParamsIds
+	}
+	
+	public func setMultiRequestToken(sunriseDefaultOffset: String) {
+		self.dict["sunriseDefaultOffset"] = sunriseDefaultOffset
+	}
+	
+	public func setMultiRequestToken(sunsetDefaultOffset: String) {
+		self.dict["sunsetDefaultOffset"] = sunsetDefaultOffset
+	}
+	
+	public func setMultiRequestToken(recommendedStorageProfileForDownload: String) {
+		self.dict["recommendedStorageProfileForDownload"] = recommendedStorageProfileForDownload
+	}
+	
+	public func setMultiRequestToken(recommendedDcForDownload: String) {
+		self.dict["recommendedDcForDownload"] = recommendedDcForDownload
+	}
+	
+	public func setMultiRequestToken(recommendedDcForExecute: String) {
+		self.dict["recommendedDcForExecute"] = recommendedDcForExecute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

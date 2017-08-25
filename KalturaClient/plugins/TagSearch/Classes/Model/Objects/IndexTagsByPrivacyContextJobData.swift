@@ -35,11 +35,44 @@
 
 open class IndexTagsByPrivacyContextJobData: JobData {
 
+	public class IndexTagsByPrivacyContextJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var changedCategoryId: BaseTokenizedObject {
+			get {
+				return self.append("changedCategoryId") 
+			}
+		}
+		
+		public var deletedPrivacyContexts: BaseTokenizedObject {
+			get {
+				return self.append("deletedPrivacyContexts") 
+			}
+		}
+		
+		public var addedPrivacyContexts: BaseTokenizedObject {
+			get {
+				return self.append("addedPrivacyContexts") 
+			}
+		}
+	}
+
 	public var changedCategoryId: Int? = nil
 	public var deletedPrivacyContexts: String? = nil
 	public var addedPrivacyContexts: String? = nil
 
 
+	public func setMultiRequestToken(changedCategoryId: String) {
+		self.dict["changedCategoryId"] = changedCategoryId
+	}
+	
+	public func setMultiRequestToken(deletedPrivacyContexts: String) {
+		self.dict["deletedPrivacyContexts"] = deletedPrivacyContexts
+	}
+	
+	public func setMultiRequestToken(addedPrivacyContexts: String) {
+		self.dict["addedPrivacyContexts"] = addedPrivacyContexts
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

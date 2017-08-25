@@ -35,6 +35,15 @@
 
 open class ConversionProfileAssetParamsListResponse: ListResponse {
 
+	public class ConversionProfileAssetParamsListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer> {
+			get {
+				return ArrayTokenizedObject<ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ConversionProfileAssetParams>? = nil
 
 

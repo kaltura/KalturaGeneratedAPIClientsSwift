@@ -36,10 +36,23 @@
 /**  Used to ingest string content.  */
 open class StringResource: ContentResource {
 
+	public class StringResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var content: BaseTokenizedObject {
+			get {
+				return self.append("content") 
+			}
+		}
+	}
+
 	/**  Textual content  */
 	public var content: String? = nil
 
 
+	public func setMultiRequestToken(content: String) {
+		self.dict["content"] = content
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

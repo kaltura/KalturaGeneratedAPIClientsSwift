@@ -35,6 +35,123 @@
 
 open class CategoryUserBaseFilter: RelatedFilter {
 
+	public class CategoryUserBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var categoryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdEqual") 
+			}
+		}
+		
+		public var categoryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdIn") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var permissionLevelEqual: BaseTokenizedObject {
+			get {
+				return self.append("permissionLevelEqual") 
+			}
+		}
+		
+		public var permissionLevelIn: BaseTokenizedObject {
+			get {
+				return self.append("permissionLevelIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updateMethodEqual: BaseTokenizedObject {
+			get {
+				return self.append("updateMethodEqual") 
+			}
+		}
+		
+		public var updateMethodIn: BaseTokenizedObject {
+			get {
+				return self.append("updateMethodIn") 
+			}
+		}
+		
+		public var categoryFullIdsStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("categoryFullIdsStartsWith") 
+			}
+		}
+		
+		public var categoryFullIdsEqual: BaseTokenizedObject {
+			get {
+				return self.append("categoryFullIdsEqual") 
+			}
+		}
+		
+		public var permissionNamesMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMatchAnd") 
+			}
+		}
+		
+		public var permissionNamesMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMatchOr") 
+			}
+		}
+		
+		public var permissionNamesNotContains: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesNotContains") 
+			}
+		}
+	}
+
 	public var categoryIdEqual: Int? = nil
 	public var categoryIdIn: String? = nil
 	public var userIdEqual: String? = nil
@@ -56,6 +173,82 @@ open class CategoryUserBaseFilter: RelatedFilter {
 	public var permissionNamesNotContains: String? = nil
 
 
+	public func setMultiRequestToken(categoryIdEqual: String) {
+		self.dict["categoryIdEqual"] = categoryIdEqual
+	}
+	
+	public func setMultiRequestToken(categoryIdIn: String) {
+		self.dict["categoryIdIn"] = categoryIdIn
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(permissionLevelEqual: String) {
+		self.dict["permissionLevelEqual"] = permissionLevelEqual
+	}
+	
+	public func setMultiRequestToken(permissionLevelIn: String) {
+		self.dict["permissionLevelIn"] = permissionLevelIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updateMethodEqual: String) {
+		self.dict["updateMethodEqual"] = updateMethodEqual
+	}
+	
+	public func setMultiRequestToken(updateMethodIn: String) {
+		self.dict["updateMethodIn"] = updateMethodIn
+	}
+	
+	public func setMultiRequestToken(categoryFullIdsStartsWith: String) {
+		self.dict["categoryFullIdsStartsWith"] = categoryFullIdsStartsWith
+	}
+	
+	public func setMultiRequestToken(categoryFullIdsEqual: String) {
+		self.dict["categoryFullIdsEqual"] = categoryFullIdsEqual
+	}
+	
+	public func setMultiRequestToken(permissionNamesMatchAnd: String) {
+		self.dict["permissionNamesMatchAnd"] = permissionNamesMatchAnd
+	}
+	
+	public func setMultiRequestToken(permissionNamesMatchOr: String) {
+		self.dict["permissionNamesMatchOr"] = permissionNamesMatchOr
+	}
+	
+	public func setMultiRequestToken(permissionNamesNotContains: String) {
+		self.dict["permissionNamesNotContains"] = permissionNamesNotContains
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

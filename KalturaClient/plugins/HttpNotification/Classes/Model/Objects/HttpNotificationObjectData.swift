@@ -36,6 +36,33 @@
 /**  Evaluates PHP statement, depends on the execution context  */
 open class HttpNotificationObjectData: HttpNotificationData {
 
+	public class HttpNotificationObjectDataTokenizer: HttpNotificationData.HttpNotificationDataTokenizer {
+		
+		public var apiObjectType: BaseTokenizedObject {
+			get {
+				return self.append("apiObjectType") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var ignoreNull: BaseTokenizedObject {
+			get {
+				return self.append("ignoreNull") 
+			}
+		}
+		
+		public var code: BaseTokenizedObject {
+			get {
+				return self.append("code") 
+			}
+		}
+	}
+
 	/**  Kaltura API object type  */
 	public var apiObjectType: String? = nil
 	/**  Data format  */
@@ -46,6 +73,22 @@ open class HttpNotificationObjectData: HttpNotificationData {
 	public var code: String? = nil
 
 
+	public func setMultiRequestToken(apiObjectType: String) {
+		self.dict["apiObjectType"] = apiObjectType
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(ignoreNull: String) {
+		self.dict["ignoreNull"] = ignoreNull
+	}
+	
+	public func setMultiRequestToken(code: String) {
+		self.dict["code"] = code
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

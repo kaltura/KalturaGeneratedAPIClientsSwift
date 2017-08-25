@@ -35,6 +35,159 @@
 
 open class ScheduleEvent: ObjectBase {
 
+	public class ScheduleEventTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var summary: BaseTokenizedObject {
+			get {
+				return self.append("summary") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var startDate: BaseTokenizedObject {
+			get {
+				return self.append("startDate") 
+			}
+		}
+		
+		public var endDate: BaseTokenizedObject {
+			get {
+				return self.append("endDate") 
+			}
+		}
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+		
+		public var classificationType: BaseTokenizedObject {
+			get {
+				return self.append("classificationType") 
+			}
+		}
+		
+		public var geoLatitude: BaseTokenizedObject {
+			get {
+				return self.append("geoLatitude") 
+			}
+		}
+		
+		public var geoLongitude: BaseTokenizedObject {
+			get {
+				return self.append("geoLongitude") 
+			}
+		}
+		
+		public var location: BaseTokenizedObject {
+			get {
+				return self.append("location") 
+			}
+		}
+		
+		public var organizer: BaseTokenizedObject {
+			get {
+				return self.append("organizer") 
+			}
+		}
+		
+		public var ownerId: BaseTokenizedObject {
+			get {
+				return self.append("ownerId") 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var sequence: BaseTokenizedObject {
+			get {
+				return self.append("sequence") 
+			}
+		}
+		
+		public var recurrenceType: BaseTokenizedObject {
+			get {
+				return self.append("recurrenceType") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var contact: BaseTokenizedObject {
+			get {
+				return self.append("contact") 
+			}
+		}
+		
+		public var comment: BaseTokenizedObject {
+			get {
+				return self.append("comment") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var recurrence: ScheduleEventRecurrence.ScheduleEventRecurrenceTokenizer {
+			get {
+				return ScheduleEventRecurrence.ScheduleEventRecurrenceTokenizer(self.append("recurrence")) 
+			}
+		}
+	}
+
 	/**  Auto-generated unique identifier  */
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
@@ -76,6 +229,102 @@ open class ScheduleEvent: ObjectBase {
 	public var recurrence: ScheduleEventRecurrence? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(summary: String) {
+		self.dict["summary"] = summary
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(startDate: String) {
+		self.dict["startDate"] = startDate
+	}
+	
+	public func setMultiRequestToken(endDate: String) {
+		self.dict["endDate"] = endDate
+	}
+	
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(classificationType: String) {
+		self.dict["classificationType"] = classificationType
+	}
+	
+	public func setMultiRequestToken(geoLatitude: String) {
+		self.dict["geoLatitude"] = geoLatitude
+	}
+	
+	public func setMultiRequestToken(geoLongitude: String) {
+		self.dict["geoLongitude"] = geoLongitude
+	}
+	
+	public func setMultiRequestToken(location: String) {
+		self.dict["location"] = location
+	}
+	
+	public func setMultiRequestToken(organizer: String) {
+		self.dict["organizer"] = organizer
+	}
+	
+	public func setMultiRequestToken(ownerId: String) {
+		self.dict["ownerId"] = ownerId
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(sequence: String) {
+		self.dict["sequence"] = sequence
+	}
+	
+	public func setMultiRequestToken(recurrenceType: String) {
+		self.dict["recurrenceType"] = recurrenceType
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(contact: String) {
+		self.dict["contact"] = contact
+	}
+	
+	public func setMultiRequestToken(comment: String) {
+		self.dict["comment"] = comment
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

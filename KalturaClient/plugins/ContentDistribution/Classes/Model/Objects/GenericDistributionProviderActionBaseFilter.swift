@@ -35,6 +35,69 @@
 
 open class GenericDistributionProviderActionBaseFilter: Filter {
 
+	public class GenericDistributionProviderActionBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var genericDistributionProviderIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderIdEqual") 
+			}
+		}
+		
+		public var genericDistributionProviderIdIn: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderIdIn") 
+			}
+		}
+		
+		public var actionEqual: BaseTokenizedObject {
+			get {
+				return self.append("actionEqual") 
+			}
+		}
+		
+		public var actionIn: BaseTokenizedObject {
+			get {
+				return self.append("actionIn") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
@@ -47,6 +110,46 @@ open class GenericDistributionProviderActionBaseFilter: Filter {
 	public var actionIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(genericDistributionProviderIdEqual: String) {
+		self.dict["genericDistributionProviderIdEqual"] = genericDistributionProviderIdEqual
+	}
+	
+	public func setMultiRequestToken(genericDistributionProviderIdIn: String) {
+		self.dict["genericDistributionProviderIdIn"] = genericDistributionProviderIdIn
+	}
+	
+	public func setMultiRequestToken(actionEqual: String) {
+		self.dict["actionEqual"] = actionEqual
+	}
+	
+	public func setMultiRequestToken(actionIn: String) {
+		self.dict["actionIn"] = actionIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

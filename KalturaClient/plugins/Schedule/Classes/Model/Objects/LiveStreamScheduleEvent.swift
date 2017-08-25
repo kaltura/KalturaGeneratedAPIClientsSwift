@@ -35,6 +35,9 @@
 
 open class LiveStreamScheduleEvent: EntryScheduleEvent {
 
+	public class LiveStreamScheduleEventTokenizer: EntryScheduleEvent.EntryScheduleEventTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class PermissionFilter: PermissionBaseFilter {
 
+	public class PermissionFilterTokenizer: PermissionBaseFilter.PermissionBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

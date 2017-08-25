@@ -35,6 +35,9 @@
 
 open class MediaFlavorParams: FlavorParams {
 
+	public class MediaFlavorParamsTokenizer: FlavorParams.FlavorParamsTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

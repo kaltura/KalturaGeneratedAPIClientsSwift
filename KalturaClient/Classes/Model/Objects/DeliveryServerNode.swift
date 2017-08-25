@@ -35,6 +35,15 @@
 
 open class DeliveryServerNode: ServerNode {
 
+	public class DeliveryServerNodeTokenizer: ServerNode.ServerNodeTokenizer {
+		
+		public var deliveryProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("deliveryProfileIds"))
+			} 
+		}
+	}
+
 	/**  Delivery profile ids  */
 	public var deliveryProfileIds: Array<KeyValue>? = nil
 

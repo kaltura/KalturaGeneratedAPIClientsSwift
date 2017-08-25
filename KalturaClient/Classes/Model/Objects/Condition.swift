@@ -35,12 +35,45 @@
 
 open class Condition: ObjectBase {
 
+	public class ConditionTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var not: BaseTokenizedObject {
+			get {
+				return self.append("not") 
+			}
+		}
+	}
+
 	/**  The type of the access control condition  */
 	public var type: ConditionType? = nil
 	public var description: String? = nil
 	public var not: Bool? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(not: String) {
+		self.dict["not"] = not
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

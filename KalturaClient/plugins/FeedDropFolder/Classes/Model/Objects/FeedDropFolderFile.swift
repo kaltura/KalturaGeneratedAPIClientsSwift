@@ -35,12 +35,35 @@
 
 open class FeedDropFolderFile: DropFolderFile {
 
+	public class FeedDropFolderFileTokenizer: DropFolderFile.DropFolderFileTokenizer {
+		
+		public var hash: BaseTokenizedObject {
+			get {
+				return self.append("hash") 
+			}
+		}
+		
+		public var feedXmlPath: BaseTokenizedObject {
+			get {
+				return self.append("feedXmlPath") 
+			}
+		}
+	}
+
 	/**  MD5 or Sha1 encrypted string  */
 	public var hash: String? = nil
 	/**  Path of the original Feed content XML  */
 	public var feedXmlPath: String? = nil
 
 
+	public func setMultiRequestToken(hash: String) {
+		self.dict["hash"] = hash
+	}
+	
+	public func setMultiRequestToken(feedXmlPath: String) {
+		self.dict["feedXmlPath"] = feedXmlPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

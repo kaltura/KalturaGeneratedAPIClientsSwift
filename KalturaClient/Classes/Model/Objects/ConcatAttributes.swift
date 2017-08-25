@@ -36,6 +36,15 @@
 /**  Concat operation attributes  */
 open class ConcatAttributes: OperationAttributes {
 
+	public class ConcatAttributesTokenizer: OperationAttributes.OperationAttributesTokenizer {
+		
+		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
+			get {
+				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
+			}
+		}
+	}
+
 	/**  The resource to be concatenated  */
 	public var resource: DataCenterContentResource? = nil
 

@@ -35,12 +35,35 @@
 
 open class ReportFilter: ObjectBase {
 
+	public class ReportFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var dimension: BaseTokenizedObject {
+			get {
+				return self.append("dimension") 
+			}
+		}
+		
+		public var values: BaseTokenizedObject {
+			get {
+				return self.append("values") 
+			}
+		}
+	}
+
 	/**  The dimension whose values should be filtered  */
 	public var dimension: String? = nil
 	/**  The (comma separated) values to include in the filter  */
 	public var values: String? = nil
 
 
+	public func setMultiRequestToken(dimension: String) {
+		self.dict["dimension"] = dimension
+	}
+	
+	public func setMultiRequestToken(values: String) {
+		self.dict["values"] = values
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

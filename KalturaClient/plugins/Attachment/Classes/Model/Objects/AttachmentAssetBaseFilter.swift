@@ -35,6 +35,39 @@
 
 open class AttachmentAssetBaseFilter: AssetFilter {
 
+	public class AttachmentAssetBaseFilterTokenizer: AssetFilter.AssetFilterTokenizer {
+		
+		public var formatEqual: BaseTokenizedObject {
+			get {
+				return self.append("formatEqual") 
+			}
+		}
+		
+		public var formatIn: BaseTokenizedObject {
+			get {
+				return self.append("formatIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+	}
+
 	public var formatEqual: AttachmentType? = nil
 	public var formatIn: String? = nil
 	public var statusEqual: AttachmentAssetStatus? = nil
@@ -42,6 +75,26 @@ open class AttachmentAssetBaseFilter: AssetFilter {
 	public var statusNotIn: String? = nil
 
 
+	public func setMultiRequestToken(formatEqual: String) {
+		self.dict["formatEqual"] = formatEqual
+	}
+	
+	public func setMultiRequestToken(formatIn: String) {
+		self.dict["formatIn"] = formatIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -38,6 +38,33 @@
   file sync of link type that will point to the existing file sync.  */
 open class FileSyncResource: ContentResource {
 
+	public class FileSyncResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var fileSyncObjectType: BaseTokenizedObject {
+			get {
+				return self.append("fileSyncObjectType") 
+			}
+		}
+		
+		public var objectSubType: BaseTokenizedObject {
+			get {
+				return self.append("objectSubType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
 	/**  The object type of the file sync object  */
 	public var fileSyncObjectType: Int? = nil
 	/**  The object sub-type of the file sync object  */
@@ -48,6 +75,22 @@ open class FileSyncResource: ContentResource {
 	public var version: String? = nil
 
 
+	public func setMultiRequestToken(fileSyncObjectType: String) {
+		self.dict["fileSyncObjectType"] = fileSyncObjectType
+	}
+	
+	public func setMultiRequestToken(objectSubType: String) {
+		self.dict["objectSubType"] = objectSubType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

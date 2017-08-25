@@ -35,6 +35,111 @@
 
 open class AssetBaseFilter: RelatedFilter {
 
+	public class AssetBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var sizeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sizeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var sizeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("sizeLessThanOrEqual") 
+			}
+		}
+		
+		public var tagsLike: BaseTokenizedObject {
+			get {
+				return self.append("tagsLike") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var deletedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("deletedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var deletedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("deletedAtLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
 	public var entryIdEqual: String? = nil
@@ -54,6 +159,74 @@ open class AssetBaseFilter: RelatedFilter {
 	public var deletedAtLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(sizeGreaterThanOrEqual: String) {
+		self.dict["sizeGreaterThanOrEqual"] = sizeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(sizeLessThanOrEqual: String) {
+		self.dict["sizeLessThanOrEqual"] = sizeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(tagsLike: String) {
+		self.dict["tagsLike"] = tagsLike
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(deletedAtGreaterThanOrEqual: String) {
+		self.dict["deletedAtGreaterThanOrEqual"] = deletedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(deletedAtLessThanOrEqual: String) {
+		self.dict["deletedAtLessThanOrEqual"] = deletedAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

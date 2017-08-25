@@ -35,6 +35,75 @@
 
 open class EmailNotificationDispatchJobData: EventNotificationDispatchJobData {
 
+	public class EmailNotificationDispatchJobDataTokenizer: EventNotificationDispatchJobData.EventNotificationDispatchJobDataTokenizer {
+		
+		public var fromEmail: BaseTokenizedObject {
+			get {
+				return self.append("fromEmail") 
+			}
+		}
+		
+		public var fromName: BaseTokenizedObject {
+			get {
+				return self.append("fromName") 
+			}
+		}
+		
+		public var to: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+			get {
+				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("to")) 
+			}
+		}
+		
+		public var cc: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+			get {
+				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("cc")) 
+			}
+		}
+		
+		public var bcc: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+			get {
+				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("bcc")) 
+			}
+		}
+		
+		public var replyTo: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+			get {
+				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("replyTo")) 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var confirmReadingTo: BaseTokenizedObject {
+			get {
+				return self.append("confirmReadingTo") 
+			}
+		}
+		
+		public var hostname: BaseTokenizedObject {
+			get {
+				return self.append("hostname") 
+			}
+		}
+		
+		public var messageID: BaseTokenizedObject {
+			get {
+				return self.append("messageID") 
+			}
+		}
+		
+		public var customHeaders: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("customHeaders"))
+			} 
+		}
+	}
+
 	/**  Define the email sender email  */
 	public var fromEmail: String? = nil
 	/**  Define the email sender name  */
@@ -62,6 +131,30 @@ open class EmailNotificationDispatchJobData: EventNotificationDispatchJobData {
 	public var customHeaders: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(fromEmail: String) {
+		self.dict["fromEmail"] = fromEmail
+	}
+	
+	public func setMultiRequestToken(fromName: String) {
+		self.dict["fromName"] = fromName
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(confirmReadingTo: String) {
+		self.dict["confirmReadingTo"] = confirmReadingTo
+	}
+	
+	public func setMultiRequestToken(hostname: String) {
+		self.dict["hostname"] = hostname
+	}
+	
+	public func setMultiRequestToken(messageID: String) {
+		self.dict["messageID"] = messageID
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

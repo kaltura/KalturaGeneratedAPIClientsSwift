@@ -35,6 +35,219 @@
 
 open class Category: ObjectBase {
 
+	public class CategoryTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var depth: BaseTokenizedObject {
+			get {
+				return self.append("depth") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var fullName: BaseTokenizedObject {
+			get {
+				return self.append("fullName") 
+			}
+		}
+		
+		public var fullIds: BaseTokenizedObject {
+			get {
+				return self.append("fullIds") 
+			}
+		}
+		
+		public var entriesCount: BaseTokenizedObject {
+			get {
+				return self.append("entriesCount") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var appearInList: BaseTokenizedObject {
+			get {
+				return self.append("appearInList") 
+			}
+		}
+		
+		public var privacy: BaseTokenizedObject {
+			get {
+				return self.append("privacy") 
+			}
+		}
+		
+		public var inheritanceType: BaseTokenizedObject {
+			get {
+				return self.append("inheritanceType") 
+			}
+		}
+		
+		public var userJoinPolicy: BaseTokenizedObject {
+			get {
+				return self.append("userJoinPolicy") 
+			}
+		}
+		
+		public var defaultPermissionLevel: BaseTokenizedObject {
+			get {
+				return self.append("defaultPermissionLevel") 
+			}
+		}
+		
+		public var owner: BaseTokenizedObject {
+			get {
+				return self.append("owner") 
+			}
+		}
+		
+		public var directEntriesCount: BaseTokenizedObject {
+			get {
+				return self.append("directEntriesCount") 
+			}
+		}
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+		
+		public var contributionPolicy: BaseTokenizedObject {
+			get {
+				return self.append("contributionPolicy") 
+			}
+		}
+		
+		public var membersCount: BaseTokenizedObject {
+			get {
+				return self.append("membersCount") 
+			}
+		}
+		
+		public var pendingMembersCount: BaseTokenizedObject {
+			get {
+				return self.append("pendingMembersCount") 
+			}
+		}
+		
+		public var privacyContext: BaseTokenizedObject {
+			get {
+				return self.append("privacyContext") 
+			}
+		}
+		
+		public var privacyContexts: BaseTokenizedObject {
+			get {
+				return self.append("privacyContexts") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var inheritedParentId: BaseTokenizedObject {
+			get {
+				return self.append("inheritedParentId") 
+			}
+		}
+		
+		public var partnerSortValue: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValue") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var defaultOrderBy: BaseTokenizedObject {
+			get {
+				return self.append("defaultOrderBy") 
+			}
+		}
+		
+		public var directSubCategoriesCount: BaseTokenizedObject {
+			get {
+				return self.append("directSubCategoriesCount") 
+			}
+		}
+		
+		public var moderation: BaseTokenizedObject {
+			get {
+				return self.append("moderation") 
+			}
+		}
+		
+		public var pendingEntriesCount: BaseTokenizedObject {
+			get {
+				return self.append("pendingEntriesCount") 
+			}
+		}
+		
+		public var isAggregationCategory: BaseTokenizedObject {
+			get {
+				return self.append("isAggregationCategory") 
+			}
+		}
+		
+		public var aggregationCategories: BaseTokenizedObject {
+			get {
+				return self.append("aggregationCategories") 
+			}
+		}
+	}
+
 	/**  The id of the Category  */
 	public var id: Int? = nil
 	public var parentId: Int? = nil
@@ -110,6 +323,146 @@ open class Category: ObjectBase {
 	public var aggregationCategories: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(depth: String) {
+		self.dict["depth"] = depth
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(fullName: String) {
+		self.dict["fullName"] = fullName
+	}
+	
+	public func setMultiRequestToken(fullIds: String) {
+		self.dict["fullIds"] = fullIds
+	}
+	
+	public func setMultiRequestToken(entriesCount: String) {
+		self.dict["entriesCount"] = entriesCount
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(appearInList: String) {
+		self.dict["appearInList"] = appearInList
+	}
+	
+	public func setMultiRequestToken(privacy: String) {
+		self.dict["privacy"] = privacy
+	}
+	
+	public func setMultiRequestToken(inheritanceType: String) {
+		self.dict["inheritanceType"] = inheritanceType
+	}
+	
+	public func setMultiRequestToken(userJoinPolicy: String) {
+		self.dict["userJoinPolicy"] = userJoinPolicy
+	}
+	
+	public func setMultiRequestToken(defaultPermissionLevel: String) {
+		self.dict["defaultPermissionLevel"] = defaultPermissionLevel
+	}
+	
+	public func setMultiRequestToken(owner: String) {
+		self.dict["owner"] = owner
+	}
+	
+	public func setMultiRequestToken(directEntriesCount: String) {
+		self.dict["directEntriesCount"] = directEntriesCount
+	}
+	
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(contributionPolicy: String) {
+		self.dict["contributionPolicy"] = contributionPolicy
+	}
+	
+	public func setMultiRequestToken(membersCount: String) {
+		self.dict["membersCount"] = membersCount
+	}
+	
+	public func setMultiRequestToken(pendingMembersCount: String) {
+		self.dict["pendingMembersCount"] = pendingMembersCount
+	}
+	
+	public func setMultiRequestToken(privacyContext: String) {
+		self.dict["privacyContext"] = privacyContext
+	}
+	
+	public func setMultiRequestToken(privacyContexts: String) {
+		self.dict["privacyContexts"] = privacyContexts
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(inheritedParentId: String) {
+		self.dict["inheritedParentId"] = inheritedParentId
+	}
+	
+	public func setMultiRequestToken(partnerSortValue: String) {
+		self.dict["partnerSortValue"] = partnerSortValue
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(defaultOrderBy: String) {
+		self.dict["defaultOrderBy"] = defaultOrderBy
+	}
+	
+	public func setMultiRequestToken(directSubCategoriesCount: String) {
+		self.dict["directSubCategoriesCount"] = directSubCategoriesCount
+	}
+	
+	public func setMultiRequestToken(moderation: String) {
+		self.dict["moderation"] = moderation
+	}
+	
+	public func setMultiRequestToken(pendingEntriesCount: String) {
+		self.dict["pendingEntriesCount"] = pendingEntriesCount
+	}
+	
+	public func setMultiRequestToken(isAggregationCategory: String) {
+		self.dict["isAggregationCategory"] = isAggregationCategory
+	}
+	
+	public func setMultiRequestToken(aggregationCategories: String) {
+		self.dict["aggregationCategories"] = aggregationCategories
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

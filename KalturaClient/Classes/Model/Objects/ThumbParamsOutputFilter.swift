@@ -35,6 +35,9 @@
 
 open class ThumbParamsOutputFilter: ThumbParamsOutputBaseFilter {
 
+	public class ThumbParamsOutputFilterTokenizer: ThumbParamsOutputBaseFilter.ThumbParamsOutputBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

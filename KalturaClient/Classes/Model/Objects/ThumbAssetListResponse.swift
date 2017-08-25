@@ -35,6 +35,15 @@
 
 open class ThumbAssetListResponse: ListResponse {
 
+	public class ThumbAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ThumbAsset.ThumbAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<ThumbAsset.ThumbAssetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ThumbAsset>? = nil
 
 

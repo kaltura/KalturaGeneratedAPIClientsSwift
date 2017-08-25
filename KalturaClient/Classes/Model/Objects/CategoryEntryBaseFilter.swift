@@ -35,6 +35,75 @@
 
 open class CategoryEntryBaseFilter: RelatedFilter {
 
+	public class CategoryEntryBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var categoryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdEqual") 
+			}
+		}
+		
+		public var categoryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdIn") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var categoryFullIdsStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("categoryFullIdsStartsWith") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var creatorUserIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("creatorUserIdEqual") 
+			}
+		}
+		
+		public var creatorUserIdIn: BaseTokenizedObject {
+			get {
+				return self.append("creatorUserIdIn") 
+			}
+		}
+	}
+
 	public var categoryIdEqual: Int? = nil
 	public var categoryIdIn: String? = nil
 	public var entryIdEqual: String? = nil
@@ -48,6 +117,50 @@ open class CategoryEntryBaseFilter: RelatedFilter {
 	public var creatorUserIdIn: String? = nil
 
 
+	public func setMultiRequestToken(categoryIdEqual: String) {
+		self.dict["categoryIdEqual"] = categoryIdEqual
+	}
+	
+	public func setMultiRequestToken(categoryIdIn: String) {
+		self.dict["categoryIdIn"] = categoryIdIn
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(categoryFullIdsStartsWith: String) {
+		self.dict["categoryFullIdsStartsWith"] = categoryFullIdsStartsWith
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(creatorUserIdEqual: String) {
+		self.dict["creatorUserIdEqual"] = creatorUserIdEqual
+	}
+	
+	public func setMultiRequestToken(creatorUserIdIn: String) {
+		self.dict["creatorUserIdIn"] = creatorUserIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

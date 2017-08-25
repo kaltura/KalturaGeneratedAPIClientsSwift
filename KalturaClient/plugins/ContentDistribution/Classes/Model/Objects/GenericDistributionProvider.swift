@@ -35,6 +35,81 @@
 
 open class GenericDistributionProvider: DistributionProvider {
 
+	public class GenericDistributionProviderTokenizer: DistributionProvider.DistributionProviderTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var optionalFlavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("optionalFlavorParamsIds") 
+			}
+		}
+		
+		public var requiredFlavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("requiredFlavorParamsIds") 
+			}
+		}
+		
+		public var optionalThumbDimensions: ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer>(self.append("optionalThumbDimensions"))
+			} 
+		}
+		
+		public var requiredThumbDimensions: ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionThumbDimensions.DistributionThumbDimensionsTokenizer>(self.append("requiredThumbDimensions"))
+			} 
+		}
+		
+		public var editableFields: BaseTokenizedObject {
+			get {
+				return self.append("editableFields") 
+			}
+		}
+		
+		public var mandatoryFields: BaseTokenizedObject {
+			get {
+				return self.append("mandatoryFields") 
+			}
+		}
+	}
+
 	/**  Auto generated  */
 	public var id: Int? = nil
 	/**  Generic distribution provider creation date as Unix timestamp (In seconds)  */
@@ -52,6 +127,46 @@ open class GenericDistributionProvider: DistributionProvider {
 	public var mandatoryFields: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(optionalFlavorParamsIds: String) {
+		self.dict["optionalFlavorParamsIds"] = optionalFlavorParamsIds
+	}
+	
+	public func setMultiRequestToken(requiredFlavorParamsIds: String) {
+		self.dict["requiredFlavorParamsIds"] = requiredFlavorParamsIds
+	}
+	
+	public func setMultiRequestToken(editableFields: String) {
+		self.dict["editableFields"] = editableFields
+	}
+	
+	public func setMultiRequestToken(mandatoryFields: String) {
+		self.dict["mandatoryFields"] = mandatoryFields
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

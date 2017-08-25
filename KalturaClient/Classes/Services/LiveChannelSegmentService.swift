@@ -36,50 +36,107 @@
 /**  Manage live channel segments  */
 public final class LiveChannelSegmentService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var liveChannelSegment: LiveChannelSegment.LiveChannelSegmentTokenizer {
+			get {
+				return LiveChannelSegment.LiveChannelSegmentTokenizer(self.append("liveChannelSegment")) 
+			}
+		}
+	}
+
 	/**  Add new live channel segment  */
-	public static func add(liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment> {
-		let request: RequestBuilder<LiveChannelSegment> = RequestBuilder<LiveChannelSegment>(service: "livechannelsegment", action: "add")
+	public static func add(liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer> {
+		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer>(service: "livechannelsegment", action: "add")
 			.setBody(key: "liveChannelSegment", value: liveChannelSegment)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete live channel segment by id  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "livechannelsegment", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get live channel segment by id  */
-	public static func get(id: Int) -> RequestBuilder<LiveChannelSegment> {
-		let request: RequestBuilder<LiveChannelSegment> = RequestBuilder<LiveChannelSegment>(service: "livechannelsegment", action: "get")
+	public static func get(id: Int) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> {
+		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer>(service: "livechannelsegment", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<LiveChannelSegmentListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: LiveChannelSegmentFilter.LiveChannelSegmentFilterTokenizer {
+			get {
+				return LiveChannelSegmentFilter.LiveChannelSegmentFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: LiveChannelSegmentFilter?) -> RequestBuilder<LiveChannelSegmentListResponse> {
+	public static func list(filter: LiveChannelSegmentFilter?) -> RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List live channel segments by filter and pager  */
-	public static func list(filter: LiveChannelSegmentFilter?, pager: FilterPager?) -> RequestBuilder<LiveChannelSegmentListResponse> {
-		let request: RequestBuilder<LiveChannelSegmentListResponse> = RequestBuilder<LiveChannelSegmentListResponse>(service: "livechannelsegment", action: "list")
+	public static func list(filter: LiveChannelSegmentFilter?, pager: FilterPager?) -> RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> = RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer>(service: "livechannelsegment", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var liveChannelSegment: LiveChannelSegment.LiveChannelSegmentTokenizer {
+			get {
+				return LiveChannelSegment.LiveChannelSegmentTokenizer(self.append("liveChannelSegment")) 
+			}
+		}
+	}
+
 	/**  Update live channel segment by id  */
-	public static func update(id: Int, liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment> {
-		let request: RequestBuilder<LiveChannelSegment> = RequestBuilder<LiveChannelSegment>(service: "livechannelsegment", action: "update")
+	public static func update(id: Int, liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer>(service: "livechannelsegment", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "liveChannelSegment", value: liveChannelSegment)
 

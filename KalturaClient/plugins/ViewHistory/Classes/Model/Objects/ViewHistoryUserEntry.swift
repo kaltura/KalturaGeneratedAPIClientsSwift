@@ -35,6 +35,27 @@
 
 open class ViewHistoryUserEntry: UserEntry {
 
+	public class ViewHistoryUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+		
+		public var playbackContext: BaseTokenizedObject {
+			get {
+				return self.append("playbackContext") 
+			}
+		}
+		
+		public var lastTimeReached: BaseTokenizedObject {
+			get {
+				return self.append("lastTimeReached") 
+			}
+		}
+		
+		public var lastUpdateTime: BaseTokenizedObject {
+			get {
+				return self.append("lastUpdateTime") 
+			}
+		}
+	}
+
 	/**  Playback context  */
 	public var playbackContext: String? = nil
 	/**  Last playback time reached by user  */
@@ -42,6 +63,18 @@ open class ViewHistoryUserEntry: UserEntry {
 	public var lastUpdateTime: Int? = nil
 
 
+	public func setMultiRequestToken(playbackContext: String) {
+		self.dict["playbackContext"] = playbackContext
+	}
+	
+	public func setMultiRequestToken(lastTimeReached: String) {
+		self.dict["lastTimeReached"] = lastTimeReached
+	}
+	
+	public func setMultiRequestToken(lastUpdateTime: String) {
+		self.dict["lastUpdateTime"] = lastUpdateTime
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

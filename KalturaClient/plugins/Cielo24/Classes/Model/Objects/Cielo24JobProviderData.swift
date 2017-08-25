@@ -35,6 +35,75 @@
 
 open class Cielo24JobProviderData: IntegrationJobProviderData {
 
+	public class Cielo24JobProviderDataTokenizer: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var captionAssetFormats: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetFormats") 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var fidelity: BaseTokenizedObject {
+			get {
+				return self.append("fidelity") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var baseUrl: BaseTokenizedObject {
+			get {
+				return self.append("baseUrl") 
+			}
+		}
+		
+		public var spokenLanguage: BaseTokenizedObject {
+			get {
+				return self.append("spokenLanguage") 
+			}
+		}
+		
+		public var replaceMediaContent: BaseTokenizedObject {
+			get {
+				return self.append("replaceMediaContent") 
+			}
+		}
+		
+		public var additionalParameters: BaseTokenizedObject {
+			get {
+				return self.append("additionalParameters") 
+			}
+		}
+	}
+
 	/**  Entry ID  */
 	public var entryId: String? = nil
 	/**  Flavor ID  */
@@ -57,6 +126,50 @@ open class Cielo24JobProviderData: IntegrationJobProviderData {
 	public var additionalParameters: String? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(captionAssetFormats: String) {
+		self.dict["captionAssetFormats"] = captionAssetFormats
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(fidelity: String) {
+		self.dict["fidelity"] = fidelity
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(baseUrl: String) {
+		self.dict["baseUrl"] = baseUrl
+	}
+	
+	public func setMultiRequestToken(spokenLanguage: String) {
+		self.dict["spokenLanguage"] = spokenLanguage
+	}
+	
+	public func setMultiRequestToken(replaceMediaContent: String) {
+		self.dict["replaceMediaContent"] = replaceMediaContent
+	}
+	
+	public func setMultiRequestToken(additionalParameters: String) {
+		self.dict["additionalParameters"] = additionalParameters
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

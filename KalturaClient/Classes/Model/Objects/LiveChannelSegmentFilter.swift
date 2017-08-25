@@ -35,6 +35,9 @@
 
 open class LiveChannelSegmentFilter: LiveChannelSegmentBaseFilter {
 
+	public class LiveChannelSegmentFilterTokenizer: LiveChannelSegmentBaseFilter.LiveChannelSegmentBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,9 +35,22 @@
 
 open class KontikiStorageProfile: StorageProfile {
 
+	public class KontikiStorageProfileTokenizer: StorageProfile.StorageProfileTokenizer {
+		
+		public var serviceToken: BaseTokenizedObject {
+			get {
+				return self.append("serviceToken") 
+			}
+		}
+	}
+
 	public var serviceToken: String? = nil
 
 
+	public func setMultiRequestToken(serviceToken: String) {
+		self.dict["serviceToken"] = serviceToken
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,12 +35,35 @@
 
 open class UrlTokenizerAkamaiRtsp: UrlTokenizer {
 
+	public class UrlTokenizerAkamaiRtspTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var host: BaseTokenizedObject {
+			get {
+				return self.append("host") 
+			}
+		}
+		
+		public var cpcode: BaseTokenizedObject {
+			get {
+				return self.append("cpcode") 
+			}
+		}
+	}
+
 	/**  host  */
 	public var host: String? = nil
 	/**  Cp-Code  */
 	public var cpcode: Int? = nil
 
 
+	public func setMultiRequestToken(host: String) {
+		self.dict["host"] = host
+	}
+	
+	public func setMultiRequestToken(cpcode: String) {
+		self.dict["cpcode"] = cpcode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

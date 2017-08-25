@@ -36,6 +36,15 @@
 /**  JobData representing the dynamic user receipient array  */
 open class EmailNotificationUserRecipientJobData: EmailNotificationRecipientJobData {
 
+	public class EmailNotificationUserRecipientJobDataTokenizer: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+		
+		public var filter: UserFilter.UserFilterTokenizer {
+			get {
+				return UserFilter.UserFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
 	public var filter: UserFilter? = nil
 
 

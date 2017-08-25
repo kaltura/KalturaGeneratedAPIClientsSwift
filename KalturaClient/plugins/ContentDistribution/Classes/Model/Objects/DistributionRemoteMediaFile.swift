@@ -35,11 +35,44 @@
 
 open class DistributionRemoteMediaFile: ObjectBase {
 
+	public class DistributionRemoteMediaFileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var remoteId: BaseTokenizedObject {
+			get {
+				return self.append("remoteId") 
+			}
+		}
+	}
+
 	public var version: String? = nil
 	public var assetId: String? = nil
 	public var remoteId: String? = nil
 
 
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(remoteId: String) {
+		self.dict["remoteId"] = remoteId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

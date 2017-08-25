@@ -35,6 +35,63 @@
 
 open class NotificationJobData: JobData {
 
+	public class NotificationJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var typeAsString: BaseTokenizedObject {
+			get {
+				return self.append("typeAsString") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+		
+		public var numberOfAttempts: BaseTokenizedObject {
+			get {
+				return self.append("numberOfAttempts") 
+			}
+		}
+		
+		public var notificationResult: BaseTokenizedObject {
+			get {
+				return self.append("notificationResult") 
+			}
+		}
+		
+		public var objType: BaseTokenizedObject {
+			get {
+				return self.append("objType") 
+			}
+		}
+	}
+
 	public var userId: String? = nil
 	public var type: NotificationType? = nil
 	public var typeAsString: String? = nil
@@ -46,6 +103,42 @@ open class NotificationJobData: JobData {
 	public var objType: NotificationObjectType? = nil
 
 
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(typeAsString: String) {
+		self.dict["typeAsString"] = typeAsString
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
+	public func setMultiRequestToken(numberOfAttempts: String) {
+		self.dict["numberOfAttempts"] = numberOfAttempts
+	}
+	
+	public func setMultiRequestToken(notificationResult: String) {
+		self.dict["notificationResult"] = notificationResult
+	}
+	
+	public func setMultiRequestToken(objType: String) {
+		self.dict["objType"] = objType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

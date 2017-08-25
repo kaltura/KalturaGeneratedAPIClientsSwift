@@ -35,9 +35,22 @@
 
 open class DropFolderFileHandlerConfig: ObjectBase {
 
+	public class DropFolderFileHandlerConfigTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var handlerType: BaseTokenizedObject {
+			get {
+				return self.append("handlerType") 
+			}
+		}
+	}
+
 	public var handlerType: DropFolderFileHandlerType? = nil
 
 
+	public func setMultiRequestToken(handlerType: String) {
+		self.dict["handlerType"] = handlerType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

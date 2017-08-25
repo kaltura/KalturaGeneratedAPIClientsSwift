@@ -35,9 +35,22 @@
 
 open class QuizUserEntry: UserEntry {
 
+	public class QuizUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+		
+		public var score: BaseTokenizedObject {
+			get {
+				return self.append("score") 
+			}
+		}
+	}
+
 	public var score: Double? = nil
 
 
+	public func setMultiRequestToken(score: String) {
+		self.dict["score"] = score
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

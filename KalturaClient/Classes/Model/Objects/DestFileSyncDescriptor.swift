@@ -35,6 +35,9 @@
 
 open class DestFileSyncDescriptor: FileSyncDescriptor {
 
+	public class DestFileSyncDescriptorTokenizer: FileSyncDescriptor.FileSyncDescriptorTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

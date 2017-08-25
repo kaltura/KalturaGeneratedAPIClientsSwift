@@ -35,6 +35,9 @@
 
 open class MediaEntryFilter: MediaEntryBaseFilter {
 
+	public class MediaEntryFilterTokenizer: MediaEntryBaseFilter.MediaEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

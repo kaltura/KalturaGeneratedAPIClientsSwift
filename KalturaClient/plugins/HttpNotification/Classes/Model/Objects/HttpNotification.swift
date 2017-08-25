@@ -36,6 +36,51 @@
 /**  Wrapper for sent notifications  */
 open class HttpNotification: ObjectBase {
 
+	public class HttpNotificationTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var object: ObjectBase.ObjectBaseTokenizer {
+			get {
+				return ObjectBase.ObjectBaseTokenizer(self.append("object")) 
+			}
+		}
+		
+		public var eventObjectType: BaseTokenizedObject {
+			get {
+				return self.append("eventObjectType") 
+			}
+		}
+		
+		public var eventNotificationJobId: BaseTokenizedObject {
+			get {
+				return self.append("eventNotificationJobId") 
+			}
+		}
+		
+		public var templateId: BaseTokenizedObject {
+			get {
+				return self.append("templateId") 
+			}
+		}
+		
+		public var templateName: BaseTokenizedObject {
+			get {
+				return self.append("templateName") 
+			}
+		}
+		
+		public var templateSystemName: BaseTokenizedObject {
+			get {
+				return self.append("templateSystemName") 
+			}
+		}
+		
+		public var eventType: BaseTokenizedObject {
+			get {
+				return self.append("eventType") 
+			}
+		}
+	}
+
 	/**  Object that triggered the notification  */
 	public var object: ObjectBase? = nil
 	/**  Object type that triggered the notification  */
@@ -52,6 +97,30 @@ open class HttpNotification: ObjectBase {
 	public var eventType: EventNotificationEventType? = nil
 
 
+	public func setMultiRequestToken(eventObjectType: String) {
+		self.dict["eventObjectType"] = eventObjectType
+	}
+	
+	public func setMultiRequestToken(eventNotificationJobId: String) {
+		self.dict["eventNotificationJobId"] = eventNotificationJobId
+	}
+	
+	public func setMultiRequestToken(templateId: String) {
+		self.dict["templateId"] = templateId
+	}
+	
+	public func setMultiRequestToken(templateName: String) {
+		self.dict["templateName"] = templateName
+	}
+	
+	public func setMultiRequestToken(templateSystemName: String) {
+		self.dict["templateSystemName"] = templateSystemName
+	}
+	
+	public func setMultiRequestToken(eventType: String) {
+		self.dict["eventType"] = eventType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -61,7 +130,7 @@ open class HttpNotification: ObjectBase {
 			eventObjectType = EventNotificationEventObjectType(rawValue: "\(dict["eventObjectType"]!)")
 		}
 		if dict["eventNotificationJobId"] != nil {
-			eventNotificationJobId = Int64((dict["eventNotificationJobId"] as? String)!)
+			eventNotificationJobId = Int64("\(dict["eventNotificationJobId"]!)")
 		}
 		if dict["templateId"] != nil {
 			templateId = dict["templateId"] as? Int

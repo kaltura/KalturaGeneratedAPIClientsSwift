@@ -35,6 +35,57 @@
 
 open class BulkUploadResultScheduleResource: BulkUploadResult {
 
+	public class BulkUploadResultScheduleResourceTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var resourceId: BaseTokenizedObject {
+			get {
+				return self.append("resourceId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var parentType: BaseTokenizedObject {
+			get {
+				return self.append("parentType") 
+			}
+		}
+		
+		public var parentSystemName: BaseTokenizedObject {
+			get {
+				return self.append("parentSystemName") 
+			}
+		}
+	}
+
 	public var resourceId: String? = nil
 	public var name: String? = nil
 	public var type: String? = nil
@@ -45,6 +96,38 @@ open class BulkUploadResultScheduleResource: BulkUploadResult {
 	public var parentSystemName: String? = nil
 
 
+	public func setMultiRequestToken(resourceId: String) {
+		self.dict["resourceId"] = resourceId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(parentType: String) {
+		self.dict["parentType"] = parentType
+	}
+	
+	public func setMultiRequestToken(parentSystemName: String) {
+		self.dict["parentSystemName"] = parentSystemName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

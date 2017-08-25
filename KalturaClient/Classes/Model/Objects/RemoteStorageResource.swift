@@ -38,11 +38,24 @@
   type will point to the media URL.  */
 open class RemoteStorageResource: UrlResource {
 
+	public class RemoteStorageResourceTokenizer: UrlResource.UrlResourceTokenizer {
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+	}
+
 	/**  ID of storage profile to be associated with the created file sync, used for file
 	  serving URL composing.  */
 	public var storageProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(storageProfileId: String) {
+		self.dict["storageProfileId"] = storageProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,27 @@
 
 open class FlavorAssetWithParams: ObjectBase {
 
+	public class FlavorAssetWithParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var flavorAsset: FlavorAsset.FlavorAssetTokenizer {
+			get {
+				return FlavorAsset.FlavorAssetTokenizer(self.append("flavorAsset")) 
+			}
+		}
+		
+		public var flavorParams: FlavorParams.FlavorParamsTokenizer {
+			get {
+				return FlavorParams.FlavorParamsTokenizer(self.append("flavorParams")) 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  The Flavor Asset (Can be null when there are params without asset)  */
 	public var flavorAsset: FlavorAsset? = nil
 	/**  The Flavor Params  */
@@ -43,6 +64,10 @@ open class FlavorAssetWithParams: ObjectBase {
 	public var entryId: String? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

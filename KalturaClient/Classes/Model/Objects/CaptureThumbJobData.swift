@@ -35,6 +35,57 @@
 
 open class CaptureThumbJobData: JobData {
 
+	public class CaptureThumbJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncLocalPath") 
+			}
+		}
+		
+		public var actualSrcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("actualSrcFileSyncLocalPath") 
+			}
+		}
+		
+		public var srcFileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncRemoteUrl") 
+			}
+		}
+		
+		public var thumbParamsOutputId: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsOutputId") 
+			}
+		}
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+		
+		public var srcAssetId: BaseTokenizedObject {
+			get {
+				return self.append("srcAssetId") 
+			}
+		}
+		
+		public var srcAssetType: BaseTokenizedObject {
+			get {
+				return self.append("srcAssetType") 
+			}
+		}
+		
+		public var thumbPath: BaseTokenizedObject {
+			get {
+				return self.append("thumbPath") 
+			}
+		}
+	}
+
 	public var srcFileSyncLocalPath: String? = nil
 	/**  The translated path as used by the scheduler  */
 	public var actualSrcFileSyncLocalPath: String? = nil
@@ -46,6 +97,38 @@ open class CaptureThumbJobData: JobData {
 	public var thumbPath: String? = nil
 
 
+	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
+		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(actualSrcFileSyncLocalPath: String) {
+		self.dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(srcFileSyncRemoteUrl: String) {
+		self.dict["srcFileSyncRemoteUrl"] = srcFileSyncRemoteUrl
+	}
+	
+	public func setMultiRequestToken(thumbParamsOutputId: String) {
+		self.dict["thumbParamsOutputId"] = thumbParamsOutputId
+	}
+	
+	public func setMultiRequestToken(thumbAssetId: String) {
+		self.dict["thumbAssetId"] = thumbAssetId
+	}
+	
+	public func setMultiRequestToken(srcAssetId: String) {
+		self.dict["srcAssetId"] = srcAssetId
+	}
+	
+	public func setMultiRequestToken(srcAssetType: String) {
+		self.dict["srcAssetType"] = srcAssetType
+	}
+	
+	public func setMultiRequestToken(thumbPath: String) {
+		self.dict["thumbPath"] = thumbPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

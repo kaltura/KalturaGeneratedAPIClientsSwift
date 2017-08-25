@@ -35,6 +35,9 @@
 
 open class DeliveryProfileAkamaiHdsBaseFilter: DeliveryProfileFilter {
 
+	public class DeliveryProfileAkamaiHdsBaseFilterTokenizer: DeliveryProfileFilter.DeliveryProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

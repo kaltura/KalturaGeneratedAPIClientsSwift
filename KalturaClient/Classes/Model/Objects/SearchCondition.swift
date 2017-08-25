@@ -35,10 +35,33 @@
 
 open class SearchCondition: SearchItem {
 
+	public class SearchConditionTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var field: BaseTokenizedObject {
+			get {
+				return self.append("field") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	public var field: String? = nil
 	public var value: String? = nil
 
 
+	public func setMultiRequestToken(field: String) {
+		self.dict["field"] = field
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

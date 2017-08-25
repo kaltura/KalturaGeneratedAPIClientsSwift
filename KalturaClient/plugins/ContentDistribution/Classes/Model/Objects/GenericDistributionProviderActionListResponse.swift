@@ -35,6 +35,15 @@
 
 open class GenericDistributionProviderActionListResponse: ListResponse {
 
+	public class GenericDistributionProviderActionListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer> {
+			get {
+				return ArrayTokenizedObject<GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<GenericDistributionProviderAction>? = nil
 
 

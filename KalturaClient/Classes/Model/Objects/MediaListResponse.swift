@@ -35,6 +35,15 @@
 
 open class MediaListResponse: ListResponse {
 
+	public class MediaListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<MediaEntry>? = nil
 
 

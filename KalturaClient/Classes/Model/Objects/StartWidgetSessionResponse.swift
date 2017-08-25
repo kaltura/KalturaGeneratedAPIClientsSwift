@@ -35,11 +35,44 @@
 
 open class StartWidgetSessionResponse: ObjectBase {
 
+	public class StartWidgetSessionResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var ks: BaseTokenizedObject {
+			get {
+				return self.append("ks") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	public var partnerId: Int? = nil
 	public var ks: String? = nil
 	public var userId: String? = nil
 
 
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(ks: String) {
+		self.dict["ks"] = ks
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

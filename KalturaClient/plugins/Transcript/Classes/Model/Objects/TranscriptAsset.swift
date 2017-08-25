@@ -35,6 +35,33 @@
 
 open class TranscriptAsset: AttachmentAsset {
 
+	public class TranscriptAssetTokenizer: AttachmentAsset.AttachmentAssetTokenizer {
+		
+		public var accuracy: BaseTokenizedObject {
+			get {
+				return self.append("accuracy") 
+			}
+		}
+		
+		public var humanVerified: BaseTokenizedObject {
+			get {
+				return self.append("humanVerified") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var providerType: BaseTokenizedObject {
+			get {
+				return self.append("providerType") 
+			}
+		}
+	}
+
 	/**  The accuracy of the transcript - values between 0 and 1  */
 	public var accuracy: Double? = nil
 	/**  Was verified by human or machine  */
@@ -45,6 +72,22 @@ open class TranscriptAsset: AttachmentAsset {
 	public var providerType: TranscriptProviderType? = nil
 
 
+	public func setMultiRequestToken(accuracy: String) {
+		self.dict["accuracy"] = accuracy
+	}
+	
+	public func setMultiRequestToken(humanVerified: String) {
+		self.dict["humanVerified"] = humanVerified
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(providerType: String) {
+		self.dict["providerType"] = providerType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

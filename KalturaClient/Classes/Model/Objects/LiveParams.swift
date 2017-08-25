@@ -35,12 +35,25 @@
 
 open class LiveParams: FlavorParams {
 
+	public class LiveParamsTokenizer: FlavorParams.FlavorParamsTokenizer {
+		
+		public var streamSuffix: BaseTokenizedObject {
+			get {
+				return self.append("streamSuffix") 
+			}
+		}
+	}
+
 	/**  Suffix to be added to the stream name after the entry id
 	  {entry_id}_{stream_suffix}, e.g. for entry id 0_kjdu5jr6 and suffix 1, the
 	  stream name will be 0_kjdu5jr6_1  */
 	public var streamSuffix: String? = nil
 
 
+	public func setMultiRequestToken(streamSuffix: String) {
+		self.dict["streamSuffix"] = streamSuffix
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

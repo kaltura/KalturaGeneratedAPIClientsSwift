@@ -35,6 +35,33 @@
 
 open class UrlTokenizerAkamaiRtmp: UrlTokenizer {
 
+	public class UrlTokenizerAkamaiRtmpTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var profile: BaseTokenizedObject {
+			get {
+				return self.append("profile") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var aifp: BaseTokenizedObject {
+			get {
+				return self.append("aifp") 
+			}
+		}
+		
+		public var usePrefix: BaseTokenizedObject {
+			get {
+				return self.append("usePrefix") 
+			}
+		}
+	}
+
 	/**  profile  */
 	public var profile: String? = nil
 	/**  Type  */
@@ -43,6 +70,22 @@ open class UrlTokenizerAkamaiRtmp: UrlTokenizer {
 	public var usePrefix: Bool? = nil
 
 
+	public func setMultiRequestToken(profile: String) {
+		self.dict["profile"] = profile
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(aifp: String) {
+		self.dict["aifp"] = aifp
+	}
+	
+	public func setMultiRequestToken(usePrefix: String) {
+		self.dict["usePrefix"] = usePrefix
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

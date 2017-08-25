@@ -35,6 +35,57 @@
 
 open class ThumbCuePointBaseFilter: CuePointFilter {
 
+	public class ThumbCuePointBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var descriptionLike: BaseTokenizedObject {
+			get {
+				return self.append("descriptionLike") 
+			}
+		}
+		
+		public var descriptionMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("descriptionMultiLikeOr") 
+			}
+		}
+		
+		public var descriptionMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("descriptionMultiLikeAnd") 
+			}
+		}
+		
+		public var titleLike: BaseTokenizedObject {
+			get {
+				return self.append("titleLike") 
+			}
+		}
+		
+		public var titleMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("titleMultiLikeOr") 
+			}
+		}
+		
+		public var titleMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("titleMultiLikeAnd") 
+			}
+		}
+		
+		public var subTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("subTypeEqual") 
+			}
+		}
+		
+		public var subTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("subTypeIn") 
+			}
+		}
+	}
+
 	public var descriptionLike: String? = nil
 	public var descriptionMultiLikeOr: String? = nil
 	public var descriptionMultiLikeAnd: String? = nil
@@ -45,6 +96,38 @@ open class ThumbCuePointBaseFilter: CuePointFilter {
 	public var subTypeIn: String? = nil
 
 
+	public func setMultiRequestToken(descriptionLike: String) {
+		self.dict["descriptionLike"] = descriptionLike
+	}
+	
+	public func setMultiRequestToken(descriptionMultiLikeOr: String) {
+		self.dict["descriptionMultiLikeOr"] = descriptionMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(descriptionMultiLikeAnd: String) {
+		self.dict["descriptionMultiLikeAnd"] = descriptionMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(titleLike: String) {
+		self.dict["titleLike"] = titleLike
+	}
+	
+	public func setMultiRequestToken(titleMultiLikeOr: String) {
+		self.dict["titleMultiLikeOr"] = titleMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(titleMultiLikeAnd: String) {
+		self.dict["titleMultiLikeAnd"] = titleMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(subTypeEqual: String) {
+		self.dict["subTypeEqual"] = subTypeEqual
+	}
+	
+	public func setMultiRequestToken(subTypeIn: String) {
+		self.dict["subTypeIn"] = subTypeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

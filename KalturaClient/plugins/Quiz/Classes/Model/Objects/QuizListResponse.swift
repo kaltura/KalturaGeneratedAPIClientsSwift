@@ -35,6 +35,15 @@
 
 open class QuizListResponse: ListResponse {
 
+	public class QuizListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Quiz.QuizTokenizer> {
+			get {
+				return ArrayTokenizedObject<Quiz.QuizTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Quiz>? = nil
 
 

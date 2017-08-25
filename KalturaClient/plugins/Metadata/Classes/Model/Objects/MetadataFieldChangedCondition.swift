@@ -35,6 +35,39 @@
 
 open class MetadataFieldChangedCondition: MatchCondition {
 
+	public class MetadataFieldChangedConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+		
+		public var xPath: BaseTokenizedObject {
+			get {
+				return self.append("xPath") 
+			}
+		}
+		
+		public var profileId: BaseTokenizedObject {
+			get {
+				return self.append("profileId") 
+			}
+		}
+		
+		public var profileSystemName: BaseTokenizedObject {
+			get {
+				return self.append("profileSystemName") 
+			}
+		}
+		
+		public var versionA: BaseTokenizedObject {
+			get {
+				return self.append("versionA") 
+			}
+		}
+		
+		public var versionB: BaseTokenizedObject {
+			get {
+				return self.append("versionB") 
+			}
+		}
+	}
+
 	/**  May contain the full xpath to the field in three formats   1. Slashed xPath,
 	  e.g. /metadata/myElementName   2. Using local-name function, e.g.
 	  /[local-name()='metadata']/[local-name()='myElementName']   3. Using only the
@@ -48,6 +81,26 @@ open class MetadataFieldChangedCondition: MatchCondition {
 	public var versionB: String? = nil
 
 
+	public func setMultiRequestToken(xPath: String) {
+		self.dict["xPath"] = xPath
+	}
+	
+	public func setMultiRequestToken(profileId: String) {
+		self.dict["profileId"] = profileId
+	}
+	
+	public func setMultiRequestToken(profileSystemName: String) {
+		self.dict["profileSystemName"] = profileSystemName
+	}
+	
+	public func setMultiRequestToken(versionA: String) {
+		self.dict["versionA"] = versionA
+	}
+	
+	public func setMultiRequestToken(versionB: String) {
+		self.dict["versionB"] = versionB
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,87 @@
 
 open class ProvisionJobData: JobData {
 
+	public class ProvisionJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var streamID: BaseTokenizedObject {
+			get {
+				return self.append("streamID") 
+			}
+		}
+		
+		public var backupStreamID: BaseTokenizedObject {
+			get {
+				return self.append("backupStreamID") 
+			}
+		}
+		
+		public var rtmp: BaseTokenizedObject {
+			get {
+				return self.append("rtmp") 
+			}
+		}
+		
+		public var encoderIP: BaseTokenizedObject {
+			get {
+				return self.append("encoderIP") 
+			}
+		}
+		
+		public var backupEncoderIP: BaseTokenizedObject {
+			get {
+				return self.append("backupEncoderIP") 
+			}
+		}
+		
+		public var encoderPassword: BaseTokenizedObject {
+			get {
+				return self.append("encoderPassword") 
+			}
+		}
+		
+		public var encoderUsername: BaseTokenizedObject {
+			get {
+				return self.append("encoderUsername") 
+			}
+		}
+		
+		public var endDate: BaseTokenizedObject {
+			get {
+				return self.append("endDate") 
+			}
+		}
+		
+		public var returnVal: BaseTokenizedObject {
+			get {
+				return self.append("returnVal") 
+			}
+		}
+		
+		public var mediaType: BaseTokenizedObject {
+			get {
+				return self.append("mediaType") 
+			}
+		}
+		
+		public var primaryBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("primaryBroadcastingUrl") 
+			}
+		}
+		
+		public var secondaryBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("secondaryBroadcastingUrl") 
+			}
+		}
+		
+		public var streamName: BaseTokenizedObject {
+			get {
+				return self.append("streamName") 
+			}
+		}
+	}
+
 	public var streamID: String? = nil
 	public var backupStreamID: String? = nil
 	public var rtmp: String? = nil
@@ -50,6 +131,58 @@ open class ProvisionJobData: JobData {
 	public var streamName: String? = nil
 
 
+	public func setMultiRequestToken(streamID: String) {
+		self.dict["streamID"] = streamID
+	}
+	
+	public func setMultiRequestToken(backupStreamID: String) {
+		self.dict["backupStreamID"] = backupStreamID
+	}
+	
+	public func setMultiRequestToken(rtmp: String) {
+		self.dict["rtmp"] = rtmp
+	}
+	
+	public func setMultiRequestToken(encoderIP: String) {
+		self.dict["encoderIP"] = encoderIP
+	}
+	
+	public func setMultiRequestToken(backupEncoderIP: String) {
+		self.dict["backupEncoderIP"] = backupEncoderIP
+	}
+	
+	public func setMultiRequestToken(encoderPassword: String) {
+		self.dict["encoderPassword"] = encoderPassword
+	}
+	
+	public func setMultiRequestToken(encoderUsername: String) {
+		self.dict["encoderUsername"] = encoderUsername
+	}
+	
+	public func setMultiRequestToken(endDate: String) {
+		self.dict["endDate"] = endDate
+	}
+	
+	public func setMultiRequestToken(returnVal: String) {
+		self.dict["returnVal"] = returnVal
+	}
+	
+	public func setMultiRequestToken(mediaType: String) {
+		self.dict["mediaType"] = mediaType
+	}
+	
+	public func setMultiRequestToken(primaryBroadcastingUrl: String) {
+		self.dict["primaryBroadcastingUrl"] = primaryBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(secondaryBroadcastingUrl: String) {
+		self.dict["secondaryBroadcastingUrl"] = secondaryBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(streamName: String) {
+		self.dict["streamName"] = streamName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

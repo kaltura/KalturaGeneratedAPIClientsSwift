@@ -35,6 +35,9 @@
 
 open class UserRoleFilter: UserRoleBaseFilter {
 
+	public class UserRoleFilterTokenizer: UserRoleBaseFilter.UserRoleBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

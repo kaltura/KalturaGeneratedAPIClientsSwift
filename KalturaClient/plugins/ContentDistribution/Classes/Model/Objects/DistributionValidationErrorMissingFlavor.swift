@@ -35,9 +35,22 @@
 
 open class DistributionValidationErrorMissingFlavor: DistributionValidationError {
 
+	public class DistributionValidationErrorMissingFlavorTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+	}
+
 	public var flavorParamsId: String? = nil
 
 
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

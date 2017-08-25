@@ -39,10 +39,23 @@
   existing flavor asset.  */
 open class AssetResource: ContentResource {
 
+	public class AssetResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+	}
+
 	/**  ID of the source asset  */
 	public var assetId: String? = nil
 
 
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

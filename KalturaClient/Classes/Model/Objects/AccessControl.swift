@@ -35,6 +35,63 @@
 
 open class AccessControl: ObjectBase {
 
+	public class AccessControlTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var restrictions: ArrayTokenizedObject<BaseRestriction.BaseRestrictionTokenizer> {
+			get {
+				return ArrayTokenizedObject<BaseRestriction.BaseRestrictionTokenizer>(self.append("restrictions"))
+			} 
+		}
+		
+		public var containsUnsuportedRestrictions: BaseTokenizedObject {
+			get {
+				return self.append("containsUnsuportedRestrictions") 
+			}
+		}
+	}
+
 	/**  The id of the Access Control Profile  */
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
@@ -55,6 +112,38 @@ open class AccessControl: ObjectBase {
 	public var containsUnsuportedRestrictions: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(containsUnsuportedRestrictions: String) {
+		self.dict["containsUnsuportedRestrictions"] = containsUnsuportedRestrictions
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

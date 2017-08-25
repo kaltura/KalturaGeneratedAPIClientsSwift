@@ -35,6 +35,201 @@
 
 open class StorageProfile: ObjectBase {
 
+	public class StorageProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var desciption: BaseTokenizedObject {
+			get {
+				return self.append("desciption") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var storageUrl: BaseTokenizedObject {
+			get {
+				return self.append("storageUrl") 
+			}
+		}
+		
+		public var storageBaseDir: BaseTokenizedObject {
+			get {
+				return self.append("storageBaseDir") 
+			}
+		}
+		
+		public var storageUsername: BaseTokenizedObject {
+			get {
+				return self.append("storageUsername") 
+			}
+		}
+		
+		public var storagePassword: BaseTokenizedObject {
+			get {
+				return self.append("storagePassword") 
+			}
+		}
+		
+		public var storageFtpPassiveMode: BaseTokenizedObject {
+			get {
+				return self.append("storageFtpPassiveMode") 
+			}
+		}
+		
+		public var minFileSize: BaseTokenizedObject {
+			get {
+				return self.append("minFileSize") 
+			}
+		}
+		
+		public var maxFileSize: BaseTokenizedObject {
+			get {
+				return self.append("maxFileSize") 
+			}
+		}
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+		
+		public var maxConcurrentConnections: BaseTokenizedObject {
+			get {
+				return self.append("maxConcurrentConnections") 
+			}
+		}
+		
+		public var pathManagerClass: BaseTokenizedObject {
+			get {
+				return self.append("pathManagerClass") 
+			}
+		}
+		
+		public var pathManagerParams: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("pathManagerParams"))
+			} 
+		}
+		
+		public var trigger: BaseTokenizedObject {
+			get {
+				return self.append("trigger") 
+			}
+		}
+		
+		public var deliveryPriority: BaseTokenizedObject {
+			get {
+				return self.append("deliveryPriority") 
+			}
+		}
+		
+		public var deliveryStatus: BaseTokenizedObject {
+			get {
+				return self.append("deliveryStatus") 
+			}
+		}
+		
+		public var readyBehavior: BaseTokenizedObject {
+			get {
+				return self.append("readyBehavior") 
+			}
+		}
+		
+		public var allowAutoDelete: BaseTokenizedObject {
+			get {
+				return self.append("allowAutoDelete") 
+			}
+		}
+		
+		public var createFileLink: BaseTokenizedObject {
+			get {
+				return self.append("createFileLink") 
+			}
+		}
+		
+		public var rules: ArrayTokenizedObject<Rule.RuleTokenizer> {
+			get {
+				return ArrayTokenizedObject<Rule.RuleTokenizer>(self.append("rules"))
+			} 
+		}
+		
+		public var deliveryProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("deliveryProfileIds"))
+			} 
+		}
+		
+		public var privateKey: BaseTokenizedObject {
+			get {
+				return self.append("privateKey") 
+			}
+		}
+		
+		public var publicKey: BaseTokenizedObject {
+			get {
+				return self.append("publicKey") 
+			}
+		}
+		
+		public var passPhrase: BaseTokenizedObject {
+			get {
+				return self.append("passPhrase") 
+			}
+		}
+		
+		public var shouldExportThumbs: BaseTokenizedObject {
+			get {
+				return self.append("shouldExportThumbs") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var createdAt: Int? = nil
 	public var updatedAt: Int? = nil
@@ -77,6 +272,122 @@ open class StorageProfile: ObjectBase {
 	public var shouldExportThumbs: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(desciption: String) {
+		self.dict["desciption"] = desciption
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(storageUrl: String) {
+		self.dict["storageUrl"] = storageUrl
+	}
+	
+	public func setMultiRequestToken(storageBaseDir: String) {
+		self.dict["storageBaseDir"] = storageBaseDir
+	}
+	
+	public func setMultiRequestToken(storageUsername: String) {
+		self.dict["storageUsername"] = storageUsername
+	}
+	
+	public func setMultiRequestToken(storagePassword: String) {
+		self.dict["storagePassword"] = storagePassword
+	}
+	
+	public func setMultiRequestToken(storageFtpPassiveMode: String) {
+		self.dict["storageFtpPassiveMode"] = storageFtpPassiveMode
+	}
+	
+	public func setMultiRequestToken(minFileSize: String) {
+		self.dict["minFileSize"] = minFileSize
+	}
+	
+	public func setMultiRequestToken(maxFileSize: String) {
+		self.dict["maxFileSize"] = maxFileSize
+	}
+	
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
+	public func setMultiRequestToken(maxConcurrentConnections: String) {
+		self.dict["maxConcurrentConnections"] = maxConcurrentConnections
+	}
+	
+	public func setMultiRequestToken(pathManagerClass: String) {
+		self.dict["pathManagerClass"] = pathManagerClass
+	}
+	
+	public func setMultiRequestToken(trigger: String) {
+		self.dict["trigger"] = trigger
+	}
+	
+	public func setMultiRequestToken(deliveryPriority: String) {
+		self.dict["deliveryPriority"] = deliveryPriority
+	}
+	
+	public func setMultiRequestToken(deliveryStatus: String) {
+		self.dict["deliveryStatus"] = deliveryStatus
+	}
+	
+	public func setMultiRequestToken(readyBehavior: String) {
+		self.dict["readyBehavior"] = readyBehavior
+	}
+	
+	public func setMultiRequestToken(allowAutoDelete: String) {
+		self.dict["allowAutoDelete"] = allowAutoDelete
+	}
+	
+	public func setMultiRequestToken(createFileLink: String) {
+		self.dict["createFileLink"] = createFileLink
+	}
+	
+	public func setMultiRequestToken(privateKey: String) {
+		self.dict["privateKey"] = privateKey
+	}
+	
+	public func setMultiRequestToken(publicKey: String) {
+		self.dict["publicKey"] = publicKey
+	}
+	
+	public func setMultiRequestToken(passPhrase: String) {
+		self.dict["passPhrase"] = passPhrase
+	}
+	
+	public func setMultiRequestToken(shouldExportThumbs: String) {
+		self.dict["shouldExportThumbs"] = shouldExportThumbs
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

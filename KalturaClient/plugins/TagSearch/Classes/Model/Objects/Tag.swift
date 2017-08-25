@@ -35,6 +35,51 @@
 
 open class Tag: ObjectBase {
 
+	public class TagTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var tag: BaseTokenizedObject {
+			get {
+				return self.append("tag") 
+			}
+		}
+		
+		public var taggedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("taggedObjectType") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var instanceCount: BaseTokenizedObject {
+			get {
+				return self.append("instanceCount") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var tag: String? = nil
 	public var taggedObjectType: TaggedObjectType? = nil
@@ -44,6 +89,34 @@ open class Tag: ObjectBase {
 	public var updatedAt: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(tag: String) {
+		self.dict["tag"] = tag
+	}
+	
+	public func setMultiRequestToken(taggedObjectType: String) {
+		self.dict["taggedObjectType"] = taggedObjectType
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(instanceCount: String) {
+		self.dict["instanceCount"] = instanceCount
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

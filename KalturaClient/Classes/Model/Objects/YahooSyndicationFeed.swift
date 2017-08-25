@@ -35,6 +35,33 @@
 
 open class YahooSyndicationFeed: BaseSyndicationFeed {
 
+	public class YahooSyndicationFeedTokenizer: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
+		
+		public var category: BaseTokenizedObject {
+			get {
+				return self.append("category") 
+			}
+		}
+		
+		public var adultContent: BaseTokenizedObject {
+			get {
+				return self.append("adultContent") 
+			}
+		}
+		
+		public var feedDescription: BaseTokenizedObject {
+			get {
+				return self.append("feedDescription") 
+			}
+		}
+		
+		public var feedLandingPage: BaseTokenizedObject {
+			get {
+				return self.append("feedLandingPage") 
+			}
+		}
+	}
+
 	public var category: YahooSyndicationFeedCategories? = nil
 	public var adultContent: YahooSyndicationFeedAdultValues? = nil
 	/**  feed description  */
@@ -43,6 +70,22 @@ open class YahooSyndicationFeed: BaseSyndicationFeed {
 	public var feedLandingPage: String? = nil
 
 
+	public func setMultiRequestToken(category: String) {
+		self.dict["category"] = category
+	}
+	
+	public func setMultiRequestToken(adultContent: String) {
+		self.dict["adultContent"] = adultContent
+	}
+	
+	public func setMultiRequestToken(feedDescription: String) {
+		self.dict["feedDescription"] = feedDescription
+	}
+	
+	public func setMultiRequestToken(feedLandingPage: String) {
+		self.dict["feedLandingPage"] = feedLandingPage
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

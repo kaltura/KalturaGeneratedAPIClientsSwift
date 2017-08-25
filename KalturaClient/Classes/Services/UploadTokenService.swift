@@ -35,61 +35,130 @@
 
 public final class UploadTokenService{
 
-	public static func add() -> RequestBuilder<UploadToken> {
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var uploadToken: UploadToken.UploadTokenTokenizer {
+			get {
+				return UploadToken.UploadTokenTokenizer(self.append("uploadToken")) 
+			}
+		}
+	}
+
+	public static func add() -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer> {
 		return add(uploadToken: nil)
 	}
 
 	/**  Adds new upload token to upload a file  */
-	public static func add(uploadToken: UploadToken?) -> RequestBuilder<UploadToken> {
-		let request: RequestBuilder<UploadToken> = RequestBuilder<UploadToken>(service: "uploadtoken", action: "add")
+	public static func add(uploadToken: UploadToken?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer> {
+		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer>(service: "uploadtoken", action: "add")
 			.setBody(key: "uploadToken", value: uploadToken)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+	}
+
 	/**  Deletes the upload token by upload token id  */
-	public static func delete(uploadTokenId: String) -> RequestBuilder<Void> {
+	public static func delete(uploadTokenId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "uploadtoken", action: "delete")
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+	}
+
 	/**  Get upload token by id  */
-	public static func get(uploadTokenId: String) -> RequestBuilder<UploadToken> {
-		let request: RequestBuilder<UploadToken> = RequestBuilder<UploadToken>(service: "uploadtoken", action: "get")
+	public static func get(uploadTokenId: String) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer> {
+		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer>(service: "uploadtoken", action: "get")
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<UploadTokenListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: UploadTokenFilter.UploadTokenFilterTokenizer {
+			get {
+				return UploadTokenFilter.UploadTokenFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: UploadTokenFilter?) -> RequestBuilder<UploadTokenListResponse> {
+	public static func list(filter: UploadTokenFilter?) -> RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List upload token by filter with pager support.    When using a user session the
 	  service will be restricted to users objects only.  */
-	public static func list(filter: UploadTokenFilter?, pager: FilterPager?) -> RequestBuilder<UploadTokenListResponse> {
-		let request: RequestBuilder<UploadTokenListResponse> = RequestBuilder<UploadTokenListResponse>(service: "uploadtoken", action: "list")
+	public static func list(filter: UploadTokenFilter?, pager: FilterPager?) -> RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> = RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer>(service: "uploadtoken", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func upload(uploadTokenId: String, fileData: RequestFile) -> RequestBuilder<UploadToken> {
+	public class UploadTokenizer: ClientTokenizer  {
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+		
+		public var resume: BaseTokenizedObject {
+			get {
+				return self.append("resume") 
+			}
+		}
+		
+		public var finalChunk: BaseTokenizedObject {
+			get {
+				return self.append("finalChunk") 
+			}
+		}
+		
+		public var resumeAt: BaseTokenizedObject {
+			get {
+				return self.append("resumeAt") 
+			}
+		}
+	}
+
+	public static func upload(uploadTokenId: String, fileData: RequestFile) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> {
 		return upload(uploadTokenId: uploadTokenId, fileData: fileData, resume: false)
 	}
 
-	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?) -> RequestBuilder<UploadToken> {
+	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> {
 		return upload(uploadTokenId: uploadTokenId, fileData: fileData, resume: resume, finalChunk: true)
 	}
 
-	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?, finalChunk: Bool?) -> RequestBuilder<UploadToken> {
+	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?, finalChunk: Bool?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> {
 		return upload(uploadTokenId: uploadTokenId, fileData: fileData, resume: resume, finalChunk: finalChunk, resumeAt: -1)
 	}
 
@@ -105,8 +174,8 @@ public final class UploadTokenService{
 	  UPLOAD_TOKEN_CANNOT_MATCH_EXPECTED_SIZE exception   has been returned
 	  (indicating not all of the chunks were appended yet) the final request can be
 	  retried.  */
-	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?, finalChunk: Bool?, resumeAt: Double?) -> RequestBuilder<UploadToken> {
-		let request: RequestBuilder<UploadToken> = RequestBuilder<UploadToken>(service: "uploadtoken", action: "upload")
+	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?, finalChunk: Bool?, resumeAt: Double?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> {
+		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer>(service: "uploadtoken", action: "upload")
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 			.setFile(key: "fileData", value: fileData)
 			.setBody(key: "resume", value: resume)

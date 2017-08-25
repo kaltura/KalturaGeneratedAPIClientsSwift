@@ -35,6 +35,9 @@
 
 open class DropFolderXmlBulkUploadFileHandlerConfig: DropFolderFileHandlerConfig {
 
+	public class DropFolderXmlBulkUploadFileHandlerConfigTokenizer: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

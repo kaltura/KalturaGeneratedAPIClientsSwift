@@ -36,26 +36,62 @@
 /**  Manage the connection between Conversion Profiles and Asset Params  */
 public final class ConversionProfileAssetParamsService{
 
-	public static func list() -> RequestBuilder<ConversionProfileAssetParamsListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ConversionProfileAssetParamsFilter.ConversionProfileAssetParamsFilterTokenizer {
+			get {
+				return ConversionProfileAssetParamsFilter.ConversionProfileAssetParamsFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ConversionProfileAssetParamsFilter?) -> RequestBuilder<ConversionProfileAssetParamsListResponse> {
+	public static func list(filter: ConversionProfileAssetParamsFilter?) -> RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Lists asset parmas of conversion profile by ID  */
-	public static func list(filter: ConversionProfileAssetParamsFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileAssetParamsListResponse> {
-		let request: RequestBuilder<ConversionProfileAssetParamsListResponse> = RequestBuilder<ConversionProfileAssetParamsListResponse>(service: "conversionprofileassetparams", action: "list")
+	public static func list(filter: ConversionProfileAssetParamsFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> = RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer>(service: "conversionprofileassetparams", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+		
+		public var conversionProfileAssetParams: ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer {
+			get {
+				return ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer(self.append("conversionProfileAssetParams")) 
+			}
+		}
+	}
+
 	/**  Update asset parmas of conversion profile by ID  */
-	public static func update(conversionProfileId: Int, assetParamsId: Int, conversionProfileAssetParams: ConversionProfileAssetParams) -> RequestBuilder<ConversionProfileAssetParams> {
-		let request: RequestBuilder<ConversionProfileAssetParams> = RequestBuilder<ConversionProfileAssetParams>(service: "conversionprofileassetparams", action: "update")
+	public static func update(conversionProfileId: Int, assetParamsId: Int, conversionProfileAssetParams: ConversionProfileAssetParams) -> RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer> = RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer>(service: "conversionprofileassetparams", action: "update")
 			.setBody(key: "conversionProfileId", value: conversionProfileId)
 			.setBody(key: "assetParamsId", value: assetParamsId)
 			.setBody(key: "conversionProfileAssetParams", value: conversionProfileAssetParams)

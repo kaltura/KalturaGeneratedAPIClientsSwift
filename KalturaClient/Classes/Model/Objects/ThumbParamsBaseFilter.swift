@@ -35,9 +35,22 @@
 
 open class ThumbParamsBaseFilter: AssetParamsFilter {
 
+	public class ThumbParamsBaseFilterTokenizer: AssetParamsFilter.AssetParamsFilterTokenizer {
+		
+		public var formatEqual: BaseTokenizedObject {
+			get {
+				return self.append("formatEqual") 
+			}
+		}
+	}
+
 	public var formatEqual: ContainerFormat? = nil
 
 
+	public func setMultiRequestToken(formatEqual: String) {
+		self.dict["formatEqual"] = formatEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

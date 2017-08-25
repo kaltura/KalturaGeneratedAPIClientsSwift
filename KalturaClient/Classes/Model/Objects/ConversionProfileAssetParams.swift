@@ -35,6 +35,81 @@
 
 open class ConversionProfileAssetParams: ObjectBase {
 
+	public class ConversionProfileAssetParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+		
+		public var readyBehavior: BaseTokenizedObject {
+			get {
+				return self.append("readyBehavior") 
+			}
+		}
+		
+		public var origin: BaseTokenizedObject {
+			get {
+				return self.append("origin") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var forceNoneComplied: BaseTokenizedObject {
+			get {
+				return self.append("forceNoneComplied") 
+			}
+		}
+		
+		public var deletePolicy: BaseTokenizedObject {
+			get {
+				return self.append("deletePolicy") 
+			}
+		}
+		
+		public var isEncrypted: BaseTokenizedObject {
+			get {
+				return self.append("isEncrypted") 
+			}
+		}
+		
+		public var contentAwareness: BaseTokenizedObject {
+			get {
+				return self.append("contentAwareness") 
+			}
+		}
+		
+		public var chunkedEncodeMode: BaseTokenizedObject {
+			get {
+				return self.append("chunkedEncodeMode") 
+			}
+		}
+		
+		public var twoPass: BaseTokenizedObject {
+			get {
+				return self.append("twoPass") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+	}
+
 	/**  The id of the conversion profile  */
 	public var conversionProfileId: Int? = nil
 	/**  The id of the asset params  */
@@ -57,6 +132,54 @@ open class ConversionProfileAssetParams: ObjectBase {
 	public var tags: String? = nil
 
 
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(assetParamsId: String) {
+		self.dict["assetParamsId"] = assetParamsId
+	}
+	
+	public func setMultiRequestToken(readyBehavior: String) {
+		self.dict["readyBehavior"] = readyBehavior
+	}
+	
+	public func setMultiRequestToken(origin: String) {
+		self.dict["origin"] = origin
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(forceNoneComplied: String) {
+		self.dict["forceNoneComplied"] = forceNoneComplied
+	}
+	
+	public func setMultiRequestToken(deletePolicy: String) {
+		self.dict["deletePolicy"] = deletePolicy
+	}
+	
+	public func setMultiRequestToken(isEncrypted: String) {
+		self.dict["isEncrypted"] = isEncrypted
+	}
+	
+	public func setMultiRequestToken(contentAwareness: String) {
+		self.dict["contentAwareness"] = contentAwareness
+	}
+	
+	public func setMultiRequestToken(chunkedEncodeMode: String) {
+		self.dict["chunkedEncodeMode"] = chunkedEncodeMode
+	}
+	
+	public func setMultiRequestToken(twoPass: String) {
+		self.dict["twoPass"] = twoPass
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

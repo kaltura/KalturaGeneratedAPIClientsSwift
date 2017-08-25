@@ -35,6 +35,51 @@
 
 open class AnalyticsFilter: ObjectBase {
 
+	public class AnalyticsFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var from_time: BaseTokenizedObject {
+			get {
+				return self.append("from_time") 
+			}
+		}
+		
+		public var to_time: BaseTokenizedObject {
+			get {
+				return self.append("to_time") 
+			}
+		}
+		
+		public var metrics: BaseTokenizedObject {
+			get {
+				return self.append("metrics") 
+			}
+		}
+		
+		public var utcOffset: BaseTokenizedObject {
+			get {
+				return self.append("utcOffset") 
+			}
+		}
+		
+		public var dimensions: BaseTokenizedObject {
+			get {
+				return self.append("dimensions") 
+			}
+		}
+		
+		public var filters: ArrayTokenizedObject<ReportFilter.ReportFilterTokenizer> {
+			get {
+				return ArrayTokenizedObject<ReportFilter.ReportFilterTokenizer>(self.append("filters"))
+			} 
+		}
+		
+		public var orderBy: BaseTokenizedObject {
+			get {
+				return self.append("orderBy") 
+			}
+		}
+	}
+
 	/**  Query start time (in local time) MM/dd/yyyy HH:mi  */
 	public var from_time: String? = nil
 	/**  Query end time (in local time) MM/dd/yyyy HH:mi  */
@@ -51,6 +96,30 @@ open class AnalyticsFilter: ObjectBase {
 	public var orderBy: String? = nil
 
 
+	public func setMultiRequestToken(from_time: String) {
+		self.dict["from_time"] = from_time
+	}
+	
+	public func setMultiRequestToken(to_time: String) {
+		self.dict["to_time"] = to_time
+	}
+	
+	public func setMultiRequestToken(metrics: String) {
+		self.dict["metrics"] = metrics
+	}
+	
+	public func setMultiRequestToken(utcOffset: String) {
+		self.dict["utcOffset"] = utcOffset
+	}
+	
+	public func setMultiRequestToken(dimensions: String) {
+		self.dict["dimensions"] = dimensions
+	}
+	
+	public func setMultiRequestToken(orderBy: String) {
+		self.dict["orderBy"] = orderBy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

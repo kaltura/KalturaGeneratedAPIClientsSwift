@@ -35,6 +35,177 @@
 
 open class DropFolder: ObjectBase {
 
+	public class DropFolderTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var dc: BaseTokenizedObject {
+			get {
+				return self.append("dc") 
+			}
+		}
+		
+		public var path: BaseTokenizedObject {
+			get {
+				return self.append("path") 
+			}
+		}
+		
+		public var fileSizeCheckInterval: BaseTokenizedObject {
+			get {
+				return self.append("fileSizeCheckInterval") 
+			}
+		}
+		
+		public var fileDeletePolicy: BaseTokenizedObject {
+			get {
+				return self.append("fileDeletePolicy") 
+			}
+		}
+		
+		public var autoFileDeleteDays: BaseTokenizedObject {
+			get {
+				return self.append("autoFileDeleteDays") 
+			}
+		}
+		
+		public var fileHandlerType: BaseTokenizedObject {
+			get {
+				return self.append("fileHandlerType") 
+			}
+		}
+		
+		public var fileNamePatterns: BaseTokenizedObject {
+			get {
+				return self.append("fileNamePatterns") 
+			}
+		}
+		
+		public var fileHandlerConfig: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer {
+			get {
+				return DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer(self.append("fileHandlerConfig")) 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var errorCode: BaseTokenizedObject {
+			get {
+				return self.append("errorCode") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+		
+		public var ignoreFileNamePatterns: BaseTokenizedObject {
+			get {
+				return self.append("ignoreFileNamePatterns") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var lastAccessedAt: BaseTokenizedObject {
+			get {
+				return self.append("lastAccessedAt") 
+			}
+		}
+		
+		public var incremental: BaseTokenizedObject {
+			get {
+				return self.append("incremental") 
+			}
+		}
+		
+		public var lastFileTimestamp: BaseTokenizedObject {
+			get {
+				return self.append("lastFileTimestamp") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var categoriesMetadataFieldName: BaseTokenizedObject {
+			get {
+				return self.append("categoriesMetadataFieldName") 
+			}
+		}
+		
+		public var enforceEntitlement: BaseTokenizedObject {
+			get {
+				return self.append("enforceEntitlement") 
+			}
+		}
+		
+		public var shouldValidateKS: BaseTokenizedObject {
+			get {
+				return self.append("shouldValidateKS") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var name: String? = nil
@@ -67,6 +238,114 @@ open class DropFolder: ObjectBase {
 	public var shouldValidateKS: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(dc: String) {
+		self.dict["dc"] = dc
+	}
+	
+	public func setMultiRequestToken(path: String) {
+		self.dict["path"] = path
+	}
+	
+	public func setMultiRequestToken(fileSizeCheckInterval: String) {
+		self.dict["fileSizeCheckInterval"] = fileSizeCheckInterval
+	}
+	
+	public func setMultiRequestToken(fileDeletePolicy: String) {
+		self.dict["fileDeletePolicy"] = fileDeletePolicy
+	}
+	
+	public func setMultiRequestToken(autoFileDeleteDays: String) {
+		self.dict["autoFileDeleteDays"] = autoFileDeleteDays
+	}
+	
+	public func setMultiRequestToken(fileHandlerType: String) {
+		self.dict["fileHandlerType"] = fileHandlerType
+	}
+	
+	public func setMultiRequestToken(fileNamePatterns: String) {
+		self.dict["fileNamePatterns"] = fileNamePatterns
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(errorCode: String) {
+		self.dict["errorCode"] = errorCode
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
+	public func setMultiRequestToken(ignoreFileNamePatterns: String) {
+		self.dict["ignoreFileNamePatterns"] = ignoreFileNamePatterns
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(lastAccessedAt: String) {
+		self.dict["lastAccessedAt"] = lastAccessedAt
+	}
+	
+	public func setMultiRequestToken(incremental: String) {
+		self.dict["incremental"] = incremental
+	}
+	
+	public func setMultiRequestToken(lastFileTimestamp: String) {
+		self.dict["lastFileTimestamp"] = lastFileTimestamp
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(categoriesMetadataFieldName: String) {
+		self.dict["categoriesMetadataFieldName"] = categoriesMetadataFieldName
+	}
+	
+	public func setMultiRequestToken(enforceEntitlement: String) {
+		self.dict["enforceEntitlement"] = enforceEntitlement
+	}
+	
+	public func setMultiRequestToken(shouldValidateKS: String) {
+		self.dict["shouldValidateKS"] = shouldValidateKS
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

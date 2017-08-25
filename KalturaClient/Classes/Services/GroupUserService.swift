@@ -36,16 +36,40 @@
 /**  Add &amp; Manage GroupUser  */
 public final class GroupUserService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var groupUser: GroupUser.GroupUserTokenizer {
+			get {
+				return GroupUser.GroupUserTokenizer(self.append("groupUser")) 
+			}
+		}
+	}
+
 	/**  Add new GroupUser  */
-	public static func add(groupUser: GroupUser) -> RequestBuilder<GroupUser> {
-		let request: RequestBuilder<GroupUser> = RequestBuilder<GroupUser>(service: "groupuser", action: "add")
+	public static func add(groupUser: GroupUser) -> RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer> {
+		let request: RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer> = RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer>(service: "groupuser", action: "add")
 			.setBody(key: "groupUser", value: groupUser)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var groupId: BaseTokenizedObject {
+			get {
+				return self.append("groupId") 
+			}
+		}
+	}
+
 	/**  delete by userId and groupId  */
-	public static func delete(userId: String, groupId: String) -> RequestBuilder<Void> {
+	public static func delete(userId: String, groupId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "groupuser", action: "delete")
 			.setBody(key: "userId", value: userId)
 			.setBody(key: "groupId", value: groupId)
@@ -53,17 +77,32 @@ public final class GroupUserService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<GroupUserListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: GroupUserFilter.GroupUserFilterTokenizer {
+			get {
+				return GroupUserFilter.GroupUserFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: GroupUserFilter?) -> RequestBuilder<GroupUserListResponse> {
+	public static func list(filter: GroupUserFilter?) -> RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all GroupUsers  */
-	public static func list(filter: GroupUserFilter?, pager: FilterPager?) -> RequestBuilder<GroupUserListResponse> {
-		let request: RequestBuilder<GroupUserListResponse> = RequestBuilder<GroupUserListResponse>(service: "groupuser", action: "list")
+	public static func list(filter: GroupUserFilter?, pager: FilterPager?) -> RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> = RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer>(service: "groupuser", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

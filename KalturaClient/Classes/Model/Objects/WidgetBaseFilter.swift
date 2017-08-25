@@ -35,6 +35,81 @@
 
 open class WidgetBaseFilter: Filter {
 
+	public class WidgetBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var sourceWidgetIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("sourceWidgetIdEqual") 
+			}
+		}
+		
+		public var rootWidgetIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("rootWidgetIdEqual") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var uiConfIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("uiConfIdEqual") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var partnerDataLike: BaseTokenizedObject {
+			get {
+				return self.append("partnerDataLike") 
+			}
+		}
+	}
+
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
 	public var sourceWidgetIdEqual: String? = nil
@@ -49,6 +124,54 @@ open class WidgetBaseFilter: Filter {
 	public var partnerDataLike: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(sourceWidgetIdEqual: String) {
+		self.dict["sourceWidgetIdEqual"] = sourceWidgetIdEqual
+	}
+	
+	public func setMultiRequestToken(rootWidgetIdEqual: String) {
+		self.dict["rootWidgetIdEqual"] = rootWidgetIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(uiConfIdEqual: String) {
+		self.dict["uiConfIdEqual"] = uiConfIdEqual
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerDataLike: String) {
+		self.dict["partnerDataLike"] = partnerDataLike
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

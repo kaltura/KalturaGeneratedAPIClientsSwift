@@ -35,6 +35,27 @@
 
 open class ConversionAttribute: ObjectBase {
 
+	public class ConversionAttributeTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	/**  The id of the flavor params, set to null for source flavor  */
 	public var flavorParamsId: Int? = nil
 	/**  Attribute name  */
@@ -43,6 +64,18 @@ open class ConversionAttribute: ObjectBase {
 	public var value: String? = nil
 
 
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -36,53 +36,110 @@
 /**  PermissionItem service lets you create and manage permission items  */
 public final class PermissionItemService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var permissionItem: PermissionItem.PermissionItemTokenizer {
+			get {
+				return PermissionItem.PermissionItemTokenizer(self.append("permissionItem")) 
+			}
+		}
+	}
+
 	/**  Adds a new permission item object to the account.   This action is available
 	  only to Kaltura system administrators.  */
-	public static func add(permissionItem: PermissionItem) -> RequestBuilder<PermissionItem> {
-		let request: RequestBuilder<PermissionItem> = RequestBuilder<PermissionItem>(service: "permissionitem", action: "add")
+	public static func add(permissionItem: PermissionItem) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer> {
+		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer>(service: "permissionitem", action: "add")
 			.setBody(key: "permissionItem", value: permissionItem)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var permissionItemId: BaseTokenizedObject {
+			get {
+				return self.append("permissionItemId") 
+			}
+		}
+	}
+
 	/**  Deletes an existing permission item object.   This action is available only to
 	  Kaltura system administrators.  */
-	public static func delete(permissionItemId: Int) -> RequestBuilder<PermissionItem> {
-		let request: RequestBuilder<PermissionItem> = RequestBuilder<PermissionItem>(service: "permissionitem", action: "delete")
+	public static func delete(permissionItemId: Int) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer>(service: "permissionitem", action: "delete")
 			.setBody(key: "permissionItemId", value: permissionItemId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var permissionItemId: BaseTokenizedObject {
+			get {
+				return self.append("permissionItemId") 
+			}
+		}
 	}
 
 	/**  Retrieves a permission item object using its ID.  */
-	public static func get(permissionItemId: Int) -> RequestBuilder<PermissionItem> {
-		let request: RequestBuilder<PermissionItem> = RequestBuilder<PermissionItem>(service: "permissionitem", action: "get")
+	public static func get(permissionItemId: Int) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer> {
+		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer>(service: "permissionitem", action: "get")
 			.setBody(key: "permissionItemId", value: permissionItemId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<PermissionItemListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: PermissionItemFilter.PermissionItemFilterTokenizer {
+			get {
+				return PermissionItemFilter.PermissionItemFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: PermissionItemFilter?) -> RequestBuilder<PermissionItemListResponse> {
+	public static func list(filter: PermissionItemFilter?) -> RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Lists permission item objects that are associated with an account.  */
-	public static func list(filter: PermissionItemFilter?, pager: FilterPager?) -> RequestBuilder<PermissionItemListResponse> {
-		let request: RequestBuilder<PermissionItemListResponse> = RequestBuilder<PermissionItemListResponse>(service: "permissionitem", action: "list")
+	public static func list(filter: PermissionItemFilter?, pager: FilterPager?) -> RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> = RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer>(service: "permissionitem", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var permissionItemId: BaseTokenizedObject {
+			get {
+				return self.append("permissionItemId") 
+			}
+		}
+		
+		public var permissionItem: PermissionItem.PermissionItemTokenizer {
+			get {
+				return PermissionItem.PermissionItemTokenizer(self.append("permissionItem")) 
+			}
+		}
+	}
+
 	/**  Updates an existing permission item object.   This action is available only to
 	  Kaltura system administrators.  */
-	public static func update(permissionItemId: Int, permissionItem: PermissionItem) -> RequestBuilder<PermissionItem> {
-		let request: RequestBuilder<PermissionItem> = RequestBuilder<PermissionItem>(service: "permissionitem", action: "update")
+	public static func update(permissionItemId: Int, permissionItem: PermissionItem) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer>(service: "permissionitem", action: "update")
 			.setBody(key: "permissionItemId", value: permissionItemId)
 			.setBody(key: "permissionItem", value: permissionItem)
 

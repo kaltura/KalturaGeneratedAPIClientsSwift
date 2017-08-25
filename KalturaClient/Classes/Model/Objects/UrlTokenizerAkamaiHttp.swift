@@ -35,11 +35,34 @@
 
 open class UrlTokenizerAkamaiHttp: UrlTokenizer {
 
+	public class UrlTokenizerAkamaiHttpTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var paramName: BaseTokenizedObject {
+			get {
+				return self.append("paramName") 
+			}
+		}
+		
+		public var rootDir: BaseTokenizedObject {
+			get {
+				return self.append("rootDir") 
+			}
+		}
+	}
+
 	/**  param  */
 	public var paramName: String? = nil
 	public var rootDir: String? = nil
 
 
+	public func setMultiRequestToken(paramName: String) {
+		self.dict["paramName"] = paramName
+	}
+	
+	public func setMultiRequestToken(rootDir: String) {
+		self.dict["rootDir"] = rootDir
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

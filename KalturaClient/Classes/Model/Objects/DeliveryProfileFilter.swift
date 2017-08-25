@@ -35,9 +35,22 @@
 
 open class DeliveryProfileFilter: DeliveryProfileBaseFilter {
 
+	public class DeliveryProfileFilterTokenizer: DeliveryProfileBaseFilter.DeliveryProfileBaseFilterTokenizer {
+		
+		public var isLive: BaseTokenizedObject {
+			get {
+				return self.append("isLive") 
+			}
+		}
+	}
+
 	public var isLive: Bool? = nil
 
 
+	public func setMultiRequestToken(isLive: String) {
+		self.dict["isLive"] = isLive
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

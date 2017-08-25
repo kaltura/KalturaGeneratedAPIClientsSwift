@@ -35,6 +35,15 @@
 
 open class DocumentListResponse: ListResponse {
 
+	public class DocumentListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DocumentEntry.DocumentEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<DocumentEntry.DocumentEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DocumentEntry>? = nil
 
 

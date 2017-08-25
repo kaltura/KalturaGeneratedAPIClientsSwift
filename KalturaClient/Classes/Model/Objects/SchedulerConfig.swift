@@ -35,6 +35,93 @@
 
 open class SchedulerConfig: ObjectBase {
 
+	public class SchedulerConfigTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdBy: BaseTokenizedObject {
+			get {
+				return self.append("createdBy") 
+			}
+		}
+		
+		public var updatedBy: BaseTokenizedObject {
+			get {
+				return self.append("updatedBy") 
+			}
+		}
+		
+		public var commandId: BaseTokenizedObject {
+			get {
+				return self.append("commandId") 
+			}
+		}
+		
+		public var commandStatus: BaseTokenizedObject {
+			get {
+				return self.append("commandStatus") 
+			}
+		}
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var schedulerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerConfiguredId") 
+			}
+		}
+		
+		public var schedulerName: BaseTokenizedObject {
+			get {
+				return self.append("schedulerName") 
+			}
+		}
+		
+		public var workerId: BaseTokenizedObject {
+			get {
+				return self.append("workerId") 
+			}
+		}
+		
+		public var workerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("workerConfiguredId") 
+			}
+		}
+		
+		public var workerName: BaseTokenizedObject {
+			get {
+				return self.append("workerName") 
+			}
+		}
+		
+		public var variable: BaseTokenizedObject {
+			get {
+				return self.append("variable") 
+			}
+		}
+		
+		public var variablePart: BaseTokenizedObject {
+			get {
+				return self.append("variablePart") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	/**  The id of the Category  */
 	public var id: Int? = nil
 	/**  Creator name  */
@@ -65,6 +152,62 @@ open class SchedulerConfig: ObjectBase {
 	public var value: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdBy: String) {
+		self.dict["createdBy"] = createdBy
+	}
+	
+	public func setMultiRequestToken(updatedBy: String) {
+		self.dict["updatedBy"] = updatedBy
+	}
+	
+	public func setMultiRequestToken(commandId: String) {
+		self.dict["commandId"] = commandId
+	}
+	
+	public func setMultiRequestToken(commandStatus: String) {
+		self.dict["commandStatus"] = commandStatus
+	}
+	
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(schedulerConfiguredId: String) {
+		self.dict["schedulerConfiguredId"] = schedulerConfiguredId
+	}
+	
+	public func setMultiRequestToken(schedulerName: String) {
+		self.dict["schedulerName"] = schedulerName
+	}
+	
+	public func setMultiRequestToken(workerId: String) {
+		self.dict["workerId"] = workerId
+	}
+	
+	public func setMultiRequestToken(workerConfiguredId: String) {
+		self.dict["workerConfiguredId"] = workerConfiguredId
+	}
+	
+	public func setMultiRequestToken(workerName: String) {
+		self.dict["workerName"] = workerName
+	}
+	
+	public func setMultiRequestToken(variable: String) {
+		self.dict["variable"] = variable
+	}
+	
+	public func setMultiRequestToken(variablePart: String) {
+		self.dict["variablePart"] = variablePart
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

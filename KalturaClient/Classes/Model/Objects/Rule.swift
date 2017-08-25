@@ -35,6 +35,63 @@
 
 open class Rule: ObjectBase {
 
+	public class RuleTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var ruleData: BaseTokenizedObject {
+			get {
+				return self.append("ruleData") 
+			}
+		}
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+		
+		public var code: BaseTokenizedObject {
+			get {
+				return self.append("code") 
+			}
+		}
+		
+		public var actions: ArrayTokenizedObject<RuleAction.RuleActionTokenizer> {
+			get {
+				return ArrayTokenizedObject<RuleAction.RuleActionTokenizer>(self.append("actions"))
+			} 
+		}
+		
+		public var conditions: ArrayTokenizedObject<Condition.ConditionTokenizer> {
+			get {
+				return ArrayTokenizedObject<Condition.ConditionTokenizer>(self.append("conditions"))
+			} 
+		}
+		
+		public var contexts: ArrayTokenizedObject<ContextTypeHolder.ContextTypeHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<ContextTypeHolder.ContextTypeHolderTokenizer>(self.append("contexts"))
+			} 
+		}
+		
+		public var stopProcessing: BaseTokenizedObject {
+			get {
+				return self.append("stopProcessing") 
+			}
+		}
+		
+		public var forceAdminValidation: BaseTokenizedObject {
+			get {
+				return self.append("forceAdminValidation") 
+			}
+		}
+	}
+
 	/**  Short Rule Description  */
 	public var description: String? = nil
 	/**  Rule Custom Data to allow saving rule specific information  */
@@ -56,6 +113,30 @@ open class Rule: ObjectBase {
 	public var forceAdminValidation: Bool? = nil
 
 
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(ruleData: String) {
+		self.dict["ruleData"] = ruleData
+	}
+	
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(code: String) {
+		self.dict["code"] = code
+	}
+	
+	public func setMultiRequestToken(stopProcessing: String) {
+		self.dict["stopProcessing"] = stopProcessing
+	}
+	
+	public func setMultiRequestToken(forceAdminValidation: String) {
+		self.dict["forceAdminValidation"] = forceAdminValidation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

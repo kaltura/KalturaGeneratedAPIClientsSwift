@@ -35,11 +35,34 @@
 
 open class FlavorAssetUrlOptions: ObjectBase {
 
+	public class FlavorAssetUrlOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
 	/**  The name of the downloaded file  */
 	public var fileName: String? = nil
 	public var referrer: String? = nil
 
 
+	public func setMultiRequestToken(fileName: String) {
+		self.dict["fileName"] = fileName
+	}
+	
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

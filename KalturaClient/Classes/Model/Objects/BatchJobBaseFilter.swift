@@ -35,6 +35,279 @@
 
 open class BatchJobBaseFilter: Filter {
 
+	public class BatchJobBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("idGreaterThanOrEqual") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var partnerIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdNotIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var executionAttemptsGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("executionAttemptsGreaterThanOrEqual") 
+			}
+		}
+		
+		public var executionAttemptsLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("executionAttemptsLessThanOrEqual") 
+			}
+		}
+		
+		public var lockVersionGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("lockVersionGreaterThanOrEqual") 
+			}
+		}
+		
+		public var lockVersionLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("lockVersionLessThanOrEqual") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var jobTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("jobTypeEqual") 
+			}
+		}
+		
+		public var jobTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("jobTypeIn") 
+			}
+		}
+		
+		public var jobTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("jobTypeNotIn") 
+			}
+		}
+		
+		public var jobSubTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("jobSubTypeEqual") 
+			}
+		}
+		
+		public var jobSubTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("jobSubTypeIn") 
+			}
+		}
+		
+		public var jobSubTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("jobSubTypeNotIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+		
+		public var priorityGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityGreaterThanOrEqual") 
+			}
+		}
+		
+		public var priorityLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityLessThanOrEqual") 
+			}
+		}
+		
+		public var priorityEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityEqual") 
+			}
+		}
+		
+		public var priorityIn: BaseTokenizedObject {
+			get {
+				return self.append("priorityIn") 
+			}
+		}
+		
+		public var priorityNotIn: BaseTokenizedObject {
+			get {
+				return self.append("priorityNotIn") 
+			}
+		}
+		
+		public var batchVersionGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("batchVersionGreaterThanOrEqual") 
+			}
+		}
+		
+		public var batchVersionLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("batchVersionLessThanOrEqual") 
+			}
+		}
+		
+		public var batchVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("batchVersionEqual") 
+			}
+		}
+		
+		public var queueTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("queueTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var queueTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("queueTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var finishTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("finishTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var finishTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("finishTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var errTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("errTypeEqual") 
+			}
+		}
+		
+		public var errTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("errTypeIn") 
+			}
+		}
+		
+		public var errTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("errTypeNotIn") 
+			}
+		}
+		
+		public var errNumberEqual: BaseTokenizedObject {
+			get {
+				return self.append("errNumberEqual") 
+			}
+		}
+		
+		public var errNumberIn: BaseTokenizedObject {
+			get {
+				return self.append("errNumberIn") 
+			}
+		}
+		
+		public var errNumberNotIn: BaseTokenizedObject {
+			get {
+				return self.append("errNumberNotIn") 
+			}
+		}
+		
+		public var estimatedEffortLessThan: BaseTokenizedObject {
+			get {
+				return self.append("estimatedEffortLessThan") 
+			}
+		}
+		
+		public var estimatedEffortGreaterThan: BaseTokenizedObject {
+			get {
+				return self.append("estimatedEffortGreaterThan") 
+			}
+		}
+		
+		public var urgencyLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("urgencyLessThanOrEqual") 
+			}
+		}
+		
+		public var urgencyGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("urgencyGreaterThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int64? = nil
 	public var idGreaterThanOrEqual: Int64? = nil
 	public var partnerIdEqual: Int? = nil
@@ -82,14 +355,194 @@ open class BatchJobBaseFilter: Filter {
 	public var urgencyGreaterThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idGreaterThanOrEqual: String) {
+		self.dict["idGreaterThanOrEqual"] = idGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(partnerIdNotIn: String) {
+		self.dict["partnerIdNotIn"] = partnerIdNotIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(executionAttemptsGreaterThanOrEqual: String) {
+		self.dict["executionAttemptsGreaterThanOrEqual"] = executionAttemptsGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(executionAttemptsLessThanOrEqual: String) {
+		self.dict["executionAttemptsLessThanOrEqual"] = executionAttemptsLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(lockVersionGreaterThanOrEqual: String) {
+		self.dict["lockVersionGreaterThanOrEqual"] = lockVersionGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(lockVersionLessThanOrEqual: String) {
+		self.dict["lockVersionLessThanOrEqual"] = lockVersionLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(jobTypeEqual: String) {
+		self.dict["jobTypeEqual"] = jobTypeEqual
+	}
+	
+	public func setMultiRequestToken(jobTypeIn: String) {
+		self.dict["jobTypeIn"] = jobTypeIn
+	}
+	
+	public func setMultiRequestToken(jobTypeNotIn: String) {
+		self.dict["jobTypeNotIn"] = jobTypeNotIn
+	}
+	
+	public func setMultiRequestToken(jobSubTypeEqual: String) {
+		self.dict["jobSubTypeEqual"] = jobSubTypeEqual
+	}
+	
+	public func setMultiRequestToken(jobSubTypeIn: String) {
+		self.dict["jobSubTypeIn"] = jobSubTypeIn
+	}
+	
+	public func setMultiRequestToken(jobSubTypeNotIn: String) {
+		self.dict["jobSubTypeNotIn"] = jobSubTypeNotIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
+	public func setMultiRequestToken(priorityGreaterThanOrEqual: String) {
+		self.dict["priorityGreaterThanOrEqual"] = priorityGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(priorityLessThanOrEqual: String) {
+		self.dict["priorityLessThanOrEqual"] = priorityLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(priorityEqual: String) {
+		self.dict["priorityEqual"] = priorityEqual
+	}
+	
+	public func setMultiRequestToken(priorityIn: String) {
+		self.dict["priorityIn"] = priorityIn
+	}
+	
+	public func setMultiRequestToken(priorityNotIn: String) {
+		self.dict["priorityNotIn"] = priorityNotIn
+	}
+	
+	public func setMultiRequestToken(batchVersionGreaterThanOrEqual: String) {
+		self.dict["batchVersionGreaterThanOrEqual"] = batchVersionGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(batchVersionLessThanOrEqual: String) {
+		self.dict["batchVersionLessThanOrEqual"] = batchVersionLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(batchVersionEqual: String) {
+		self.dict["batchVersionEqual"] = batchVersionEqual
+	}
+	
+	public func setMultiRequestToken(queueTimeGreaterThanOrEqual: String) {
+		self.dict["queueTimeGreaterThanOrEqual"] = queueTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(queueTimeLessThanOrEqual: String) {
+		self.dict["queueTimeLessThanOrEqual"] = queueTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(finishTimeGreaterThanOrEqual: String) {
+		self.dict["finishTimeGreaterThanOrEqual"] = finishTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(finishTimeLessThanOrEqual: String) {
+		self.dict["finishTimeLessThanOrEqual"] = finishTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(errTypeEqual: String) {
+		self.dict["errTypeEqual"] = errTypeEqual
+	}
+	
+	public func setMultiRequestToken(errTypeIn: String) {
+		self.dict["errTypeIn"] = errTypeIn
+	}
+	
+	public func setMultiRequestToken(errTypeNotIn: String) {
+		self.dict["errTypeNotIn"] = errTypeNotIn
+	}
+	
+	public func setMultiRequestToken(errNumberEqual: String) {
+		self.dict["errNumberEqual"] = errNumberEqual
+	}
+	
+	public func setMultiRequestToken(errNumberIn: String) {
+		self.dict["errNumberIn"] = errNumberIn
+	}
+	
+	public func setMultiRequestToken(errNumberNotIn: String) {
+		self.dict["errNumberNotIn"] = errNumberNotIn
+	}
+	
+	public func setMultiRequestToken(estimatedEffortLessThan: String) {
+		self.dict["estimatedEffortLessThan"] = estimatedEffortLessThan
+	}
+	
+	public func setMultiRequestToken(estimatedEffortGreaterThan: String) {
+		self.dict["estimatedEffortGreaterThan"] = estimatedEffortGreaterThan
+	}
+	
+	public func setMultiRequestToken(urgencyLessThanOrEqual: String) {
+		self.dict["urgencyLessThanOrEqual"] = urgencyLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(urgencyGreaterThanOrEqual: String) {
+		self.dict["urgencyGreaterThanOrEqual"] = urgencyGreaterThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["idEqual"] != nil {
-			idEqual = Int64((dict["idEqual"] as? String)!)
+			idEqual = Int64("\(dict["idEqual"]!)")
 		}
 		if dict["idGreaterThanOrEqual"] != nil {
-			idGreaterThanOrEqual = Int64((dict["idGreaterThanOrEqual"] as? String)!)
+			idGreaterThanOrEqual = Int64("\(dict["idGreaterThanOrEqual"]!)")
 		}
 		if dict["partnerIdEqual"] != nil {
 			partnerIdEqual = dict["partnerIdEqual"] as? Int

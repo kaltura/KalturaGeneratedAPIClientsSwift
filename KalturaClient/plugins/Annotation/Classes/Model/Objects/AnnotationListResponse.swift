@@ -35,6 +35,15 @@
 
 open class AnnotationListResponse: ListResponse {
 
+	public class AnnotationListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Annotation.AnnotationTokenizer> {
+			get {
+				return ArrayTokenizedObject<Annotation.AnnotationTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Annotation>? = nil
 
 

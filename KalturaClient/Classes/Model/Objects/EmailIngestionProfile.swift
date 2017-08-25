@@ -35,6 +35,105 @@
 
 open class EmailIngestionProfile: ObjectBase {
 
+	public class EmailIngestionProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var emailAddress: BaseTokenizedObject {
+			get {
+				return self.append("emailAddress") 
+			}
+		}
+		
+		public var mailboxId: BaseTokenizedObject {
+			get {
+				return self.append("mailboxId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var conversionProfile2Id: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfile2Id") 
+			}
+		}
+		
+		public var moderationStatus: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatus") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var defaultCategory: BaseTokenizedObject {
+			get {
+				return self.append("defaultCategory") 
+			}
+		}
+		
+		public var defaultUserId: BaseTokenizedObject {
+			get {
+				return self.append("defaultUserId") 
+			}
+		}
+		
+		public var defaultTags: BaseTokenizedObject {
+			get {
+				return self.append("defaultTags") 
+			}
+		}
+		
+		public var defaultAdminTags: BaseTokenizedObject {
+			get {
+				return self.append("defaultAdminTags") 
+			}
+		}
+		
+		public var maxAttachmentSizeKbytes: BaseTokenizedObject {
+			get {
+				return self.append("maxAttachmentSizeKbytes") 
+			}
+		}
+		
+		public var maxAttachmentsPerMail: BaseTokenizedObject {
+			get {
+				return self.append("maxAttachmentsPerMail") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var name: String? = nil
 	public var description: String? = nil
@@ -53,6 +152,70 @@ open class EmailIngestionProfile: ObjectBase {
 	public var maxAttachmentsPerMail: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(emailAddress: String) {
+		self.dict["emailAddress"] = emailAddress
+	}
+	
+	public func setMultiRequestToken(mailboxId: String) {
+		self.dict["mailboxId"] = mailboxId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(conversionProfile2Id: String) {
+		self.dict["conversionProfile2Id"] = conversionProfile2Id
+	}
+	
+	public func setMultiRequestToken(moderationStatus: String) {
+		self.dict["moderationStatus"] = moderationStatus
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(defaultCategory: String) {
+		self.dict["defaultCategory"] = defaultCategory
+	}
+	
+	public func setMultiRequestToken(defaultUserId: String) {
+		self.dict["defaultUserId"] = defaultUserId
+	}
+	
+	public func setMultiRequestToken(defaultTags: String) {
+		self.dict["defaultTags"] = defaultTags
+	}
+	
+	public func setMultiRequestToken(defaultAdminTags: String) {
+		self.dict["defaultAdminTags"] = defaultAdminTags
+	}
+	
+	public func setMultiRequestToken(maxAttachmentSizeKbytes: String) {
+		self.dict["maxAttachmentSizeKbytes"] = maxAttachmentSizeKbytes
+	}
+	
+	public func setMultiRequestToken(maxAttachmentsPerMail: String) {
+		self.dict["maxAttachmentsPerMail"] = maxAttachmentsPerMail
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

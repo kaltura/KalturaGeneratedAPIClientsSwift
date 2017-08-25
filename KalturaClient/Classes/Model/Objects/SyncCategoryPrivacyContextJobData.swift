@@ -35,6 +35,27 @@
 
 open class SyncCategoryPrivacyContextJobData: JobData {
 
+	public class SyncCategoryPrivacyContextJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var lastUpdatedCategoryEntryCreatedAt: BaseTokenizedObject {
+			get {
+				return self.append("lastUpdatedCategoryEntryCreatedAt") 
+			}
+		}
+		
+		public var lastUpdatedCategoryCreatedAt: BaseTokenizedObject {
+			get {
+				return self.append("lastUpdatedCategoryCreatedAt") 
+			}
+		}
+	}
+
 	/**  category id  */
 	public var categoryId: Int? = nil
 	/**  Saves the last category entry creation date that was updated      In case of
@@ -45,6 +66,18 @@ open class SyncCategoryPrivacyContextJobData: JobData {
 	public var lastUpdatedCategoryCreatedAt: Int? = nil
 
 
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(lastUpdatedCategoryEntryCreatedAt: String) {
+		self.dict["lastUpdatedCategoryEntryCreatedAt"] = lastUpdatedCategoryEntryCreatedAt
+	}
+	
+	public func setMultiRequestToken(lastUpdatedCategoryCreatedAt: String) {
+		self.dict["lastUpdatedCategoryCreatedAt"] = lastUpdatedCategoryCreatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

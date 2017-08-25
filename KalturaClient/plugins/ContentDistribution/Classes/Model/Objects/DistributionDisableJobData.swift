@@ -35,6 +35,9 @@
 
 open class DistributionDisableJobData: DistributionUpdateJobData {
 
+	public class DistributionDisableJobDataTokenizer: DistributionUpdateJobData.DistributionUpdateJobDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

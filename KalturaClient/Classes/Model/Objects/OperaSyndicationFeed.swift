@@ -35,6 +35,9 @@
 
 open class OperaSyndicationFeed: ConstantXsltSyndicationFeed {
 
+	public class OperaSyndicationFeedTokenizer: ConstantXsltSyndicationFeed.ConstantXsltSyndicationFeedTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

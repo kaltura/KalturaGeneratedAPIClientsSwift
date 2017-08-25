@@ -35,6 +35,15 @@
 
 open class VirusScanProfileListResponse: ListResponse {
 
+	public class VirusScanProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<VirusScanProfile.VirusScanProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<VirusScanProfile.VirusScanProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<VirusScanProfile>? = nil
 
 

@@ -35,11 +35,44 @@
 
 open class ScheduledTaskJobData: JobData {
 
+	public class ScheduledTaskJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var maxResults: BaseTokenizedObject {
+			get {
+				return self.append("maxResults") 
+			}
+		}
+		
+		public var resultsFilePath: BaseTokenizedObject {
+			get {
+				return self.append("resultsFilePath") 
+			}
+		}
+		
+		public var referenceTime: BaseTokenizedObject {
+			get {
+				return self.append("referenceTime") 
+			}
+		}
+	}
+
 	public var maxResults: Int? = nil
 	public var resultsFilePath: String? = nil
 	public var referenceTime: Int? = nil
 
 
+	public func setMultiRequestToken(maxResults: String) {
+		self.dict["maxResults"] = maxResults
+	}
+	
+	public func setMultiRequestToken(resultsFilePath: String) {
+		self.dict["resultsFilePath"] = resultsFilePath
+	}
+	
+	public func setMultiRequestToken(referenceTime: String) {
+		self.dict["referenceTime"] = referenceTime
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

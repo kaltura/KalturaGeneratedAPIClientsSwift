@@ -35,12 +35,55 @@
 
 open class ImportJobData: JobData {
 
+	public class ImportJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("srcFileUrl") 
+			}
+		}
+		
+		public var destFileLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileLocalPath") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var fileSize: BaseTokenizedObject {
+			get {
+				return self.append("fileSize") 
+			}
+		}
+	}
+
 	public var srcFileUrl: String? = nil
 	public var destFileLocalPath: String? = nil
 	public var flavorAssetId: String? = nil
 	public var fileSize: Int? = nil
 
 
+	public func setMultiRequestToken(srcFileUrl: String) {
+		self.dict["srcFileUrl"] = srcFileUrl
+	}
+	
+	public func setMultiRequestToken(destFileLocalPath: String) {
+		self.dict["destFileLocalPath"] = destFileLocalPath
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

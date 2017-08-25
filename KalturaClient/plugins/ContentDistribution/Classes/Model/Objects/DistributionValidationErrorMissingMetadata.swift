@@ -35,9 +35,22 @@
 
 open class DistributionValidationErrorMissingMetadata: DistributionValidationError {
 
+	public class DistributionValidationErrorMissingMetadataTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var fieldName: BaseTokenizedObject {
+			get {
+				return self.append("fieldName") 
+			}
+		}
+	}
+
 	public var fieldName: String? = nil
 
 
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

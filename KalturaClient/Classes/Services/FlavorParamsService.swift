@@ -36,59 +36,125 @@
 /**  Add &amp; Manage Flavor Params  */
 public final class FlavorParamsService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var flavorParams: FlavorParams.FlavorParamsTokenizer {
+			get {
+				return FlavorParams.FlavorParamsTokenizer(self.append("flavorParams")) 
+			}
+		}
+	}
+
 	/**  Add new Flavor Params  */
-	public static func add(flavorParams: FlavorParams) -> RequestBuilder<FlavorParams> {
-		let request: RequestBuilder<FlavorParams> = RequestBuilder<FlavorParams>(service: "flavorparams", action: "add")
+	public static func add(flavorParams: FlavorParams) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, AddTokenizer> {
+		let request: RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, AddTokenizer> = RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, AddTokenizer>(service: "flavorparams", action: "add")
 			.setBody(key: "flavorParams", value: flavorParams)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Flavor Params by ID  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorparams", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Flavor Params by ID  */
-	public static func get(id: Int) -> RequestBuilder<FlavorParams> {
-		let request: RequestBuilder<FlavorParams> = RequestBuilder<FlavorParams>(service: "flavorparams", action: "get")
+	public static func get(id: Int) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer> {
+		let request: RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer> = RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer>(service: "flavorparams", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetByConversionProfileIdTokenizer: ClientTokenizer  {
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+	}
+
 	/**  Get Flavor Params by Conversion Profile ID  */
-	public static func getByConversionProfileId(conversionProfileId: Int) -> RequestBuilder<Array<FlavorParams>> {
-		let request: ArrayRequestBuilder<FlavorParams> = ArrayRequestBuilder<FlavorParams>(service: "flavorparams", action: "getByConversionProfileId")
+	public static func getByConversionProfileId(conversionProfileId: Int) -> ArrayRequestBuilder<FlavorParams, ArrayTokenizedObject<FlavorParams.FlavorParamsTokenizer>, GetByConversionProfileIdTokenizer> {
+		let request: ArrayRequestBuilder<FlavorParams, ArrayTokenizedObject<FlavorParams.FlavorParamsTokenizer>, GetByConversionProfileIdTokenizer> = ArrayRequestBuilder<FlavorParams, ArrayTokenizedObject<FlavorParams.FlavorParamsTokenizer>, GetByConversionProfileIdTokenizer>(service: "flavorparams", action: "getByConversionProfileId")
 			.setBody(key: "conversionProfileId", value: conversionProfileId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<FlavorParamsListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: FlavorParamsFilter.FlavorParamsFilterTokenizer {
+			get {
+				return FlavorParamsFilter.FlavorParamsFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<FlavorParamsListResponse, FlavorParamsListResponse.FlavorParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: FlavorParamsFilter?) -> RequestBuilder<FlavorParamsListResponse> {
+	public static func list(filter: FlavorParamsFilter?) -> RequestBuilder<FlavorParamsListResponse, FlavorParamsListResponse.FlavorParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List Flavor Params by filter with paging support (By default - all system
 	  default params will be listed too)  */
-	public static func list(filter: FlavorParamsFilter?, pager: FilterPager?) -> RequestBuilder<FlavorParamsListResponse> {
-		let request: RequestBuilder<FlavorParamsListResponse> = RequestBuilder<FlavorParamsListResponse>(service: "flavorparams", action: "list")
+	public static func list(filter: FlavorParamsFilter?, pager: FilterPager?) -> RequestBuilder<FlavorParamsListResponse, FlavorParamsListResponse.FlavorParamsListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<FlavorParamsListResponse, FlavorParamsListResponse.FlavorParamsListResponseTokenizer, ListTokenizer> = RequestBuilder<FlavorParamsListResponse, FlavorParamsListResponse.FlavorParamsListResponseTokenizer, ListTokenizer>(service: "flavorparams", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var flavorParams: FlavorParams.FlavorParamsTokenizer {
+			get {
+				return FlavorParams.FlavorParamsTokenizer(self.append("flavorParams")) 
+			}
+		}
+	}
+
 	/**  Update Flavor Params by ID  */
-	public static func update(id: Int, flavorParams: FlavorParams) -> RequestBuilder<FlavorParams> {
-		let request: RequestBuilder<FlavorParams> = RequestBuilder<FlavorParams>(service: "flavorparams", action: "update")
+	public static func update(id: Int, flavorParams: FlavorParams) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer> = RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer>(service: "flavorparams", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "flavorParams", value: flavorParams)
 

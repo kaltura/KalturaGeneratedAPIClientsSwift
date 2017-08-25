@@ -35,6 +35,117 @@
 
 open class BulkUpload: ObjectBase {
 
+	public class BulkUploadTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var uploadedBy: BaseTokenizedObject {
+			get {
+				return self.append("uploadedBy") 
+			}
+		}
+		
+		public var uploadedByUserId: BaseTokenizedObject {
+			get {
+				return self.append("uploadedByUserId") 
+			}
+		}
+		
+		public var uploadedOn: BaseTokenizedObject {
+			get {
+				return self.append("uploadedOn") 
+			}
+		}
+		
+		public var numOfEntries: BaseTokenizedObject {
+			get {
+				return self.append("numOfEntries") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var logFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("logFileUrl") 
+			}
+		}
+		
+		public var csvFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("csvFileUrl") 
+			}
+		}
+		
+		public var bulkFileUrl: BaseTokenizedObject {
+			get {
+				return self.append("bulkFileUrl") 
+			}
+		}
+		
+		public var bulkUploadType: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadType") 
+			}
+		}
+		
+		public var results: ArrayTokenizedObject<BulkUploadResult.BulkUploadResultTokenizer> {
+			get {
+				return ArrayTokenizedObject<BulkUploadResult.BulkUploadResultTokenizer>(self.append("results"))
+			} 
+		}
+		
+		public var error: BaseTokenizedObject {
+			get {
+				return self.append("error") 
+			}
+		}
+		
+		public var errorType: BaseTokenizedObject {
+			get {
+				return self.append("errorType") 
+			}
+		}
+		
+		public var errorNumber: BaseTokenizedObject {
+			get {
+				return self.append("errorNumber") 
+			}
+		}
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var numOfObjects: BaseTokenizedObject {
+			get {
+				return self.append("numOfObjects") 
+			}
+		}
+		
+		public var bulkUploadObjectType: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadObjectType") 
+			}
+		}
+	}
+
 	public var id: Int64? = nil
 	public var uploadedBy: String? = nil
 	public var uploadedByUserId: String? = nil
@@ -55,11 +166,79 @@ open class BulkUpload: ObjectBase {
 	public var bulkUploadObjectType: BulkUploadObjectType? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(uploadedBy: String) {
+		self.dict["uploadedBy"] = uploadedBy
+	}
+	
+	public func setMultiRequestToken(uploadedByUserId: String) {
+		self.dict["uploadedByUserId"] = uploadedByUserId
+	}
+	
+	public func setMultiRequestToken(uploadedOn: String) {
+		self.dict["uploadedOn"] = uploadedOn
+	}
+	
+	public func setMultiRequestToken(numOfEntries: String) {
+		self.dict["numOfEntries"] = numOfEntries
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(logFileUrl: String) {
+		self.dict["logFileUrl"] = logFileUrl
+	}
+	
+	public func setMultiRequestToken(csvFileUrl: String) {
+		self.dict["csvFileUrl"] = csvFileUrl
+	}
+	
+	public func setMultiRequestToken(bulkFileUrl: String) {
+		self.dict["bulkFileUrl"] = bulkFileUrl
+	}
+	
+	public func setMultiRequestToken(bulkUploadType: String) {
+		self.dict["bulkUploadType"] = bulkUploadType
+	}
+	
+	public func setMultiRequestToken(error: String) {
+		self.dict["error"] = error
+	}
+	
+	public func setMultiRequestToken(errorType: String) {
+		self.dict["errorType"] = errorType
+	}
+	
+	public func setMultiRequestToken(errorNumber: String) {
+		self.dict["errorNumber"] = errorNumber
+	}
+	
+	public func setMultiRequestToken(fileName: String) {
+		self.dict["fileName"] = fileName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(numOfObjects: String) {
+		self.dict["numOfObjects"] = numOfObjects
+	}
+	
+	public func setMultiRequestToken(bulkUploadObjectType: String) {
+		self.dict["bulkUploadObjectType"] = bulkUploadObjectType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = Int64((dict["id"] as? String)!)
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["uploadedBy"] != nil {
 			uploadedBy = dict["uploadedBy"] as? String

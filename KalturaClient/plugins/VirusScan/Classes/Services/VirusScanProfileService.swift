@@ -36,65 +36,137 @@
 /**  Virus scan profile service  */
 public final class VirusScanProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var virusScanProfile: VirusScanProfile.VirusScanProfileTokenizer {
+			get {
+				return VirusScanProfile.VirusScanProfileTokenizer(self.append("virusScanProfile")) 
+			}
+		}
+	}
+
 	/**  Allows you to add an virus scan profile object and virus scan profile content
 	  associated with Kaltura object  */
-	public static func add(virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile> {
-		let request: RequestBuilder<VirusScanProfile> = RequestBuilder<VirusScanProfile>(service: "virusscan_virusscanprofile", action: "add")
+	public static func add(virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer>(service: "virusscan_virusscanprofile", action: "add")
 			.setBody(key: "virusScanProfile", value: virusScanProfile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var virusScanProfileId: BaseTokenizedObject {
+			get {
+				return self.append("virusScanProfileId") 
+			}
+		}
+	}
+
 	/**  Mark the virus scan profile as deleted  */
-	public static func delete(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile> {
-		let request: RequestBuilder<VirusScanProfile> = RequestBuilder<VirusScanProfile>(service: "virusscan_virusscanprofile", action: "delete")
+	public static func delete(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer>(service: "virusscan_virusscanprofile", action: "delete")
 			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var virusScanProfileId: BaseTokenizedObject {
+			get {
+				return self.append("virusScanProfileId") 
+			}
+		}
 	}
 
 	/**  Retrieve an virus scan profile object by id  */
-	public static func get(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile> {
-		let request: RequestBuilder<VirusScanProfile> = RequestBuilder<VirusScanProfile>(service: "virusscan_virusscanprofile", action: "get")
+	public static func get(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer>(service: "virusscan_virusscanprofile", action: "get")
 			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<VirusScanProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: VirusScanProfileFilter.VirusScanProfileFilterTokenizer {
+			get {
+				return VirusScanProfileFilter.VirusScanProfileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: VirusScanProfileFilter?) -> RequestBuilder<VirusScanProfileListResponse> {
+	public static func list(filter: VirusScanProfileFilter?) -> RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List virus scan profile objects by filter and pager  */
-	public static func list(filter: VirusScanProfileFilter?, pager: FilterPager?) -> RequestBuilder<VirusScanProfileListResponse> {
-		let request: RequestBuilder<VirusScanProfileListResponse> = RequestBuilder<VirusScanProfileListResponse>(service: "virusscan_virusscanprofile", action: "list")
+	public static func list(filter: VirusScanProfileFilter?, pager: FilterPager?) -> RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer>(service: "virusscan_virusscanprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func scan(flavorAssetId: String) -> RequestBuilder<Int> {
+	public class ScanTokenizer: ClientTokenizer  {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var virusScanProfileId: BaseTokenizedObject {
+			get {
+				return self.append("virusScanProfileId") 
+			}
+		}
+	}
+
+	public static func scan(flavorAssetId: String) -> RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer> {
 		return scan(flavorAssetId: flavorAssetId, virusScanProfileId: nil)
 	}
 
 	/**  Scan flavor asset according to virus scan profile  */
-	public static func scan(flavorAssetId: String, virusScanProfileId: Int?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "virusscan_virusscanprofile", action: "scan")
+	public static func scan(flavorAssetId: String, virusScanProfileId: Int?) -> RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer> = RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer>(service: "virusscan_virusscanprofile", action: "scan")
 			.setBody(key: "flavorAssetId", value: flavorAssetId)
 			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var virusScanProfileId: BaseTokenizedObject {
+			get {
+				return self.append("virusScanProfileId") 
+			}
+		}
+		
+		public var virusScanProfile: VirusScanProfile.VirusScanProfileTokenizer {
+			get {
+				return VirusScanProfile.VirusScanProfileTokenizer(self.append("virusScanProfile")) 
+			}
+		}
+	}
+
 	/**  Update exisitng virus scan profile, it is possible to update the virus scan
 	  profile id too  */
-	public static func update(virusScanProfileId: Int, virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile> {
-		let request: RequestBuilder<VirusScanProfile> = RequestBuilder<VirusScanProfile>(service: "virusscan_virusscanprofile", action: "update")
+	public static func update(virusScanProfileId: Int, virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer>(service: "virusscan_virusscanprofile", action: "update")
 			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
 			.setBody(key: "virusScanProfile", value: virusScanProfile)
 

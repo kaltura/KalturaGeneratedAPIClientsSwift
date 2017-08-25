@@ -35,10 +35,33 @@
 
 open class ReportTotal: ObjectBase {
 
+	public class ReportTotalTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var header: BaseTokenizedObject {
+			get {
+				return self.append("header") 
+			}
+		}
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+	}
+
 	public var header: String? = nil
 	public var data: String? = nil
 
 
+	public func setMultiRequestToken(header: String) {
+		self.dict["header"] = header
+	}
+	
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class RecordScheduleEvent: EntryScheduleEvent {
 
+	public class RecordScheduleEventTokenizer: EntryScheduleEvent.EntryScheduleEventTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

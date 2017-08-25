@@ -36,6 +36,9 @@
 /**  Represents the current session user e-mail address context  */
 open class UserEmailContextField: StringField {
 
+	public class UserEmailContextFieldTokenizer: StringField.StringFieldTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

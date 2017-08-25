@@ -36,104 +36,221 @@
 /**  Entry Distribution service  */
 public final class EntryDistributionService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
+			get {
+				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
+			}
+		}
+	}
+
 	/**  Add new Entry Distribution  */
-	public static func add(entryDistribution: EntryDistribution) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "add")
+	public static func add(entryDistribution: EntryDistribution) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, AddTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, AddTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, AddTokenizer>(service: "contentdistribution_entrydistribution", action: "add")
 			.setBody(key: "entryDistribution", value: entryDistribution)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Entry Distribution by id  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_entrydistribution", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Entry Distribution by id  */
-	public static func get(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "get")
+	public static func get(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, GetTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, GetTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, GetTokenizer>(service: "contentdistribution_entrydistribution", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<EntryDistributionListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: EntryDistributionFilter.EntryDistributionFilterTokenizer {
+			get {
+				return EntryDistributionFilter.EntryDistributionFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<EntryDistributionListResponse, EntryDistributionListResponse.EntryDistributionListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: EntryDistributionFilter?) -> RequestBuilder<EntryDistributionListResponse> {
+	public static func list(filter: EntryDistributionFilter?) -> RequestBuilder<EntryDistributionListResponse, EntryDistributionListResponse.EntryDistributionListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all distribution providers  */
-	public static func list(filter: EntryDistributionFilter?, pager: FilterPager?) -> RequestBuilder<EntryDistributionListResponse> {
-		let request: RequestBuilder<EntryDistributionListResponse> = RequestBuilder<EntryDistributionListResponse>(service: "contentdistribution_entrydistribution", action: "list")
+	public static func list(filter: EntryDistributionFilter?, pager: FilterPager?) -> RequestBuilder<EntryDistributionListResponse, EntryDistributionListResponse.EntryDistributionListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<EntryDistributionListResponse, EntryDistributionListResponse.EntryDistributionListResponseTokenizer, ListTokenizer> = RequestBuilder<EntryDistributionListResponse, EntryDistributionListResponse.EntryDistributionListResponseTokenizer, ListTokenizer>(service: "contentdistribution_entrydistribution", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class RetrySubmitTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retries last submit action  */
-	public static func retrySubmit(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "retrySubmit")
+	public static func retrySubmit(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, RetrySubmitTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, RetrySubmitTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, RetrySubmitTokenizer>(service: "contentdistribution_entrydistribution", action: "retrySubmit")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func submitAdd(id: Int) -> RequestBuilder<EntryDistribution> {
+	public class SubmitAddTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var submitWhenReady: BaseTokenizedObject {
+			get {
+				return self.append("submitWhenReady") 
+			}
+		}
+	}
+
+	public static func submitAdd(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitAddTokenizer> {
 		return submitAdd(id: id, submitWhenReady: false)
 	}
 
 	/**  Submits Entry Distribution to the remote destination  */
-	public static func submitAdd(id: Int, submitWhenReady: Bool?) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "submitAdd")
+	public static func submitAdd(id: Int, submitWhenReady: Bool?) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitAddTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitAddTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitAddTokenizer>(service: "contentdistribution_entrydistribution", action: "submitAdd")
 			.setBody(key: "id", value: id)
 			.setBody(key: "submitWhenReady", value: submitWhenReady)
 
 		return request
 	}
 
+	public class SubmitDeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Deletes Entry Distribution from the remote destination  */
-	public static func submitDelete(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "submitDelete")
+	public static func submitDelete(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitDeleteTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitDeleteTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitDeleteTokenizer>(service: "contentdistribution_entrydistribution", action: "submitDelete")
 			.setBody(key: "id", value: id)
 
 		return request
+	}
+
+	public class SubmitFetchReportTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
 	}
 
 	/**  Submits Entry Distribution report request  */
-	public static func submitFetchReport(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "submitFetchReport")
+	public static func submitFetchReport(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitFetchReportTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitFetchReportTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitFetchReportTokenizer>(service: "contentdistribution_entrydistribution", action: "submitFetchReport")
 			.setBody(key: "id", value: id)
 
 		return request
+	}
+
+	public class SubmitUpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
 	}
 
 	/**  Submits Entry Distribution changes to the remote destination  */
-	public static func submitUpdate(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "submitUpdate")
+	public static func submitUpdate(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitUpdateTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitUpdateTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, SubmitUpdateTokenizer>(service: "contentdistribution_entrydistribution", action: "submitUpdate")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
+			get {
+				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
+			}
+		}
+	}
+
 	/**  Update Entry Distribution by id  */
-	public static func update(id: Int, entryDistribution: EntryDistribution) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "update")
+	public static func update(id: Int, entryDistribution: EntryDistribution) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, UpdateTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, UpdateTokenizer>(service: "contentdistribution_entrydistribution", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "entryDistribution", value: entryDistribution)
 
 		return request
 	}
 
+	public class ValidateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Validates Entry Distribution by id for submission  */
-	public static func validate(id: Int) -> RequestBuilder<EntryDistribution> {
-		let request: RequestBuilder<EntryDistribution> = RequestBuilder<EntryDistribution>(service: "contentdistribution_entrydistribution", action: "validate")
+	public static func validate(id: Int) -> RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, ValidateTokenizer> {
+		let request: RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, ValidateTokenizer> = RequestBuilder<EntryDistribution, EntryDistribution.EntryDistributionTokenizer, ValidateTokenizer>(service: "contentdistribution_entrydistribution", action: "validate")
 			.setBody(key: "id", value: id)
 
 		return request

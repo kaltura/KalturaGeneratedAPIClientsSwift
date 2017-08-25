@@ -35,12 +35,31 @@
 
 open class ModifyCategoriesObjectTask: ObjectTask {
 
+	public class ModifyCategoriesObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var addRemoveType: BaseTokenizedObject {
+			get {
+				return self.append("addRemoveType") 
+			}
+		}
+		
+		public var categoryIds: ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer>(self.append("categoryIds"))
+			} 
+		}
+	}
+
 	/**  Should the object task add or remove categories?  */
 	public var addRemoveType: ScheduledTaskAddOrRemoveType? = nil
 	/**  The list of category ids to add or remove  */
 	public var categoryIds: Array<IntegerValue>? = nil
 
 
+	public func setMultiRequestToken(addRemoveType: String) {
+		self.dict["addRemoveType"] = addRemoveType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

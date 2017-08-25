@@ -35,6 +35,9 @@
 
 open class YoutubeApiDistributionProvider: DistributionProvider {
 
+	public class YoutubeApiDistributionProviderTokenizer: DistributionProvider.DistributionProviderTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

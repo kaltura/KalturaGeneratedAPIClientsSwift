@@ -36,12 +36,55 @@
 /**  A representation of an RTMP live stream configuration  */
 open class LiveStreamPushPublishRTMPConfiguration: LiveStreamPushPublishConfiguration {
 
+	public class LiveStreamPushPublishRTMPConfigurationTokenizer: LiveStreamPushPublishConfiguration.LiveStreamPushPublishConfigurationTokenizer {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var streamName: BaseTokenizedObject {
+			get {
+				return self.append("streamName") 
+			}
+		}
+		
+		public var applicationName: BaseTokenizedObject {
+			get {
+				return self.append("applicationName") 
+			}
+		}
+	}
+
 	public var userId: String? = nil
 	public var password: String? = nil
 	public var streamName: String? = nil
 	public var applicationName: String? = nil
 
 
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(streamName: String) {
+		self.dict["streamName"] = streamName
+	}
+	
+	public func setMultiRequestToken(applicationName: String) {
+		self.dict["applicationName"] = applicationName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

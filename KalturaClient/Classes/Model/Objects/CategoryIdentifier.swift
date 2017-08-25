@@ -35,10 +35,23 @@
 
 open class CategoryIdentifier: ObjectIdentifier {
 
+	public class CategoryIdentifierTokenizer: ObjectIdentifier.ObjectIdentifierTokenizer {
+		
+		public var identifier: BaseTokenizedObject {
+			get {
+				return self.append("identifier") 
+			}
+		}
+	}
+
 	/**  Identifier of the object  */
 	public var identifier: CategoryIdentifierField? = nil
 
 
+	public func setMultiRequestToken(identifier: String) {
+		self.dict["identifier"] = identifier
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

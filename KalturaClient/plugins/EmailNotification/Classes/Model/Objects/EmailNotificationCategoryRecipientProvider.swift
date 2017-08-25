@@ -36,6 +36,21 @@
 /**  API object which provides the recipients of category related notifications.  */
 open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipientProvider {
 
+	public class EmailNotificationCategoryRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
+		
+		public var categoryId: StringValue.StringValueTokenizer {
+			get {
+				return StringValue.StringValueTokenizer(self.append("categoryId")) 
+			}
+		}
+		
+		public var categoryUserFilter: CategoryUserProviderFilter.CategoryUserProviderFilterTokenizer {
+			get {
+				return CategoryUserProviderFilter.CategoryUserProviderFilterTokenizer(self.append("categoryUserFilter")) 
+			}
+		}
+	}
+
 	/**  The ID of the category whose subscribers should receive the email notification.  */
 	public var categoryId: StringValue? = nil
 	public var categoryUserFilter: CategoryUserProviderFilter? = nil

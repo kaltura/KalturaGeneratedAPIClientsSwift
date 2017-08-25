@@ -35,6 +35,15 @@
 
 open class FieldCompareCondition: CompareCondition {
 
+	public class FieldCompareConditionTokenizer: CompareCondition.CompareConditionTokenizer {
+		
+		public var field: IntegerField.IntegerFieldTokenizer {
+			get {
+				return IntegerField.IntegerFieldTokenizer(self.append("field")) 
+			}
+		}
+	}
+
 	/**  Field to evaluate  */
 	public var field: IntegerField? = nil
 

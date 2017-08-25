@@ -36,10 +36,37 @@
 /**  Metadata service  */
 public final class MetadataService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var xmlData: BaseTokenizedObject {
+			get {
+				return self.append("xmlData") 
+			}
+		}
+	}
+
 	/**  Allows you to add a metadata object and metadata content associated with Kaltura
 	  object  */
-	public static func add(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, xmlData: String) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "add")
+	public static func add(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, xmlData: String) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddTokenizer>(service: "metadata_metadata", action: "add")
 			.setBody(key: "metadataProfileId", value: metadataProfileId)
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -48,10 +75,37 @@ public final class MetadataService{
 		return request
 	}
 
+	public class AddFromBulkTokenizer: ClientTokenizer  {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	/**  Allows you to add a metadata xml data from remote URL.   Enables different
 	  permissions than addFromUrl action.  */
-	public static func addFromBulk(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "addFromBulk")
+	public static func addFromBulk(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer>(service: "metadata_metadata", action: "addFromBulk")
 			.setBody(key: "metadataProfileId", value: metadataProfileId)
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -60,10 +114,31 @@ public final class MetadataService{
 		return request
 	}
 
+	public class AddFromFileTokenizer: ClientTokenizer  {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+	}
+
 	/**  Allows you to add a metadata object and metadata file associated with Kaltura
 	  object  */
-	public static func addFromFile(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, xmlFile: RequestFile) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "addFromFile")
+	public static func addFromFile(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, xmlFile: RequestFile) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromFileTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromFileTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromFileTokenizer>(service: "metadata_metadata", action: "addFromFile")
 			.setBody(key: "metadataProfileId", value: metadataProfileId)
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -72,9 +147,36 @@ public final class MetadataService{
 		return request
 	}
 
+	public class AddFromUrlTokenizer: ClientTokenizer  {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	/**  Allows you to add a metadata xml data from remote URL  */
-	public static func addFromUrl(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "addFromUrl")
+	public static func addFromUrl(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer>(service: "metadata_metadata", action: "addFromUrl")
 			.setBody(key: "metadataProfileId", value: metadataProfileId)
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -83,37 +185,85 @@ public final class MetadataService{
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete an existing metadata  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadata", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retrieve a metadata object by id  */
-	public static func get(id: Int) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "get")
+	public static func get(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer>(service: "metadata_metadata", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class IndexTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var shouldUpdate: BaseTokenizedObject {
+			get {
+				return self.append("shouldUpdate") 
+			}
+		}
+	}
+
 	/**  Index metadata by id, will also index the related object  */
-	public static func index(id: String, shouldUpdate: Bool) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "metadata_metadata", action: "index")
+	public static func index(id: String, shouldUpdate: Bool) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "metadata_metadata", action: "index")
 			.setBody(key: "id", value: id)
 			.setBody(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
 
-	public static func invalidate(id: Int) -> RequestBuilder<Void> {
+	public class InvalidateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
+	public static func invalidate(id: Int) -> NullRequestBuilder {
 		return invalidate(id: id, version: nil)
 	}
 
 	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
-	public static func invalidate(id: Int, version: Int?) -> RequestBuilder<Void> {
+	public static func invalidate(id: Int, version: Int?) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadata", action: "invalidate")
 			.setBody(key: "id", value: id)
 			.setBody(key: "version", value: version)
@@ -121,34 +271,70 @@ public final class MetadataService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<MetadataListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: MetadataFilter.MetadataFilterTokenizer {
+			get {
+				return MetadataFilter.MetadataFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<MetadataListResponse, MetadataListResponse.MetadataListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: MetadataFilter?) -> RequestBuilder<MetadataListResponse> {
+	public static func list(filter: MetadataFilter?) -> RequestBuilder<MetadataListResponse, MetadataListResponse.MetadataListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List metadata objects by filter and pager  */
-	public static func list(filter: MetadataFilter?, pager: FilterPager?) -> RequestBuilder<MetadataListResponse> {
-		let request: RequestBuilder<MetadataListResponse> = RequestBuilder<MetadataListResponse>(service: "metadata_metadata", action: "list")
+	public static func list(filter: MetadataFilter?, pager: FilterPager?) -> RequestBuilder<MetadataListResponse, MetadataListResponse.MetadataListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<MetadataListResponse, MetadataListResponse.MetadataListResponseTokenizer, ListTokenizer> = RequestBuilder<MetadataListResponse, MetadataListResponse.MetadataListResponseTokenizer, ListTokenizer>(service: "metadata_metadata", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func update(id: Int) -> RequestBuilder<Metadata> {
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var xmlData: BaseTokenizedObject {
+			get {
+				return self.append("xmlData") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
+	public static func update(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
 		return update(id: id, xmlData: nil)
 	}
 
-	public static func update(id: Int, xmlData: String?) -> RequestBuilder<Metadata> {
+	public static func update(id: Int, xmlData: String?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
 		return update(id: id, xmlData: xmlData, version: nil)
 	}
 
 	/**  Update an existing metadata object with new XML content  */
-	public static func update(id: Int, xmlData: String?, version: Int?) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "update")
+	public static func update(id: Int, xmlData: String?, version: Int?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer>(service: "metadata_metadata", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "xmlData", value: xmlData)
 			.setBody(key: "version", value: version)
@@ -156,22 +342,40 @@ public final class MetadataService{
 		return request
 	}
 
-	public static func updateFromFile(id: Int) -> RequestBuilder<Metadata> {
+	public class UpdateFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func updateFromFile(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
 		return updateFromFile(id: id, xmlFile: nil)
 	}
 
 	/**  Update an existing metadata object with new XML file  */
-	public static func updateFromFile(id: Int, xmlFile: RequestFile?) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "updateFromFile")
+	public static func updateFromFile(id: Int, xmlFile: RequestFile?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer>(service: "metadata_metadata", action: "updateFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xmlFile", value: xmlFile)
 
 		return request
 	}
 
+	public class UpdateFromXSLTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Action transforms current metadata object XML using a provided XSL.  */
-	public static func updateFromXSL(id: Int, xslFile: RequestFile) -> RequestBuilder<Metadata> {
-		let request: RequestBuilder<Metadata> = RequestBuilder<Metadata>(service: "metadata_metadata", action: "updateFromXSL")
+	public static func updateFromXSL(id: Int, xslFile: RequestFile) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer> {
+		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer>(service: "metadata_metadata", action: "updateFromXSL")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xslFile", value: xslFile)
 

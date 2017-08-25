@@ -35,9 +35,22 @@
 
 open class QuizAdvancedFilter: SearchItem {
 
+	public class QuizAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var isQuiz: BaseTokenizedObject {
+			get {
+				return self.append("isQuiz") 
+			}
+		}
+	}
+
 	public var isQuiz: Bool? = nil
 
 
+	public func setMultiRequestToken(isQuiz: String) {
+		self.dict["isQuiz"] = isQuiz
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class AccessControlFilter: AccessControlBaseFilter {
 
+	public class AccessControlFilterTokenizer: AccessControlBaseFilter.AccessControlBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

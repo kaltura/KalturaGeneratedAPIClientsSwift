@@ -35,9 +35,22 @@
 
 open class EntryReferrerLiveStats: EntryLiveStats {
 
+	public class EntryReferrerLiveStatsTokenizer: EntryLiveStats.EntryLiveStatsTokenizer {
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
 	public var referrer: String? = nil
 
 
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

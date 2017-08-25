@@ -35,6 +35,75 @@
 
 open class Metadata: ObjectBase {
 
+	public class MetadataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var metadataProfileVersion: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileVersion") 
+			}
+		}
+		
+		public var metadataObjectType: BaseTokenizedObject {
+			get {
+				return self.append("metadataObjectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var xml: BaseTokenizedObject {
+			get {
+				return self.append("xml") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var metadataProfileId: Int? = nil
@@ -48,6 +117,50 @@ open class Metadata: ObjectBase {
 	public var xml: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(metadataProfileVersion: String) {
+		self.dict["metadataProfileVersion"] = metadataProfileVersion
+	}
+	
+	public func setMultiRequestToken(metadataObjectType: String) {
+		self.dict["metadataObjectType"] = metadataObjectType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(xml: String) {
+		self.dict["xml"] = xml
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

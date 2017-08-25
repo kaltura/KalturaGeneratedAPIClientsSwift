@@ -35,12 +35,35 @@
 
 open class ExternalMediaEntry: MediaEntry {
 
+	public class ExternalMediaEntryTokenizer: MediaEntry.MediaEntryTokenizer {
+		
+		public var externalSourceType: BaseTokenizedObject {
+			get {
+				return self.append("externalSourceType") 
+			}
+		}
+		
+		public var assetParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIds") 
+			}
+		}
+	}
+
 	/**  The source type of the external media  */
 	public var externalSourceType: ExternalMediaSourceType? = nil
 	/**  Comma separated asset params ids that exists for this external media entry  */
 	public var assetParamsIds: String? = nil
 
 
+	public func setMultiRequestToken(externalSourceType: String) {
+		self.dict["externalSourceType"] = externalSourceType
+	}
+	
+	public func setMultiRequestToken(assetParamsIds: String) {
+		self.dict["assetParamsIds"] = assetParamsIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

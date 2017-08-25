@@ -35,6 +35,9 @@
 
 open class LiveStreamScheduleEventFilter: LiveStreamScheduleEventBaseFilter {
 
+	public class LiveStreamScheduleEventFilterTokenizer: LiveStreamScheduleEventBaseFilter.LiveStreamScheduleEventBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

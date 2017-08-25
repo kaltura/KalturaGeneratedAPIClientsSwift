@@ -35,6 +35,171 @@
 
 open class DropFolderFileBaseFilter: Filter {
 
+	public class DropFolderFileBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var dropFolderIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderIdEqual") 
+			}
+		}
+		
+		public var dropFolderIdIn: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderIdIn") 
+			}
+		}
+		
+		public var fileNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileNameEqual") 
+			}
+		}
+		
+		public var fileNameIn: BaseTokenizedObject {
+			get {
+				return self.append("fileNameIn") 
+			}
+		}
+		
+		public var fileNameLike: BaseTokenizedObject {
+			get {
+				return self.append("fileNameLike") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+		
+		public var parsedSlugEqual: BaseTokenizedObject {
+			get {
+				return self.append("parsedSlugEqual") 
+			}
+		}
+		
+		public var parsedSlugIn: BaseTokenizedObject {
+			get {
+				return self.append("parsedSlugIn") 
+			}
+		}
+		
+		public var parsedSlugLike: BaseTokenizedObject {
+			get {
+				return self.append("parsedSlugLike") 
+			}
+		}
+		
+		public var parsedFlavorEqual: BaseTokenizedObject {
+			get {
+				return self.append("parsedFlavorEqual") 
+			}
+		}
+		
+		public var parsedFlavorIn: BaseTokenizedObject {
+			get {
+				return self.append("parsedFlavorIn") 
+			}
+		}
+		
+		public var parsedFlavorLike: BaseTokenizedObject {
+			get {
+				return self.append("parsedFlavorLike") 
+			}
+		}
+		
+		public var leadDropFolderFileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("leadDropFolderFileIdEqual") 
+			}
+		}
+		
+		public var deletedDropFolderFileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("deletedDropFolderFileIdEqual") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var errorCodeEqual: BaseTokenizedObject {
+			get {
+				return self.append("errorCodeEqual") 
+			}
+		}
+		
+		public var errorCodeIn: BaseTokenizedObject {
+			get {
+				return self.append("errorCodeIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var partnerIdEqual: Int? = nil
@@ -64,6 +229,114 @@ open class DropFolderFileBaseFilter: Filter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(dropFolderIdEqual: String) {
+		self.dict["dropFolderIdEqual"] = dropFolderIdEqual
+	}
+	
+	public func setMultiRequestToken(dropFolderIdIn: String) {
+		self.dict["dropFolderIdIn"] = dropFolderIdIn
+	}
+	
+	public func setMultiRequestToken(fileNameEqual: String) {
+		self.dict["fileNameEqual"] = fileNameEqual
+	}
+	
+	public func setMultiRequestToken(fileNameIn: String) {
+		self.dict["fileNameIn"] = fileNameIn
+	}
+	
+	public func setMultiRequestToken(fileNameLike: String) {
+		self.dict["fileNameLike"] = fileNameLike
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
+	public func setMultiRequestToken(parsedSlugEqual: String) {
+		self.dict["parsedSlugEqual"] = parsedSlugEqual
+	}
+	
+	public func setMultiRequestToken(parsedSlugIn: String) {
+		self.dict["parsedSlugIn"] = parsedSlugIn
+	}
+	
+	public func setMultiRequestToken(parsedSlugLike: String) {
+		self.dict["parsedSlugLike"] = parsedSlugLike
+	}
+	
+	public func setMultiRequestToken(parsedFlavorEqual: String) {
+		self.dict["parsedFlavorEqual"] = parsedFlavorEqual
+	}
+	
+	public func setMultiRequestToken(parsedFlavorIn: String) {
+		self.dict["parsedFlavorIn"] = parsedFlavorIn
+	}
+	
+	public func setMultiRequestToken(parsedFlavorLike: String) {
+		self.dict["parsedFlavorLike"] = parsedFlavorLike
+	}
+	
+	public func setMultiRequestToken(leadDropFolderFileIdEqual: String) {
+		self.dict["leadDropFolderFileIdEqual"] = leadDropFolderFileIdEqual
+	}
+	
+	public func setMultiRequestToken(deletedDropFolderFileIdEqual: String) {
+		self.dict["deletedDropFolderFileIdEqual"] = deletedDropFolderFileIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(errorCodeEqual: String) {
+		self.dict["errorCodeEqual"] = errorCodeEqual
+	}
+	
+	public func setMultiRequestToken(errorCodeIn: String) {
+		self.dict["errorCodeIn"] = errorCodeIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

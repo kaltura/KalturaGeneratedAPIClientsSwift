@@ -35,6 +35,111 @@
 
 open class ThumbParams: AssetParams {
 
+	public class ThumbParamsTokenizer: AssetParams.AssetParamsTokenizer {
+		
+		public var cropType: BaseTokenizedObject {
+			get {
+				return self.append("cropType") 
+			}
+		}
+		
+		public var quality: BaseTokenizedObject {
+			get {
+				return self.append("quality") 
+			}
+		}
+		
+		public var cropX: BaseTokenizedObject {
+			get {
+				return self.append("cropX") 
+			}
+		}
+		
+		public var cropY: BaseTokenizedObject {
+			get {
+				return self.append("cropY") 
+			}
+		}
+		
+		public var cropWidth: BaseTokenizedObject {
+			get {
+				return self.append("cropWidth") 
+			}
+		}
+		
+		public var cropHeight: BaseTokenizedObject {
+			get {
+				return self.append("cropHeight") 
+			}
+		}
+		
+		public var videoOffset: BaseTokenizedObject {
+			get {
+				return self.append("videoOffset") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var scaleWidth: BaseTokenizedObject {
+			get {
+				return self.append("scaleWidth") 
+			}
+		}
+		
+		public var scaleHeight: BaseTokenizedObject {
+			get {
+				return self.append("scaleHeight") 
+			}
+		}
+		
+		public var backgroundColor: BaseTokenizedObject {
+			get {
+				return self.append("backgroundColor") 
+			}
+		}
+		
+		public var sourceParamsId: BaseTokenizedObject {
+			get {
+				return self.append("sourceParamsId") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var density: BaseTokenizedObject {
+			get {
+				return self.append("density") 
+			}
+		}
+		
+		public var stripProfiles: BaseTokenizedObject {
+			get {
+				return self.append("stripProfiles") 
+			}
+		}
+		
+		public var videoOffsetInPercentage: BaseTokenizedObject {
+			get {
+				return self.append("videoOffsetInPercentage") 
+			}
+		}
+	}
+
 	public var cropType: ThumbCropType? = nil
 	public var quality: Int? = nil
 	public var cropX: Int? = nil
@@ -61,6 +166,74 @@ open class ThumbParams: AssetParams {
 	public var videoOffsetInPercentage: Int? = nil
 
 
+	public func setMultiRequestToken(cropType: String) {
+		self.dict["cropType"] = cropType
+	}
+	
+	public func setMultiRequestToken(quality: String) {
+		self.dict["quality"] = quality
+	}
+	
+	public func setMultiRequestToken(cropX: String) {
+		self.dict["cropX"] = cropX
+	}
+	
+	public func setMultiRequestToken(cropY: String) {
+		self.dict["cropY"] = cropY
+	}
+	
+	public func setMultiRequestToken(cropWidth: String) {
+		self.dict["cropWidth"] = cropWidth
+	}
+	
+	public func setMultiRequestToken(cropHeight: String) {
+		self.dict["cropHeight"] = cropHeight
+	}
+	
+	public func setMultiRequestToken(videoOffset: String) {
+		self.dict["videoOffset"] = videoOffset
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(scaleWidth: String) {
+		self.dict["scaleWidth"] = scaleWidth
+	}
+	
+	public func setMultiRequestToken(scaleHeight: String) {
+		self.dict["scaleHeight"] = scaleHeight
+	}
+	
+	public func setMultiRequestToken(backgroundColor: String) {
+		self.dict["backgroundColor"] = backgroundColor
+	}
+	
+	public func setMultiRequestToken(sourceParamsId: String) {
+		self.dict["sourceParamsId"] = sourceParamsId
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(density: String) {
+		self.dict["density"] = density
+	}
+	
+	public func setMultiRequestToken(stripProfiles: String) {
+		self.dict["stripProfiles"] = stripProfiles
+	}
+	
+	public func setMultiRequestToken(videoOffsetInPercentage: String) {
+		self.dict["videoOffsetInPercentage"] = videoOffsetInPercentage
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

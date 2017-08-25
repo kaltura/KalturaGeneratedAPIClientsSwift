@@ -35,6 +35,171 @@
 
 open class ServerNodeBaseFilter: Filter {
 
+	public class ServerNodeBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var heartbeatTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("heartbeatTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var heartbeatTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("heartbeatTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var nameEqual: BaseTokenizedObject {
+			get {
+				return self.append("nameEqual") 
+			}
+		}
+		
+		public var nameIn: BaseTokenizedObject {
+			get {
+				return self.append("nameIn") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+		
+		public var hostNameLike: BaseTokenizedObject {
+			get {
+				return self.append("hostNameLike") 
+			}
+		}
+		
+		public var hostNameMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("hostNameMultiLikeOr") 
+			}
+		}
+		
+		public var hostNameMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("hostNameMultiLikeAnd") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+		
+		public var tagsLike: BaseTokenizedObject {
+			get {
+				return self.append("tagsLike") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var dcEqual: BaseTokenizedObject {
+			get {
+				return self.append("dcEqual") 
+			}
+		}
+		
+		public var dcIn: BaseTokenizedObject {
+			get {
+				return self.append("dcIn") 
+			}
+		}
+		
+		public var parentIdLike: BaseTokenizedObject {
+			get {
+				return self.append("parentIdLike") 
+			}
+		}
+		
+		public var parentIdMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("parentIdMultiLikeOr") 
+			}
+		}
+		
+		public var parentIdMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("parentIdMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
@@ -64,6 +229,114 @@ open class ServerNodeBaseFilter: Filter {
 	public var parentIdMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(heartbeatTimeGreaterThanOrEqual: String) {
+		self.dict["heartbeatTimeGreaterThanOrEqual"] = heartbeatTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(heartbeatTimeLessThanOrEqual: String) {
+		self.dict["heartbeatTimeLessThanOrEqual"] = heartbeatTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(nameEqual: String) {
+		self.dict["nameEqual"] = nameEqual
+	}
+	
+	public func setMultiRequestToken(nameIn: String) {
+		self.dict["nameIn"] = nameIn
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
+	public func setMultiRequestToken(hostNameLike: String) {
+		self.dict["hostNameLike"] = hostNameLike
+	}
+	
+	public func setMultiRequestToken(hostNameMultiLikeOr: String) {
+		self.dict["hostNameMultiLikeOr"] = hostNameMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(hostNameMultiLikeAnd: String) {
+		self.dict["hostNameMultiLikeAnd"] = hostNameMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
+	public func setMultiRequestToken(tagsLike: String) {
+		self.dict["tagsLike"] = tagsLike
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(dcEqual: String) {
+		self.dict["dcEqual"] = dcEqual
+	}
+	
+	public func setMultiRequestToken(dcIn: String) {
+		self.dict["dcIn"] = dcIn
+	}
+	
+	public func setMultiRequestToken(parentIdLike: String) {
+		self.dict["parentIdLike"] = parentIdLike
+	}
+	
+	public func setMultiRequestToken(parentIdMultiLikeOr: String) {
+		self.dict["parentIdMultiLikeOr"] = parentIdMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(parentIdMultiLikeAnd: String) {
+		self.dict["parentIdMultiLikeAnd"] = parentIdMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

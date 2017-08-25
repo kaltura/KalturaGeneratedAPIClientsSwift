@@ -35,6 +35,9 @@
 
 open class ThumbnailServeOptions: AssetServeOptions {
 
+	public class ThumbnailServeOptionsTokenizer: AssetServeOptions.AssetServeOptionsTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

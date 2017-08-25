@@ -37,10 +37,23 @@
   returned from upload.upload action or uploadToken.add action.  */
 open class UploadedFileTokenResource: GenericDataCenterContentResource {
 
+	public class UploadedFileTokenResourceTokenizer: GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer {
+		
+		public var token: BaseTokenizedObject {
+			get {
+				return self.append("token") 
+			}
+		}
+	}
+
 	/**  Token that returned from upload.upload action or uploadToken.add action.  */
 	public var token: String? = nil
 
 
+	public func setMultiRequestToken(token: String) {
+		self.dict["token"] = token
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

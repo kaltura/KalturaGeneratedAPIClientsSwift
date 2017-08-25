@@ -37,6 +37,9 @@
   by asset params ids.  */
 open class Resource: ObjectBase {
 
+	public class ResourceTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

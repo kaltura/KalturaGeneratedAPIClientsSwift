@@ -35,10 +35,33 @@
 
 open class DrmPlaybackPluginData: PluginData {
 
+	public class DrmPlaybackPluginDataTokenizer: PluginData.PluginDataTokenizer {
+		
+		public var scheme: BaseTokenizedObject {
+			get {
+				return self.append("scheme") 
+			}
+		}
+		
+		public var licenseURL: BaseTokenizedObject {
+			get {
+				return self.append("licenseURL") 
+			}
+		}
+	}
+
 	public var scheme: DrmSchemeName? = nil
 	public var licenseURL: String? = nil
 
 
+	public func setMultiRequestToken(scheme: String) {
+		self.dict["scheme"] = scheme
+	}
+	
+	public func setMultiRequestToken(licenseURL: String) {
+		self.dict["licenseURL"] = licenseURL
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,15 @@
 
 open class EventNotificationTemplateListResponse: ListResponse {
 
+	public class EventNotificationTemplateListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<EventNotificationTemplate.EventNotificationTemplateTokenizer> {
+			get {
+				return ArrayTokenizedObject<EventNotificationTemplate.EventNotificationTemplateTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<EventNotificationTemplate>? = nil
 
 

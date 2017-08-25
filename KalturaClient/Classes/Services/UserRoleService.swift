@@ -36,60 +36,126 @@
 /**  UserRole service lets you create and manage user roles  */
 public final class UserRoleService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var userRole: UserRole.UserRoleTokenizer {
+			get {
+				return UserRole.UserRoleTokenizer(self.append("userRole")) 
+			}
+		}
+	}
+
 	/**  Adds a new user role object to the account.  */
-	public static func add(userRole: UserRole) -> RequestBuilder<UserRole> {
-		let request: RequestBuilder<UserRole> = RequestBuilder<UserRole>(service: "userrole", action: "add")
+	public static func add(userRole: UserRole) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer> {
+		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer>(service: "userrole", action: "add")
 			.setBody(key: "userRole", value: userRole)
 
 		return request
 	}
 
+	public class CloneTokenizer: ClientTokenizer  {
+		
+		public var userRoleId: BaseTokenizedObject {
+			get {
+				return self.append("userRoleId") 
+			}
+		}
+	}
+
 	/**  Creates a new user role object that is a duplicate of an existing role.  */
-	public static func clone(userRoleId: Int) -> RequestBuilder<UserRole> {
-		let request: RequestBuilder<UserRole> = RequestBuilder<UserRole>(service: "userrole", action: "clone")
+	public static func clone(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer>(service: "userrole", action: "clone")
 			.setBody(key: "userRoleId", value: userRoleId)
 
 		return request
+	}
+
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var userRoleId: BaseTokenizedObject {
+			get {
+				return self.append("userRoleId") 
+			}
+		}
 	}
 
 	/**  Deletes an existing user role object.  */
-	public static func delete(userRoleId: Int) -> RequestBuilder<UserRole> {
-		let request: RequestBuilder<UserRole> = RequestBuilder<UserRole>(service: "userrole", action: "delete")
+	public static func delete(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer>(service: "userrole", action: "delete")
 			.setBody(key: "userRoleId", value: userRoleId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var userRoleId: BaseTokenizedObject {
+			get {
+				return self.append("userRoleId") 
+			}
+		}
 	}
 
 	/**  Retrieves a user role object using its ID.  */
-	public static func get(userRoleId: Int) -> RequestBuilder<UserRole> {
-		let request: RequestBuilder<UserRole> = RequestBuilder<UserRole>(service: "userrole", action: "get")
+	public static func get(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer> {
+		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer>(service: "userrole", action: "get")
 			.setBody(key: "userRoleId", value: userRoleId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<UserRoleListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: UserRoleFilter.UserRoleFilterTokenizer {
+			get {
+				return UserRoleFilter.UserRoleFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: UserRoleFilter?) -> RequestBuilder<UserRoleListResponse> {
+	public static func list(filter: UserRoleFilter?) -> RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Lists user role objects that are associated with an account.   Blocked user
 	  roles are listed unless you use a filter to exclude them.   Deleted user roles
 	  are not listed unless you use a filter to include them.  */
-	public static func list(filter: UserRoleFilter?, pager: FilterPager?) -> RequestBuilder<UserRoleListResponse> {
-		let request: RequestBuilder<UserRoleListResponse> = RequestBuilder<UserRoleListResponse>(service: "userrole", action: "list")
+	public static func list(filter: UserRoleFilter?, pager: FilterPager?) -> RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> = RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer>(service: "userrole", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var userRoleId: BaseTokenizedObject {
+			get {
+				return self.append("userRoleId") 
+			}
+		}
+		
+		public var userRole: UserRole.UserRoleTokenizer {
+			get {
+				return UserRole.UserRoleTokenizer(self.append("userRole")) 
+			}
+		}
+	}
+
 	/**  Updates an existing user role object.  */
-	public static func update(userRoleId: Int, userRole: UserRole) -> RequestBuilder<UserRole> {
-		let request: RequestBuilder<UserRole> = RequestBuilder<UserRole>(service: "userrole", action: "update")
+	public static func update(userRoleId: Int, userRole: UserRole) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer>(service: "userrole", action: "update")
 			.setBody(key: "userRoleId", value: userRoleId)
 			.setBody(key: "userRole", value: userRole)
 

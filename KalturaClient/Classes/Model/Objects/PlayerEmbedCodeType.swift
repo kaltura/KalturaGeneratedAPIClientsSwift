@@ -35,12 +35,55 @@
 
 open class PlayerEmbedCodeType: ObjectBase {
 
+	public class PlayerEmbedCodeTypeTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var entryOnly: BaseTokenizedObject {
+			get {
+				return self.append("entryOnly") 
+			}
+		}
+		
+		public var minVersion: BaseTokenizedObject {
+			get {
+				return self.append("minVersion") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var label: String? = nil
 	public var entryOnly: Bool? = nil
 	public var minVersion: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(entryOnly: String) {
+		self.dict["entryOnly"] = entryOnly
+	}
+	
+	public func setMultiRequestToken(minVersion: String) {
+		self.dict["minVersion"] = minVersion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

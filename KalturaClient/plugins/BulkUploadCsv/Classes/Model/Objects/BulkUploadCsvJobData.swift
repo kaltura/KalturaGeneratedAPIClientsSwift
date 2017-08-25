@@ -36,12 +36,31 @@
 /**  Represents the Bulk upload job data for xml bulk upload  */
 open class BulkUploadCsvJobData: BulkUploadJobData {
 
+	public class BulkUploadCsvJobDataTokenizer: BulkUploadJobData.BulkUploadJobDataTokenizer {
+		
+		public var csvVersion: BaseTokenizedObject {
+			get {
+				return self.append("csvVersion") 
+			}
+		}
+		
+		public var columns: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("columns"))
+			} 
+		}
+	}
+
 	/**  The version of the csv file  */
 	public var csvVersion: BulkUploadCsvVersion? = nil
 	/**  Array containing CSV headers  */
 	public var columns: Array<StringHolder>? = nil
 
 
+	public func setMultiRequestToken(csvVersion: String) {
+		self.dict["csvVersion"] = csvVersion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

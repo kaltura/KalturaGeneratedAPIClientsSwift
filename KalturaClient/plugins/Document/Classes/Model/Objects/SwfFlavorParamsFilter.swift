@@ -35,6 +35,9 @@
 
 open class SwfFlavorParamsFilter: SwfFlavorParamsBaseFilter {
 
+	public class SwfFlavorParamsFilterTokenizer: SwfFlavorParamsBaseFilter.SwfFlavorParamsBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

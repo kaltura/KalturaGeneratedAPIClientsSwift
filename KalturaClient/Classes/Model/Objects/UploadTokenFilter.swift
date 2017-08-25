@@ -35,6 +35,9 @@
 
 open class UploadTokenFilter: UploadTokenBaseFilter {
 
+	public class UploadTokenFilterTokenizer: UploadTokenBaseFilter.UploadTokenBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

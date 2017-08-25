@@ -36,88 +36,199 @@
 /**  Retrieve information and invoke actions on caption Asset  */
 public final class CaptionAssetService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var captionAsset: CaptionAsset.CaptionAssetTokenizer {
+			get {
+				return CaptionAsset.CaptionAssetTokenizer(self.append("captionAsset")) 
+			}
+		}
+	}
+
 	/**  Add caption asset  */
-	public static func add(entryId: String, captionAsset: CaptionAsset) -> RequestBuilder<CaptionAsset> {
-		let request: RequestBuilder<CaptionAsset> = RequestBuilder<CaptionAsset>(service: "caption_captionasset", action: "add")
+	public static func add(entryId: String, captionAsset: CaptionAsset) -> RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, AddTokenizer> {
+		let request: RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, AddTokenizer> = RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, AddTokenizer>(service: "caption_captionasset", action: "add")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "captionAsset", value: captionAsset)
 
 		return request
 	}
 
-	public static func delete(captionAssetId: String) -> RequestBuilder<Void> {
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var captionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetId") 
+			}
+		}
+	}
+
+	public static func delete(captionAssetId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionasset", action: "delete")
 			.setBody(key: "captionAssetId", value: captionAssetId)
 
 		return request
 	}
 
-	public static func get(captionAssetId: String) -> RequestBuilder<CaptionAsset> {
-		let request: RequestBuilder<CaptionAsset> = RequestBuilder<CaptionAsset>(service: "caption_captionasset", action: "get")
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var captionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetId") 
+			}
+		}
+	}
+
+	public static func get(captionAssetId: String) -> RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, GetTokenizer> {
+		let request: RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, GetTokenizer> = RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, GetTokenizer>(service: "caption_captionasset", action: "get")
 			.setBody(key: "captionAssetId", value: captionAssetId)
 
 		return request
 	}
 
+	public class GetRemotePathsTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get remote storage existing paths for the asset  */
-	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse> {
-		let request: RequestBuilder<RemotePathListResponse> = RequestBuilder<RemotePathListResponse>(service: "caption_captionasset", action: "getRemotePaths")
+	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> {
+		let request: RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> = RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer>(service: "caption_captionasset", action: "getRemotePaths")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func getUrl(id: String) -> RequestBuilder<String> {
+	public class GetUrlTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var storageId: BaseTokenizedObject {
+			get {
+				return self.append("storageId") 
+			}
+		}
+	}
+
+	public static func getUrl(id: String) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		return getUrl(id: id, storageId: nil)
 	}
 
 	/**  Get download URL for the asset  */
-	public static func getUrl(id: String, storageId: Int?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "caption_captionasset", action: "getUrl")
+	public static func getUrl(id: String, storageId: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "caption_captionasset", action: "getUrl")
 			.setBody(key: "id", value: id)
 			.setBody(key: "storageId", value: storageId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<CaptionAssetListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: AssetFilter.AssetFilterTokenizer {
+			get {
+				return AssetFilter.AssetFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<CaptionAssetListResponse, CaptionAssetListResponse.CaptionAssetListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: AssetFilter?) -> RequestBuilder<CaptionAssetListResponse> {
+	public static func list(filter: AssetFilter?) -> RequestBuilder<CaptionAssetListResponse, CaptionAssetListResponse.CaptionAssetListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List caption Assets by filter and pager  */
-	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<CaptionAssetListResponse> {
-		let request: RequestBuilder<CaptionAssetListResponse> = RequestBuilder<CaptionAssetListResponse>(service: "caption_captionasset", action: "list")
+	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<CaptionAssetListResponse, CaptionAssetListResponse.CaptionAssetListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CaptionAssetListResponse, CaptionAssetListResponse.CaptionAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<CaptionAssetListResponse, CaptionAssetListResponse.CaptionAssetListResponseTokenizer, ListTokenizer>(service: "caption_captionasset", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class SetAsDefaultTokenizer: ClientTokenizer  {
+		
+		public var captionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetId") 
+			}
+		}
+	}
+
 	/**  Markss the caption as default and removes that mark from all other caption
 	  assets of the entry.  */
-	public static func setAsDefault(captionAssetId: String) -> RequestBuilder<Void> {
+	public static func setAsDefault(captionAssetId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionasset", action: "setAsDefault")
 			.setBody(key: "captionAssetId", value: captionAssetId)
 
 		return request
 	}
 
+	public class SetContentTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var contentResource: ContentResource.ContentResourceTokenizer {
+			get {
+				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
+			}
+		}
+	}
+
 	/**  Update content of caption asset  */
-	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<CaptionAsset> {
-		let request: RequestBuilder<CaptionAsset> = RequestBuilder<CaptionAsset>(service: "caption_captionasset", action: "setContent")
+	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, SetContentTokenizer> {
+		let request: RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, SetContentTokenizer> = RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, SetContentTokenizer>(service: "caption_captionasset", action: "setContent")
 			.setBody(key: "id", value: id)
 			.setBody(key: "contentResource", value: contentResource)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var captionAsset: CaptionAsset.CaptionAssetTokenizer {
+			get {
+				return CaptionAsset.CaptionAssetTokenizer(self.append("captionAsset")) 
+			}
+		}
+	}
+
 	/**  Update caption asset  */
-	public static func update(id: String, captionAsset: CaptionAsset) -> RequestBuilder<CaptionAsset> {
-		let request: RequestBuilder<CaptionAsset> = RequestBuilder<CaptionAsset>(service: "caption_captionasset", action: "update")
+	public static func update(id: String, captionAsset: CaptionAsset) -> RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, UpdateTokenizer> = RequestBuilder<CaptionAsset, CaptionAsset.CaptionAssetTokenizer, UpdateTokenizer>(service: "caption_captionasset", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "captionAsset", value: captionAsset)
 

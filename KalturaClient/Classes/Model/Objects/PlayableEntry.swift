@@ -35,6 +35,57 @@
 
 open class PlayableEntry: BaseEntry {
 
+	public class PlayableEntryTokenizer: BaseEntry.BaseEntryTokenizer {
+		
+		public var plays: BaseTokenizedObject {
+			get {
+				return self.append("plays") 
+			}
+		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
+		
+		public var lastPlayedAt: BaseTokenizedObject {
+			get {
+				return self.append("lastPlayedAt") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var msDuration: BaseTokenizedObject {
+			get {
+				return self.append("msDuration") 
+			}
+		}
+		
+		public var durationType: BaseTokenizedObject {
+			get {
+				return self.append("durationType") 
+			}
+		}
+	}
+
 	/**  Number of plays  */
 	public var plays: Int? = nil
 	/**  Number of views  */
@@ -53,6 +104,38 @@ open class PlayableEntry: BaseEntry {
 	public var durationType: DurationType? = nil
 
 
+	public func setMultiRequestToken(plays: String) {
+		self.dict["plays"] = plays
+	}
+	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
+	public func setMultiRequestToken(lastPlayedAt: String) {
+		self.dict["lastPlayedAt"] = lastPlayedAt
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(msDuration: String) {
+		self.dict["msDuration"] = msDuration
+	}
+	
+	public func setMultiRequestToken(durationType: String) {
+		self.dict["durationType"] = durationType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

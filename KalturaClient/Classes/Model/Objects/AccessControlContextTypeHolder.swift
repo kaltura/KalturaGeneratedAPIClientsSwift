@@ -35,6 +35,9 @@
 
 open class AccessControlContextTypeHolder: ContextTypeHolder {
 
+	public class AccessControlContextTypeHolderTokenizer: ContextTypeHolder.ContextTypeHolderTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

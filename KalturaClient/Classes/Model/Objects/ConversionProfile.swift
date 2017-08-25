@@ -35,6 +35,153 @@
 
 open class ConversionProfile: ObjectBase {
 
+	public class ConversionProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var defaultEntryId: BaseTokenizedObject {
+			get {
+				return self.append("defaultEntryId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var isPartnerDefault: BaseTokenizedObject {
+			get {
+				return self.append("isPartnerDefault") 
+			}
+		}
+		
+		public var cropDimensions: CropDimensions.CropDimensionsTokenizer {
+			get {
+				return CropDimensions.CropDimensionsTokenizer(self.append("cropDimensions")) 
+			}
+		}
+		
+		public var clipStart: BaseTokenizedObject {
+			get {
+				return self.append("clipStart") 
+			}
+		}
+		
+		public var clipDuration: BaseTokenizedObject {
+			get {
+				return self.append("clipDuration") 
+			}
+		}
+		
+		public var xslTransformation: BaseTokenizedObject {
+			get {
+				return self.append("xslTransformation") 
+			}
+		}
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+		
+		public var mediaParserType: BaseTokenizedObject {
+			get {
+				return self.append("mediaParserType") 
+			}
+		}
+		
+		public var calculateComplexity: BaseTokenizedObject {
+			get {
+				return self.append("calculateComplexity") 
+			}
+		}
+		
+		public var collectionTags: BaseTokenizedObject {
+			get {
+				return self.append("collectionTags") 
+			}
+		}
+		
+		public var conditionalProfiles: BaseTokenizedObject {
+			get {
+				return self.append("conditionalProfiles") 
+			}
+		}
+		
+		public var detectGOP: BaseTokenizedObject {
+			get {
+				return self.append("detectGOP") 
+			}
+		}
+		
+		public var mediaInfoXslTransformation: BaseTokenizedObject {
+			get {
+				return self.append("mediaInfoXslTransformation") 
+			}
+		}
+	}
+
 	/**  The id of the Conversion Profile  */
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
@@ -84,6 +231,98 @@ open class ConversionProfile: ObjectBase {
 	public var mediaInfoXslTransformation: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(defaultEntryId: String) {
+		self.dict["defaultEntryId"] = defaultEntryId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(isPartnerDefault: String) {
+		self.dict["isPartnerDefault"] = isPartnerDefault
+	}
+	
+	public func setMultiRequestToken(clipStart: String) {
+		self.dict["clipStart"] = clipStart
+	}
+	
+	public func setMultiRequestToken(clipDuration: String) {
+		self.dict["clipDuration"] = clipDuration
+	}
+	
+	public func setMultiRequestToken(xslTransformation: String) {
+		self.dict["xslTransformation"] = xslTransformation
+	}
+	
+	public func setMultiRequestToken(storageProfileId: String) {
+		self.dict["storageProfileId"] = storageProfileId
+	}
+	
+	public func setMultiRequestToken(mediaParserType: String) {
+		self.dict["mediaParserType"] = mediaParserType
+	}
+	
+	public func setMultiRequestToken(calculateComplexity: String) {
+		self.dict["calculateComplexity"] = calculateComplexity
+	}
+	
+	public func setMultiRequestToken(collectionTags: String) {
+		self.dict["collectionTags"] = collectionTags
+	}
+	
+	public func setMultiRequestToken(conditionalProfiles: String) {
+		self.dict["conditionalProfiles"] = conditionalProfiles
+	}
+	
+	public func setMultiRequestToken(detectGOP: String) {
+		self.dict["detectGOP"] = detectGOP
+	}
+	
+	public func setMultiRequestToken(mediaInfoXslTransformation: String) {
+		self.dict["mediaInfoXslTransformation"] = mediaInfoXslTransformation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

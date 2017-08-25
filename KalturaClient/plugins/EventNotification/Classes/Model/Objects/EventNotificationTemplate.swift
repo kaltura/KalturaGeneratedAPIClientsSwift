@@ -35,6 +35,105 @@
 
 open class EventNotificationTemplate: ObjectBase {
 
+	public class EventNotificationTemplateTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var manualDispatchEnabled: BaseTokenizedObject {
+			get {
+				return self.append("manualDispatchEnabled") 
+			}
+		}
+		
+		public var automaticDispatchEnabled: BaseTokenizedObject {
+			get {
+				return self.append("automaticDispatchEnabled") 
+			}
+		}
+		
+		public var eventType: BaseTokenizedObject {
+			get {
+				return self.append("eventType") 
+			}
+		}
+		
+		public var eventObjectType: BaseTokenizedObject {
+			get {
+				return self.append("eventObjectType") 
+			}
+		}
+		
+		public var eventConditions: ArrayTokenizedObject<Condition.ConditionTokenizer> {
+			get {
+				return ArrayTokenizedObject<Condition.ConditionTokenizer>(self.append("eventConditions"))
+			} 
+		}
+		
+		public var contentParameters: ArrayTokenizedObject<EventNotificationParameter.EventNotificationParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<EventNotificationParameter.EventNotificationParameterTokenizer>(self.append("contentParameters"))
+			} 
+		}
+		
+		public var userParameters: ArrayTokenizedObject<EventNotificationParameter.EventNotificationParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<EventNotificationParameter.EventNotificationParameterTokenizer>(self.append("userParameters"))
+			} 
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var name: String? = nil
@@ -60,6 +159,58 @@ open class EventNotificationTemplate: ObjectBase {
 	public var userParameters: Array<EventNotificationParameter>? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(manualDispatchEnabled: String) {
+		self.dict["manualDispatchEnabled"] = manualDispatchEnabled
+	}
+	
+	public func setMultiRequestToken(automaticDispatchEnabled: String) {
+		self.dict["automaticDispatchEnabled"] = automaticDispatchEnabled
+	}
+	
+	public func setMultiRequestToken(eventType: String) {
+		self.dict["eventType"] = eventType
+	}
+	
+	public func setMultiRequestToken(eventObjectType: String) {
+		self.dict["eventObjectType"] = eventObjectType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

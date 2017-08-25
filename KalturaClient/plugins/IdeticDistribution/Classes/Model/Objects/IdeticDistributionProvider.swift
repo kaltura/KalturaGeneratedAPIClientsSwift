@@ -35,6 +35,9 @@
 
 open class IdeticDistributionProvider: DistributionProvider {
 
+	public class IdeticDistributionProviderTokenizer: DistributionProvider.DistributionProviderTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

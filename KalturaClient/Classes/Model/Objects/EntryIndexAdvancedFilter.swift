@@ -35,6 +35,9 @@
 
 open class EntryIndexAdvancedFilter: IndexAdvancedFilter {
 
+	public class EntryIndexAdvancedFilterTokenizer: IndexAdvancedFilter.IndexAdvancedFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

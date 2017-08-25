@@ -35,6 +35,45 @@
 
 open class CategoryEntry: ObjectBase {
 
+	public class CategoryEntryTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var categoryFullIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryFullIds") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var creatorUserId: BaseTokenizedObject {
+			get {
+				return self.append("creatorUserId") 
+			}
+		}
+	}
+
 	public var categoryId: Int? = nil
 	/**  entry id  */
 	public var entryId: String? = nil
@@ -48,6 +87,30 @@ open class CategoryEntry: ObjectBase {
 	public var creatorUserId: String? = nil
 
 
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(categoryFullIds: String) {
+		self.dict["categoryFullIds"] = categoryFullIds
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(creatorUserId: String) {
+		self.dict["creatorUserId"] = creatorUserId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

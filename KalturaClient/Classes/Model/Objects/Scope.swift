@@ -35,6 +35,9 @@
 
 open class Scope: ObjectBase {
 
+	public class ScopeTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

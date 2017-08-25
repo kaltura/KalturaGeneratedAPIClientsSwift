@@ -35,6 +35,33 @@
 
 open class ReportInputBaseFilter: ObjectBase {
 
+	public class ReportInputBaseFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var fromDate: BaseTokenizedObject {
+			get {
+				return self.append("fromDate") 
+			}
+		}
+		
+		public var toDate: BaseTokenizedObject {
+			get {
+				return self.append("toDate") 
+			}
+		}
+		
+		public var fromDay: BaseTokenizedObject {
+			get {
+				return self.append("fromDay") 
+			}
+		}
+		
+		public var toDay: BaseTokenizedObject {
+			get {
+				return self.append("toDay") 
+			}
+		}
+	}
+
 	/**  Start date as Unix timestamp (In seconds)  */
 	public var fromDate: Int? = nil
 	/**  End date as Unix timestamp (In seconds)  */
@@ -45,6 +72,22 @@ open class ReportInputBaseFilter: ObjectBase {
 	public var toDay: String? = nil
 
 
+	public func setMultiRequestToken(fromDate: String) {
+		self.dict["fromDate"] = fromDate
+	}
+	
+	public func setMultiRequestToken(toDate: String) {
+		self.dict["toDate"] = toDate
+	}
+	
+	public func setMultiRequestToken(fromDay: String) {
+		self.dict["fromDay"] = fromDay
+	}
+	
+	public func setMultiRequestToken(toDay: String) {
+		self.dict["toDay"] = toDay
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

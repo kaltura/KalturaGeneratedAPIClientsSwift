@@ -35,10 +35,33 @@
 
 open class IdeticDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class IdeticDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var thumbnailUrl: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailUrl") 
+			}
+		}
+		
+		public var flavorAssetUrl: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetUrl") 
+			}
+		}
+	}
+
 	public var thumbnailUrl: String? = nil
 	public var flavorAssetUrl: String? = nil
 
 
+	public func setMultiRequestToken(thumbnailUrl: String) {
+		self.dict["thumbnailUrl"] = thumbnailUrl
+	}
+	
+	public func setMultiRequestToken(flavorAssetUrl: String) {
+		self.dict["flavorAssetUrl"] = flavorAssetUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,45 @@
 
 open class AkamaiProvisionJobData: ProvisionJobData {
 
+	public class AkamaiProvisionJobDataTokenizer: ProvisionJobData.ProvisionJobDataTokenizer {
+		
+		public var wsdlUsername: BaseTokenizedObject {
+			get {
+				return self.append("wsdlUsername") 
+			}
+		}
+		
+		public var wsdlPassword: BaseTokenizedObject {
+			get {
+				return self.append("wsdlPassword") 
+			}
+		}
+		
+		public var cpcode: BaseTokenizedObject {
+			get {
+				return self.append("cpcode") 
+			}
+		}
+		
+		public var emailId: BaseTokenizedObject {
+			get {
+				return self.append("emailId") 
+			}
+		}
+		
+		public var primaryContact: BaseTokenizedObject {
+			get {
+				return self.append("primaryContact") 
+			}
+		}
+		
+		public var secondaryContact: BaseTokenizedObject {
+			get {
+				return self.append("secondaryContact") 
+			}
+		}
+	}
+
 	public var wsdlUsername: String? = nil
 	public var wsdlPassword: String? = nil
 	public var cpcode: String? = nil
@@ -43,6 +82,30 @@ open class AkamaiProvisionJobData: ProvisionJobData {
 	public var secondaryContact: String? = nil
 
 
+	public func setMultiRequestToken(wsdlUsername: String) {
+		self.dict["wsdlUsername"] = wsdlUsername
+	}
+	
+	public func setMultiRequestToken(wsdlPassword: String) {
+		self.dict["wsdlPassword"] = wsdlPassword
+	}
+	
+	public func setMultiRequestToken(cpcode: String) {
+		self.dict["cpcode"] = cpcode
+	}
+	
+	public func setMultiRequestToken(emailId: String) {
+		self.dict["emailId"] = emailId
+	}
+	
+	public func setMultiRequestToken(primaryContact: String) {
+		self.dict["primaryContact"] = primaryContact
+	}
+	
+	public func setMultiRequestToken(secondaryContact: String) {
+		self.dict["secondaryContact"] = secondaryContact
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

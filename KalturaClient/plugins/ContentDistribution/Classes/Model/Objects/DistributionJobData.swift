@@ -35,6 +35,69 @@
 
 open class DistributionJobData: JobData {
 
+	public class DistributionJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var distributionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileId") 
+			}
+		}
+		
+		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
+			get {
+				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
+			}
+		}
+		
+		public var entryDistributionId: BaseTokenizedObject {
+			get {
+				return self.append("entryDistributionId") 
+			}
+		}
+		
+		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
+			get {
+				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
+			}
+		}
+		
+		public var remoteId: BaseTokenizedObject {
+			get {
+				return self.append("remoteId") 
+			}
+		}
+		
+		public var providerType: BaseTokenizedObject {
+			get {
+				return self.append("providerType") 
+			}
+		}
+		
+		public var providerData: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
+			get {
+				return DistributionJobProviderData.DistributionJobProviderDataTokenizer(self.append("providerData")) 
+			}
+		}
+		
+		public var results: BaseTokenizedObject {
+			get {
+				return self.append("results") 
+			}
+		}
+		
+		public var sentData: BaseTokenizedObject {
+			get {
+				return self.append("sentData") 
+			}
+		}
+		
+		public var mediaFiles: ArrayTokenizedObject<DistributionRemoteMediaFile.DistributionRemoteMediaFileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionRemoteMediaFile.DistributionRemoteMediaFileTokenizer>(self.append("mediaFiles"))
+			} 
+		}
+	}
+
 	public var distributionProfileId: Int? = nil
 	public var distributionProfile: DistributionProfile? = nil
 	public var entryDistributionId: Int? = nil
@@ -53,6 +116,30 @@ open class DistributionJobData: JobData {
 	public var mediaFiles: Array<DistributionRemoteMediaFile>? = nil
 
 
+	public func setMultiRequestToken(distributionProfileId: String) {
+		self.dict["distributionProfileId"] = distributionProfileId
+	}
+	
+	public func setMultiRequestToken(entryDistributionId: String) {
+		self.dict["entryDistributionId"] = entryDistributionId
+	}
+	
+	public func setMultiRequestToken(remoteId: String) {
+		self.dict["remoteId"] = remoteId
+	}
+	
+	public func setMultiRequestToken(providerType: String) {
+		self.dict["providerType"] = providerType
+	}
+	
+	public func setMultiRequestToken(results: String) {
+		self.dict["results"] = results
+	}
+	
+	public func setMultiRequestToken(sentData: String) {
+		self.dict["sentData"] = sentData
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

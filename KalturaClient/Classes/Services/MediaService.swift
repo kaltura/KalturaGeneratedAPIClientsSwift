@@ -37,34 +37,79 @@
   audio)  */
 public final class MediaService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("entry")) 
+			}
+		}
+	}
+
 	/**  Add entry  */
-	public static func add(entry: MediaEntry) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "add")
+	public static func add(entry: MediaEntry) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer>(service: "media", action: "add")
 			.setBody(key: "entry", value: entry)
 
 		return request
 	}
 
-	public static func addContent(entryId: String) -> RequestBuilder<MediaEntry> {
+	public class AddContentTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var resource: Resource.ResourceTokenizer {
+			get {
+				return Resource.ResourceTokenizer(self.append("resource")) 
+			}
+		}
+	}
+
+	public static func addContent(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer> {
 		return addContent(entryId: entryId, resource: nil)
 	}
 
 	/**  Add content to media entry which is not yet associated with content (therefore
 	  is in status NO_CONTENT).      If the requirement is to replace the entry's
 	  associated content, use action updateContent.  */
-	public static func addContent(entryId: String, resource: Resource?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addContent")
+	public static func addContent(entryId: String, resource: Resource?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer>(service: "media", action: "addContent")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "resource", value: resource)
 
 		return request
 	}
 
+	public class AddFromBulkTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var bulkUploadId: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadId") 
+			}
+		}
+	}
+
 	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
 	  for import and then for conversion.   This action should be exposed only to the
 	  batches  */
-	public static func addFromBulk(mediaEntry: MediaEntry, url: String, bulkUploadId: Int) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromBulk")
+	public static func addFromBulk(mediaEntry: MediaEntry, url: String, bulkUploadId: Int) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer>(service: "media", action: "addFromBulk")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "url", value: url)
 			.setBody(key: "bulkUploadId", value: bulkUploadId)
@@ -72,17 +117,38 @@ public final class MediaService{
 		return request
 	}
 
-	public static func addFromEntry(sourceEntryId: String) -> RequestBuilder<MediaEntry> {
+	public class AddFromEntryTokenizer: ClientTokenizer  {
+		
+		public var sourceEntryId: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryId") 
+			}
+		}
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var sourceFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("sourceFlavorParamsId") 
+			}
+		}
+	}
+
+	public static func addFromEntry(sourceEntryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> {
 		return addFromEntry(sourceEntryId: sourceEntryId, mediaEntry: nil)
 	}
 
-	public static func addFromEntry(sourceEntryId: String, mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry> {
+	public static func addFromEntry(sourceEntryId: String, mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> {
 		return addFromEntry(sourceEntryId: sourceEntryId, mediaEntry: mediaEntry, sourceFlavorParamsId: nil)
 	}
 
 	/**  Copy entry into new entry  */
-	public static func addFromEntry(sourceEntryId: String, mediaEntry: MediaEntry?, sourceFlavorParamsId: Int?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromEntry")
+	public static func addFromEntry(sourceEntryId: String, mediaEntry: MediaEntry?, sourceFlavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer>(service: "media", action: "addFromEntry")
 			.setBody(key: "sourceEntryId", value: sourceEntryId)
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "sourceFlavorParamsId", value: sourceFlavorParamsId)
@@ -90,68 +156,158 @@ public final class MediaService{
 		return request
 	}
 
-	public static func addFromFlavorAsset(sourceFlavorAssetId: String) -> RequestBuilder<MediaEntry> {
+	public class AddFromFlavorAssetTokenizer: ClientTokenizer  {
+		
+		public var sourceFlavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("sourceFlavorAssetId") 
+			}
+		}
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+	}
+
+	public static func addFromFlavorAsset(sourceFlavorAssetId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer> {
 		return addFromFlavorAsset(sourceFlavorAssetId: sourceFlavorAssetId, mediaEntry: nil)
 	}
 
 	/**  Copy flavor asset into new entry  */
-	public static func addFromFlavorAsset(sourceFlavorAssetId: String, mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromFlavorAsset")
+	public static func addFromFlavorAsset(sourceFlavorAssetId: String, mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer>(service: "media", action: "addFromFlavorAsset")
 			.setBody(key: "sourceFlavorAssetId", value: sourceFlavorAssetId)
 			.setBody(key: "mediaEntry", value: mediaEntry)
 
 		return request
 	}
 
+	public class AddFromRecordedWebcamTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var webcamTokenId: BaseTokenizedObject {
+			get {
+				return self.append("webcamTokenId") 
+			}
+		}
+	}
+
 	/**  Add new entry after the file was recored on the server and the token id exists  */
-	public static func addFromRecordedWebcam(mediaEntry: MediaEntry, webcamTokenId: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromRecordedWebcam")
+	public static func addFromRecordedWebcam(mediaEntry: MediaEntry, webcamTokenId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer>(service: "media", action: "addFromRecordedWebcam")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "webcamTokenId", value: webcamTokenId)
 
 		return request
 	}
 
-	public static func addFromSearchResult() -> RequestBuilder<MediaEntry> {
+	public class AddFromSearchResultTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var searchResult: SearchResult.SearchResultTokenizer {
+			get {
+				return SearchResult.SearchResultTokenizer(self.append("searchResult")) 
+			}
+		}
+	}
+
+	public static func addFromSearchResult() -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> {
 		return addFromSearchResult(mediaEntry: nil)
 	}
 
-	public static func addFromSearchResult(mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry> {
+	public static func addFromSearchResult(mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> {
 		return addFromSearchResult(mediaEntry: mediaEntry, searchResult: nil)
 	}
 
 	/**  Adds new media entry by importing the media file from a search provider.   This
 	  action should be used with the search service result.  */
-	public static func addFromSearchResult(mediaEntry: MediaEntry?, searchResult: SearchResult?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromSearchResult")
+	public static func addFromSearchResult(mediaEntry: MediaEntry?, searchResult: SearchResult?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer>(service: "media", action: "addFromSearchResult")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "searchResult", value: searchResult)
 
 		return request
 	}
 
+	public class AddFromUploadedFileTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+	}
+
 	/**  Add new entry after the specific media file was uploaded and the upload token id
 	  exists  */
-	public static func addFromUploadedFile(mediaEntry: MediaEntry, uploadTokenId: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromUploadedFile")
+	public static func addFromUploadedFile(mediaEntry: MediaEntry, uploadTokenId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer>(service: "media", action: "addFromUploadedFile")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
 
+	public class AddFromUrlTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	/**  Adds new media entry by importing an HTTP or FTP URL.   The entry will be queued
 	  for import and then for conversion.  */
-	public static func addFromUrl(mediaEntry: MediaEntry, url: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "addFromUrl")
+	public static func addFromUrl(mediaEntry: MediaEntry, url: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer>(service: "media", action: "addFromUrl")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "url", value: url)
 
 		return request
 	}
 
+	public class AnonymousRankTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var rank: BaseTokenizedObject {
+			get {
+				return self.append("rank") 
+			}
+		}
+	}
+
 	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
-	public static func anonymousRank(entryId: String, rank: Int) -> RequestBuilder<Void> {
+	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "anonymousRank")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "rank", value: rank)
@@ -159,42 +315,90 @@ public final class MediaService{
 		return request
 	}
 
+	public class ApproveTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Approve the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry playable)  */
-	public static func approve(entryId: String) -> RequestBuilder<Void> {
+	public static func approve(entryId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "approve")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
+	public class ApproveReplaceTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Approves media replacement  */
-	public static func approveReplace(entryId: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "approveReplace")
+	public static func approveReplace(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer>(service: "media", action: "approveReplace")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
+	}
+
+	public class CancelReplaceTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
 	}
 
 	/**  Cancels media replacement  */
-	public static func cancelReplace(entryId: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "cancelReplace")
+	public static func cancelReplace(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer>(service: "media", action: "cancelReplace")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
-	public static func convert(entryId: String) -> RequestBuilder<Int64> {
+	public class ConvertTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var dynamicConversionAttributes: ArrayTokenizedObject<ConversionAttribute.ConversionAttributeTokenizer> {
+			get {
+				return ArrayTokenizedObject<ConversionAttribute.ConversionAttributeTokenizer>(self.append("dynamicConversionAttributes"))
+			} 
+		}
+	}
+
+	public static func convert(entryId: String) -> RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> {
 		return convert(entryId: entryId, conversionProfileId: nil)
 	}
 
-	public static func convert(entryId: String, conversionProfileId: Int?) -> RequestBuilder<Int64> {
+	public static func convert(entryId: String, conversionProfileId: Int?) -> RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> {
 		return convert(entryId: entryId, conversionProfileId: conversionProfileId, dynamicConversionAttributes: nil)
 	}
 
 	/**  Convert entry  */
-	public static func convert(entryId: String, conversionProfileId: Int?, dynamicConversionAttributes: Array<ConversionAttribute>?) -> RequestBuilder<Int64> {
-		let request: RequestBuilder<Int64> = RequestBuilder<Int64>(service: "media", action: "convert")
+	public static func convert(entryId: String, conversionProfileId: Int?, dynamicConversionAttributes: Array<ConversionAttribute>?) -> RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> {
+		let request: RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> = RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer>(service: "media", action: "convert")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "conversionProfileId", value: conversionProfileId)
 			.setBody(key: "dynamicConversionAttributes", value: dynamicConversionAttributes)
@@ -202,58 +406,121 @@ public final class MediaService{
 		return request
 	}
 
-	public static func count() -> RequestBuilder<Int> {
+	public class CountTokenizer: ClientTokenizer  {
+		
+		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
+			get {
+				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
+	public static func count() -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		return count(filter: nil)
 	}
 
 	/**  Count media entries by filter.  */
-	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "media", action: "count")
+	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "media", action: "count")
 			.setBody(key: "filter", value: filter)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Delete a media entry.  */
-	public static func delete(entryId: String) -> RequestBuilder<Void> {
+	public static func delete(entryId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
+	public class FlagTokenizer: ClientTokenizer  {
+		
+		public var moderationFlag: ModerationFlag.ModerationFlagTokenizer {
+			get {
+				return ModerationFlag.ModerationFlagTokenizer(self.append("moderationFlag")) 
+			}
+		}
+	}
+
 	/**  Flag inappropriate media entry for moderation  */
-	public static func flag(moderationFlag: ModerationFlag) -> RequestBuilder<Void> {
+	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "flag")
 			.setBody(key: "moderationFlag", value: moderationFlag)
 
 		return request
 	}
 
-	public static func get(entryId: String) -> RequestBuilder<MediaEntry> {
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
+	public static func get(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer> {
 		return get(entryId: entryId, version: -1)
 	}
 
 	/**  Get media entry by ID.  */
-	public static func get(entryId: String, version: Int?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "get")
+	public static func get(entryId: String, version: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer>(service: "media", action: "get")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "version", value: version)
 
 		return request
 	}
 
-	public static func getMrss(entryId: String) -> RequestBuilder<String> {
+	public class GetMrssTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var extendingItemsArray: ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer>(self.append("extendingItemsArray"))
+			} 
+		}
+		
+		public var features: BaseTokenizedObject {
+			get {
+				return self.append("features") 
+			}
+		}
+	}
+
+	public static func getMrss(entryId: String) -> RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> {
 		return getMrss(entryId: entryId, extendingItemsArray: nil)
 	}
 
-	public static func getMrss(entryId: String, extendingItemsArray: Array<ExtendingItemMrssParameter>?) -> RequestBuilder<String> {
+	public static func getMrss(entryId: String, extendingItemsArray: Array<ExtendingItemMrssParameter>?) -> RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> {
 		return getMrss(entryId: entryId, extendingItemsArray: extendingItemsArray, features: nil)
 	}
 
 	/**  Get MRSS by entry id      XML will return as an escaped string  */
-	public static func getMrss(entryId: String, extendingItemsArray: Array<ExtendingItemMrssParameter>?, features: String?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "media", action: "getMrss")
+	public static func getMrss(entryId: String, extendingItemsArray: Array<ExtendingItemMrssParameter>?, features: String?) -> RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer>(service: "media", action: "getMrss")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "extendingItemsArray", value: extendingItemsArray)
 			.setBody(key: "features", value: features)
@@ -261,75 +528,171 @@ public final class MediaService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<MediaListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
+			get {
+				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: MediaEntryFilter?) -> RequestBuilder<MediaListResponse> {
+	public static func list(filter: MediaEntryFilter?) -> RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List media entries by filter with paging support.  */
-	public static func list(filter: MediaEntryFilter?, pager: FilterPager?) -> RequestBuilder<MediaListResponse> {
-		let request: RequestBuilder<MediaListResponse> = RequestBuilder<MediaListResponse>(service: "media", action: "list")
+	public static func list(filter: MediaEntryFilter?, pager: FilterPager?) -> RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> = RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer>(service: "media", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func listFlags(entryId: String) -> RequestBuilder<ModerationFlagListResponse> {
+	public class ListFlagsTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func listFlags(entryId: String) -> RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> {
 		return listFlags(entryId: entryId, pager: nil)
 	}
 
 	/**  List all pending flags for the media entry  */
-	public static func listFlags(entryId: String, pager: FilterPager?) -> RequestBuilder<ModerationFlagListResponse> {
-		let request: RequestBuilder<ModerationFlagListResponse> = RequestBuilder<ModerationFlagListResponse>(service: "media", action: "listFlags")
+	public static func listFlags(entryId: String, pager: FilterPager?) -> RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> {
+		let request: RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> = RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer>(service: "media", action: "listFlags")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class RejectTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry non playable)  */
-	public static func reject(entryId: String) -> RequestBuilder<Void> {
+	public static func reject(entryId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "reject")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
+	public class RequestConversionTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var fileFormat: BaseTokenizedObject {
+			get {
+				return self.append("fileFormat") 
+			}
+		}
+	}
+
 	/**  Request a new conversion job, this can be used to convert the media entry to a
 	  different format  */
-	public static func requestConversion(entryId: String, fileFormat: String) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "media", action: "requestConversion")
+	public static func requestConversion(entryId: String, fileFormat: String) -> RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer> = RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer>(service: "media", action: "requestConversion")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "fileFormat", value: fileFormat)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+	}
+
 	/**  Update media entry. Only the properties that were set will be updated.  */
-	public static func update(entryId: String, mediaEntry: MediaEntry) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "update")
+	public static func update(entryId: String, mediaEntry: MediaEntry) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer>(service: "media", action: "update")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "mediaEntry", value: mediaEntry)
 
 		return request
 	}
 
-	public static func updateContent(entryId: String, resource: Resource) -> RequestBuilder<MediaEntry> {
+	public class UpdateContentTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var resource: Resource.ResourceTokenizer {
+			get {
+				return Resource.ResourceTokenizer(self.append("resource")) 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var advancedOptions: EntryReplacementOptions.EntryReplacementOptionsTokenizer {
+			get {
+				return EntryReplacementOptions.EntryReplacementOptionsTokenizer(self.append("advancedOptions")) 
+			}
+		}
+	}
+
+	public static func updateContent(entryId: String, resource: Resource) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> {
 		return updateContent(entryId: entryId, resource: resource, conversionProfileId: nil)
 	}
 
-	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?) -> RequestBuilder<MediaEntry> {
+	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> {
 		return updateContent(entryId: entryId, resource: resource, conversionProfileId: conversionProfileId, advancedOptions: nil)
 	}
 
 	/**  Replace content associated with the media entry.  */
-	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?, advancedOptions: EntryReplacementOptions?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "updateContent")
+	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?, advancedOptions: EntryReplacementOptions?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer>(service: "media", action: "updateContent")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "resource", value: resource)
 			.setBody(key: "conversionProfileId", value: conversionProfileId)
@@ -338,14 +701,35 @@ public final class MediaService{
 		return request
 	}
 
-	public static func updateThumbnail(entryId: String, timeOffset: Int) -> RequestBuilder<MediaEntry> {
+	public class UpdateThumbnailTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var timeOffset: BaseTokenizedObject {
+			get {
+				return self.append("timeOffset") 
+			}
+		}
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+	}
+
+	public static func updateThumbnail(entryId: String, timeOffset: Int) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer> {
 		return updateThumbnail(entryId: entryId, timeOffset: timeOffset, flavorParamsId: nil)
 	}
 
 	/**  Update media entry thumbnail by a specified time offset (In seconds)   If flavor
 	  params id not specified, source flavor will be used by default  */
-	public static func updateThumbnail(entryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "updateThumbnail")
+	public static func updateThumbnail(entryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer>(service: "media", action: "updateThumbnail")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "timeOffset", value: timeOffset)
 			.setBody(key: "flavorParamsId", value: flavorParamsId)
@@ -353,15 +737,42 @@ public final class MediaService{
 		return request
 	}
 
-	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int) -> RequestBuilder<MediaEntry> {
+	public class UpdateThumbnailFromSourceEntryTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var sourceEntryId: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryId") 
+			}
+		}
+		
+		public var timeOffset: BaseTokenizedObject {
+			get {
+				return self.append("timeOffset") 
+			}
+		}
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+	}
+
+	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> {
 		return updateThumbnailFromSourceEntry(entryId: entryId, sourceEntryId: sourceEntryId, timeOffset: timeOffset, flavorParamsId: nil)
 	}
 
 	/**  Update media entry thumbnail from a different entry by a specified time offset
 	  (In seconds)   If flavor params id not specified, source flavor will be used by
 	  default  */
-	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "updateThumbnailFromSourceEntry")
+	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer>(service: "media", action: "updateThumbnailFromSourceEntry")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "sourceEntryId", value: sourceEntryId)
 			.setBody(key: "timeOffset", value: timeOffset)
@@ -370,28 +781,55 @@ public final class MediaService{
 		return request
 	}
 
+	public class UpdateThumbnailFromUrlTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	/**  Update entry thumbnail using url  */
-	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry> {
-		let request: RequestBuilder<BaseEntry> = RequestBuilder<BaseEntry>(service: "media", action: "updateThumbnailFromUrl")
+	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> {
+		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer>(service: "media", action: "updateThumbnailFromUrl")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "url", value: url)
 
 		return request
 	}
 
+	public class UpdateThumbnailJpegTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Update media entry thumbnail using a raw jpeg file  */
-	public static func updateThumbnailJpeg(entryId: String, fileData: RequestFile) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "media", action: "updateThumbnailJpeg")
+	public static func updateThumbnailJpeg(entryId: String, fileData: RequestFile) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer>(service: "media", action: "updateThumbnailJpeg")
 			.setBody(key: "entryId", value: entryId)
 			.setFile(key: "fileData", value: fileData)
 
 		return request
 	}
 
+	public class UploadTokenizer: ClientTokenizer  {
+	}
+
 	/**  Upload a media file to Kaltura, then the file can be used to create a media
 	  entry.  */
-	public static func upload(fileData: RequestFile) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "media", action: "upload")
+	public static func upload(fileData: RequestFile) -> RequestBuilder<String, BaseTokenizedObject, UploadTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, UploadTokenizer> = RequestBuilder<String, BaseTokenizedObject, UploadTokenizer>(service: "media", action: "upload")
 			.setFile(key: "fileData", value: fileData)
 
 		return request

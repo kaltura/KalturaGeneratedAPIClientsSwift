@@ -35,6 +35,9 @@
 
 open class LiveAssetFilter: LiveAssetBaseFilter {
 
+	public class LiveAssetFilterTokenizer: LiveAssetBaseFilter.LiveAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,75 @@
 
 open class ModerationFlag: ObjectBase {
 
+	public class ModerationFlagTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var moderationObjectType: BaseTokenizedObject {
+			get {
+				return self.append("moderationObjectType") 
+			}
+		}
+		
+		public var flaggedEntryId: BaseTokenizedObject {
+			get {
+				return self.append("flaggedEntryId") 
+			}
+		}
+		
+		public var flaggedUserId: BaseTokenizedObject {
+			get {
+				return self.append("flaggedUserId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var comments: BaseTokenizedObject {
+			get {
+				return self.append("comments") 
+			}
+		}
+		
+		public var flagType: BaseTokenizedObject {
+			get {
+				return self.append("flagType") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+	}
+
 	/**  Moderation flag id  */
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
@@ -55,6 +124,50 @@ open class ModerationFlag: ObjectBase {
 	public var updatedAt: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(moderationObjectType: String) {
+		self.dict["moderationObjectType"] = moderationObjectType
+	}
+	
+	public func setMultiRequestToken(flaggedEntryId: String) {
+		self.dict["flaggedEntryId"] = flaggedEntryId
+	}
+	
+	public func setMultiRequestToken(flaggedUserId: String) {
+		self.dict["flaggedUserId"] = flaggedUserId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(comments: String) {
+		self.dict["comments"] = comments
+	}
+	
+	public func setMultiRequestToken(flagType: String) {
+		self.dict["flagType"] = flagType
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

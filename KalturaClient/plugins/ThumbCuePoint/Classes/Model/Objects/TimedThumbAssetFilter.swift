@@ -35,6 +35,9 @@
 
 open class TimedThumbAssetFilter: TimedThumbAssetBaseFilter {
 
+	public class TimedThumbAssetFilterTokenizer: TimedThumbAssetBaseFilter.TimedThumbAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

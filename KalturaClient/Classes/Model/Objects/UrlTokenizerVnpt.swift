@@ -35,10 +35,33 @@
 
 open class UrlTokenizerVnpt: UrlTokenizer {
 
+	public class UrlTokenizerVnptTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var tokenizationFormat: BaseTokenizedObject {
+			get {
+				return self.append("tokenizationFormat") 
+			}
+		}
+		
+		public var shouldIncludeClientIp: BaseTokenizedObject {
+			get {
+				return self.append("shouldIncludeClientIp") 
+			}
+		}
+	}
+
 	public var tokenizationFormat: Int? = nil
 	public var shouldIncludeClientIp: Bool? = nil
 
 
+	public func setMultiRequestToken(tokenizationFormat: String) {
+		self.dict["tokenizationFormat"] = tokenizationFormat
+	}
+	
+	public func setMultiRequestToken(shouldIncludeClientIp: String) {
+		self.dict["shouldIncludeClientIp"] = shouldIncludeClientIp
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

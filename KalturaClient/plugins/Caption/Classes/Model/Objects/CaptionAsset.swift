@@ -35,6 +35,63 @@
 
 open class CaptionAsset: Asset {
 
+	public class CaptionAssetTokenizer: Asset.AssetTokenizer {
+		
+		public var captionParamsId: BaseTokenizedObject {
+			get {
+				return self.append("captionParamsId") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var languageCode: BaseTokenizedObject {
+			get {
+				return self.append("languageCode") 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var accuracy: BaseTokenizedObject {
+			get {
+				return self.append("accuracy") 
+			}
+		}
+	}
+
 	/**  The Caption Params used to create this Caption Asset  */
 	public var captionParamsId: Int? = nil
 	/**  The language of the caption asset content  */
@@ -55,6 +112,42 @@ open class CaptionAsset: Asset {
 	public var accuracy: Int? = nil
 
 
+	public func setMultiRequestToken(captionParamsId: String) {
+		self.dict["captionParamsId"] = captionParamsId
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(languageCode: String) {
+		self.dict["languageCode"] = languageCode
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(accuracy: String) {
+		self.dict["accuracy"] = accuracy
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

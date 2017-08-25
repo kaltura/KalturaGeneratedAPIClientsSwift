@@ -35,6 +35,15 @@
 
 open class ThumbParamsListResponse: ListResponse {
 
+	public class ThumbParamsListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ThumbParams.ThumbParamsTokenizer> {
+			get {
+				return ArrayTokenizedObject<ThumbParams.ThumbParamsTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ThumbParams>? = nil
 
 

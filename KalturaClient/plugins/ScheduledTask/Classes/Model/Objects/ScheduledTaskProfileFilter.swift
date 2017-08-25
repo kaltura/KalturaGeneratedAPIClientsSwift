@@ -35,6 +35,9 @@
 
 open class ScheduledTaskProfileFilter: ScheduledTaskProfileBaseFilter {
 
+	public class ScheduledTaskProfileFilterTokenizer: ScheduledTaskProfileBaseFilter.ScheduledTaskProfileBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

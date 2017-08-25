@@ -35,6 +35,9 @@
 
 open class SftpDropFolderFilter: SftpDropFolderBaseFilter {
 
+	public class SftpDropFolderFilterTokenizer: SftpDropFolderBaseFilter.SftpDropFolderBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

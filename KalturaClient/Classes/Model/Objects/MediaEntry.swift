@@ -35,6 +35,81 @@
 
 open class MediaEntry: PlayableEntry {
 
+	public class MediaEntryTokenizer: PlayableEntry.PlayableEntryTokenizer {
+		
+		public var mediaType: BaseTokenizedObject {
+			get {
+				return self.append("mediaType") 
+			}
+		}
+		
+		public var conversionQuality: BaseTokenizedObject {
+			get {
+				return self.append("conversionQuality") 
+			}
+		}
+		
+		public var sourceType: BaseTokenizedObject {
+			get {
+				return self.append("sourceType") 
+			}
+		}
+		
+		public var searchProviderType: BaseTokenizedObject {
+			get {
+				return self.append("searchProviderType") 
+			}
+		}
+		
+		public var searchProviderId: BaseTokenizedObject {
+			get {
+				return self.append("searchProviderId") 
+			}
+		}
+		
+		public var creditUserName: BaseTokenizedObject {
+			get {
+				return self.append("creditUserName") 
+			}
+		}
+		
+		public var creditUrl: BaseTokenizedObject {
+			get {
+				return self.append("creditUrl") 
+			}
+		}
+		
+		public var mediaDate: BaseTokenizedObject {
+			get {
+				return self.append("mediaDate") 
+			}
+		}
+		
+		public var dataUrl: BaseTokenizedObject {
+			get {
+				return self.append("dataUrl") 
+			}
+		}
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+		
+		public var isTrimDisabled: BaseTokenizedObject {
+			get {
+				return self.append("isTrimDisabled") 
+			}
+		}
+		
+		public var streams: ArrayTokenizedObject<StreamContainer.StreamContainerTokenizer> {
+			get {
+				return ArrayTokenizedObject<StreamContainer.StreamContainerTokenizer>(self.append("streams"))
+			} 
+		}
+	}
+
 	/**  The media type of the entry  */
 	public var mediaType: MediaType? = nil
 	/**  Override the default conversion quality  */
@@ -62,6 +137,50 @@ open class MediaEntry: PlayableEntry {
 	public var streams: Array<StreamContainer>? = nil
 
 
+	public func setMultiRequestToken(mediaType: String) {
+		self.dict["mediaType"] = mediaType
+	}
+	
+	public func setMultiRequestToken(conversionQuality: String) {
+		self.dict["conversionQuality"] = conversionQuality
+	}
+	
+	public func setMultiRequestToken(sourceType: String) {
+		self.dict["sourceType"] = sourceType
+	}
+	
+	public func setMultiRequestToken(searchProviderType: String) {
+		self.dict["searchProviderType"] = searchProviderType
+	}
+	
+	public func setMultiRequestToken(searchProviderId: String) {
+		self.dict["searchProviderId"] = searchProviderId
+	}
+	
+	public func setMultiRequestToken(creditUserName: String) {
+		self.dict["creditUserName"] = creditUserName
+	}
+	
+	public func setMultiRequestToken(creditUrl: String) {
+		self.dict["creditUrl"] = creditUrl
+	}
+	
+	public func setMultiRequestToken(mediaDate: String) {
+		self.dict["mediaDate"] = mediaDate
+	}
+	
+	public func setMultiRequestToken(dataUrl: String) {
+		self.dict["dataUrl"] = dataUrl
+	}
+	
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
+	public func setMultiRequestToken(isTrimDisabled: String) {
+		self.dict["isTrimDisabled"] = isTrimDisabled
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

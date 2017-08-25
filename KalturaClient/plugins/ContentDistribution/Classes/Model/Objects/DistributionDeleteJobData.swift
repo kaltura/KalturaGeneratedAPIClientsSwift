@@ -35,11 +35,24 @@
 
 open class DistributionDeleteJobData: DistributionJobData {
 
+	public class DistributionDeleteJobDataTokenizer: DistributionJobData.DistributionJobDataTokenizer {
+		
+		public var keepDistributionItem: BaseTokenizedObject {
+			get {
+				return self.append("keepDistributionItem") 
+			}
+		}
+	}
+
 	/**  Flag signifying that the associated distribution item should not be moved to
 	  'removed' status  */
 	public var keepDistributionItem: Bool? = nil
 
 
+	public func setMultiRequestToken(keepDistributionItem: String) {
+		self.dict["keepDistributionItem"] = keepDistributionItem
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

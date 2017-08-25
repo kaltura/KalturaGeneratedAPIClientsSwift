@@ -35,6 +35,9 @@
 
 open class UiConfAdminFilter: UiConfAdminBaseFilter {
 
+	public class UiConfAdminFilterTokenizer: UiConfAdminBaseFilter.UiConfAdminBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

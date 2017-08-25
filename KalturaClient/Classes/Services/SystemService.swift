@@ -37,26 +37,38 @@
   level information  */
 public final class SystemService{
 
-	public static func getTime() -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "system", action: "getTime")
+	public class GetTimeTokenizer: ClientTokenizer  {
+	}
+
+	public static func getTime() -> RequestBuilder<Int, BaseTokenizedObject, GetTimeTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, GetTimeTokenizer> = RequestBuilder<Int, BaseTokenizedObject, GetTimeTokenizer>(service: "system", action: "getTime")
 
 		return request
 	}
 
-	public static func getVersion() -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "system", action: "getVersion")
+	public class GetVersionTokenizer: ClientTokenizer  {
+	}
+
+	public static func getVersion() -> RequestBuilder<String, BaseTokenizedObject, GetVersionTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetVersionTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetVersionTokenizer>(service: "system", action: "getVersion")
 
 		return request
 	}
 
-	public static func ping() -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "system", action: "ping")
+	public class PingTokenizer: ClientTokenizer  {
+	}
+
+	public static func ping() -> RequestBuilder<Bool, BaseTokenizedObject, PingTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, PingTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, PingTokenizer>(service: "system", action: "ping")
 
 		return request
 	}
 
-	public static func pingDatabase() -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "system", action: "pingDatabase")
+	public class PingDatabaseTokenizer: ClientTokenizer  {
+	}
+
+	public static func pingDatabase() -> RequestBuilder<Bool, BaseTokenizedObject, PingDatabaseTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, PingDatabaseTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, PingDatabaseTokenizer>(service: "system", action: "pingDatabase")
 
 		return request
 	}

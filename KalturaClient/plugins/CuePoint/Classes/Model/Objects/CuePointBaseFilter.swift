@@ -35,6 +35,177 @@
 
 open class CuePointBaseFilter: RelatedFilter {
 
+	public class CuePointBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var cuePointTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("cuePointTypeEqual") 
+			}
+		}
+		
+		public var cuePointTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("cuePointTypeIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var triggeredAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("triggeredAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var triggeredAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("triggeredAtLessThanOrEqual") 
+			}
+		}
+		
+		public var tagsLike: BaseTokenizedObject {
+			get {
+				return self.append("tagsLike") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var startTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var startTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var partnerSortValueEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueEqual") 
+			}
+		}
+		
+		public var partnerSortValueIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueIn") 
+			}
+		}
+		
+		public var partnerSortValueGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueGreaterThanOrEqual") 
+			}
+		}
+		
+		public var partnerSortValueLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueLessThanOrEqual") 
+			}
+		}
+		
+		public var forceStopEqual: BaseTokenizedObject {
+			get {
+				return self.append("forceStopEqual") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+	}
+
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
 	public var cuePointTypeEqual: CuePointType? = nil
@@ -65,6 +236,118 @@ open class CuePointBaseFilter: RelatedFilter {
 	public var systemNameIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(cuePointTypeEqual: String) {
+		self.dict["cuePointTypeEqual"] = cuePointTypeEqual
+	}
+	
+	public func setMultiRequestToken(cuePointTypeIn: String) {
+		self.dict["cuePointTypeIn"] = cuePointTypeIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(triggeredAtGreaterThanOrEqual: String) {
+		self.dict["triggeredAtGreaterThanOrEqual"] = triggeredAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(triggeredAtLessThanOrEqual: String) {
+		self.dict["triggeredAtLessThanOrEqual"] = triggeredAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(tagsLike: String) {
+		self.dict["tagsLike"] = tagsLike
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(startTimeGreaterThanOrEqual: String) {
+		self.dict["startTimeGreaterThanOrEqual"] = startTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startTimeLessThanOrEqual: String) {
+		self.dict["startTimeLessThanOrEqual"] = startTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(partnerSortValueEqual: String) {
+		self.dict["partnerSortValueEqual"] = partnerSortValueEqual
+	}
+	
+	public func setMultiRequestToken(partnerSortValueIn: String) {
+		self.dict["partnerSortValueIn"] = partnerSortValueIn
+	}
+	
+	public func setMultiRequestToken(partnerSortValueGreaterThanOrEqual: String) {
+		self.dict["partnerSortValueGreaterThanOrEqual"] = partnerSortValueGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerSortValueLessThanOrEqual: String) {
+		self.dict["partnerSortValueLessThanOrEqual"] = partnerSortValueLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(forceStopEqual: String) {
+		self.dict["forceStopEqual"] = forceStopEqual
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

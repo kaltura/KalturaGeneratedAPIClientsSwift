@@ -36,55 +36,127 @@
 /**  Manage file assets  */
 public final class FileAssetService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var fileAsset: FileAsset.FileAssetTokenizer {
+			get {
+				return FileAsset.FileAssetTokenizer(self.append("fileAsset")) 
+			}
+		}
+	}
+
 	/**  Add new file asset  */
-	public static func add(fileAsset: FileAsset) -> RequestBuilder<FileAsset> {
-		let request: RequestBuilder<FileAsset> = RequestBuilder<FileAsset>(service: "fileasset", action: "add")
+	public static func add(fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer> {
+		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer>(service: "fileasset", action: "add")
 			.setBody(key: "fileAsset", value: fileAsset)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete file asset by id  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "fileasset", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get file asset by id  */
-	public static func get(id: Int) -> RequestBuilder<FileAsset> {
-		let request: RequestBuilder<FileAsset> = RequestBuilder<FileAsset>(service: "fileasset", action: "get")
+	public static func get(id: Int) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> {
+		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer>(service: "fileasset", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list(filter: FileAssetFilter) -> RequestBuilder<FileAssetListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: FileAssetFilter.FileAssetFilterTokenizer {
+			get {
+				return FileAssetFilter.FileAssetFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list(filter: FileAssetFilter) -> RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List file assets by filter and pager  */
-	public static func list(filter: FileAssetFilter, pager: FilterPager?) -> RequestBuilder<FileAssetListResponse> {
-		let request: RequestBuilder<FileAssetListResponse> = RequestBuilder<FileAssetListResponse>(service: "fileasset", action: "list")
+	public static func list(filter: FileAssetFilter, pager: FilterPager?) -> RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer>(service: "fileasset", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class SetContentTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var contentResource: ContentResource.ContentResourceTokenizer {
+			get {
+				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
+			}
+		}
+	}
+
 	/**  Set content of file asset  */
-	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<FileAsset> {
-		let request: RequestBuilder<FileAsset> = RequestBuilder<FileAsset>(service: "fileasset", action: "setContent")
+	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> {
+		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer>(service: "fileasset", action: "setContent")
 			.setBody(key: "id", value: id)
 			.setBody(key: "contentResource", value: contentResource)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var fileAsset: FileAsset.FileAssetTokenizer {
+			get {
+				return FileAsset.FileAssetTokenizer(self.append("fileAsset")) 
+			}
+		}
+	}
+
 	/**  Update file asset by id  */
-	public static func update(id: Int, fileAsset: FileAsset) -> RequestBuilder<FileAsset> {
-		let request: RequestBuilder<FileAsset> = RequestBuilder<FileAsset>(service: "fileasset", action: "update")
+	public static func update(id: Int, fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer>(service: "fileasset", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "fileAsset", value: fileAsset)
 

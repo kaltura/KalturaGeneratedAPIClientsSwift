@@ -35,6 +35,87 @@
 
 open class ConversionProfileBaseFilter: RelatedFilter {
 
+	public class ConversionProfileBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+		
+		public var nameEqual: BaseTokenizedObject {
+			get {
+				return self.append("nameEqual") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var defaultEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("defaultEntryIdEqual") 
+			}
+		}
+		
+		public var defaultEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("defaultEntryIdIn") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var statusEqual: ConversionProfileStatus? = nil
@@ -50,6 +131,58 @@ open class ConversionProfileBaseFilter: RelatedFilter {
 	public var defaultEntryIdIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
+	public func setMultiRequestToken(nameEqual: String) {
+		self.dict["nameEqual"] = nameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(defaultEntryIdEqual: String) {
+		self.dict["defaultEntryIdEqual"] = defaultEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(defaultEntryIdIn: String) {
+		self.dict["defaultEntryIdIn"] = defaultEntryIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

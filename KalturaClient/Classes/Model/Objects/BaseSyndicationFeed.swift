@@ -35,6 +35,141 @@
 
 open class BaseSyndicationFeed: ObjectBase {
 
+	public class BaseSyndicationFeedTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var playlistId: BaseTokenizedObject {
+			get {
+				return self.append("playlistId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var landingPage: BaseTokenizedObject {
+			get {
+				return self.append("landingPage") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var allowEmbed: BaseTokenizedObject {
+			get {
+				return self.append("allowEmbed") 
+			}
+		}
+		
+		public var playerUiconfId: BaseTokenizedObject {
+			get {
+				return self.append("playerUiconfId") 
+			}
+		}
+		
+		public var flavorParamId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamId") 
+			}
+		}
+		
+		public var transcodeExistingContent: BaseTokenizedObject {
+			get {
+				return self.append("transcodeExistingContent") 
+			}
+		}
+		
+		public var addToDefaultConversionProfile: BaseTokenizedObject {
+			get {
+				return self.append("addToDefaultConversionProfile") 
+			}
+		}
+		
+		public var categories: BaseTokenizedObject {
+			get {
+				return self.append("categories") 
+			}
+		}
+		
+		public var storageId: BaseTokenizedObject {
+			get {
+				return self.append("storageId") 
+			}
+		}
+		
+		public var entriesOrderBy: BaseTokenizedObject {
+			get {
+				return self.append("entriesOrderBy") 
+			}
+		}
+		
+		public var enforceEntitlement: BaseTokenizedObject {
+			get {
+				return self.append("enforceEntitlement") 
+			}
+		}
+		
+		public var privacyContext: BaseTokenizedObject {
+			get {
+				return self.append("privacyContext") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var useCategoryEntries: BaseTokenizedObject {
+			get {
+				return self.append("useCategoryEntries") 
+			}
+		}
+		
+		public var feedContentTypeHeader: BaseTokenizedObject {
+			get {
+				return self.append("feedContentTypeHeader") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var feedUrl: String? = nil
 	public var partnerId: Int? = nil
@@ -77,6 +212,94 @@ open class BaseSyndicationFeed: ObjectBase {
 	public var feedContentTypeHeader: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(playlistId: String) {
+		self.dict["playlistId"] = playlistId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(landingPage: String) {
+		self.dict["landingPage"] = landingPage
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(allowEmbed: String) {
+		self.dict["allowEmbed"] = allowEmbed
+	}
+	
+	public func setMultiRequestToken(playerUiconfId: String) {
+		self.dict["playerUiconfId"] = playerUiconfId
+	}
+	
+	public func setMultiRequestToken(flavorParamId: String) {
+		self.dict["flavorParamId"] = flavorParamId
+	}
+	
+	public func setMultiRequestToken(transcodeExistingContent: String) {
+		self.dict["transcodeExistingContent"] = transcodeExistingContent
+	}
+	
+	public func setMultiRequestToken(addToDefaultConversionProfile: String) {
+		self.dict["addToDefaultConversionProfile"] = addToDefaultConversionProfile
+	}
+	
+	public func setMultiRequestToken(categories: String) {
+		self.dict["categories"] = categories
+	}
+	
+	public func setMultiRequestToken(storageId: String) {
+		self.dict["storageId"] = storageId
+	}
+	
+	public func setMultiRequestToken(entriesOrderBy: String) {
+		self.dict["entriesOrderBy"] = entriesOrderBy
+	}
+	
+	public func setMultiRequestToken(enforceEntitlement: String) {
+		self.dict["enforceEntitlement"] = enforceEntitlement
+	}
+	
+	public func setMultiRequestToken(privacyContext: String) {
+		self.dict["privacyContext"] = privacyContext
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(useCategoryEntries: String) {
+		self.dict["useCategoryEntries"] = useCategoryEntries
+	}
+	
+	public func setMultiRequestToken(feedContentTypeHeader: String) {
+		self.dict["feedContentTypeHeader"] = feedContentTypeHeader
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

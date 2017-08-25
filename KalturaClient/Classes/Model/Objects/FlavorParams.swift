@@ -35,6 +35,249 @@
 
 open class FlavorParams: AssetParams {
 
+	public class FlavorParamsTokenizer: AssetParams.AssetParamsTokenizer {
+		
+		public var videoCodec: BaseTokenizedObject {
+			get {
+				return self.append("videoCodec") 
+			}
+		}
+		
+		public var videoBitrate: BaseTokenizedObject {
+			get {
+				return self.append("videoBitrate") 
+			}
+		}
+		
+		public var audioCodec: BaseTokenizedObject {
+			get {
+				return self.append("audioCodec") 
+			}
+		}
+		
+		public var audioBitrate: BaseTokenizedObject {
+			get {
+				return self.append("audioBitrate") 
+			}
+		}
+		
+		public var audioChannels: BaseTokenizedObject {
+			get {
+				return self.append("audioChannels") 
+			}
+		}
+		
+		public var audioSampleRate: BaseTokenizedObject {
+			get {
+				return self.append("audioSampleRate") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var frameRate: BaseTokenizedObject {
+			get {
+				return self.append("frameRate") 
+			}
+		}
+		
+		public var gopSize: BaseTokenizedObject {
+			get {
+				return self.append("gopSize") 
+			}
+		}
+		
+		public var conversionEngines: BaseTokenizedObject {
+			get {
+				return self.append("conversionEngines") 
+			}
+		}
+		
+		public var conversionEnginesExtraParams: BaseTokenizedObject {
+			get {
+				return self.append("conversionEnginesExtraParams") 
+			}
+		}
+		
+		public var twoPass: BaseTokenizedObject {
+			get {
+				return self.append("twoPass") 
+			}
+		}
+		
+		public var deinterlice: BaseTokenizedObject {
+			get {
+				return self.append("deinterlice") 
+			}
+		}
+		
+		public var rotate: BaseTokenizedObject {
+			get {
+				return self.append("rotate") 
+			}
+		}
+		
+		public var operators: BaseTokenizedObject {
+			get {
+				return self.append("operators") 
+			}
+		}
+		
+		public var engineVersion: BaseTokenizedObject {
+			get {
+				return self.append("engineVersion") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var aspectRatioProcessingMode: BaseTokenizedObject {
+			get {
+				return self.append("aspectRatioProcessingMode") 
+			}
+		}
+		
+		public var forceFrameToMultiplication16: BaseTokenizedObject {
+			get {
+				return self.append("forceFrameToMultiplication16") 
+			}
+		}
+		
+		public var isGopInSec: BaseTokenizedObject {
+			get {
+				return self.append("isGopInSec") 
+			}
+		}
+		
+		public var isAvoidVideoShrinkFramesizeToSource: BaseTokenizedObject {
+			get {
+				return self.append("isAvoidVideoShrinkFramesizeToSource") 
+			}
+		}
+		
+		public var isAvoidVideoShrinkBitrateToSource: BaseTokenizedObject {
+			get {
+				return self.append("isAvoidVideoShrinkBitrateToSource") 
+			}
+		}
+		
+		public var isVideoFrameRateForLowBrAppleHls: BaseTokenizedObject {
+			get {
+				return self.append("isVideoFrameRateForLowBrAppleHls") 
+			}
+		}
+		
+		public var multiStream: BaseTokenizedObject {
+			get {
+				return self.append("multiStream") 
+			}
+		}
+		
+		public var anamorphicPixels: BaseTokenizedObject {
+			get {
+				return self.append("anamorphicPixels") 
+			}
+		}
+		
+		public var isAvoidForcedKeyFrames: BaseTokenizedObject {
+			get {
+				return self.append("isAvoidForcedKeyFrames") 
+			}
+		}
+		
+		public var forcedKeyFramesMode: BaseTokenizedObject {
+			get {
+				return self.append("forcedKeyFramesMode") 
+			}
+		}
+		
+		public var isCropIMX: BaseTokenizedObject {
+			get {
+				return self.append("isCropIMX") 
+			}
+		}
+		
+		public var optimizationPolicy: BaseTokenizedObject {
+			get {
+				return self.append("optimizationPolicy") 
+			}
+		}
+		
+		public var maxFrameRate: BaseTokenizedObject {
+			get {
+				return self.append("maxFrameRate") 
+			}
+		}
+		
+		public var videoConstantBitrate: BaseTokenizedObject {
+			get {
+				return self.append("videoConstantBitrate") 
+			}
+		}
+		
+		public var videoBitrateTolerance: BaseTokenizedObject {
+			get {
+				return self.append("videoBitrateTolerance") 
+			}
+		}
+		
+		public var watermarkData: BaseTokenizedObject {
+			get {
+				return self.append("watermarkData") 
+			}
+		}
+		
+		public var subtitlesData: BaseTokenizedObject {
+			get {
+				return self.append("subtitlesData") 
+			}
+		}
+		
+		public var isEncrypted: BaseTokenizedObject {
+			get {
+				return self.append("isEncrypted") 
+			}
+		}
+		
+		public var contentAwareness: BaseTokenizedObject {
+			get {
+				return self.append("contentAwareness") 
+			}
+		}
+		
+		public var chunkedEncodeMode: BaseTokenizedObject {
+			get {
+				return self.append("chunkedEncodeMode") 
+			}
+		}
+		
+		public var clipOffset: BaseTokenizedObject {
+			get {
+				return self.append("clipOffset") 
+			}
+		}
+		
+		public var clipDuration: BaseTokenizedObject {
+			get {
+				return self.append("clipDuration") 
+			}
+		}
+	}
+
 	/**  The video codec of the Flavor Params  */
 	public var videoCodec: VideoCodec? = nil
 	/**  The video bitrate (in KBits) of the Flavor Params  */
@@ -90,6 +333,166 @@ open class FlavorParams: AssetParams {
 	public var clipDuration: Int? = nil
 
 
+	public func setMultiRequestToken(videoCodec: String) {
+		self.dict["videoCodec"] = videoCodec
+	}
+	
+	public func setMultiRequestToken(videoBitrate: String) {
+		self.dict["videoBitrate"] = videoBitrate
+	}
+	
+	public func setMultiRequestToken(audioCodec: String) {
+		self.dict["audioCodec"] = audioCodec
+	}
+	
+	public func setMultiRequestToken(audioBitrate: String) {
+		self.dict["audioBitrate"] = audioBitrate
+	}
+	
+	public func setMultiRequestToken(audioChannels: String) {
+		self.dict["audioChannels"] = audioChannels
+	}
+	
+	public func setMultiRequestToken(audioSampleRate: String) {
+		self.dict["audioSampleRate"] = audioSampleRate
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(frameRate: String) {
+		self.dict["frameRate"] = frameRate
+	}
+	
+	public func setMultiRequestToken(gopSize: String) {
+		self.dict["gopSize"] = gopSize
+	}
+	
+	public func setMultiRequestToken(conversionEngines: String) {
+		self.dict["conversionEngines"] = conversionEngines
+	}
+	
+	public func setMultiRequestToken(conversionEnginesExtraParams: String) {
+		self.dict["conversionEnginesExtraParams"] = conversionEnginesExtraParams
+	}
+	
+	public func setMultiRequestToken(twoPass: String) {
+		self.dict["twoPass"] = twoPass
+	}
+	
+	public func setMultiRequestToken(deinterlice: String) {
+		self.dict["deinterlice"] = deinterlice
+	}
+	
+	public func setMultiRequestToken(rotate: String) {
+		self.dict["rotate"] = rotate
+	}
+	
+	public func setMultiRequestToken(operators: String) {
+		self.dict["operators"] = operators
+	}
+	
+	public func setMultiRequestToken(engineVersion: String) {
+		self.dict["engineVersion"] = engineVersion
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(aspectRatioProcessingMode: String) {
+		self.dict["aspectRatioProcessingMode"] = aspectRatioProcessingMode
+	}
+	
+	public func setMultiRequestToken(forceFrameToMultiplication16: String) {
+		self.dict["forceFrameToMultiplication16"] = forceFrameToMultiplication16
+	}
+	
+	public func setMultiRequestToken(isGopInSec: String) {
+		self.dict["isGopInSec"] = isGopInSec
+	}
+	
+	public func setMultiRequestToken(isAvoidVideoShrinkFramesizeToSource: String) {
+		self.dict["isAvoidVideoShrinkFramesizeToSource"] = isAvoidVideoShrinkFramesizeToSource
+	}
+	
+	public func setMultiRequestToken(isAvoidVideoShrinkBitrateToSource: String) {
+		self.dict["isAvoidVideoShrinkBitrateToSource"] = isAvoidVideoShrinkBitrateToSource
+	}
+	
+	public func setMultiRequestToken(isVideoFrameRateForLowBrAppleHls: String) {
+		self.dict["isVideoFrameRateForLowBrAppleHls"] = isVideoFrameRateForLowBrAppleHls
+	}
+	
+	public func setMultiRequestToken(multiStream: String) {
+		self.dict["multiStream"] = multiStream
+	}
+	
+	public func setMultiRequestToken(anamorphicPixels: String) {
+		self.dict["anamorphicPixels"] = anamorphicPixels
+	}
+	
+	public func setMultiRequestToken(isAvoidForcedKeyFrames: String) {
+		self.dict["isAvoidForcedKeyFrames"] = isAvoidForcedKeyFrames
+	}
+	
+	public func setMultiRequestToken(forcedKeyFramesMode: String) {
+		self.dict["forcedKeyFramesMode"] = forcedKeyFramesMode
+	}
+	
+	public func setMultiRequestToken(isCropIMX: String) {
+		self.dict["isCropIMX"] = isCropIMX
+	}
+	
+	public func setMultiRequestToken(optimizationPolicy: String) {
+		self.dict["optimizationPolicy"] = optimizationPolicy
+	}
+	
+	public func setMultiRequestToken(maxFrameRate: String) {
+		self.dict["maxFrameRate"] = maxFrameRate
+	}
+	
+	public func setMultiRequestToken(videoConstantBitrate: String) {
+		self.dict["videoConstantBitrate"] = videoConstantBitrate
+	}
+	
+	public func setMultiRequestToken(videoBitrateTolerance: String) {
+		self.dict["videoBitrateTolerance"] = videoBitrateTolerance
+	}
+	
+	public func setMultiRequestToken(watermarkData: String) {
+		self.dict["watermarkData"] = watermarkData
+	}
+	
+	public func setMultiRequestToken(subtitlesData: String) {
+		self.dict["subtitlesData"] = subtitlesData
+	}
+	
+	public func setMultiRequestToken(isEncrypted: String) {
+		self.dict["isEncrypted"] = isEncrypted
+	}
+	
+	public func setMultiRequestToken(contentAwareness: String) {
+		self.dict["contentAwareness"] = contentAwareness
+	}
+	
+	public func setMultiRequestToken(chunkedEncodeMode: String) {
+		self.dict["chunkedEncodeMode"] = chunkedEncodeMode
+	}
+	
+	public func setMultiRequestToken(clipOffset: String) {
+		self.dict["clipOffset"] = clipOffset
+	}
+	
+	public func setMultiRequestToken(clipDuration: String) {
+		self.dict["clipDuration"] = clipDuration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

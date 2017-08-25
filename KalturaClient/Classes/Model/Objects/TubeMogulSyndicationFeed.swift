@@ -35,9 +35,22 @@
 
 open class TubeMogulSyndicationFeed: BaseSyndicationFeed {
 
+	public class TubeMogulSyndicationFeedTokenizer: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
+		
+		public var category: BaseTokenizedObject {
+			get {
+				return self.append("category") 
+			}
+		}
+	}
+
 	public var category: TubeMogulSyndicationFeedCategories? = nil
 
 
+	public func setMultiRequestToken(category: String) {
+		self.dict["category"] = category
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

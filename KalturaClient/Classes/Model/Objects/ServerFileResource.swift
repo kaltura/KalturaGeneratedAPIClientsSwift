@@ -36,12 +36,35 @@
 /**  Used to ingest media file that is already accessible on the shared disc.  */
 open class ServerFileResource: GenericDataCenterContentResource {
 
+	public class ServerFileResourceTokenizer: GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer {
+		
+		public var localFilePath: BaseTokenizedObject {
+			get {
+				return self.append("localFilePath") 
+			}
+		}
+		
+		public var keepOriginalFile: BaseTokenizedObject {
+			get {
+				return self.append("keepOriginalFile") 
+			}
+		}
+	}
+
 	/**  Full path to the local file  */
 	public var localFilePath: String? = nil
 	/**  Should keep original file (false = mv, true = cp)  */
 	public var keepOriginalFile: Bool? = nil
 
 
+	public func setMultiRequestToken(localFilePath: String) {
+		self.dict["localFilePath"] = localFilePath
+	}
+	
+	public func setMultiRequestToken(keepOriginalFile: String) {
+		self.dict["keepOriginalFile"] = keepOriginalFile
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

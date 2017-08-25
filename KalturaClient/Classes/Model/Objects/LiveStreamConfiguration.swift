@@ -36,6 +36,39 @@
 /**  A representation of a live stream configuration  */
 open class LiveStreamConfiguration: ObjectBase {
 
+	public class LiveStreamConfigurationTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var publishUrl: BaseTokenizedObject {
+			get {
+				return self.append("publishUrl") 
+			}
+		}
+		
+		public var backupUrl: BaseTokenizedObject {
+			get {
+				return self.append("backupUrl") 
+			}
+		}
+		
+		public var streamName: BaseTokenizedObject {
+			get {
+				return self.append("streamName") 
+			}
+		}
+	}
+
 	public var protocol_: PlaybackProtocol? = nil
 	public var url: String? = nil
 	public var publishUrl: String? = nil
@@ -43,6 +76,26 @@ open class LiveStreamConfiguration: ObjectBase {
 	public var streamName: String? = nil
 
 
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(publishUrl: String) {
+		self.dict["publishUrl"] = publishUrl
+	}
+	
+	public func setMultiRequestToken(backupUrl: String) {
+		self.dict["backupUrl"] = backupUrl
+	}
+	
+	public func setMultiRequestToken(streamName: String) {
+		self.dict["streamName"] = streamName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

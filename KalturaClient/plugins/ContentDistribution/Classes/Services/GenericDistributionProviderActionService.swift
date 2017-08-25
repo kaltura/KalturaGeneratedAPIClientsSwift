@@ -36,78 +36,183 @@
 /**  Generic Distribution Provider Actions service  */
 public final class GenericDistributionProviderActionService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
+			get {
+				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
+			}
+		}
+	}
+
 	/**  Add new Generic Distribution Provider Action  */
-	public static func add(genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "add")
+	public static func add(genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "add")
 			.setBody(key: "genericDistributionProviderAction", value: genericDistributionProviderAction)
 
 		return request
 	}
 
+	public class AddMrssTransformTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var xslData: BaseTokenizedObject {
+			get {
+				return self.append("xslData") 
+			}
+		}
+	}
+
 	/**  Add MRSS transform file to generic distribution provider action  */
-	public static func addMrssTransform(id: Int, xslData: String) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssTransform")
+	public static func addMrssTransform(id: Int, xslData: String) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssTransform")
 			.setBody(key: "id", value: id)
 			.setBody(key: "xslData", value: xslData)
 
 		return request
 	}
 
+	public class AddMrssTransformFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Add MRSS transform file to generic distribution provider action  */
-	public static func addMrssTransformFromFile(id: Int, xslFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssTransformFromFile")
+	public static func addMrssTransformFromFile(id: Int, xslFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformFromFileTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformFromFileTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssTransformFromFileTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssTransformFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xslFile", value: xslFile)
 
 		return request
 	}
 
+	public class AddMrssValidateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var xsdData: BaseTokenizedObject {
+			get {
+				return self.append("xsdData") 
+			}
+		}
+	}
+
 	/**  Add MRSS validate file to generic distribution provider action  */
-	public static func addMrssValidate(id: Int, xsdData: String) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssValidate")
+	public static func addMrssValidate(id: Int, xsdData: String) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssValidate")
 			.setBody(key: "id", value: id)
 			.setBody(key: "xsdData", value: xsdData)
 
 		return request
 	}
 
+	public class AddMrssValidateFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Add MRSS validate file to generic distribution provider action  */
-	public static func addMrssValidateFromFile(id: Int, xsdFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssValidateFromFile")
+	public static func addMrssValidateFromFile(id: Int, xsdFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateFromFileTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateFromFileTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddMrssValidateFromFileTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addMrssValidateFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xsdFile", value: xsdFile)
 
 		return request
 	}
 
+	public class AddResultsTransformTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var transformData: BaseTokenizedObject {
+			get {
+				return self.append("transformData") 
+			}
+		}
+	}
+
 	/**  Add results transform file to generic distribution provider action  */
-	public static func addResultsTransform(id: Int, transformData: String) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addResultsTransform")
+	public static func addResultsTransform(id: Int, transformData: String) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addResultsTransform")
 			.setBody(key: "id", value: id)
 			.setBody(key: "transformData", value: transformData)
 
 		return request
 	}
 
+	public class AddResultsTransformFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Add MRSS transform file to generic distribution provider action  */
-	public static func addResultsTransformFromFile(id: Int, transformFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "addResultsTransformFromFile")
+	public static func addResultsTransformFromFile(id: Int, transformFile: RequestFile) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformFromFileTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformFromFileTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, AddResultsTransformFromFileTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "addResultsTransformFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "transformFile", value: transformFile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Generic Distribution Provider Action by id  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_genericdistributionprovideraction", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class DeleteByProviderIdTokenizer: ClientTokenizer  {
+		
+		public var genericDistributionProviderId: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderId") 
+			}
+		}
+		
+		public var actionType: BaseTokenizedObject {
+			get {
+				return self.append("actionType") 
+			}
+		}
+	}
+
 	/**  Delete Generic Distribution Provider Action by provider id  */
-	public static func deleteByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> RequestBuilder<Void> {
+	public static func deleteByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_genericdistributionprovideraction", action: "deleteByProviderId")
 			.setBody(key: "genericDistributionProviderId", value: genericDistributionProviderId)
 			.setBody(key: "actionType", value: actionType.rawValue)
@@ -115,52 +220,127 @@ public final class GenericDistributionProviderActionService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Generic Distribution Provider Action by id  */
-	public static func get(id: Int) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "get")
+	public static func get(id: Int) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetByProviderIdTokenizer: ClientTokenizer  {
+		
+		public var genericDistributionProviderId: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderId") 
+			}
+		}
+		
+		public var actionType: BaseTokenizedObject {
+			get {
+				return self.append("actionType") 
+			}
+		}
+	}
+
 	/**  Get Generic Distribution Provider Action by provider id  */
-	public static func getByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "getByProviderId")
+	public static func getByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetByProviderIdTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetByProviderIdTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, GetByProviderIdTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "getByProviderId")
 			.setBody(key: "genericDistributionProviderId", value: genericDistributionProviderId)
 			.setBody(key: "actionType", value: actionType.rawValue)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<GenericDistributionProviderActionListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: GenericDistributionProviderActionFilter.GenericDistributionProviderActionFilterTokenizer {
+			get {
+				return GenericDistributionProviderActionFilter.GenericDistributionProviderActionFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<GenericDistributionProviderActionListResponse, GenericDistributionProviderActionListResponse.GenericDistributionProviderActionListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: GenericDistributionProviderActionFilter?) -> RequestBuilder<GenericDistributionProviderActionListResponse> {
+	public static func list(filter: GenericDistributionProviderActionFilter?) -> RequestBuilder<GenericDistributionProviderActionListResponse, GenericDistributionProviderActionListResponse.GenericDistributionProviderActionListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all distribution providers  */
-	public static func list(filter: GenericDistributionProviderActionFilter?, pager: FilterPager?) -> RequestBuilder<GenericDistributionProviderActionListResponse> {
-		let request: RequestBuilder<GenericDistributionProviderActionListResponse> = RequestBuilder<GenericDistributionProviderActionListResponse>(service: "contentdistribution_genericdistributionprovideraction", action: "list")
+	public static func list(filter: GenericDistributionProviderActionFilter?, pager: FilterPager?) -> RequestBuilder<GenericDistributionProviderActionListResponse, GenericDistributionProviderActionListResponse.GenericDistributionProviderActionListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderActionListResponse, GenericDistributionProviderActionListResponse.GenericDistributionProviderActionListResponseTokenizer, ListTokenizer> = RequestBuilder<GenericDistributionProviderActionListResponse, GenericDistributionProviderActionListResponse.GenericDistributionProviderActionListResponseTokenizer, ListTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
+			get {
+				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
+			}
+		}
+	}
+
 	/**  Update Generic Distribution Provider Action by id  */
-	public static func update(id: Int, genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "update")
+	public static func update(id: Int, genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "genericDistributionProviderAction", value: genericDistributionProviderAction)
 
 		return request
 	}
 
+	public class UpdateByProviderIdTokenizer: ClientTokenizer  {
+		
+		public var genericDistributionProviderId: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderId") 
+			}
+		}
+		
+		public var actionType: BaseTokenizedObject {
+			get {
+				return self.append("actionType") 
+			}
+		}
+		
+		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
+			get {
+				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
+			}
+		}
+	}
+
 	/**  Update Generic Distribution Provider Action by provider id  */
-	public static func updateByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction, genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction> {
-		let request: RequestBuilder<GenericDistributionProviderAction> = RequestBuilder<GenericDistributionProviderAction>(service: "contentdistribution_genericdistributionprovideraction", action: "updateByProviderId")
+	public static func updateByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction, genericDistributionProviderAction: GenericDistributionProviderAction) -> RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateByProviderIdTokenizer> {
+		let request: RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateByProviderIdTokenizer> = RequestBuilder<GenericDistributionProviderAction, GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer, UpdateByProviderIdTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "updateByProviderId")
 			.setBody(key: "genericDistributionProviderId", value: genericDistributionProviderId)
 			.setBody(key: "actionType", value: actionType.rawValue)
 			.setBody(key: "genericDistributionProviderAction", value: genericDistributionProviderAction)

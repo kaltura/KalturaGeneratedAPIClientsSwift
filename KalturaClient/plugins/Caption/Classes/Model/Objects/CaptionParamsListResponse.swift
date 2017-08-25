@@ -35,6 +35,15 @@
 
 open class CaptionParamsListResponse: ListResponse {
 
+	public class CaptionParamsListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<CaptionParams.CaptionParamsTokenizer> {
+			get {
+				return ArrayTokenizedObject<CaptionParams.CaptionParamsTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<CaptionParams>? = nil
 
 

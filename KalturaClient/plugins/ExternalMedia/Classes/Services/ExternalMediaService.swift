@@ -37,62 +37,128 @@
   playable content  */
 public final class ExternalMediaService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entry: ExternalMediaEntry.ExternalMediaEntryTokenizer {
+			get {
+				return ExternalMediaEntry.ExternalMediaEntryTokenizer(self.append("entry")) 
+			}
+		}
+	}
+
 	/**  Add external media entry  */
-	public static func add(entry: ExternalMediaEntry) -> RequestBuilder<ExternalMediaEntry> {
-		let request: RequestBuilder<ExternalMediaEntry> = RequestBuilder<ExternalMediaEntry>(service: "externalmedia_externalmedia", action: "add")
+	public static func add(entry: ExternalMediaEntry) -> RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, AddTokenizer> = RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, AddTokenizer>(service: "externalmedia_externalmedia", action: "add")
 			.setBody(key: "entry", value: entry)
 
 		return request
 	}
 
-	public static func count() -> RequestBuilder<Int> {
+	public class CountTokenizer: ClientTokenizer  {
+		
+		public var filter: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer {
+			get {
+				return ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
+	public static func count() -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		return count(filter: nil)
 	}
 
 	/**  Count media entries by filter.  */
-	public static func count(filter: ExternalMediaEntryFilter?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "externalmedia_externalmedia", action: "count")
+	public static func count(filter: ExternalMediaEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "externalmedia_externalmedia", action: "count")
 			.setBody(key: "filter", value: filter)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete a external media entry.  */
-	public static func delete(id: String) -> RequestBuilder<Void> {
+	public static func delete(id: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "externalmedia_externalmedia", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get external media entry by ID.  */
-	public static func get(id: String) -> RequestBuilder<ExternalMediaEntry> {
-		let request: RequestBuilder<ExternalMediaEntry> = RequestBuilder<ExternalMediaEntry>(service: "externalmedia_externalmedia", action: "get")
+	public static func get(id: String) -> RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, GetTokenizer> = RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, GetTokenizer>(service: "externalmedia_externalmedia", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ExternalMediaEntryListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer {
+			get {
+				return ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ExternalMediaEntryListResponse, ExternalMediaEntryListResponse.ExternalMediaEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ExternalMediaEntryFilter?) -> RequestBuilder<ExternalMediaEntryListResponse> {
+	public static func list(filter: ExternalMediaEntryFilter?) -> RequestBuilder<ExternalMediaEntryListResponse, ExternalMediaEntryListResponse.ExternalMediaEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List media entries by filter with paging support.  */
-	public static func list(filter: ExternalMediaEntryFilter?, pager: FilterPager?) -> RequestBuilder<ExternalMediaEntryListResponse> {
-		let request: RequestBuilder<ExternalMediaEntryListResponse> = RequestBuilder<ExternalMediaEntryListResponse>(service: "externalmedia_externalmedia", action: "list")
+	public static func list(filter: ExternalMediaEntryFilter?, pager: FilterPager?) -> RequestBuilder<ExternalMediaEntryListResponse, ExternalMediaEntryListResponse.ExternalMediaEntryListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ExternalMediaEntryListResponse, ExternalMediaEntryListResponse.ExternalMediaEntryListResponseTokenizer, ListTokenizer> = RequestBuilder<ExternalMediaEntryListResponse, ExternalMediaEntryListResponse.ExternalMediaEntryListResponseTokenizer, ListTokenizer>(service: "externalmedia_externalmedia", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var entry: ExternalMediaEntry.ExternalMediaEntryTokenizer {
+			get {
+				return ExternalMediaEntry.ExternalMediaEntryTokenizer(self.append("entry")) 
+			}
+		}
+	}
+
 	/**  Update external media entry. Only the properties that were set will be updated.  */
-	public static func update(id: String, entry: ExternalMediaEntry) -> RequestBuilder<ExternalMediaEntry> {
-		let request: RequestBuilder<ExternalMediaEntry> = RequestBuilder<ExternalMediaEntry>(service: "externalmedia_externalmedia", action: "update")
+	public static func update(id: String, entry: ExternalMediaEntry) -> RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, UpdateTokenizer> = RequestBuilder<ExternalMediaEntry, ExternalMediaEntry.ExternalMediaEntryTokenizer, UpdateTokenizer>(service: "externalmedia_externalmedia", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "entry", value: entry)
 

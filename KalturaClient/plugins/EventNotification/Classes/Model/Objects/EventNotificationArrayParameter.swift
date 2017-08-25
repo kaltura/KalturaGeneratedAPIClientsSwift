@@ -35,6 +35,21 @@
 
 open class EventNotificationArrayParameter: EventNotificationParameter {
 
+	public class EventNotificationArrayParameterTokenizer: EventNotificationParameter.EventNotificationParameterTokenizer {
+		
+		public var values: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("values"))
+			} 
+		}
+		
+		public var allowedValues: ArrayTokenizedObject<StringValue.StringValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringValue.StringValueTokenizer>(self.append("allowedValues"))
+			} 
+		}
+	}
+
 	public var values: Array<StringHolder>? = nil
 	/**  Used to restrict the values to close list  */
 	public var allowedValues: Array<StringValue>? = nil

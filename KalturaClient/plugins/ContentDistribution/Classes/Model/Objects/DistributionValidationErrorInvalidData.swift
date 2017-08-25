@@ -35,6 +35,27 @@
 
 open class DistributionValidationErrorInvalidData: DistributionValidationError {
 
+	public class DistributionValidationErrorInvalidDataTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var fieldName: BaseTokenizedObject {
+			get {
+				return self.append("fieldName") 
+			}
+		}
+		
+		public var validationErrorType: BaseTokenizedObject {
+			get {
+				return self.append("validationErrorType") 
+			}
+		}
+		
+		public var validationErrorParam: BaseTokenizedObject {
+			get {
+				return self.append("validationErrorParam") 
+			}
+		}
+	}
+
 	public var fieldName: String? = nil
 	public var validationErrorType: DistributionValidationErrorType? = nil
 	/**  Parameter of the validation error   For example, minimum value for
@@ -42,6 +63,18 @@ open class DistributionValidationErrorInvalidData: DistributionValidationError {
 	public var validationErrorParam: String? = nil
 
 
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
+	public func setMultiRequestToken(validationErrorType: String) {
+		self.dict["validationErrorType"] = validationErrorType
+	}
+	
+	public func setMultiRequestToken(validationErrorParam: String) {
+		self.dict["validationErrorParam"] = validationErrorParam
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class ViewHistoryUserEntryFilter: UserEntryFilter {
 
+	public class ViewHistoryUserEntryFilterTokenizer: UserEntryFilter.UserEntryFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

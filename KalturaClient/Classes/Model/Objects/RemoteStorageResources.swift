@@ -38,6 +38,15 @@
   type will point to the media URL.  */
 open class RemoteStorageResources: ContentResource {
 
+	public class RemoteStorageResourcesTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var resources: ArrayTokenizedObject<RemoteStorageResource.RemoteStorageResourceTokenizer> {
+			get {
+				return ArrayTokenizedObject<RemoteStorageResource.RemoteStorageResourceTokenizer>(self.append("resources"))
+			} 
+		}
+	}
+
 	/**  Array of remote stoage resources  */
 	public var resources: Array<RemoteStorageResource>? = nil
 

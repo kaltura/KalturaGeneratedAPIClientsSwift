@@ -35,6 +35,9 @@
 
 open class DistributionProviderFilter: DistributionProviderBaseFilter {
 
+	public class DistributionProviderFilterTokenizer: DistributionProviderBaseFilter.DistributionProviderBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

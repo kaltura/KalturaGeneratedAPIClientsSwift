@@ -35,6 +35,69 @@
 
 open class UserFilter: UserBaseFilter {
 
+	public class UserFilterTokenizer: UserBaseFilter.UserBaseFilterTokenizer {
+		
+		public var idOrScreenNameStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("idOrScreenNameStartsWith") 
+			}
+		}
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var loginEnabledEqual: BaseTokenizedObject {
+			get {
+				return self.append("loginEnabledEqual") 
+			}
+		}
+		
+		public var roleIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("roleIdEqual") 
+			}
+		}
+		
+		public var roleIdsEqual: BaseTokenizedObject {
+			get {
+				return self.append("roleIdsEqual") 
+			}
+		}
+		
+		public var roleIdsIn: BaseTokenizedObject {
+			get {
+				return self.append("roleIdsIn") 
+			}
+		}
+		
+		public var firstNameOrLastNameStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("firstNameOrLastNameStartsWith") 
+			}
+		}
+		
+		public var permissionNamesMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMultiLikeOr") 
+			}
+		}
+		
+		public var permissionNamesMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("permissionNamesMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var idOrScreenNameStartsWith: String? = nil
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
@@ -49,6 +112,46 @@ open class UserFilter: UserBaseFilter {
 	public var permissionNamesMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(idOrScreenNameStartsWith: String) {
+		self.dict["idOrScreenNameStartsWith"] = idOrScreenNameStartsWith
+	}
+	
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(loginEnabledEqual: String) {
+		self.dict["loginEnabledEqual"] = loginEnabledEqual
+	}
+	
+	public func setMultiRequestToken(roleIdEqual: String) {
+		self.dict["roleIdEqual"] = roleIdEqual
+	}
+	
+	public func setMultiRequestToken(roleIdsEqual: String) {
+		self.dict["roleIdsEqual"] = roleIdsEqual
+	}
+	
+	public func setMultiRequestToken(roleIdsIn: String) {
+		self.dict["roleIdsIn"] = roleIdsIn
+	}
+	
+	public func setMultiRequestToken(firstNameOrLastNameStartsWith: String) {
+		self.dict["firstNameOrLastNameStartsWith"] = firstNameOrLastNameStartsWith
+	}
+	
+	public func setMultiRequestToken(permissionNamesMultiLikeOr: String) {
+		self.dict["permissionNamesMultiLikeOr"] = permissionNamesMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(permissionNamesMultiLikeAnd: String) {
+		self.dict["permissionNamesMultiLikeAnd"] = permissionNamesMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

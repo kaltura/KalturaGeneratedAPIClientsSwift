@@ -35,6 +35,99 @@
 
 open class PartnerBaseFilter: Filter {
 
+	public class PartnerBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var idNotIn: BaseTokenizedObject {
+			get {
+				return self.append("idNotIn") 
+			}
+		}
+		
+		public var nameLike: BaseTokenizedObject {
+			get {
+				return self.append("nameLike") 
+			}
+		}
+		
+		public var nameMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("nameMultiLikeOr") 
+			}
+		}
+		
+		public var nameMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("nameMultiLikeAnd") 
+			}
+		}
+		
+		public var nameEqual: BaseTokenizedObject {
+			get {
+				return self.append("nameEqual") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var partnerPackageEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerPackageEqual") 
+			}
+		}
+		
+		public var partnerPackageGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerPackageGreaterThanOrEqual") 
+			}
+		}
+		
+		public var partnerPackageLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerPackageLessThanOrEqual") 
+			}
+		}
+		
+		public var partnerPackageIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerPackageIn") 
+			}
+		}
+		
+		public var partnerGroupTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerGroupTypeEqual") 
+			}
+		}
+		
+		public var partnerNameDescriptionWebsiteAdminNameAdminEmailLike: BaseTokenizedObject {
+			get {
+				return self.append("partnerNameDescriptionWebsiteAdminNameAdminEmailLike") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var idNotIn: String? = nil
@@ -52,6 +145,66 @@ open class PartnerBaseFilter: Filter {
 	public var partnerNameDescriptionWebsiteAdminNameAdminEmailLike: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idNotIn: String) {
+		self.dict["idNotIn"] = idNotIn
+	}
+	
+	public func setMultiRequestToken(nameLike: String) {
+		self.dict["nameLike"] = nameLike
+	}
+	
+	public func setMultiRequestToken(nameMultiLikeOr: String) {
+		self.dict["nameMultiLikeOr"] = nameMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(nameMultiLikeAnd: String) {
+		self.dict["nameMultiLikeAnd"] = nameMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(nameEqual: String) {
+		self.dict["nameEqual"] = nameEqual
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(partnerPackageEqual: String) {
+		self.dict["partnerPackageEqual"] = partnerPackageEqual
+	}
+	
+	public func setMultiRequestToken(partnerPackageGreaterThanOrEqual: String) {
+		self.dict["partnerPackageGreaterThanOrEqual"] = partnerPackageGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerPackageLessThanOrEqual: String) {
+		self.dict["partnerPackageLessThanOrEqual"] = partnerPackageLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerPackageIn: String) {
+		self.dict["partnerPackageIn"] = partnerPackageIn
+	}
+	
+	public func setMultiRequestToken(partnerGroupTypeEqual: String) {
+		self.dict["partnerGroupTypeEqual"] = partnerGroupTypeEqual
+	}
+	
+	public func setMultiRequestToken(partnerNameDescriptionWebsiteAdminNameAdminEmailLike: String) {
+		self.dict["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] = partnerNameDescriptionWebsiteAdminNameAdminEmailLike
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

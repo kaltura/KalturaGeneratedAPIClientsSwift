@@ -35,6 +35,69 @@
 
 open class CEError: ObjectBase {
 
+	public class CEErrorTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var browser: BaseTokenizedObject {
+			get {
+				return self.append("browser") 
+			}
+		}
+		
+		public var serverIp: BaseTokenizedObject {
+			get {
+				return self.append("serverIp") 
+			}
+		}
+		
+		public var serverOs: BaseTokenizedObject {
+			get {
+				return self.append("serverOs") 
+			}
+		}
+		
+		public var phpVersion: BaseTokenizedObject {
+			get {
+				return self.append("phpVersion") 
+			}
+		}
+		
+		public var ceAdminEmail: BaseTokenizedObject {
+			get {
+				return self.append("ceAdminEmail") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var partnerId: Int? = nil
 	public var browser: String? = nil
@@ -47,6 +110,46 @@ open class CEError: ObjectBase {
 	public var data: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(browser: String) {
+		self.dict["browser"] = browser
+	}
+	
+	public func setMultiRequestToken(serverIp: String) {
+		self.dict["serverIp"] = serverIp
+	}
+	
+	public func setMultiRequestToken(serverOs: String) {
+		self.dict["serverOs"] = serverOs
+	}
+	
+	public func setMultiRequestToken(phpVersion: String) {
+		self.dict["phpVersion"] = phpVersion
+	}
+	
+	public func setMultiRequestToken(ceAdminEmail: String) {
+		self.dict["ceAdminEmail"] = ceAdminEmail
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class JobData: ObjectBase {
 
+	public class JobDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

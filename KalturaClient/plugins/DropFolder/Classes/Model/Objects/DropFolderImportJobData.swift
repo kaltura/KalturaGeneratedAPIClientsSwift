@@ -35,9 +35,22 @@
 
 open class DropFolderImportJobData: SshImportJobData {
 
+	public class DropFolderImportJobDataTokenizer: SshImportJobData.SshImportJobDataTokenizer {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+	}
+
 	public var dropFolderFileId: Int? = nil
 
 
+	public func setMultiRequestToken(dropFolderFileId: String) {
+		self.dict["dropFolderFileId"] = dropFolderFileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

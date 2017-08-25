@@ -36,12 +36,55 @@
 /**  A representation of an optional answer for question cue point  */
 open class OptionalAnswer: ObjectBase {
 
+	public class OptionalAnswerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var text: BaseTokenizedObject {
+			get {
+				return self.append("text") 
+			}
+		}
+		
+		public var weight: BaseTokenizedObject {
+			get {
+				return self.append("weight") 
+			}
+		}
+		
+		public var isCorrect: BaseTokenizedObject {
+			get {
+				return self.append("isCorrect") 
+			}
+		}
+	}
+
 	public var key: String? = nil
 	public var text: String? = nil
 	public var weight: Double? = nil
 	public var isCorrect: Bool? = nil
 
 
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(text: String) {
+		self.dict["text"] = text
+	}
+	
+	public func setMultiRequestToken(weight: String) {
+		self.dict["weight"] = weight
+	}
+	
+	public func setMultiRequestToken(isCorrect: String) {
+		self.dict["isCorrect"] = isCorrect
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

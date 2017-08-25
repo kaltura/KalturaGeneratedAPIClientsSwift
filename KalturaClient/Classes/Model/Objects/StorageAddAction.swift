@@ -35,6 +35,9 @@
 
 open class StorageAddAction: RuleAction {
 
+	public class StorageAddActionTokenizer: RuleAction.RuleActionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

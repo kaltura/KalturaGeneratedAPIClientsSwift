@@ -35,12 +35,55 @@
 
 open class FlavorParamsOutputBaseFilter: FlavorParamsFilter {
 
+	public class FlavorParamsOutputBaseFilterTokenizer: FlavorParamsFilter.FlavorParamsFilterTokenizer {
+		
+		public var flavorParamsIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIdEqual") 
+			}
+		}
+		
+		public var flavorParamsVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsVersionEqual") 
+			}
+		}
+		
+		public var flavorAssetIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetIdEqual") 
+			}
+		}
+		
+		public var flavorAssetVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetVersionEqual") 
+			}
+		}
+	}
+
 	public var flavorParamsIdEqual: Int? = nil
 	public var flavorParamsVersionEqual: String? = nil
 	public var flavorAssetIdEqual: String? = nil
 	public var flavorAssetVersionEqual: String? = nil
 
 
+	public func setMultiRequestToken(flavorParamsIdEqual: String) {
+		self.dict["flavorParamsIdEqual"] = flavorParamsIdEqual
+	}
+	
+	public func setMultiRequestToken(flavorParamsVersionEqual: String) {
+		self.dict["flavorParamsVersionEqual"] = flavorParamsVersionEqual
+	}
+	
+	public func setMultiRequestToken(flavorAssetIdEqual: String) {
+		self.dict["flavorAssetIdEqual"] = flavorAssetIdEqual
+	}
+	
+	public func setMultiRequestToken(flavorAssetVersionEqual: String) {
+		self.dict["flavorAssetVersionEqual"] = flavorAssetVersionEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

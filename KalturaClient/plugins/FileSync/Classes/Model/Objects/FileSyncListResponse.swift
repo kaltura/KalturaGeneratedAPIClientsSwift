@@ -35,6 +35,15 @@
 
 open class FileSyncListResponse: ListResponse {
 
+	public class FileSyncListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<FileSync.FileSyncTokenizer> {
+			get {
+				return ArrayTokenizedObject<FileSync.FileSyncTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<FileSync>? = nil
 
 

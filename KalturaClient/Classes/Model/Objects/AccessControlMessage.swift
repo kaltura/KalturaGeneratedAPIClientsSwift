@@ -35,10 +35,33 @@
 
 open class AccessControlMessage: ObjectBase {
 
+	public class AccessControlMessageTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+		
+		public var code: BaseTokenizedObject {
+			get {
+				return self.append("code") 
+			}
+		}
+	}
+
 	public var message: String? = nil
 	public var code: String? = nil
 
 
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(code: String) {
+		self.dict["code"] = code
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

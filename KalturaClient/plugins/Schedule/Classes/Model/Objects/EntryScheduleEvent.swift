@@ -35,6 +35,27 @@
 
 open class EntryScheduleEvent: ScheduleEvent {
 
+	public class EntryScheduleEventTokenizer: ScheduleEvent.ScheduleEventTokenizer {
+		
+		public var templateEntryId: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryId") 
+			}
+		}
+		
+		public var entryIds: BaseTokenizedObject {
+			get {
+				return self.append("entryIds") 
+			}
+		}
+		
+		public var categoryIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryIds") 
+			}
+		}
+	}
+
 	/**  Entry to be used as template during content ingestion  */
 	public var templateEntryId: String? = nil
 	/**  Entries that associated with this event  */
@@ -43,6 +64,18 @@ open class EntryScheduleEvent: ScheduleEvent {
 	public var categoryIds: String? = nil
 
 
+	public func setMultiRequestToken(templateEntryId: String) {
+		self.dict["templateEntryId"] = templateEntryId
+	}
+	
+	public func setMultiRequestToken(entryIds: String) {
+		self.dict["entryIds"] = entryIds
+	}
+	
+	public func setMultiRequestToken(categoryIds: String) {
+		self.dict["categoryIds"] = categoryIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

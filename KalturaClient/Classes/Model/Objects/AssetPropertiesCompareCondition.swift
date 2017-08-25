@@ -35,6 +35,15 @@
 
 open class AssetPropertiesCompareCondition: Condition {
 
+	public class AssetPropertiesCompareConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var properties: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("properties"))
+			} 
+		}
+	}
+
 	/**  Array of key/value objects that holds the property and the value to find and
 	  compare on an asset object  */
 	public var properties: Array<KeyValue>? = nil

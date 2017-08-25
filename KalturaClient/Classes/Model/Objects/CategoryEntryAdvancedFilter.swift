@@ -35,12 +35,55 @@
 
 open class CategoryEntryAdvancedFilter: SearchItem {
 
+	public class CategoryEntryAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var categoriesMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("categoriesMatchOr") 
+			}
+		}
+		
+		public var categoryEntryStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("categoryEntryStatusIn") 
+			}
+		}
+		
+		public var orderBy: BaseTokenizedObject {
+			get {
+				return self.append("orderBy") 
+			}
+		}
+		
+		public var categoryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdEqual") 
+			}
+		}
+	}
+
 	public var categoriesMatchOr: String? = nil
 	public var categoryEntryStatusIn: String? = nil
 	public var orderBy: CategoryEntryAdvancedOrderBy? = nil
 	public var categoryIdEqual: Int? = nil
 
 
+	public func setMultiRequestToken(categoriesMatchOr: String) {
+		self.dict["categoriesMatchOr"] = categoriesMatchOr
+	}
+	
+	public func setMultiRequestToken(categoryEntryStatusIn: String) {
+		self.dict["categoryEntryStatusIn"] = categoryEntryStatusIn
+	}
+	
+	public func setMultiRequestToken(orderBy: String) {
+		self.dict["orderBy"] = orderBy
+	}
+	
+	public func setMultiRequestToken(categoryIdEqual: String) {
+		self.dict["categoryIdEqual"] = categoryIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

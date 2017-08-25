@@ -35,10 +35,33 @@
 
 open class SwfFlavorParamsOutput: FlavorParamsOutput {
 
+	public class SwfFlavorParamsOutputTokenizer: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+		
+		public var flashVersion: BaseTokenizedObject {
+			get {
+				return self.append("flashVersion") 
+			}
+		}
+		
+		public var poly2Bitmap: BaseTokenizedObject {
+			get {
+				return self.append("poly2Bitmap") 
+			}
+		}
+	}
+
 	public var flashVersion: Int? = nil
 	public var poly2Bitmap: Bool? = nil
 
 
+	public func setMultiRequestToken(flashVersion: String) {
+		self.dict["flashVersion"] = flashVersion
+	}
+	
+	public func setMultiRequestToken(poly2Bitmap: String) {
+		self.dict["poly2Bitmap"] = poly2Bitmap
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

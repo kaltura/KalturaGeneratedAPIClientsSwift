@@ -36,9 +36,30 @@
 /**  Integration service lets you dispatch integration tasks  */
 public final class IntegrationService{
 
+	public class DispatchTokenizer: ClientTokenizer  {
+		
+		public var data: IntegrationJobData.IntegrationJobDataTokenizer {
+			get {
+				return IntegrationJobData.IntegrationJobDataTokenizer(self.append("data")) 
+			}
+		}
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+	}
+
 	/**  Dispatch integration task  */
-	public static func dispatch(data: IntegrationJobData, objectType: BatchJobObjectType, objectId: String) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "integration_integration", action: "dispatch")
+	public static func dispatch(data: IntegrationJobData, objectType: BatchJobObjectType, objectId: String) -> RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> = RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer>(service: "integration_integration", action: "dispatch")
 			.setBody(key: "data", value: data)
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -46,7 +67,16 @@ public final class IntegrationService{
 		return request
 	}
 
-	public static func notify(id: Int) -> RequestBuilder<Void> {
+	public class NotifyTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func notify(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "integration_integration", action: "notify")
 			.setBody(key: "id", value: id)
 

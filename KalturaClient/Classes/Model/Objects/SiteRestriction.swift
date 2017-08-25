@@ -35,12 +35,35 @@
 
 open class SiteRestriction: BaseRestriction {
 
+	public class SiteRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var siteRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("siteRestrictionType") 
+			}
+		}
+		
+		public var siteList: BaseTokenizedObject {
+			get {
+				return self.append("siteList") 
+			}
+		}
+	}
+
 	/**  The site restriction type (allow or deny)  */
 	public var siteRestrictionType: SiteRestrictionType? = nil
 	/**  Comma separated list of sites (domains) to allow or deny  */
 	public var siteList: String? = nil
 
 
+	public func setMultiRequestToken(siteRestrictionType: String) {
+		self.dict["siteRestrictionType"] = siteRestrictionType
+	}
+	
+	public func setMultiRequestToken(siteList: String) {
+		self.dict["siteList"] = siteList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,39 @@
 
 open class CaptionParams: AssetParams {
 
+	public class CaptionParamsTokenizer: AssetParams.AssetParamsTokenizer {
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var sourceParamsId: BaseTokenizedObject {
+			get {
+				return self.append("sourceParamsId") 
+			}
+		}
+	}
+
 	/**  The language of the caption content  */
 	public var language: Language? = nil
 	/**  Is default caption asset of the entry  */
@@ -48,6 +81,26 @@ open class CaptionParams: AssetParams {
 	public var sourceParamsId: Int? = nil
 
 
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(sourceParamsId: String) {
+		self.dict["sourceParamsId"] = sourceParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

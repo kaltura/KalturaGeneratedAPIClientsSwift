@@ -35,9 +35,22 @@
 
 open class DynamicObjectSearchItem: SearchOperator {
 
+	public class DynamicObjectSearchItemTokenizer: SearchOperator.SearchOperatorTokenizer {
+		
+		public var field: BaseTokenizedObject {
+			get {
+				return self.append("field") 
+			}
+		}
+	}
+
 	public var field: String? = nil
 
 
+	public func setMultiRequestToken(field: String) {
+		self.dict["field"] = field
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

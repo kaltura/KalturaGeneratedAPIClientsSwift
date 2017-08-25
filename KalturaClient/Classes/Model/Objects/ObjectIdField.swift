@@ -36,6 +36,9 @@
 /**  Evaluates object ID according to given context  */
 open class ObjectIdField: StringField {
 
+	public class ObjectIdFieldTokenizer: StringField.StringFieldTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

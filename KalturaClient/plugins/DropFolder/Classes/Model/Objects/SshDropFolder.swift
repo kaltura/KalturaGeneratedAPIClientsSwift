@@ -35,6 +35,51 @@
 
 open class SshDropFolder: RemoteDropFolder {
 
+	public class SshDropFolderTokenizer: RemoteDropFolder.RemoteDropFolderTokenizer {
+		
+		public var host: BaseTokenizedObject {
+			get {
+				return self.append("host") 
+			}
+		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var privateKey: BaseTokenizedObject {
+			get {
+				return self.append("privateKey") 
+			}
+		}
+		
+		public var publicKey: BaseTokenizedObject {
+			get {
+				return self.append("publicKey") 
+			}
+		}
+		
+		public var passPhrase: BaseTokenizedObject {
+			get {
+				return self.append("passPhrase") 
+			}
+		}
+	}
+
 	public var host: String? = nil
 	public var port: Int? = nil
 	public var username: String? = nil
@@ -44,6 +89,34 @@ open class SshDropFolder: RemoteDropFolder {
 	public var passPhrase: String? = nil
 
 
+	public func setMultiRequestToken(host: String) {
+		self.dict["host"] = host
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(privateKey: String) {
+		self.dict["privateKey"] = privateKey
+	}
+	
+	public func setMultiRequestToken(publicKey: String) {
+		self.dict["publicKey"] = publicKey
+	}
+	
+	public func setMultiRequestToken(passPhrase: String) {
+		self.dict["passPhrase"] = passPhrase
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

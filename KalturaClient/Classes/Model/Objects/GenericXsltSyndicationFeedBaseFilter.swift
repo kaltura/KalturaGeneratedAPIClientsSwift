@@ -35,6 +35,9 @@
 
 open class GenericXsltSyndicationFeedBaseFilter: GenericSyndicationFeedFilter {
 
+	public class GenericXsltSyndicationFeedBaseFilterTokenizer: GenericSyndicationFeedFilter.GenericSyndicationFeedFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

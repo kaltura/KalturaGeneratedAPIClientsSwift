@@ -35,10 +35,33 @@
 
 open class UserLoginData: ObjectBase {
 
+	public class UserLoginDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var loginEmail: BaseTokenizedObject {
+			get {
+				return self.append("loginEmail") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var loginEmail: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(loginEmail: String) {
+		self.dict["loginEmail"] = loginEmail
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

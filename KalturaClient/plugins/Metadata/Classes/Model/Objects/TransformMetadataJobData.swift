@@ -35,6 +35,39 @@
 
 open class TransformMetadataJobData: JobData {
 
+	public class TransformMetadataJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcXslPath: BaseTokenizedObject {
+			get {
+				return self.append("srcXslPath") 
+			}
+		}
+		
+		public var srcVersion: BaseTokenizedObject {
+			get {
+				return self.append("srcVersion") 
+			}
+		}
+		
+		public var destVersion: BaseTokenizedObject {
+			get {
+				return self.append("destVersion") 
+			}
+		}
+		
+		public var destXsdPath: BaseTokenizedObject {
+			get {
+				return self.append("destXsdPath") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+	}
+
 	public var srcXslPath: String? = nil
 	public var srcVersion: Int? = nil
 	public var destVersion: Int? = nil
@@ -42,6 +75,26 @@ open class TransformMetadataJobData: JobData {
 	public var metadataProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(srcXslPath: String) {
+		self.dict["srcXslPath"] = srcXslPath
+	}
+	
+	public func setMultiRequestToken(srcVersion: String) {
+		self.dict["srcVersion"] = srcVersion
+	}
+	
+	public func setMultiRequestToken(destVersion: String) {
+		self.dict["destVersion"] = destVersion
+	}
+	
+	public func setMultiRequestToken(destXsdPath: String) {
+		self.dict["destXsdPath"] = destXsdPath
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

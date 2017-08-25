@@ -37,6 +37,75 @@
   analytics system  */
 open class StatsKmcEvent: ObjectBase {
 
+	public class StatsKmcEventTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var clientVer: BaseTokenizedObject {
+			get {
+				return self.append("clientVer") 
+			}
+		}
+		
+		public var kmcEventActionPath: BaseTokenizedObject {
+			get {
+				return self.append("kmcEventActionPath") 
+			}
+		}
+		
+		public var kmcEventType: BaseTokenizedObject {
+			get {
+				return self.append("kmcEventType") 
+			}
+		}
+		
+		public var eventTimestamp: BaseTokenizedObject {
+			get {
+				return self.append("eventTimestamp") 
+			}
+		}
+		
+		public var sessionId: BaseTokenizedObject {
+			get {
+				return self.append("sessionId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var widgetId: BaseTokenizedObject {
+			get {
+				return self.append("widgetId") 
+			}
+		}
+		
+		public var uiconfId: BaseTokenizedObject {
+			get {
+				return self.append("uiconfId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var userIp: BaseTokenizedObject {
+			get {
+				return self.append("userIp") 
+			}
+		}
+	}
+
 	public var clientVer: String? = nil
 	public var kmcEventActionPath: String? = nil
 	public var kmcEventType: StatsKmcEventType? = nil
@@ -56,6 +125,50 @@ open class StatsKmcEvent: ObjectBase {
 	public var userIp: String? = nil
 
 
+	public func setMultiRequestToken(clientVer: String) {
+		self.dict["clientVer"] = clientVer
+	}
+	
+	public func setMultiRequestToken(kmcEventActionPath: String) {
+		self.dict["kmcEventActionPath"] = kmcEventActionPath
+	}
+	
+	public func setMultiRequestToken(kmcEventType: String) {
+		self.dict["kmcEventType"] = kmcEventType
+	}
+	
+	public func setMultiRequestToken(eventTimestamp: String) {
+		self.dict["eventTimestamp"] = eventTimestamp
+	}
+	
+	public func setMultiRequestToken(sessionId: String) {
+		self.dict["sessionId"] = sessionId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(widgetId: String) {
+		self.dict["widgetId"] = widgetId
+	}
+	
+	public func setMultiRequestToken(uiconfId: String) {
+		self.dict["uiconfId"] = uiconfId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(userIp: String) {
+		self.dict["userIp"] = userIp
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

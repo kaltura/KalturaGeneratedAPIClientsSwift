@@ -35,11 +35,44 @@
 
 open class GenericDistributionJobProviderData: DistributionJobProviderData {
 
+	public class GenericDistributionJobProviderDataTokenizer: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
+		
+		public var xml: BaseTokenizedObject {
+			get {
+				return self.append("xml") 
+			}
+		}
+		
+		public var resultParseData: BaseTokenizedObject {
+			get {
+				return self.append("resultParseData") 
+			}
+		}
+		
+		public var resultParserType: BaseTokenizedObject {
+			get {
+				return self.append("resultParserType") 
+			}
+		}
+	}
+
 	public var xml: String? = nil
 	public var resultParseData: String? = nil
 	public var resultParserType: GenericDistributionProviderParser? = nil
 
 
+	public func setMultiRequestToken(xml: String) {
+		self.dict["xml"] = xml
+	}
+	
+	public func setMultiRequestToken(resultParseData: String) {
+		self.dict["resultParseData"] = resultParseData
+	}
+	
+	public func setMultiRequestToken(resultParserType: String) {
+		self.dict["resultParserType"] = resultParserType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

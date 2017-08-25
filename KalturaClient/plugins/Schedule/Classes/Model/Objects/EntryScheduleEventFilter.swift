@@ -35,11 +35,44 @@
 
 open class EntryScheduleEventFilter: EntryScheduleEventBaseFilter {
 
+	public class EntryScheduleEventFilterTokenizer: EntryScheduleEventBaseFilter.EntryScheduleEventBaseFilterTokenizer {
+		
+		public var parentCategoryIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("parentCategoryIdsLike") 
+			}
+		}
+		
+		public var parentCategoryIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("parentCategoryIdsMultiLikeOr") 
+			}
+		}
+		
+		public var parentCategoryIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("parentCategoryIdsMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var parentCategoryIdsLike: String? = nil
 	public var parentCategoryIdsMultiLikeOr: String? = nil
 	public var parentCategoryIdsMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(parentCategoryIdsLike: String) {
+		self.dict["parentCategoryIdsLike"] = parentCategoryIdsLike
+	}
+	
+	public func setMultiRequestToken(parentCategoryIdsMultiLikeOr: String) {
+		self.dict["parentCategoryIdsMultiLikeOr"] = parentCategoryIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(parentCategoryIdsMultiLikeAnd: String) {
+		self.dict["parentCategoryIdsMultiLikeAnd"] = parentCategoryIdsMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

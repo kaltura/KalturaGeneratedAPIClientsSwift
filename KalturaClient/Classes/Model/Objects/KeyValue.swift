@@ -37,10 +37,33 @@
   (associative array)  */
 open class KeyValue: ObjectBase {
 
+	public class KeyValueTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	public var key: String? = nil
 	public var value: String? = nil
 
 
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

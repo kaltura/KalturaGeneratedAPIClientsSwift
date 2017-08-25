@@ -35,6 +35,15 @@
 
 open class FlavorAssetListResponse: ListResponse {
 
+	public class FlavorAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<FlavorAsset>? = nil
 
 

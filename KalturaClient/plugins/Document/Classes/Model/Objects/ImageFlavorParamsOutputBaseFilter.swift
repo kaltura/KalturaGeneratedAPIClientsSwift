@@ -35,6 +35,9 @@
 
 open class ImageFlavorParamsOutputBaseFilter: FlavorParamsOutputFilter {
 
+	public class ImageFlavorParamsOutputBaseFilterTokenizer: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

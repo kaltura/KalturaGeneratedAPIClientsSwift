@@ -35,6 +35,15 @@
 
 open class TranscriptAssetListResponse: ListResponse {
 
+	public class TranscriptAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<TranscriptAsset.TranscriptAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<TranscriptAsset.TranscriptAssetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<TranscriptAsset>? = nil
 
 

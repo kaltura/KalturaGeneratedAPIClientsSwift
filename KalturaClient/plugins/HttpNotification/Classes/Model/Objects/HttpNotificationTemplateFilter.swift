@@ -35,6 +35,9 @@
 
 open class HttpNotificationTemplateFilter: HttpNotificationTemplateBaseFilter {
 
+	public class HttpNotificationTemplateFilterTokenizer: HttpNotificationTemplateBaseFilter.HttpNotificationTemplateBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

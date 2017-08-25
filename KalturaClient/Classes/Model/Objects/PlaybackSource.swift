@@ -35,6 +35,45 @@
 
 open class PlaybackSource: ObjectBase {
 
+	public class PlaybackSourceTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var deliveryProfileId: BaseTokenizedObject {
+			get {
+				return self.append("deliveryProfileId") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var protocols: BaseTokenizedObject {
+			get {
+				return self.append("protocols") 
+			}
+		}
+		
+		public var flavorIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorIds") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var drm: ArrayTokenizedObject<DrmPlaybackPluginData.DrmPlaybackPluginDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<DrmPlaybackPluginData.DrmPlaybackPluginDataTokenizer>(self.append("drm"))
+			} 
+		}
+	}
+
 	public var deliveryProfileId: String? = nil
 	/**  source format according to delivery profile streamer type (applehttp, mpegdash
 	  etc.)  */
@@ -49,6 +88,26 @@ open class PlaybackSource: ObjectBase {
 	public var drm: Array<DrmPlaybackPluginData>? = nil
 
 
+	public func setMultiRequestToken(deliveryProfileId: String) {
+		self.dict["deliveryProfileId"] = deliveryProfileId
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(protocols: String) {
+		self.dict["protocols"] = protocols
+	}
+	
+	public func setMultiRequestToken(flavorIds: String) {
+		self.dict["flavorIds"] = flavorIds
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,9 +35,22 @@
 
 open class SearchComparableAttributeCondition: AttributeCondition {
 
+	public class SearchComparableAttributeConditionTokenizer: AttributeCondition.AttributeConditionTokenizer {
+		
+		public var comparison: BaseTokenizedObject {
+			get {
+				return self.append("comparison") 
+			}
+		}
+	}
+
 	public var comparison: SearchConditionComparison? = nil
 
 
+	public func setMultiRequestToken(comparison: String) {
+		self.dict["comparison"] = comparison
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

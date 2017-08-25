@@ -35,10 +35,23 @@
 
 open class DistributeObjectTask: ObjectTask {
 
+	public class DistributeObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var distributionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileId") 
+			}
+		}
+	}
+
 	/**  Distribution profile id  */
 	public var distributionProfileId: String? = nil
 
 
+	public func setMultiRequestToken(distributionProfileId: String) {
+		self.dict["distributionProfileId"] = distributionProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

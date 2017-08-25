@@ -35,10 +35,33 @@
 
 open class LiveAsset: FlavorAsset {
 
+	public class LiveAssetTokenizer: FlavorAsset.FlavorAssetTokenizer {
+		
+		public var multicastIP: BaseTokenizedObject {
+			get {
+				return self.append("multicastIP") 
+			}
+		}
+		
+		public var multicastPort: BaseTokenizedObject {
+			get {
+				return self.append("multicastPort") 
+			}
+		}
+	}
+
 	public var multicastIP: String? = nil
 	public var multicastPort: Int? = nil
 
 
+	public func setMultiRequestToken(multicastIP: String) {
+		self.dict["multicastIP"] = multicastIP
+	}
+	
+	public func setMultiRequestToken(multicastPort: String) {
+		self.dict["multicastPort"] = multicastPort
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

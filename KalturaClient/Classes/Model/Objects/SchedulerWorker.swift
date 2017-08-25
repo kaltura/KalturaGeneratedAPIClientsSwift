@@ -35,6 +35,93 @@
 
 open class SchedulerWorker: ObjectBase {
 
+	public class SchedulerWorkerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var configuredId: BaseTokenizedObject {
+			get {
+				return self.append("configuredId") 
+			}
+		}
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var schedulerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerConfiguredId") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var typeName: BaseTokenizedObject {
+			get {
+				return self.append("typeName") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var statuses: ArrayTokenizedObject<SchedulerStatus.SchedulerStatusTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerStatus.SchedulerStatusTokenizer>(self.append("statuses"))
+			} 
+		}
+		
+		public var configs: ArrayTokenizedObject<SchedulerConfig.SchedulerConfigTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerConfig.SchedulerConfigTokenizer>(self.append("configs"))
+			} 
+		}
+		
+		public var lockedJobs: ArrayTokenizedObject<BatchJob.BatchJobTokenizer> {
+			get {
+				return ArrayTokenizedObject<BatchJob.BatchJobTokenizer>(self.append("lockedJobs"))
+			} 
+		}
+		
+		public var avgWait: BaseTokenizedObject {
+			get {
+				return self.append("avgWait") 
+			}
+		}
+		
+		public var avgWork: BaseTokenizedObject {
+			get {
+				return self.append("avgWork") 
+			}
+		}
+		
+		public var lastStatus: BaseTokenizedObject {
+			get {
+				return self.append("lastStatus") 
+			}
+		}
+		
+		public var lastStatusStr: BaseTokenizedObject {
+			get {
+				return self.append("lastStatusStr") 
+			}
+		}
+	}
+
 	/**  The id of the Worker  */
 	public var id: Int? = nil
 	/**  The id as configured in the batch config  */
@@ -65,6 +152,50 @@ open class SchedulerWorker: ObjectBase {
 	public var lastStatusStr: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(configuredId: String) {
+		self.dict["configuredId"] = configuredId
+	}
+	
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(schedulerConfiguredId: String) {
+		self.dict["schedulerConfiguredId"] = schedulerConfiguredId
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(typeName: String) {
+		self.dict["typeName"] = typeName
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(avgWait: String) {
+		self.dict["avgWait"] = avgWait
+	}
+	
+	public func setMultiRequestToken(avgWork: String) {
+		self.dict["avgWork"] = avgWork
+	}
+	
+	public func setMultiRequestToken(lastStatus: String) {
+		self.dict["lastStatus"] = lastStatus
+	}
+	
+	public func setMultiRequestToken(lastStatusStr: String) {
+		self.dict["lastStatusStr"] = lastStatusStr
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

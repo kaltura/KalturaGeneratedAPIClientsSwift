@@ -37,12 +37,35 @@
   sending client side notifications  */
 open class ClientNotification: ObjectBase {
 
+	public class ClientNotificationTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+	}
+
 	/**  The URL where the notification should be sent to  */
 	public var url: String? = nil
 	/**  The serialized notification data to send  */
 	public var data: String? = nil
 
 
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

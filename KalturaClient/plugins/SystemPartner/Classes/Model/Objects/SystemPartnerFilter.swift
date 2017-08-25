@@ -35,10 +35,33 @@
 
 open class SystemPartnerFilter: PartnerFilter {
 
+	public class SystemPartnerFilterTokenizer: PartnerFilter.PartnerFilterTokenizer {
+		
+		public var partnerParentIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerParentIdEqual") 
+			}
+		}
+		
+		public var partnerParentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerParentIdIn") 
+			}
+		}
+	}
+
 	public var partnerParentIdEqual: Int? = nil
 	public var partnerParentIdIn: String? = nil
 
 
+	public func setMultiRequestToken(partnerParentIdEqual: String) {
+		self.dict["partnerParentIdEqual"] = partnerParentIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerParentIdIn: String) {
+		self.dict["partnerParentIdIn"] = partnerParentIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

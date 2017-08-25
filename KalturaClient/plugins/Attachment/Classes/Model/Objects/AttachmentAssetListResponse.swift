@@ -35,6 +35,15 @@
 
 open class AttachmentAssetListResponse: ListResponse {
 
+	public class AttachmentAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<AttachmentAsset.AttachmentAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<AttachmentAsset.AttachmentAssetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<AttachmentAsset>? = nil
 
 

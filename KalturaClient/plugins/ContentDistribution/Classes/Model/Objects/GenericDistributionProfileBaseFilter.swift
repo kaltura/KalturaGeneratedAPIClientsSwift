@@ -35,6 +35,9 @@
 
 open class GenericDistributionProfileBaseFilter: DistributionProfileFilter {
 
+	public class GenericDistributionProfileBaseFilterTokenizer: DistributionProfileFilter.DistributionProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

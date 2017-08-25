@@ -35,6 +35,9 @@
 
 open class FileAssetFilter: FileAssetBaseFilter {
 
+	public class FileAssetFilterTokenizer: FileAssetBaseFilter.FileAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class SshDropFolderBaseFilter: RemoteDropFolderFilter {
 
+	public class SshDropFolderBaseFilterTokenizer: RemoteDropFolderFilter.RemoteDropFolderFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

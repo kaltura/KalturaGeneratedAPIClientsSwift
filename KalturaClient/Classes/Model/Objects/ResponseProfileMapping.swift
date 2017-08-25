@@ -35,11 +35,44 @@
 
 open class ResponseProfileMapping: ObjectBase {
 
+	public class ResponseProfileMappingTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var parentProperty: BaseTokenizedObject {
+			get {
+				return self.append("parentProperty") 
+			}
+		}
+		
+		public var filterProperty: BaseTokenizedObject {
+			get {
+				return self.append("filterProperty") 
+			}
+		}
+		
+		public var allowNull: BaseTokenizedObject {
+			get {
+				return self.append("allowNull") 
+			}
+		}
+	}
+
 	public var parentProperty: String? = nil
 	public var filterProperty: String? = nil
 	public var allowNull: Bool? = nil
 
 
+	public func setMultiRequestToken(parentProperty: String) {
+		self.dict["parentProperty"] = parentProperty
+	}
+	
+	public func setMultiRequestToken(filterProperty: String) {
+		self.dict["filterProperty"] = filterProperty
+	}
+	
+	public func setMultiRequestToken(allowNull: String) {
+		self.dict["allowNull"] = allowNull
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

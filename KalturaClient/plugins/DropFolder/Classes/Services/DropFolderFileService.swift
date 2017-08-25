@@ -36,68 +36,149 @@
 /**  DropFolderFile service lets you create and manage drop folder files  */
 public final class DropFolderFileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFile: DropFolderFile.DropFolderFileTokenizer {
+			get {
+				return DropFolderFile.DropFolderFileTokenizer(self.append("dropFolderFile")) 
+			}
+		}
+	}
+
 	/**  Allows you to add a new KalturaDropFolderFile object  */
-	public static func add(dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "add")
+	public static func add(dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer>(service: "dropfolder_dropfolderfile", action: "add")
 			.setBody(key: "dropFolderFile", value: dropFolderFile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+	}
+
 	/**  Mark the KalturaDropFolderFile object as deleted  */
-	public static func delete(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "delete")
+	public static func delete(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer>(service: "dropfolder_dropfolderfile", action: "delete")
 			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+	}
+
 	/**  Retrieve a KalturaDropFolderFile object by ID  */
-	public static func get(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "get")
+	public static func get(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer>(service: "dropfolder_dropfolderfile", action: "get")
 			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
+	}
+
+	public class IgnoreTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
 	}
 
 	/**  Set the KalturaDropFolderFile status to ignore
 	  (KalturaDropFolderFileStatus::IGNORE)  */
-	public static func ignore(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "ignore")
+	public static func ignore(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer>(service: "dropfolder_dropfolderfile", action: "ignore")
 			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<DropFolderFileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: DropFolderFileFilter.DropFolderFileFilterTokenizer {
+			get {
+				return DropFolderFileFilter.DropFolderFileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DropFolderFileFilter?) -> RequestBuilder<DropFolderFileListResponse> {
+	public static func list(filter: DropFolderFileFilter?) -> RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List KalturaDropFolderFile objects  */
-	public static func list(filter: DropFolderFileFilter?, pager: FilterPager?) -> RequestBuilder<DropFolderFileListResponse> {
-		let request: RequestBuilder<DropFolderFileListResponse> = RequestBuilder<DropFolderFileListResponse>(service: "dropfolder_dropfolderfile", action: "list")
+	public static func list(filter: DropFolderFileFilter?, pager: FilterPager?) -> RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> = RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer>(service: "dropfolder_dropfolderfile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+		
+		public var dropFolderFile: DropFolderFile.DropFolderFileTokenizer {
+			get {
+				return DropFolderFile.DropFolderFileTokenizer(self.append("dropFolderFile")) 
+			}
+		}
+	}
+
 	/**  Update an existing KalturaDropFolderFile object  */
-	public static func update(dropFolderFileId: Int, dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "update")
+	public static func update(dropFolderFileId: Int, dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer>(service: "dropfolder_dropfolderfile", action: "update")
 			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
 			.setBody(key: "dropFolderFile", value: dropFolderFile)
 
 		return request
 	}
 
+	public class UpdateStatusTokenizer: ClientTokenizer  {
+		
+		public var dropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
 	/**  Update status of KalturaDropFolderFile  */
-	public static func updateStatus(dropFolderFileId: Int, status: DropFolderFileStatus) -> RequestBuilder<DropFolderFile> {
-		let request: RequestBuilder<DropFolderFile> = RequestBuilder<DropFolderFile>(service: "dropfolder_dropfolderfile", action: "updateStatus")
+	public static func updateStatus(dropFolderFileId: Int, status: DropFolderFileStatus) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer> {
+		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer>(service: "dropfolder_dropfolderfile", action: "updateStatus")
 			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
 			.setBody(key: "status", value: status.rawValue)
 

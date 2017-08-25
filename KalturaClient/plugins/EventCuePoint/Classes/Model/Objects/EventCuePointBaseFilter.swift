@@ -35,10 +35,33 @@
 
 open class EventCuePointBaseFilter: CuePointFilter {
 
+	public class EventCuePointBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var eventTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("eventTypeEqual") 
+			}
+		}
+		
+		public var eventTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("eventTypeIn") 
+			}
+		}
+	}
+
 	public var eventTypeEqual: EventType? = nil
 	public var eventTypeIn: String? = nil
 
 
+	public func setMultiRequestToken(eventTypeEqual: String) {
+		self.dict["eventTypeEqual"] = eventTypeEqual
+	}
+	
+	public func setMultiRequestToken(eventTypeIn: String) {
+		self.dict["eventTypeIn"] = eventTypeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

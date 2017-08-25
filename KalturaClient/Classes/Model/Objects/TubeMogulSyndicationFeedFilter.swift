@@ -35,6 +35,9 @@
 
 open class TubeMogulSyndicationFeedFilter: TubeMogulSyndicationFeedBaseFilter {
 
+	public class TubeMogulSyndicationFeedFilterTokenizer: TubeMogulSyndicationFeedBaseFilter.TubeMogulSyndicationFeedBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

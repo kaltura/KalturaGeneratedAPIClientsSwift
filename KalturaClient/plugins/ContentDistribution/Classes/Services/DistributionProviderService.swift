@@ -36,17 +36,32 @@
 /**  Distribution Provider service  */
 public final class DistributionProviderService{
 
-	public static func list() -> RequestBuilder<DistributionProviderListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: DistributionProviderFilter.DistributionProviderFilterTokenizer {
+			get {
+				return DistributionProviderFilter.DistributionProviderFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DistributionProviderFilter?) -> RequestBuilder<DistributionProviderListResponse> {
+	public static func list(filter: DistributionProviderFilter?) -> RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all distribution providers  */
-	public static func list(filter: DistributionProviderFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProviderListResponse> {
-		let request: RequestBuilder<DistributionProviderListResponse> = RequestBuilder<DistributionProviderListResponse>(service: "contentdistribution_distributionprovider", action: "list")
+	public static func list(filter: DistributionProviderFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> = RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer>(service: "contentdistribution_distributionprovider", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

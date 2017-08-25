@@ -35,6 +35,51 @@
 
 open class GenericDistributionProfile: DistributionProfile {
 
+	public class GenericDistributionProfileTokenizer: DistributionProfile.DistributionProfileTokenizer {
+		
+		public var genericProviderId: BaseTokenizedObject {
+			get {
+				return self.append("genericProviderId") 
+			}
+		}
+		
+		public var submitAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
+			get {
+				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("submitAction")) 
+			}
+		}
+		
+		public var updateAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
+			get {
+				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("updateAction")) 
+			}
+		}
+		
+		public var deleteAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
+			get {
+				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("deleteAction")) 
+			}
+		}
+		
+		public var fetchReportAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
+			get {
+				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("fetchReportAction")) 
+			}
+		}
+		
+		public var updateRequiredEntryFields: BaseTokenizedObject {
+			get {
+				return self.append("updateRequiredEntryFields") 
+			}
+		}
+		
+		public var updateRequiredMetadataXPaths: BaseTokenizedObject {
+			get {
+				return self.append("updateRequiredMetadataXPaths") 
+			}
+		}
+	}
+
 	public var genericProviderId: Int? = nil
 	public var submitAction: GenericDistributionProfileAction? = nil
 	public var updateAction: GenericDistributionProfileAction? = nil
@@ -44,6 +89,18 @@ open class GenericDistributionProfile: DistributionProfile {
 	public var updateRequiredMetadataXPaths: String? = nil
 
 
+	public func setMultiRequestToken(genericProviderId: String) {
+		self.dict["genericProviderId"] = genericProviderId
+	}
+	
+	public func setMultiRequestToken(updateRequiredEntryFields: String) {
+		self.dict["updateRequiredEntryFields"] = updateRequiredEntryFields
+	}
+	
+	public func setMultiRequestToken(updateRequiredMetadataXPaths: String) {
+		self.dict["updateRequiredMetadataXPaths"] = updateRequiredMetadataXPaths
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

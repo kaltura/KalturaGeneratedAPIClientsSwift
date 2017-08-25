@@ -35,6 +35,153 @@
 
 open class DropFolderFile: ObjectBase {
 
+	public class DropFolderFileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+		
+		public var fileSize: BaseTokenizedObject {
+			get {
+				return self.append("fileSize") 
+			}
+		}
+		
+		public var fileSizeLastSetAt: BaseTokenizedObject {
+			get {
+				return self.append("fileSizeLastSetAt") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var parsedSlug: BaseTokenizedObject {
+			get {
+				return self.append("parsedSlug") 
+			}
+		}
+		
+		public var parsedFlavor: BaseTokenizedObject {
+			get {
+				return self.append("parsedFlavor") 
+			}
+		}
+		
+		public var parsedUserId: BaseTokenizedObject {
+			get {
+				return self.append("parsedUserId") 
+			}
+		}
+		
+		public var leadDropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("leadDropFolderFileId") 
+			}
+		}
+		
+		public var deletedDropFolderFileId: BaseTokenizedObject {
+			get {
+				return self.append("deletedDropFolderFileId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var errorCode: BaseTokenizedObject {
+			get {
+				return self.append("errorCode") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+		
+		public var lastModificationTime: BaseTokenizedObject {
+			get {
+				return self.append("lastModificationTime") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var uploadStartDetectedAt: BaseTokenizedObject {
+			get {
+				return self.append("uploadStartDetectedAt") 
+			}
+		}
+		
+		public var uploadEndDetectedAt: BaseTokenizedObject {
+			get {
+				return self.append("uploadEndDetectedAt") 
+			}
+		}
+		
+		public var importStartedAt: BaseTokenizedObject {
+			get {
+				return self.append("importStartedAt") 
+			}
+		}
+		
+		public var importEndedAt: BaseTokenizedObject {
+			get {
+				return self.append("importEndedAt") 
+			}
+		}
+		
+		public var batchJobId: BaseTokenizedObject {
+			get {
+				return self.append("batchJobId") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var dropFolderId: Int? = nil
@@ -61,6 +208,102 @@ open class DropFolderFile: ObjectBase {
 	public var batchJobId: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(dropFolderId: String) {
+		self.dict["dropFolderId"] = dropFolderId
+	}
+	
+	public func setMultiRequestToken(fileName: String) {
+		self.dict["fileName"] = fileName
+	}
+	
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
+	}
+	
+	public func setMultiRequestToken(fileSizeLastSetAt: String) {
+		self.dict["fileSizeLastSetAt"] = fileSizeLastSetAt
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(parsedSlug: String) {
+		self.dict["parsedSlug"] = parsedSlug
+	}
+	
+	public func setMultiRequestToken(parsedFlavor: String) {
+		self.dict["parsedFlavor"] = parsedFlavor
+	}
+	
+	public func setMultiRequestToken(parsedUserId: String) {
+		self.dict["parsedUserId"] = parsedUserId
+	}
+	
+	public func setMultiRequestToken(leadDropFolderFileId: String) {
+		self.dict["leadDropFolderFileId"] = leadDropFolderFileId
+	}
+	
+	public func setMultiRequestToken(deletedDropFolderFileId: String) {
+		self.dict["deletedDropFolderFileId"] = deletedDropFolderFileId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(errorCode: String) {
+		self.dict["errorCode"] = errorCode
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
+	public func setMultiRequestToken(lastModificationTime: String) {
+		self.dict["lastModificationTime"] = lastModificationTime
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(uploadStartDetectedAt: String) {
+		self.dict["uploadStartDetectedAt"] = uploadStartDetectedAt
+	}
+	
+	public func setMultiRequestToken(uploadEndDetectedAt: String) {
+		self.dict["uploadEndDetectedAt"] = uploadEndDetectedAt
+	}
+	
+	public func setMultiRequestToken(importStartedAt: String) {
+		self.dict["importStartedAt"] = importStartedAt
+	}
+	
+	public func setMultiRequestToken(importEndedAt: String) {
+		self.dict["importEndedAt"] = importEndedAt
+	}
+	
+	public func setMultiRequestToken(batchJobId: String) {
+		self.dict["batchJobId"] = batchJobId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

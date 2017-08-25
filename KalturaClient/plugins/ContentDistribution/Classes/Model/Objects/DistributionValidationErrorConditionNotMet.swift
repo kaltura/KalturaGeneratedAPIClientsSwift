@@ -35,9 +35,22 @@
 
 open class DistributionValidationErrorConditionNotMet: DistributionValidationError {
 
+	public class DistributionValidationErrorConditionNotMetTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var conditionName: BaseTokenizedObject {
+			get {
+				return self.append("conditionName") 
+			}
+		}
+	}
+
 	public var conditionName: String? = nil
 
 
+	public func setMultiRequestToken(conditionName: String) {
+		self.dict["conditionName"] = conditionName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,45 @@
 
 open class FlavorParamsOutput: FlavorParams {
 
+	public class FlavorParamsOutputTokenizer: FlavorParams.FlavorParamsTokenizer {
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+		
+		public var commandLinesStr: BaseTokenizedObject {
+			get {
+				return self.append("commandLinesStr") 
+			}
+		}
+		
+		public var flavorParamsVersion: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsVersion") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var flavorAssetVersion: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetVersion") 
+			}
+		}
+		
+		public var readyBehavior: BaseTokenizedObject {
+			get {
+				return self.append("readyBehavior") 
+			}
+		}
+	}
+
 	public var flavorParamsId: Int? = nil
 	public var commandLinesStr: String? = nil
 	public var flavorParamsVersion: String? = nil
@@ -43,6 +82,30 @@ open class FlavorParamsOutput: FlavorParams {
 	public var readyBehavior: Int? = nil
 
 
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	public func setMultiRequestToken(commandLinesStr: String) {
+		self.dict["commandLinesStr"] = commandLinesStr
+	}
+	
+	public func setMultiRequestToken(flavorParamsVersion: String) {
+		self.dict["flavorParamsVersion"] = flavorParamsVersion
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(flavorAssetVersion: String) {
+		self.dict["flavorAssetVersion"] = flavorAssetVersion
+	}
+	
+	public func setMultiRequestToken(readyBehavior: String) {
+		self.dict["readyBehavior"] = readyBehavior
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

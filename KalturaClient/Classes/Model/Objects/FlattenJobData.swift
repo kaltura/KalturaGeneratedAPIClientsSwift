@@ -35,6 +35,9 @@
 
 open class FlattenJobData: JobData {
 
+	public class FlattenJobDataTokenizer: JobData.JobDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

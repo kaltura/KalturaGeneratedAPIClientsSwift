@@ -35,6 +35,21 @@
 
 open class QuizFilter: RelatedFilter {
 
+	public class QuizFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+	}
+
 	/**  This filter should be in use for retrieving only a specific quiz entry
 	  (identified by its entryId).  */
 	public var entryIdEqual: String? = nil
@@ -43,6 +58,14 @@ open class QuizFilter: RelatedFilter {
 	public var entryIdIn: String? = nil
 
 
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

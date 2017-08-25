@@ -35,6 +35,15 @@
 
 open class BaseSyndicationFeedListResponse: ListResponse {
 
+	public class BaseSyndicationFeedListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<BaseSyndicationFeed.BaseSyndicationFeedTokenizer> {
+			get {
+				return ArrayTokenizedObject<BaseSyndicationFeed.BaseSyndicationFeedTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<BaseSyndicationFeed>? = nil
 
 

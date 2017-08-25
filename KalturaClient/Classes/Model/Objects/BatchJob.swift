@@ -35,6 +35,237 @@
 
 open class BatchJob: ObjectBase {
 
+	public class BatchJobTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var deletedAt: BaseTokenizedObject {
+			get {
+				return self.append("deletedAt") 
+			}
+		}
+		
+		public var lockExpiration: BaseTokenizedObject {
+			get {
+				return self.append("lockExpiration") 
+			}
+		}
+		
+		public var executionAttempts: BaseTokenizedObject {
+			get {
+				return self.append("executionAttempts") 
+			}
+		}
+		
+		public var lockVersion: BaseTokenizedObject {
+			get {
+				return self.append("lockVersion") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var entryName: BaseTokenizedObject {
+			get {
+				return self.append("entryName") 
+			}
+		}
+		
+		public var jobType: BaseTokenizedObject {
+			get {
+				return self.append("jobType") 
+			}
+		}
+		
+		public var jobSubType: BaseTokenizedObject {
+			get {
+				return self.append("jobSubType") 
+			}
+		}
+		
+		public var data: JobData.JobDataTokenizer {
+			get {
+				return JobData.JobDataTokenizer(self.append("data")) 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var abort: BaseTokenizedObject {
+			get {
+				return self.append("abort") 
+			}
+		}
+		
+		public var checkAgainTimeout: BaseTokenizedObject {
+			get {
+				return self.append("checkAgainTimeout") 
+			}
+		}
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var history: ArrayTokenizedObject<BatchHistoryData.BatchHistoryDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<BatchHistoryData.BatchHistoryDataTokenizer>(self.append("history"))
+			} 
+		}
+		
+		public var bulkJobId: BaseTokenizedObject {
+			get {
+				return self.append("bulkJobId") 
+			}
+		}
+		
+		public var batchVersion: BaseTokenizedObject {
+			get {
+				return self.append("batchVersion") 
+			}
+		}
+		
+		public var parentJobId: BaseTokenizedObject {
+			get {
+				return self.append("parentJobId") 
+			}
+		}
+		
+		public var rootJobId: BaseTokenizedObject {
+			get {
+				return self.append("rootJobId") 
+			}
+		}
+		
+		public var queueTime: BaseTokenizedObject {
+			get {
+				return self.append("queueTime") 
+			}
+		}
+		
+		public var finishTime: BaseTokenizedObject {
+			get {
+				return self.append("finishTime") 
+			}
+		}
+		
+		public var errType: BaseTokenizedObject {
+			get {
+				return self.append("errType") 
+			}
+		}
+		
+		public var errNumber: BaseTokenizedObject {
+			get {
+				return self.append("errNumber") 
+			}
+		}
+		
+		public var estimatedEffort: BaseTokenizedObject {
+			get {
+				return self.append("estimatedEffort") 
+			}
+		}
+		
+		public var urgency: BaseTokenizedObject {
+			get {
+				return self.append("urgency") 
+			}
+		}
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var workerId: BaseTokenizedObject {
+			get {
+				return self.append("workerId") 
+			}
+		}
+		
+		public var batchIndex: BaseTokenizedObject {
+			get {
+				return self.append("batchIndex") 
+			}
+		}
+		
+		public var lastSchedulerId: BaseTokenizedObject {
+			get {
+				return self.append("lastSchedulerId") 
+			}
+		}
+		
+		public var lastWorkerId: BaseTokenizedObject {
+			get {
+				return self.append("lastWorkerId") 
+			}
+		}
+		
+		public var dc: BaseTokenizedObject {
+			get {
+				return self.append("dc") 
+			}
+		}
+		
+		public var jobObjectId: BaseTokenizedObject {
+			get {
+				return self.append("jobObjectId") 
+			}
+		}
+		
+		public var jobObjectType: BaseTokenizedObject {
+			get {
+				return self.append("jobObjectType") 
+			}
+		}
+	}
+
 	public var id: Int64? = nil
 	public var partnerId: Int? = nil
 	public var createdAt: Int? = nil
@@ -81,11 +312,155 @@ open class BatchJob: ObjectBase {
 	public var jobObjectType: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(deletedAt: String) {
+		self.dict["deletedAt"] = deletedAt
+	}
+	
+	public func setMultiRequestToken(lockExpiration: String) {
+		self.dict["lockExpiration"] = lockExpiration
+	}
+	
+	public func setMultiRequestToken(executionAttempts: String) {
+		self.dict["executionAttempts"] = executionAttempts
+	}
+	
+	public func setMultiRequestToken(lockVersion: String) {
+		self.dict["lockVersion"] = lockVersion
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(entryName: String) {
+		self.dict["entryName"] = entryName
+	}
+	
+	public func setMultiRequestToken(jobType: String) {
+		self.dict["jobType"] = jobType
+	}
+	
+	public func setMultiRequestToken(jobSubType: String) {
+		self.dict["jobSubType"] = jobSubType
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(abort: String) {
+		self.dict["abort"] = abort
+	}
+	
+	public func setMultiRequestToken(checkAgainTimeout: String) {
+		self.dict["checkAgainTimeout"] = checkAgainTimeout
+	}
+	
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(bulkJobId: String) {
+		self.dict["bulkJobId"] = bulkJobId
+	}
+	
+	public func setMultiRequestToken(batchVersion: String) {
+		self.dict["batchVersion"] = batchVersion
+	}
+	
+	public func setMultiRequestToken(parentJobId: String) {
+		self.dict["parentJobId"] = parentJobId
+	}
+	
+	public func setMultiRequestToken(rootJobId: String) {
+		self.dict["rootJobId"] = rootJobId
+	}
+	
+	public func setMultiRequestToken(queueTime: String) {
+		self.dict["queueTime"] = queueTime
+	}
+	
+	public func setMultiRequestToken(finishTime: String) {
+		self.dict["finishTime"] = finishTime
+	}
+	
+	public func setMultiRequestToken(errType: String) {
+		self.dict["errType"] = errType
+	}
+	
+	public func setMultiRequestToken(errNumber: String) {
+		self.dict["errNumber"] = errNumber
+	}
+	
+	public func setMultiRequestToken(estimatedEffort: String) {
+		self.dict["estimatedEffort"] = estimatedEffort
+	}
+	
+	public func setMultiRequestToken(urgency: String) {
+		self.dict["urgency"] = urgency
+	}
+	
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(workerId: String) {
+		self.dict["workerId"] = workerId
+	}
+	
+	public func setMultiRequestToken(batchIndex: String) {
+		self.dict["batchIndex"] = batchIndex
+	}
+	
+	public func setMultiRequestToken(lastSchedulerId: String) {
+		self.dict["lastSchedulerId"] = lastSchedulerId
+	}
+	
+	public func setMultiRequestToken(lastWorkerId: String) {
+		self.dict["lastWorkerId"] = lastWorkerId
+	}
+	
+	public func setMultiRequestToken(dc: String) {
+		self.dict["dc"] = dc
+	}
+	
+	public func setMultiRequestToken(jobObjectId: String) {
+		self.dict["jobObjectId"] = jobObjectId
+	}
+	
+	public func setMultiRequestToken(jobObjectType: String) {
+		self.dict["jobObjectType"] = jobObjectType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = Int64((dict["id"] as? String)!)
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int

@@ -35,6 +35,105 @@
 
 open class MailJobData: JobData {
 
+	public class MailJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var mailType: BaseTokenizedObject {
+			get {
+				return self.append("mailType") 
+			}
+		}
+		
+		public var mailPriority: BaseTokenizedObject {
+			get {
+				return self.append("mailPriority") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var recipientName: BaseTokenizedObject {
+			get {
+				return self.append("recipientName") 
+			}
+		}
+		
+		public var recipientEmail: BaseTokenizedObject {
+			get {
+				return self.append("recipientEmail") 
+			}
+		}
+		
+		public var recipientId: BaseTokenizedObject {
+			get {
+				return self.append("recipientId") 
+			}
+		}
+		
+		public var fromName: BaseTokenizedObject {
+			get {
+				return self.append("fromName") 
+			}
+		}
+		
+		public var fromEmail: BaseTokenizedObject {
+			get {
+				return self.append("fromEmail") 
+			}
+		}
+		
+		public var bodyParams: BaseTokenizedObject {
+			get {
+				return self.append("bodyParams") 
+			}
+		}
+		
+		public var subjectParams: BaseTokenizedObject {
+			get {
+				return self.append("subjectParams") 
+			}
+		}
+		
+		public var templatePath: BaseTokenizedObject {
+			get {
+				return self.append("templatePath") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var campaignId: BaseTokenizedObject {
+			get {
+				return self.append("campaignId") 
+			}
+		}
+		
+		public var minSendDate: BaseTokenizedObject {
+			get {
+				return self.append("minSendDate") 
+			}
+		}
+		
+		public var isHtml: BaseTokenizedObject {
+			get {
+				return self.append("isHtml") 
+			}
+		}
+		
+		public var separator: BaseTokenizedObject {
+			get {
+				return self.append("separator") 
+			}
+		}
+	}
+
 	public var mailType: MailType? = nil
 	public var mailPriority: Int? = nil
 	public var status: MailJobStatus? = nil
@@ -54,6 +153,70 @@ open class MailJobData: JobData {
 	public var separator: String? = nil
 
 
+	public func setMultiRequestToken(mailType: String) {
+		self.dict["mailType"] = mailType
+	}
+	
+	public func setMultiRequestToken(mailPriority: String) {
+		self.dict["mailPriority"] = mailPriority
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(recipientName: String) {
+		self.dict["recipientName"] = recipientName
+	}
+	
+	public func setMultiRequestToken(recipientEmail: String) {
+		self.dict["recipientEmail"] = recipientEmail
+	}
+	
+	public func setMultiRequestToken(recipientId: String) {
+		self.dict["recipientId"] = recipientId
+	}
+	
+	public func setMultiRequestToken(fromName: String) {
+		self.dict["fromName"] = fromName
+	}
+	
+	public func setMultiRequestToken(fromEmail: String) {
+		self.dict["fromEmail"] = fromEmail
+	}
+	
+	public func setMultiRequestToken(bodyParams: String) {
+		self.dict["bodyParams"] = bodyParams
+	}
+	
+	public func setMultiRequestToken(subjectParams: String) {
+		self.dict["subjectParams"] = subjectParams
+	}
+	
+	public func setMultiRequestToken(templatePath: String) {
+		self.dict["templatePath"] = templatePath
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(campaignId: String) {
+		self.dict["campaignId"] = campaignId
+	}
+	
+	public func setMultiRequestToken(minSendDate: String) {
+		self.dict["minSendDate"] = minSendDate
+	}
+	
+	public func setMultiRequestToken(isHtml: String) {
+		self.dict["isHtml"] = isHtml
+	}
+	
+	public func setMultiRequestToken(separator: String) {
+		self.dict["separator"] = separator
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,57 @@
 
 open class CategoryFilter: CategoryBaseFilter {
 
+	public class CategoryFilterTokenizer: CategoryBaseFilter.CategoryBaseFilterTokenizer {
+		
+		public var freeText: BaseTokenizedObject {
+			get {
+				return self.append("freeText") 
+			}
+		}
+		
+		public var membersIn: BaseTokenizedObject {
+			get {
+				return self.append("membersIn") 
+			}
+		}
+		
+		public var nameOrReferenceIdStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("nameOrReferenceIdStartsWith") 
+			}
+		}
+		
+		public var managerEqual: BaseTokenizedObject {
+			get {
+				return self.append("managerEqual") 
+			}
+		}
+		
+		public var memberEqual: BaseTokenizedObject {
+			get {
+				return self.append("memberEqual") 
+			}
+		}
+		
+		public var fullNameStartsWithIn: BaseTokenizedObject {
+			get {
+				return self.append("fullNameStartsWithIn") 
+			}
+		}
+		
+		public var ancestorIdIn: BaseTokenizedObject {
+			get {
+				return self.append("ancestorIdIn") 
+			}
+		}
+		
+		public var idOrInheritedParentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("idOrInheritedParentIdIn") 
+			}
+		}
+	}
+
 	public var freeText: String? = nil
 	public var membersIn: String? = nil
 	public var nameOrReferenceIdStartsWith: String? = nil
@@ -46,6 +97,38 @@ open class CategoryFilter: CategoryBaseFilter {
 	public var idOrInheritedParentIdIn: String? = nil
 
 
+	public func setMultiRequestToken(freeText: String) {
+		self.dict["freeText"] = freeText
+	}
+	
+	public func setMultiRequestToken(membersIn: String) {
+		self.dict["membersIn"] = membersIn
+	}
+	
+	public func setMultiRequestToken(nameOrReferenceIdStartsWith: String) {
+		self.dict["nameOrReferenceIdStartsWith"] = nameOrReferenceIdStartsWith
+	}
+	
+	public func setMultiRequestToken(managerEqual: String) {
+		self.dict["managerEqual"] = managerEqual
+	}
+	
+	public func setMultiRequestToken(memberEqual: String) {
+		self.dict["memberEqual"] = memberEqual
+	}
+	
+	public func setMultiRequestToken(fullNameStartsWithIn: String) {
+		self.dict["fullNameStartsWithIn"] = fullNameStartsWithIn
+	}
+	
+	public func setMultiRequestToken(ancestorIdIn: String) {
+		self.dict["ancestorIdIn"] = ancestorIdIn
+	}
+	
+	public func setMultiRequestToken(idOrInheritedParentIdIn: String) {
+		self.dict["idOrInheritedParentIdIn"] = idOrInheritedParentIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

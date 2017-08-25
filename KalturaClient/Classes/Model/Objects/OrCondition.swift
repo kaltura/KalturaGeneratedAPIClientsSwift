@@ -35,6 +35,15 @@
 
 open class OrCondition: Condition {
 
+	public class OrConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var conditions: ArrayTokenizedObject<Condition.ConditionTokenizer> {
+			get {
+				return ArrayTokenizedObject<Condition.ConditionTokenizer>(self.append("conditions"))
+			} 
+		}
+	}
+
 	public var conditions: Array<Condition>? = nil
 
 

@@ -35,6 +35,15 @@
 
 open class DropFolderFileListResponse: ListResponse {
 
+	public class DropFolderFileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DropFolderFile.DropFolderFileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DropFolderFile.DropFolderFileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DropFolderFile>? = nil
 
 

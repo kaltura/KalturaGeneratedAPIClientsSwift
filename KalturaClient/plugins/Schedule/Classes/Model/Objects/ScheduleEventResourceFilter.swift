@@ -35,11 +35,24 @@
 
 open class ScheduleEventResourceFilter: ScheduleEventResourceBaseFilter {
 
+	public class ScheduleEventResourceFilterTokenizer: ScheduleEventResourceBaseFilter.ScheduleEventResourceBaseFilterTokenizer {
+		
+		public var eventIdOrItsParentIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("eventIdOrItsParentIdEqual") 
+			}
+		}
+	}
+
 	/**  Find event-resource objects that associated with the event, if none found, find
 	  by its parent event  */
 	public var eventIdOrItsParentIdEqual: Int? = nil
 
 
+	public func setMultiRequestToken(eventIdOrItsParentIdEqual: String) {
+		self.dict["eventIdOrItsParentIdEqual"] = eventIdOrItsParentIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

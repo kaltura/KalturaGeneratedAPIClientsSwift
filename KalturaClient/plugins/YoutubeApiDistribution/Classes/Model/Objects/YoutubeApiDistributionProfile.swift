@@ -35,6 +35,81 @@
 
 open class YoutubeApiDistributionProfile: ConfigurableDistributionProfile {
 
+	public class YoutubeApiDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var defaultCategory: BaseTokenizedObject {
+			get {
+				return self.append("defaultCategory") 
+			}
+		}
+		
+		public var allowComments: BaseTokenizedObject {
+			get {
+				return self.append("allowComments") 
+			}
+		}
+		
+		public var allowEmbedding: BaseTokenizedObject {
+			get {
+				return self.append("allowEmbedding") 
+			}
+		}
+		
+		public var allowRatings: BaseTokenizedObject {
+			get {
+				return self.append("allowRatings") 
+			}
+		}
+		
+		public var allowResponses: BaseTokenizedObject {
+			get {
+				return self.append("allowResponses") 
+			}
+		}
+		
+		public var apiAuthorizeUrl: BaseTokenizedObject {
+			get {
+				return self.append("apiAuthorizeUrl") 
+			}
+		}
+		
+		public var googleClientId: BaseTokenizedObject {
+			get {
+				return self.append("googleClientId") 
+			}
+		}
+		
+		public var googleClientSecret: BaseTokenizedObject {
+			get {
+				return self.append("googleClientSecret") 
+			}
+		}
+		
+		public var googleTokenData: BaseTokenizedObject {
+			get {
+				return self.append("googleTokenData") 
+			}
+		}
+		
+		public var assumeSuccess: BaseTokenizedObject {
+			get {
+				return self.append("assumeSuccess") 
+			}
+		}
+		
+		public var privacyStatus: BaseTokenizedObject {
+			get {
+				return self.append("privacyStatus") 
+			}
+		}
+	}
+
 	public var username: String? = nil
 	public var defaultCategory: Int? = nil
 	public var allowComments: String? = nil
@@ -49,6 +124,54 @@ open class YoutubeApiDistributionProfile: ConfigurableDistributionProfile {
 	public var privacyStatus: String? = nil
 
 
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(defaultCategory: String) {
+		self.dict["defaultCategory"] = defaultCategory
+	}
+	
+	public func setMultiRequestToken(allowComments: String) {
+		self.dict["allowComments"] = allowComments
+	}
+	
+	public func setMultiRequestToken(allowEmbedding: String) {
+		self.dict["allowEmbedding"] = allowEmbedding
+	}
+	
+	public func setMultiRequestToken(allowRatings: String) {
+		self.dict["allowRatings"] = allowRatings
+	}
+	
+	public func setMultiRequestToken(allowResponses: String) {
+		self.dict["allowResponses"] = allowResponses
+	}
+	
+	public func setMultiRequestToken(apiAuthorizeUrl: String) {
+		self.dict["apiAuthorizeUrl"] = apiAuthorizeUrl
+	}
+	
+	public func setMultiRequestToken(googleClientId: String) {
+		self.dict["googleClientId"] = googleClientId
+	}
+	
+	public func setMultiRequestToken(googleClientSecret: String) {
+		self.dict["googleClientSecret"] = googleClientSecret
+	}
+	
+	public func setMultiRequestToken(googleTokenData: String) {
+		self.dict["googleTokenData"] = googleTokenData
+	}
+	
+	public func setMultiRequestToken(assumeSuccess: String) {
+		self.dict["assumeSuccess"] = assumeSuccess
+	}
+	
+	public func setMultiRequestToken(privacyStatus: String) {
+		self.dict["privacyStatus"] = privacyStatus
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

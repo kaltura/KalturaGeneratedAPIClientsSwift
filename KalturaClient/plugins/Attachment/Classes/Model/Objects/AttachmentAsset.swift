@@ -35,6 +35,33 @@
 
 open class AttachmentAsset: Asset {
 
+	public class AttachmentAssetTokenizer: Asset.AssetTokenizer {
+		
+		public var filename: BaseTokenizedObject {
+			get {
+				return self.append("filename") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
 	/**  The filename of the attachment asset content  */
 	public var filename: String? = nil
 	/**  Attachment asset title  */
@@ -45,6 +72,22 @@ open class AttachmentAsset: Asset {
 	public var status: AttachmentAssetStatus? = nil
 
 
+	public func setMultiRequestToken(filename: String) {
+		self.dict["filename"] = filename
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

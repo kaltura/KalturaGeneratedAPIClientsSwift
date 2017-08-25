@@ -35,6 +35,27 @@
 
 open class SystemPartnerUsageFilter: Filter {
 
+	public class SystemPartnerUsageFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var fromDate: BaseTokenizedObject {
+			get {
+				return self.append("fromDate") 
+			}
+		}
+		
+		public var toDate: BaseTokenizedObject {
+			get {
+				return self.append("toDate") 
+			}
+		}
+		
+		public var timezoneOffset: BaseTokenizedObject {
+			get {
+				return self.append("timezoneOffset") 
+			}
+		}
+	}
+
 	/**  Date range from  */
 	public var fromDate: Int? = nil
 	/**  Date range to  */
@@ -43,6 +64,18 @@ open class SystemPartnerUsageFilter: Filter {
 	public var timezoneOffset: Int? = nil
 
 
+	public func setMultiRequestToken(fromDate: String) {
+		self.dict["fromDate"] = fromDate
+	}
+	
+	public func setMultiRequestToken(toDate: String) {
+		self.dict["toDate"] = toDate
+	}
+	
+	public func setMultiRequestToken(timezoneOffset: String) {
+		self.dict["timezoneOffset"] = timezoneOffset
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

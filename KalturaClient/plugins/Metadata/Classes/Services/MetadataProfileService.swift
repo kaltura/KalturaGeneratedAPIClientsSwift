@@ -36,14 +36,35 @@
 /**  Metadata Profile service  */
 public final class MetadataProfileService{
 
-	public static func add(metadataProfile: MetadataProfile, xsdData: String) -> RequestBuilder<MetadataProfile> {
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
+			get {
+				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
+			}
+		}
+		
+		public var xsdData: BaseTokenizedObject {
+			get {
+				return self.append("xsdData") 
+			}
+		}
+		
+		public var viewsData: BaseTokenizedObject {
+			get {
+				return self.append("viewsData") 
+			}
+		}
+	}
+
+	public static func add(metadataProfile: MetadataProfile, xsdData: String) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer> {
 		return add(metadataProfile: metadataProfile, xsdData: xsdData, viewsData: nil)
 	}
 
 	/**  Allows you to add a metadata profile object and metadata profile content
 	  associated with Kaltura object type  */
-	public static func add(metadataProfile: MetadataProfile, xsdData: String, viewsData: String?) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "add")
+	public static func add(metadataProfile: MetadataProfile, xsdData: String, viewsData: String?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer>(service: "metadata_metadataprofile", action: "add")
 			.setBody(key: "metadataProfile", value: metadataProfile)
 			.setBody(key: "xsdData", value: xsdData)
 			.setBody(key: "viewsData", value: viewsData)
@@ -51,14 +72,23 @@ public final class MetadataProfileService{
 		return request
 	}
 
-	public static func addFromFile(metadataProfile: MetadataProfile, xsdFile: RequestFile) -> RequestBuilder<MetadataProfile> {
+	public class AddFromFileTokenizer: ClientTokenizer  {
+		
+		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
+			get {
+				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
+			}
+		}
+	}
+
+	public static func addFromFile(metadataProfile: MetadataProfile, xsdFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer> {
 		return addFromFile(metadataProfile: metadataProfile, xsdFile: xsdFile, viewsFile: nil)
 	}
 
 	/**  Allows you to add a metadata profile object and metadata profile file associated
 	  with Kaltura object type  */
-	public static func addFromFile(metadataProfile: MetadataProfile, xsdFile: RequestFile, viewsFile: RequestFile?) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "addFromFile")
+	public static func addFromFile(metadataProfile: MetadataProfile, xsdFile: RequestFile, viewsFile: RequestFile?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer>(service: "metadata_metadataprofile", action: "addFromFile")
 			.setBody(key: "metadataProfile", value: metadataProfile)
 			.setFile(key: "xsdFile", value: xsdFile)
 			.setFile(key: "viewsFile", value: viewsFile)
@@ -66,67 +96,151 @@ public final class MetadataProfileService{
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete an existing metadata profile  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadataprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retrieve a metadata profile object by id  */
-	public static func get(id: Int) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "get")
+	public static func get(id: Int) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer>(service: "metadata_metadataprofile", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<MetadataProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: MetadataProfileFilter.MetadataProfileFilterTokenizer {
+			get {
+				return MetadataProfileFilter.MetadataProfileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: MetadataProfileFilter?) -> RequestBuilder<MetadataProfileListResponse> {
+	public static func list(filter: MetadataProfileFilter?) -> RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List metadata profile objects by filter and pager  */
-	public static func list(filter: MetadataProfileFilter?, pager: FilterPager?) -> RequestBuilder<MetadataProfileListResponse> {
-		let request: RequestBuilder<MetadataProfileListResponse> = RequestBuilder<MetadataProfileListResponse>(service: "metadata_metadataprofile", action: "list")
+	public static func list(filter: MetadataProfileFilter?, pager: FilterPager?) -> RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer>(service: "metadata_metadataprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class ListFieldsTokenizer: ClientTokenizer  {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+	}
+
 	/**  List metadata profile fields by metadata profile id  */
-	public static func listFields(metadataProfileId: Int) -> RequestBuilder<MetadataProfileFieldListResponse> {
-		let request: RequestBuilder<MetadataProfileFieldListResponse> = RequestBuilder<MetadataProfileFieldListResponse>(service: "metadata_metadataprofile", action: "listFields")
+	public static func listFields(metadataProfileId: Int) -> RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer> {
+		let request: RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer> = RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer>(service: "metadata_metadataprofile", action: "listFields")
 			.setBody(key: "metadataProfileId", value: metadataProfileId)
 
 		return request
 	}
 
+	public class RevertTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var toVersion: BaseTokenizedObject {
+			get {
+				return self.append("toVersion") 
+			}
+		}
+	}
+
 	/**  Update an existing metadata object definition file  */
-	public static func revert(id: Int, toVersion: Int) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "revert")
+	public static func revert(id: Int, toVersion: Int) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer>(service: "metadata_metadataprofile", action: "revert")
 			.setBody(key: "id", value: id)
 			.setBody(key: "toVersion", value: toVersion)
 
 		return request
 	}
 
-	public static func update(id: Int, metadataProfile: MetadataProfile) -> RequestBuilder<MetadataProfile> {
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
+			get {
+				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
+			}
+		}
+		
+		public var xsdData: BaseTokenizedObject {
+			get {
+				return self.append("xsdData") 
+			}
+		}
+		
+		public var viewsData: BaseTokenizedObject {
+			get {
+				return self.append("viewsData") 
+			}
+		}
+	}
+
+	public static func update(id: Int, metadataProfile: MetadataProfile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> {
 		return update(id: id, metadataProfile: metadataProfile, xsdData: nil)
 	}
 
-	public static func update(id: Int, metadataProfile: MetadataProfile, xsdData: String?) -> RequestBuilder<MetadataProfile> {
+	public static func update(id: Int, metadataProfile: MetadataProfile, xsdData: String?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> {
 		return update(id: id, metadataProfile: metadataProfile, xsdData: xsdData, viewsData: nil)
 	}
 
 	/**  Update an existing metadata object  */
-	public static func update(id: Int, metadataProfile: MetadataProfile, xsdData: String?, viewsData: String?) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "update")
+	public static func update(id: Int, metadataProfile: MetadataProfile, xsdData: String?, viewsData: String?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer>(service: "metadata_metadataprofile", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "metadataProfile", value: metadataProfile)
 			.setBody(key: "xsdData", value: xsdData)
@@ -135,27 +249,54 @@ public final class MetadataProfileService{
 		return request
 	}
 
+	public class UpdateDefinitionFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Update an existing metadata object definition file  */
-	public static func updateDefinitionFromFile(id: Int, xsdFile: RequestFile) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "updateDefinitionFromFile")
+	public static func updateDefinitionFromFile(id: Int, xsdFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateDefinitionFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xsdFile", value: xsdFile)
 
 		return request
 	}
 
+	public class UpdateTransformationFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Update an existing metadata object xslt file  */
-	public static func updateTransformationFromFile(id: Int, xsltFile: RequestFile) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "updateTransformationFromFile")
+	public static func updateTransformationFromFile(id: Int, xsltFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateTransformationFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "xsltFile", value: xsltFile)
 
 		return request
 	}
 
+	public class UpdateViewsFromFileTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Update an existing metadata object views file  */
-	public static func updateViewsFromFile(id: Int, viewsFile: RequestFile) -> RequestBuilder<MetadataProfile> {
-		let request: RequestBuilder<MetadataProfile> = RequestBuilder<MetadataProfile>(service: "metadata_metadataprofile", action: "updateViewsFromFile")
+	public static func updateViewsFromFile(id: Int, viewsFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer> {
+		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateViewsFromFile")
 			.setBody(key: "id", value: id)
 			.setFile(key: "viewsFile", value: viewsFile)
 

@@ -36,12 +36,55 @@
 /**  A representation of a live stream recording entry configuration  */
 open class LiveEntryRecordingOptions: ObjectBase {
 
+	public class LiveEntryRecordingOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var shouldCopyEntitlement: BaseTokenizedObject {
+			get {
+				return self.append("shouldCopyEntitlement") 
+			}
+		}
+		
+		public var shouldCopyScheduling: BaseTokenizedObject {
+			get {
+				return self.append("shouldCopyScheduling") 
+			}
+		}
+		
+		public var shouldCopyThumbnail: BaseTokenizedObject {
+			get {
+				return self.append("shouldCopyThumbnail") 
+			}
+		}
+		
+		public var shouldMakeHidden: BaseTokenizedObject {
+			get {
+				return self.append("shouldMakeHidden") 
+			}
+		}
+	}
+
 	public var shouldCopyEntitlement: Bool? = nil
 	public var shouldCopyScheduling: Bool? = nil
 	public var shouldCopyThumbnail: Bool? = nil
 	public var shouldMakeHidden: Bool? = nil
 
 
+	public func setMultiRequestToken(shouldCopyEntitlement: String) {
+		self.dict["shouldCopyEntitlement"] = shouldCopyEntitlement
+	}
+	
+	public func setMultiRequestToken(shouldCopyScheduling: String) {
+		self.dict["shouldCopyScheduling"] = shouldCopyScheduling
+	}
+	
+	public func setMultiRequestToken(shouldCopyThumbnail: String) {
+		self.dict["shouldCopyThumbnail"] = shouldCopyThumbnail
+	}
+	
+	public func setMultiRequestToken(shouldMakeHidden: String) {
+		self.dict["shouldMakeHidden"] = shouldMakeHidden
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

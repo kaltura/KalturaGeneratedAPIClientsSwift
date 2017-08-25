@@ -35,6 +35,9 @@
 
 open class UrlTokenizerLimeLight: UrlTokenizer {
 
+	public class UrlTokenizerLimeLightTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

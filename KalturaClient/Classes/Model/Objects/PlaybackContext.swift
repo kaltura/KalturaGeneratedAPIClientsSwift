@@ -35,6 +35,33 @@
 
 open class PlaybackContext: ObjectBase {
 
+	public class PlaybackContextTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var sources: ArrayTokenizedObject<PlaybackSource.PlaybackSourceTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlaybackSource.PlaybackSourceTokenizer>(self.append("sources"))
+			} 
+		}
+		
+		public var flavorAssets: ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>(self.append("flavorAssets"))
+			} 
+		}
+		
+		public var actions: ArrayTokenizedObject<RuleAction.RuleActionTokenizer> {
+			get {
+				return ArrayTokenizedObject<RuleAction.RuleActionTokenizer>(self.append("actions"))
+			} 
+		}
+		
+		public var messages: ArrayTokenizedObject<AccessControlMessage.AccessControlMessageTokenizer> {
+			get {
+				return ArrayTokenizedObject<AccessControlMessage.AccessControlMessageTokenizer>(self.append("messages"))
+			} 
+		}
+	}
+
 	public var sources: Array<PlaybackSource>? = nil
 	public var flavorAssets: Array<FlavorAsset>? = nil
 	/**  Array of actions as received from the rules that invalidated  */

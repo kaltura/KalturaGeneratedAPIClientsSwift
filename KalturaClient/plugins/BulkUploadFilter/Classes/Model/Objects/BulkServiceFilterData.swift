@@ -36,6 +36,21 @@
 /**  Represents the Bulk service input for filter bulk upload  */
 open class BulkServiceFilterData: BulkServiceData {
 
+	public class BulkServiceFilterDataTokenizer: BulkServiceData.BulkServiceDataTokenizer {
+		
+		public var filter: Filter.FilterTokenizer {
+			get {
+				return Filter.FilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var templateObject: ObjectBase.ObjectBaseTokenizer {
+			get {
+				return ObjectBase.ObjectBaseTokenizer(self.append("templateObject")) 
+			}
+		}
+	}
+
 	/**  Filter for extracting the objects list to upload  */
 	public var filter: Filter? = nil
 	/**  Template object for new object creation  */

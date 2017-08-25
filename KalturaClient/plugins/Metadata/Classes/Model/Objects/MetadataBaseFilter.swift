@@ -35,6 +35,117 @@
 
 open class MetadataBaseFilter: RelatedFilter {
 
+	public class MetadataBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var metadataProfileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileIdEqual") 
+			}
+		}
+		
+		public var metadataProfileIdIn: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileIdIn") 
+			}
+		}
+		
+		public var metadataProfileVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileVersionEqual") 
+			}
+		}
+		
+		public var metadataProfileVersionGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileVersionGreaterThanOrEqual") 
+			}
+		}
+		
+		public var metadataProfileVersionLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileVersionLessThanOrEqual") 
+			}
+		}
+		
+		public var metadataObjectTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("metadataObjectTypeEqual") 
+			}
+		}
+		
+		public var objectIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("objectIdEqual") 
+			}
+		}
+		
+		public var objectIdIn: BaseTokenizedObject {
+			get {
+				return self.append("objectIdIn") 
+			}
+		}
+		
+		public var versionEqual: BaseTokenizedObject {
+			get {
+				return self.append("versionEqual") 
+			}
+		}
+		
+		public var versionGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("versionGreaterThanOrEqual") 
+			}
+		}
+		
+		public var versionLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("versionLessThanOrEqual") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+	}
+
 	public var partnerIdEqual: Int? = nil
 	public var metadataProfileIdEqual: Int? = nil
 	public var metadataProfileIdIn: String? = nil
@@ -56,6 +167,78 @@ open class MetadataBaseFilter: RelatedFilter {
 	public var statusIn: String? = nil
 
 
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(metadataProfileIdEqual: String) {
+		self.dict["metadataProfileIdEqual"] = metadataProfileIdEqual
+	}
+	
+	public func setMultiRequestToken(metadataProfileIdIn: String) {
+		self.dict["metadataProfileIdIn"] = metadataProfileIdIn
+	}
+	
+	public func setMultiRequestToken(metadataProfileVersionEqual: String) {
+		self.dict["metadataProfileVersionEqual"] = metadataProfileVersionEqual
+	}
+	
+	public func setMultiRequestToken(metadataProfileVersionGreaterThanOrEqual: String) {
+		self.dict["metadataProfileVersionGreaterThanOrEqual"] = metadataProfileVersionGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(metadataProfileVersionLessThanOrEqual: String) {
+		self.dict["metadataProfileVersionLessThanOrEqual"] = metadataProfileVersionLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(metadataObjectTypeEqual: String) {
+		self.dict["metadataObjectTypeEqual"] = metadataObjectTypeEqual
+	}
+	
+	public func setMultiRequestToken(objectIdEqual: String) {
+		self.dict["objectIdEqual"] = objectIdEqual
+	}
+	
+	public func setMultiRequestToken(objectIdIn: String) {
+		self.dict["objectIdIn"] = objectIdIn
+	}
+	
+	public func setMultiRequestToken(versionEqual: String) {
+		self.dict["versionEqual"] = versionEqual
+	}
+	
+	public func setMultiRequestToken(versionGreaterThanOrEqual: String) {
+		self.dict["versionGreaterThanOrEqual"] = versionGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(versionLessThanOrEqual: String) {
+		self.dict["versionLessThanOrEqual"] = versionLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

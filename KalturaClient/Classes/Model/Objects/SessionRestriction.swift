@@ -35,6 +35,9 @@
 
 open class SessionRestriction: BaseRestriction {
 
+	public class SessionRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

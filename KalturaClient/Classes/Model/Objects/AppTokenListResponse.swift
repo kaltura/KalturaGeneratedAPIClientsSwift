@@ -35,6 +35,15 @@
 
 open class AppTokenListResponse: ListResponse {
 
+	public class AppTokenListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<AppToken.AppTokenTokenizer> {
+			get {
+				return ArrayTokenizedObject<AppToken.AppTokenTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<AppToken>? = nil
 
 

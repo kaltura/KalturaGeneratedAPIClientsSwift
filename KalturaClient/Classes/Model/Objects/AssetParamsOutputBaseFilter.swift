@@ -35,6 +35,9 @@
 
 open class AssetParamsOutputBaseFilter: AssetParamsFilter {
 
+	public class AssetParamsOutputBaseFilterTokenizer: AssetParamsFilter.AssetParamsFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

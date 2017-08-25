@@ -35,6 +35,9 @@
 
 open class EdgeServerNodeFilter: EdgeServerNodeBaseFilter {
 
+	public class EdgeServerNodeFilterTokenizer: EdgeServerNodeBaseFilter.EdgeServerNodeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,27 @@
 
 open class KontikiStorageExportJobData: StorageExportJobData {
 
+	public class KontikiStorageExportJobDataTokenizer: StorageExportJobData.StorageExportJobDataTokenizer {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var contentMoid: BaseTokenizedObject {
+			get {
+				return self.append("contentMoid") 
+			}
+		}
+		
+		public var serviceToken: BaseTokenizedObject {
+			get {
+				return self.append("serviceToken") 
+			}
+		}
+	}
+
 	/**  Holds the id of the exported asset  */
 	public var flavorAssetId: String? = nil
 	/**  Unique Kontiki MOID for the content uploaded to Kontiki  */
@@ -42,6 +63,18 @@ open class KontikiStorageExportJobData: StorageExportJobData {
 	public var serviceToken: String? = nil
 
 
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(contentMoid: String) {
+		self.dict["contentMoid"] = contentMoid
+	}
+	
+	public func setMultiRequestToken(serviceToken: String) {
+		self.dict["serviceToken"] = serviceToken
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

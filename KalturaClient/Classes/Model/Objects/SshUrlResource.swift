@@ -38,6 +38,27 @@
   make the asset ready.  */
 open class SshUrlResource: UrlResource {
 
+	public class SshUrlResourceTokenizer: UrlResource.UrlResourceTokenizer {
+		
+		public var privateKey: BaseTokenizedObject {
+			get {
+				return self.append("privateKey") 
+			}
+		}
+		
+		public var publicKey: BaseTokenizedObject {
+			get {
+				return self.append("publicKey") 
+			}
+		}
+		
+		public var keyPassphrase: BaseTokenizedObject {
+			get {
+				return self.append("keyPassphrase") 
+			}
+		}
+	}
+
 	/**  SSH private key  */
 	public var privateKey: String? = nil
 	/**  SSH public key  */
@@ -46,6 +67,18 @@ open class SshUrlResource: UrlResource {
 	public var keyPassphrase: String? = nil
 
 
+	public func setMultiRequestToken(privateKey: String) {
+		self.dict["privateKey"] = privateKey
+	}
+	
+	public func setMultiRequestToken(publicKey: String) {
+		self.dict["publicKey"] = publicKey
+	}
+	
+	public func setMultiRequestToken(keyPassphrase: String) {
+		self.dict["keyPassphrase"] = keyPassphrase
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

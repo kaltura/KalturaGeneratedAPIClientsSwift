@@ -35,6 +35,159 @@
 
 open class FileSync: ObjectBase {
 
+	public class FileSyncTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var fileObjectType: BaseTokenizedObject {
+			get {
+				return self.append("fileObjectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var objectSubType: BaseTokenizedObject {
+			get {
+				return self.append("objectSubType") 
+			}
+		}
+		
+		public var dc: BaseTokenizedObject {
+			get {
+				return self.append("dc") 
+			}
+		}
+		
+		public var original: BaseTokenizedObject {
+			get {
+				return self.append("original") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var readyAt: BaseTokenizedObject {
+			get {
+				return self.append("readyAt") 
+			}
+		}
+		
+		public var syncTime: BaseTokenizedObject {
+			get {
+				return self.append("syncTime") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var fileType: BaseTokenizedObject {
+			get {
+				return self.append("fileType") 
+			}
+		}
+		
+		public var linkedId: BaseTokenizedObject {
+			get {
+				return self.append("linkedId") 
+			}
+		}
+		
+		public var linkCount: BaseTokenizedObject {
+			get {
+				return self.append("linkCount") 
+			}
+		}
+		
+		public var fileRoot: BaseTokenizedObject {
+			get {
+				return self.append("fileRoot") 
+			}
+		}
+		
+		public var filePath: BaseTokenizedObject {
+			get {
+				return self.append("filePath") 
+			}
+		}
+		
+		public var fileSize: BaseTokenizedObject {
+			get {
+				return self.append("fileSize") 
+			}
+		}
+		
+		public var fileUrl: BaseTokenizedObject {
+			get {
+				return self.append("fileUrl") 
+			}
+		}
+		
+		public var fileContent: BaseTokenizedObject {
+			get {
+				return self.append("fileContent") 
+			}
+		}
+		
+		public var fileDiscSize: BaseTokenizedObject {
+			get {
+				return self.append("fileDiscSize") 
+			}
+		}
+		
+		public var isCurrentDc: BaseTokenizedObject {
+			get {
+				return self.append("isCurrentDc") 
+			}
+		}
+		
+		public var isDir: BaseTokenizedObject {
+			get {
+				return self.append("isDir") 
+			}
+		}
+		
+		public var originalId: BaseTokenizedObject {
+			get {
+				return self.append("originalId") 
+			}
+		}
+	}
+
 	public var id: Int64? = nil
 	public var partnerId: Int? = nil
 	public var fileObjectType: FileSyncObjectType? = nil
@@ -62,11 +215,111 @@ open class FileSync: ObjectBase {
 	public var originalId: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(fileObjectType: String) {
+		self.dict["fileObjectType"] = fileObjectType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(objectSubType: String) {
+		self.dict["objectSubType"] = objectSubType
+	}
+	
+	public func setMultiRequestToken(dc: String) {
+		self.dict["dc"] = dc
+	}
+	
+	public func setMultiRequestToken(original: String) {
+		self.dict["original"] = original
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(readyAt: String) {
+		self.dict["readyAt"] = readyAt
+	}
+	
+	public func setMultiRequestToken(syncTime: String) {
+		self.dict["syncTime"] = syncTime
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(fileType: String) {
+		self.dict["fileType"] = fileType
+	}
+	
+	public func setMultiRequestToken(linkedId: String) {
+		self.dict["linkedId"] = linkedId
+	}
+	
+	public func setMultiRequestToken(linkCount: String) {
+		self.dict["linkCount"] = linkCount
+	}
+	
+	public func setMultiRequestToken(fileRoot: String) {
+		self.dict["fileRoot"] = fileRoot
+	}
+	
+	public func setMultiRequestToken(filePath: String) {
+		self.dict["filePath"] = filePath
+	}
+	
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
+	}
+	
+	public func setMultiRequestToken(fileUrl: String) {
+		self.dict["fileUrl"] = fileUrl
+	}
+	
+	public func setMultiRequestToken(fileContent: String) {
+		self.dict["fileContent"] = fileContent
+	}
+	
+	public func setMultiRequestToken(fileDiscSize: String) {
+		self.dict["fileDiscSize"] = fileDiscSize
+	}
+	
+	public func setMultiRequestToken(isCurrentDc: String) {
+		self.dict["isCurrentDc"] = isCurrentDc
+	}
+	
+	public func setMultiRequestToken(isDir: String) {
+		self.dict["isDir"] = isDir
+	}
+	
+	public func setMultiRequestToken(originalId: String) {
+		self.dict["originalId"] = originalId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = Int64((dict["id"] as? String)!)
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int

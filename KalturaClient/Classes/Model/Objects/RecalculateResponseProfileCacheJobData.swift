@@ -35,6 +35,51 @@
 
 open class RecalculateResponseProfileCacheJobData: RecalculateCacheJobData {
 
+	public class RecalculateResponseProfileCacheJobDataTokenizer: RecalculateCacheJobData.RecalculateCacheJobDataTokenizer {
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var ksType: BaseTokenizedObject {
+			get {
+				return self.append("ksType") 
+			}
+		}
+		
+		public var userRoles: ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<IntegerValue.IntegerValueTokenizer>(self.append("userRoles"))
+			} 
+		}
+		
+		public var cachedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("cachedObjectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var startObjectKey: BaseTokenizedObject {
+			get {
+				return self.append("startObjectKey") 
+			}
+		}
+		
+		public var endObjectKey: BaseTokenizedObject {
+			get {
+				return self.append("endObjectKey") 
+			}
+		}
+	}
+
 	/**  http / https  */
 	public var protocol_: String? = nil
 	public var ksType: SessionType? = nil
@@ -46,6 +91,30 @@ open class RecalculateResponseProfileCacheJobData: RecalculateCacheJobData {
 	public var endObjectKey: String? = nil
 
 
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(ksType: String) {
+		self.dict["ksType"] = ksType
+	}
+	
+	public func setMultiRequestToken(cachedObjectType: String) {
+		self.dict["cachedObjectType"] = cachedObjectType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(startObjectKey: String) {
+		self.dict["startObjectKey"] = startObjectKey
+	}
+	
+	public func setMultiRequestToken(endObjectKey: String) {
+		self.dict["endObjectKey"] = endObjectKey
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

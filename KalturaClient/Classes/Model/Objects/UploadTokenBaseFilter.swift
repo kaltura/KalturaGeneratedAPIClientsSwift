@@ -35,6 +35,51 @@
 
 open class UploadTokenBaseFilter: Filter {
 
+	public class UploadTokenBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var fileNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileNameEqual") 
+			}
+		}
+		
+		public var fileSizeEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileSizeEqual") 
+			}
+		}
+	}
+
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
 	public var userIdEqual: String? = nil
@@ -44,6 +89,34 @@ open class UploadTokenBaseFilter: Filter {
 	public var fileSizeEqual: Double? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(fileNameEqual: String) {
+		self.dict["fileNameEqual"] = fileNameEqual
+	}
+	
+	public func setMultiRequestToken(fileSizeEqual: String) {
+		self.dict["fileSizeEqual"] = fileSizeEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

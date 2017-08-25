@@ -35,6 +35,57 @@
 
 open class Quiz: ObjectBase {
 
+	public class QuizTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var uiAttributes: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("uiAttributes"))
+			} 
+		}
+		
+		public var showResultOnAnswer: BaseTokenizedObject {
+			get {
+				return self.append("showResultOnAnswer") 
+			}
+		}
+		
+		public var showCorrectKeyOnAnswer: BaseTokenizedObject {
+			get {
+				return self.append("showCorrectKeyOnAnswer") 
+			}
+		}
+		
+		public var allowAnswerUpdate: BaseTokenizedObject {
+			get {
+				return self.append("allowAnswerUpdate") 
+			}
+		}
+		
+		public var showCorrectAfterSubmission: BaseTokenizedObject {
+			get {
+				return self.append("showCorrectAfterSubmission") 
+			}
+		}
+		
+		public var allowDownload: BaseTokenizedObject {
+			get {
+				return self.append("allowDownload") 
+			}
+		}
+		
+		public var showGradeAfterSubmission: BaseTokenizedObject {
+			get {
+				return self.append("showGradeAfterSubmission") 
+			}
+		}
+	}
+
 	public var version: Int? = nil
 	/**  Array of key value ui related objects  */
 	public var uiAttributes: Array<KeyValue>? = nil
@@ -46,6 +97,34 @@ open class Quiz: ObjectBase {
 	public var showGradeAfterSubmission: Bool? = nil
 
 
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(showResultOnAnswer: String) {
+		self.dict["showResultOnAnswer"] = showResultOnAnswer
+	}
+	
+	public func setMultiRequestToken(showCorrectKeyOnAnswer: String) {
+		self.dict["showCorrectKeyOnAnswer"] = showCorrectKeyOnAnswer
+	}
+	
+	public func setMultiRequestToken(allowAnswerUpdate: String) {
+		self.dict["allowAnswerUpdate"] = allowAnswerUpdate
+	}
+	
+	public func setMultiRequestToken(showCorrectAfterSubmission: String) {
+		self.dict["showCorrectAfterSubmission"] = showCorrectAfterSubmission
+	}
+	
+	public func setMultiRequestToken(allowDownload: String) {
+		self.dict["allowDownload"] = allowDownload
+	}
+	
+	public func setMultiRequestToken(showGradeAfterSubmission: String) {
+		self.dict["showGradeAfterSubmission"] = showGradeAfterSubmission
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

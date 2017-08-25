@@ -35,11 +35,44 @@
 
 open class Coordinate: ObjectBase {
 
+	public class CoordinateTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var latitude: BaseTokenizedObject {
+			get {
+				return self.append("latitude") 
+			}
+		}
+		
+		public var longitude: BaseTokenizedObject {
+			get {
+				return self.append("longitude") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+	}
+
 	public var latitude: Double? = nil
 	public var longitude: Double? = nil
 	public var name: String? = nil
 
 
+	public func setMultiRequestToken(latitude: String) {
+		self.dict["latitude"] = latitude
+	}
+	
+	public func setMultiRequestToken(longitude: String) {
+		self.dict["longitude"] = longitude
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

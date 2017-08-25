@@ -35,6 +35,9 @@
 
 open class GoogleVideoSyndicationFeedBaseFilter: BaseSyndicationFeedFilter {
 
+	public class GoogleVideoSyndicationFeedBaseFilterTokenizer: BaseSyndicationFeedFilter.BaseSyndicationFeedFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

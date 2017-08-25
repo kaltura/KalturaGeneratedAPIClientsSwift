@@ -35,6 +35,9 @@
 
 open class DeliveryServerNodeFilter: DeliveryServerNodeBaseFilter {
 
+	public class DeliveryServerNodeFilterTokenizer: DeliveryServerNodeBaseFilter.DeliveryServerNodeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

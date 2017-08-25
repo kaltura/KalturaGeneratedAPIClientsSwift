@@ -35,6 +35,57 @@
 
 open class SchedulerStatus: ObjectBase {
 
+	public class SchedulerStatusTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var schedulerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerConfiguredId") 
+			}
+		}
+		
+		public var workerConfiguredId: BaseTokenizedObject {
+			get {
+				return self.append("workerConfiguredId") 
+			}
+		}
+		
+		public var workerType: BaseTokenizedObject {
+			get {
+				return self.append("workerType") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var workerId: BaseTokenizedObject {
+			get {
+				return self.append("workerId") 
+			}
+		}
+	}
+
 	/**  The id of the Category  */
 	public var id: Int? = nil
 	/**  The configured id of the scheduler  */
@@ -53,6 +104,38 @@ open class SchedulerStatus: ObjectBase {
 	public var workerId: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(schedulerConfiguredId: String) {
+		self.dict["schedulerConfiguredId"] = schedulerConfiguredId
+	}
+	
+	public func setMultiRequestToken(workerConfiguredId: String) {
+		self.dict["workerConfiguredId"] = workerConfiguredId
+	}
+	
+	public func setMultiRequestToken(workerType: String) {
+		self.dict["workerType"] = workerType
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(workerId: String) {
+		self.dict["workerId"] = workerId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

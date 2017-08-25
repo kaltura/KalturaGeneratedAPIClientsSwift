@@ -35,6 +35,9 @@
 
 open class MetadataFilter: MetadataBaseFilter {
 
+	public class MetadataFilterTokenizer: MetadataBaseFilter.MetadataBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

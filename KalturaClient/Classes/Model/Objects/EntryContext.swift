@@ -35,12 +35,35 @@
 
 open class EntryContext: Context {
 
+	public class EntryContextTokenizer: Context.ContextTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var followEntryRedirect: BaseTokenizedObject {
+			get {
+				return self.append("followEntryRedirect") 
+			}
+		}
+	}
+
 	/**  The entry ID in the context of which the playlist should be built  */
 	public var entryId: String? = nil
 	/**  Is this a redirected entry followup?  */
 	public var followEntryRedirect: Bool? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(followEntryRedirect: String) {
+		self.dict["followEntryRedirect"] = followEntryRedirect
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

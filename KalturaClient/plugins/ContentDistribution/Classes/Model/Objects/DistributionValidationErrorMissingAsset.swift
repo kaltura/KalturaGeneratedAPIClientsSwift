@@ -35,9 +35,22 @@
 
 open class DistributionValidationErrorMissingAsset: DistributionValidationError {
 
+	public class DistributionValidationErrorMissingAssetTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+	}
+
 	public var data: String? = nil
 
 
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,15 @@
 
 open class ScheduleEventResourceListResponse: ListResponse {
 
+	public class ScheduleEventResourceListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ScheduleEventResource.ScheduleEventResourceTokenizer> {
+			get {
+				return ArrayTokenizedObject<ScheduleEventResource.ScheduleEventResourceTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ScheduleEventResource>? = nil
 
 

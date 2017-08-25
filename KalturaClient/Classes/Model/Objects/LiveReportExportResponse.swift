@@ -35,15 +35,38 @@
 
 open class LiveReportExportResponse: ObjectBase {
 
+	public class LiveReportExportResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var referenceJobId: BaseTokenizedObject {
+			get {
+				return self.append("referenceJobId") 
+			}
+		}
+		
+		public var reportEmail: BaseTokenizedObject {
+			get {
+				return self.append("reportEmail") 
+			}
+		}
+	}
+
 	public var referenceJobId: Int64? = nil
 	public var reportEmail: String? = nil
 
 
+	public func setMultiRequestToken(referenceJobId: String) {
+		self.dict["referenceJobId"] = referenceJobId
+	}
+	
+	public func setMultiRequestToken(reportEmail: String) {
+		self.dict["reportEmail"] = reportEmail
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["referenceJobId"] != nil {
-			referenceJobId = Int64((dict["referenceJobId"] as? String)!)
+			referenceJobId = Int64("\(dict["referenceJobId"]!)")
 		}
 		if dict["reportEmail"] != nil {
 			reportEmail = dict["reportEmail"] as? String

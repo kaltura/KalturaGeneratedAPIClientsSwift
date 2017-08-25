@@ -35,6 +35,27 @@
 
 open class AccessControlModifyRequestHostRegexAction: RuleAction {
 
+	public class AccessControlModifyRequestHostRegexActionTokenizer: RuleAction.RuleActionTokenizer {
+		
+		public var pattern: BaseTokenizedObject {
+			get {
+				return self.append("pattern") 
+			}
+		}
+		
+		public var replacement: BaseTokenizedObject {
+			get {
+				return self.append("replacement") 
+			}
+		}
+		
+		public var replacmenServerNodeId: BaseTokenizedObject {
+			get {
+				return self.append("replacmenServerNodeId") 
+			}
+		}
+	}
+
 	/**  Request host regex pattern  */
 	public var pattern: String? = nil
 	/**  Request host regex replacment  */
@@ -43,6 +64,18 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 	public var replacmenServerNodeId: Int? = nil
 
 
+	public func setMultiRequestToken(pattern: String) {
+		self.dict["pattern"] = pattern
+	}
+	
+	public func setMultiRequestToken(replacement: String) {
+		self.dict["replacement"] = replacement
+	}
+	
+	public func setMultiRequestToken(replacmenServerNodeId: String) {
+		self.dict["replacmenServerNodeId"] = replacmenServerNodeId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

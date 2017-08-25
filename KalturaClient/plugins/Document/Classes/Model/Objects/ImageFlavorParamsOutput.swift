@@ -35,6 +35,39 @@
 
 open class ImageFlavorParamsOutput: FlavorParamsOutput {
 
+	public class ImageFlavorParamsOutputTokenizer: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+		
+		public var densityWidth: BaseTokenizedObject {
+			get {
+				return self.append("densityWidth") 
+			}
+		}
+		
+		public var densityHeight: BaseTokenizedObject {
+			get {
+				return self.append("densityHeight") 
+			}
+		}
+		
+		public var sizeWidth: BaseTokenizedObject {
+			get {
+				return self.append("sizeWidth") 
+			}
+		}
+		
+		public var sizeHeight: BaseTokenizedObject {
+			get {
+				return self.append("sizeHeight") 
+			}
+		}
+		
+		public var depth: BaseTokenizedObject {
+			get {
+				return self.append("depth") 
+			}
+		}
+	}
+
 	public var densityWidth: Int? = nil
 	public var densityHeight: Int? = nil
 	public var sizeWidth: Int? = nil
@@ -42,6 +75,26 @@ open class ImageFlavorParamsOutput: FlavorParamsOutput {
 	public var depth: Int? = nil
 
 
+	public func setMultiRequestToken(densityWidth: String) {
+		self.dict["densityWidth"] = densityWidth
+	}
+	
+	public func setMultiRequestToken(densityHeight: String) {
+		self.dict["densityHeight"] = densityHeight
+	}
+	
+	public func setMultiRequestToken(sizeWidth: String) {
+		self.dict["sizeWidth"] = sizeWidth
+	}
+	
+	public func setMultiRequestToken(sizeHeight: String) {
+		self.dict["sizeHeight"] = sizeHeight
+	}
+	
+	public func setMultiRequestToken(depth: String) {
+		self.dict["depth"] = depth
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

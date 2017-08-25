@@ -35,11 +35,44 @@
 
 open class CuePointFilter: CuePointBaseFilter {
 
+	public class CuePointFilterTokenizer: CuePointBaseFilter.CuePointBaseFilterTokenizer {
+		
+		public var freeText: BaseTokenizedObject {
+			get {
+				return self.append("freeText") 
+			}
+		}
+		
+		public var userIdEqualCurrent: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqualCurrent") 
+			}
+		}
+		
+		public var userIdCurrent: BaseTokenizedObject {
+			get {
+				return self.append("userIdCurrent") 
+			}
+		}
+	}
+
 	public var freeText: String? = nil
 	public var userIdEqualCurrent: Bool? = nil
 	public var userIdCurrent: Bool? = nil
 
 
+	public func setMultiRequestToken(freeText: String) {
+		self.dict["freeText"] = freeText
+	}
+	
+	public func setMultiRequestToken(userIdEqualCurrent: String) {
+		self.dict["userIdEqualCurrent"] = userIdEqualCurrent
+	}
+	
+	public func setMultiRequestToken(userIdCurrent: String) {
+		self.dict["userIdCurrent"] = userIdCurrent
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

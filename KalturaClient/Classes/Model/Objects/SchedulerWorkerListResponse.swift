@@ -35,6 +35,15 @@
 
 open class SchedulerWorkerListResponse: ListResponse {
 
+	public class SchedulerWorkerListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<SchedulerWorker.SchedulerWorkerTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerWorker.SchedulerWorkerTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<SchedulerWorker>? = nil
 
 

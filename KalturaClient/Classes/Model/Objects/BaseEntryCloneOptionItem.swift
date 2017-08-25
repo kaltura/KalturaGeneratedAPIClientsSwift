@@ -35,6 +35,9 @@
 
 open class BaseEntryCloneOptionItem: ObjectBase {
 
+	public class BaseEntryCloneOptionItemTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

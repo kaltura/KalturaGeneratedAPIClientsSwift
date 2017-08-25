@@ -35,6 +35,9 @@
 
 open class PdfFlavorParamsOutputFilter: PdfFlavorParamsOutputBaseFilter {
 
+	public class PdfFlavorParamsOutputFilterTokenizer: PdfFlavorParamsOutputBaseFilter.PdfFlavorParamsOutputBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

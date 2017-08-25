@@ -37,31 +37,67 @@
    This service manages only entry bulk uploads.  */
 public final class BulkUploadService{
 
+	public class AbortTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Aborts the bulk upload and all its child jobs  */
-	public static func abort(id: Int64) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "bulkupload", action: "abort")
+	public static func abort(id: Int64) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer>(service: "bulkupload", action: "abort")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func add(conversionProfileId: Int, csvFileData: RequestFile) -> RequestBuilder<BulkUpload> {
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var bulkUploadType: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadType") 
+			}
+		}
+		
+		public var uploadedBy: BaseTokenizedObject {
+			get {
+				return self.append("uploadedBy") 
+			}
+		}
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+	}
+
+	public static func add(conversionProfileId: Int, csvFileData: RequestFile) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer> {
 		return add(conversionProfileId: conversionProfileId, csvFileData: csvFileData, bulkUploadType: nil)
 	}
 
-	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?) -> RequestBuilder<BulkUpload> {
+	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer> {
 		return add(conversionProfileId: conversionProfileId, csvFileData: csvFileData, bulkUploadType: bulkUploadType, uploadedBy: nil)
 	}
 
-	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?, uploadedBy: String?) -> RequestBuilder<BulkUpload> {
+	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?, uploadedBy: String?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer> {
 		return add(conversionProfileId: conversionProfileId, csvFileData: csvFileData, bulkUploadType: bulkUploadType, uploadedBy: uploadedBy, fileName: nil)
 	}
 
 	/**  Add new bulk upload batch job   Conversion profile id can be specified in the
 	  API or in the CSV file, the one in the CSV file will be stronger.   If no
 	  conversion profile was specified, partner's default will be used  */
-	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?, uploadedBy: String?, fileName: String?) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "bulkupload", action: "add")
+	public static func add(conversionProfileId: Int, csvFileData: RequestFile, bulkUploadType: BulkUploadType?, uploadedBy: String?, fileName: String?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddTokenizer>(service: "bulkupload", action: "add")
 			.setBody(key: "conversionProfileId", value: conversionProfileId)
 			.setFile(key: "csvFileData", value: csvFileData)
 			.setBody(key: "bulkUploadType", value: bulkUploadType?.rawValue)
@@ -71,21 +107,39 @@ public final class BulkUploadService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get bulk upload batch job by id  */
-	public static func get(id: Int64) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "bulkupload", action: "get")
+	public static func get(id: Int64) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer>(service: "bulkupload", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<BulkUploadListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> {
 		return list(pager: nil)
 	}
 
 	/**  List bulk upload batch jobs  */
-	public static func list(pager: FilterPager?) -> RequestBuilder<BulkUploadListResponse> {
-		let request: RequestBuilder<BulkUploadListResponse> = RequestBuilder<BulkUploadListResponse>(service: "bulkupload", action: "list")
+	public static func list(pager: FilterPager?) -> RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> = RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer>(service: "bulkupload", action: "list")
 			.setBody(key: "pager", value: pager)
 
 		return request

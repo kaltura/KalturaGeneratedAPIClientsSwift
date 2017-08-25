@@ -36,10 +36,19 @@
 /**  Stats Service  */
 public final class LiveStatsService{
 
+	public class CollectTokenizer: ClientTokenizer  {
+		
+		public var event: LiveStatsEvent.LiveStatsEventTokenizer {
+			get {
+				return LiveStatsEvent.LiveStatsEventTokenizer(self.append("event")) 
+			}
+		}
+	}
+
 	/**  Will write to the event log a single line representing the event  
 	  KalturaStatsEvent $event  */
-	public static func collect(event: LiveStatsEvent) -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "livestats", action: "collect")
+	public static func collect(event: LiveStatsEvent) -> RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer>(service: "livestats", action: "collect")
 			.setBody(key: "event", value: event)
 
 		return request

@@ -35,6 +35,9 @@
 
 open class AdminUser: User {
 
+	public class AdminUserTokenizer: User.UserTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

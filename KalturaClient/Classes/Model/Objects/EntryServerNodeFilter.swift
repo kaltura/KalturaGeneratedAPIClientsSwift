@@ -35,6 +35,9 @@
 
 open class EntryServerNodeFilter: EntryServerNodeBaseFilter {
 
+	public class EntryServerNodeFilterTokenizer: EntryServerNodeBaseFilter.EntryServerNodeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

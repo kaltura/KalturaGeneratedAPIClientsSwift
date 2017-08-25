@@ -35,6 +35,15 @@
 
 open class BulkUploadListResponse: ListResponse {
 
+	public class BulkUploadListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<BulkUpload.BulkUploadTokenizer> {
+			get {
+				return ArrayTokenizedObject<BulkUpload.BulkUploadTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<BulkUpload>? = nil
 
 

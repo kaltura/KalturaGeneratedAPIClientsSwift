@@ -35,6 +35,45 @@
 
 open class StreamContainer: ObjectBase {
 
+	public class StreamContainerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var trackIndex: BaseTokenizedObject {
+			get {
+				return self.append("trackIndex") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var channelIndex: BaseTokenizedObject {
+			get {
+				return self.append("channelIndex") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var channelLayout: BaseTokenizedObject {
+			get {
+				return self.append("channelLayout") 
+			}
+		}
+	}
+
 	public var type: String? = nil
 	public var trackIndex: Int? = nil
 	public var language: String? = nil
@@ -43,6 +82,30 @@ open class StreamContainer: ObjectBase {
 	public var channelLayout: String? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(trackIndex: String) {
+		self.dict["trackIndex"] = trackIndex
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(channelIndex: String) {
+		self.dict["channelIndex"] = channelIndex
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(channelLayout: String) {
+		self.dict["channelLayout"] = channelLayout
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

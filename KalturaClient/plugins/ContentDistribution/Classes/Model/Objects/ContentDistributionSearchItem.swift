@@ -35,6 +35,51 @@
 
 open class ContentDistributionSearchItem: SearchItem {
 
+	public class ContentDistributionSearchItemTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var noDistributionProfiles: BaseTokenizedObject {
+			get {
+				return self.append("noDistributionProfiles") 
+			}
+		}
+		
+		public var distributionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileId") 
+			}
+		}
+		
+		public var distributionSunStatus: BaseTokenizedObject {
+			get {
+				return self.append("distributionSunStatus") 
+			}
+		}
+		
+		public var entryDistributionFlag: BaseTokenizedObject {
+			get {
+				return self.append("entryDistributionFlag") 
+			}
+		}
+		
+		public var entryDistributionStatus: BaseTokenizedObject {
+			get {
+				return self.append("entryDistributionStatus") 
+			}
+		}
+		
+		public var hasEntryDistributionValidationErrors: BaseTokenizedObject {
+			get {
+				return self.append("hasEntryDistributionValidationErrors") 
+			}
+		}
+		
+		public var entryDistributionValidationErrors: BaseTokenizedObject {
+			get {
+				return self.append("entryDistributionValidationErrors") 
+			}
+		}
+	}
+
 	public var noDistributionProfiles: Bool? = nil
 	public var distributionProfileId: Int? = nil
 	public var distributionSunStatus: EntryDistributionSunStatus? = nil
@@ -45,6 +90,34 @@ open class ContentDistributionSearchItem: SearchItem {
 	public var entryDistributionValidationErrors: String? = nil
 
 
+	public func setMultiRequestToken(noDistributionProfiles: String) {
+		self.dict["noDistributionProfiles"] = noDistributionProfiles
+	}
+	
+	public func setMultiRequestToken(distributionProfileId: String) {
+		self.dict["distributionProfileId"] = distributionProfileId
+	}
+	
+	public func setMultiRequestToken(distributionSunStatus: String) {
+		self.dict["distributionSunStatus"] = distributionSunStatus
+	}
+	
+	public func setMultiRequestToken(entryDistributionFlag: String) {
+		self.dict["entryDistributionFlag"] = entryDistributionFlag
+	}
+	
+	public func setMultiRequestToken(entryDistributionStatus: String) {
+		self.dict["entryDistributionStatus"] = entryDistributionStatus
+	}
+	
+	public func setMultiRequestToken(hasEntryDistributionValidationErrors: String) {
+		self.dict["hasEntryDistributionValidationErrors"] = hasEntryDistributionValidationErrors
+	}
+	
+	public func setMultiRequestToken(entryDistributionValidationErrors: String) {
+		self.dict["entryDistributionValidationErrors"] = entryDistributionValidationErrors
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

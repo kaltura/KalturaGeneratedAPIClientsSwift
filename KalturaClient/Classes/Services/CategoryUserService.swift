@@ -36,42 +36,105 @@
 /**  Add &amp; Manage CategoryUser - membership of a user in a category  */
 public final class CategoryUserService{
 
+	public class ActivateTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	/**  activate CategoryUser  */
-	public static func activate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser> {
-		let request: RequestBuilder<CategoryUser> = RequestBuilder<CategoryUser>(service: "categoryuser", action: "activate")
+	public static func activate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer> {
+		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer>(service: "categoryuser", action: "activate")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
 
 		return request
 	}
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var categoryUser: CategoryUser.CategoryUserTokenizer {
+			get {
+				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
+			}
+		}
+	}
+
 	/**  Add new CategoryUser  */
-	public static func add(categoryUser: CategoryUser) -> RequestBuilder<CategoryUser> {
-		let request: RequestBuilder<CategoryUser> = RequestBuilder<CategoryUser>(service: "categoryuser", action: "add")
+	public static func add(categoryUser: CategoryUser) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer> {
+		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer>(service: "categoryuser", action: "add")
 			.setBody(key: "categoryUser", value: categoryUser)
 
 		return request
 	}
 
+	public class CopyFromCategoryTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+	}
+
 	/**  Copy all memeber from parent category  */
-	public static func copyFromCategory(categoryId: Int) -> RequestBuilder<Void> {
+	public static func copyFromCategory(categoryId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryuser", action: "copyFromCategory")
 			.setBody(key: "categoryId", value: categoryId)
 
 		return request
 	}
 
+	public class DeactivateTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	/**  reject CategoryUser  */
-	public static func deactivate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser> {
-		let request: RequestBuilder<CategoryUser> = RequestBuilder<CategoryUser>(service: "categoryuser", action: "deactivate")
+	public static func deactivate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer> {
+		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer>(service: "categoryuser", action: "deactivate")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	/**  Delete a CategoryUser  */
-	public static func delete(categoryId: Int, userId: String) -> RequestBuilder<Void> {
+	public static func delete(categoryId: Int, userId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryuser", action: "delete")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
@@ -79,22 +142,58 @@ public final class CategoryUserService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	/**  Get CategoryUser by id  */
-	public static func get(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser> {
-		let request: RequestBuilder<CategoryUser> = RequestBuilder<CategoryUser>(service: "categoryuser", action: "get")
+	public static func get(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer> {
+		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer>(service: "categoryuser", action: "get")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
 
 		return request
 	}
 
-	public static func index(userId: String, categoryId: Int) -> RequestBuilder<Int> {
+	public class IndexTokenizer: ClientTokenizer  {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var shouldUpdate: BaseTokenizedObject {
+			get {
+				return self.append("shouldUpdate") 
+			}
+		}
+	}
+
+	public static func index(userId: String, categoryId: Int) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		return index(userId: userId, categoryId: categoryId, shouldUpdate: true)
 	}
 
 	/**  Index CategoryUser by userid and category id  */
-	public static func index(userId: String, categoryId: Int, shouldUpdate: Bool?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "categoryuser", action: "index")
+	public static func index(userId: String, categoryId: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "categoryuser", action: "index")
 			.setBody(key: "userId", value: userId)
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "shouldUpdate", value: shouldUpdate)
@@ -102,30 +201,72 @@ public final class CategoryUserService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<CategoryUserListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: CategoryUserFilter.CategoryUserFilterTokenizer {
+			get {
+				return CategoryUserFilter.CategoryUserFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: CategoryUserFilter?) -> RequestBuilder<CategoryUserListResponse> {
+	public static func list(filter: CategoryUserFilter?) -> RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all categories  */
-	public static func list(filter: CategoryUserFilter?, pager: FilterPager?) -> RequestBuilder<CategoryUserListResponse> {
-		let request: RequestBuilder<CategoryUserListResponse> = RequestBuilder<CategoryUserListResponse>(service: "categoryuser", action: "list")
+	public static func list(filter: CategoryUserFilter?, pager: FilterPager?) -> RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> = RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer>(service: "categoryuser", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func update(categoryId: Int, userId: String, categoryUser: CategoryUser) -> RequestBuilder<CategoryUser> {
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var categoryUser: CategoryUser.CategoryUserTokenizer {
+			get {
+				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
+			}
+		}
+		
+		public var override: BaseTokenizedObject {
+			get {
+				return self.append("override") 
+			}
+		}
+	}
+
+	public static func update(categoryId: Int, userId: String, categoryUser: CategoryUser) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer> {
 		return update(categoryId: categoryId, userId: userId, categoryUser: categoryUser, override: false)
 	}
 
 	/**  Update CategoryUser by id  */
-	public static func update(categoryId: Int, userId: String, categoryUser: CategoryUser, override: Bool?) -> RequestBuilder<CategoryUser> {
-		let request: RequestBuilder<CategoryUser> = RequestBuilder<CategoryUser>(service: "categoryuser", action: "update")
+	public static func update(categoryId: Int, userId: String, categoryUser: CategoryUser, override: Bool?) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer>(service: "categoryuser", action: "update")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
 			.setBody(key: "categoryUser", value: categoryUser)

@@ -35,6 +35,15 @@
 
 open class DistributionProfileListResponse: ListResponse {
 
+	public class DistributionProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DistributionProfile.DistributionProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionProfile.DistributionProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DistributionProfile>? = nil
 
 

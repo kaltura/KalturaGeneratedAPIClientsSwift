@@ -35,9 +35,22 @@
 
 open class EventCuePoint: CuePoint {
 
+	public class EventCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var eventType: BaseTokenizedObject {
+			get {
+				return self.append("eventType") 
+			}
+		}
+	}
+
 	public var eventType: EventType? = nil
 
 
+	public func setMultiRequestToken(eventType: String) {
+		self.dict["eventType"] = eventType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

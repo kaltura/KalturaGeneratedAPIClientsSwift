@@ -35,6 +35,9 @@
 
 open class FtpDropFolderFilter: FtpDropFolderBaseFilter {
 
+	public class FtpDropFolderFilterTokenizer: FtpDropFolderBaseFilter.FtpDropFolderBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

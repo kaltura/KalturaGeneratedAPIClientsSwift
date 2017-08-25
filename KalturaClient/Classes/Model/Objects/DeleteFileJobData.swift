@@ -35,9 +35,22 @@
 
 open class DeleteFileJobData: JobData {
 
+	public class DeleteFileJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var localFileSyncPath: BaseTokenizedObject {
+			get {
+				return self.append("localFileSyncPath") 
+			}
+		}
+	}
+
 	public var localFileSyncPath: String? = nil
 
 
+	public func setMultiRequestToken(localFileSyncPath: String) {
+		self.dict["localFileSyncPath"] = localFileSyncPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

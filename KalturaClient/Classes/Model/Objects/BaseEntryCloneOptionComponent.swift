@@ -35,11 +35,34 @@
 
 open class BaseEntryCloneOptionComponent: BaseEntryCloneOptionItem {
 
+	public class BaseEntryCloneOptionComponentTokenizer: BaseEntryCloneOptionItem.BaseEntryCloneOptionItemTokenizer {
+		
+		public var itemType: BaseTokenizedObject {
+			get {
+				return self.append("itemType") 
+			}
+		}
+		
+		public var rule: BaseTokenizedObject {
+			get {
+				return self.append("rule") 
+			}
+		}
+	}
+
 	public var itemType: BaseEntryCloneOptions? = nil
 	/**  condition rule (include/exclude)  */
 	public var rule: CloneComponentSelectorType? = nil
 
 
+	public func setMultiRequestToken(itemType: String) {
+		self.dict["itemType"] = itemType
+	}
+	
+	public func setMultiRequestToken(rule: String) {
+		self.dict["rule"] = rule
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

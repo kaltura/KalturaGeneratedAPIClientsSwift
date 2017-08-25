@@ -35,12 +35,35 @@
 
 open class HashCondition: Condition {
 
+	public class HashConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var hashName: BaseTokenizedObject {
+			get {
+				return self.append("hashName") 
+			}
+		}
+		
+		public var hashSecret: BaseTokenizedObject {
+			get {
+				return self.append("hashSecret") 
+			}
+		}
+	}
+
 	/**  hash name  */
 	public var hashName: String? = nil
 	/**  hash secret  */
 	public var hashSecret: String? = nil
 
 
+	public func setMultiRequestToken(hashName: String) {
+		self.dict["hashName"] = hashName
+	}
+	
+	public func setMultiRequestToken(hashSecret: String) {
+		self.dict["hashSecret"] = hashSecret
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

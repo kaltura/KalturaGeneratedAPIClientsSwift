@@ -35,6 +35,15 @@
 
 open class UiConfListResponse: ListResponse {
 
+	public class UiConfListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<UiConf.UiConfTokenizer> {
+			get {
+				return ArrayTokenizedObject<UiConf.UiConfTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<UiConf>? = nil
 
 

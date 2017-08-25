@@ -35,10 +35,33 @@
 
 open class CaptionParamsBaseFilter: AssetParamsFilter {
 
+	public class CaptionParamsBaseFilterTokenizer: AssetParamsFilter.AssetParamsFilterTokenizer {
+		
+		public var formatEqual: BaseTokenizedObject {
+			get {
+				return self.append("formatEqual") 
+			}
+		}
+		
+		public var formatIn: BaseTokenizedObject {
+			get {
+				return self.append("formatIn") 
+			}
+		}
+	}
+
 	public var formatEqual: CaptionType? = nil
 	public var formatIn: String? = nil
 
 
+	public func setMultiRequestToken(formatEqual: String) {
+		self.dict["formatEqual"] = formatEqual
+	}
+	
+	public func setMultiRequestToken(formatIn: String) {
+		self.dict["formatIn"] = formatIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,57 @@
 
 open class GenericDistributionProfileAction: ObjectBase {
 
+	public class GenericDistributionProfileActionTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var serverUrl: BaseTokenizedObject {
+			get {
+				return self.append("serverUrl") 
+			}
+		}
+		
+		public var serverPath: BaseTokenizedObject {
+			get {
+				return self.append("serverPath") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var ftpPassiveMode: BaseTokenizedObject {
+			get {
+				return self.append("ftpPassiveMode") 
+			}
+		}
+		
+		public var httpFieldName: BaseTokenizedObject {
+			get {
+				return self.append("httpFieldName") 
+			}
+		}
+		
+		public var httpFileName: BaseTokenizedObject {
+			get {
+				return self.append("httpFileName") 
+			}
+		}
+	}
+
 	public var protocol_: DistributionProtocol? = nil
 	public var serverUrl: String? = nil
 	public var serverPath: String? = nil
@@ -45,6 +96,38 @@ open class GenericDistributionProfileAction: ObjectBase {
 	public var httpFileName: String? = nil
 
 
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(serverUrl: String) {
+		self.dict["serverUrl"] = serverUrl
+	}
+	
+	public func setMultiRequestToken(serverPath: String) {
+		self.dict["serverPath"] = serverPath
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(ftpPassiveMode: String) {
+		self.dict["ftpPassiveMode"] = ftpPassiveMode
+	}
+	
+	public func setMultiRequestToken(httpFieldName: String) {
+		self.dict["httpFieldName"] = httpFieldName
+	}
+	
+	public func setMultiRequestToken(httpFileName: String) {
+		self.dict["httpFileName"] = httpFileName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

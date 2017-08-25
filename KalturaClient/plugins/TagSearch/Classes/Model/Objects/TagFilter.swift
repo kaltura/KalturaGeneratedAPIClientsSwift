@@ -35,6 +35,39 @@
 
 open class TagFilter: Filter {
 
+	public class TagFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var objectTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("objectTypeEqual") 
+			}
+		}
+		
+		public var tagEqual: BaseTokenizedObject {
+			get {
+				return self.append("tagEqual") 
+			}
+		}
+		
+		public var tagStartsWith: BaseTokenizedObject {
+			get {
+				return self.append("tagStartsWith") 
+			}
+		}
+		
+		public var instanceCountEqual: BaseTokenizedObject {
+			get {
+				return self.append("instanceCountEqual") 
+			}
+		}
+		
+		public var instanceCountIn: BaseTokenizedObject {
+			get {
+				return self.append("instanceCountIn") 
+			}
+		}
+	}
+
 	public var objectTypeEqual: TaggedObjectType? = nil
 	public var tagEqual: String? = nil
 	public var tagStartsWith: String? = nil
@@ -42,6 +75,26 @@ open class TagFilter: Filter {
 	public var instanceCountIn: Int? = nil
 
 
+	public func setMultiRequestToken(objectTypeEqual: String) {
+		self.dict["objectTypeEqual"] = objectTypeEqual
+	}
+	
+	public func setMultiRequestToken(tagEqual: String) {
+		self.dict["tagEqual"] = tagEqual
+	}
+	
+	public func setMultiRequestToken(tagStartsWith: String) {
+		self.dict["tagStartsWith"] = tagStartsWith
+	}
+	
+	public func setMultiRequestToken(instanceCountEqual: String) {
+		self.dict["instanceCountEqual"] = instanceCountEqual
+	}
+	
+	public func setMultiRequestToken(instanceCountIn: String) {
+		self.dict["instanceCountIn"] = instanceCountIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

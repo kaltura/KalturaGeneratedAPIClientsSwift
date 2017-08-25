@@ -35,6 +35,33 @@
 
 open class ThumbCuePoint: CuePoint {
 
+	public class ThumbCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var subType: BaseTokenizedObject {
+			get {
+				return self.append("subType") 
+			}
+		}
+	}
+
 	public var assetId: String? = nil
 	public var description: String? = nil
 	public var title: String? = nil
@@ -42,6 +69,22 @@ open class ThumbCuePoint: CuePoint {
 	public var subType: ThumbCuePointSubType? = nil
 
 
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(subType: String) {
+		self.dict["subType"] = subType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

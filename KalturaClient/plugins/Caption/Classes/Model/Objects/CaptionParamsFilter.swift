@@ -35,6 +35,9 @@
 
 open class CaptionParamsFilter: CaptionParamsBaseFilter {
 
+	public class CaptionParamsFilterTokenizer: CaptionParamsBaseFilter.CaptionParamsBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,21 @@
 
 open class ContextDataResult: ObjectBase {
 
+	public class ContextDataResultTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var messages: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("messages"))
+			} 
+		}
+		
+		public var actions: ArrayTokenizedObject<RuleAction.RuleActionTokenizer> {
+			get {
+				return ArrayTokenizedObject<RuleAction.RuleActionTokenizer>(self.append("actions"))
+			} 
+		}
+	}
+
 	/**  Array of messages as received from the rules that invalidated  */
 	public var messages: Array<StringHolder>? = nil
 	/**  Array of actions as received from the rules that invalidated  */

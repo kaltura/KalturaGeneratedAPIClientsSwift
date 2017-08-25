@@ -35,6 +35,9 @@
 
 open class DistributionJobProviderData: ObjectBase {
 
+	public class DistributionJobProviderDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

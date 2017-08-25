@@ -35,6 +35,9 @@
 
 open class ConstantXsltSyndicationFeed: GenericXsltSyndicationFeed {
 
+	public class ConstantXsltSyndicationFeedTokenizer: GenericXsltSyndicationFeed.GenericXsltSyndicationFeedTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class AdminUserBaseFilter: UserFilter {
 
+	public class AdminUserBaseFilterTokenizer: UserFilter.UserFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

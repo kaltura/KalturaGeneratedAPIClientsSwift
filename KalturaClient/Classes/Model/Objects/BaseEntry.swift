@@ -35,6 +35,273 @@
 
 open class BaseEntry: ObjectBase {
 
+	public class BaseEntryTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var creatorId: BaseTokenizedObject {
+			get {
+				return self.append("creatorId") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var adminTags: BaseTokenizedObject {
+			get {
+				return self.append("adminTags") 
+			}
+		}
+		
+		public var categories: BaseTokenizedObject {
+			get {
+				return self.append("categories") 
+			}
+		}
+		
+		public var categoriesIds: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIds") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var moderationStatus: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatus") 
+			}
+		}
+		
+		public var moderationCount: BaseTokenizedObject {
+			get {
+				return self.append("moderationCount") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var rank: BaseTokenizedObject {
+			get {
+				return self.append("rank") 
+			}
+		}
+		
+		public var totalRank: BaseTokenizedObject {
+			get {
+				return self.append("totalRank") 
+			}
+		}
+		
+		public var votes: BaseTokenizedObject {
+			get {
+				return self.append("votes") 
+			}
+		}
+		
+		public var groupId: BaseTokenizedObject {
+			get {
+				return self.append("groupId") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var downloadUrl: BaseTokenizedObject {
+			get {
+				return self.append("downloadUrl") 
+			}
+		}
+		
+		public var searchText: BaseTokenizedObject {
+			get {
+				return self.append("searchText") 
+			}
+		}
+		
+		public var licenseType: BaseTokenizedObject {
+			get {
+				return self.append("licenseType") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var thumbnailUrl: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailUrl") 
+			}
+		}
+		
+		public var accessControlId: BaseTokenizedObject {
+			get {
+				return self.append("accessControlId") 
+			}
+		}
+		
+		public var startDate: BaseTokenizedObject {
+			get {
+				return self.append("startDate") 
+			}
+		}
+		
+		public var endDate: BaseTokenizedObject {
+			get {
+				return self.append("endDate") 
+			}
+		}
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+		
+		public var replacingEntryId: BaseTokenizedObject {
+			get {
+				return self.append("replacingEntryId") 
+			}
+		}
+		
+		public var replacedEntryId: BaseTokenizedObject {
+			get {
+				return self.append("replacedEntryId") 
+			}
+		}
+		
+		public var replacementStatus: BaseTokenizedObject {
+			get {
+				return self.append("replacementStatus") 
+			}
+		}
+		
+		public var partnerSortValue: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValue") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var redirectEntryId: BaseTokenizedObject {
+			get {
+				return self.append("redirectEntryId") 
+			}
+		}
+		
+		public var rootEntryId: BaseTokenizedObject {
+			get {
+				return self.append("rootEntryId") 
+			}
+		}
+		
+		public var parentEntryId: BaseTokenizedObject {
+			get {
+				return self.append("parentEntryId") 
+			}
+		}
+		
+		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {
+			get {
+				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
+			} 
+		}
+		
+		public var entitledUsersEdit: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersEdit") 
+			}
+		}
+		
+		public var entitledUsersPublish: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersPublish") 
+			}
+		}
+		
+		public var capabilities: BaseTokenizedObject {
+			get {
+				return self.append("capabilities") 
+			}
+		}
+		
+		public var templateEntryId: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryId") 
+			}
+		}
+		
+		public var displayInSearch: BaseTokenizedObject {
+			get {
+				return self.append("displayInSearch") 
+			}
+		}
+	}
+
 	/**  Auto generated 10 characters alphanumeric string  */
 	public var id: String? = nil
 	/**  Entry name (Min 1 chars)  */
@@ -135,6 +402,178 @@ open class BaseEntry: ObjectBase {
 	public var displayInSearch: EntryDisplayInSearchType? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(creatorId: String) {
+		self.dict["creatorId"] = creatorId
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(adminTags: String) {
+		self.dict["adminTags"] = adminTags
+	}
+	
+	public func setMultiRequestToken(categories: String) {
+		self.dict["categories"] = categories
+	}
+	
+	public func setMultiRequestToken(categoriesIds: String) {
+		self.dict["categoriesIds"] = categoriesIds
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(moderationStatus: String) {
+		self.dict["moderationStatus"] = moderationStatus
+	}
+	
+	public func setMultiRequestToken(moderationCount: String) {
+		self.dict["moderationCount"] = moderationCount
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(rank: String) {
+		self.dict["rank"] = rank
+	}
+	
+	public func setMultiRequestToken(totalRank: String) {
+		self.dict["totalRank"] = totalRank
+	}
+	
+	public func setMultiRequestToken(votes: String) {
+		self.dict["votes"] = votes
+	}
+	
+	public func setMultiRequestToken(groupId: String) {
+		self.dict["groupId"] = groupId
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(downloadUrl: String) {
+		self.dict["downloadUrl"] = downloadUrl
+	}
+	
+	public func setMultiRequestToken(searchText: String) {
+		self.dict["searchText"] = searchText
+	}
+	
+	public func setMultiRequestToken(licenseType: String) {
+		self.dict["licenseType"] = licenseType
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(thumbnailUrl: String) {
+		self.dict["thumbnailUrl"] = thumbnailUrl
+	}
+	
+	public func setMultiRequestToken(accessControlId: String) {
+		self.dict["accessControlId"] = accessControlId
+	}
+	
+	public func setMultiRequestToken(startDate: String) {
+		self.dict["startDate"] = startDate
+	}
+	
+	public func setMultiRequestToken(endDate: String) {
+		self.dict["endDate"] = endDate
+	}
+	
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(replacingEntryId: String) {
+		self.dict["replacingEntryId"] = replacingEntryId
+	}
+	
+	public func setMultiRequestToken(replacedEntryId: String) {
+		self.dict["replacedEntryId"] = replacedEntryId
+	}
+	
+	public func setMultiRequestToken(replacementStatus: String) {
+		self.dict["replacementStatus"] = replacementStatus
+	}
+	
+	public func setMultiRequestToken(partnerSortValue: String) {
+		self.dict["partnerSortValue"] = partnerSortValue
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(redirectEntryId: String) {
+		self.dict["redirectEntryId"] = redirectEntryId
+	}
+	
+	public func setMultiRequestToken(rootEntryId: String) {
+		self.dict["rootEntryId"] = rootEntryId
+	}
+	
+	public func setMultiRequestToken(parentEntryId: String) {
+		self.dict["parentEntryId"] = parentEntryId
+	}
+	
+	public func setMultiRequestToken(entitledUsersEdit: String) {
+		self.dict["entitledUsersEdit"] = entitledUsersEdit
+	}
+	
+	public func setMultiRequestToken(entitledUsersPublish: String) {
+		self.dict["entitledUsersPublish"] = entitledUsersPublish
+	}
+	
+	public func setMultiRequestToken(capabilities: String) {
+		self.dict["capabilities"] = capabilities
+	}
+	
+	public func setMultiRequestToken(templateEntryId: String) {
+		self.dict["templateEntryId"] = templateEntryId
+	}
+	
+	public func setMultiRequestToken(displayInSearch: String) {
+		self.dict["displayInSearch"] = displayInSearch
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

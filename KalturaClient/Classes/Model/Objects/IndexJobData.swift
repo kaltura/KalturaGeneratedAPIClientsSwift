@@ -35,6 +35,33 @@
 
 open class IndexJobData: JobData {
 
+	public class IndexJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var filter: Filter.FilterTokenizer {
+			get {
+				return Filter.FilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var lastIndexId: BaseTokenizedObject {
+			get {
+				return self.append("lastIndexId") 
+			}
+		}
+		
+		public var lastIndexDepth: BaseTokenizedObject {
+			get {
+				return self.append("lastIndexDepth") 
+			}
+		}
+		
+		public var shouldUpdate: BaseTokenizedObject {
+			get {
+				return self.append("shouldUpdate") 
+			}
+		}
+	}
+
 	/**  The filter should return the list of objects that need to be reindexed.  */
 	public var filter: Filter? = nil
 	/**  Indicates the last id that reindexed, used when the batch crached, to re-run
@@ -48,6 +75,18 @@ open class IndexJobData: JobData {
 	public var shouldUpdate: Bool? = nil
 
 
+	public func setMultiRequestToken(lastIndexId: String) {
+		self.dict["lastIndexId"] = lastIndexId
+	}
+	
+	public func setMultiRequestToken(lastIndexDepth: String) {
+		self.dict["lastIndexDepth"] = lastIndexDepth
+	}
+	
+	public func setMultiRequestToken(shouldUpdate: String) {
+		self.dict["shouldUpdate"] = shouldUpdate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

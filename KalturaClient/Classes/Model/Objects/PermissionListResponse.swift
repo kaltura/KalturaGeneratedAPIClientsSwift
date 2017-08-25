@@ -35,6 +35,15 @@
 
 open class PermissionListResponse: ListResponse {
 
+	public class PermissionListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Permission.PermissionTokenizer> {
+			get {
+				return ArrayTokenizedObject<Permission.PermissionTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Permission>? = nil
 
 

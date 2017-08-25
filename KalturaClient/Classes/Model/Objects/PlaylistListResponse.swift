@@ -35,6 +35,15 @@
 
 open class PlaylistListResponse: ListResponse {
 
+	public class PlaylistListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Playlist.PlaylistTokenizer> {
+			get {
+				return ArrayTokenizedObject<Playlist.PlaylistTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Playlist>? = nil
 
 

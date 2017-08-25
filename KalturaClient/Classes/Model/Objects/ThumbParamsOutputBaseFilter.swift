@@ -35,12 +35,55 @@
 
 open class ThumbParamsOutputBaseFilter: ThumbParamsFilter {
 
+	public class ThumbParamsOutputBaseFilterTokenizer: ThumbParamsFilter.ThumbParamsFilterTokenizer {
+		
+		public var thumbParamsIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsIdEqual") 
+			}
+		}
+		
+		public var thumbParamsVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsVersionEqual") 
+			}
+		}
+		
+		public var thumbAssetIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetIdEqual") 
+			}
+		}
+		
+		public var thumbAssetVersionEqual: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetVersionEqual") 
+			}
+		}
+	}
+
 	public var thumbParamsIdEqual: Int? = nil
 	public var thumbParamsVersionEqual: String? = nil
 	public var thumbAssetIdEqual: String? = nil
 	public var thumbAssetVersionEqual: String? = nil
 
 
+	public func setMultiRequestToken(thumbParamsIdEqual: String) {
+		self.dict["thumbParamsIdEqual"] = thumbParamsIdEqual
+	}
+	
+	public func setMultiRequestToken(thumbParamsVersionEqual: String) {
+		self.dict["thumbParamsVersionEqual"] = thumbParamsVersionEqual
+	}
+	
+	public func setMultiRequestToken(thumbAssetIdEqual: String) {
+		self.dict["thumbAssetIdEqual"] = thumbAssetIdEqual
+	}
+	
+	public func setMultiRequestToken(thumbAssetVersionEqual: String) {
+		self.dict["thumbAssetVersionEqual"] = thumbAssetVersionEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

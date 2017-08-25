@@ -36,6 +36,9 @@
 /**  Base class to all operation attributes types  */
 open class OperationAttributes: ObjectBase {
 
+	public class OperationAttributesTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

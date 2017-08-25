@@ -35,9 +35,22 @@
 
 open class GoogleVideoSyndicationFeed: BaseSyndicationFeed {
 
+	public class GoogleVideoSyndicationFeedTokenizer: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
+		
+		public var adultContent: BaseTokenizedObject {
+			get {
+				return self.append("adultContent") 
+			}
+		}
+	}
+
 	public var adultContent: GoogleSyndicationFeedAdultValues? = nil
 
 
+	public func setMultiRequestToken(adultContent: String) {
+		self.dict["adultContent"] = adultContent
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

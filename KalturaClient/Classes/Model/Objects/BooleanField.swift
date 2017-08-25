@@ -36,6 +36,9 @@
 /**  A boolean representation to return evaluated dynamic value  */
 open class BooleanField: BooleanValue {
 
+	public class BooleanFieldTokenizer: BooleanValue.BooleanValueTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

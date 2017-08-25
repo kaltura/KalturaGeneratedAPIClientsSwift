@@ -37,47 +37,116 @@
   should be used here  */
 public final class PollService{
 
-	public static func add() -> RequestBuilder<String> {
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var pollType: BaseTokenizedObject {
+			get {
+				return self.append("pollType") 
+			}
+		}
+	}
+
+	public static func add() -> RequestBuilder<String, BaseTokenizedObject, AddTokenizer> {
 		return add(pollType: "SINGLE_ANONYMOUS")
 	}
 
 	/**  Add Action  */
-	public static func add(pollType: String?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "poll_poll", action: "add")
+	public static func add(pollType: String?) -> RequestBuilder<String, BaseTokenizedObject, AddTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, AddTokenizer> = RequestBuilder<String, BaseTokenizedObject, AddTokenizer>(service: "poll_poll", action: "add")
 			.setBody(key: "pollType", value: pollType)
 
 		return request
 	}
 
+	public class GetVoteTokenizer: ClientTokenizer  {
+		
+		public var pollId: BaseTokenizedObject {
+			get {
+				return self.append("pollId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
 	/**  Vote Action  */
-	public static func getVote(pollId: String, userId: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "poll_poll", action: "getVote")
+	public static func getVote(pollId: String, userId: String) -> RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer>(service: "poll_poll", action: "getVote")
 			.setBody(key: "pollId", value: pollId)
 			.setBody(key: "userId", value: userId)
 
 		return request
 	}
 
+	public class GetVotesTokenizer: ClientTokenizer  {
+		
+		public var pollId: BaseTokenizedObject {
+			get {
+				return self.append("pollId") 
+			}
+		}
+		
+		public var answerIds: BaseTokenizedObject {
+			get {
+				return self.append("answerIds") 
+			}
+		}
+	}
+
 	/**  Get Votes Action  */
-	public static func getVotes(pollId: String, answerIds: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "poll_poll", action: "getVotes")
+	public static func getVotes(pollId: String, answerIds: String) -> RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer>(service: "poll_poll", action: "getVotes")
 			.setBody(key: "pollId", value: pollId)
 			.setBody(key: "answerIds", value: answerIds)
 
 		return request
 	}
 
+	public class ResetVotesTokenizer: ClientTokenizer  {
+		
+		public var pollId: BaseTokenizedObject {
+			get {
+				return self.append("pollId") 
+			}
+		}
+	}
+
 	/**  Get resetVotes Action  */
-	public static func resetVotes(pollId: String) -> RequestBuilder<Void> {
+	public static func resetVotes(pollId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "poll_poll", action: "resetVotes")
 			.setBody(key: "pollId", value: pollId)
 
 		return request
 	}
 
+	public class VoteTokenizer: ClientTokenizer  {
+		
+		public var pollId: BaseTokenizedObject {
+			get {
+				return self.append("pollId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var answerIds: BaseTokenizedObject {
+			get {
+				return self.append("answerIds") 
+			}
+		}
+	}
+
 	/**  Vote Action  */
-	public static func vote(pollId: String, userId: String, answerIds: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "poll_poll", action: "vote")
+	public static func vote(pollId: String, userId: String, answerIds: String) -> RequestBuilder<String, BaseTokenizedObject, VoteTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, VoteTokenizer> = RequestBuilder<String, BaseTokenizedObject, VoteTokenizer>(service: "poll_poll", action: "vote")
 			.setBody(key: "pollId", value: pollId)
 			.setBody(key: "userId", value: userId)
 			.setBody(key: "answerIds", value: answerIds)

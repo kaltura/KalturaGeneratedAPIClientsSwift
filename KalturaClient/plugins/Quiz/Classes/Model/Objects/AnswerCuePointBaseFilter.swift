@@ -35,12 +35,55 @@
 
 open class AnswerCuePointBaseFilter: CuePointFilter {
 
+	public class AnswerCuePointBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var parentIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("parentIdEqual") 
+			}
+		}
+		
+		public var parentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("parentIdIn") 
+			}
+		}
+		
+		public var quizUserEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("quizUserEntryIdEqual") 
+			}
+		}
+		
+		public var quizUserEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("quizUserEntryIdIn") 
+			}
+		}
+	}
+
 	public var parentIdEqual: String? = nil
 	public var parentIdIn: String? = nil
 	public var quizUserEntryIdEqual: String? = nil
 	public var quizUserEntryIdIn: String? = nil
 
 
+	public func setMultiRequestToken(parentIdEqual: String) {
+		self.dict["parentIdEqual"] = parentIdEqual
+	}
+	
+	public func setMultiRequestToken(parentIdIn: String) {
+		self.dict["parentIdIn"] = parentIdIn
+	}
+	
+	public func setMultiRequestToken(quizUserEntryIdEqual: String) {
+		self.dict["quizUserEntryIdEqual"] = quizUserEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(quizUserEntryIdIn: String) {
+		self.dict["quizUserEntryIdIn"] = quizUserEntryIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

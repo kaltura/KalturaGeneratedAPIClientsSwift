@@ -37,6 +37,141 @@
   analytics system  */
 open class StatsEvent: ObjectBase {
 
+	public class StatsEventTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var clientVer: BaseTokenizedObject {
+			get {
+				return self.append("clientVer") 
+			}
+		}
+		
+		public var eventType: BaseTokenizedObject {
+			get {
+				return self.append("eventType") 
+			}
+		}
+		
+		public var eventTimestamp: BaseTokenizedObject {
+			get {
+				return self.append("eventTimestamp") 
+			}
+		}
+		
+		public var sessionId: BaseTokenizedObject {
+			get {
+				return self.append("sessionId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var uniqueViewer: BaseTokenizedObject {
+			get {
+				return self.append("uniqueViewer") 
+			}
+		}
+		
+		public var widgetId: BaseTokenizedObject {
+			get {
+				return self.append("widgetId") 
+			}
+		}
+		
+		public var uiconfId: BaseTokenizedObject {
+			get {
+				return self.append("uiconfId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var currentPoint: BaseTokenizedObject {
+			get {
+				return self.append("currentPoint") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var userIp: BaseTokenizedObject {
+			get {
+				return self.append("userIp") 
+			}
+		}
+		
+		public var processDuration: BaseTokenizedObject {
+			get {
+				return self.append("processDuration") 
+			}
+		}
+		
+		public var controlId: BaseTokenizedObject {
+			get {
+				return self.append("controlId") 
+			}
+		}
+		
+		public var seek: BaseTokenizedObject {
+			get {
+				return self.append("seek") 
+			}
+		}
+		
+		public var newPoint: BaseTokenizedObject {
+			get {
+				return self.append("newPoint") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+		
+		public var isFirstInSession: BaseTokenizedObject {
+			get {
+				return self.append("isFirstInSession") 
+			}
+		}
+		
+		public var applicationId: BaseTokenizedObject {
+			get {
+				return self.append("applicationId") 
+			}
+		}
+		
+		public var contextId: BaseTokenizedObject {
+			get {
+				return self.append("contextId") 
+			}
+		}
+		
+		public var featureType: BaseTokenizedObject {
+			get {
+				return self.append("featureType") 
+			}
+		}
+	}
+
 	public var clientVer: String? = nil
 	public var eventType: StatsEventType? = nil
 	/**  the client's timestamp of this event  */
@@ -80,6 +215,94 @@ open class StatsEvent: ObjectBase {
 	public var featureType: StatsFeatureType? = nil
 
 
+	public func setMultiRequestToken(clientVer: String) {
+		self.dict["clientVer"] = clientVer
+	}
+	
+	public func setMultiRequestToken(eventType: String) {
+		self.dict["eventType"] = eventType
+	}
+	
+	public func setMultiRequestToken(eventTimestamp: String) {
+		self.dict["eventTimestamp"] = eventTimestamp
+	}
+	
+	public func setMultiRequestToken(sessionId: String) {
+		self.dict["sessionId"] = sessionId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(uniqueViewer: String) {
+		self.dict["uniqueViewer"] = uniqueViewer
+	}
+	
+	public func setMultiRequestToken(widgetId: String) {
+		self.dict["widgetId"] = widgetId
+	}
+	
+	public func setMultiRequestToken(uiconfId: String) {
+		self.dict["uiconfId"] = uiconfId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(currentPoint: String) {
+		self.dict["currentPoint"] = currentPoint
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(userIp: String) {
+		self.dict["userIp"] = userIp
+	}
+	
+	public func setMultiRequestToken(processDuration: String) {
+		self.dict["processDuration"] = processDuration
+	}
+	
+	public func setMultiRequestToken(controlId: String) {
+		self.dict["controlId"] = controlId
+	}
+	
+	public func setMultiRequestToken(seek: String) {
+		self.dict["seek"] = seek
+	}
+	
+	public func setMultiRequestToken(newPoint: String) {
+		self.dict["newPoint"] = newPoint
+	}
+	
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
+	public func setMultiRequestToken(isFirstInSession: String) {
+		self.dict["isFirstInSession"] = isFirstInSession
+	}
+	
+	public func setMultiRequestToken(applicationId: String) {
+		self.dict["applicationId"] = applicationId
+	}
+	
+	public func setMultiRequestToken(contextId: String) {
+		self.dict["contextId"] = contextId
+	}
+	
+	public func setMultiRequestToken(featureType: String) {
+		self.dict["featureType"] = featureType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -37,6 +37,9 @@
   content parameters  */
 open class HttpNotificationDataFields: HttpNotificationData {
 
+	public class HttpNotificationDataFieldsTokenizer: HttpNotificationData.HttpNotificationDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,11 +35,44 @@
 
 open class ApiParameterPermissionItem: PermissionItem {
 
+	public class ApiParameterPermissionItemTokenizer: PermissionItem.PermissionItemTokenizer {
+		
+		public var object: BaseTokenizedObject {
+			get {
+				return self.append("object") 
+			}
+		}
+		
+		public var parameter: BaseTokenizedObject {
+			get {
+				return self.append("parameter") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+	}
+
 	public var object: String? = nil
 	public var parameter: String? = nil
 	public var action: ApiParameterPermissionItemAction? = nil
 
 
+	public func setMultiRequestToken(object: String) {
+		self.dict["object"] = object
+	}
+	
+	public func setMultiRequestToken(parameter: String) {
+		self.dict["parameter"] = parameter
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

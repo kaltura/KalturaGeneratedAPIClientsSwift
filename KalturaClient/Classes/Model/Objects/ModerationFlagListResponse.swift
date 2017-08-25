@@ -35,6 +35,15 @@
 
 open class ModerationFlagListResponse: ListResponse {
 
+	public class ModerationFlagListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ModerationFlag.ModerationFlagTokenizer> {
+			get {
+				return ArrayTokenizedObject<ModerationFlag.ModerationFlagTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ModerationFlag>? = nil
 
 

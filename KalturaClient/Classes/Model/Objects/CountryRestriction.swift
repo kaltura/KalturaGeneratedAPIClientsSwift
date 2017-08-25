@@ -35,12 +35,35 @@
 
 open class CountryRestriction: BaseRestriction {
 
+	public class CountryRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var countryRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("countryRestrictionType") 
+			}
+		}
+		
+		public var countryList: BaseTokenizedObject {
+			get {
+				return self.append("countryList") 
+			}
+		}
+	}
+
 	/**  Country restriction type (Allow or deny)  */
 	public var countryRestrictionType: CountryRestrictionType? = nil
 	/**  Comma separated list of country codes to allow to deny  */
 	public var countryList: String? = nil
 
 
+	public func setMultiRequestToken(countryRestrictionType: String) {
+		self.dict["countryRestrictionType"] = countryRestrictionType
+	}
+	
+	public func setMultiRequestToken(countryList: String) {
+		self.dict["countryList"] = countryList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

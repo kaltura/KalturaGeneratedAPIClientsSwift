@@ -36,10 +36,23 @@
 /**  Represents the current time context on Kaltura servers  */
 open class TimeContextField: IntegerField {
 
+	public class TimeContextFieldTokenizer: IntegerField.IntegerFieldTokenizer {
+		
+		public var offset: BaseTokenizedObject {
+			get {
+				return self.append("offset") 
+			}
+		}
+	}
+
 	/**  Time offset in seconds since current time  */
 	public var offset: Int? = nil
 
 
+	public func setMultiRequestToken(offset: String) {
+		self.dict["offset"] = offset
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

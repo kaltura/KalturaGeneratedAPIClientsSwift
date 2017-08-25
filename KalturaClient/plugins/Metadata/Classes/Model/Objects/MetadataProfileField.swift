@@ -35,12 +35,55 @@
 
 open class MetadataProfileField: ObjectBase {
 
+	public class MetadataProfileFieldTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var xPath: BaseTokenizedObject {
+			get {
+				return self.append("xPath") 
+			}
+		}
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var xPath: String? = nil
 	public var key: String? = nil
 	public var label: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(xPath: String) {
+		self.dict["xPath"] = xPath
+	}
+	
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

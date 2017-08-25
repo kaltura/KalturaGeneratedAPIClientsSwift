@@ -35,6 +35,15 @@
 
 open class TrackEntryListResponse: ListResponse {
 
+	public class TrackEntryListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<TrackEntry.TrackEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<TrackEntry.TrackEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<TrackEntry>? = nil
 
 

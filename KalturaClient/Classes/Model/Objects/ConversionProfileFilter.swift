@@ -35,6 +35,9 @@
 
 open class ConversionProfileFilter: ConversionProfileBaseFilter {
 
+	public class ConversionProfileFilterTokenizer: ConversionProfileBaseFilter.ConversionProfileBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

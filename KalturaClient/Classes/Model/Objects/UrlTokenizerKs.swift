@@ -35,10 +35,33 @@
 
 open class UrlTokenizerKs: UrlTokenizer {
 
+	public class UrlTokenizerKsTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var usePath: BaseTokenizedObject {
+			get {
+				return self.append("usePath") 
+			}
+		}
+		
+		public var additionalUris: BaseTokenizedObject {
+			get {
+				return self.append("additionalUris") 
+			}
+		}
+	}
+
 	public var usePath: Bool? = nil
 	public var additionalUris: String? = nil
 
 
+	public func setMultiRequestToken(usePath: String) {
+		self.dict["usePath"] = usePath
+	}
+	
+	public func setMultiRequestToken(additionalUris: String) {
+		self.dict["additionalUris"] = additionalUris
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

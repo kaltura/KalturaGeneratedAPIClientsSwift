@@ -36,6 +36,33 @@
 /**  Object which contains contextual entry-related data.  */
 open class EntryContextDataParams: AccessControlScope {
 
+	public class EntryContextDataParamsTokenizer: AccessControlScope.AccessControlScopeTokenizer {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var flavorTags: BaseTokenizedObject {
+			get {
+				return self.append("flavorTags") 
+			}
+		}
+		
+		public var streamerType: BaseTokenizedObject {
+			get {
+				return self.append("streamerType") 
+			}
+		}
+		
+		public var mediaProtocol: BaseTokenizedObject {
+			get {
+				return self.append("mediaProtocol") 
+			}
+		}
+	}
+
 	/**  Id of the current flavor.  */
 	public var flavorAssetId: String? = nil
 	/**  The tags of the flavors that should be used for playback.  */
@@ -46,6 +73,22 @@ open class EntryContextDataParams: AccessControlScope {
 	public var mediaProtocol: String? = nil
 
 
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(flavorTags: String) {
+		self.dict["flavorTags"] = flavorTags
+	}
+	
+	public func setMultiRequestToken(streamerType: String) {
+		self.dict["streamerType"] = streamerType
+	}
+	
+	public func setMultiRequestToken(mediaProtocol: String) {
+		self.dict["mediaProtocol"] = mediaProtocol
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

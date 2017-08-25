@@ -35,12 +35,35 @@
 
 open class IpAddressRestriction: BaseRestriction {
 
+	public class IpAddressRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var ipAddressRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("ipAddressRestrictionType") 
+			}
+		}
+		
+		public var ipAddressList: BaseTokenizedObject {
+			get {
+				return self.append("ipAddressList") 
+			}
+		}
+	}
+
 	/**  Ip address restriction type (Allow or deny)  */
 	public var ipAddressRestrictionType: IpAddressRestrictionType? = nil
 	/**  Comma separated list of ip address to allow to deny  */
 	public var ipAddressList: String? = nil
 
 
+	public func setMultiRequestToken(ipAddressRestrictionType: String) {
+		self.dict["ipAddressRestrictionType"] = ipAddressRestrictionType
+	}
+	
+	public func setMultiRequestToken(ipAddressList: String) {
+		self.dict["ipAddressList"] = ipAddressList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

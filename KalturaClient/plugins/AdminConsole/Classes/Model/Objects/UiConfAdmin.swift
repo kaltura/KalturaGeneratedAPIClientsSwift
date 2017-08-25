@@ -35,9 +35,22 @@
 
 open class UiConfAdmin: UiConf {
 
+	public class UiConfAdminTokenizer: UiConf.UiConfTokenizer {
+		
+		public var isPublic: BaseTokenizedObject {
+			get {
+				return self.append("isPublic") 
+			}
+		}
+	}
+
 	public var isPublic: Bool? = nil
 
 
+	public func setMultiRequestToken(isPublic: String) {
+		self.dict["isPublic"] = isPublic
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

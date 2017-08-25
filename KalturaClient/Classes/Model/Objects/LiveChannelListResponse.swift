@@ -35,6 +35,15 @@
 
 open class LiveChannelListResponse: ListResponse {
 
+	public class LiveChannelListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<LiveChannel.LiveChannelTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveChannel.LiveChannelTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<LiveChannel>? = nil
 
 

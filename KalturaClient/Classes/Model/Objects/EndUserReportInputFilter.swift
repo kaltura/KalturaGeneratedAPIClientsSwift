@@ -35,12 +35,55 @@
 
 open class EndUserReportInputFilter: ReportInputFilter {
 
+	public class EndUserReportInputFilterTokenizer: ReportInputFilter.ReportInputFilterTokenizer {
+		
+		public var application: BaseTokenizedObject {
+			get {
+				return self.append("application") 
+			}
+		}
+		
+		public var userIds: BaseTokenizedObject {
+			get {
+				return self.append("userIds") 
+			}
+		}
+		
+		public var playbackContext: BaseTokenizedObject {
+			get {
+				return self.append("playbackContext") 
+			}
+		}
+		
+		public var ancestorPlaybackContext: BaseTokenizedObject {
+			get {
+				return self.append("ancestorPlaybackContext") 
+			}
+		}
+	}
+
 	public var application: String? = nil
 	public var userIds: String? = nil
 	public var playbackContext: String? = nil
 	public var ancestorPlaybackContext: String? = nil
 
 
+	public func setMultiRequestToken(application: String) {
+		self.dict["application"] = application
+	}
+	
+	public func setMultiRequestToken(userIds: String) {
+		self.dict["userIds"] = userIds
+	}
+	
+	public func setMultiRequestToken(playbackContext: String) {
+		self.dict["playbackContext"] = playbackContext
+	}
+	
+	public func setMultiRequestToken(ancestorPlaybackContext: String) {
+		self.dict["ancestorPlaybackContext"] = ancestorPlaybackContext
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

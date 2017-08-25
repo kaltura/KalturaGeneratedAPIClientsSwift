@@ -35,6 +35,21 @@
 
 open class DropFolderContentFileHandlerConfig: DropFolderFileHandlerConfig {
 
+	public class DropFolderContentFileHandlerConfigTokenizer: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer {
+		
+		public var contentMatchPolicy: BaseTokenizedObject {
+			get {
+				return self.append("contentMatchPolicy") 
+			}
+		}
+		
+		public var slugRegex: BaseTokenizedObject {
+			get {
+				return self.append("slugRegex") 
+			}
+		}
+	}
+
 	public var contentMatchPolicy: DropFolderContentFileHandlerMatchPolicy? = nil
 	/**  Regular expression that defines valid file names to be handled.   The following
 	  might be extracted from the file name and used if defined:   -
@@ -44,6 +59,14 @@ open class DropFolderContentFileHandlerConfig: DropFolderFileHandlerConfig {
 	public var slugRegex: String? = nil
 
 
+	public func setMultiRequestToken(contentMatchPolicy: String) {
+		self.dict["contentMatchPolicy"] = contentMatchPolicy
+	}
+	
+	public func setMultiRequestToken(slugRegex: String) {
+		self.dict["slugRegex"] = slugRegex
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

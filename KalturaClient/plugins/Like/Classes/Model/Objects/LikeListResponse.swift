@@ -35,6 +35,15 @@
 
 open class LikeListResponse: ListResponse {
 
+	public class LikeListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Like.LikeTokenizer> {
+			get {
+				return ArrayTokenizedObject<Like.LikeTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Like>? = nil
 
 

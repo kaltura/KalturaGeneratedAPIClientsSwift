@@ -37,9 +37,22 @@
   KalturaLiveStreamEntryCompareAttribute enum to provide attribute name. /  */
 open class LiveStreamEntryCompareAttributeCondition: SearchComparableAttributeCondition {
 
+	public class LiveStreamEntryCompareAttributeConditionTokenizer: SearchComparableAttributeCondition.SearchComparableAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: LiveStreamEntryCompareAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

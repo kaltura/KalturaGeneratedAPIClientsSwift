@@ -35,9 +35,22 @@
 
 open class UserLoginDataBaseFilter: RelatedFilter {
 
+	public class UserLoginDataBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var loginEmailEqual: BaseTokenizedObject {
+			get {
+				return self.append("loginEmailEqual") 
+			}
+		}
+	}
+
 	public var loginEmailEqual: String? = nil
 
 
+	public func setMultiRequestToken(loginEmailEqual: String) {
+		self.dict["loginEmailEqual"] = loginEmailEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

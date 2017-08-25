@@ -35,61 +35,136 @@
 
 extension UserEntryService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var userEntry: UserEntry.UserEntryTokenizer {
+			get {
+				return UserEntry.UserEntryTokenizer(self.append("userEntry")) 
+			}
+		}
+	}
+
 	/**  Adds a user_entry to the Kaltura DB.  */
-	public static func add(userEntry: UserEntry) -> RequestBuilder<UserEntry> {
-		let request: RequestBuilder<UserEntry> = RequestBuilder<UserEntry>(service: "userentry", action: "add")
+	public static func add(userEntry: UserEntry) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer>(service: "userentry", action: "add")
 			.setBody(key: "userEntry", value: userEntry)
 
 		return request
 	}
 
-	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "userentry", action: "bulkDelete")
+	public class BulkDeleteTokenizer: ClientTokenizer  {
+		
+		public var filter: UserEntryFilter.UserEntryFilterTokenizer {
+			get {
+				return UserEntryFilter.UserEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
+	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> = RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
 			.setBody(key: "filter", value: filter)
 
 		return request
 	}
 
-	public static func delete(id: Int) -> RequestBuilder<UserEntry> {
-		let request: RequestBuilder<UserEntry> = RequestBuilder<UserEntry>(service: "userentry", action: "delete")
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func delete(id: Int) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer>(service: "userentry", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func get(id: String) -> RequestBuilder<UserEntry> {
-		let request: RequestBuilder<UserEntry> = RequestBuilder<UserEntry>(service: "userentry", action: "get")
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func get(id: String) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer> {
+		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer>(service: "userentry", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<UserEntryListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: UserEntryFilter.UserEntryFilterTokenizer {
+			get {
+				return UserEntryFilter.UserEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: UserEntryFilter?) -> RequestBuilder<UserEntryListResponse> {
+	public static func list(filter: UserEntryFilter?) -> RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
-	public static func list(filter: UserEntryFilter?, pager: FilterPager?) -> RequestBuilder<UserEntryListResponse> {
-		let request: RequestBuilder<UserEntryListResponse> = RequestBuilder<UserEntryListResponse>(service: "userentry", action: "list")
+	public static func list(filter: UserEntryFilter?, pager: FilterPager?) -> RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> = RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer>(service: "userentry", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class SubmitQuizTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Submits the quiz so that it's status will be submitted and calculates the score
 	  for the quiz  */
-	public static func submitQuiz(id: Int) -> RequestBuilder<QuizUserEntry> {
-		let request: RequestBuilder<QuizUserEntry> = RequestBuilder<QuizUserEntry>(service: "userentry", action: "submitQuiz")
+	public static func submitQuiz(id: Int) -> RequestBuilder<QuizUserEntry, QuizUserEntry.QuizUserEntryTokenizer, SubmitQuizTokenizer> {
+		let request: RequestBuilder<QuizUserEntry, QuizUserEntry.QuizUserEntryTokenizer, SubmitQuizTokenizer> = RequestBuilder<QuizUserEntry, QuizUserEntry.QuizUserEntryTokenizer, SubmitQuizTokenizer>(service: "userentry", action: "submitQuiz")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func update(id: Int, userEntry: UserEntry) -> RequestBuilder<Void> {
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var userEntry: UserEntry.UserEntryTokenizer {
+			get {
+				return UserEntry.UserEntryTokenizer(self.append("userEntry")) 
+			}
+		}
+	}
+
+	public static func update(id: Int, userEntry: UserEntry) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "userentry", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "userEntry", value: userEntry)

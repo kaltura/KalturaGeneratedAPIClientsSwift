@@ -35,6 +35,27 @@
 
 open class MediaServerNode: DeliveryServerNode {
 
+	public class MediaServerNodeTokenizer: DeliveryServerNode.DeliveryServerNodeTokenizer {
+		
+		public var applicationName: BaseTokenizedObject {
+			get {
+				return self.append("applicationName") 
+			}
+		}
+		
+		public var mediaServerPortConfig: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mediaServerPortConfig"))
+			} 
+		}
+		
+		public var mediaServerPlaybackDomainConfig: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mediaServerPlaybackDomainConfig"))
+			} 
+		}
+	}
+
 	/**  Media server application name  */
 	public var applicationName: String? = nil
 	/**  Media server playback port configuration by protocol and format  */
@@ -43,6 +64,10 @@ open class MediaServerNode: DeliveryServerNode {
 	public var mediaServerPlaybackDomainConfig: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(applicationName: String) {
+		self.dict["applicationName"] = applicationName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

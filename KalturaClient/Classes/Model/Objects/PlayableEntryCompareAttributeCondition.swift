@@ -37,9 +37,22 @@
   KalturaPlayableEntryCompareAttribute enum to provide attribute name. /  */
 open class PlayableEntryCompareAttributeCondition: SearchComparableAttributeCondition {
 
+	public class PlayableEntryCompareAttributeConditionTokenizer: SearchComparableAttributeCondition.SearchComparableAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: PlayableEntryCompareAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

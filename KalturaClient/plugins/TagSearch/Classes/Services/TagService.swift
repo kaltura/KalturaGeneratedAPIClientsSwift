@@ -36,15 +36,39 @@
 /**  Search object tags  */
 public final class TagService{
 
+	public class DeletePendingTokenizer: ClientTokenizer  {
+	}
+
 	/**  Action goes over all tags with instanceCount==0 and checks whether they need to
 	  be removed from the DB. Returns number of removed tags.  */
-	public static func deletePending() -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "tagsearch_tag", action: "deletePending")
+	public static func deletePending() -> RequestBuilder<Int, BaseTokenizedObject, DeletePendingTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, DeletePendingTokenizer> = RequestBuilder<Int, BaseTokenizedObject, DeletePendingTokenizer>(service: "tagsearch_tag", action: "deletePending")
 
 		return request
 	}
 
-	public static func indexCategoryEntryTags(categoryId: Int, pcToDecrement: String, pcToIncrement: String) -> RequestBuilder<Void> {
+	public class IndexCategoryEntryTagsTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var pcToDecrement: BaseTokenizedObject {
+			get {
+				return self.append("pcToDecrement") 
+			}
+		}
+		
+		public var pcToIncrement: BaseTokenizedObject {
+			get {
+				return self.append("pcToIncrement") 
+			}
+		}
+	}
+
+	public static func indexCategoryEntryTags(categoryId: Int, pcToDecrement: String, pcToIncrement: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "tagsearch_tag", action: "indexCategoryEntryTags")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "pcToDecrement", value: pcToDecrement)
@@ -53,12 +77,27 @@ public final class TagService{
 		return request
 	}
 
-	public static func search(tagFilter: TagFilter) -> RequestBuilder<TagListResponse> {
+	public class SearchTokenizer: ClientTokenizer  {
+		
+		public var tagFilter: TagFilter.TagFilterTokenizer {
+			get {
+				return TagFilter.TagFilterTokenizer(self.append("tagFilter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func search(tagFilter: TagFilter) -> RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer> {
 		return search(tagFilter: tagFilter, pager: nil)
 	}
 
-	public static func search(tagFilter: TagFilter, pager: FilterPager?) -> RequestBuilder<TagListResponse> {
-		let request: RequestBuilder<TagListResponse> = RequestBuilder<TagListResponse>(service: "tagsearch_tag", action: "search")
+	public static func search(tagFilter: TagFilter, pager: FilterPager?) -> RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer> {
+		let request: RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer> = RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer>(service: "tagsearch_tag", action: "search")
 			.setBody(key: "tagFilter", value: tagFilter)
 			.setBody(key: "pager", value: pager)
 

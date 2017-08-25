@@ -35,6 +35,9 @@
 
 open class SyndicationDistributionProfileBaseFilter: DistributionProfileFilter {
 
+	public class SyndicationDistributionProfileBaseFilterTokenizer: DistributionProfileFilter.DistributionProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

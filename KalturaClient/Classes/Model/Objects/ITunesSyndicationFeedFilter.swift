@@ -35,6 +35,9 @@
 
 open class ITunesSyndicationFeedFilter: ITunesSyndicationFeedBaseFilter {
 
+	public class ITunesSyndicationFeedFilterTokenizer: ITunesSyndicationFeedBaseFilter.ITunesSyndicationFeedBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,11 +35,44 @@
 
 open class EntryLiveStats: LiveStats {
 
+	public class EntryLiveStatsTokenizer: LiveStats.LiveStatsTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var peakAudience: BaseTokenizedObject {
+			get {
+				return self.append("peakAudience") 
+			}
+		}
+		
+		public var peakDvrAudience: BaseTokenizedObject {
+			get {
+				return self.append("peakDvrAudience") 
+			}
+		}
+	}
+
 	public var entryId: String? = nil
 	public var peakAudience: Int? = nil
 	public var peakDvrAudience: Int? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(peakAudience: String) {
+		self.dict["peakAudience"] = peakAudience
+	}
+	
+	public func setMultiRequestToken(peakDvrAudience: String) {
+		self.dict["peakDvrAudience"] = peakDvrAudience
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

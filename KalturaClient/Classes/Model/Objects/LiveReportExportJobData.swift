@@ -35,6 +35,39 @@
 
 open class LiveReportExportJobData: JobData {
 
+	public class LiveReportExportJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var timeReference: BaseTokenizedObject {
+			get {
+				return self.append("timeReference") 
+			}
+		}
+		
+		public var timeZoneOffset: BaseTokenizedObject {
+			get {
+				return self.append("timeZoneOffset") 
+			}
+		}
+		
+		public var entryIds: BaseTokenizedObject {
+			get {
+				return self.append("entryIds") 
+			}
+		}
+		
+		public var outputPath: BaseTokenizedObject {
+			get {
+				return self.append("outputPath") 
+			}
+		}
+		
+		public var recipientEmail: BaseTokenizedObject {
+			get {
+				return self.append("recipientEmail") 
+			}
+		}
+	}
+
 	public var timeReference: Int? = nil
 	public var timeZoneOffset: Int? = nil
 	public var entryIds: String? = nil
@@ -42,6 +75,26 @@ open class LiveReportExportJobData: JobData {
 	public var recipientEmail: String? = nil
 
 
+	public func setMultiRequestToken(timeReference: String) {
+		self.dict["timeReference"] = timeReference
+	}
+	
+	public func setMultiRequestToken(timeZoneOffset: String) {
+		self.dict["timeZoneOffset"] = timeZoneOffset
+	}
+	
+	public func setMultiRequestToken(entryIds: String) {
+		self.dict["entryIds"] = entryIds
+	}
+	
+	public func setMultiRequestToken(outputPath: String) {
+		self.dict["outputPath"] = outputPath
+	}
+	
+	public func setMultiRequestToken(recipientEmail: String) {
+		self.dict["recipientEmail"] = recipientEmail
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

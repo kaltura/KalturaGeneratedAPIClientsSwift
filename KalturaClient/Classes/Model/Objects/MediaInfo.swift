@@ -35,6 +35,219 @@
 
 open class MediaInfo: ObjectBase {
 
+	public class MediaInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var fileSize: BaseTokenizedObject {
+			get {
+				return self.append("fileSize") 
+			}
+		}
+		
+		public var containerFormat: BaseTokenizedObject {
+			get {
+				return self.append("containerFormat") 
+			}
+		}
+		
+		public var containerId: BaseTokenizedObject {
+			get {
+				return self.append("containerId") 
+			}
+		}
+		
+		public var containerProfile: BaseTokenizedObject {
+			get {
+				return self.append("containerProfile") 
+			}
+		}
+		
+		public var containerDuration: BaseTokenizedObject {
+			get {
+				return self.append("containerDuration") 
+			}
+		}
+		
+		public var containerBitRate: BaseTokenizedObject {
+			get {
+				return self.append("containerBitRate") 
+			}
+		}
+		
+		public var videoFormat: BaseTokenizedObject {
+			get {
+				return self.append("videoFormat") 
+			}
+		}
+		
+		public var videoCodecId: BaseTokenizedObject {
+			get {
+				return self.append("videoCodecId") 
+			}
+		}
+		
+		public var videoDuration: BaseTokenizedObject {
+			get {
+				return self.append("videoDuration") 
+			}
+		}
+		
+		public var videoBitRate: BaseTokenizedObject {
+			get {
+				return self.append("videoBitRate") 
+			}
+		}
+		
+		public var videoBitRateMode: BaseTokenizedObject {
+			get {
+				return self.append("videoBitRateMode") 
+			}
+		}
+		
+		public var videoWidth: BaseTokenizedObject {
+			get {
+				return self.append("videoWidth") 
+			}
+		}
+		
+		public var videoHeight: BaseTokenizedObject {
+			get {
+				return self.append("videoHeight") 
+			}
+		}
+		
+		public var videoFrameRate: BaseTokenizedObject {
+			get {
+				return self.append("videoFrameRate") 
+			}
+		}
+		
+		public var videoDar: BaseTokenizedObject {
+			get {
+				return self.append("videoDar") 
+			}
+		}
+		
+		public var videoRotation: BaseTokenizedObject {
+			get {
+				return self.append("videoRotation") 
+			}
+		}
+		
+		public var audioFormat: BaseTokenizedObject {
+			get {
+				return self.append("audioFormat") 
+			}
+		}
+		
+		public var audioCodecId: BaseTokenizedObject {
+			get {
+				return self.append("audioCodecId") 
+			}
+		}
+		
+		public var audioDuration: BaseTokenizedObject {
+			get {
+				return self.append("audioDuration") 
+			}
+		}
+		
+		public var audioBitRate: BaseTokenizedObject {
+			get {
+				return self.append("audioBitRate") 
+			}
+		}
+		
+		public var audioBitRateMode: BaseTokenizedObject {
+			get {
+				return self.append("audioBitRateMode") 
+			}
+		}
+		
+		public var audioChannels: BaseTokenizedObject {
+			get {
+				return self.append("audioChannels") 
+			}
+		}
+		
+		public var audioSamplingRate: BaseTokenizedObject {
+			get {
+				return self.append("audioSamplingRate") 
+			}
+		}
+		
+		public var audioResolution: BaseTokenizedObject {
+			get {
+				return self.append("audioResolution") 
+			}
+		}
+		
+		public var writingLib: BaseTokenizedObject {
+			get {
+				return self.append("writingLib") 
+			}
+		}
+		
+		public var rawData: BaseTokenizedObject {
+			get {
+				return self.append("rawData") 
+			}
+		}
+		
+		public var multiStreamInfo: BaseTokenizedObject {
+			get {
+				return self.append("multiStreamInfo") 
+			}
+		}
+		
+		public var scanType: BaseTokenizedObject {
+			get {
+				return self.append("scanType") 
+			}
+		}
+		
+		public var multiStream: BaseTokenizedObject {
+			get {
+				return self.append("multiStream") 
+			}
+		}
+		
+		public var isFastStart: BaseTokenizedObject {
+			get {
+				return self.append("isFastStart") 
+			}
+		}
+		
+		public var contentStreams: BaseTokenizedObject {
+			get {
+				return self.append("contentStreams") 
+			}
+		}
+		
+		public var complexityValue: BaseTokenizedObject {
+			get {
+				return self.append("complexityValue") 
+			}
+		}
+		
+		public var maxGOP: BaseTokenizedObject {
+			get {
+				return self.append("maxGOP") 
+			}
+		}
+	}
+
 	/**  The id of the media info  */
 	public var id: Int? = nil
 	/**  The id of the related flavor asset  */
@@ -99,6 +312,146 @@ open class MediaInfo: ObjectBase {
 	public var maxGOP: Double? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
+	}
+	
+	public func setMultiRequestToken(containerFormat: String) {
+		self.dict["containerFormat"] = containerFormat
+	}
+	
+	public func setMultiRequestToken(containerId: String) {
+		self.dict["containerId"] = containerId
+	}
+	
+	public func setMultiRequestToken(containerProfile: String) {
+		self.dict["containerProfile"] = containerProfile
+	}
+	
+	public func setMultiRequestToken(containerDuration: String) {
+		self.dict["containerDuration"] = containerDuration
+	}
+	
+	public func setMultiRequestToken(containerBitRate: String) {
+		self.dict["containerBitRate"] = containerBitRate
+	}
+	
+	public func setMultiRequestToken(videoFormat: String) {
+		self.dict["videoFormat"] = videoFormat
+	}
+	
+	public func setMultiRequestToken(videoCodecId: String) {
+		self.dict["videoCodecId"] = videoCodecId
+	}
+	
+	public func setMultiRequestToken(videoDuration: String) {
+		self.dict["videoDuration"] = videoDuration
+	}
+	
+	public func setMultiRequestToken(videoBitRate: String) {
+		self.dict["videoBitRate"] = videoBitRate
+	}
+	
+	public func setMultiRequestToken(videoBitRateMode: String) {
+		self.dict["videoBitRateMode"] = videoBitRateMode
+	}
+	
+	public func setMultiRequestToken(videoWidth: String) {
+		self.dict["videoWidth"] = videoWidth
+	}
+	
+	public func setMultiRequestToken(videoHeight: String) {
+		self.dict["videoHeight"] = videoHeight
+	}
+	
+	public func setMultiRequestToken(videoFrameRate: String) {
+		self.dict["videoFrameRate"] = videoFrameRate
+	}
+	
+	public func setMultiRequestToken(videoDar: String) {
+		self.dict["videoDar"] = videoDar
+	}
+	
+	public func setMultiRequestToken(videoRotation: String) {
+		self.dict["videoRotation"] = videoRotation
+	}
+	
+	public func setMultiRequestToken(audioFormat: String) {
+		self.dict["audioFormat"] = audioFormat
+	}
+	
+	public func setMultiRequestToken(audioCodecId: String) {
+		self.dict["audioCodecId"] = audioCodecId
+	}
+	
+	public func setMultiRequestToken(audioDuration: String) {
+		self.dict["audioDuration"] = audioDuration
+	}
+	
+	public func setMultiRequestToken(audioBitRate: String) {
+		self.dict["audioBitRate"] = audioBitRate
+	}
+	
+	public func setMultiRequestToken(audioBitRateMode: String) {
+		self.dict["audioBitRateMode"] = audioBitRateMode
+	}
+	
+	public func setMultiRequestToken(audioChannels: String) {
+		self.dict["audioChannels"] = audioChannels
+	}
+	
+	public func setMultiRequestToken(audioSamplingRate: String) {
+		self.dict["audioSamplingRate"] = audioSamplingRate
+	}
+	
+	public func setMultiRequestToken(audioResolution: String) {
+		self.dict["audioResolution"] = audioResolution
+	}
+	
+	public func setMultiRequestToken(writingLib: String) {
+		self.dict["writingLib"] = writingLib
+	}
+	
+	public func setMultiRequestToken(rawData: String) {
+		self.dict["rawData"] = rawData
+	}
+	
+	public func setMultiRequestToken(multiStreamInfo: String) {
+		self.dict["multiStreamInfo"] = multiStreamInfo
+	}
+	
+	public func setMultiRequestToken(scanType: String) {
+		self.dict["scanType"] = scanType
+	}
+	
+	public func setMultiRequestToken(multiStream: String) {
+		self.dict["multiStream"] = multiStream
+	}
+	
+	public func setMultiRequestToken(isFastStart: String) {
+		self.dict["isFastStart"] = isFastStart
+	}
+	
+	public func setMultiRequestToken(contentStreams: String) {
+		self.dict["contentStreams"] = contentStreams
+	}
+	
+	public func setMultiRequestToken(complexityValue: String) {
+		self.dict["complexityValue"] = complexityValue
+	}
+	
+	public func setMultiRequestToken(maxGOP: String) {
+		self.dict["maxGOP"] = maxGOP
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

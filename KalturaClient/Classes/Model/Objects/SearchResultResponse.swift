@@ -35,10 +35,29 @@
 
 open class SearchResultResponse: ObjectBase {
 
+	public class SearchResultResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<SearchResult.SearchResultTokenizer> {
+			get {
+				return ArrayTokenizedObject<SearchResult.SearchResultTokenizer>(self.append("objects"))
+			} 
+		}
+		
+		public var needMediaInfo: BaseTokenizedObject {
+			get {
+				return self.append("needMediaInfo") 
+			}
+		}
+	}
+
 	public var objects: Array<SearchResult>? = nil
 	public var needMediaInfo: Bool? = nil
 
 
+	public func setMultiRequestToken(needMediaInfo: String) {
+		self.dict["needMediaInfo"] = needMediaInfo
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

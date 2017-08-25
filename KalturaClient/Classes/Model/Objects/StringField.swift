@@ -36,6 +36,9 @@
 /**  A string representation to return evaluated dynamic value  */
 open class StringField: StringValue {
 
+	public class StringFieldTokenizer: StringValue.StringValueTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

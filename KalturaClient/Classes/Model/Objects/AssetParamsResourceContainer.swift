@@ -35,12 +35,31 @@
 
 open class AssetParamsResourceContainer: Resource {
 
+	public class AssetParamsResourceContainerTokenizer: Resource.ResourceTokenizer {
+		
+		public var resource: ContentResource.ContentResourceTokenizer {
+			get {
+				return ContentResource.ContentResourceTokenizer(self.append("resource")) 
+			}
+		}
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+	}
+
 	/**  The content resource to associate with asset params  */
 	public var resource: ContentResource? = nil
 	/**  The asset params to associate with the reaource  */
 	public var assetParamsId: Int? = nil
 
 
+	public func setMultiRequestToken(assetParamsId: String) {
+		self.dict["assetParamsId"] = assetParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

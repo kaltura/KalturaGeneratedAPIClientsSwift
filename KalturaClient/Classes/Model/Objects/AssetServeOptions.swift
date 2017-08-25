@@ -35,10 +35,33 @@
 
 open class AssetServeOptions: ObjectBase {
 
+	public class AssetServeOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var download: BaseTokenizedObject {
+			get {
+				return self.append("download") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
 	public var download: Bool? = nil
 	public var referrer: String? = nil
 
 
+	public func setMultiRequestToken(download: String) {
+		self.dict["download"] = download
+	}
+	
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

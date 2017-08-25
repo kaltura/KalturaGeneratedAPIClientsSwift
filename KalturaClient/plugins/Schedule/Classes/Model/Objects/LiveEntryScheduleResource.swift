@@ -35,9 +35,22 @@
 
 open class LiveEntryScheduleResource: ScheduleResource {
 
+	public class LiveEntryScheduleResourceTokenizer: ScheduleResource.ScheduleResourceTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	public var entryId: String? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

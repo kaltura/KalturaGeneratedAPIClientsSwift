@@ -35,6 +35,105 @@
 
 open class BulkUploadResult: ObjectBase {
 
+	public class BulkUploadResultTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var bulkUploadJobId: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadJobId") 
+			}
+		}
+		
+		public var lineIndex: BaseTokenizedObject {
+			get {
+				return self.append("lineIndex") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var objectStatus: BaseTokenizedObject {
+			get {
+				return self.append("objectStatus") 
+			}
+		}
+		
+		public var bulkUploadResultObjectType: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadResultObjectType") 
+			}
+		}
+		
+		public var rowData: BaseTokenizedObject {
+			get {
+				return self.append("rowData") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var objectErrorDescription: BaseTokenizedObject {
+			get {
+				return self.append("objectErrorDescription") 
+			}
+		}
+		
+		public var pluginsData: ArrayTokenizedObject<BulkUploadPluginData.BulkUploadPluginDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<BulkUploadPluginData.BulkUploadPluginDataTokenizer>(self.append("pluginsData"))
+			} 
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+		
+		public var errorCode: BaseTokenizedObject {
+			get {
+				return self.append("errorCode") 
+			}
+		}
+		
+		public var errorType: BaseTokenizedObject {
+			get {
+				return self.append("errorType") 
+			}
+		}
+	}
+
 	/**  The id of the result  */
 	public var id: Int? = nil
 	/**  The id of the parent job  */
@@ -57,6 +156,66 @@ open class BulkUploadResult: ObjectBase {
 	public var errorType: Int? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(bulkUploadJobId: String) {
+		self.dict["bulkUploadJobId"] = bulkUploadJobId
+	}
+	
+	public func setMultiRequestToken(lineIndex: String) {
+		self.dict["lineIndex"] = lineIndex
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(objectStatus: String) {
+		self.dict["objectStatus"] = objectStatus
+	}
+	
+	public func setMultiRequestToken(bulkUploadResultObjectType: String) {
+		self.dict["bulkUploadResultObjectType"] = bulkUploadResultObjectType
+	}
+	
+	public func setMultiRequestToken(rowData: String) {
+		self.dict["rowData"] = rowData
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(objectErrorDescription: String) {
+		self.dict["objectErrorDescription"] = objectErrorDescription
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
+	public func setMultiRequestToken(errorCode: String) {
+		self.dict["errorCode"] = errorCode
+	}
+	
+	public func setMultiRequestToken(errorType: String) {
+		self.dict["errorType"] = errorType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -64,7 +223,7 @@ open class BulkUploadResult: ObjectBase {
 			id = dict["id"] as? Int
 		}
 		if dict["bulkUploadJobId"] != nil {
-			bulkUploadJobId = Int64((dict["bulkUploadJobId"] as? String)!)
+			bulkUploadJobId = Int64("\(dict["bulkUploadJobId"]!)")
 		}
 		if dict["lineIndex"] != nil {
 			lineIndex = dict["lineIndex"] as? Int

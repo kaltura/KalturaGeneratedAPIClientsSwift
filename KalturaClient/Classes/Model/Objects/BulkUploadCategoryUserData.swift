@@ -36,6 +36,9 @@
 /**  This class represents object-specific data passed to the   bulk upload job.  */
 open class BulkUploadCategoryUserData: BulkUploadObjectData {
 
+	public class BulkUploadCategoryUserDataTokenizer: BulkUploadObjectData.BulkUploadObjectDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

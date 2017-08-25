@@ -35,6 +35,177 @@
 
 open class EntryDistribution: ObjectBase {
 
+	public class EntryDistributionTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var submittedAt: BaseTokenizedObject {
+			get {
+				return self.append("submittedAt") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var distributionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var sunStatus: BaseTokenizedObject {
+			get {
+				return self.append("sunStatus") 
+			}
+		}
+		
+		public var dirtyStatus: BaseTokenizedObject {
+			get {
+				return self.append("dirtyStatus") 
+			}
+		}
+		
+		public var thumbAssetIds: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetIds") 
+			}
+		}
+		
+		public var flavorAssetIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetIds") 
+			}
+		}
+		
+		public var assetIds: BaseTokenizedObject {
+			get {
+				return self.append("assetIds") 
+			}
+		}
+		
+		public var sunrise: BaseTokenizedObject {
+			get {
+				return self.append("sunrise") 
+			}
+		}
+		
+		public var sunset: BaseTokenizedObject {
+			get {
+				return self.append("sunset") 
+			}
+		}
+		
+		public var remoteId: BaseTokenizedObject {
+			get {
+				return self.append("remoteId") 
+			}
+		}
+		
+		public var plays: BaseTokenizedObject {
+			get {
+				return self.append("plays") 
+			}
+		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
+		
+		public var validationErrors: ArrayTokenizedObject<DistributionValidationError.DistributionValidationErrorTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionValidationError.DistributionValidationErrorTokenizer>(self.append("validationErrors"))
+			} 
+		}
+		
+		public var errorType: BaseTokenizedObject {
+			get {
+				return self.append("errorType") 
+			}
+		}
+		
+		public var errorNumber: BaseTokenizedObject {
+			get {
+				return self.append("errorNumber") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+		
+		public var hasSubmitResultsLog: BaseTokenizedObject {
+			get {
+				return self.append("hasSubmitResultsLog") 
+			}
+		}
+		
+		public var hasSubmitSentDataLog: BaseTokenizedObject {
+			get {
+				return self.append("hasSubmitSentDataLog") 
+			}
+		}
+		
+		public var hasUpdateResultsLog: BaseTokenizedObject {
+			get {
+				return self.append("hasUpdateResultsLog") 
+			}
+		}
+		
+		public var hasUpdateSentDataLog: BaseTokenizedObject {
+			get {
+				return self.append("hasUpdateSentDataLog") 
+			}
+		}
+		
+		public var hasDeleteResultsLog: BaseTokenizedObject {
+			get {
+				return self.append("hasDeleteResultsLog") 
+			}
+		}
+		
+		public var hasDeleteSentDataLog: BaseTokenizedObject {
+			get {
+				return self.append("hasDeleteSentDataLog") 
+			}
+		}
+	}
+
 	/**  Auto generated unique id  */
 	public var id: Int? = nil
 	/**  Entry distribution creation date as Unix timestamp (In seconds)  */
@@ -77,6 +248,114 @@ open class EntryDistribution: ObjectBase {
 	public var hasDeleteSentDataLog: Bool? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(submittedAt: String) {
+		self.dict["submittedAt"] = submittedAt
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(distributionProfileId: String) {
+		self.dict["distributionProfileId"] = distributionProfileId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(sunStatus: String) {
+		self.dict["sunStatus"] = sunStatus
+	}
+	
+	public func setMultiRequestToken(dirtyStatus: String) {
+		self.dict["dirtyStatus"] = dirtyStatus
+	}
+	
+	public func setMultiRequestToken(thumbAssetIds: String) {
+		self.dict["thumbAssetIds"] = thumbAssetIds
+	}
+	
+	public func setMultiRequestToken(flavorAssetIds: String) {
+		self.dict["flavorAssetIds"] = flavorAssetIds
+	}
+	
+	public func setMultiRequestToken(assetIds: String) {
+		self.dict["assetIds"] = assetIds
+	}
+	
+	public func setMultiRequestToken(sunrise: String) {
+		self.dict["sunrise"] = sunrise
+	}
+	
+	public func setMultiRequestToken(sunset: String) {
+		self.dict["sunset"] = sunset
+	}
+	
+	public func setMultiRequestToken(remoteId: String) {
+		self.dict["remoteId"] = remoteId
+	}
+	
+	public func setMultiRequestToken(plays: String) {
+		self.dict["plays"] = plays
+	}
+	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
+	public func setMultiRequestToken(errorType: String) {
+		self.dict["errorType"] = errorType
+	}
+	
+	public func setMultiRequestToken(errorNumber: String) {
+		self.dict["errorNumber"] = errorNumber
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
+	public func setMultiRequestToken(hasSubmitResultsLog: String) {
+		self.dict["hasSubmitResultsLog"] = hasSubmitResultsLog
+	}
+	
+	public func setMultiRequestToken(hasSubmitSentDataLog: String) {
+		self.dict["hasSubmitSentDataLog"] = hasSubmitSentDataLog
+	}
+	
+	public func setMultiRequestToken(hasUpdateResultsLog: String) {
+		self.dict["hasUpdateResultsLog"] = hasUpdateResultsLog
+	}
+	
+	public func setMultiRequestToken(hasUpdateSentDataLog: String) {
+		self.dict["hasUpdateSentDataLog"] = hasUpdateSentDataLog
+	}
+	
+	public func setMultiRequestToken(hasDeleteResultsLog: String) {
+		self.dict["hasDeleteResultsLog"] = hasDeleteResultsLog
+	}
+	
+	public func setMultiRequestToken(hasDeleteSentDataLog: String) {
+		self.dict["hasDeleteSentDataLog"] = hasDeleteSentDataLog
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

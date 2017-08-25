@@ -35,12 +35,35 @@
 
 open class ResponseProfileCacheRecalculateResults: ObjectBase {
 
+	public class ResponseProfileCacheRecalculateResultsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var lastObjectKey: BaseTokenizedObject {
+			get {
+				return self.append("lastObjectKey") 
+			}
+		}
+		
+		public var recalculated: BaseTokenizedObject {
+			get {
+				return self.append("recalculated") 
+			}
+		}
+	}
+
 	/**  Last recalculated id  */
 	public var lastObjectKey: String? = nil
 	/**  Number of recalculated keys  */
 	public var recalculated: Int? = nil
 
 
+	public func setMultiRequestToken(lastObjectKey: String) {
+		self.dict["lastObjectKey"] = lastObjectKey
+	}
+	
+	public func setMultiRequestToken(recalculated: String) {
+		self.dict["recalculated"] = recalculated
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

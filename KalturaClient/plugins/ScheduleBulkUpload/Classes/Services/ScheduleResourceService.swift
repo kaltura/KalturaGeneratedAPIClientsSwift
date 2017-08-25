@@ -38,63 +38,129 @@
   devices, etc.).  */
 extension ScheduleResourceService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var scheduleResource: ScheduleResource.ScheduleResourceTokenizer {
+			get {
+				return ScheduleResource.ScheduleResourceTokenizer(self.append("scheduleResource")) 
+			}
+		}
+	}
+
 	/**  Allows you to add a new KalturaScheduleResource object  */
-	public static func add(scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource> {
-		let request: RequestBuilder<ScheduleResource> = RequestBuilder<ScheduleResource>(service: "schedule_scheduleresource", action: "add")
+	public static func add(scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer>(service: "schedule_scheduleresource", action: "add")
 			.setBody(key: "scheduleResource", value: scheduleResource)
 
 		return request
 	}
 
-	public static func addFromBulkUpload(fileData: RequestFile) -> RequestBuilder<BulkUpload> {
+	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
+		
+		public var bulkUploadData: BulkUploadCsvJobData.BulkUploadCsvJobDataTokenizer {
+			get {
+				return BulkUploadCsvJobData.BulkUploadCsvJobDataTokenizer(self.append("bulkUploadData")) 
+			}
+		}
+	}
+
+	public static func addFromBulkUpload(fileData: RequestFile) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		return addFromBulkUpload(fileData: fileData, bulkUploadData: nil)
 	}
 
 	/**  Add new bulk upload batch job  */
-	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadCsvJobData?) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "schedule_scheduleresource", action: "addFromBulkUpload")
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadCsvJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "schedule_scheduleresource", action: "addFromBulkUpload")
 			.setFile(key: "fileData", value: fileData)
 			.setBody(key: "bulkUploadData", value: bulkUploadData)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var scheduleResourceId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleResourceId") 
+			}
+		}
+	}
+
 	/**  Mark the KalturaScheduleResource object as deleted  */
-	public static func delete(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource> {
-		let request: RequestBuilder<ScheduleResource> = RequestBuilder<ScheduleResource>(service: "schedule_scheduleresource", action: "delete")
+	public static func delete(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer>(service: "schedule_scheduleresource", action: "delete")
 			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var scheduleResourceId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleResourceId") 
+			}
+		}
 	}
 
 	/**  Retrieve a KalturaScheduleResource object by ID  */
-	public static func get(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource> {
-		let request: RequestBuilder<ScheduleResource> = RequestBuilder<ScheduleResource>(service: "schedule_scheduleresource", action: "get")
+	public static func get(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer>(service: "schedule_scheduleresource", action: "get")
 			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ScheduleResourceListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ScheduleResourceFilter.ScheduleResourceFilterTokenizer {
+			get {
+				return ScheduleResourceFilter.ScheduleResourceFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ScheduleResourceFilter?) -> RequestBuilder<ScheduleResourceListResponse> {
+	public static func list(filter: ScheduleResourceFilter?) -> RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List KalturaScheduleResource objects  */
-	public static func list(filter: ScheduleResourceFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleResourceListResponse> {
-		let request: RequestBuilder<ScheduleResourceListResponse> = RequestBuilder<ScheduleResourceListResponse>(service: "schedule_scheduleresource", action: "list")
+	public static func list(filter: ScheduleResourceFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> = RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer>(service: "schedule_scheduleresource", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var scheduleResourceId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleResourceId") 
+			}
+		}
+		
+		public var scheduleResource: ScheduleResource.ScheduleResourceTokenizer {
+			get {
+				return ScheduleResource.ScheduleResourceTokenizer(self.append("scheduleResource")) 
+			}
+		}
+	}
+
 	/**  Update an existing KalturaScheduleResource object  */
-	public static func update(scheduleResourceId: Int, scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource> {
-		let request: RequestBuilder<ScheduleResource> = RequestBuilder<ScheduleResource>(service: "schedule_scheduleresource", action: "update")
+	public static func update(scheduleResourceId: Int, scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer>(service: "schedule_scheduleresource", action: "update")
 			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
 			.setBody(key: "scheduleResource", value: scheduleResource)
 

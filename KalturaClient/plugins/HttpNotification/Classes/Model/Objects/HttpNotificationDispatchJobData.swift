@@ -35,6 +35,123 @@
 
 open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 
+	public class HttpNotificationDispatchJobDataTokenizer: EventNotificationDispatchJobData.EventNotificationDispatchJobDataTokenizer {
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var method: BaseTokenizedObject {
+			get {
+				return self.append("method") 
+			}
+		}
+		
+		public var data: BaseTokenizedObject {
+			get {
+				return self.append("data") 
+			}
+		}
+		
+		public var timeout: BaseTokenizedObject {
+			get {
+				return self.append("timeout") 
+			}
+		}
+		
+		public var connectTimeout: BaseTokenizedObject {
+			get {
+				return self.append("connectTimeout") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var authenticationMethod: BaseTokenizedObject {
+			get {
+				return self.append("authenticationMethod") 
+			}
+		}
+		
+		public var sslVersion: BaseTokenizedObject {
+			get {
+				return self.append("sslVersion") 
+			}
+		}
+		
+		public var sslCertificate: BaseTokenizedObject {
+			get {
+				return self.append("sslCertificate") 
+			}
+		}
+		
+		public var sslCertificateType: BaseTokenizedObject {
+			get {
+				return self.append("sslCertificateType") 
+			}
+		}
+		
+		public var sslCertificatePassword: BaseTokenizedObject {
+			get {
+				return self.append("sslCertificatePassword") 
+			}
+		}
+		
+		public var sslEngine: BaseTokenizedObject {
+			get {
+				return self.append("sslEngine") 
+			}
+		}
+		
+		public var sslEngineDefault: BaseTokenizedObject {
+			get {
+				return self.append("sslEngineDefault") 
+			}
+		}
+		
+		public var sslKeyType: BaseTokenizedObject {
+			get {
+				return self.append("sslKeyType") 
+			}
+		}
+		
+		public var sslKey: BaseTokenizedObject {
+			get {
+				return self.append("sslKey") 
+			}
+		}
+		
+		public var sslKeyPassword: BaseTokenizedObject {
+			get {
+				return self.append("sslKeyPassword") 
+			}
+		}
+		
+		public var customHeaders: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("customHeaders"))
+			} 
+		}
+		
+		public var signSecret: BaseTokenizedObject {
+			get {
+				return self.append("signSecret") 
+			}
+		}
+	}
+
 	/**  Remote server URL  */
 	public var url: String? = nil
 	/**  Request method.  */
@@ -78,6 +195,78 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 	public var signSecret: String? = nil
 
 
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(method: String) {
+		self.dict["method"] = method
+	}
+	
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
+	}
+	
+	public func setMultiRequestToken(timeout: String) {
+		self.dict["timeout"] = timeout
+	}
+	
+	public func setMultiRequestToken(connectTimeout: String) {
+		self.dict["connectTimeout"] = connectTimeout
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(authenticationMethod: String) {
+		self.dict["authenticationMethod"] = authenticationMethod
+	}
+	
+	public func setMultiRequestToken(sslVersion: String) {
+		self.dict["sslVersion"] = sslVersion
+	}
+	
+	public func setMultiRequestToken(sslCertificate: String) {
+		self.dict["sslCertificate"] = sslCertificate
+	}
+	
+	public func setMultiRequestToken(sslCertificateType: String) {
+		self.dict["sslCertificateType"] = sslCertificateType
+	}
+	
+	public func setMultiRequestToken(sslCertificatePassword: String) {
+		self.dict["sslCertificatePassword"] = sslCertificatePassword
+	}
+	
+	public func setMultiRequestToken(sslEngine: String) {
+		self.dict["sslEngine"] = sslEngine
+	}
+	
+	public func setMultiRequestToken(sslEngineDefault: String) {
+		self.dict["sslEngineDefault"] = sslEngineDefault
+	}
+	
+	public func setMultiRequestToken(sslKeyType: String) {
+		self.dict["sslKeyType"] = sslKeyType
+	}
+	
+	public func setMultiRequestToken(sslKey: String) {
+		self.dict["sslKey"] = sslKey
+	}
+	
+	public func setMultiRequestToken(sslKeyPassword: String) {
+		self.dict["sslKeyPassword"] = sslKeyPassword
+	}
+	
+	public func setMultiRequestToken(signSecret: String) {
+		self.dict["signSecret"] = signSecret
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

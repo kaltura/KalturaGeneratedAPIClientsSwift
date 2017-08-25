@@ -35,10 +35,23 @@
 
 open class CameraScheduleResource: ScheduleResource {
 
+	public class CameraScheduleResourceTokenizer: ScheduleResource.ScheduleResourceTokenizer {
+		
+		public var streamUrl: BaseTokenizedObject {
+			get {
+				return self.append("streamUrl") 
+			}
+		}
+	}
+
 	/**  URL of the stream  */
 	public var streamUrl: String? = nil
 
 
+	public func setMultiRequestToken(streamUrl: String) {
+		self.dict["streamUrl"] = streamUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

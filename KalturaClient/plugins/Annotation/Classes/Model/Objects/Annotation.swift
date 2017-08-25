@@ -35,6 +35,63 @@
 
 open class Annotation: CuePoint {
 
+	public class AnnotationTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var text: BaseTokenizedObject {
+			get {
+				return self.append("text") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var depth: BaseTokenizedObject {
+			get {
+				return self.append("depth") 
+			}
+		}
+		
+		public var childrenCount: BaseTokenizedObject {
+			get {
+				return self.append("childrenCount") 
+			}
+		}
+		
+		public var directChildrenCount: BaseTokenizedObject {
+			get {
+				return self.append("directChildrenCount") 
+			}
+		}
+		
+		public var isPublic: BaseTokenizedObject {
+			get {
+				return self.append("isPublic") 
+			}
+		}
+		
+		public var searchableOnEntry: BaseTokenizedObject {
+			get {
+				return self.append("searchableOnEntry") 
+			}
+		}
+	}
+
 	public var parentId: String? = nil
 	public var text: String? = nil
 	/**  End time in milliseconds  */
@@ -53,6 +110,42 @@ open class Annotation: CuePoint {
 	public var searchableOnEntry: Bool? = nil
 
 
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(text: String) {
+		self.dict["text"] = text
+	}
+	
+	public func setMultiRequestToken(endTime: String) {
+		self.dict["endTime"] = endTime
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(depth: String) {
+		self.dict["depth"] = depth
+	}
+	
+	public func setMultiRequestToken(childrenCount: String) {
+		self.dict["childrenCount"] = childrenCount
+	}
+	
+	public func setMultiRequestToken(directChildrenCount: String) {
+		self.dict["directChildrenCount"] = directChildrenCount
+	}
+	
+	public func setMultiRequestToken(isPublic: String) {
+		self.dict["isPublic"] = isPublic
+	}
+	
+	public func setMultiRequestToken(searchableOnEntry: String) {
+		self.dict["searchableOnEntry"] = searchableOnEntry
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

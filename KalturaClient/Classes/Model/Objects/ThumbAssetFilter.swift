@@ -35,6 +35,9 @@
 
 open class ThumbAssetFilter: ThumbAssetBaseFilter {
 
+	public class ThumbAssetFilterTokenizer: ThumbAssetBaseFilter.ThumbAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

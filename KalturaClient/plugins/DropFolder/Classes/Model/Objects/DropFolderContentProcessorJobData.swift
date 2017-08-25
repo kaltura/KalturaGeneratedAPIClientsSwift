@@ -35,6 +35,45 @@
 
 open class DropFolderContentProcessorJobData: JobData {
 
+	public class DropFolderContentProcessorJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+		
+		public var dropFolderFileIds: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderFileIds") 
+			}
+		}
+		
+		public var parsedSlug: BaseTokenizedObject {
+			get {
+				return self.append("parsedSlug") 
+			}
+		}
+		
+		public var contentMatchPolicy: BaseTokenizedObject {
+			get {
+				return self.append("contentMatchPolicy") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var parsedUserId: BaseTokenizedObject {
+			get {
+				return self.append("parsedUserId") 
+			}
+		}
+	}
+
 	public var dropFolderId: Int? = nil
 	public var dropFolderFileIds: String? = nil
 	public var parsedSlug: String? = nil
@@ -43,6 +82,30 @@ open class DropFolderContentProcessorJobData: JobData {
 	public var parsedUserId: String? = nil
 
 
+	public func setMultiRequestToken(dropFolderId: String) {
+		self.dict["dropFolderId"] = dropFolderId
+	}
+	
+	public func setMultiRequestToken(dropFolderFileIds: String) {
+		self.dict["dropFolderFileIds"] = dropFolderFileIds
+	}
+	
+	public func setMultiRequestToken(parsedSlug: String) {
+		self.dict["parsedSlug"] = parsedSlug
+	}
+	
+	public func setMultiRequestToken(contentMatchPolicy: String) {
+		self.dict["contentMatchPolicy"] = contentMatchPolicy
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(parsedUserId: String) {
+		self.dict["parsedUserId"] = parsedUserId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

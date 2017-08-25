@@ -35,6 +35,9 @@
 
 open class AmazonS3StorageProfileFilter: AmazonS3StorageProfileBaseFilter {
 
+	public class AmazonS3StorageProfileFilterTokenizer: AmazonS3StorageProfileBaseFilter.AmazonS3StorageProfileBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

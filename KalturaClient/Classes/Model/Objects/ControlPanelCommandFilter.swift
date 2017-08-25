@@ -35,6 +35,9 @@
 
 open class ControlPanelCommandFilter: ControlPanelCommandBaseFilter {
 
+	public class ControlPanelCommandFilterTokenizer: ControlPanelCommandBaseFilter.ControlPanelCommandBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -36,51 +36,108 @@
 /**  Add &amp; Manage Caption Params  */
 public final class CaptionParamsService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var captionParams: CaptionParams.CaptionParamsTokenizer {
+			get {
+				return CaptionParams.CaptionParamsTokenizer(self.append("captionParams")) 
+			}
+		}
+	}
+
 	/**  Add new Caption Params  */
-	public static func add(captionParams: CaptionParams) -> RequestBuilder<CaptionParams> {
-		let request: RequestBuilder<CaptionParams> = RequestBuilder<CaptionParams>(service: "caption_captionparams", action: "add")
+	public static func add(captionParams: CaptionParams) -> RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, AddTokenizer> {
+		let request: RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, AddTokenizer> = RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, AddTokenizer>(service: "caption_captionparams", action: "add")
 			.setBody(key: "captionParams", value: captionParams)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete Caption Params by ID  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionparams", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Caption Params by ID  */
-	public static func get(id: Int) -> RequestBuilder<CaptionParams> {
-		let request: RequestBuilder<CaptionParams> = RequestBuilder<CaptionParams>(service: "caption_captionparams", action: "get")
+	public static func get(id: Int) -> RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, GetTokenizer> {
+		let request: RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, GetTokenizer> = RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, GetTokenizer>(service: "caption_captionparams", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<CaptionParamsListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: CaptionParamsFilter.CaptionParamsFilterTokenizer {
+			get {
+				return CaptionParamsFilter.CaptionParamsFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<CaptionParamsListResponse, CaptionParamsListResponse.CaptionParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: CaptionParamsFilter?) -> RequestBuilder<CaptionParamsListResponse> {
+	public static func list(filter: CaptionParamsFilter?) -> RequestBuilder<CaptionParamsListResponse, CaptionParamsListResponse.CaptionParamsListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List Caption Params by filter with paging support (By default - all system
 	  default params will be listed too)  */
-	public static func list(filter: CaptionParamsFilter?, pager: FilterPager?) -> RequestBuilder<CaptionParamsListResponse> {
-		let request: RequestBuilder<CaptionParamsListResponse> = RequestBuilder<CaptionParamsListResponse>(service: "caption_captionparams", action: "list")
+	public static func list(filter: CaptionParamsFilter?, pager: FilterPager?) -> RequestBuilder<CaptionParamsListResponse, CaptionParamsListResponse.CaptionParamsListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CaptionParamsListResponse, CaptionParamsListResponse.CaptionParamsListResponseTokenizer, ListTokenizer> = RequestBuilder<CaptionParamsListResponse, CaptionParamsListResponse.CaptionParamsListResponseTokenizer, ListTokenizer>(service: "caption_captionparams", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var captionParams: CaptionParams.CaptionParamsTokenizer {
+			get {
+				return CaptionParams.CaptionParamsTokenizer(self.append("captionParams")) 
+			}
+		}
+	}
+
 	/**  Update Caption Params by ID  */
-	public static func update(id: Int, captionParams: CaptionParams) -> RequestBuilder<CaptionParams> {
-		let request: RequestBuilder<CaptionParams> = RequestBuilder<CaptionParams>(service: "caption_captionparams", action: "update")
+	public static func update(id: Int, captionParams: CaptionParams) -> RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, UpdateTokenizer> = RequestBuilder<CaptionParams, CaptionParams.CaptionParamsTokenizer, UpdateTokenizer>(service: "caption_captionparams", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "captionParams", value: captionParams)
 

@@ -35,6 +35,9 @@
 
 open class EmailNotificationTemplateFilter: EmailNotificationTemplateBaseFilter {
 
+	public class EmailNotificationTemplateFilterTokenizer: EmailNotificationTemplateBaseFilter.EmailNotificationTemplateBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

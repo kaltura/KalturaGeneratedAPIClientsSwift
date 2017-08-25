@@ -38,12 +38,35 @@
   the asset ready.  */
 open class UrlResource: ContentResource {
 
+	public class UrlResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var forceAsyncDownload: BaseTokenizedObject {
+			get {
+				return self.append("forceAsyncDownload") 
+			}
+		}
+	}
+
 	/**  Remote URL, FTP, HTTP or HTTPS  */
 	public var url: String? = nil
 	/**  Force Import Job  */
 	public var forceAsyncDownload: Bool? = nil
 
 
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(forceAsyncDownload: String) {
+		self.dict["forceAsyncDownload"] = forceAsyncDownload
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

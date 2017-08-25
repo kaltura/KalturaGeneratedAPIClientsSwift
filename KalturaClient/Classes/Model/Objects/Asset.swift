@@ -35,6 +35,93 @@
 
 open class Asset: ObjectBase {
 
+	public class AssetTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var size: BaseTokenizedObject {
+			get {
+				return self.append("size") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var fileExt: BaseTokenizedObject {
+			get {
+				return self.append("fileExt") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var deletedAt: BaseTokenizedObject {
+			get {
+				return self.append("deletedAt") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var partnerDescription: BaseTokenizedObject {
+			get {
+				return self.append("partnerDescription") 
+			}
+		}
+		
+		public var actualSourceAssetParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("actualSourceAssetParamsIds") 
+			}
+		}
+	}
+
 	/**  The ID of the Flavor Asset  */
 	public var id: String? = nil
 	/**  The entry ID of the Flavor Asset  */
@@ -61,6 +148,62 @@ open class Asset: ObjectBase {
 	public var actualSourceAssetParamsIds: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(size: String) {
+		self.dict["size"] = size
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(fileExt: String) {
+		self.dict["fileExt"] = fileExt
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(deletedAt: String) {
+		self.dict["deletedAt"] = deletedAt
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(partnerDescription: String) {
+		self.dict["partnerDescription"] = partnerDescription
+	}
+	
+	public func setMultiRequestToken(actualSourceAssetParamsIds: String) {
+		self.dict["actualSourceAssetParamsIds"] = actualSourceAssetParamsIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

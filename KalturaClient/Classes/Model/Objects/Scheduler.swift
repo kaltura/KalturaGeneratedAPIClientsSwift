@@ -35,6 +35,69 @@
 
 open class Scheduler: ObjectBase {
 
+	public class SchedulerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var configuredId: BaseTokenizedObject {
+			get {
+				return self.append("configuredId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var host: BaseTokenizedObject {
+			get {
+				return self.append("host") 
+			}
+		}
+		
+		public var statuses: ArrayTokenizedObject<SchedulerStatus.SchedulerStatusTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerStatus.SchedulerStatusTokenizer>(self.append("statuses"))
+			} 
+		}
+		
+		public var configs: ArrayTokenizedObject<SchedulerConfig.SchedulerConfigTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerConfig.SchedulerConfigTokenizer>(self.append("configs"))
+			} 
+		}
+		
+		public var workers: ArrayTokenizedObject<SchedulerWorker.SchedulerWorkerTokenizer> {
+			get {
+				return ArrayTokenizedObject<SchedulerWorker.SchedulerWorkerTokenizer>(self.append("workers"))
+			} 
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var lastStatus: BaseTokenizedObject {
+			get {
+				return self.append("lastStatus") 
+			}
+		}
+		
+		public var lastStatusStr: BaseTokenizedObject {
+			get {
+				return self.append("lastStatusStr") 
+			}
+		}
+	}
+
 	/**  The id of the Scheduler  */
 	public var id: Int? = nil
 	/**  The id as configured in the batch config  */
@@ -57,6 +120,34 @@ open class Scheduler: ObjectBase {
 	public var lastStatusStr: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(configuredId: String) {
+		self.dict["configuredId"] = configuredId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(host: String) {
+		self.dict["host"] = host
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(lastStatus: String) {
+		self.dict["lastStatus"] = lastStatus
+	}
+	
+	public func setMultiRequestToken(lastStatusStr: String) {
+		self.dict["lastStatusStr"] = lastStatusStr
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

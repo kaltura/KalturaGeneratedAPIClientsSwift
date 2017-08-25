@@ -36,11 +36,44 @@
 /**  Basic push-publish configuration for Kaltura live stream entry  */
 open class LiveStreamPushPublishConfiguration: ObjectBase {
 
+	public class LiveStreamPushPublishConfigurationTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var publishUrl: BaseTokenizedObject {
+			get {
+				return self.append("publishUrl") 
+			}
+		}
+		
+		public var backupPublishUrl: BaseTokenizedObject {
+			get {
+				return self.append("backupPublishUrl") 
+			}
+		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+	}
+
 	public var publishUrl: String? = nil
 	public var backupPublishUrl: String? = nil
 	public var port: String? = nil
 
 
+	public func setMultiRequestToken(publishUrl: String) {
+		self.dict["publishUrl"] = publishUrl
+	}
+	
+	public func setMultiRequestToken(backupPublishUrl: String) {
+		self.dict["backupPublishUrl"] = backupPublishUrl
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

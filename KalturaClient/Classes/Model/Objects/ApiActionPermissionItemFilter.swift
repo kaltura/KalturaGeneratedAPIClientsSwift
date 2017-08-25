@@ -35,6 +35,9 @@
 
 open class ApiActionPermissionItemFilter: ApiActionPermissionItemBaseFilter {
 
+	public class ApiActionPermissionItemFilterTokenizer: ApiActionPermissionItemBaseFilter.ApiActionPermissionItemBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

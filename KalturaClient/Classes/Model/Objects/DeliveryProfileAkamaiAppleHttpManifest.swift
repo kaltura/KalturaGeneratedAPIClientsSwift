@@ -35,10 +35,23 @@
 
 open class DeliveryProfileAkamaiAppleHttpManifest: DeliveryProfile {
 
+	public class DeliveryProfileAkamaiAppleHttpManifestTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var supportClipping: BaseTokenizedObject {
+			get {
+				return self.append("supportClipping") 
+			}
+		}
+	}
+
 	/**  Should we use timing parameters - clipTo / seekFrom  */
 	public var supportClipping: Bool? = nil
 
 
+	public func setMultiRequestToken(supportClipping: String) {
+		self.dict["supportClipping"] = supportClipping
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,45 @@
 
 open class SessionInfo: ObjectBase {
 
+	public class SessionInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var ks: BaseTokenizedObject {
+			get {
+				return self.append("ks") 
+			}
+		}
+		
+		public var sessionType: BaseTokenizedObject {
+			get {
+				return self.append("sessionType") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var expiry: BaseTokenizedObject {
+			get {
+				return self.append("expiry") 
+			}
+		}
+		
+		public var privileges: BaseTokenizedObject {
+			get {
+				return self.append("privileges") 
+			}
+		}
+	}
+
 	public var ks: String? = nil
 	public var sessionType: SessionType? = nil
 	public var partnerId: Int? = nil
@@ -43,6 +82,30 @@ open class SessionInfo: ObjectBase {
 	public var privileges: String? = nil
 
 
+	public func setMultiRequestToken(ks: String) {
+		self.dict["ks"] = ks
+	}
+	
+	public func setMultiRequestToken(sessionType: String) {
+		self.dict["sessionType"] = sessionType
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(expiry: String) {
+		self.dict["expiry"] = expiry
+	}
+	
+	public func setMultiRequestToken(privileges: String) {
+		self.dict["privileges"] = privileges
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

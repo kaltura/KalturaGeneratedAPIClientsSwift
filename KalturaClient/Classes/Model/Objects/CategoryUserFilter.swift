@@ -35,6 +35,27 @@
 
 open class CategoryUserFilter: CategoryUserBaseFilter {
 
+	public class CategoryUserFilterTokenizer: CategoryUserBaseFilter.CategoryUserBaseFilterTokenizer {
+		
+		public var categoryDirectMembers: BaseTokenizedObject {
+			get {
+				return self.append("categoryDirectMembers") 
+			}
+		}
+		
+		public var freeText: BaseTokenizedObject {
+			get {
+				return self.append("freeText") 
+			}
+		}
+		
+		public var relatedGroupsByUserId: BaseTokenizedObject {
+			get {
+				return self.append("relatedGroupsByUserId") 
+			}
+		}
+	}
+
 	/**  Return the list of categoryUser that are not inherited from parent category -
 	  only the direct categoryUsers.  */
 	public var categoryDirectMembers: Bool? = nil
@@ -44,6 +65,18 @@ open class CategoryUserFilter: CategoryUserBaseFilter {
 	public var relatedGroupsByUserId: String? = nil
 
 
+	public func setMultiRequestToken(categoryDirectMembers: String) {
+		self.dict["categoryDirectMembers"] = categoryDirectMembers
+	}
+	
+	public func setMultiRequestToken(freeText: String) {
+		self.dict["freeText"] = freeText
+	}
+	
+	public func setMultiRequestToken(relatedGroupsByUserId: String) {
+		self.dict["relatedGroupsByUserId"] = relatedGroupsByUserId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

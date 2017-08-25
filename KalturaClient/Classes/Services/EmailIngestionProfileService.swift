@@ -36,18 +36,60 @@
 /**  EmailIngestionProfile service lets you manage email ingestion profile records  */
 public final class EmailIngestionProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var EmailIP: EmailIngestionProfile.EmailIngestionProfileTokenizer {
+			get {
+				return EmailIngestionProfile.EmailIngestionProfileTokenizer(self.append("EmailIP")) 
+			}
+		}
+	}
+
 	/**  EmailIngestionProfile Add action allows you to add a EmailIngestionProfile to
 	  Kaltura DB  */
-	public static func add(EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile> {
-		let request: RequestBuilder<EmailIngestionProfile> = RequestBuilder<EmailIngestionProfile>(service: "emailingestionprofile", action: "add")
+	public static func add(EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer>(service: "emailingestionprofile", action: "add")
 			.setBody(key: "EmailIP", value: EmailIP)
 
 		return request
 	}
 
+	public class AddMediaEntryTokenizer: ClientTokenizer  {
+		
+		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
+			get {
+				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
+			}
+		}
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+		
+		public var emailProfId: BaseTokenizedObject {
+			get {
+				return self.append("emailProfId") 
+			}
+		}
+		
+		public var fromAddress: BaseTokenizedObject {
+			get {
+				return self.append("fromAddress") 
+			}
+		}
+		
+		public var emailMsgId: BaseTokenizedObject {
+			get {
+				return self.append("emailMsgId") 
+			}
+		}
+	}
+
 	/**  add KalturaMediaEntry from email ingestion  */
-	public static func addMediaEntry(mediaEntry: MediaEntry, uploadTokenId: String, emailProfId: Int, fromAddress: String, emailMsgId: String) -> RequestBuilder<MediaEntry> {
-		let request: RequestBuilder<MediaEntry> = RequestBuilder<MediaEntry>(service: "emailingestionprofile", action: "addMediaEntry")
+	public static func addMediaEntry(mediaEntry: MediaEntry, uploadTokenId: String, emailProfId: Int, fromAddress: String, emailMsgId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer> {
+		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer>(service: "emailingestionprofile", action: "addMediaEntry")
 			.setBody(key: "mediaEntry", value: mediaEntry)
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 			.setBody(key: "emailProfId", value: emailProfId)
@@ -57,33 +99,75 @@ public final class EmailIngestionProfileService{
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Delete an existing EmailIngestionProfile  */
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public static func delete(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "emailingestionprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retrieve a EmailIngestionProfile by id  */
-	public static func get(id: Int) -> RequestBuilder<EmailIngestionProfile> {
-		let request: RequestBuilder<EmailIngestionProfile> = RequestBuilder<EmailIngestionProfile>(service: "emailingestionprofile", action: "get")
+	public static func get(id: Int) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer>(service: "emailingestionprofile", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetByEmailAddressTokenizer: ClientTokenizer  {
+		
+		public var emailAddress: BaseTokenizedObject {
+			get {
+				return self.append("emailAddress") 
+			}
+		}
+	}
+
 	/**  Retrieve a EmailIngestionProfile by email address  */
-	public static func getByEmailAddress(emailAddress: String) -> RequestBuilder<EmailIngestionProfile> {
-		let request: RequestBuilder<EmailIngestionProfile> = RequestBuilder<EmailIngestionProfile>(service: "emailingestionprofile", action: "getByEmailAddress")
+	public static func getByEmailAddress(emailAddress: String) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer> {
+		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer>(service: "emailingestionprofile", action: "getByEmailAddress")
 			.setBody(key: "emailAddress", value: emailAddress)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var EmailIP: EmailIngestionProfile.EmailIngestionProfileTokenizer {
+			get {
+				return EmailIngestionProfile.EmailIngestionProfileTokenizer(self.append("EmailIP")) 
+			}
+		}
+	}
+
 	/**  Update an existing EmailIngestionProfile  */
-	public static func update(id: Int, EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile> {
-		let request: RequestBuilder<EmailIngestionProfile> = RequestBuilder<EmailIngestionProfile>(service: "emailingestionprofile", action: "update")
+	public static func update(id: Int, EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer>(service: "emailingestionprofile", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "EmailIP", value: EmailIP)
 

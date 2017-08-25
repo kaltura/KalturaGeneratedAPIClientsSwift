@@ -35,6 +35,15 @@
 
 open class LiveStreamListResponse: ListResponse {
 
+	public class LiveStreamListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<LiveStreamEntry.LiveStreamEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveStreamEntry.LiveStreamEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<LiveStreamEntry>? = nil
 
 

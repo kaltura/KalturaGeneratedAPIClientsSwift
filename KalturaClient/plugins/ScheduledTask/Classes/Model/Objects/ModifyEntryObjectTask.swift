@@ -35,6 +35,51 @@
 
 open class ModifyEntryObjectTask: ObjectTask {
 
+	public class ModifyEntryObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var inputMetadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("inputMetadataProfileId") 
+			}
+		}
+		
+		public var inputMetadata: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("inputMetadata"))
+			} 
+		}
+		
+		public var outputMetadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("outputMetadataProfileId") 
+			}
+		}
+		
+		public var outputMetadata: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("outputMetadata"))
+			} 
+		}
+		
+		public var inputUserId: BaseTokenizedObject {
+			get {
+				return self.append("inputUserId") 
+			}
+		}
+		
+		public var inputEntitledUsersEdit: BaseTokenizedObject {
+			get {
+				return self.append("inputEntitledUsersEdit") 
+			}
+		}
+		
+		public var inputEntitledUsersPublish: BaseTokenizedObject {
+			get {
+				return self.append("inputEntitledUsersPublish") 
+			}
+		}
+	}
+
 	/**  The input metadata profile id  */
 	public var inputMetadataProfileId: Int? = nil
 	/**  array of {input metadata xpath location,entry field} objects  */
@@ -51,6 +96,26 @@ open class ModifyEntryObjectTask: ObjectTask {
 	public var inputEntitledUsersPublish: String? = nil
 
 
+	public func setMultiRequestToken(inputMetadataProfileId: String) {
+		self.dict["inputMetadataProfileId"] = inputMetadataProfileId
+	}
+	
+	public func setMultiRequestToken(outputMetadataProfileId: String) {
+		self.dict["outputMetadataProfileId"] = outputMetadataProfileId
+	}
+	
+	public func setMultiRequestToken(inputUserId: String) {
+		self.dict["inputUserId"] = inputUserId
+	}
+	
+	public func setMultiRequestToken(inputEntitledUsersEdit: String) {
+		self.dict["inputEntitledUsersEdit"] = inputEntitledUsersEdit
+	}
+	
+	public func setMultiRequestToken(inputEntitledUsersPublish: String) {
+		self.dict["inputEntitledUsersPublish"] = inputEntitledUsersPublish
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

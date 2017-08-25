@@ -36,6 +36,9 @@
 /**  Represents the current request user agent context  */
 open class UserAgentContextField: StringField {
 
+	public class UserAgentContextFieldTokenizer: StringField.StringFieldTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

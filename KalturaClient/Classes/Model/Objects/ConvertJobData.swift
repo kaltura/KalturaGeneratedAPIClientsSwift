@@ -35,6 +35,63 @@
 
 open class ConvertJobData: ConvartableJobData {
 
+	public class ConvertJobDataTokenizer: ConvartableJobData.ConvartableJobDataTokenizer {
+		
+		public var destFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncLocalPath") 
+			}
+		}
+		
+		public var destFileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncRemoteUrl") 
+			}
+		}
+		
+		public var logFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("logFileSyncLocalPath") 
+			}
+		}
+		
+		public var logFileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("logFileSyncRemoteUrl") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var remoteMediaId: BaseTokenizedObject {
+			get {
+				return self.append("remoteMediaId") 
+			}
+		}
+		
+		public var customData: BaseTokenizedObject {
+			get {
+				return self.append("customData") 
+			}
+		}
+		
+		public var extraDestFileSyncs: ArrayTokenizedObject<DestFileSyncDescriptor.DestFileSyncDescriptorTokenizer> {
+			get {
+				return ArrayTokenizedObject<DestFileSyncDescriptor.DestFileSyncDescriptorTokenizer>(self.append("extraDestFileSyncs"))
+			} 
+		}
+		
+		public var engineMessage: BaseTokenizedObject {
+			get {
+				return self.append("engineMessage") 
+			}
+		}
+	}
+
 	public var destFileSyncLocalPath: String? = nil
 	public var destFileSyncRemoteUrl: String? = nil
 	public var logFileSyncLocalPath: String? = nil
@@ -46,6 +103,38 @@ open class ConvertJobData: ConvartableJobData {
 	public var engineMessage: String? = nil
 
 
+	public func setMultiRequestToken(destFileSyncLocalPath: String) {
+		self.dict["destFileSyncLocalPath"] = destFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(destFileSyncRemoteUrl: String) {
+		self.dict["destFileSyncRemoteUrl"] = destFileSyncRemoteUrl
+	}
+	
+	public func setMultiRequestToken(logFileSyncLocalPath: String) {
+		self.dict["logFileSyncLocalPath"] = logFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(logFileSyncRemoteUrl: String) {
+		self.dict["logFileSyncRemoteUrl"] = logFileSyncRemoteUrl
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(remoteMediaId: String) {
+		self.dict["remoteMediaId"] = remoteMediaId
+	}
+	
+	public func setMultiRequestToken(customData: String) {
+		self.dict["customData"] = customData
+	}
+	
+	public func setMultiRequestToken(engineMessage: String) {
+		self.dict["engineMessage"] = engineMessage
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

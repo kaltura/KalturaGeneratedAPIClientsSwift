@@ -35,6 +35,9 @@
 
 open class UserAgentCondition: RegexCondition {
 
+	public class UserAgentConditionTokenizer: RegexCondition.RegexConditionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

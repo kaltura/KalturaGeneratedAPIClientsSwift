@@ -35,6 +35,9 @@
 
 open class PlayableEntryFilter: PlayableEntryBaseFilter {
 
+	public class PlayableEntryFilterTokenizer: PlayableEntryBaseFilter.PlayableEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

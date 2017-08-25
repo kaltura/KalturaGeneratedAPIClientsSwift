@@ -35,6 +35,15 @@
 
 open class SystemPartnerUsageListResponse: ListResponse {
 
+	public class SystemPartnerUsageListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<SystemPartnerUsageItem.SystemPartnerUsageItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<SystemPartnerUsageItem.SystemPartnerUsageItemTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<SystemPartnerUsageItem>? = nil
 
 

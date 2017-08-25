@@ -36,33 +36,72 @@
 /**  DropFolder service lets you create and manage drop folders  */
 public final class DropFolderService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var dropFolder: DropFolder.DropFolderTokenizer {
+			get {
+				return DropFolder.DropFolderTokenizer(self.append("dropFolder")) 
+			}
+		}
+	}
+
 	/**  Allows you to add a new KalturaDropFolder object  */
-	public static func add(dropFolder: DropFolder) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "add")
+	public static func add(dropFolder: DropFolder) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, AddTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, AddTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, AddTokenizer>(service: "dropfolder_dropfolder", action: "add")
 			.setBody(key: "dropFolder", value: dropFolder)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+	}
+
 	/**  Mark the KalturaDropFolder object as deleted  */
-	public static func delete(dropFolderId: Int) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "delete")
+	public static func delete(dropFolderId: Int) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, DeleteTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, DeleteTokenizer>(service: "dropfolder_dropfolder", action: "delete")
 			.setBody(key: "dropFolderId", value: dropFolderId)
 
 		return request
 	}
 
-	public static func freeExclusiveDropFolder(dropFolderId: Int) -> RequestBuilder<DropFolder> {
+	public class FreeExclusiveDropFolderTokenizer: ClientTokenizer  {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+		
+		public var errorCode: BaseTokenizedObject {
+			get {
+				return self.append("errorCode") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+	}
+
+	public static func freeExclusiveDropFolder(dropFolderId: Int) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, FreeExclusiveDropFolderTokenizer> {
 		return freeExclusiveDropFolder(dropFolderId: dropFolderId, errorCode: nil)
 	}
 
-	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?) -> RequestBuilder<DropFolder> {
+	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, FreeExclusiveDropFolderTokenizer> {
 		return freeExclusiveDropFolder(dropFolderId: dropFolderId, errorCode: errorCode, errorDescription: nil)
 	}
 
 	/**  freeExclusive KalturaDropFolder object  */
-	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?, errorDescription: String?) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "freeExclusiveDropFolder")
+	public static func freeExclusiveDropFolder(dropFolderId: Int, errorCode: String?, errorDescription: String?) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, FreeExclusiveDropFolderTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, FreeExclusiveDropFolderTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, FreeExclusiveDropFolderTokenizer>(service: "dropfolder_dropfolder", action: "freeExclusiveDropFolder")
 			.setBody(key: "dropFolderId", value: dropFolderId)
 			.setBody(key: "errorCode", value: errorCode)
 			.setBody(key: "errorDescription", value: errorDescription)
@@ -70,43 +109,97 @@ public final class DropFolderService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+	}
+
 	/**  Retrieve a KalturaDropFolder object by ID  */
-	public static func get(dropFolderId: Int) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "get")
+	public static func get(dropFolderId: Int) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetTokenizer>(service: "dropfolder_dropfolder", action: "get")
 			.setBody(key: "dropFolderId", value: dropFolderId)
 
 		return request
 	}
 
+	public class GetExclusiveDropFolderTokenizer: ClientTokenizer  {
+		
+		public var tag: BaseTokenizedObject {
+			get {
+				return self.append("tag") 
+			}
+		}
+		
+		public var maxTime: BaseTokenizedObject {
+			get {
+				return self.append("maxTime") 
+			}
+		}
+	}
+
 	/**  getExclusive KalturaDropFolder object  */
-	public static func getExclusiveDropFolder(tag: String, maxTime: Int) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "getExclusiveDropFolder")
+	public static func getExclusiveDropFolder(tag: String, maxTime: Int) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetExclusiveDropFolderTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetExclusiveDropFolderTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, GetExclusiveDropFolderTokenizer>(service: "dropfolder_dropfolder", action: "getExclusiveDropFolder")
 			.setBody(key: "tag", value: tag)
 			.setBody(key: "maxTime", value: maxTime)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<DropFolderListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: DropFolderFilter.DropFolderFilterTokenizer {
+			get {
+				return DropFolderFilter.DropFolderFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<DropFolderListResponse, DropFolderListResponse.DropFolderListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DropFolderFilter?) -> RequestBuilder<DropFolderListResponse> {
+	public static func list(filter: DropFolderFilter?) -> RequestBuilder<DropFolderListResponse, DropFolderListResponse.DropFolderListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List KalturaDropFolder objects  */
-	public static func list(filter: DropFolderFilter?, pager: FilterPager?) -> RequestBuilder<DropFolderListResponse> {
-		let request: RequestBuilder<DropFolderListResponse> = RequestBuilder<DropFolderListResponse>(service: "dropfolder_dropfolder", action: "list")
+	public static func list(filter: DropFolderFilter?, pager: FilterPager?) -> RequestBuilder<DropFolderListResponse, DropFolderListResponse.DropFolderListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DropFolderListResponse, DropFolderListResponse.DropFolderListResponseTokenizer, ListTokenizer> = RequestBuilder<DropFolderListResponse, DropFolderListResponse.DropFolderListResponseTokenizer, ListTokenizer>(service: "dropfolder_dropfolder", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+		
+		public var dropFolder: DropFolder.DropFolderTokenizer {
+			get {
+				return DropFolder.DropFolderTokenizer(self.append("dropFolder")) 
+			}
+		}
+	}
+
 	/**  Update an existing KalturaDropFolder object  */
-	public static func update(dropFolderId: Int, dropFolder: DropFolder) -> RequestBuilder<DropFolder> {
-		let request: RequestBuilder<DropFolder> = RequestBuilder<DropFolder>(service: "dropfolder_dropfolder", action: "update")
+	public static func update(dropFolderId: Int, dropFolder: DropFolder) -> RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, UpdateTokenizer> = RequestBuilder<DropFolder, DropFolder.DropFolderTokenizer, UpdateTokenizer>(service: "dropfolder_dropfolder", action: "update")
 			.setBody(key: "dropFolderId", value: dropFolderId)
 			.setBody(key: "dropFolder", value: dropFolder)
 

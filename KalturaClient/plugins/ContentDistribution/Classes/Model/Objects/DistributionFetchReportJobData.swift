@@ -35,10 +35,33 @@
 
 open class DistributionFetchReportJobData: DistributionJobData {
 
+	public class DistributionFetchReportJobDataTokenizer: DistributionJobData.DistributionJobDataTokenizer {
+		
+		public var plays: BaseTokenizedObject {
+			get {
+				return self.append("plays") 
+			}
+		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
+	}
+
 	public var plays: Int? = nil
 	public var views: Int? = nil
 
 
+	public func setMultiRequestToken(plays: String) {
+		self.dict["plays"] = plays
+	}
+	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

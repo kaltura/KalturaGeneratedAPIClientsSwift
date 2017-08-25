@@ -36,10 +36,23 @@
 /**  This class represents object-specific data passed to the   bulk upload job.  */
 open class BulkUploadEntryData: BulkUploadObjectData {
 
+	public class BulkUploadEntryDataTokenizer: BulkUploadObjectData.BulkUploadObjectDataTokenizer {
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+	}
+
 	/**  Selected profile id for all bulk entries  */
 	public var conversionProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

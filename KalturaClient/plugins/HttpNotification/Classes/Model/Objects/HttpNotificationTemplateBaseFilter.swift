@@ -35,6 +35,9 @@
 
 open class HttpNotificationTemplateBaseFilter: EventNotificationTemplateFilter {
 
+	public class HttpNotificationTemplateBaseFilterTokenizer: EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

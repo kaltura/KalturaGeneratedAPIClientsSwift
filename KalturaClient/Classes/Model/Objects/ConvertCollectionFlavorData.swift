@@ -35,6 +35,51 @@
 
 open class ConvertCollectionFlavorData: ObjectBase {
 
+	public class ConvertCollectionFlavorDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var flavorParamsOutputId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsOutputId") 
+			}
+		}
+		
+		public var readyBehavior: BaseTokenizedObject {
+			get {
+				return self.append("readyBehavior") 
+			}
+		}
+		
+		public var videoBitrate: BaseTokenizedObject {
+			get {
+				return self.append("videoBitrate") 
+			}
+		}
+		
+		public var audioBitrate: BaseTokenizedObject {
+			get {
+				return self.append("audioBitrate") 
+			}
+		}
+		
+		public var destFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncLocalPath") 
+			}
+		}
+		
+		public var destFileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncRemoteUrl") 
+			}
+		}
+	}
+
 	public var flavorAssetId: String? = nil
 	public var flavorParamsOutputId: Int? = nil
 	public var readyBehavior: Int? = nil
@@ -44,6 +89,34 @@ open class ConvertCollectionFlavorData: ObjectBase {
 	public var destFileSyncRemoteUrl: String? = nil
 
 
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(flavorParamsOutputId: String) {
+		self.dict["flavorParamsOutputId"] = flavorParamsOutputId
+	}
+	
+	public func setMultiRequestToken(readyBehavior: String) {
+		self.dict["readyBehavior"] = readyBehavior
+	}
+	
+	public func setMultiRequestToken(videoBitrate: String) {
+		self.dict["videoBitrate"] = videoBitrate
+	}
+	
+	public func setMultiRequestToken(audioBitrate: String) {
+		self.dict["audioBitrate"] = audioBitrate
+	}
+	
+	public func setMultiRequestToken(destFileSyncLocalPath: String) {
+		self.dict["destFileSyncLocalPath"] = destFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(destFileSyncRemoteUrl: String) {
+		self.dict["destFileSyncRemoteUrl"] = destFileSyncRemoteUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

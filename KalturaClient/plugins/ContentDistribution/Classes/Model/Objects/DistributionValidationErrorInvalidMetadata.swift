@@ -35,9 +35,22 @@
 
 open class DistributionValidationErrorInvalidMetadata: DistributionValidationErrorInvalidData {
 
+	public class DistributionValidationErrorInvalidMetadataTokenizer: DistributionValidationErrorInvalidData.DistributionValidationErrorInvalidDataTokenizer {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+	}
+
 	public var metadataProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

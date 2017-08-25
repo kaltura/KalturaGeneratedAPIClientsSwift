@@ -36,12 +36,35 @@
 /**  Clip operation attributes  */
 open class ClipAttributes: OperationAttributes {
 
+	public class ClipAttributesTokenizer: OperationAttributes.OperationAttributesTokenizer {
+		
+		public var offset: BaseTokenizedObject {
+			get {
+				return self.append("offset") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+	}
+
 	/**  Offset in milliseconds  */
 	public var offset: Int? = nil
 	/**  Duration in milliseconds  */
 	public var duration: Int? = nil
 
 
+	public func setMultiRequestToken(offset: String) {
+		self.dict["offset"] = offset
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

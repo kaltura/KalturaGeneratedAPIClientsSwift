@@ -35,6 +35,51 @@
 
 open class PostConvertJobData: ConvartableJobData {
 
+	public class PostConvertJobDataTokenizer: ConvartableJobData.ConvartableJobDataTokenizer {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var createThumb: BaseTokenizedObject {
+			get {
+				return self.append("createThumb") 
+			}
+		}
+		
+		public var thumbPath: BaseTokenizedObject {
+			get {
+				return self.append("thumbPath") 
+			}
+		}
+		
+		public var thumbOffset: BaseTokenizedObject {
+			get {
+				return self.append("thumbOffset") 
+			}
+		}
+		
+		public var thumbHeight: BaseTokenizedObject {
+			get {
+				return self.append("thumbHeight") 
+			}
+		}
+		
+		public var thumbBitrate: BaseTokenizedObject {
+			get {
+				return self.append("thumbBitrate") 
+			}
+		}
+		
+		public var customData: BaseTokenizedObject {
+			get {
+				return self.append("customData") 
+			}
+		}
+	}
+
 	public var flavorAssetId: String? = nil
 	/**  Indicates if a thumbnail should be created  */
 	public var createThumb: Bool? = nil
@@ -51,6 +96,34 @@ open class PostConvertJobData: ConvartableJobData {
 	public var customData: String? = nil
 
 
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(createThumb: String) {
+		self.dict["createThumb"] = createThumb
+	}
+	
+	public func setMultiRequestToken(thumbPath: String) {
+		self.dict["thumbPath"] = thumbPath
+	}
+	
+	public func setMultiRequestToken(thumbOffset: String) {
+		self.dict["thumbOffset"] = thumbOffset
+	}
+	
+	public func setMultiRequestToken(thumbHeight: String) {
+		self.dict["thumbHeight"] = thumbHeight
+	}
+	
+	public func setMultiRequestToken(thumbBitrate: String) {
+		self.dict["thumbBitrate"] = thumbBitrate
+	}
+	
+	public func setMultiRequestToken(customData: String) {
+		self.dict["customData"] = customData
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

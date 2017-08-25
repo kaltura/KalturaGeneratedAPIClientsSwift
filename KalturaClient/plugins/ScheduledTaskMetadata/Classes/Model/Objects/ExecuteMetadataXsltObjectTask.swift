@@ -35,6 +35,27 @@
 
 open class ExecuteMetadataXsltObjectTask: ObjectTask {
 
+	public class ExecuteMetadataXsltObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var metadataObjectType: BaseTokenizedObject {
+			get {
+				return self.append("metadataObjectType") 
+			}
+		}
+		
+		public var xslt: BaseTokenizedObject {
+			get {
+				return self.append("xslt") 
+			}
+		}
+	}
+
 	/**  Metadata profile id to lookup the metadata object  */
 	public var metadataProfileId: Int? = nil
 	/**  Metadata object type to lookup the metadata object  */
@@ -43,6 +64,18 @@ open class ExecuteMetadataXsltObjectTask: ObjectTask {
 	public var xslt: String? = nil
 
 
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(metadataObjectType: String) {
+		self.dict["metadataObjectType"] = metadataObjectType
+	}
+	
+	public func setMultiRequestToken(xslt: String) {
+		self.dict["xslt"] = xslt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

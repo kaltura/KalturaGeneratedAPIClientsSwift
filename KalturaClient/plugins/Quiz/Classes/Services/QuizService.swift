@@ -36,52 +36,121 @@
 /**  Allows user to handle quizzes  */
 public final class QuizService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var quiz: Quiz.QuizTokenizer {
+			get {
+				return Quiz.QuizTokenizer(self.append("quiz")) 
+			}
+		}
+	}
+
 	/**  Allows to add a quiz to an entry  */
-	public static func add(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz> {
-		let request: RequestBuilder<Quiz> = RequestBuilder<Quiz>(service: "quiz_quiz", action: "add")
+	public static func add(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer> {
+		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer>(service: "quiz_quiz", action: "add")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "quiz", value: quiz)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Allows to get a quiz  */
-	public static func get(entryId: String) -> RequestBuilder<Quiz> {
-		let request: RequestBuilder<Quiz> = RequestBuilder<Quiz>(service: "quiz_quiz", action: "get")
+	public static func get(entryId: String) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer> {
+		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer>(service: "quiz_quiz", action: "get")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
+	public class GetUrlTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var quizOutputType: BaseTokenizedObject {
+			get {
+				return self.append("quizOutputType") 
+			}
+		}
+	}
+
 	/**  sends a with an api request for pdf from quiz object  */
-	public static func getUrl(entryId: String, quizOutputType: QuizOutputType) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "quiz_quiz", action: "getUrl")
+	public static func getUrl(entryId: String, quizOutputType: QuizOutputType) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "quiz_quiz", action: "getUrl")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "quizOutputType", value: quizOutputType.rawValue)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<QuizListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: QuizFilter.QuizFilterTokenizer {
+			get {
+				return QuizFilter.QuizFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: QuizFilter?) -> RequestBuilder<QuizListResponse> {
+	public static func list(filter: QuizFilter?) -> RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List quiz objects by filter and pager  */
-	public static func list(filter: QuizFilter?, pager: FilterPager?) -> RequestBuilder<QuizListResponse> {
-		let request: RequestBuilder<QuizListResponse> = RequestBuilder<QuizListResponse>(service: "quiz_quiz", action: "list")
+	public static func list(filter: QuizFilter?, pager: FilterPager?) -> RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> = RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer>(service: "quiz_quiz", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var quiz: Quiz.QuizTokenizer {
+			get {
+				return Quiz.QuizTokenizer(self.append("quiz")) 
+			}
+		}
+	}
+
 	/**  Allows to update a quiz  */
-	public static func update(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz> {
-		let request: RequestBuilder<Quiz> = RequestBuilder<Quiz>(service: "quiz_quiz", action: "update")
+	public static func update(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer>(service: "quiz_quiz", action: "update")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "quiz", value: quiz)
 

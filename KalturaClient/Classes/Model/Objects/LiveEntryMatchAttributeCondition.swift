@@ -37,9 +37,22 @@
   KalturaLiveEntryMatchAttribute enum to provide attribute name. /  */
 open class LiveEntryMatchAttributeCondition: SearchMatchAttributeCondition {
 
+	public class LiveEntryMatchAttributeConditionTokenizer: SearchMatchAttributeCondition.SearchMatchAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: LiveEntryMatchAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

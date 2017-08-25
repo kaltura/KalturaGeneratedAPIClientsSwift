@@ -35,6 +35,9 @@
 
 open class YoutubeApiDistributionProfileBaseFilter: ConfigurableDistributionProfileFilter {
 
+	public class YoutubeApiDistributionProfileBaseFilterTokenizer: ConfigurableDistributionProfileFilter.ConfigurableDistributionProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

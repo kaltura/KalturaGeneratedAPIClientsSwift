@@ -35,12 +35,55 @@
 
 open class UploadResponse: ObjectBase {
 
+	public class UploadResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var uploadTokenId: BaseTokenizedObject {
+			get {
+				return self.append("uploadTokenId") 
+			}
+		}
+		
+		public var fileSize: BaseTokenizedObject {
+			get {
+				return self.append("fileSize") 
+			}
+		}
+		
+		public var errorCode: BaseTokenizedObject {
+			get {
+				return self.append("errorCode") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+	}
+
 	public var uploadTokenId: String? = nil
 	public var fileSize: Int? = nil
 	public var errorCode: UploadErrorCode? = nil
 	public var errorDescription: String? = nil
 
 
+	public func setMultiRequestToken(uploadTokenId: String) {
+		self.dict["uploadTokenId"] = uploadTokenId
+	}
+	
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
+	}
+	
+	public func setMultiRequestToken(errorCode: String) {
+		self.dict["errorCode"] = errorCode
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

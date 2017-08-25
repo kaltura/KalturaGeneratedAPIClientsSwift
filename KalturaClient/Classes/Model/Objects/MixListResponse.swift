@@ -35,6 +35,15 @@
 
 open class MixListResponse: ListResponse {
 
+	public class MixListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<MixEntry.MixEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<MixEntry.MixEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<MixEntry>? = nil
 
 

@@ -36,50 +36,107 @@
 /**  delivery service is used to control delivery objects  */
 public final class DeliveryProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var delivery: DeliveryProfile.DeliveryProfileTokenizer {
+			get {
+				return DeliveryProfile.DeliveryProfileTokenizer(self.append("delivery")) 
+			}
+		}
+	}
+
 	/**  Add new delivery.  */
-	public static func add(delivery: DeliveryProfile) -> RequestBuilder<DeliveryProfile> {
-		let request: RequestBuilder<DeliveryProfile> = RequestBuilder<DeliveryProfile>(service: "deliveryprofile", action: "add")
+	public static func add(delivery: DeliveryProfile) -> RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, AddTokenizer> = RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, AddTokenizer>(service: "deliveryprofile", action: "add")
 			.setBody(key: "delivery", value: delivery)
 
 		return request
 	}
 
+	public class CloneTokenizer: ClientTokenizer  {
+		
+		public var deliveryId: BaseTokenizedObject {
+			get {
+				return self.append("deliveryId") 
+			}
+		}
+	}
+
 	/**  Add delivery based on existing delivery.  Must provide valid sourceDeliveryId  */
-	public static func clone(deliveryId: Int) -> RequestBuilder<DeliveryProfile> {
-		let request: RequestBuilder<DeliveryProfile> = RequestBuilder<DeliveryProfile>(service: "deliveryprofile", action: "clone")
+	public static func clone(deliveryId: Int) -> RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, CloneTokenizer> = RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, CloneTokenizer>(service: "deliveryprofile", action: "clone")
 			.setBody(key: "deliveryId", value: deliveryId)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get delivery by id  */
-	public static func get(id: String) -> RequestBuilder<DeliveryProfile> {
-		let request: RequestBuilder<DeliveryProfile> = RequestBuilder<DeliveryProfile>(service: "deliveryprofile", action: "get")
+	public static func get(id: String) -> RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, GetTokenizer> = RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, GetTokenizer>(service: "deliveryprofile", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<DeliveryProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: DeliveryProfileFilter.DeliveryProfileFilterTokenizer {
+			get {
+				return DeliveryProfileFilter.DeliveryProfileFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<DeliveryProfileListResponse, DeliveryProfileListResponse.DeliveryProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DeliveryProfileFilter?) -> RequestBuilder<DeliveryProfileListResponse> {
+	public static func list(filter: DeliveryProfileFilter?) -> RequestBuilder<DeliveryProfileListResponse, DeliveryProfileListResponse.DeliveryProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  Retrieve a list of available delivery depends on the filter given  */
-	public static func list(filter: DeliveryProfileFilter?, pager: FilterPager?) -> RequestBuilder<DeliveryProfileListResponse> {
-		let request: RequestBuilder<DeliveryProfileListResponse> = RequestBuilder<DeliveryProfileListResponse>(service: "deliveryprofile", action: "list")
+	public static func list(filter: DeliveryProfileFilter?, pager: FilterPager?) -> RequestBuilder<DeliveryProfileListResponse, DeliveryProfileListResponse.DeliveryProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DeliveryProfileListResponse, DeliveryProfileListResponse.DeliveryProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<DeliveryProfileListResponse, DeliveryProfileListResponse.DeliveryProfileListResponseTokenizer, ListTokenizer>(service: "deliveryprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var delivery: DeliveryProfile.DeliveryProfileTokenizer {
+			get {
+				return DeliveryProfile.DeliveryProfileTokenizer(self.append("delivery")) 
+			}
+		}
+	}
+
 	/**  Update exisiting delivery  */
-	public static func update(id: String, delivery: DeliveryProfile) -> RequestBuilder<DeliveryProfile> {
-		let request: RequestBuilder<DeliveryProfile> = RequestBuilder<DeliveryProfile>(service: "deliveryprofile", action: "update")
+	public static func update(id: String, delivery: DeliveryProfile) -> RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer> = RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer>(service: "deliveryprofile", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "delivery", value: delivery)
 

@@ -35,9 +35,22 @@
 
 open class FileSyncFilter: FileSyncBaseFilter {
 
+	public class FileSyncFilterTokenizer: FileSyncBaseFilter.FileSyncBaseFilterTokenizer {
+		
+		public var currentDc: BaseTokenizedObject {
+			get {
+				return self.append("currentDc") 
+			}
+		}
+	}
+
 	public var currentDc: Bool? = nil
 
 
+	public func setMultiRequestToken(currentDc: String) {
+		self.dict["currentDc"] = currentDc
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

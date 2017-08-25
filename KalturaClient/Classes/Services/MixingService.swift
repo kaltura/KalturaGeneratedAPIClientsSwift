@@ -39,17 +39,41 @@
   manage its metadata and make basic manipulations.  */
 public final class MixingService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var mixEntry: MixEntry.MixEntryTokenizer {
+			get {
+				return MixEntry.MixEntryTokenizer(self.append("mixEntry")) 
+			}
+		}
+	}
+
 	/**  Adds a new mix.   If the dataContent is null, a default timeline will be
 	  created.  */
-	public static func add(mixEntry: MixEntry) -> RequestBuilder<MixEntry> {
-		let request: RequestBuilder<MixEntry> = RequestBuilder<MixEntry>(service: "mixing", action: "add")
+	public static func add(mixEntry: MixEntry) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer>(service: "mixing", action: "add")
 			.setBody(key: "mixEntry", value: mixEntry)
 
 		return request
 	}
 
+	public class AnonymousRankTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var rank: BaseTokenizedObject {
+			get {
+				return self.append("rank") 
+			}
+		}
+	}
+
 	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
-	public static func anonymousRank(entryId: String, rank: Int) -> RequestBuilder<Void> {
+	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "mixing", action: "anonymousRank")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "rank", value: rank)
@@ -57,99 +81,210 @@ public final class MixingService{
 		return request
 	}
 
+	public class AppendMediaEntryTokenizer: ClientTokenizer  {
+		
+		public var mixEntryId: BaseTokenizedObject {
+			get {
+				return self.append("mixEntryId") 
+			}
+		}
+		
+		public var mediaEntryId: BaseTokenizedObject {
+			get {
+				return self.append("mediaEntryId") 
+			}
+		}
+	}
+
 	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
 	  timeline as a new version.  */
-	public static func appendMediaEntry(mixEntryId: String, mediaEntryId: String) -> RequestBuilder<MixEntry> {
-		let request: RequestBuilder<MixEntry> = RequestBuilder<MixEntry>(service: "mixing", action: "appendMediaEntry")
+	public static func appendMediaEntry(mixEntryId: String, mediaEntryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> {
+		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer>(service: "mixing", action: "appendMediaEntry")
 			.setBody(key: "mixEntryId", value: mixEntryId)
 			.setBody(key: "mediaEntryId", value: mediaEntryId)
 
 		return request
 	}
 
+	public class CloneTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Clones an existing mix.  */
-	public static func clone(entryId: String) -> RequestBuilder<MixEntry> {
-		let request: RequestBuilder<MixEntry> = RequestBuilder<MixEntry>(service: "mixing", action: "clone")
+	public static func clone(entryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer>(service: "mixing", action: "clone")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
-	public static func count() -> RequestBuilder<Int> {
+	public class CountTokenizer: ClientTokenizer  {
+		
+		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
+			get {
+				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
+	public static func count() -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		return count(filter: nil)
 	}
 
 	/**  Count mix entries by filter.  */
-	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "mixing", action: "count")
+	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "mixing", action: "count")
 			.setBody(key: "filter", value: filter)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
 	/**  Delete a mix entry.  */
-	public static func delete(entryId: String) -> RequestBuilder<Void> {
+	public static func delete(entryId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "mixing", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
-	public static func get(entryId: String) -> RequestBuilder<MixEntry> {
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
+	public static func get(entryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer> {
 		return get(entryId: entryId, version: -1)
 	}
 
 	/**  Get mix entry by id.  */
-	public static func get(entryId: String, version: Int?) -> RequestBuilder<MixEntry> {
-		let request: RequestBuilder<MixEntry> = RequestBuilder<MixEntry>(service: "mixing", action: "get")
+	public static func get(entryId: String, version: Int?) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer> {
+		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer>(service: "mixing", action: "get")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "version", value: version)
 
 		return request
 	}
 
+	public class GetMixesByMediaIdTokenizer: ClientTokenizer  {
+		
+		public var mediaEntryId: BaseTokenizedObject {
+			get {
+				return self.append("mediaEntryId") 
+			}
+		}
+	}
+
 	/**  Get the mixes in which the media entry is included  */
-	public static func getMixesByMediaId(mediaEntryId: String) -> RequestBuilder<Array<MixEntry>> {
-		let request: ArrayRequestBuilder<MixEntry> = ArrayRequestBuilder<MixEntry>(service: "mixing", action: "getMixesByMediaId")
+	public static func getMixesByMediaId(mediaEntryId: String) -> ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer> {
+		let request: ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer> = ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer>(service: "mixing", action: "getMixesByMediaId")
 			.setBody(key: "mediaEntryId", value: mediaEntryId)
 
 		return request
 	}
 
-	public static func getReadyMediaEntries(mixId: String) -> RequestBuilder<Array<MediaEntry>> {
+	public class GetReadyMediaEntriesTokenizer: ClientTokenizer  {
+		
+		public var mixId: BaseTokenizedObject {
+			get {
+				return self.append("mixId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+	}
+
+	public static func getReadyMediaEntries(mixId: String) -> ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer> {
 		return getReadyMediaEntries(mixId: mixId, version: -1)
 	}
 
 	/**  Get all ready media entries that exist in the given mix id  */
-	public static func getReadyMediaEntries(mixId: String, version: Int?) -> RequestBuilder<Array<MediaEntry>> {
-		let request: ArrayRequestBuilder<MediaEntry> = ArrayRequestBuilder<MediaEntry>(service: "mixing", action: "getReadyMediaEntries")
+	public static func getReadyMediaEntries(mixId: String, version: Int?) -> ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer> {
+		let request: ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer> = ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer>(service: "mixing", action: "getReadyMediaEntries")
 			.setBody(key: "mixId", value: mixId)
 			.setBody(key: "version", value: version)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<MixListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: MixEntryFilter.MixEntryFilterTokenizer {
+			get {
+				return MixEntryFilter.MixEntryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: MixEntryFilter?) -> RequestBuilder<MixListResponse> {
+	public static func list(filter: MixEntryFilter?) -> RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List entries by filter with paging support.   Return parameter is an array of
 	  mix entries.  */
-	public static func list(filter: MixEntryFilter?, pager: FilterPager?) -> RequestBuilder<MixListResponse> {
-		let request: RequestBuilder<MixListResponse> = RequestBuilder<MixListResponse>(service: "mixing", action: "list")
+	public static func list(filter: MixEntryFilter?, pager: FilterPager?) -> RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> = RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer>(service: "mixing", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var mixEntry: MixEntry.MixEntryTokenizer {
+			get {
+				return MixEntry.MixEntryTokenizer(self.append("mixEntry")) 
+			}
+		}
+	}
+
 	/**  Update mix entry. Only the properties that were set will be updated.  */
-	public static func update(entryId: String, mixEntry: MixEntry) -> RequestBuilder<MixEntry> {
-		let request: RequestBuilder<MixEntry> = RequestBuilder<MixEntry>(service: "mixing", action: "update")
+	public static func update(entryId: String, mixEntry: MixEntry) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer>(service: "mixing", action: "update")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "mixEntry", value: mixEntry)
 

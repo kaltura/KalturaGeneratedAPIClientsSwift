@@ -35,6 +35,117 @@
 
 open class UserEntryBaseFilter: RelatedFilter {
 
+	public class UserEntryBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var idNotIn: BaseTokenizedObject {
+			get {
+				return self.append("idNotIn") 
+			}
+		}
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
+		
+		public var entryIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdNotIn") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var userIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdNotIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var extendedStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusEqual") 
+			}
+		}
+		
+		public var extendedStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusIn") 
+			}
+		}
+		
+		public var extendedStatusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusNotIn") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var idNotIn: String? = nil
@@ -55,6 +166,78 @@ open class UserEntryBaseFilter: RelatedFilter {
 	public var extendedStatusNotIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idNotIn: String) {
+		self.dict["idNotIn"] = idNotIn
+	}
+	
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
+	public func setMultiRequestToken(entryIdNotIn: String) {
+		self.dict["entryIdNotIn"] = entryIdNotIn
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(userIdNotIn: String) {
+		self.dict["userIdNotIn"] = userIdNotIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(extendedStatusEqual: String) {
+		self.dict["extendedStatusEqual"] = extendedStatusEqual
+	}
+	
+	public func setMultiRequestToken(extendedStatusIn: String) {
+		self.dict["extendedStatusIn"] = extendedStatusIn
+	}
+	
+	public func setMultiRequestToken(extendedStatusNotIn: String) {
+		self.dict["extendedStatusNotIn"] = extendedStatusNotIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

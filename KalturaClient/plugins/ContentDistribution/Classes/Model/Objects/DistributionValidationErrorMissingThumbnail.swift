@@ -35,6 +35,15 @@
 
 open class DistributionValidationErrorMissingThumbnail: DistributionValidationError {
 
+	public class DistributionValidationErrorMissingThumbnailTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
+		
+		public var dimensions: DistributionThumbDimensions.DistributionThumbDimensionsTokenizer {
+			get {
+				return DistributionThumbDimensions.DistributionThumbDimensionsTokenizer(self.append("dimensions")) 
+			}
+		}
+	}
+
 	public var dimensions: DistributionThumbDimensions? = nil
 
 

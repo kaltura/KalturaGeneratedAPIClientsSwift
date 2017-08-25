@@ -36,43 +36,91 @@
 /**  Allows user to 'like' or 'unlike' and entry  */
 public final class LikeService{
 
-	public static func checkLikeExists(entryId: String) -> RequestBuilder<Bool> {
+	public class CheckLikeExistsTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
+	public static func checkLikeExists(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer> {
 		return checkLikeExists(entryId: entryId, userId: nil)
 	}
 
-	public static func checkLikeExists(entryId: String, userId: String?) -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "like_like", action: "checkLikeExists")
+	public static func checkLikeExists(entryId: String, userId: String?) -> RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer>(service: "like_like", action: "checkLikeExists")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "userId", value: userId)
 
 		return request
 	}
 
-	public static func like(entryId: String) -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "like_like", action: "like")
+	public class LikeTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	public static func like(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer>(service: "like_like", action: "like")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<LikeListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: LikeFilter.LikeFilterTokenizer {
+			get {
+				return LikeFilter.LikeFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: LikeFilter?) -> RequestBuilder<LikeListResponse> {
+	public static func list(filter: LikeFilter?) -> RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
-	public static func list(filter: LikeFilter?, pager: FilterPager?) -> RequestBuilder<LikeListResponse> {
-		let request: RequestBuilder<LikeListResponse> = RequestBuilder<LikeListResponse>(service: "like_like", action: "list")
+	public static func list(filter: LikeFilter?, pager: FilterPager?) -> RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> = RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer>(service: "like_like", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func unlike(entryId: String) -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "like_like", action: "unlike")
+	public class UnlikeTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	public static func unlike(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer>(service: "like_like", action: "unlike")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

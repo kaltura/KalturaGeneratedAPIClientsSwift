@@ -37,45 +37,102 @@
   retrieve, etc.) scheduled recording events.  */
 public final class ScheduleEventService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
+			get {
+				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
+			}
+		}
+	}
+
 	/**  Allows you to add a new KalturaScheduleEvent object  */
-	public static func add(scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEvent> {
-		let request: RequestBuilder<ScheduleEvent> = RequestBuilder<ScheduleEvent>(service: "schedule_scheduleevent", action: "add")
+	public static func add(scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, AddTokenizer> = RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, AddTokenizer>(service: "schedule_scheduleevent", action: "add")
 			.setBody(key: "scheduleEvent", value: scheduleEvent)
 
 		return request
 	}
 
+	public class CancelTokenizer: ClientTokenizer  {
+		
+		public var scheduleEventId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventId") 
+			}
+		}
+	}
+
 	/**  Mark the KalturaScheduleEvent object as cancelled  */
-	public static func cancel(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent> {
-		let request: RequestBuilder<ScheduleEvent> = RequestBuilder<ScheduleEvent>(service: "schedule_scheduleevent", action: "cancel")
+	public static func cancel(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, CancelTokenizer> {
+		let request: RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, CancelTokenizer> = RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, CancelTokenizer>(service: "schedule_scheduleevent", action: "cancel")
 			.setBody(key: "scheduleEventId", value: scheduleEventId)
 
 		return request
+	}
+
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var scheduleEventId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventId") 
+			}
+		}
 	}
 
 	/**  Mark the KalturaScheduleEvent object as deleted  */
-	public static func delete(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent> {
-		let request: RequestBuilder<ScheduleEvent> = RequestBuilder<ScheduleEvent>(service: "schedule_scheduleevent", action: "delete")
+	public static func delete(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, DeleteTokenizer> = RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, DeleteTokenizer>(service: "schedule_scheduleevent", action: "delete")
 			.setBody(key: "scheduleEventId", value: scheduleEventId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var scheduleEventId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventId") 
+			}
+		}
 	}
 
 	/**  Retrieve a KalturaScheduleEvent object by ID  */
-	public static func get(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent> {
-		let request: RequestBuilder<ScheduleEvent> = RequestBuilder<ScheduleEvent>(service: "schedule_scheduleevent", action: "get")
+	public static func get(scheduleEventId: Int) -> RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, GetTokenizer> = RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, GetTokenizer>(service: "schedule_scheduleevent", action: "get")
 			.setBody(key: "scheduleEventId", value: scheduleEventId)
 
 		return request
 	}
 
-	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEventListResponse> {
+	public class GetConflictsTokenizer: ClientTokenizer  {
+		
+		public var resourceIds: BaseTokenizedObject {
+			get {
+				return self.append("resourceIds") 
+			}
+		}
+		
+		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
+			get {
+				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
+			}
+		}
+		
+		public var scheduleEventIdToIgnore: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventIdToIgnore") 
+			}
+		}
+	}
+
+	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> {
 		return getConflicts(resourceIds: resourceIds, scheduleEvent: scheduleEvent, scheduleEventIdToIgnore: nil)
 	}
 
 	/**  List conflicting events for resourcesIds by event's dates  */
-	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent, scheduleEventIdToIgnore: String?) -> RequestBuilder<ScheduleEventListResponse> {
-		let request: RequestBuilder<ScheduleEventListResponse> = RequestBuilder<ScheduleEventListResponse>(service: "schedule_scheduleevent", action: "getConflicts")
+	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent, scheduleEventIdToIgnore: String?) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> {
+		let request: RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> = RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer>(service: "schedule_scheduleevent", action: "getConflicts")
 			.setBody(key: "resourceIds", value: resourceIds)
 			.setBody(key: "scheduleEvent", value: scheduleEvent)
 			.setBody(key: "scheduleEventIdToIgnore", value: scheduleEventIdToIgnore)
@@ -83,26 +140,56 @@ public final class ScheduleEventService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ScheduleEventListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ScheduleEventFilter.ScheduleEventFilterTokenizer {
+			get {
+				return ScheduleEventFilter.ScheduleEventFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ScheduleEventFilter?) -> RequestBuilder<ScheduleEventListResponse> {
+	public static func list(filter: ScheduleEventFilter?) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List KalturaScheduleEvent objects  */
-	public static func list(filter: ScheduleEventFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleEventListResponse> {
-		let request: RequestBuilder<ScheduleEventListResponse> = RequestBuilder<ScheduleEventListResponse>(service: "schedule_scheduleevent", action: "list")
+	public static func list(filter: ScheduleEventFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, ListTokenizer> = RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, ListTokenizer>(service: "schedule_scheduleevent", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var scheduleEventId: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventId") 
+			}
+		}
+		
+		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
+			get {
+				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
+			}
+		}
+	}
+
 	/**  Update an existing KalturaScheduleEvent object  */
-	public static func update(scheduleEventId: Int, scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEvent> {
-		let request: RequestBuilder<ScheduleEvent> = RequestBuilder<ScheduleEvent>(service: "schedule_scheduleevent", action: "update")
+	public static func update(scheduleEventId: Int, scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, UpdateTokenizer> = RequestBuilder<ScheduleEvent, ScheduleEvent.ScheduleEventTokenizer, UpdateTokenizer>(service: "schedule_scheduleevent", action: "update")
 			.setBody(key: "scheduleEventId", value: scheduleEventId)
 			.setBody(key: "scheduleEvent", value: scheduleEvent)
 

@@ -36,6 +36,9 @@
 /**  Represents the current request IP address context  */
 open class IpAddressContextField: StringField {
 
+	public class IpAddressContextFieldTokenizer: StringField.StringFieldTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

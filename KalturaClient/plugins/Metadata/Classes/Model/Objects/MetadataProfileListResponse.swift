@@ -35,6 +35,15 @@
 
 open class MetadataProfileListResponse: ListResponse {
 
+	public class MetadataProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<MetadataProfile.MetadataProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<MetadataProfile.MetadataProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<MetadataProfile>? = nil
 
 

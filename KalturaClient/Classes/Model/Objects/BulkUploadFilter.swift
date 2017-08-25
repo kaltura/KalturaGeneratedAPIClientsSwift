@@ -35,6 +35,9 @@
 
 open class BulkUploadFilter: BulkUploadBaseFilter {
 
+	public class BulkUploadFilterTokenizer: BulkUploadBaseFilter.BulkUploadBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

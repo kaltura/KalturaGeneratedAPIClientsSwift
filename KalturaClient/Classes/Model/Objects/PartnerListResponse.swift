@@ -35,6 +35,15 @@
 
 open class PartnerListResponse: ListResponse {
 
+	public class PartnerListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Partner.PartnerTokenizer> {
+			get {
+				return ArrayTokenizedObject<Partner.PartnerTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Partner>? = nil
 
 

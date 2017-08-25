@@ -35,6 +35,9 @@
 
 open class QuizUserEntryBaseFilter: UserEntryFilter {
 
+	public class QuizUserEntryBaseFilterTokenizer: UserEntryFilter.UserEntryFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

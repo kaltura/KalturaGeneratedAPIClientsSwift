@@ -35,6 +35,57 @@
 
 open class LiveStats: ObjectBase {
 
+	public class LiveStatsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var audience: BaseTokenizedObject {
+			get {
+				return self.append("audience") 
+			}
+		}
+		
+		public var dvrAudience: BaseTokenizedObject {
+			get {
+				return self.append("dvrAudience") 
+			}
+		}
+		
+		public var avgBitrate: BaseTokenizedObject {
+			get {
+				return self.append("avgBitrate") 
+			}
+		}
+		
+		public var bufferTime: BaseTokenizedObject {
+			get {
+				return self.append("bufferTime") 
+			}
+		}
+		
+		public var plays: BaseTokenizedObject {
+			get {
+				return self.append("plays") 
+			}
+		}
+		
+		public var secondsViewed: BaseTokenizedObject {
+			get {
+				return self.append("secondsViewed") 
+			}
+		}
+		
+		public var startEvent: BaseTokenizedObject {
+			get {
+				return self.append("startEvent") 
+			}
+		}
+		
+		public var timestamp: BaseTokenizedObject {
+			get {
+				return self.append("timestamp") 
+			}
+		}
+	}
+
 	public var audience: Int? = nil
 	public var dvrAudience: Int? = nil
 	public var avgBitrate: Double? = nil
@@ -45,6 +96,38 @@ open class LiveStats: ObjectBase {
 	public var timestamp: Int? = nil
 
 
+	public func setMultiRequestToken(audience: String) {
+		self.dict["audience"] = audience
+	}
+	
+	public func setMultiRequestToken(dvrAudience: String) {
+		self.dict["dvrAudience"] = dvrAudience
+	}
+	
+	public func setMultiRequestToken(avgBitrate: String) {
+		self.dict["avgBitrate"] = avgBitrate
+	}
+	
+	public func setMultiRequestToken(bufferTime: String) {
+		self.dict["bufferTime"] = bufferTime
+	}
+	
+	public func setMultiRequestToken(plays: String) {
+		self.dict["plays"] = plays
+	}
+	
+	public func setMultiRequestToken(secondsViewed: String) {
+		self.dict["secondsViewed"] = secondsViewed
+	}
+	
+	public func setMultiRequestToken(startEvent: String) {
+		self.dict["startEvent"] = startEvent
+	}
+	
+	public func setMultiRequestToken(timestamp: String) {
+		self.dict["timestamp"] = timestamp
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -67,7 +150,7 @@ open class LiveStats: ObjectBase {
 			secondsViewed = dict["secondsViewed"] as? Int
 		}
 		if dict["startEvent"] != nil {
-			startEvent = Int64((dict["startEvent"] as? String)!)
+			startEvent = Int64("\(dict["startEvent"]!)")
 		}
 		if dict["timestamp"] != nil {
 			timestamp = dict["timestamp"] as? Int

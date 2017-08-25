@@ -35,12 +35,35 @@
 
 open class DeleteEntryFlavorsObjectTask: ObjectTask {
 
+	public class DeleteEntryFlavorsObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var deleteType: BaseTokenizedObject {
+			get {
+				return self.append("deleteType") 
+			}
+		}
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+	}
+
 	/**  The logic to use to choose the flavors for deletion  */
 	public var deleteType: DeleteFlavorsLogicType? = nil
 	/**  Comma separated list of flavor param ids to delete or keep  */
 	public var flavorParamsIds: String? = nil
 
 
+	public func setMultiRequestToken(deleteType: String) {
+		self.dict["deleteType"] = deleteType
+	}
+	
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

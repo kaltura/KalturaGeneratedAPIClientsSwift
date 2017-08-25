@@ -35,6 +35,15 @@
 
 open class TagListResponse: ListResponse {
 
+	public class TagListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Tag.TagTokenizer> {
+			get {
+				return ArrayTokenizedObject<Tag.TagTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<Tag>? = nil
 
 

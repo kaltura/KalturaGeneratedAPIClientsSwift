@@ -35,10 +35,33 @@
 
 open class FeatureStatus: ObjectBase {
 
+	public class FeatureStatusTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
+		}
+	}
+
 	public var type: FeatureStatusType? = nil
 	public var value: Int? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

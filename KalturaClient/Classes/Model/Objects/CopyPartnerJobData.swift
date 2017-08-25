@@ -35,12 +35,35 @@
 
 open class CopyPartnerJobData: JobData {
 
+	public class CopyPartnerJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var fromPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("fromPartnerId") 
+			}
+		}
+		
+		public var toPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("toPartnerId") 
+			}
+		}
+	}
+
 	/**  Id of the partner to copy from  */
 	public var fromPartnerId: Int? = nil
 	/**  Id of the partner to copy to  */
 	public var toPartnerId: Int? = nil
 
 
+	public func setMultiRequestToken(fromPartnerId: String) {
+		self.dict["fromPartnerId"] = fromPartnerId
+	}
+	
+	public func setMultiRequestToken(toPartnerId: String) {
+		self.dict["toPartnerId"] = toPartnerId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,99 @@
 
 open class LiveEntry: MediaEntry {
 
+	public class LiveEntryTokenizer: MediaEntry.MediaEntryTokenizer {
+		
+		public var offlineMessage: BaseTokenizedObject {
+			get {
+				return self.append("offlineMessage") 
+			}
+		}
+		
+		public var recordStatus: BaseTokenizedObject {
+			get {
+				return self.append("recordStatus") 
+			}
+		}
+		
+		public var dvrStatus: BaseTokenizedObject {
+			get {
+				return self.append("dvrStatus") 
+			}
+		}
+		
+		public var dvrWindow: BaseTokenizedObject {
+			get {
+				return self.append("dvrWindow") 
+			}
+		}
+		
+		public var lastElapsedRecordingTime: BaseTokenizedObject {
+			get {
+				return self.append("lastElapsedRecordingTime") 
+			}
+		}
+		
+		public var liveStreamConfigurations: ArrayTokenizedObject<LiveStreamConfiguration.LiveStreamConfigurationTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveStreamConfiguration.LiveStreamConfigurationTokenizer>(self.append("liveStreamConfigurations"))
+			} 
+		}
+		
+		public var recordedEntryId: BaseTokenizedObject {
+			get {
+				return self.append("recordedEntryId") 
+			}
+		}
+		
+		public var pushPublishEnabled: BaseTokenizedObject {
+			get {
+				return self.append("pushPublishEnabled") 
+			}
+		}
+		
+		public var publishConfigurations: ArrayTokenizedObject<LiveStreamPushPublishConfiguration.LiveStreamPushPublishConfigurationTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveStreamPushPublishConfiguration.LiveStreamPushPublishConfigurationTokenizer>(self.append("publishConfigurations"))
+			} 
+		}
+		
+		public var firstBroadcast: BaseTokenizedObject {
+			get {
+				return self.append("firstBroadcast") 
+			}
+		}
+		
+		public var lastBroadcast: BaseTokenizedObject {
+			get {
+				return self.append("lastBroadcast") 
+			}
+		}
+		
+		public var currentBroadcastStartTime: BaseTokenizedObject {
+			get {
+				return self.append("currentBroadcastStartTime") 
+			}
+		}
+		
+		public var recordingOptions: LiveEntryRecordingOptions.LiveEntryRecordingOptionsTokenizer {
+			get {
+				return LiveEntryRecordingOptions.LiveEntryRecordingOptionsTokenizer(self.append("recordingOptions")) 
+			}
+		}
+		
+		public var liveStatus: BaseTokenizedObject {
+			get {
+				return self.append("liveStatus") 
+			}
+		}
+		
+		public var segmentDuration: BaseTokenizedObject {
+			get {
+				return self.append("segmentDuration") 
+			}
+		}
+	}
+
 	/**  The message to be presented when the stream is offline  */
 	public var offlineMessage: String? = nil
 	/**  Recording Status Enabled/Disabled  */
@@ -68,6 +161,54 @@ open class LiveEntry: MediaEntry {
 	public var segmentDuration: Int? = nil
 
 
+	public func setMultiRequestToken(offlineMessage: String) {
+		self.dict["offlineMessage"] = offlineMessage
+	}
+	
+	public func setMultiRequestToken(recordStatus: String) {
+		self.dict["recordStatus"] = recordStatus
+	}
+	
+	public func setMultiRequestToken(dvrStatus: String) {
+		self.dict["dvrStatus"] = dvrStatus
+	}
+	
+	public func setMultiRequestToken(dvrWindow: String) {
+		self.dict["dvrWindow"] = dvrWindow
+	}
+	
+	public func setMultiRequestToken(lastElapsedRecordingTime: String) {
+		self.dict["lastElapsedRecordingTime"] = lastElapsedRecordingTime
+	}
+	
+	public func setMultiRequestToken(recordedEntryId: String) {
+		self.dict["recordedEntryId"] = recordedEntryId
+	}
+	
+	public func setMultiRequestToken(pushPublishEnabled: String) {
+		self.dict["pushPublishEnabled"] = pushPublishEnabled
+	}
+	
+	public func setMultiRequestToken(firstBroadcast: String) {
+		self.dict["firstBroadcast"] = firstBroadcast
+	}
+	
+	public func setMultiRequestToken(lastBroadcast: String) {
+		self.dict["lastBroadcast"] = lastBroadcast
+	}
+	
+	public func setMultiRequestToken(currentBroadcastStartTime: String) {
+		self.dict["currentBroadcastStartTime"] = currentBroadcastStartTime
+	}
+	
+	public func setMultiRequestToken(liveStatus: String) {
+		self.dict["liveStatus"] = liveStatus
+	}
+	
+	public func setMultiRequestToken(segmentDuration: String) {
+		self.dict["segmentDuration"] = segmentDuration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

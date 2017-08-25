@@ -35,6 +35,15 @@
 
 open class DeleteJobData: JobData {
 
+	public class DeleteJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var filter: Filter.FilterTokenizer {
+			get {
+				return Filter.FilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
 	/**  The filter should return the list of objects that need to be deleted.  */
 	public var filter: Filter? = nil
 

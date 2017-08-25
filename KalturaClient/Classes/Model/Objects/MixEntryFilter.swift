@@ -35,6 +35,9 @@
 
 open class MixEntryFilter: MixEntryBaseFilter {
 
+	public class MixEntryFilterTokenizer: MixEntryBaseFilter.MixEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

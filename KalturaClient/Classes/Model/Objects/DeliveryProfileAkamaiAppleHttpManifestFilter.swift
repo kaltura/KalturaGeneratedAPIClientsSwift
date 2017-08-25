@@ -35,6 +35,9 @@
 
 open class DeliveryProfileAkamaiAppleHttpManifestFilter: DeliveryProfileAkamaiAppleHttpManifestBaseFilter {
 
+	public class DeliveryProfileAkamaiAppleHttpManifestFilterTokenizer: DeliveryProfileAkamaiAppleHttpManifestBaseFilter.DeliveryProfileAkamaiAppleHttpManifestBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

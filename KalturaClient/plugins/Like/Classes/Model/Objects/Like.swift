@@ -35,6 +35,27 @@
 
 open class Like: ObjectBase {
 
+	public class LikeTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+	}
+
 	/**  The id of the entry that the like belongs to  */
 	public var entryId: String? = nil
 	/**  The id of user that the like belongs to  */
@@ -43,6 +64,18 @@ open class Like: ObjectBase {
 	public var createdAt: Int? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

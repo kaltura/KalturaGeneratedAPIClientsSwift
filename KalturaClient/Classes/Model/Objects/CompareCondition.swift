@@ -35,12 +35,31 @@
 
 open class CompareCondition: Condition {
 
+	public class CompareConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var value: IntegerValue.IntegerValueTokenizer {
+			get {
+				return IntegerValue.IntegerValueTokenizer(self.append("value")) 
+			}
+		}
+		
+		public var comparison: BaseTokenizedObject {
+			get {
+				return self.append("comparison") 
+			}
+		}
+	}
+
 	/**  Value to evaluate against the field and operator  */
 	public var value: IntegerValue? = nil
 	/**  Comparing operator  */
 	public var comparison: SearchConditionComparison? = nil
 
 
+	public func setMultiRequestToken(comparison: String) {
+		self.dict["comparison"] = comparison
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

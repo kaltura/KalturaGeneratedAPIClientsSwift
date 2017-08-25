@@ -35,6 +35,51 @@
 
 open class AccessControlScope: ObjectBase {
 
+	public class AccessControlScopeTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+		
+		public var ip: BaseTokenizedObject {
+			get {
+				return self.append("ip") 
+			}
+		}
+		
+		public var ks: BaseTokenizedObject {
+			get {
+				return self.append("ks") 
+			}
+		}
+		
+		public var userAgent: BaseTokenizedObject {
+			get {
+				return self.append("userAgent") 
+			}
+		}
+		
+		public var time: BaseTokenizedObject {
+			get {
+				return self.append("time") 
+			}
+		}
+		
+		public var contexts: ArrayTokenizedObject<AccessControlContextTypeHolder.AccessControlContextTypeHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<AccessControlContextTypeHolder.AccessControlContextTypeHolderTokenizer>(self.append("contexts"))
+			} 
+		}
+		
+		public var hashes: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("hashes"))
+			} 
+		}
+	}
+
 	/**  URL to be used to test domain conditions.  */
 	public var referrer: String? = nil
 	/**  IP to be used to test geographic location conditions.  */
@@ -52,6 +97,26 @@ open class AccessControlScope: ObjectBase {
 	public var hashes: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(referrer: String) {
+		self.dict["referrer"] = referrer
+	}
+	
+	public func setMultiRequestToken(ip: String) {
+		self.dict["ip"] = ip
+	}
+	
+	public func setMultiRequestToken(ks: String) {
+		self.dict["ks"] = ks
+	}
+	
+	public func setMultiRequestToken(userAgent: String) {
+		self.dict["userAgent"] = userAgent
+	}
+	
+	public func setMultiRequestToken(time: String) {
+		self.dict["time"] = time
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

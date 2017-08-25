@@ -35,6 +35,9 @@
 
 open class CodeCuePointFilter: CodeCuePointBaseFilter {
 
+	public class CodeCuePointFilterTokenizer: CodeCuePointBaseFilter.CodeCuePointBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,15 @@
 
 open class ResponseProfileListResponse: ListResponse {
 
+	public class ResponseProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ResponseProfile.ResponseProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<ResponseProfile.ResponseProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ResponseProfile>? = nil
 
 

@@ -35,12 +35,55 @@
 
 open class DocumentEntryBaseFilter: BaseEntryFilter {
 
+	public class DocumentEntryBaseFilterTokenizer: BaseEntryFilter.BaseEntryFilterTokenizer {
+		
+		public var documentTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("documentTypeEqual") 
+			}
+		}
+		
+		public var documentTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("documentTypeIn") 
+			}
+		}
+		
+		public var assetParamsIdsMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdsMatchOr") 
+			}
+		}
+		
+		public var assetParamsIdsMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdsMatchAnd") 
+			}
+		}
+	}
+
 	public var documentTypeEqual: DocumentType? = nil
 	public var documentTypeIn: String? = nil
 	public var assetParamsIdsMatchOr: String? = nil
 	public var assetParamsIdsMatchAnd: String? = nil
 
 
+	public func setMultiRequestToken(documentTypeEqual: String) {
+		self.dict["documentTypeEqual"] = documentTypeEqual
+	}
+	
+	public func setMultiRequestToken(documentTypeIn: String) {
+		self.dict["documentTypeIn"] = documentTypeIn
+	}
+	
+	public func setMultiRequestToken(assetParamsIdsMatchOr: String) {
+		self.dict["assetParamsIdsMatchOr"] = assetParamsIdsMatchOr
+	}
+	
+	public func setMultiRequestToken(assetParamsIdsMatchAnd: String) {
+		self.dict["assetParamsIdsMatchAnd"] = assetParamsIdsMatchAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

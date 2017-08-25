@@ -35,6 +35,9 @@
 
 open class DeleteLocalContentObjectTask: ObjectTask {
 
+	public class DeleteLocalContentObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

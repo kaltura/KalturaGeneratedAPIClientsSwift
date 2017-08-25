@@ -35,6 +35,45 @@
 
 open class AdCuePoint: CuePoint {
 
+	public class AdCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var protocolType: BaseTokenizedObject {
+			get {
+				return self.append("protocolType") 
+			}
+		}
+		
+		public var sourceUrl: BaseTokenizedObject {
+			get {
+				return self.append("sourceUrl") 
+			}
+		}
+		
+		public var adType: BaseTokenizedObject {
+			get {
+				return self.append("adType") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+	}
+
 	public var protocolType: AdProtocolType? = nil
 	public var sourceUrl: String? = nil
 	public var adType: AdType? = nil
@@ -44,6 +83,30 @@ open class AdCuePoint: CuePoint {
 	public var duration: Int? = nil
 
 
+	public func setMultiRequestToken(protocolType: String) {
+		self.dict["protocolType"] = protocolType
+	}
+	
+	public func setMultiRequestToken(sourceUrl: String) {
+		self.dict["sourceUrl"] = sourceUrl
+	}
+	
+	public func setMultiRequestToken(adType: String) {
+		self.dict["adType"] = adType
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(endTime: String) {
+		self.dict["endTime"] = endTime
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

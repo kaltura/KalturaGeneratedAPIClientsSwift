@@ -37,6 +37,9 @@
   service list actions.  */
 open class FilterPager: Pager {
 
+	public class FilterPagerTokenizer: Pager.PagerTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

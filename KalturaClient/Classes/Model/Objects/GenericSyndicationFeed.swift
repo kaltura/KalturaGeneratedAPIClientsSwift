@@ -35,6 +35,33 @@
 
 open class GenericSyndicationFeed: BaseSyndicationFeed {
 
+	public class GenericSyndicationFeedTokenizer: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
+		
+		public var feedDescription: BaseTokenizedObject {
+			get {
+				return self.append("feedDescription") 
+			}
+		}
+		
+		public var feedLandingPage: BaseTokenizedObject {
+			get {
+				return self.append("feedLandingPage") 
+			}
+		}
+		
+		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
+			get {
+				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
+			}
+		}
+		
+		public var pageSize: BaseTokenizedObject {
+			get {
+				return self.append("pageSize") 
+			}
+		}
+	}
+
 	/**  feed description  */
 	public var feedDescription: String? = nil
 	/**  feed landing page (i.e publisher website)  */
@@ -45,6 +72,18 @@ open class GenericSyndicationFeed: BaseSyndicationFeed {
 	public var pageSize: Int? = nil
 
 
+	public func setMultiRequestToken(feedDescription: String) {
+		self.dict["feedDescription"] = feedDescription
+	}
+	
+	public func setMultiRequestToken(feedLandingPage: String) {
+		self.dict["feedLandingPage"] = feedLandingPage
+	}
+	
+	public func setMultiRequestToken(pageSize: String) {
+		self.dict["pageSize"] = pageSize
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

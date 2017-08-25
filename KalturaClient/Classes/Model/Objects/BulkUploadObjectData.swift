@@ -36,6 +36,9 @@
 /**  This class represents object-specific data passed to the   bulk upload job.  */
 open class BulkUploadObjectData: ObjectBase {
 
+	public class BulkUploadObjectDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

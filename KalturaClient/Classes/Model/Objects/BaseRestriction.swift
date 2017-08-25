@@ -35,6 +35,9 @@
 
 open class BaseRestriction: ObjectBase {
 
+	public class BaseRestrictionTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

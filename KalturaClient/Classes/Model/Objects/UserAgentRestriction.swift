@@ -35,12 +35,35 @@
 
 open class UserAgentRestriction: BaseRestriction {
 
+	public class UserAgentRestrictionTokenizer: BaseRestriction.BaseRestrictionTokenizer {
+		
+		public var userAgentRestrictionType: BaseTokenizedObject {
+			get {
+				return self.append("userAgentRestrictionType") 
+			}
+		}
+		
+		public var userAgentRegexList: BaseTokenizedObject {
+			get {
+				return self.append("userAgentRegexList") 
+			}
+		}
+	}
+
 	/**  User agent restriction type (Allow or deny)  */
 	public var userAgentRestrictionType: UserAgentRestrictionType? = nil
 	/**  A comma seperated list of user agent regular expressions  */
 	public var userAgentRegexList: String? = nil
 
 
+	public func setMultiRequestToken(userAgentRestrictionType: String) {
+		self.dict["userAgentRestrictionType"] = userAgentRestrictionType
+	}
+	
+	public func setMultiRequestToken(userAgentRegexList: String) {
+		self.dict["userAgentRegexList"] = userAgentRegexList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

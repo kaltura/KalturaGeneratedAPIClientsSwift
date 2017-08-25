@@ -35,6 +35,27 @@
 
 open class ExtendingItemMrssParameter: ObjectBase {
 
+	public class ExtendingItemMrssParameterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var xpath: BaseTokenizedObject {
+			get {
+				return self.append("xpath") 
+			}
+		}
+		
+		public var identifier: ObjectIdentifier.ObjectIdentifierTokenizer {
+			get {
+				return ObjectIdentifier.ObjectIdentifierTokenizer(self.append("identifier")) 
+			}
+		}
+		
+		public var extensionMode: BaseTokenizedObject {
+			get {
+				return self.append("extensionMode") 
+			}
+		}
+	}
+
 	/**  XPath for the extending item  */
 	public var xpath: String? = nil
 	/**  Object identifier  */
@@ -43,6 +64,14 @@ open class ExtendingItemMrssParameter: ObjectBase {
 	public var extensionMode: MrssExtensionMode? = nil
 
 
+	public func setMultiRequestToken(xpath: String) {
+		self.dict["xpath"] = xpath
+	}
+	
+	public func setMultiRequestToken(extensionMode: String) {
+		self.dict["extensionMode"] = extensionMode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

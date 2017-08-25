@@ -35,6 +35,45 @@
 
 open class ReportInputFilter: ReportInputBaseFilter {
 
+	public class ReportInputFilterTokenizer: ReportInputBaseFilter.ReportInputBaseFilterTokenizer {
+		
+		public var keywords: BaseTokenizedObject {
+			get {
+				return self.append("keywords") 
+			}
+		}
+		
+		public var searchInTags: BaseTokenizedObject {
+			get {
+				return self.append("searchInTags") 
+			}
+		}
+		
+		public var searchInAdminTags: BaseTokenizedObject {
+			get {
+				return self.append("searchInAdminTags") 
+			}
+		}
+		
+		public var categories: BaseTokenizedObject {
+			get {
+				return self.append("categories") 
+			}
+		}
+		
+		public var timeZoneOffset: BaseTokenizedObject {
+			get {
+				return self.append("timeZoneOffset") 
+			}
+		}
+		
+		public var interval: BaseTokenizedObject {
+			get {
+				return self.append("interval") 
+			}
+		}
+	}
+
 	/**  Search keywords to filter objects  */
 	public var keywords: String? = nil
 	/**  Search keywords in onjects tags  */
@@ -49,6 +88,30 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var interval: ReportInterval? = nil
 
 
+	public func setMultiRequestToken(keywords: String) {
+		self.dict["keywords"] = keywords
+	}
+	
+	public func setMultiRequestToken(searchInTags: String) {
+		self.dict["searchInTags"] = searchInTags
+	}
+	
+	public func setMultiRequestToken(searchInAdminTags: String) {
+		self.dict["searchInAdminTags"] = searchInAdminTags
+	}
+	
+	public func setMultiRequestToken(categories: String) {
+		self.dict["categories"] = categories
+	}
+	
+	public func setMultiRequestToken(timeZoneOffset: String) {
+		self.dict["timeZoneOffset"] = timeZoneOffset
+	}
+	
+	public func setMultiRequestToken(interval: String) {
+		self.dict["interval"] = interval
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

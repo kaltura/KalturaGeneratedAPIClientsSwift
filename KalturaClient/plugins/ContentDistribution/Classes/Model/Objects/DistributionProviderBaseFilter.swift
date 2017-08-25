@@ -35,10 +35,33 @@
 
 open class DistributionProviderBaseFilter: Filter {
 
+	public class DistributionProviderBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+	}
+
 	public var typeEqual: DistributionProviderType? = nil
 	public var typeIn: String? = nil
 
 
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -37,6 +37,21 @@
   list/search actions.  */
 open class Pager: ObjectBase {
 
+	public class PagerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var pageSize: BaseTokenizedObject {
+			get {
+				return self.append("pageSize") 
+			}
+		}
+		
+		public var pageIndex: BaseTokenizedObject {
+			get {
+				return self.append("pageIndex") 
+			}
+		}
+	}
+
 	/**  The number of objects to retrieve. (Default is 30, maximum page size is 500).  */
 	public var pageSize: Int? = nil
 	/**  The page number for which {pageSize} of objects should be retrieved (Default is
@@ -44,6 +59,14 @@ open class Pager: ObjectBase {
 	public var pageIndex: Int? = nil
 
 
+	public func setMultiRequestToken(pageSize: String) {
+		self.dict["pageSize"] = pageSize
+	}
+	
+	public func setMultiRequestToken(pageIndex: String) {
+		self.dict["pageIndex"] = pageIndex
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

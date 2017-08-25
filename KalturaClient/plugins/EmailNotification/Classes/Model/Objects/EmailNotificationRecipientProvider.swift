@@ -37,6 +37,9 @@
   notification  */
 open class EmailNotificationRecipientProvider: ObjectBase {
 
+	public class EmailNotificationRecipientProviderTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

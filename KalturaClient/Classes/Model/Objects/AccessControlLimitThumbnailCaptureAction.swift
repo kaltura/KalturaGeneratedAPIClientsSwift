@@ -35,6 +35,9 @@
 
 open class AccessControlLimitThumbnailCaptureAction: RuleAction {
 
+	public class AccessControlLimitThumbnailCaptureActionTokenizer: RuleAction.RuleActionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

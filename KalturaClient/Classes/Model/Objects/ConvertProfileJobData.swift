@@ -35,6 +35,27 @@
 
 open class ConvertProfileJobData: JobData {
 
+	public class ConvertProfileJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var inputFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("inputFileSyncLocalPath") 
+			}
+		}
+		
+		public var thumbHeight: BaseTokenizedObject {
+			get {
+				return self.append("thumbHeight") 
+			}
+		}
+		
+		public var thumbBitrate: BaseTokenizedObject {
+			get {
+				return self.append("thumbBitrate") 
+			}
+		}
+	}
+
 	public var inputFileSyncLocalPath: String? = nil
 	/**  The height of last created thumbnail, will be used to comapare if this thumbnail
 	  is the best we can have  */
@@ -44,6 +65,18 @@ open class ConvertProfileJobData: JobData {
 	public var thumbBitrate: Int? = nil
 
 
+	public func setMultiRequestToken(inputFileSyncLocalPath: String) {
+		self.dict["inputFileSyncLocalPath"] = inputFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(thumbHeight: String) {
+		self.dict["thumbHeight"] = thumbHeight
+	}
+	
+	public func setMultiRequestToken(thumbBitrate: String) {
+		self.dict["thumbBitrate"] = thumbBitrate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

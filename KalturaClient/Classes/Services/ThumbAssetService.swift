@@ -36,53 +36,137 @@
 /**  Retrieve information and invoke actions on Thumb Asset  */
 public final class ThumbAssetService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var thumbAsset: ThumbAsset.ThumbAssetTokenizer {
+			get {
+				return ThumbAsset.ThumbAssetTokenizer(self.append("thumbAsset")) 
+			}
+		}
+	}
+
 	/**  Add thumbnail asset  */
-	public static func add(entryId: String, thumbAsset: ThumbAsset) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "add")
+	public static func add(entryId: String, thumbAsset: ThumbAsset) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddTokenizer>(service: "thumbasset", action: "add")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "thumbAsset", value: thumbAsset)
 
 		return request
 	}
 
-	public static func addFromImage(entryId: String, fileData: RequestFile) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "addFromImage")
+	public class AddFromImageTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	public static func addFromImage(entryId: String, fileData: RequestFile) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromImageTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromImageTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromImageTokenizer>(service: "thumbasset", action: "addFromImage")
 			.setBody(key: "entryId", value: entryId)
 			.setFile(key: "fileData", value: fileData)
 
 		return request
 	}
 
-	public static func addFromUrl(entryId: String, url: String) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "addFromUrl")
+	public class AddFromUrlTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
+	public static func addFromUrl(entryId: String, url: String) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromUrlTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromUrlTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, AddFromUrlTokenizer>(service: "thumbasset", action: "addFromUrl")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "url", value: url)
 
 		return request
 	}
 
-	public static func delete(thumbAssetId: String) -> RequestBuilder<Void> {
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+	}
+
+	public static func delete(thumbAssetId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "thumbasset", action: "delete")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request
 	}
 
+	public class ExportTokenizer: ClientTokenizer  {
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+	}
+
 	/**  manually export an asset  */
-	public static func export(assetId: String, storageProfileId: Int) -> RequestBuilder<FlavorAsset> {
-		let request: RequestBuilder<FlavorAsset> = RequestBuilder<FlavorAsset>(service: "thumbasset", action: "export")
+	public static func export(assetId: String, storageProfileId: Int) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> {
+		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer>(service: "thumbasset", action: "export")
 			.setBody(key: "assetId", value: assetId)
 			.setBody(key: "storageProfileId", value: storageProfileId)
 
 		return request
 	}
 
-	public static func generate(entryId: String, thumbParams: ThumbParams) -> RequestBuilder<ThumbAsset> {
+	public class GenerateTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
+			get {
+				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
+			}
+		}
+		
+		public var sourceAssetId: BaseTokenizedObject {
+			get {
+				return self.append("sourceAssetId") 
+			}
+		}
+	}
+
+	public static func generate(entryId: String, thumbParams: ThumbParams) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateTokenizer> {
 		return generate(entryId: entryId, thumbParams: thumbParams, sourceAssetId: nil)
 	}
 
-	public static func generate(entryId: String, thumbParams: ThumbParams, sourceAssetId: String?) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "generate")
+	public static func generate(entryId: String, thumbParams: ThumbParams, sourceAssetId: String?) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateTokenizer>(service: "thumbasset", action: "generate")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "thumbParams", value: thumbParams)
 			.setBody(key: "sourceAssetId", value: sourceAssetId)
@@ -90,47 +174,110 @@ public final class ThumbAssetService{
 		return request
 	}
 
-	public static func generateByEntryId(entryId: String, destThumbParamsId: Int) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "generateByEntryId")
+	public class GenerateByEntryIdTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var destThumbParamsId: BaseTokenizedObject {
+			get {
+				return self.append("destThumbParamsId") 
+			}
+		}
+	}
+
+	public static func generateByEntryId(entryId: String, destThumbParamsId: Int) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateByEntryIdTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateByEntryIdTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GenerateByEntryIdTokenizer>(service: "thumbasset", action: "generateByEntryId")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "destThumbParamsId", value: destThumbParamsId)
 
 		return request
 	}
 
-	public static func get(thumbAssetId: String) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "get")
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+	}
+
+	public static func get(thumbAssetId: String) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GetTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, GetTokenizer>(service: "thumbasset", action: "get")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request
 	}
 
-	public static func getByEntryId(entryId: String) -> RequestBuilder<Array<ThumbAsset>> {
-		let request: ArrayRequestBuilder<ThumbAsset> = ArrayRequestBuilder<ThumbAsset>(service: "thumbasset", action: "getByEntryId")
+	public class GetByEntryIdTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	public static func getByEntryId(entryId: String) -> ArrayRequestBuilder<ThumbAsset, ArrayTokenizedObject<ThumbAsset.ThumbAssetTokenizer>, GetByEntryIdTokenizer> {
+		let request: ArrayRequestBuilder<ThumbAsset, ArrayTokenizedObject<ThumbAsset.ThumbAssetTokenizer>, GetByEntryIdTokenizer> = ArrayRequestBuilder<ThumbAsset, ArrayTokenizedObject<ThumbAsset.ThumbAssetTokenizer>, GetByEntryIdTokenizer>(service: "thumbasset", action: "getByEntryId")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
 	}
 
+	public class GetRemotePathsTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get remote storage existing paths for the asset  */
-	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse> {
-		let request: RequestBuilder<RemotePathListResponse> = RequestBuilder<RemotePathListResponse>(service: "thumbasset", action: "getRemotePaths")
+	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> {
+		let request: RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> = RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer>(service: "thumbasset", action: "getRemotePaths")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func getUrl(id: String) -> RequestBuilder<String> {
+	public class GetUrlTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var storageId: BaseTokenizedObject {
+			get {
+				return self.append("storageId") 
+			}
+		}
+		
+		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
+			get {
+				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
+			}
+		}
+	}
+
+	public static func getUrl(id: String) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		return getUrl(id: id, storageId: nil)
 	}
 
-	public static func getUrl(id: String, storageId: Int?) -> RequestBuilder<String> {
+	public static func getUrl(id: String, storageId: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		return getUrl(id: id, storageId: storageId, thumbParams: nil)
 	}
 
 	/**  Get download URL for the asset  */
-	public static func getUrl(id: String, storageId: Int?, thumbParams: ThumbParams?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "thumbasset", action: "getUrl")
+	public static func getUrl(id: String, storageId: Int?, thumbParams: ThumbParams?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "thumbasset", action: "getUrl")
 			.setBody(key: "id", value: id)
 			.setBody(key: "storageId", value: storageId)
 			.setBody(key: "thumbParams", value: thumbParams)
@@ -138,52 +285,115 @@ public final class ThumbAssetService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ThumbAssetListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: AssetFilter.AssetFilterTokenizer {
+			get {
+				return AssetFilter.AssetFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ThumbAssetListResponse, ThumbAssetListResponse.ThumbAssetListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: AssetFilter?) -> RequestBuilder<ThumbAssetListResponse> {
+	public static func list(filter: AssetFilter?) -> RequestBuilder<ThumbAssetListResponse, ThumbAssetListResponse.ThumbAssetListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List Thumbnail Assets by filter and pager  */
-	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<ThumbAssetListResponse> {
-		let request: RequestBuilder<ThumbAssetListResponse> = RequestBuilder<ThumbAssetListResponse>(service: "thumbasset", action: "list")
+	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<ThumbAssetListResponse, ThumbAssetListResponse.ThumbAssetListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ThumbAssetListResponse, ThumbAssetListResponse.ThumbAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<ThumbAssetListResponse, ThumbAssetListResponse.ThumbAssetListResponseTokenizer, ListTokenizer>(service: "thumbasset", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func regenerate(thumbAssetId: String) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "regenerate")
+	public class RegenerateTokenizer: ClientTokenizer  {
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+	}
+
+	public static func regenerate(thumbAssetId: String) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, RegenerateTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, RegenerateTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, RegenerateTokenizer>(service: "thumbasset", action: "regenerate")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request
 	}
 
+	public class SetAsDefaultTokenizer: ClientTokenizer  {
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+	}
+
 	/**  Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
 	  thumbnail assets of the entry.   Create a new file sync link on the entry
 	  thumbnail that points to the thumbnail asset file sync.  */
-	public static func setAsDefault(thumbAssetId: String) -> RequestBuilder<Void> {
+	public static func setAsDefault(thumbAssetId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "thumbasset", action: "setAsDefault")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request
 	}
 
+	public class SetContentTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var contentResource: ContentResource.ContentResourceTokenizer {
+			get {
+				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
+			}
+		}
+	}
+
 	/**  Update content of thumbnail asset  */
-	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "setContent")
+	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, SetContentTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, SetContentTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, SetContentTokenizer>(service: "thumbasset", action: "setContent")
 			.setBody(key: "id", value: id)
 			.setBody(key: "contentResource", value: contentResource)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var thumbAsset: ThumbAsset.ThumbAssetTokenizer {
+			get {
+				return ThumbAsset.ThumbAssetTokenizer(self.append("thumbAsset")) 
+			}
+		}
+	}
+
 	/**  Update thumbnail asset  */
-	public static func update(id: String, thumbAsset: ThumbAsset) -> RequestBuilder<ThumbAsset> {
-		let request: RequestBuilder<ThumbAsset> = RequestBuilder<ThumbAsset>(service: "thumbasset", action: "update")
+	public static func update(id: String, thumbAsset: ThumbAsset) -> RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, UpdateTokenizer> = RequestBuilder<ThumbAsset, ThumbAsset.ThumbAssetTokenizer, UpdateTokenizer>(service: "thumbasset", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "thumbAsset", value: thumbAsset)
 

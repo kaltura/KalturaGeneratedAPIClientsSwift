@@ -35,10 +35,23 @@
 
 open class EventObjectChangedCondition: Condition {
 
+	public class EventObjectChangedConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var modifiedColumns: BaseTokenizedObject {
+			get {
+				return self.append("modifiedColumns") 
+			}
+		}
+	}
+
 	/**  Comma seperated column names to be tested  */
 	public var modifiedColumns: String? = nil
 
 
+	public func setMultiRequestToken(modifiedColumns: String) {
+		self.dict["modifiedColumns"] = modifiedColumns
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

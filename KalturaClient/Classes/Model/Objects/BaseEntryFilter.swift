@@ -35,6 +35,39 @@
 
 open class BaseEntryFilter: BaseEntryBaseFilter {
 
+	public class BaseEntryFilterTokenizer: BaseEntryBaseFilter.BaseEntryBaseFilterTokenizer {
+		
+		public var freeText: BaseTokenizedObject {
+			get {
+				return self.append("freeText") 
+			}
+		}
+		
+		public var isRoot: BaseTokenizedObject {
+			get {
+				return self.append("isRoot") 
+			}
+		}
+		
+		public var categoriesFullNameIn: BaseTokenizedObject {
+			get {
+				return self.append("categoriesFullNameIn") 
+			}
+		}
+		
+		public var categoryAncestorIdIn: BaseTokenizedObject {
+			get {
+				return self.append("categoryAncestorIdIn") 
+			}
+		}
+		
+		public var redirectFromEntryId: BaseTokenizedObject {
+			get {
+				return self.append("redirectFromEntryId") 
+			}
+		}
+	}
+
 	public var freeText: String? = nil
 	public var isRoot: Bool? = nil
 	public var categoriesFullNameIn: String? = nil
@@ -44,6 +77,26 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 	public var redirectFromEntryId: String? = nil
 
 
+	public func setMultiRequestToken(freeText: String) {
+		self.dict["freeText"] = freeText
+	}
+	
+	public func setMultiRequestToken(isRoot: String) {
+		self.dict["isRoot"] = isRoot
+	}
+	
+	public func setMultiRequestToken(categoriesFullNameIn: String) {
+		self.dict["categoriesFullNameIn"] = categoriesFullNameIn
+	}
+	
+	public func setMultiRequestToken(categoryAncestorIdIn: String) {
+		self.dict["categoryAncestorIdIn"] = categoryAncestorIdIn
+	}
+	
+	public func setMultiRequestToken(redirectFromEntryId: String) {
+		self.dict["redirectFromEntryId"] = redirectFromEntryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

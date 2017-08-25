@@ -35,6 +35,15 @@
 
 open class FieldMatchCondition: MatchCondition {
 
+	public class FieldMatchConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+		
+		public var field: StringField.StringFieldTokenizer {
+			get {
+				return StringField.StringFieldTokenizer(self.append("field")) 
+			}
+		}
+	}
+
 	/**  Field to evaluate  */
 	public var field: StringField? = nil
 

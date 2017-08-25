@@ -35,6 +35,51 @@
 
 open class ConvertCollectionJobData: ConvartableJobData {
 
+	public class ConvertCollectionJobDataTokenizer: ConvartableJobData.ConvartableJobDataTokenizer {
+		
+		public var destDirLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("destDirLocalPath") 
+			}
+		}
+		
+		public var destDirRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("destDirRemoteUrl") 
+			}
+		}
+		
+		public var destFileName: BaseTokenizedObject {
+			get {
+				return self.append("destFileName") 
+			}
+		}
+		
+		public var inputXmlLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("inputXmlLocalPath") 
+			}
+		}
+		
+		public var inputXmlRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("inputXmlRemoteUrl") 
+			}
+		}
+		
+		public var commandLinesStr: BaseTokenizedObject {
+			get {
+				return self.append("commandLinesStr") 
+			}
+		}
+		
+		public var flavors: ArrayTokenizedObject<ConvertCollectionFlavorData.ConvertCollectionFlavorDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<ConvertCollectionFlavorData.ConvertCollectionFlavorDataTokenizer>(self.append("flavors"))
+			} 
+		}
+	}
+
 	public var destDirLocalPath: String? = nil
 	public var destDirRemoteUrl: String? = nil
 	public var destFileName: String? = nil
@@ -44,6 +89,30 @@ open class ConvertCollectionJobData: ConvartableJobData {
 	public var flavors: Array<ConvertCollectionFlavorData>? = nil
 
 
+	public func setMultiRequestToken(destDirLocalPath: String) {
+		self.dict["destDirLocalPath"] = destDirLocalPath
+	}
+	
+	public func setMultiRequestToken(destDirRemoteUrl: String) {
+		self.dict["destDirRemoteUrl"] = destDirRemoteUrl
+	}
+	
+	public func setMultiRequestToken(destFileName: String) {
+		self.dict["destFileName"] = destFileName
+	}
+	
+	public func setMultiRequestToken(inputXmlLocalPath: String) {
+		self.dict["inputXmlLocalPath"] = inputXmlLocalPath
+	}
+	
+	public func setMultiRequestToken(inputXmlRemoteUrl: String) {
+		self.dict["inputXmlRemoteUrl"] = inputXmlRemoteUrl
+	}
+	
+	public func setMultiRequestToken(commandLinesStr: String) {
+		self.dict["commandLinesStr"] = commandLinesStr
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

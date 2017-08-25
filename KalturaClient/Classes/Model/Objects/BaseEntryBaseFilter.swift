@@ -35,6 +35,477 @@
 
 open class BaseEntryBaseFilter: RelatedFilter {
 
+	public class BaseEntryBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var idNotIn: BaseTokenizedObject {
+			get {
+				return self.append("idNotIn") 
+			}
+		}
+		
+		public var nameLike: BaseTokenizedObject {
+			get {
+				return self.append("nameLike") 
+			}
+		}
+		
+		public var nameMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("nameMultiLikeOr") 
+			}
+		}
+		
+		public var nameMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("nameMultiLikeAnd") 
+			}
+		}
+		
+		public var nameEqual: BaseTokenizedObject {
+			get {
+				return self.append("nameEqual") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var userIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdNotIn") 
+			}
+		}
+		
+		public var creatorIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("creatorIdEqual") 
+			}
+		}
+		
+		public var tagsLike: BaseTokenizedObject {
+			get {
+				return self.append("tagsLike") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var adminTagsLike: BaseTokenizedObject {
+			get {
+				return self.append("adminTagsLike") 
+			}
+		}
+		
+		public var adminTagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("adminTagsMultiLikeOr") 
+			}
+		}
+		
+		public var adminTagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("adminTagsMultiLikeAnd") 
+			}
+		}
+		
+		public var categoriesMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("categoriesMatchAnd") 
+			}
+		}
+		
+		public var categoriesMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("categoriesMatchOr") 
+			}
+		}
+		
+		public var categoriesNotContains: BaseTokenizedObject {
+			get {
+				return self.append("categoriesNotContains") 
+			}
+		}
+		
+		public var categoriesIdsMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIdsMatchAnd") 
+			}
+		}
+		
+		public var categoriesIdsMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIdsMatchOr") 
+			}
+		}
+		
+		public var categoriesIdsNotContains: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIdsNotContains") 
+			}
+		}
+		
+		public var categoriesIdsEmpty: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIdsEmpty") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusNotEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusNotEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+		
+		public var moderationStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatusEqual") 
+			}
+		}
+		
+		public var moderationStatusNotEqual: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatusNotEqual") 
+			}
+		}
+		
+		public var moderationStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatusIn") 
+			}
+		}
+		
+		public var moderationStatusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("moderationStatusNotIn") 
+			}
+		}
+		
+		public var typeEqual: BaseTokenizedObject {
+			get {
+				return self.append("typeEqual") 
+			}
+		}
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var totalRankLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("totalRankLessThanOrEqual") 
+			}
+		}
+		
+		public var totalRankGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("totalRankGreaterThanOrEqual") 
+			}
+		}
+		
+		public var groupIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("groupIdEqual") 
+			}
+		}
+		
+		public var searchTextMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("searchTextMatchAnd") 
+			}
+		}
+		
+		public var searchTextMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("searchTextMatchOr") 
+			}
+		}
+		
+		public var accessControlIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("accessControlIdEqual") 
+			}
+		}
+		
+		public var accessControlIdIn: BaseTokenizedObject {
+			get {
+				return self.append("accessControlIdIn") 
+			}
+		}
+		
+		public var startDateGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startDateGreaterThanOrEqual") 
+			}
+		}
+		
+		public var startDateLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startDateLessThanOrEqual") 
+			}
+		}
+		
+		public var startDateGreaterThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("startDateGreaterThanOrEqualOrNull") 
+			}
+		}
+		
+		public var startDateLessThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("startDateLessThanOrEqualOrNull") 
+			}
+		}
+		
+		public var endDateGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endDateGreaterThanOrEqual") 
+			}
+		}
+		
+		public var endDateLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endDateLessThanOrEqual") 
+			}
+		}
+		
+		public var endDateGreaterThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("endDateGreaterThanOrEqualOrNull") 
+			}
+		}
+		
+		public var endDateLessThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("endDateLessThanOrEqualOrNull") 
+			}
+		}
+		
+		public var referenceIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("referenceIdEqual") 
+			}
+		}
+		
+		public var referenceIdIn: BaseTokenizedObject {
+			get {
+				return self.append("referenceIdIn") 
+			}
+		}
+		
+		public var replacingEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("replacingEntryIdEqual") 
+			}
+		}
+		
+		public var replacingEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("replacingEntryIdIn") 
+			}
+		}
+		
+		public var replacedEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("replacedEntryIdEqual") 
+			}
+		}
+		
+		public var replacedEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("replacedEntryIdIn") 
+			}
+		}
+		
+		public var replacementStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("replacementStatusEqual") 
+			}
+		}
+		
+		public var replacementStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("replacementStatusIn") 
+			}
+		}
+		
+		public var partnerSortValueGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueGreaterThanOrEqual") 
+			}
+		}
+		
+		public var partnerSortValueLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValueLessThanOrEqual") 
+			}
+		}
+		
+		public var rootEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("rootEntryIdEqual") 
+			}
+		}
+		
+		public var rootEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("rootEntryIdIn") 
+			}
+		}
+		
+		public var parentEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("parentEntryIdEqual") 
+			}
+		}
+		
+		public var entitledUsersEditMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersEditMatchAnd") 
+			}
+		}
+		
+		public var entitledUsersEditMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersEditMatchOr") 
+			}
+		}
+		
+		public var entitledUsersPublishMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersPublishMatchAnd") 
+			}
+		}
+		
+		public var entitledUsersPublishMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersPublishMatchOr") 
+			}
+		}
+		
+		public var tagsNameMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsNameMultiLikeOr") 
+			}
+		}
+		
+		public var tagsAdminTagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsAdminTagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsAdminTagsNameMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsAdminTagsNameMultiLikeOr") 
+			}
+		}
+		
+		public var tagsNameMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsNameMultiLikeAnd") 
+			}
+		}
+		
+		public var tagsAdminTagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsAdminTagsMultiLikeAnd") 
+			}
+		}
+		
+		public var tagsAdminTagsNameMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsAdminTagsNameMultiLikeAnd") 
+			}
+		}
+	}
+
 	/**  This filter should be in use for retrieving only a specific entry (identified by
 	  its entryId).  */
 	public var idEqual: String? = nil
@@ -180,6 +651,318 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	public var tagsAdminTagsNameMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idNotIn: String) {
+		self.dict["idNotIn"] = idNotIn
+	}
+	
+	public func setMultiRequestToken(nameLike: String) {
+		self.dict["nameLike"] = nameLike
+	}
+	
+	public func setMultiRequestToken(nameMultiLikeOr: String) {
+		self.dict["nameMultiLikeOr"] = nameMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(nameMultiLikeAnd: String) {
+		self.dict["nameMultiLikeAnd"] = nameMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(nameEqual: String) {
+		self.dict["nameEqual"] = nameEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(userIdNotIn: String) {
+		self.dict["userIdNotIn"] = userIdNotIn
+	}
+	
+	public func setMultiRequestToken(creatorIdEqual: String) {
+		self.dict["creatorIdEqual"] = creatorIdEqual
+	}
+	
+	public func setMultiRequestToken(tagsLike: String) {
+		self.dict["tagsLike"] = tagsLike
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(adminTagsLike: String) {
+		self.dict["adminTagsLike"] = adminTagsLike
+	}
+	
+	public func setMultiRequestToken(adminTagsMultiLikeOr: String) {
+		self.dict["adminTagsMultiLikeOr"] = adminTagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(adminTagsMultiLikeAnd: String) {
+		self.dict["adminTagsMultiLikeAnd"] = adminTagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(categoriesMatchAnd: String) {
+		self.dict["categoriesMatchAnd"] = categoriesMatchAnd
+	}
+	
+	public func setMultiRequestToken(categoriesMatchOr: String) {
+		self.dict["categoriesMatchOr"] = categoriesMatchOr
+	}
+	
+	public func setMultiRequestToken(categoriesNotContains: String) {
+		self.dict["categoriesNotContains"] = categoriesNotContains
+	}
+	
+	public func setMultiRequestToken(categoriesIdsMatchAnd: String) {
+		self.dict["categoriesIdsMatchAnd"] = categoriesIdsMatchAnd
+	}
+	
+	public func setMultiRequestToken(categoriesIdsMatchOr: String) {
+		self.dict["categoriesIdsMatchOr"] = categoriesIdsMatchOr
+	}
+	
+	public func setMultiRequestToken(categoriesIdsNotContains: String) {
+		self.dict["categoriesIdsNotContains"] = categoriesIdsNotContains
+	}
+	
+	public func setMultiRequestToken(categoriesIdsEmpty: String) {
+		self.dict["categoriesIdsEmpty"] = categoriesIdsEmpty
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusNotEqual: String) {
+		self.dict["statusNotEqual"] = statusNotEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
+	public func setMultiRequestToken(moderationStatusEqual: String) {
+		self.dict["moderationStatusEqual"] = moderationStatusEqual
+	}
+	
+	public func setMultiRequestToken(moderationStatusNotEqual: String) {
+		self.dict["moderationStatusNotEqual"] = moderationStatusNotEqual
+	}
+	
+	public func setMultiRequestToken(moderationStatusIn: String) {
+		self.dict["moderationStatusIn"] = moderationStatusIn
+	}
+	
+	public func setMultiRequestToken(moderationStatusNotIn: String) {
+		self.dict["moderationStatusNotIn"] = moderationStatusNotIn
+	}
+	
+	public func setMultiRequestToken(typeEqual: String) {
+		self.dict["typeEqual"] = typeEqual
+	}
+	
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(totalRankLessThanOrEqual: String) {
+		self.dict["totalRankLessThanOrEqual"] = totalRankLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(totalRankGreaterThanOrEqual: String) {
+		self.dict["totalRankGreaterThanOrEqual"] = totalRankGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(groupIdEqual: String) {
+		self.dict["groupIdEqual"] = groupIdEqual
+	}
+	
+	public func setMultiRequestToken(searchTextMatchAnd: String) {
+		self.dict["searchTextMatchAnd"] = searchTextMatchAnd
+	}
+	
+	public func setMultiRequestToken(searchTextMatchOr: String) {
+		self.dict["searchTextMatchOr"] = searchTextMatchOr
+	}
+	
+	public func setMultiRequestToken(accessControlIdEqual: String) {
+		self.dict["accessControlIdEqual"] = accessControlIdEqual
+	}
+	
+	public func setMultiRequestToken(accessControlIdIn: String) {
+		self.dict["accessControlIdIn"] = accessControlIdIn
+	}
+	
+	public func setMultiRequestToken(startDateGreaterThanOrEqual: String) {
+		self.dict["startDateGreaterThanOrEqual"] = startDateGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startDateLessThanOrEqual: String) {
+		self.dict["startDateLessThanOrEqual"] = startDateLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startDateGreaterThanOrEqualOrNull: String) {
+		self.dict["startDateGreaterThanOrEqualOrNull"] = startDateGreaterThanOrEqualOrNull
+	}
+	
+	public func setMultiRequestToken(startDateLessThanOrEqualOrNull: String) {
+		self.dict["startDateLessThanOrEqualOrNull"] = startDateLessThanOrEqualOrNull
+	}
+	
+	public func setMultiRequestToken(endDateGreaterThanOrEqual: String) {
+		self.dict["endDateGreaterThanOrEqual"] = endDateGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endDateLessThanOrEqual: String) {
+		self.dict["endDateLessThanOrEqual"] = endDateLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endDateGreaterThanOrEqualOrNull: String) {
+		self.dict["endDateGreaterThanOrEqualOrNull"] = endDateGreaterThanOrEqualOrNull
+	}
+	
+	public func setMultiRequestToken(endDateLessThanOrEqualOrNull: String) {
+		self.dict["endDateLessThanOrEqualOrNull"] = endDateLessThanOrEqualOrNull
+	}
+	
+	public func setMultiRequestToken(referenceIdEqual: String) {
+		self.dict["referenceIdEqual"] = referenceIdEqual
+	}
+	
+	public func setMultiRequestToken(referenceIdIn: String) {
+		self.dict["referenceIdIn"] = referenceIdIn
+	}
+	
+	public func setMultiRequestToken(replacingEntryIdEqual: String) {
+		self.dict["replacingEntryIdEqual"] = replacingEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(replacingEntryIdIn: String) {
+		self.dict["replacingEntryIdIn"] = replacingEntryIdIn
+	}
+	
+	public func setMultiRequestToken(replacedEntryIdEqual: String) {
+		self.dict["replacedEntryIdEqual"] = replacedEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(replacedEntryIdIn: String) {
+		self.dict["replacedEntryIdIn"] = replacedEntryIdIn
+	}
+	
+	public func setMultiRequestToken(replacementStatusEqual: String) {
+		self.dict["replacementStatusEqual"] = replacementStatusEqual
+	}
+	
+	public func setMultiRequestToken(replacementStatusIn: String) {
+		self.dict["replacementStatusIn"] = replacementStatusIn
+	}
+	
+	public func setMultiRequestToken(partnerSortValueGreaterThanOrEqual: String) {
+		self.dict["partnerSortValueGreaterThanOrEqual"] = partnerSortValueGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(partnerSortValueLessThanOrEqual: String) {
+		self.dict["partnerSortValueLessThanOrEqual"] = partnerSortValueLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(rootEntryIdEqual: String) {
+		self.dict["rootEntryIdEqual"] = rootEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(rootEntryIdIn: String) {
+		self.dict["rootEntryIdIn"] = rootEntryIdIn
+	}
+	
+	public func setMultiRequestToken(parentEntryIdEqual: String) {
+		self.dict["parentEntryIdEqual"] = parentEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(entitledUsersEditMatchAnd: String) {
+		self.dict["entitledUsersEditMatchAnd"] = entitledUsersEditMatchAnd
+	}
+	
+	public func setMultiRequestToken(entitledUsersEditMatchOr: String) {
+		self.dict["entitledUsersEditMatchOr"] = entitledUsersEditMatchOr
+	}
+	
+	public func setMultiRequestToken(entitledUsersPublishMatchAnd: String) {
+		self.dict["entitledUsersPublishMatchAnd"] = entitledUsersPublishMatchAnd
+	}
+	
+	public func setMultiRequestToken(entitledUsersPublishMatchOr: String) {
+		self.dict["entitledUsersPublishMatchOr"] = entitledUsersPublishMatchOr
+	}
+	
+	public func setMultiRequestToken(tagsNameMultiLikeOr: String) {
+		self.dict["tagsNameMultiLikeOr"] = tagsNameMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsAdminTagsMultiLikeOr: String) {
+		self.dict["tagsAdminTagsMultiLikeOr"] = tagsAdminTagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsAdminTagsNameMultiLikeOr: String) {
+		self.dict["tagsAdminTagsNameMultiLikeOr"] = tagsAdminTagsNameMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsNameMultiLikeAnd: String) {
+		self.dict["tagsNameMultiLikeAnd"] = tagsNameMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(tagsAdminTagsMultiLikeAnd: String) {
+		self.dict["tagsAdminTagsMultiLikeAnd"] = tagsAdminTagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(tagsAdminTagsNameMultiLikeAnd: String) {
+		self.dict["tagsAdminTagsNameMultiLikeAnd"] = tagsAdminTagsNameMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class FlavorParamsFilter: FlavorParamsBaseFilter {
 
+	public class FlavorParamsFilterTokenizer: FlavorParamsBaseFilter.FlavorParamsBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

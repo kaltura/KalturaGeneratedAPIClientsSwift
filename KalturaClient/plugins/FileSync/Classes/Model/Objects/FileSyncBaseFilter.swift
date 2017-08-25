@@ -35,6 +35,183 @@
 
 open class FileSyncBaseFilter: Filter {
 
+	public class FileSyncBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var fileObjectTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileObjectTypeEqual") 
+			}
+		}
+		
+		public var fileObjectTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("fileObjectTypeIn") 
+			}
+		}
+		
+		public var objectIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("objectIdEqual") 
+			}
+		}
+		
+		public var objectIdIn: BaseTokenizedObject {
+			get {
+				return self.append("objectIdIn") 
+			}
+		}
+		
+		public var versionEqual: BaseTokenizedObject {
+			get {
+				return self.append("versionEqual") 
+			}
+		}
+		
+		public var versionIn: BaseTokenizedObject {
+			get {
+				return self.append("versionIn") 
+			}
+		}
+		
+		public var objectSubTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("objectSubTypeEqual") 
+			}
+		}
+		
+		public var objectSubTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("objectSubTypeIn") 
+			}
+		}
+		
+		public var dcEqual: BaseTokenizedObject {
+			get {
+				return self.append("dcEqual") 
+			}
+		}
+		
+		public var dcIn: BaseTokenizedObject {
+			get {
+				return self.append("dcIn") 
+			}
+		}
+		
+		public var originalEqual: BaseTokenizedObject {
+			get {
+				return self.append("originalEqual") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var readyAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("readyAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var readyAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("readyAtLessThanOrEqual") 
+			}
+		}
+		
+		public var syncTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("syncTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var syncTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("syncTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var fileTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileTypeEqual") 
+			}
+		}
+		
+		public var fileTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("fileTypeIn") 
+			}
+		}
+		
+		public var linkedIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("linkedIdEqual") 
+			}
+		}
+		
+		public var linkCountGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("linkCountGreaterThanOrEqual") 
+			}
+		}
+		
+		public var linkCountLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("linkCountLessThanOrEqual") 
+			}
+		}
+		
+		public var fileSizeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileSizeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var fileSizeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("fileSizeLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var partnerIdEqual: Int? = nil
 	public var fileObjectTypeEqual: FileSyncObjectType? = nil
 	public var fileObjectTypeIn: String? = nil
@@ -66,6 +243,122 @@ open class FileSyncBaseFilter: Filter {
 	public var fileSizeLessThanOrEqual: Double? = nil
 
 
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(fileObjectTypeEqual: String) {
+		self.dict["fileObjectTypeEqual"] = fileObjectTypeEqual
+	}
+	
+	public func setMultiRequestToken(fileObjectTypeIn: String) {
+		self.dict["fileObjectTypeIn"] = fileObjectTypeIn
+	}
+	
+	public func setMultiRequestToken(objectIdEqual: String) {
+		self.dict["objectIdEqual"] = objectIdEqual
+	}
+	
+	public func setMultiRequestToken(objectIdIn: String) {
+		self.dict["objectIdIn"] = objectIdIn
+	}
+	
+	public func setMultiRequestToken(versionEqual: String) {
+		self.dict["versionEqual"] = versionEqual
+	}
+	
+	public func setMultiRequestToken(versionIn: String) {
+		self.dict["versionIn"] = versionIn
+	}
+	
+	public func setMultiRequestToken(objectSubTypeEqual: String) {
+		self.dict["objectSubTypeEqual"] = objectSubTypeEqual
+	}
+	
+	public func setMultiRequestToken(objectSubTypeIn: String) {
+		self.dict["objectSubTypeIn"] = objectSubTypeIn
+	}
+	
+	public func setMultiRequestToken(dcEqual: String) {
+		self.dict["dcEqual"] = dcEqual
+	}
+	
+	public func setMultiRequestToken(dcIn: String) {
+		self.dict["dcIn"] = dcIn
+	}
+	
+	public func setMultiRequestToken(originalEqual: String) {
+		self.dict["originalEqual"] = originalEqual
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(readyAtGreaterThanOrEqual: String) {
+		self.dict["readyAtGreaterThanOrEqual"] = readyAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(readyAtLessThanOrEqual: String) {
+		self.dict["readyAtLessThanOrEqual"] = readyAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(syncTimeGreaterThanOrEqual: String) {
+		self.dict["syncTimeGreaterThanOrEqual"] = syncTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(syncTimeLessThanOrEqual: String) {
+		self.dict["syncTimeLessThanOrEqual"] = syncTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(fileTypeEqual: String) {
+		self.dict["fileTypeEqual"] = fileTypeEqual
+	}
+	
+	public func setMultiRequestToken(fileTypeIn: String) {
+		self.dict["fileTypeIn"] = fileTypeIn
+	}
+	
+	public func setMultiRequestToken(linkedIdEqual: String) {
+		self.dict["linkedIdEqual"] = linkedIdEqual
+	}
+	
+	public func setMultiRequestToken(linkCountGreaterThanOrEqual: String) {
+		self.dict["linkCountGreaterThanOrEqual"] = linkCountGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(linkCountLessThanOrEqual: String) {
+		self.dict["linkCountLessThanOrEqual"] = linkCountLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(fileSizeGreaterThanOrEqual: String) {
+		self.dict["fileSizeGreaterThanOrEqual"] = fileSizeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(fileSizeLessThanOrEqual: String) {
+		self.dict["fileSizeLessThanOrEqual"] = fileSizeLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

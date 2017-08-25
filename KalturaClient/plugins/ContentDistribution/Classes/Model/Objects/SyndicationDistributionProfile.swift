@@ -35,10 +35,33 @@
 
 open class SyndicationDistributionProfile: DistributionProfile {
 
+	public class SyndicationDistributionProfileTokenizer: DistributionProfile.DistributionProfileTokenizer {
+		
+		public var xsl: BaseTokenizedObject {
+			get {
+				return self.append("xsl") 
+			}
+		}
+		
+		public var feedId: BaseTokenizedObject {
+			get {
+				return self.append("feedId") 
+			}
+		}
+	}
+
 	public var xsl: String? = nil
 	public var feedId: String? = nil
 
 
+	public func setMultiRequestToken(xsl: String) {
+		self.dict["xsl"] = xsl
+	}
+	
+	public func setMultiRequestToken(feedId: String) {
+		self.dict["feedId"] = feedId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

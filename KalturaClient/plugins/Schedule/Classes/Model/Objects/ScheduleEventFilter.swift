@@ -35,6 +35,87 @@
 
 open class ScheduleEventFilter: ScheduleEventBaseFilter {
 
+	public class ScheduleEventFilterTokenizer: ScheduleEventBaseFilter.ScheduleEventBaseFilterTokenizer {
+		
+		public var resourceIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("resourceIdsLike") 
+			}
+		}
+		
+		public var resourceIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("resourceIdsMultiLikeOr") 
+			}
+		}
+		
+		public var resourceIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("resourceIdsMultiLikeAnd") 
+			}
+		}
+		
+		public var parentResourceIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("parentResourceIdsLike") 
+			}
+		}
+		
+		public var parentResourceIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("parentResourceIdsMultiLikeOr") 
+			}
+		}
+		
+		public var parentResourceIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("parentResourceIdsMultiLikeAnd") 
+			}
+		}
+		
+		public var templateEntryCategoriesIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryCategoriesIdsMultiLikeAnd") 
+			}
+		}
+		
+		public var templateEntryCategoriesIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryCategoriesIdsMultiLikeOr") 
+			}
+		}
+		
+		public var resourceSystemNamesMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("resourceSystemNamesMultiLikeOr") 
+			}
+		}
+		
+		public var templateEntryCategoriesIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryCategoriesIdsLike") 
+			}
+		}
+		
+		public var resourceSystemNamesMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("resourceSystemNamesMultiLikeAnd") 
+			}
+		}
+		
+		public var resourceSystemNamesLike: BaseTokenizedObject {
+			get {
+				return self.append("resourceSystemNamesLike") 
+			}
+		}
+		
+		public var resourceIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("resourceIdEqual") 
+			}
+		}
+	}
+
 	public var resourceIdsLike: String? = nil
 	public var resourceIdsMultiLikeOr: String? = nil
 	public var resourceIdsMultiLikeAnd: String? = nil
@@ -50,6 +131,58 @@ open class ScheduleEventFilter: ScheduleEventBaseFilter {
 	public var resourceIdEqual: String? = nil
 
 
+	public func setMultiRequestToken(resourceIdsLike: String) {
+		self.dict["resourceIdsLike"] = resourceIdsLike
+	}
+	
+	public func setMultiRequestToken(resourceIdsMultiLikeOr: String) {
+		self.dict["resourceIdsMultiLikeOr"] = resourceIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(resourceIdsMultiLikeAnd: String) {
+		self.dict["resourceIdsMultiLikeAnd"] = resourceIdsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(parentResourceIdsLike: String) {
+		self.dict["parentResourceIdsLike"] = parentResourceIdsLike
+	}
+	
+	public func setMultiRequestToken(parentResourceIdsMultiLikeOr: String) {
+		self.dict["parentResourceIdsMultiLikeOr"] = parentResourceIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(parentResourceIdsMultiLikeAnd: String) {
+		self.dict["parentResourceIdsMultiLikeAnd"] = parentResourceIdsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(templateEntryCategoriesIdsMultiLikeAnd: String) {
+		self.dict["templateEntryCategoriesIdsMultiLikeAnd"] = templateEntryCategoriesIdsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(templateEntryCategoriesIdsMultiLikeOr: String) {
+		self.dict["templateEntryCategoriesIdsMultiLikeOr"] = templateEntryCategoriesIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(resourceSystemNamesMultiLikeOr: String) {
+		self.dict["resourceSystemNamesMultiLikeOr"] = resourceSystemNamesMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(templateEntryCategoriesIdsLike: String) {
+		self.dict["templateEntryCategoriesIdsLike"] = templateEntryCategoriesIdsLike
+	}
+	
+	public func setMultiRequestToken(resourceSystemNamesMultiLikeAnd: String) {
+		self.dict["resourceSystemNamesMultiLikeAnd"] = resourceSystemNamesMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(resourceSystemNamesLike: String) {
+		self.dict["resourceSystemNamesLike"] = resourceSystemNamesLike
+	}
+	
+	public func setMultiRequestToken(resourceIdEqual: String) {
+		self.dict["resourceIdEqual"] = resourceIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

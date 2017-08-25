@@ -35,10 +35,33 @@
 
 open class UrlTokenizerCloudFront: UrlTokenizer {
 
+	public class UrlTokenizerCloudFrontTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var keyPairId: BaseTokenizedObject {
+			get {
+				return self.append("keyPairId") 
+			}
+		}
+		
+		public var rootDir: BaseTokenizedObject {
+			get {
+				return self.append("rootDir") 
+			}
+		}
+	}
+
 	public var keyPairId: String? = nil
 	public var rootDir: String? = nil
 
 
+	public func setMultiRequestToken(keyPairId: String) {
+		self.dict["keyPairId"] = keyPairId
+	}
+	
+	public func setMultiRequestToken(rootDir: String) {
+		self.dict["rootDir"] = rootDir
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

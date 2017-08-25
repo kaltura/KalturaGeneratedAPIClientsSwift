@@ -35,6 +35,45 @@
 
 open class MailNotificationObjectTask: ObjectTask {
 
+	public class MailNotificationObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var mailTo: BaseTokenizedObject {
+			get {
+				return self.append("mailTo") 
+			}
+		}
+		
+		public var sender: BaseTokenizedObject {
+			get {
+				return self.append("sender") 
+			}
+		}
+		
+		public var subject: BaseTokenizedObject {
+			get {
+				return self.append("subject") 
+			}
+		}
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+		
+		public var link: BaseTokenizedObject {
+			get {
+				return self.append("link") 
+			}
+		}
+		
+		public var sendToUsers: BaseTokenizedObject {
+			get {
+				return self.append("sendToUsers") 
+			}
+		}
+	}
+
 	/**  The mail to send the notification to  */
 	public var mailTo: String? = nil
 	/**  The sender in the mail  */
@@ -49,6 +88,30 @@ open class MailNotificationObjectTask: ObjectTask {
 	public var sendToUsers: Bool? = nil
 
 
+	public func setMultiRequestToken(mailTo: String) {
+		self.dict["mailTo"] = mailTo
+	}
+	
+	public func setMultiRequestToken(sender: String) {
+		self.dict["sender"] = sender
+	}
+	
+	public func setMultiRequestToken(subject: String) {
+		self.dict["subject"] = subject
+	}
+	
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(link: String) {
+		self.dict["link"] = link
+	}
+	
+	public func setMultiRequestToken(sendToUsers: String) {
+		self.dict["sendToUsers"] = sendToUsers
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

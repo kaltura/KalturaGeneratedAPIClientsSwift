@@ -35,11 +35,40 @@
 
 open class YoutubeApiDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class YoutubeApiDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var videoAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("videoAssetFilePath") 
+			}
+		}
+		
+		public var thumbAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetFilePath") 
+			}
+		}
+		
+		public var captionsInfo: ArrayTokenizedObject<YouTubeApiCaptionDistributionInfo.YouTubeApiCaptionDistributionInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<YouTubeApiCaptionDistributionInfo.YouTubeApiCaptionDistributionInfoTokenizer>(self.append("captionsInfo"))
+			} 
+		}
+	}
+
 	public var videoAssetFilePath: String? = nil
 	public var thumbAssetFilePath: String? = nil
 	public var captionsInfo: Array<YouTubeApiCaptionDistributionInfo>? = nil
 
 
+	public func setMultiRequestToken(videoAssetFilePath: String) {
+		self.dict["videoAssetFilePath"] = videoAssetFilePath
+	}
+	
+	public func setMultiRequestToken(thumbAssetFilePath: String) {
+		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

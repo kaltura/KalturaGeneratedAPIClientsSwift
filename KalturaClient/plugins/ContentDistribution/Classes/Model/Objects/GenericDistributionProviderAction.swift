@@ -35,6 +35,111 @@
 
 open class GenericDistributionProviderAction: ObjectBase {
 
+	public class GenericDistributionProviderActionTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var genericDistributionProviderId: BaseTokenizedObject {
+			get {
+				return self.append("genericDistributionProviderId") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var resultsParser: BaseTokenizedObject {
+			get {
+				return self.append("resultsParser") 
+			}
+		}
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var serverAddress: BaseTokenizedObject {
+			get {
+				return self.append("serverAddress") 
+			}
+		}
+		
+		public var remotePath: BaseTokenizedObject {
+			get {
+				return self.append("remotePath") 
+			}
+		}
+		
+		public var remoteUsername: BaseTokenizedObject {
+			get {
+				return self.append("remoteUsername") 
+			}
+		}
+		
+		public var remotePassword: BaseTokenizedObject {
+			get {
+				return self.append("remotePassword") 
+			}
+		}
+		
+		public var editableFields: BaseTokenizedObject {
+			get {
+				return self.append("editableFields") 
+			}
+		}
+		
+		public var mandatoryFields: BaseTokenizedObject {
+			get {
+				return self.append("mandatoryFields") 
+			}
+		}
+		
+		public var mrssTransformer: BaseTokenizedObject {
+			get {
+				return self.append("mrssTransformer") 
+			}
+		}
+		
+		public var mrssValidator: BaseTokenizedObject {
+			get {
+				return self.append("mrssValidator") 
+			}
+		}
+		
+		public var resultsTransformer: BaseTokenizedObject {
+			get {
+				return self.append("resultsTransformer") 
+			}
+		}
+	}
+
 	/**  Auto generated  */
 	public var id: Int? = nil
 	/**  Generic distribution provider action creation date as Unix timestamp (In
@@ -59,6 +164,74 @@ open class GenericDistributionProviderAction: ObjectBase {
 	public var resultsTransformer: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(genericDistributionProviderId: String) {
+		self.dict["genericDistributionProviderId"] = genericDistributionProviderId
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(resultsParser: String) {
+		self.dict["resultsParser"] = resultsParser
+	}
+	
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(serverAddress: String) {
+		self.dict["serverAddress"] = serverAddress
+	}
+	
+	public func setMultiRequestToken(remotePath: String) {
+		self.dict["remotePath"] = remotePath
+	}
+	
+	public func setMultiRequestToken(remoteUsername: String) {
+		self.dict["remoteUsername"] = remoteUsername
+	}
+	
+	public func setMultiRequestToken(remotePassword: String) {
+		self.dict["remotePassword"] = remotePassword
+	}
+	
+	public func setMultiRequestToken(editableFields: String) {
+		self.dict["editableFields"] = editableFields
+	}
+	
+	public func setMultiRequestToken(mandatoryFields: String) {
+		self.dict["mandatoryFields"] = mandatoryFields
+	}
+	
+	public func setMultiRequestToken(mrssTransformer: String) {
+		self.dict["mrssTransformer"] = mrssTransformer
+	}
+	
+	public func setMultiRequestToken(mrssValidator: String) {
+		self.dict["mrssValidator"] = mrssValidator
+	}
+	
+	public func setMultiRequestToken(resultsTransformer: String) {
+		self.dict["resultsTransformer"] = resultsTransformer
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

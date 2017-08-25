@@ -35,6 +35,9 @@
 
 open class RemoteDropFolder: DropFolder {
 
+	public class RemoteDropFolderTokenizer: DropFolder.DropFolderTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

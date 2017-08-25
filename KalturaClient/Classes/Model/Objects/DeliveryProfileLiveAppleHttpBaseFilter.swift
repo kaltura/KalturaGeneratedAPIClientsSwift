@@ -35,6 +35,9 @@
 
 open class DeliveryProfileLiveAppleHttpBaseFilter: DeliveryProfileFilter {
 
+	public class DeliveryProfileLiveAppleHttpBaseFilterTokenizer: DeliveryProfileFilter.DeliveryProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

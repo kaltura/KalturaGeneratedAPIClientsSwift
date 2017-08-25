@@ -35,6 +35,9 @@
 
 open class CaptionAssetFilter: CaptionAssetBaseFilter {
 
+	public class CaptionAssetFilterTokenizer: CaptionAssetBaseFilter.CaptionAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,9 +35,22 @@
 
 open class MediaInfoBaseFilter: Filter {
 
+	public class MediaInfoBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var flavorAssetIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetIdEqual") 
+			}
+		}
+	}
+
 	public var flavorAssetIdEqual: String? = nil
 
 
+	public func setMultiRequestToken(flavorAssetIdEqual: String) {
+		self.dict["flavorAssetIdEqual"] = flavorAssetIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

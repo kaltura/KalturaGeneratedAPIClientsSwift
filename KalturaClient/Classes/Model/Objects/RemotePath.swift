@@ -35,10 +35,33 @@
 
 open class RemotePath: ObjectBase {
 
+	public class RemotePathTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+		
+		public var uri: BaseTokenizedObject {
+			get {
+				return self.append("uri") 
+			}
+		}
+	}
+
 	public var storageProfileId: Int? = nil
 	public var uri: String? = nil
 
 
+	public func setMultiRequestToken(storageProfileId: String) {
+		self.dict["storageProfileId"] = storageProfileId
+	}
+	
+	public func setMultiRequestToken(uri: String) {
+		self.dict["uri"] = uri
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

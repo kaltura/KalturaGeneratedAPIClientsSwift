@@ -36,24 +36,48 @@
 /**  Add &amp; Manage Categories  */
 extension CategoryService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var category: Category.CategoryTokenizer {
+			get {
+				return Category.CategoryTokenizer(self.append("category")) 
+			}
+		}
+	}
+
 	/**  Add new Category  */
-	public static func add(category: Category) -> RequestBuilder<Category> {
-		let request: RequestBuilder<Category> = RequestBuilder<Category>(service: "category", action: "add")
+	public static func add(category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer> {
+		let request: RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer>(service: "category", action: "add")
 			.setBody(key: "category", value: category)
 
 		return request
 	}
 
-	public static func addFromBulkUpload(fileData: RequestFile) -> RequestBuilder<BulkUpload> {
+	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
+		
+		public var bulkUploadData: BulkUploadJobData.BulkUploadJobDataTokenizer {
+			get {
+				return BulkUploadJobData.BulkUploadJobDataTokenizer(self.append("bulkUploadData")) 
+			}
+		}
+		
+		public var bulkUploadCategoryData: BulkUploadCategoryData.BulkUploadCategoryDataTokenizer {
+			get {
+				return BulkUploadCategoryData.BulkUploadCategoryDataTokenizer(self.append("bulkUploadCategoryData")) 
+			}
+		}
+	}
+
+	public static func addFromBulkUpload(fileData: RequestFile) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		return addFromBulkUpload(fileData: fileData, bulkUploadData: nil)
 	}
 
-	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?) -> RequestBuilder<BulkUpload> {
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		return addFromBulkUpload(fileData: fileData, bulkUploadData: bulkUploadData, bulkUploadCategoryData: nil)
 	}
 
-	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadCategoryData: BulkUploadCategoryData?) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "category", action: "addFromBulkUpload")
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadCategoryData: BulkUploadCategoryData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "category", action: "addFromBulkUpload")
 			.setFile(key: "fileData", value: fileData)
 			.setBody(key: "bulkUploadData", value: bulkUploadData)
 			.setBody(key: "bulkUploadCategoryData", value: bulkUploadCategoryData)
@@ -61,12 +85,27 @@ extension CategoryService{
 		return request
 	}
 
-	public static func delete(id: Int) -> RequestBuilder<Void> {
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var moveEntriesToParentCategory: BaseTokenizedObject {
+			get {
+				return self.append("moveEntriesToParentCategory") 
+			}
+		}
+	}
+
+	public static func delete(id: Int) -> NullRequestBuilder {
 		return delete(id: id, moveEntriesToParentCategory: true)
 	}
 
 	/**  Delete a Category  */
-	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> RequestBuilder<Void> {
+	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "category", action: "delete")
 			.setBody(key: "id", value: id)
 			.setBody(key: "moveEntriesToParentCategory", value: moveEntriesToParentCategory)
@@ -74,64 +113,136 @@ extension CategoryService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get Category by id  */
-	public static func get(id: Int) -> RequestBuilder<Category> {
-		let request: RequestBuilder<Category> = RequestBuilder<Category>(service: "category", action: "get")
+	public static func get(id: Int) -> RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> {
+		let request: RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer>(service: "category", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func index(id: Int) -> RequestBuilder<Int> {
+	public class IndexTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var shouldUpdate: BaseTokenizedObject {
+			get {
+				return self.append("shouldUpdate") 
+			}
+		}
+	}
+
+	public static func index(id: Int) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		return index(id: id, shouldUpdate: true)
 	}
 
 	/**  Index Category by id  */
-	public static func index(id: Int, shouldUpdate: Bool?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "category", action: "index")
+	public static func index(id: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "category", action: "index")
 			.setBody(key: "id", value: id)
 			.setBody(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<CategoryListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: CategoryFilter.CategoryFilterTokenizer {
+			get {
+				return CategoryFilter.CategoryFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: CategoryFilter?) -> RequestBuilder<CategoryListResponse> {
+	public static func list(filter: CategoryFilter?) -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List all categories  */
-	public static func list(filter: CategoryFilter?, pager: FilterPager?) -> RequestBuilder<CategoryListResponse> {
-		let request: RequestBuilder<CategoryListResponse> = RequestBuilder<CategoryListResponse>(service: "category", action: "list")
+	public static func list(filter: CategoryFilter?, pager: FilterPager?) -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> = RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer>(service: "category", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class MoveTokenizer: ClientTokenizer  {
+		
+		public var categoryIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryIds") 
+			}
+		}
+		
+		public var targetCategoryParentId: BaseTokenizedObject {
+			get {
+				return self.append("targetCategoryParentId") 
+			}
+		}
+	}
+
 	/**  Move categories that belong to the same parent category to a target categroy -
 	  enabled only for ks with disable entitlement  */
-	public static func move(categoryIds: String, targetCategoryParentId: Int) -> RequestBuilder<CategoryListResponse> {
-		let request: RequestBuilder<CategoryListResponse> = RequestBuilder<CategoryListResponse>(service: "category", action: "move")
+	public static func move(categoryIds: String, targetCategoryParentId: Int) -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer> {
+		let request: RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer> = RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer>(service: "category", action: "move")
 			.setBody(key: "categoryIds", value: categoryIds)
 			.setBody(key: "targetCategoryParentId", value: targetCategoryParentId)
 
 		return request
 	}
 
+	public class UnlockCategoriesTokenizer: ClientTokenizer  {
+	}
+
 	/**  Unlock categories  */
-	public static func unlockCategories() -> RequestBuilder<Void> {
+	public static func unlockCategories() -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "category", action: "unlockCategories")
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var category: Category.CategoryTokenizer {
+			get {
+				return Category.CategoryTokenizer(self.append("category")) 
+			}
+		}
+	}
+
 	/**  Update Category  */
-	public static func update(id: Int, category: Category) -> RequestBuilder<Category> {
-		let request: RequestBuilder<Category> = RequestBuilder<Category>(service: "category", action: "update")
+	public static func update(id: Int, category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer>(service: "category", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "category", value: category)
 

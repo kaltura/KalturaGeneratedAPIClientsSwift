@@ -35,6 +35,15 @@
 
 open class CuePointListResponse: ListResponse {
 
+	public class CuePointListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<CuePoint.CuePointTokenizer> {
+			get {
+				return ArrayTokenizedObject<CuePoint.CuePointTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<CuePoint>? = nil
 
 

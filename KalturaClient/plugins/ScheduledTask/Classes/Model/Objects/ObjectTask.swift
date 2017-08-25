@@ -35,10 +35,33 @@
 
 open class ObjectTask: ObjectBase {
 
+	public class ObjectTaskTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var stopProcessingOnError: BaseTokenizedObject {
+			get {
+				return self.append("stopProcessingOnError") 
+			}
+		}
+	}
+
 	public var type: ObjectTaskType? = nil
 	public var stopProcessingOnError: Bool? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(stopProcessingOnError: String) {
+		self.dict["stopProcessingOnError"] = stopProcessingOnError
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

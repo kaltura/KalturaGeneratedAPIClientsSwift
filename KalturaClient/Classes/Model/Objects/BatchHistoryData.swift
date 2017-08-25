@@ -35,6 +35,63 @@
 
 open class BatchHistoryData: ObjectBase {
 
+	public class BatchHistoryDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var schedulerId: BaseTokenizedObject {
+			get {
+				return self.append("schedulerId") 
+			}
+		}
+		
+		public var workerId: BaseTokenizedObject {
+			get {
+				return self.append("workerId") 
+			}
+		}
+		
+		public var batchIndex: BaseTokenizedObject {
+			get {
+				return self.append("batchIndex") 
+			}
+		}
+		
+		public var timeStamp: BaseTokenizedObject {
+			get {
+				return self.append("timeStamp") 
+			}
+		}
+		
+		public var message: BaseTokenizedObject {
+			get {
+				return self.append("message") 
+			}
+		}
+		
+		public var errType: BaseTokenizedObject {
+			get {
+				return self.append("errType") 
+			}
+		}
+		
+		public var errNumber: BaseTokenizedObject {
+			get {
+				return self.append("errNumber") 
+			}
+		}
+		
+		public var hostName: BaseTokenizedObject {
+			get {
+				return self.append("hostName") 
+			}
+		}
+		
+		public var sessionId: BaseTokenizedObject {
+			get {
+				return self.append("sessionId") 
+			}
+		}
+	}
+
 	public var schedulerId: Int? = nil
 	public var workerId: Int? = nil
 	public var batchIndex: Int? = nil
@@ -46,6 +103,42 @@ open class BatchHistoryData: ObjectBase {
 	public var sessionId: String? = nil
 
 
+	public func setMultiRequestToken(schedulerId: String) {
+		self.dict["schedulerId"] = schedulerId
+	}
+	
+	public func setMultiRequestToken(workerId: String) {
+		self.dict["workerId"] = workerId
+	}
+	
+	public func setMultiRequestToken(batchIndex: String) {
+		self.dict["batchIndex"] = batchIndex
+	}
+	
+	public func setMultiRequestToken(timeStamp: String) {
+		self.dict["timeStamp"] = timeStamp
+	}
+	
+	public func setMultiRequestToken(message: String) {
+		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(errType: String) {
+		self.dict["errType"] = errType
+	}
+	
+	public func setMultiRequestToken(errNumber: String) {
+		self.dict["errNumber"] = errNumber
+	}
+	
+	public func setMultiRequestToken(hostName: String) {
+		self.dict["hostName"] = hostName
+	}
+	
+	public func setMultiRequestToken(sessionId: String) {
+		self.dict["sessionId"] = sessionId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

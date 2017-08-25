@@ -35,12 +35,55 @@
 
 open class FtpDropFolder: RemoteDropFolder {
 
+	public class FtpDropFolderTokenizer: RemoteDropFolder.RemoteDropFolderTokenizer {
+		
+		public var host: BaseTokenizedObject {
+			get {
+				return self.append("host") 
+			}
+		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+	}
+
 	public var host: String? = nil
 	public var port: Int? = nil
 	public var username: String? = nil
 	public var password: String? = nil
 
 
+	public func setMultiRequestToken(host: String) {
+		self.dict["host"] = host
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

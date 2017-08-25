@@ -35,6 +35,69 @@
 
 open class StorageJobData: JobData {
 
+	public class StorageJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var serverUrl: BaseTokenizedObject {
+			get {
+				return self.append("serverUrl") 
+			}
+		}
+		
+		public var serverUsername: BaseTokenizedObject {
+			get {
+				return self.append("serverUsername") 
+			}
+		}
+		
+		public var serverPassword: BaseTokenizedObject {
+			get {
+				return self.append("serverPassword") 
+			}
+		}
+		
+		public var serverPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("serverPrivateKey") 
+			}
+		}
+		
+		public var serverPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("serverPublicKey") 
+			}
+		}
+		
+		public var serverPassPhrase: BaseTokenizedObject {
+			get {
+				return self.append("serverPassPhrase") 
+			}
+		}
+		
+		public var ftpPassiveMode: BaseTokenizedObject {
+			get {
+				return self.append("ftpPassiveMode") 
+			}
+		}
+		
+		public var srcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncLocalPath") 
+			}
+		}
+		
+		public var srcFileSyncId: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncId") 
+			}
+		}
+		
+		public var destFileSyncStoredPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncStoredPath") 
+			}
+		}
+	}
+
 	public var serverUrl: String? = nil
 	public var serverUsername: String? = nil
 	public var serverPassword: String? = nil
@@ -47,6 +110,46 @@ open class StorageJobData: JobData {
 	public var destFileSyncStoredPath: String? = nil
 
 
+	public func setMultiRequestToken(serverUrl: String) {
+		self.dict["serverUrl"] = serverUrl
+	}
+	
+	public func setMultiRequestToken(serverUsername: String) {
+		self.dict["serverUsername"] = serverUsername
+	}
+	
+	public func setMultiRequestToken(serverPassword: String) {
+		self.dict["serverPassword"] = serverPassword
+	}
+	
+	public func setMultiRequestToken(serverPrivateKey: String) {
+		self.dict["serverPrivateKey"] = serverPrivateKey
+	}
+	
+	public func setMultiRequestToken(serverPublicKey: String) {
+		self.dict["serverPublicKey"] = serverPublicKey
+	}
+	
+	public func setMultiRequestToken(serverPassPhrase: String) {
+		self.dict["serverPassPhrase"] = serverPassPhrase
+	}
+	
+	public func setMultiRequestToken(ftpPassiveMode: String) {
+		self.dict["ftpPassiveMode"] = ftpPassiveMode
+	}
+	
+	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
+		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(srcFileSyncId: String) {
+		self.dict["srcFileSyncId"] = srcFileSyncId
+	}
+	
+	public func setMultiRequestToken(destFileSyncStoredPath: String) {
+		self.dict["destFileSyncStoredPath"] = destFileSyncStoredPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

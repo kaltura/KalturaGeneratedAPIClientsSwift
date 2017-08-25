@@ -36,10 +36,23 @@
 /**  Advanced metadata configuration for entry replacement process  */
 open class MetadataReplacementOptionsItem: PluginReplacementOptionsItem {
 
+	public class MetadataReplacementOptionsItemTokenizer: PluginReplacementOptionsItem.PluginReplacementOptionsItemTokenizer {
+		
+		public var shouldCopyMetadata: BaseTokenizedObject {
+			get {
+				return self.append("shouldCopyMetadata") 
+			}
+		}
+	}
+
 	/**  If true custom-metadata transferred to temp entry on entry replacement  */
 	public var shouldCopyMetadata: Bool? = nil
 
 
+	public func setMultiRequestToken(shouldCopyMetadata: String) {
+		self.dict["shouldCopyMetadata"] = shouldCopyMetadata
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

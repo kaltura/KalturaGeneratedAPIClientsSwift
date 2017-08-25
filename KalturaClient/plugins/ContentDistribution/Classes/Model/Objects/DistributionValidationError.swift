@@ -35,11 +35,44 @@
 
 open class DistributionValidationError: ObjectBase {
 
+	public class DistributionValidationErrorTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+		
+		public var errorType: BaseTokenizedObject {
+			get {
+				return self.append("errorType") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+	}
+
 	public var action: DistributionAction? = nil
 	public var errorType: DistributionErrorType? = nil
 	public var description: String? = nil
 
 
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
+	public func setMultiRequestToken(errorType: String) {
+		self.dict["errorType"] = errorType
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

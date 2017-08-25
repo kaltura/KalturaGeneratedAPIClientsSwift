@@ -35,6 +35,33 @@
 
 open class CodeCuePoint: CuePoint {
 
+	public class CodeCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var code: BaseTokenizedObject {
+			get {
+				return self.append("code") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+	}
+
 	public var code: String? = nil
 	public var description: String? = nil
 	public var endTime: Int? = nil
@@ -42,6 +69,22 @@ open class CodeCuePoint: CuePoint {
 	public var duration: Int? = nil
 
 
+	public func setMultiRequestToken(code: String) {
+		self.dict["code"] = code
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(endTime: String) {
+		self.dict["endTime"] = endTime
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

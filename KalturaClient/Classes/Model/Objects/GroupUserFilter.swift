@@ -35,6 +35,9 @@
 
 open class GroupUserFilter: GroupUserBaseFilter {
 
+	public class GroupUserFilterTokenizer: GroupUserBaseFilter.GroupUserBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

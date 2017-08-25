@@ -35,6 +35,63 @@
 
 open class VoicebaseJobProviderData: IntegrationJobProviderData {
 
+	public class VoicebaseJobProviderDataTokenizer: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var transcriptId: BaseTokenizedObject {
+			get {
+				return self.append("transcriptId") 
+			}
+		}
+		
+		public var captionAssetFormats: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetFormats") 
+			}
+		}
+		
+		public var apiKey: BaseTokenizedObject {
+			get {
+				return self.append("apiKey") 
+			}
+		}
+		
+		public var apiPassword: BaseTokenizedObject {
+			get {
+				return self.append("apiPassword") 
+			}
+		}
+		
+		public var spokenLanguage: BaseTokenizedObject {
+			get {
+				return self.append("spokenLanguage") 
+			}
+		}
+		
+		public var fileLocation: BaseTokenizedObject {
+			get {
+				return self.append("fileLocation") 
+			}
+		}
+		
+		public var replaceMediaContent: BaseTokenizedObject {
+			get {
+				return self.append("replaceMediaContent") 
+			}
+		}
+	}
+
 	/**  Entry ID  */
 	public var entryId: String? = nil
 	/**  Flavor ID  */
@@ -55,6 +112,42 @@ open class VoicebaseJobProviderData: IntegrationJobProviderData {
 	public var replaceMediaContent: Bool? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(transcriptId: String) {
+		self.dict["transcriptId"] = transcriptId
+	}
+	
+	public func setMultiRequestToken(captionAssetFormats: String) {
+		self.dict["captionAssetFormats"] = captionAssetFormats
+	}
+	
+	public func setMultiRequestToken(apiKey: String) {
+		self.dict["apiKey"] = apiKey
+	}
+	
+	public func setMultiRequestToken(apiPassword: String) {
+		self.dict["apiPassword"] = apiPassword
+	}
+	
+	public func setMultiRequestToken(spokenLanguage: String) {
+		self.dict["spokenLanguage"] = spokenLanguage
+	}
+	
+	public func setMultiRequestToken(fileLocation: String) {
+		self.dict["fileLocation"] = fileLocation
+	}
+	
+	public func setMultiRequestToken(replaceMediaContent: String) {
+		self.dict["replaceMediaContent"] = replaceMediaContent
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

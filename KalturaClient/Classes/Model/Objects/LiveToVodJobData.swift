@@ -35,6 +35,51 @@
 
 open class LiveToVodJobData: JobData {
 
+	public class LiveToVodJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var vodEntryId: BaseTokenizedObject {
+			get {
+				return self.append("vodEntryId") 
+			}
+		}
+		
+		public var liveEntryId: BaseTokenizedObject {
+			get {
+				return self.append("liveEntryId") 
+			}
+		}
+		
+		public var totalVodDuration: BaseTokenizedObject {
+			get {
+				return self.append("totalVodDuration") 
+			}
+		}
+		
+		public var lastSegmentDuration: BaseTokenizedObject {
+			get {
+				return self.append("lastSegmentDuration") 
+			}
+		}
+		
+		public var amfArray: BaseTokenizedObject {
+			get {
+				return self.append("amfArray") 
+			}
+		}
+		
+		public var lastCuePointSyncTime: BaseTokenizedObject {
+			get {
+				return self.append("lastCuePointSyncTime") 
+			}
+		}
+		
+		public var lastSegmentDrift: BaseTokenizedObject {
+			get {
+				return self.append("lastSegmentDrift") 
+			}
+		}
+	}
+
 	/**  $vod Entry Id  */
 	public var vodEntryId: String? = nil
 	/**  live Entry Id  */
@@ -51,6 +96,34 @@ open class LiveToVodJobData: JobData {
 	public var lastSegmentDrift: Int? = nil
 
 
+	public func setMultiRequestToken(vodEntryId: String) {
+		self.dict["vodEntryId"] = vodEntryId
+	}
+	
+	public func setMultiRequestToken(liveEntryId: String) {
+		self.dict["liveEntryId"] = liveEntryId
+	}
+	
+	public func setMultiRequestToken(totalVodDuration: String) {
+		self.dict["totalVodDuration"] = totalVodDuration
+	}
+	
+	public func setMultiRequestToken(lastSegmentDuration: String) {
+		self.dict["lastSegmentDuration"] = lastSegmentDuration
+	}
+	
+	public func setMultiRequestToken(amfArray: String) {
+		self.dict["amfArray"] = amfArray
+	}
+	
+	public func setMultiRequestToken(lastCuePointSyncTime: String) {
+		self.dict["lastCuePointSyncTime"] = lastCuePointSyncTime
+	}
+	
+	public func setMultiRequestToken(lastSegmentDrift: String) {
+		self.dict["lastSegmentDrift"] = lastSegmentDrift
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,51 @@
 
 open class DetachedResponseProfile: BaseResponseProfile {
 
+	public class DetachedResponseProfileTokenizer: BaseResponseProfile.BaseResponseProfileTokenizer {
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var fields: BaseTokenizedObject {
+			get {
+				return self.append("fields") 
+			}
+		}
+		
+		public var filter: RelatedFilter.RelatedFilterTokenizer {
+			get {
+				return RelatedFilter.RelatedFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+		
+		public var relatedProfiles: ArrayTokenizedObject<DetachedResponseProfile.DetachedResponseProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DetachedResponseProfile.DetachedResponseProfileTokenizer>(self.append("relatedProfiles"))
+			} 
+		}
+		
+		public var mappings: ArrayTokenizedObject<ResponseProfileMapping.ResponseProfileMappingTokenizer> {
+			get {
+				return ArrayTokenizedObject<ResponseProfileMapping.ResponseProfileMappingTokenizer>(self.append("mappings"))
+			} 
+		}
+	}
+
 	/**  Friendly name  */
 	public var name: String? = nil
 	public var type: ResponseProfileType? = nil
@@ -46,6 +91,18 @@ open class DetachedResponseProfile: BaseResponseProfile {
 	public var mappings: Array<ResponseProfileMapping>? = nil
 
 
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(fields: String) {
+		self.dict["fields"] = fields
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

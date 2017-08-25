@@ -36,12 +36,31 @@
 /**  Advanced configuration for entry replacement process  */
 open class EntryReplacementOptions: ObjectBase {
 
+	public class EntryReplacementOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var keepManualThumbnails: BaseTokenizedObject {
+			get {
+				return self.append("keepManualThumbnails") 
+			}
+		}
+		
+		public var pluginOptionItems: ArrayTokenizedObject<PluginReplacementOptionsItem.PluginReplacementOptionsItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<PluginReplacementOptionsItem.PluginReplacementOptionsItemTokenizer>(self.append("pluginOptionItems"))
+			} 
+		}
+	}
+
 	/**  If true manually created thumbnails will not be deleted on entry replacement  */
 	public var keepManualThumbnails: Int? = nil
 	/**  Array of plugin replacement options  */
 	public var pluginOptionItems: Array<PluginReplacementOptionsItem>? = nil
 
 
+	public func setMultiRequestToken(keepManualThumbnails: String) {
+		self.dict["keepManualThumbnails"] = keepManualThumbnails
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

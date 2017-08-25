@@ -35,6 +35,15 @@
 
 open class ScheduledTaskProfileListResponse: ListResponse {
 
+	public class ScheduledTaskProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ScheduledTaskProfile.ScheduledTaskProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<ScheduledTaskProfile.ScheduledTaskProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ScheduledTaskProfile>? = nil
 
 

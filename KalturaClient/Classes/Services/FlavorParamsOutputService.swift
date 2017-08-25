@@ -36,25 +36,49 @@
 /**  Flavor Params Output service  */
 public final class FlavorParamsOutputService{
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Get flavor params output object by ID  */
-	public static func get(id: Int) -> RequestBuilder<FlavorParamsOutput> {
-		let request: RequestBuilder<FlavorParamsOutput> = RequestBuilder<FlavorParamsOutput>(service: "flavorparamsoutput", action: "get")
+	public static func get(id: Int) -> RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> {
+		let request: RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> = RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer>(service: "flavorparamsoutput", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<FlavorParamsOutputListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer {
+			get {
+				return FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: FlavorParamsOutputFilter?) -> RequestBuilder<FlavorParamsOutputListResponse> {
+	public static func list(filter: FlavorParamsOutputFilter?) -> RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List flavor params output objects by filter and pager  */
-	public static func list(filter: FlavorParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<FlavorParamsOutputListResponse> {
-		let request: RequestBuilder<FlavorParamsOutputListResponse> = RequestBuilder<FlavorParamsOutputListResponse>(service: "flavorparamsoutput", action: "list")
+	public static func list(filter: FlavorParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> = RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer>(service: "flavorparamsoutput", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

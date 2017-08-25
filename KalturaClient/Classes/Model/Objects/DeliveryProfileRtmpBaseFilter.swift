@@ -35,6 +35,9 @@
 
 open class DeliveryProfileRtmpBaseFilter: DeliveryProfileFilter {
 
+	public class DeliveryProfileRtmpBaseFilterTokenizer: DeliveryProfileFilter.DeliveryProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

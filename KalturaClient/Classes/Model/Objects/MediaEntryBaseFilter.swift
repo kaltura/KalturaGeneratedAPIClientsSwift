@@ -35,6 +35,69 @@
 
 open class MediaEntryBaseFilter: PlayableEntryFilter {
 
+	public class MediaEntryBaseFilterTokenizer: PlayableEntryFilter.PlayableEntryFilterTokenizer {
+		
+		public var mediaTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("mediaTypeEqual") 
+			}
+		}
+		
+		public var mediaTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("mediaTypeIn") 
+			}
+		}
+		
+		public var sourceTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("sourceTypeEqual") 
+			}
+		}
+		
+		public var sourceTypeNotEqual: BaseTokenizedObject {
+			get {
+				return self.append("sourceTypeNotEqual") 
+			}
+		}
+		
+		public var sourceTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("sourceTypeIn") 
+			}
+		}
+		
+		public var sourceTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("sourceTypeNotIn") 
+			}
+		}
+		
+		public var mediaDateGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("mediaDateGreaterThanOrEqual") 
+			}
+		}
+		
+		public var mediaDateLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("mediaDateLessThanOrEqual") 
+			}
+		}
+		
+		public var flavorParamsIdsMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIdsMatchOr") 
+			}
+		}
+		
+		public var flavorParamsIdsMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIdsMatchAnd") 
+			}
+		}
+	}
+
 	public var mediaTypeEqual: MediaType? = nil
 	public var mediaTypeIn: String? = nil
 	public var sourceTypeEqual: SourceType? = nil
@@ -47,6 +110,46 @@ open class MediaEntryBaseFilter: PlayableEntryFilter {
 	public var flavorParamsIdsMatchAnd: String? = nil
 
 
+	public func setMultiRequestToken(mediaTypeEqual: String) {
+		self.dict["mediaTypeEqual"] = mediaTypeEqual
+	}
+	
+	public func setMultiRequestToken(mediaTypeIn: String) {
+		self.dict["mediaTypeIn"] = mediaTypeIn
+	}
+	
+	public func setMultiRequestToken(sourceTypeEqual: String) {
+		self.dict["sourceTypeEqual"] = sourceTypeEqual
+	}
+	
+	public func setMultiRequestToken(sourceTypeNotEqual: String) {
+		self.dict["sourceTypeNotEqual"] = sourceTypeNotEqual
+	}
+	
+	public func setMultiRequestToken(sourceTypeIn: String) {
+		self.dict["sourceTypeIn"] = sourceTypeIn
+	}
+	
+	public func setMultiRequestToken(sourceTypeNotIn: String) {
+		self.dict["sourceTypeNotIn"] = sourceTypeNotIn
+	}
+	
+	public func setMultiRequestToken(mediaDateGreaterThanOrEqual: String) {
+		self.dict["mediaDateGreaterThanOrEqual"] = mediaDateGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(mediaDateLessThanOrEqual: String) {
+		self.dict["mediaDateLessThanOrEqual"] = mediaDateLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(flavorParamsIdsMatchOr: String) {
+		self.dict["flavorParamsIdsMatchOr"] = flavorParamsIdsMatchOr
+	}
+	
+	public func setMultiRequestToken(flavorParamsIdsMatchAnd: String) {
+		self.dict["flavorParamsIdsMatchAnd"] = flavorParamsIdsMatchAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

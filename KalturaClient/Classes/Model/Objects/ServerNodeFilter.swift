@@ -35,6 +35,9 @@
 
 open class ServerNodeFilter: ServerNodeBaseFilter {
 
+	public class ServerNodeFilterTokenizer: ServerNodeBaseFilter.ServerNodeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

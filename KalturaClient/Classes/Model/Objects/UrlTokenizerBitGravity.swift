@@ -35,10 +35,23 @@
 
 open class UrlTokenizerBitGravity: UrlTokenizer {
 
+	public class UrlTokenizerBitGravityTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var hashPatternRegex: BaseTokenizedObject {
+			get {
+				return self.append("hashPatternRegex") 
+			}
+		}
+	}
+
 	/**  hashPatternRegex  */
 	public var hashPatternRegex: String? = nil
 
 
+	public func setMultiRequestToken(hashPatternRegex: String) {
+		self.dict["hashPatternRegex"] = hashPatternRegex
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

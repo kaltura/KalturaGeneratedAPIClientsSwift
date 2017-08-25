@@ -35,6 +35,45 @@
 
 open class AssetParamsBaseFilter: RelatedFilter {
 
+	public class AssetParamsBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+		
+		public var isSystemDefaultEqual: BaseTokenizedObject {
+			get {
+				return self.append("isSystemDefaultEqual") 
+			}
+		}
+		
+		public var tagsEqual: BaseTokenizedObject {
+			get {
+				return self.append("tagsEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var systemNameEqual: String? = nil
@@ -43,6 +82,30 @@ open class AssetParamsBaseFilter: RelatedFilter {
 	public var tagsEqual: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
+	public func setMultiRequestToken(isSystemDefaultEqual: String) {
+		self.dict["isSystemDefaultEqual"] = isSystemDefaultEqual
+	}
+	
+	public func setMultiRequestToken(tagsEqual: String) {
+		self.dict["tagsEqual"] = tagsEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

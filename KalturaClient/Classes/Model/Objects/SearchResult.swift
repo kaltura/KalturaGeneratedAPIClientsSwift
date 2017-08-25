@@ -35,6 +35,75 @@
 
 open class SearchResult: Search {
 
+	public class SearchResultTokenizer: Search.SearchTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var thumbUrl: BaseTokenizedObject {
+			get {
+				return self.append("thumbUrl") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var sourceLink: BaseTokenizedObject {
+			get {
+				return self.append("sourceLink") 
+			}
+		}
+		
+		public var credit: BaseTokenizedObject {
+			get {
+				return self.append("credit") 
+			}
+		}
+		
+		public var licenseType: BaseTokenizedObject {
+			get {
+				return self.append("licenseType") 
+			}
+		}
+		
+		public var flashPlaybackType: BaseTokenizedObject {
+			get {
+				return self.append("flashPlaybackType") 
+			}
+		}
+		
+		public var fileExt: BaseTokenizedObject {
+			get {
+				return self.append("fileExt") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var title: String? = nil
 	public var thumbUrl: String? = nil
@@ -48,6 +117,50 @@ open class SearchResult: Search {
 	public var fileExt: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(thumbUrl: String) {
+		self.dict["thumbUrl"] = thumbUrl
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(sourceLink: String) {
+		self.dict["sourceLink"] = sourceLink
+	}
+	
+	public func setMultiRequestToken(credit: String) {
+		self.dict["credit"] = credit
+	}
+	
+	public func setMultiRequestToken(licenseType: String) {
+		self.dict["licenseType"] = licenseType
+	}
+	
+	public func setMultiRequestToken(flashPlaybackType: String) {
+		self.dict["flashPlaybackType"] = flashPlaybackType
+	}
+	
+	public func setMultiRequestToken(fileExt: String) {
+		self.dict["fileExt"] = fileExt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,11 +35,44 @@
 
 open class ParseMultiLanguageCaptionAssetJobData: JobData {
 
+	public class ParseMultiLanguageCaptionAssetJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var multiLanaguageCaptionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("multiLanaguageCaptionAssetId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var fileLocation: BaseTokenizedObject {
+			get {
+				return self.append("fileLocation") 
+			}
+		}
+	}
+
 	public var multiLanaguageCaptionAssetId: String? = nil
 	public var entryId: String? = nil
 	public var fileLocation: String? = nil
 
 
+	public func setMultiRequestToken(multiLanaguageCaptionAssetId: String) {
+		self.dict["multiLanaguageCaptionAssetId"] = multiLanaguageCaptionAssetId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(fileLocation: String) {
+		self.dict["fileLocation"] = fileLocation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

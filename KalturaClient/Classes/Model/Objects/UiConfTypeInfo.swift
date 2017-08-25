@@ -36,6 +36,33 @@
 /**  Info about uiconf type  */
 open class UiConfTypeInfo: ObjectBase {
 
+	public class UiConfTypeInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var versions: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("versions"))
+			} 
+		}
+		
+		public var directory: BaseTokenizedObject {
+			get {
+				return self.append("directory") 
+			}
+		}
+		
+		public var filename: BaseTokenizedObject {
+			get {
+				return self.append("filename") 
+			}
+		}
+	}
+
 	/**  UiConf Type  */
 	public var type: UiConfObjType? = nil
 	/**  Available versions  */
@@ -46,6 +73,18 @@ open class UiConfTypeInfo: ObjectBase {
 	public var filename: String? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(directory: String) {
+		self.dict["directory"] = directory
+	}
+	
+	public func setMultiRequestToken(filename: String) {
+		self.dict["filename"] = filename
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

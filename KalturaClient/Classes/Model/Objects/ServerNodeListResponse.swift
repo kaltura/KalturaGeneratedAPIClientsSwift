@@ -35,6 +35,15 @@
 
 open class ServerNodeListResponse: ListResponse {
 
+	public class ServerNodeListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ServerNode.ServerNodeTokenizer> {
+			get {
+				return ArrayTokenizedObject<ServerNode.ServerNodeTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ServerNode>? = nil
 
 

@@ -35,9 +35,22 @@
 
 open class BulkUploadResultScheduleEvent: BulkUploadResult {
 
+	public class BulkUploadResultScheduleEventTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+	}
+
 	public var referenceId: String? = nil
 
 
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

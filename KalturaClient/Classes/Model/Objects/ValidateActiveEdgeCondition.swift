@@ -35,10 +35,23 @@
 
 open class ValidateActiveEdgeCondition: Condition {
 
+	public class ValidateActiveEdgeConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var edgeServerIds: BaseTokenizedObject {
+			get {
+				return self.append("edgeServerIds") 
+			}
+		}
+	}
+
 	/**  Comma separated list of edge servers to validate are active  */
 	public var edgeServerIds: String? = nil
 
 
+	public func setMultiRequestToken(edgeServerIds: String) {
+		self.dict["edgeServerIds"] = edgeServerIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class WidgetFilter: WidgetBaseFilter {
 
+	public class WidgetFilterTokenizer: WidgetBaseFilter.WidgetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,183 @@
 
 open class ScheduleEventBaseFilter: RelatedFilter {
 
+	public class ScheduleEventBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var idNotIn: BaseTokenizedObject {
+			get {
+				return self.append("idNotIn") 
+			}
+		}
+		
+		public var parentIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("parentIdEqual") 
+			}
+		}
+		
+		public var parentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("parentIdIn") 
+			}
+		}
+		
+		public var parentIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("parentIdNotIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var startDateGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startDateGreaterThanOrEqual") 
+			}
+		}
+		
+		public var startDateLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startDateLessThanOrEqual") 
+			}
+		}
+		
+		public var endDateGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endDateGreaterThanOrEqual") 
+			}
+		}
+		
+		public var endDateLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endDateLessThanOrEqual") 
+			}
+		}
+		
+		public var referenceIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("referenceIdEqual") 
+			}
+		}
+		
+		public var referenceIdIn: BaseTokenizedObject {
+			get {
+				return self.append("referenceIdIn") 
+			}
+		}
+		
+		public var ownerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("ownerIdEqual") 
+			}
+		}
+		
+		public var ownerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("ownerIdIn") 
+			}
+		}
+		
+		public var priorityEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityEqual") 
+			}
+		}
+		
+		public var priorityIn: BaseTokenizedObject {
+			get {
+				return self.append("priorityIn") 
+			}
+		}
+		
+		public var priorityGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityGreaterThanOrEqual") 
+			}
+		}
+		
+		public var priorityLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("priorityLessThanOrEqual") 
+			}
+		}
+		
+		public var recurrenceTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("recurrenceTypeEqual") 
+			}
+		}
+		
+		public var recurrenceTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("recurrenceTypeIn") 
+			}
+		}
+		
+		public var tagsLike: BaseTokenizedObject {
+			get {
+				return self.append("tagsLike") 
+			}
+		}
+		
+		public var tagsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeOr") 
+			}
+		}
+		
+		public var tagsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("tagsMultiLikeAnd") 
+			}
+		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var createdAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtLessThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var idNotIn: String? = nil
@@ -66,6 +243,122 @@ open class ScheduleEventBaseFilter: RelatedFilter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idNotIn: String) {
+		self.dict["idNotIn"] = idNotIn
+	}
+	
+	public func setMultiRequestToken(parentIdEqual: String) {
+		self.dict["parentIdEqual"] = parentIdEqual
+	}
+	
+	public func setMultiRequestToken(parentIdIn: String) {
+		self.dict["parentIdIn"] = parentIdIn
+	}
+	
+	public func setMultiRequestToken(parentIdNotIn: String) {
+		self.dict["parentIdNotIn"] = parentIdNotIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(startDateGreaterThanOrEqual: String) {
+		self.dict["startDateGreaterThanOrEqual"] = startDateGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startDateLessThanOrEqual: String) {
+		self.dict["startDateLessThanOrEqual"] = startDateLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endDateGreaterThanOrEqual: String) {
+		self.dict["endDateGreaterThanOrEqual"] = endDateGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endDateLessThanOrEqual: String) {
+		self.dict["endDateLessThanOrEqual"] = endDateLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(referenceIdEqual: String) {
+		self.dict["referenceIdEqual"] = referenceIdEqual
+	}
+	
+	public func setMultiRequestToken(referenceIdIn: String) {
+		self.dict["referenceIdIn"] = referenceIdIn
+	}
+	
+	public func setMultiRequestToken(ownerIdEqual: String) {
+		self.dict["ownerIdEqual"] = ownerIdEqual
+	}
+	
+	public func setMultiRequestToken(ownerIdIn: String) {
+		self.dict["ownerIdIn"] = ownerIdIn
+	}
+	
+	public func setMultiRequestToken(priorityEqual: String) {
+		self.dict["priorityEqual"] = priorityEqual
+	}
+	
+	public func setMultiRequestToken(priorityIn: String) {
+		self.dict["priorityIn"] = priorityIn
+	}
+	
+	public func setMultiRequestToken(priorityGreaterThanOrEqual: String) {
+		self.dict["priorityGreaterThanOrEqual"] = priorityGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(priorityLessThanOrEqual: String) {
+		self.dict["priorityLessThanOrEqual"] = priorityLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(recurrenceTypeEqual: String) {
+		self.dict["recurrenceTypeEqual"] = recurrenceTypeEqual
+	}
+	
+	public func setMultiRequestToken(recurrenceTypeIn: String) {
+		self.dict["recurrenceTypeIn"] = recurrenceTypeIn
+	}
+	
+	public func setMultiRequestToken(tagsLike: String) {
+		self.dict["tagsLike"] = tagsLike
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeOr: String) {
+		self.dict["tagsMultiLikeOr"] = tagsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(tagsMultiLikeAnd: String) {
+		self.dict["tagsMultiLikeAnd"] = tagsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
+		self.dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

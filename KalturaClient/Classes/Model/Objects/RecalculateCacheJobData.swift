@@ -35,6 +35,9 @@
 
 open class RecalculateCacheJobData: JobData {
 
+	public class RecalculateCacheJobDataTokenizer: JobData.JobDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,10 +35,23 @@
 
 open class DispatchEventNotificationObjectTask: ObjectTask {
 
+	public class DispatchEventNotificationObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+		
+		public var eventNotificationTemplateId: BaseTokenizedObject {
+			get {
+				return self.append("eventNotificationTemplateId") 
+			}
+		}
+	}
+
 	/**  The event notification template id to dispatch  */
 	public var eventNotificationTemplateId: Int? = nil
 
 
+	public func setMultiRequestToken(eventNotificationTemplateId: String) {
+		self.dict["eventNotificationTemplateId"] = eventNotificationTemplateId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

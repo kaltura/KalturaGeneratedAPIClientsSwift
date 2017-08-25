@@ -35,10 +35,23 @@
 
 open class EntryIdentifier: ObjectIdentifier {
 
+	public class EntryIdentifierTokenizer: ObjectIdentifier.ObjectIdentifierTokenizer {
+		
+		public var identifier: BaseTokenizedObject {
+			get {
+				return self.append("identifier") 
+			}
+		}
+	}
+
 	/**  Identifier of the object  */
 	public var identifier: EntryIdentifierField? = nil
 
 
+	public func setMultiRequestToken(identifier: String) {
+		self.dict["identifier"] = identifier
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

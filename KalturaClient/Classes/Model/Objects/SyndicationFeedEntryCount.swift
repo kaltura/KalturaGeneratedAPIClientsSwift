@@ -35,6 +35,27 @@
 
 open class SyndicationFeedEntryCount: ObjectBase {
 
+	public class SyndicationFeedEntryCountTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var totalEntryCount: BaseTokenizedObject {
+			get {
+				return self.append("totalEntryCount") 
+			}
+		}
+		
+		public var actualEntryCount: BaseTokenizedObject {
+			get {
+				return self.append("actualEntryCount") 
+			}
+		}
+		
+		public var requireTranscodingCount: BaseTokenizedObject {
+			get {
+				return self.append("requireTranscodingCount") 
+			}
+		}
+	}
+
 	/**  the total count of entries that should appear in the feed without flavor
 	  filtering  */
 	public var totalEntryCount: Int? = nil
@@ -44,6 +65,18 @@ open class SyndicationFeedEntryCount: ObjectBase {
 	public var requireTranscodingCount: Int? = nil
 
 
+	public func setMultiRequestToken(totalEntryCount: String) {
+		self.dict["totalEntryCount"] = totalEntryCount
+	}
+	
+	public func setMultiRequestToken(actualEntryCount: String) {
+		self.dict["actualEntryCount"] = actualEntryCount
+	}
+	
+	public func setMultiRequestToken(requireTranscodingCount: String) {
+		self.dict["requireTranscodingCount"] = requireTranscodingCount
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

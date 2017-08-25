@@ -35,6 +35,9 @@
 
 open class LiveEntryScheduleResourceBaseFilter: ScheduleResourceFilter {
 
+	public class LiveEntryScheduleResourceBaseFilterTokenizer: ScheduleResourceFilter.ScheduleResourceFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

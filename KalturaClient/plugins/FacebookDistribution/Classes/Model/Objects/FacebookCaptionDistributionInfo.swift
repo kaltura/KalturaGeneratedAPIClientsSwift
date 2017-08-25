@@ -35,6 +35,45 @@
 
 open class FacebookCaptionDistributionInfo: ObjectBase {
 
+	public class FacebookCaptionDistributionInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+		
+		public var filePath: BaseTokenizedObject {
+			get {
+				return self.append("filePath") 
+			}
+		}
+		
+		public var remoteId: BaseTokenizedObject {
+			get {
+				return self.append("remoteId") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+	}
+
 	public var language: String? = nil
 	public var label: String? = nil
 	public var filePath: String? = nil
@@ -43,6 +82,30 @@ open class FacebookCaptionDistributionInfo: ObjectBase {
 	public var assetId: String? = nil
 
 
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
+	public func setMultiRequestToken(filePath: String) {
+		self.dict["filePath"] = filePath
+	}
+	
+	public func setMultiRequestToken(remoteId: String) {
+		self.dict["remoteId"] = remoteId
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

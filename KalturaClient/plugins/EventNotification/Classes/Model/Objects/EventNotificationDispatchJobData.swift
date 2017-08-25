@@ -35,11 +35,30 @@
 
 open class EventNotificationDispatchJobData: JobData {
 
+	public class EventNotificationDispatchJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var templateId: BaseTokenizedObject {
+			get {
+				return self.append("templateId") 
+			}
+		}
+		
+		public var contentParameters: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("contentParameters"))
+			} 
+		}
+	}
+
 	public var templateId: Int? = nil
 	/**  Define the content dynamic parameters  */
 	public var contentParameters: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(templateId: String) {
+		self.dict["templateId"] = templateId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,12 +35,55 @@
 
 open class UserEntryFilter: UserEntryBaseFilter {
 
+	public class UserEntryFilterTokenizer: UserEntryBaseFilter.UserEntryBaseFilterTokenizer {
+		
+		public var userIdEqualCurrent: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqualCurrent") 
+			}
+		}
+		
+		public var isAnonymous: BaseTokenizedObject {
+			get {
+				return self.append("isAnonymous") 
+			}
+		}
+		
+		public var privacyContextEqual: BaseTokenizedObject {
+			get {
+				return self.append("privacyContextEqual") 
+			}
+		}
+		
+		public var privacyContextIn: BaseTokenizedObject {
+			get {
+				return self.append("privacyContextIn") 
+			}
+		}
+	}
+
 	public var userIdEqualCurrent: Bool? = nil
 	public var isAnonymous: Bool? = nil
 	public var privacyContextEqual: String? = nil
 	public var privacyContextIn: String? = nil
 
 
+	public func setMultiRequestToken(userIdEqualCurrent: String) {
+		self.dict["userIdEqualCurrent"] = userIdEqualCurrent
+	}
+	
+	public func setMultiRequestToken(isAnonymous: String) {
+		self.dict["isAnonymous"] = isAnonymous
+	}
+	
+	public func setMultiRequestToken(privacyContextEqual: String) {
+		self.dict["privacyContextEqual"] = privacyContextEqual
+	}
+	
+	public func setMultiRequestToken(privacyContextIn: String) {
+		self.dict["privacyContextIn"] = privacyContextIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

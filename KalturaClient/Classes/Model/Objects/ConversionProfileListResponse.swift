@@ -35,6 +35,15 @@
 
 open class ConversionProfileListResponse: ListResponse {
 
+	public class ConversionProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ConversionProfile.ConversionProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<ConversionProfile.ConversionProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ConversionProfile>? = nil
 
 

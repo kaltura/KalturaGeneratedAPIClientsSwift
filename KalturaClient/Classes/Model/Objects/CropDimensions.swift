@@ -35,6 +35,33 @@
 
 open class CropDimensions: ObjectBase {
 
+	public class CropDimensionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var left: BaseTokenizedObject {
+			get {
+				return self.append("left") 
+			}
+		}
+		
+		public var top: BaseTokenizedObject {
+			get {
+				return self.append("top") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+	}
+
 	/**  Crop left point  */
 	public var left: Int? = nil
 	/**  Crop top point  */
@@ -45,6 +72,22 @@ open class CropDimensions: ObjectBase {
 	public var height: Int? = nil
 
 
+	public func setMultiRequestToken(left: String) {
+		self.dict["left"] = left
+	}
+	
+	public func setMultiRequestToken(top: String) {
+		self.dict["top"] = top
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

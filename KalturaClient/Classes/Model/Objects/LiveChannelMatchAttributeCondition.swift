@@ -37,9 +37,22 @@
   KalturaLiveChannelMatchAttribute enum to provide attribute name. /  */
 open class LiveChannelMatchAttributeCondition: SearchMatchAttributeCondition {
 
+	public class LiveChannelMatchAttributeConditionTokenizer: SearchMatchAttributeCondition.SearchMatchAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: LiveChannelMatchAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,45 @@
 
 open class AmazonS3StorageProfile: StorageProfile {
 
+	public class AmazonS3StorageProfileTokenizer: StorageProfile.StorageProfileTokenizer {
+		
+		public var filesPermissionInS3: BaseTokenizedObject {
+			get {
+				return self.append("filesPermissionInS3") 
+			}
+		}
+		
+		public var s3Region: BaseTokenizedObject {
+			get {
+				return self.append("s3Region") 
+			}
+		}
+		
+		public var sseType: BaseTokenizedObject {
+			get {
+				return self.append("sseType") 
+			}
+		}
+		
+		public var sseKmsKeyId: BaseTokenizedObject {
+			get {
+				return self.append("sseKmsKeyId") 
+			}
+		}
+		
+		public var signatureType: BaseTokenizedObject {
+			get {
+				return self.append("signatureType") 
+			}
+		}
+		
+		public var endPoint: BaseTokenizedObject {
+			get {
+				return self.append("endPoint") 
+			}
+		}
+	}
+
 	public var filesPermissionInS3: AmazonS3StorageProfileFilesPermissionLevel? = nil
 	public var s3Region: String? = nil
 	public var sseType: String? = nil
@@ -43,6 +82,30 @@ open class AmazonS3StorageProfile: StorageProfile {
 	public var endPoint: String? = nil
 
 
+	public func setMultiRequestToken(filesPermissionInS3: String) {
+		self.dict["filesPermissionInS3"] = filesPermissionInS3
+	}
+	
+	public func setMultiRequestToken(s3Region: String) {
+		self.dict["s3Region"] = s3Region
+	}
+	
+	public func setMultiRequestToken(sseType: String) {
+		self.dict["sseType"] = sseType
+	}
+	
+	public func setMultiRequestToken(sseKmsKeyId: String) {
+		self.dict["sseKmsKeyId"] = sseKmsKeyId
+	}
+	
+	public func setMultiRequestToken(signatureType: String) {
+		self.dict["signatureType"] = signatureType
+	}
+	
+	public func setMultiRequestToken(endPoint: String) {
+		self.dict["endPoint"] = endPoint
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

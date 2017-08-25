@@ -36,6 +36,9 @@
 /**  Represents the Bulk upload job data for xml bulk upload  */
 open class BulkUploadXmlJobData: BulkUploadJobData {
 
+	public class BulkUploadXmlJobDataTokenizer: BulkUploadJobData.BulkUploadJobDataTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

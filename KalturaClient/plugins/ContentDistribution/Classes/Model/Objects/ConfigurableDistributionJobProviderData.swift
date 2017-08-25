@@ -35,9 +35,22 @@
 
 open class ConfigurableDistributionJobProviderData: DistributionJobProviderData {
 
+	public class ConfigurableDistributionJobProviderDataTokenizer: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
+		
+		public var fieldValues: BaseTokenizedObject {
+			get {
+				return self.append("fieldValues") 
+			}
+		}
+	}
+
 	public var fieldValues: String? = nil
 
 
+	public func setMultiRequestToken(fieldValues: String) {
+		self.dict["fieldValues"] = fieldValues
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,27 @@
 
 open class DeliveryProfileGenericAppleHttp: DeliveryProfile {
 
+	public class DeliveryProfileGenericAppleHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var pattern: BaseTokenizedObject {
+			get {
+				return self.append("pattern") 
+			}
+		}
+		
+		public var rendererClass: BaseTokenizedObject {
+			get {
+				return self.append("rendererClass") 
+			}
+		}
+		
+		public var manifestRedirect: BaseTokenizedObject {
+			get {
+				return self.append("manifestRedirect") 
+			}
+		}
+	}
+
 	public var pattern: String? = nil
 	/**  rendererClass  */
 	public var rendererClass: String? = nil
@@ -42,6 +63,18 @@ open class DeliveryProfileGenericAppleHttp: DeliveryProfile {
 	public var manifestRedirect: Bool? = nil
 
 
+	public func setMultiRequestToken(pattern: String) {
+		self.dict["pattern"] = pattern
+	}
+	
+	public func setMultiRequestToken(rendererClass: String) {
+		self.dict["rendererClass"] = rendererClass
+	}
+	
+	public func setMultiRequestToken(manifestRedirect: String) {
+		self.dict["manifestRedirect"] = manifestRedirect
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

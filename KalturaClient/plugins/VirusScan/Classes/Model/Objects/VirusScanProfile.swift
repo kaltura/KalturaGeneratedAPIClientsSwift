@@ -35,6 +35,63 @@
 
 open class VirusScanProfile: ObjectBase {
 
+	public class VirusScanProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var engineType: BaseTokenizedObject {
+			get {
+				return self.append("engineType") 
+			}
+		}
+		
+		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
+			get {
+				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
+			}
+		}
+		
+		public var actionIfInfected: BaseTokenizedObject {
+			get {
+				return self.append("actionIfInfected") 
+			}
+		}
+	}
+
 	public var id: Int? = nil
 	public var createdAt: Int? = nil
 	public var updatedAt: Int? = nil
@@ -46,6 +103,38 @@ open class VirusScanProfile: ObjectBase {
 	public var actionIfInfected: VirusFoundAction? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(engineType: String) {
+		self.dict["engineType"] = engineType
+	}
+	
+	public func setMultiRequestToken(actionIfInfected: String) {
+		self.dict["actionIfInfected"] = actionIfInfected
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,81 @@
 
 open class CodeCuePointBaseFilter: CuePointFilter {
 
+	public class CodeCuePointBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var codeLike: BaseTokenizedObject {
+			get {
+				return self.append("codeLike") 
+			}
+		}
+		
+		public var codeMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("codeMultiLikeOr") 
+			}
+		}
+		
+		public var codeMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("codeMultiLikeAnd") 
+			}
+		}
+		
+		public var codeEqual: BaseTokenizedObject {
+			get {
+				return self.append("codeEqual") 
+			}
+		}
+		
+		public var codeIn: BaseTokenizedObject {
+			get {
+				return self.append("codeIn") 
+			}
+		}
+		
+		public var descriptionLike: BaseTokenizedObject {
+			get {
+				return self.append("descriptionLike") 
+			}
+		}
+		
+		public var descriptionMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("descriptionMultiLikeOr") 
+			}
+		}
+		
+		public var descriptionMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("descriptionMultiLikeAnd") 
+			}
+		}
+		
+		public var endTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var endTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var durationGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationGreaterThanOrEqual") 
+			}
+		}
+		
+		public var durationLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var codeLike: String? = nil
 	public var codeMultiLikeOr: String? = nil
 	public var codeMultiLikeAnd: String? = nil
@@ -49,6 +124,54 @@ open class CodeCuePointBaseFilter: CuePointFilter {
 	public var durationLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(codeLike: String) {
+		self.dict["codeLike"] = codeLike
+	}
+	
+	public func setMultiRequestToken(codeMultiLikeOr: String) {
+		self.dict["codeMultiLikeOr"] = codeMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(codeMultiLikeAnd: String) {
+		self.dict["codeMultiLikeAnd"] = codeMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(codeEqual: String) {
+		self.dict["codeEqual"] = codeEqual
+	}
+	
+	public func setMultiRequestToken(codeIn: String) {
+		self.dict["codeIn"] = codeIn
+	}
+	
+	public func setMultiRequestToken(descriptionLike: String) {
+		self.dict["descriptionLike"] = descriptionLike
+	}
+	
+	public func setMultiRequestToken(descriptionMultiLikeOr: String) {
+		self.dict["descriptionMultiLikeOr"] = descriptionMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(descriptionMultiLikeAnd: String) {
+		self.dict["descriptionMultiLikeAnd"] = descriptionMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(endTimeGreaterThanOrEqual: String) {
+		self.dict["endTimeGreaterThanOrEqual"] = endTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endTimeLessThanOrEqual: String) {
+		self.dict["endTimeLessThanOrEqual"] = endTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationGreaterThanOrEqual: String) {
+		self.dict["durationGreaterThanOrEqual"] = durationGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationLessThanOrEqual: String) {
+		self.dict["durationLessThanOrEqual"] = durationLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

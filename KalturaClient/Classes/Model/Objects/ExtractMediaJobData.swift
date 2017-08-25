@@ -35,6 +35,39 @@
 
 open class ExtractMediaJobData: ConvartableJobData {
 
+	public class ExtractMediaJobDataTokenizer: ConvartableJobData.ConvartableJobDataTokenizer {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var calculateComplexity: BaseTokenizedObject {
+			get {
+				return self.append("calculateComplexity") 
+			}
+		}
+		
+		public var extractId3Tags: BaseTokenizedObject {
+			get {
+				return self.append("extractId3Tags") 
+			}
+		}
+		
+		public var destDataFilePath: BaseTokenizedObject {
+			get {
+				return self.append("destDataFilePath") 
+			}
+		}
+		
+		public var detectGOP: BaseTokenizedObject {
+			get {
+				return self.append("detectGOP") 
+			}
+		}
+	}
+
 	public var flavorAssetId: String? = nil
 	public var calculateComplexity: Bool? = nil
 	public var extractId3Tags: Bool? = nil
@@ -43,6 +76,26 @@ open class ExtractMediaJobData: ConvartableJobData {
 	public var detectGOP: Int? = nil
 
 
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(calculateComplexity: String) {
+		self.dict["calculateComplexity"] = calculateComplexity
+	}
+	
+	public func setMultiRequestToken(extractId3Tags: String) {
+		self.dict["extractId3Tags"] = extractId3Tags
+	}
+	
+	public func setMultiRequestToken(destDataFilePath: String) {
+		self.dict["destDataFilePath"] = destDataFilePath
+	}
+	
+	public func setMultiRequestToken(detectGOP: String) {
+		self.dict["detectGOP"] = detectGOP
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

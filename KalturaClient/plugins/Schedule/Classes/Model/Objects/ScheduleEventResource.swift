@@ -35,6 +35,39 @@
 
 open class ScheduleEventResource: ObjectBase {
 
+	public class ScheduleEventResourceTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var eventId: BaseTokenizedObject {
+			get {
+				return self.append("eventId") 
+			}
+		}
+		
+		public var resourceId: BaseTokenizedObject {
+			get {
+				return self.append("resourceId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+	}
+
 	public var eventId: Int? = nil
 	public var resourceId: Int? = nil
 	public var partnerId: Int? = nil
@@ -44,6 +77,26 @@ open class ScheduleEventResource: ObjectBase {
 	public var updatedAt: Int? = nil
 
 
+	public func setMultiRequestToken(eventId: String) {
+		self.dict["eventId"] = eventId
+	}
+	
+	public func setMultiRequestToken(resourceId: String) {
+		self.dict["resourceId"] = resourceId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

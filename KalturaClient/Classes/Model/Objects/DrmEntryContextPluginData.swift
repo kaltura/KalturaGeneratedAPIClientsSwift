@@ -35,12 +35,25 @@
 
 open class DrmEntryContextPluginData: PluginData {
 
+	public class DrmEntryContextPluginDataTokenizer: PluginData.PluginDataTokenizer {
+		
+		public var flavorData: BaseTokenizedObject {
+			get {
+				return self.append("flavorData") 
+			}
+		}
+	}
+
 	/**  For the uDRM we give the drm context data which is a json encoding of an array
 	  containing the uDRM data      for each flavor that is required from this
 	  getContextData request.  */
 	public var flavorData: String? = nil
 
 
+	public func setMultiRequestToken(flavorData: String) {
+		self.dict["flavorData"] = flavorData
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

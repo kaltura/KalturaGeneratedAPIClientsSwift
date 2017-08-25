@@ -35,6 +35,69 @@
 
 open class ConversionProfileAssetParamsBaseFilter: RelatedFilter {
 
+	public class ConversionProfileAssetParamsBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var conversionProfileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileIdEqual") 
+			}
+		}
+		
+		public var conversionProfileIdIn: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileIdIn") 
+			}
+		}
+		
+		public var assetParamsIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdEqual") 
+			}
+		}
+		
+		public var assetParamsIdIn: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIdIn") 
+			}
+		}
+		
+		public var readyBehaviorEqual: BaseTokenizedObject {
+			get {
+				return self.append("readyBehaviorEqual") 
+			}
+		}
+		
+		public var readyBehaviorIn: BaseTokenizedObject {
+			get {
+				return self.append("readyBehaviorIn") 
+			}
+		}
+		
+		public var originEqual: BaseTokenizedObject {
+			get {
+				return self.append("originEqual") 
+			}
+		}
+		
+		public var originIn: BaseTokenizedObject {
+			get {
+				return self.append("originIn") 
+			}
+		}
+		
+		public var systemNameEqual: BaseTokenizedObject {
+			get {
+				return self.append("systemNameEqual") 
+			}
+		}
+		
+		public var systemNameIn: BaseTokenizedObject {
+			get {
+				return self.append("systemNameIn") 
+			}
+		}
+	}
+
 	public var conversionProfileIdEqual: Int? = nil
 	public var conversionProfileIdIn: String? = nil
 	public var assetParamsIdEqual: Int? = nil
@@ -47,6 +110,46 @@ open class ConversionProfileAssetParamsBaseFilter: RelatedFilter {
 	public var systemNameIn: String? = nil
 
 
+	public func setMultiRequestToken(conversionProfileIdEqual: String) {
+		self.dict["conversionProfileIdEqual"] = conversionProfileIdEqual
+	}
+	
+	public func setMultiRequestToken(conversionProfileIdIn: String) {
+		self.dict["conversionProfileIdIn"] = conversionProfileIdIn
+	}
+	
+	public func setMultiRequestToken(assetParamsIdEqual: String) {
+		self.dict["assetParamsIdEqual"] = assetParamsIdEqual
+	}
+	
+	public func setMultiRequestToken(assetParamsIdIn: String) {
+		self.dict["assetParamsIdIn"] = assetParamsIdIn
+	}
+	
+	public func setMultiRequestToken(readyBehaviorEqual: String) {
+		self.dict["readyBehaviorEqual"] = readyBehaviorEqual
+	}
+	
+	public func setMultiRequestToken(readyBehaviorIn: String) {
+		self.dict["readyBehaviorIn"] = readyBehaviorIn
+	}
+	
+	public func setMultiRequestToken(originEqual: String) {
+		self.dict["originEqual"] = originEqual
+	}
+	
+	public func setMultiRequestToken(originIn: String) {
+		self.dict["originIn"] = originIn
+	}
+	
+	public func setMultiRequestToken(systemNameEqual: String) {
+		self.dict["systemNameEqual"] = systemNameEqual
+	}
+	
+	public func setMultiRequestToken(systemNameIn: String) {
+		self.dict["systemNameIn"] = systemNameIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

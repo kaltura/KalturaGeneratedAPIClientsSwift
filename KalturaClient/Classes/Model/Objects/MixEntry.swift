@@ -35,6 +35,27 @@
 
 open class MixEntry: PlayableEntry {
 
+	public class MixEntryTokenizer: PlayableEntry.PlayableEntryTokenizer {
+		
+		public var hasRealThumbnail: BaseTokenizedObject {
+			get {
+				return self.append("hasRealThumbnail") 
+			}
+		}
+		
+		public var editorType: BaseTokenizedObject {
+			get {
+				return self.append("editorType") 
+			}
+		}
+		
+		public var dataContent: BaseTokenizedObject {
+			get {
+				return self.append("dataContent") 
+			}
+		}
+	}
+
 	/**  Indicates whether the user has submited a real thumbnail to the mix (Not the one
 	  that was generated automaticaly)  */
 	public var hasRealThumbnail: Bool? = nil
@@ -44,6 +65,18 @@ open class MixEntry: PlayableEntry {
 	public var dataContent: String? = nil
 
 
+	public func setMultiRequestToken(hasRealThumbnail: String) {
+		self.dict["hasRealThumbnail"] = hasRealThumbnail
+	}
+	
+	public func setMultiRequestToken(editorType: String) {
+		self.dict["editorType"] = editorType
+	}
+	
+	public func setMultiRequestToken(dataContent: String) {
+		self.dict["dataContent"] = dataContent
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

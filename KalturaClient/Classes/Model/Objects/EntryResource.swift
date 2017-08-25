@@ -39,12 +39,35 @@
   existing entry.  */
 open class EntryResource: ContentResource {
 
+	public class EntryResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+	}
+
 	/**  ID of the source entry  */
 	public var entryId: String? = nil
 	/**  ID of the source flavor params, set to null to use the source flavor  */
 	public var flavorParamsId: Int? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,9 @@
 
 open class MediaInfoFilter: MediaInfoBaseFilter {
 
+	public class MediaInfoFilterTokenizer: MediaInfoBaseFilter.MediaInfoBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class EventCuePointFilter: EventCuePointBaseFilter {
 
+	public class EventCuePointFilterTokenizer: EventCuePointBaseFilter.EventCuePointBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,21 @@
 
 open class PartnerUsageListResponse: ListResponse {
 
+	public class PartnerUsageListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var total: VarPartnerUsageItem.VarPartnerUsageItemTokenizer {
+			get {
+				return VarPartnerUsageItem.VarPartnerUsageItemTokenizer(self.append("total")) 
+			}
+		}
+		
+		public var objects: ArrayTokenizedObject<VarPartnerUsageItem.VarPartnerUsageItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<VarPartnerUsageItem.VarPartnerUsageItemTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var total: VarPartnerUsageItem? = nil
 	public var objects: Array<VarPartnerUsageItem>? = nil
 

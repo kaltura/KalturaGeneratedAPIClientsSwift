@@ -35,6 +35,27 @@
 
 open class UrlTokenizer: ObjectBase {
 
+	public class UrlTokenizerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var window: BaseTokenizedObject {
+			get {
+				return self.append("window") 
+			}
+		}
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var limitIpAddress: BaseTokenizedObject {
+			get {
+				return self.append("limitIpAddress") 
+			}
+		}
+	}
+
 	/**  Window  */
 	public var window: Int? = nil
 	/**  key  */
@@ -42,6 +63,18 @@ open class UrlTokenizer: ObjectBase {
 	public var limitIpAddress: Bool? = nil
 
 
+	public func setMultiRequestToken(window: String) {
+		self.dict["window"] = window
+	}
+	
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(limitIpAddress: String) {
+		self.dict["limitIpAddress"] = limitIpAddress
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

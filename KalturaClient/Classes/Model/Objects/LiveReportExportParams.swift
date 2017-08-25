@@ -35,6 +35,33 @@
 
 open class LiveReportExportParams: ObjectBase {
 
+	public class LiveReportExportParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var entryIds: BaseTokenizedObject {
+			get {
+				return self.append("entryIds") 
+			}
+		}
+		
+		public var recpientEmail: BaseTokenizedObject {
+			get {
+				return self.append("recpientEmail") 
+			}
+		}
+		
+		public var timeZoneOffset: BaseTokenizedObject {
+			get {
+				return self.append("timeZoneOffset") 
+			}
+		}
+		
+		public var applicationUrlTemplate: BaseTokenizedObject {
+			get {
+				return self.append("applicationUrlTemplate") 
+			}
+		}
+	}
+
 	public var entryIds: String? = nil
 	public var recpientEmail: String? = nil
 	/**  Time zone offset in minutes (between client to UTC)  */
@@ -43,6 +70,22 @@ open class LiveReportExportParams: ObjectBase {
 	public var applicationUrlTemplate: String? = nil
 
 
+	public func setMultiRequestToken(entryIds: String) {
+		self.dict["entryIds"] = entryIds
+	}
+	
+	public func setMultiRequestToken(recpientEmail: String) {
+		self.dict["recpientEmail"] = recpientEmail
+	}
+	
+	public func setMultiRequestToken(timeZoneOffset: String) {
+		self.dict["timeZoneOffset"] = timeZoneOffset
+	}
+	
+	public func setMultiRequestToken(applicationUrlTemplate: String) {
+		self.dict["applicationUrlTemplate"] = applicationUrlTemplate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

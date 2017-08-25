@@ -35,12 +35,35 @@
 
 open class UrlRecognizer: ObjectBase {
 
+	public class UrlRecognizerTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var hosts: BaseTokenizedObject {
+			get {
+				return self.append("hosts") 
+			}
+		}
+		
+		public var uriPrefix: BaseTokenizedObject {
+			get {
+				return self.append("uriPrefix") 
+			}
+		}
+	}
+
 	/**  The hosts that are recognized  */
 	public var hosts: String? = nil
 	/**  The URI prefix we use for security  */
 	public var uriPrefix: String? = nil
 
 
+	public func setMultiRequestToken(hosts: String) {
+		self.dict["hosts"] = hosts
+	}
+	
+	public func setMultiRequestToken(uriPrefix: String) {
+		self.dict["uriPrefix"] = uriPrefix
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

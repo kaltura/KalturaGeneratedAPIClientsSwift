@@ -35,6 +35,9 @@
 
 open class ResponseProfileFilter: ResponseProfileBaseFilter {
 
+	public class ResponseProfileFilterTokenizer: ResponseProfileBaseFilter.ResponseProfileBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

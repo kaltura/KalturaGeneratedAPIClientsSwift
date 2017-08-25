@@ -36,6 +36,9 @@
 /**  Abstract class for asset distribution condition  */
 open class AssetDistributionCondition: ObjectBase {
 
+	public class AssetDistributionConditionTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

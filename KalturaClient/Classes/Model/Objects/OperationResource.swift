@@ -37,6 +37,27 @@
   flavor is ready.  */
 open class OperationResource: ContentResource {
 
+	public class OperationResourceTokenizer: ContentResource.ContentResourceTokenizer {
+		
+		public var resource: ContentResource.ContentResourceTokenizer {
+			get {
+				return ContentResource.ContentResourceTokenizer(self.append("resource")) 
+			}
+		}
+		
+		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {
+			get {
+				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
+			} 
+		}
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+	}
+
 	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
 	public var resource: ContentResource? = nil
 	public var operationAttributes: Array<OperationAttributes>? = nil
@@ -45,6 +66,10 @@ open class OperationResource: ContentResource {
 	public var assetParamsId: Int? = nil
 
 
+	public func setMultiRequestToken(assetParamsId: String) {
+		self.dict["assetParamsId"] = assetParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

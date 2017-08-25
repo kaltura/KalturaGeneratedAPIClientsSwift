@@ -35,9 +35,22 @@
 
 open class PdfFlavorParamsOutput: FlavorParamsOutput {
 
+	public class PdfFlavorParamsOutputTokenizer: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+		
+		public var readonly: BaseTokenizedObject {
+			get {
+				return self.append("readonly") 
+			}
+		}
+	}
+
 	public var readonly: Bool? = nil
 
 
+	public func setMultiRequestToken(readonly: String) {
+		self.dict["readonly"] = readonly
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

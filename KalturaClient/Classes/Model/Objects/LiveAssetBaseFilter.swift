@@ -35,6 +35,9 @@
 
 open class LiveAssetBaseFilter: FlavorAssetFilter {
 
+	public class LiveAssetBaseFilterTokenizer: FlavorAssetFilter.FlavorAssetFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,9 @@
 
 open class DataCenterContentResource: ContentResource {
 
+	public class DataCenterContentResourceTokenizer: ContentResource.ContentResourceTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

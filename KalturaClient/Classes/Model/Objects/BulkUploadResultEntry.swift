@@ -35,6 +35,147 @@
 
 open class BulkUploadResultEntry: BulkUploadResult {
 
+	public class BulkUploadResultEntryTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var contentType: BaseTokenizedObject {
+			get {
+				return self.append("contentType") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+		
+		public var accessControlProfileId: BaseTokenizedObject {
+			get {
+				return self.append("accessControlProfileId") 
+			}
+		}
+		
+		public var category: BaseTokenizedObject {
+			get {
+				return self.append("category") 
+			}
+		}
+		
+		public var scheduleStartDate: BaseTokenizedObject {
+			get {
+				return self.append("scheduleStartDate") 
+			}
+		}
+		
+		public var scheduleEndDate: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEndDate") 
+			}
+		}
+		
+		public var entryStatus: BaseTokenizedObject {
+			get {
+				return self.append("entryStatus") 
+			}
+		}
+		
+		public var thumbnailUrl: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailUrl") 
+			}
+		}
+		
+		public var thumbnailSaved: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailSaved") 
+			}
+		}
+		
+		public var sshPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("sshPrivateKey") 
+			}
+		}
+		
+		public var sshPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("sshPublicKey") 
+			}
+		}
+		
+		public var sshKeyPassphrase: BaseTokenizedObject {
+			get {
+				return self.append("sshKeyPassphrase") 
+			}
+		}
+		
+		public var creatorId: BaseTokenizedObject {
+			get {
+				return self.append("creatorId") 
+			}
+		}
+		
+		public var entitledUsersEdit: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersEdit") 
+			}
+		}
+		
+		public var entitledUsersPublish: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersPublish") 
+			}
+		}
+		
+		public var ownerId: BaseTokenizedObject {
+			get {
+				return self.append("ownerId") 
+			}
+		}
+		
+		public var referenceId: BaseTokenizedObject {
+			get {
+				return self.append("referenceId") 
+			}
+		}
+		
+		public var templateEntryId: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryId") 
+			}
+		}
+	}
+
 	public var entryId: String? = nil
 	public var title: String? = nil
 	public var description: String? = nil
@@ -60,6 +201,98 @@ open class BulkUploadResultEntry: BulkUploadResult {
 	public var templateEntryId: String? = nil
 
 
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(contentType: String) {
+		self.dict["contentType"] = contentType
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public func setMultiRequestToken(accessControlProfileId: String) {
+		self.dict["accessControlProfileId"] = accessControlProfileId
+	}
+	
+	public func setMultiRequestToken(category: String) {
+		self.dict["category"] = category
+	}
+	
+	public func setMultiRequestToken(scheduleStartDate: String) {
+		self.dict["scheduleStartDate"] = scheduleStartDate
+	}
+	
+	public func setMultiRequestToken(scheduleEndDate: String) {
+		self.dict["scheduleEndDate"] = scheduleEndDate
+	}
+	
+	public func setMultiRequestToken(entryStatus: String) {
+		self.dict["entryStatus"] = entryStatus
+	}
+	
+	public func setMultiRequestToken(thumbnailUrl: String) {
+		self.dict["thumbnailUrl"] = thumbnailUrl
+	}
+	
+	public func setMultiRequestToken(thumbnailSaved: String) {
+		self.dict["thumbnailSaved"] = thumbnailSaved
+	}
+	
+	public func setMultiRequestToken(sshPrivateKey: String) {
+		self.dict["sshPrivateKey"] = sshPrivateKey
+	}
+	
+	public func setMultiRequestToken(sshPublicKey: String) {
+		self.dict["sshPublicKey"] = sshPublicKey
+	}
+	
+	public func setMultiRequestToken(sshKeyPassphrase: String) {
+		self.dict["sshKeyPassphrase"] = sshKeyPassphrase
+	}
+	
+	public func setMultiRequestToken(creatorId: String) {
+		self.dict["creatorId"] = creatorId
+	}
+	
+	public func setMultiRequestToken(entitledUsersEdit: String) {
+		self.dict["entitledUsersEdit"] = entitledUsersEdit
+	}
+	
+	public func setMultiRequestToken(entitledUsersPublish: String) {
+		self.dict["entitledUsersPublish"] = entitledUsersPublish
+	}
+	
+	public func setMultiRequestToken(ownerId: String) {
+		self.dict["ownerId"] = ownerId
+	}
+	
+	public func setMultiRequestToken(referenceId: String) {
+		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(templateEntryId: String) {
+		self.dict["templateEntryId"] = templateEntryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

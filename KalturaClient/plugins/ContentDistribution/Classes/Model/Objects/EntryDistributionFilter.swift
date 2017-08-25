@@ -35,6 +35,9 @@
 
 open class EntryDistributionFilter: EntryDistributionBaseFilter {
 
+	public class EntryDistributionFilterTokenizer: EntryDistributionBaseFilter.EntryDistributionBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

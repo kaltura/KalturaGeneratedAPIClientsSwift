@@ -35,6 +35,15 @@
 
 open class AccessControlProfileListResponse: ListResponse {
 
+	public class AccessControlProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<AccessControlProfile.AccessControlProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<AccessControlProfile.AccessControlProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<AccessControlProfile>? = nil
 
 

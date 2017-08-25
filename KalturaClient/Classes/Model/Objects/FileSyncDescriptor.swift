@@ -35,12 +35,45 @@
 
 open class FileSyncDescriptor: ObjectBase {
 
+	public class FileSyncDescriptorTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var fileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("fileSyncLocalPath") 
+			}
+		}
+		
+		public var fileSyncRemoteUrl: BaseTokenizedObject {
+			get {
+				return self.append("fileSyncRemoteUrl") 
+			}
+		}
+		
+		public var fileSyncObjectSubType: BaseTokenizedObject {
+			get {
+				return self.append("fileSyncObjectSubType") 
+			}
+		}
+	}
+
 	public var fileSyncLocalPath: String? = nil
 	/**  The translated path as used by the scheduler  */
 	public var fileSyncRemoteUrl: String? = nil
 	public var fileSyncObjectSubType: Int? = nil
 
 
+	public func setMultiRequestToken(fileSyncLocalPath: String) {
+		self.dict["fileSyncLocalPath"] = fileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(fileSyncRemoteUrl: String) {
+		self.dict["fileSyncRemoteUrl"] = fileSyncRemoteUrl
+	}
+	
+	public func setMultiRequestToken(fileSyncObjectSubType: String) {
+		self.dict["fileSyncObjectSubType"] = fileSyncObjectSubType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,105 @@
 
 open class CuePoint: ObjectBase {
 
+	public class CuePointTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var cuePointType: BaseTokenizedObject {
+			get {
+				return self.append("cuePointType") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var triggeredAt: BaseTokenizedObject {
+			get {
+				return self.append("triggeredAt") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var startTime: BaseTokenizedObject {
+			get {
+				return self.append("startTime") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var partnerSortValue: BaseTokenizedObject {
+			get {
+				return self.append("partnerSortValue") 
+			}
+		}
+		
+		public var forceStop: BaseTokenizedObject {
+			get {
+				return self.append("forceStop") 
+			}
+		}
+		
+		public var thumbOffset: BaseTokenizedObject {
+			get {
+				return self.append("thumbOffset") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var cuePointType: CuePointType? = nil
 	public var status: CuePointStatus? = nil
@@ -54,6 +153,70 @@ open class CuePoint: ObjectBase {
 	public var systemName: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(cuePointType: String) {
+		self.dict["cuePointType"] = cuePointType
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(triggeredAt: String) {
+		self.dict["triggeredAt"] = triggeredAt
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(startTime: String) {
+		self.dict["startTime"] = startTime
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(partnerSortValue: String) {
+		self.dict["partnerSortValue"] = partnerSortValue
+	}
+	
+	public func setMultiRequestToken(forceStop: String) {
+		self.dict["forceStop"] = forceStop
+	}
+	
+	public func setMultiRequestToken(thumbOffset: String) {
+		self.dict["thumbOffset"] = thumbOffset
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

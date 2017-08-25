@@ -35,6 +35,9 @@
 
 open class DocumentFlavorParamsOutput: FlavorParamsOutput {
 
+	public class DocumentFlavorParamsOutputTokenizer: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

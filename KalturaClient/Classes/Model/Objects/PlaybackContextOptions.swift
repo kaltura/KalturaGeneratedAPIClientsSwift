@@ -36,6 +36,9 @@
 /**  Object which contains contextual entry-related data.  */
 open class PlaybackContextOptions: EntryContextDataParams {
 
+	public class PlaybackContextOptionsTokenizer: EntryContextDataParams.EntryContextDataParamsTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

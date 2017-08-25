@@ -36,6 +36,15 @@
 /**  Job Data representing the provider of recipients for a single categoryId  */
 open class EmailNotificationCategoryRecipientJobData: EmailNotificationRecipientJobData {
 
+	public class EmailNotificationCategoryRecipientJobDataTokenizer: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
+		
+		public var categoryUserFilter: CategoryUserFilter.CategoryUserFilterTokenizer {
+			get {
+				return CategoryUserFilter.CategoryUserFilterTokenizer(self.append("categoryUserFilter")) 
+			}
+		}
+	}
+
 	public var categoryUserFilter: CategoryUserFilter? = nil
 
 

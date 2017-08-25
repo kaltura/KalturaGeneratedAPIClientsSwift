@@ -35,6 +35,93 @@
 
 open class CaptionAssetItemFilter: CaptionAssetFilter {
 
+	public class CaptionAssetItemFilterTokenizer: CaptionAssetFilter.CaptionAssetFilterTokenizer {
+		
+		public var contentLike: BaseTokenizedObject {
+			get {
+				return self.append("contentLike") 
+			}
+		}
+		
+		public var contentMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("contentMultiLikeOr") 
+			}
+		}
+		
+		public var contentMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("contentMultiLikeAnd") 
+			}
+		}
+		
+		public var partnerDescriptionLike: BaseTokenizedObject {
+			get {
+				return self.append("partnerDescriptionLike") 
+			}
+		}
+		
+		public var partnerDescriptionMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("partnerDescriptionMultiLikeOr") 
+			}
+		}
+		
+		public var partnerDescriptionMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("partnerDescriptionMultiLikeAnd") 
+			}
+		}
+		
+		public var languageEqual: BaseTokenizedObject {
+			get {
+				return self.append("languageEqual") 
+			}
+		}
+		
+		public var languageIn: BaseTokenizedObject {
+			get {
+				return self.append("languageIn") 
+			}
+		}
+		
+		public var labelEqual: BaseTokenizedObject {
+			get {
+				return self.append("labelEqual") 
+			}
+		}
+		
+		public var labelIn: BaseTokenizedObject {
+			get {
+				return self.append("labelIn") 
+			}
+		}
+		
+		public var startTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var startTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("startTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var endTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var endTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeLessThanOrEqual") 
+			}
+		}
+	}
+
 	public var contentLike: String? = nil
 	public var contentMultiLikeOr: String? = nil
 	public var contentMultiLikeAnd: String? = nil
@@ -51,6 +138,62 @@ open class CaptionAssetItemFilter: CaptionAssetFilter {
 	public var endTimeLessThanOrEqual: Int? = nil
 
 
+	public func setMultiRequestToken(contentLike: String) {
+		self.dict["contentLike"] = contentLike
+	}
+	
+	public func setMultiRequestToken(contentMultiLikeOr: String) {
+		self.dict["contentMultiLikeOr"] = contentMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(contentMultiLikeAnd: String) {
+		self.dict["contentMultiLikeAnd"] = contentMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(partnerDescriptionLike: String) {
+		self.dict["partnerDescriptionLike"] = partnerDescriptionLike
+	}
+	
+	public func setMultiRequestToken(partnerDescriptionMultiLikeOr: String) {
+		self.dict["partnerDescriptionMultiLikeOr"] = partnerDescriptionMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(partnerDescriptionMultiLikeAnd: String) {
+		self.dict["partnerDescriptionMultiLikeAnd"] = partnerDescriptionMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(languageEqual: String) {
+		self.dict["languageEqual"] = languageEqual
+	}
+	
+	public func setMultiRequestToken(languageIn: String) {
+		self.dict["languageIn"] = languageIn
+	}
+	
+	public func setMultiRequestToken(labelEqual: String) {
+		self.dict["labelEqual"] = labelEqual
+	}
+	
+	public func setMultiRequestToken(labelIn: String) {
+		self.dict["labelIn"] = labelIn
+	}
+	
+	public func setMultiRequestToken(startTimeGreaterThanOrEqual: String) {
+		self.dict["startTimeGreaterThanOrEqual"] = startTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(startTimeLessThanOrEqual: String) {
+		self.dict["startTimeLessThanOrEqual"] = startTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endTimeGreaterThanOrEqual: String) {
+		self.dict["endTimeGreaterThanOrEqual"] = endTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endTimeLessThanOrEqual: String) {
+		self.dict["endTimeLessThanOrEqual"] = endTimeLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

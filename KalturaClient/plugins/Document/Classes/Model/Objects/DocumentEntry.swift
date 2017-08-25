@@ -35,12 +35,35 @@
 
 open class DocumentEntry: BaseEntry {
 
+	public class DocumentEntryTokenizer: BaseEntry.BaseEntryTokenizer {
+		
+		public var documentType: BaseTokenizedObject {
+			get {
+				return self.append("documentType") 
+			}
+		}
+		
+		public var assetParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsIds") 
+			}
+		}
+	}
+
 	/**  The type of the document  */
 	public var documentType: DocumentType? = nil
 	/**  Comma separated asset params ids that exists for this media entry  */
 	public var assetParamsIds: String? = nil
 
 
+	public func setMultiRequestToken(documentType: String) {
+		self.dict["documentType"] = documentType
+	}
+	
+	public func setMultiRequestToken(assetParamsIds: String) {
+		self.dict["assetParamsIds"] = assetParamsIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

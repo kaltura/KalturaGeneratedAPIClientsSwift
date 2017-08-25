@@ -35,11 +35,44 @@
 
 open class LiveEntryFilter: LiveEntryBaseFilter {
 
+	public class LiveEntryFilterTokenizer: LiveEntryBaseFilter.LiveEntryBaseFilterTokenizer {
+		
+		public var isLive: BaseTokenizedObject {
+			get {
+				return self.append("isLive") 
+			}
+		}
+		
+		public var isRecordedEntryIdEmpty: BaseTokenizedObject {
+			get {
+				return self.append("isRecordedEntryIdEmpty") 
+			}
+		}
+		
+		public var hasMediaServerHostname: BaseTokenizedObject {
+			get {
+				return self.append("hasMediaServerHostname") 
+			}
+		}
+	}
+
 	public var isLive: Bool? = nil
 	public var isRecordedEntryIdEmpty: Bool? = nil
 	public var hasMediaServerHostname: String? = nil
 
 
+	public func setMultiRequestToken(isLive: String) {
+		self.dict["isLive"] = isLive
+	}
+	
+	public func setMultiRequestToken(isRecordedEntryIdEmpty: String) {
+		self.dict["isRecordedEntryIdEmpty"] = isRecordedEntryIdEmpty
+	}
+	
+	public func setMultiRequestToken(hasMediaServerHostname: String) {
+		self.dict["hasMediaServerHostname"] = hasMediaServerHostname
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -37,6 +37,15 @@
   according to a user filter  */
 open class EmailNotificationUserRecipientProvider: EmailNotificationRecipientProvider {
 
+	public class EmailNotificationUserRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
+		
+		public var filter: UserFilter.UserFilterTokenizer {
+			get {
+				return UserFilter.UserFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
 	public var filter: UserFilter? = nil
 
 

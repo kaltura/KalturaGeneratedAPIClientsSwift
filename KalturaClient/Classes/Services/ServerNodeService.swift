@@ -36,78 +36,168 @@
 /**  Server Node service  */
 public final class ServerNodeService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public var serverNode: ServerNode.ServerNodeTokenizer {
+			get {
+				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
+			}
+		}
+	}
+
 	/**  Adds a server node to the Kaltura DB.  */
-	public static func add(serverNode: ServerNode) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "add")
+	public static func add(serverNode: ServerNode) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer>(service: "servernode", action: "add")
 			.setBody(key: "serverNode", value: serverNode)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
+	}
+
 	/**  delete server node by id  */
-	public static func delete(serverNodeId: String) -> RequestBuilder<Void> {
+	public static func delete(serverNodeId: String) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "servernode", action: "delete")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
 
+	public class DisableTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
+	}
+
 	/**  Disable server node by id  */
-	public static func disable(serverNodeId: String) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "disable")
+	public static func disable(serverNodeId: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer>(service: "servernode", action: "disable")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 
 		return request
+	}
+
+	public class EnableTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
 	}
 
 	/**  Enable server node by id  */
-	public static func enable(serverNodeId: String) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "enable")
+	public static func enable(serverNodeId: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer>(service: "servernode", action: "enable")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
 	}
 
 	/**  Get server node by id  */
-	public static func get(serverNodeId: Int) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "get")
+	public static func get(serverNodeId: Int) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer>(service: "servernode", action: "get")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<ServerNodeListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: ServerNodeFilter.ServerNodeFilterTokenizer {
+			get {
+				return ServerNodeFilter.ServerNodeFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: ServerNodeFilter?) -> RequestBuilder<ServerNodeListResponse> {
+	public static func list(filter: ServerNodeFilter?) -> RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
-	public static func list(filter: ServerNodeFilter?, pager: FilterPager?) -> RequestBuilder<ServerNodeListResponse> {
-		let request: RequestBuilder<ServerNodeListResponse> = RequestBuilder<ServerNodeListResponse>(service: "servernode", action: "list")
+	public static func list(filter: ServerNodeFilter?, pager: FilterPager?) -> RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> = RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer>(service: "servernode", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func reportStatus(hostName: String) -> RequestBuilder<ServerNode> {
+	public class ReportStatusTokenizer: ClientTokenizer  {
+		
+		public var hostName: BaseTokenizedObject {
+			get {
+				return self.append("hostName") 
+			}
+		}
+		
+		public var serverNode: ServerNode.ServerNodeTokenizer {
+			get {
+				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
+			}
+		}
+	}
+
+	public static func reportStatus(hostName: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
 		return reportStatus(hostName: hostName, serverNode: nil)
 	}
 
 	/**  Update server node status  */
-	public static func reportStatus(hostName: String, serverNode: ServerNode?) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "reportStatus")
+	public static func reportStatus(hostName: String, serverNode: ServerNode?) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer>(service: "servernode", action: "reportStatus")
 			.setBody(key: "hostName", value: hostName)
 			.setBody(key: "serverNode", value: serverNode)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
+		
+		public var serverNode: ServerNode.ServerNodeTokenizer {
+			get {
+				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
+			}
+		}
+	}
+
 	/**  Update server node by id  */
-	public static func update(serverNodeId: Int, serverNode: ServerNode) -> RequestBuilder<ServerNode> {
-		let request: RequestBuilder<ServerNode> = RequestBuilder<ServerNode>(service: "servernode", action: "update")
+	public static func update(serverNodeId: Int, serverNode: ServerNode) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer>(service: "servernode", action: "update")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 			.setBody(key: "serverNode", value: serverNode)
 

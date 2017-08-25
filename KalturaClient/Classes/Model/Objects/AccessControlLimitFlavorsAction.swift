@@ -35,11 +35,34 @@
 
 open class AccessControlLimitFlavorsAction: RuleAction {
 
+	public class AccessControlLimitFlavorsActionTokenizer: RuleAction.RuleActionTokenizer {
+		
+		public var flavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIds") 
+			}
+		}
+		
+		public var isBlockedList: BaseTokenizedObject {
+			get {
+				return self.append("isBlockedList") 
+			}
+		}
+	}
+
 	/**  Comma separated list of flavor ids  */
 	public var flavorParamsIds: String? = nil
 	public var isBlockedList: Bool? = nil
 
 
+	public func setMultiRequestToken(flavorParamsIds: String) {
+		self.dict["flavorParamsIds"] = flavorParamsIds
+	}
+	
+	public func setMultiRequestToken(isBlockedList: String) {
+		self.dict["isBlockedList"] = isBlockedList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

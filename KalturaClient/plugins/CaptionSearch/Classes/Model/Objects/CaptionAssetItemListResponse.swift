@@ -35,6 +35,15 @@
 
 open class CaptionAssetItemListResponse: ListResponse {
 
+	public class CaptionAssetItemListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<CaptionAssetItem.CaptionAssetItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<CaptionAssetItem.CaptionAssetItemTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<CaptionAssetItem>? = nil
 
 

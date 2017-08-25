@@ -37,10 +37,23 @@
   mechanism  */
 open class EmailNotificationRecipientJobData: ObjectBase {
 
+	public class EmailNotificationRecipientJobDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var providerType: BaseTokenizedObject {
+			get {
+				return self.append("providerType") 
+			}
+		}
+	}
+
 	/**  Provider type of the job data.  */
 	public var providerType: EmailNotificationRecipientProviderType? = nil
 
 
+	public func setMultiRequestToken(providerType: String) {
+		self.dict["providerType"] = providerType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

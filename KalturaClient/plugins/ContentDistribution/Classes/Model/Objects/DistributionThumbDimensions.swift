@@ -35,10 +35,33 @@
 
 open class DistributionThumbDimensions: ObjectBase {
 
+	public class DistributionThumbDimensionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+	}
+
 	public var width: Int? = nil
 	public var height: Int? = nil
 
 
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,12 +35,45 @@
 
 open class SourceFileSyncDescriptor: FileSyncDescriptor {
 
+	public class SourceFileSyncDescriptorTokenizer: FileSyncDescriptor.FileSyncDescriptorTokenizer {
+		
+		public var actualFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("actualFileSyncLocalPath") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+	}
+
 	/**  The translated path as used by the scheduler  */
 	public var actualFileSyncLocalPath: String? = nil
 	public var assetId: String? = nil
 	public var assetParamsId: Int? = nil
 
 
+	public func setMultiRequestToken(actualFileSyncLocalPath: String) {
+		self.dict["actualFileSyncLocalPath"] = actualFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(assetParamsId: String) {
+		self.dict["assetParamsId"] = assetParamsId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

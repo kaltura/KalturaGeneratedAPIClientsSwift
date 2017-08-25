@@ -35,6 +35,81 @@
 
 open class FlavorAsset: Asset {
 
+	public class FlavorAssetTokenizer: Asset.AssetTokenizer {
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var bitrate: BaseTokenizedObject {
+			get {
+				return self.append("bitrate") 
+			}
+		}
+		
+		public var frameRate: BaseTokenizedObject {
+			get {
+				return self.append("frameRate") 
+			}
+		}
+		
+		public var isOriginal: BaseTokenizedObject {
+			get {
+				return self.append("isOriginal") 
+			}
+		}
+		
+		public var isWeb: BaseTokenizedObject {
+			get {
+				return self.append("isWeb") 
+			}
+		}
+		
+		public var containerFormat: BaseTokenizedObject {
+			get {
+				return self.append("containerFormat") 
+			}
+		}
+		
+		public var videoCodecId: BaseTokenizedObject {
+			get {
+				return self.append("videoCodecId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
+	}
+
 	/**  The Flavor Params used to create this Flavor Asset  */
 	public var flavorParamsId: Int? = nil
 	/**  The width of the Flavor Asset  */
@@ -61,6 +136,54 @@ open class FlavorAsset: Asset {
 	public var label: String? = nil
 
 
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(bitrate: String) {
+		self.dict["bitrate"] = bitrate
+	}
+	
+	public func setMultiRequestToken(frameRate: String) {
+		self.dict["frameRate"] = frameRate
+	}
+	
+	public func setMultiRequestToken(isOriginal: String) {
+		self.dict["isOriginal"] = isOriginal
+	}
+	
+	public func setMultiRequestToken(isWeb: String) {
+		self.dict["isWeb"] = isWeb
+	}
+	
+	public func setMultiRequestToken(containerFormat: String) {
+		self.dict["containerFormat"] = containerFormat
+	}
+	
+	public func setMultiRequestToken(videoCodecId: String) {
+		self.dict["videoCodecId"] = videoCodecId
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

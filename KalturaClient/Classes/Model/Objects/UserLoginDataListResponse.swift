@@ -35,6 +35,15 @@
 
 open class UserLoginDataListResponse: ListResponse {
 
+	public class UserLoginDataListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<UserLoginData.UserLoginDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<UserLoginData.UserLoginDataTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<UserLoginData>? = nil
 
 

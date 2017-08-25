@@ -35,6 +35,51 @@
 
 open class EntryScheduleEventBaseFilter: ScheduleEventFilter {
 
+	public class EntryScheduleEventBaseFilterTokenizer: ScheduleEventFilter.ScheduleEventFilterTokenizer {
+		
+		public var templateEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("templateEntryIdEqual") 
+			}
+		}
+		
+		public var entryIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("entryIdsLike") 
+			}
+		}
+		
+		public var entryIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("entryIdsMultiLikeOr") 
+			}
+		}
+		
+		public var entryIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("entryIdsMultiLikeAnd") 
+			}
+		}
+		
+		public var categoryIdsLike: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdsLike") 
+			}
+		}
+		
+		public var categoryIdsMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdsMultiLikeOr") 
+			}
+		}
+		
+		public var categoryIdsMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("categoryIdsMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var templateEntryIdEqual: String? = nil
 	public var entryIdsLike: String? = nil
 	public var entryIdsMultiLikeOr: String? = nil
@@ -44,6 +89,34 @@ open class EntryScheduleEventBaseFilter: ScheduleEventFilter {
 	public var categoryIdsMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(templateEntryIdEqual: String) {
+		self.dict["templateEntryIdEqual"] = templateEntryIdEqual
+	}
+	
+	public func setMultiRequestToken(entryIdsLike: String) {
+		self.dict["entryIdsLike"] = entryIdsLike
+	}
+	
+	public func setMultiRequestToken(entryIdsMultiLikeOr: String) {
+		self.dict["entryIdsMultiLikeOr"] = entryIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(entryIdsMultiLikeAnd: String) {
+		self.dict["entryIdsMultiLikeAnd"] = entryIdsMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(categoryIdsLike: String) {
+		self.dict["categoryIdsLike"] = categoryIdsLike
+	}
+	
+	public func setMultiRequestToken(categoryIdsMultiLikeOr: String) {
+		self.dict["categoryIdsMultiLikeOr"] = categoryIdsMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(categoryIdsMultiLikeAnd: String) {
+		self.dict["categoryIdsMultiLikeAnd"] = categoryIdsMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

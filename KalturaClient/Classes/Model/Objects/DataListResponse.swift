@@ -35,6 +35,15 @@
 
 open class DataListResponse: ListResponse {
 
+	public class DataListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DataEntry.DataEntryTokenizer> {
+			get {
+				return ArrayTokenizedObject<DataEntry.DataEntryTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DataEntry>? = nil
 
 

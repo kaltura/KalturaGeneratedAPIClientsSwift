@@ -35,6 +35,9 @@
 
 open class PlaylistBaseFilter: BaseEntryFilter {
 
+	public class PlaylistBaseFilterTokenizer: BaseEntryFilter.BaseEntryFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

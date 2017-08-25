@@ -35,6 +35,57 @@
 
 open class LiveStreamParams: ObjectBase {
 
+	public class LiveStreamParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var bitrate: BaseTokenizedObject {
+			get {
+				return self.append("bitrate") 
+			}
+		}
+		
+		public var flavorId: BaseTokenizedObject {
+			get {
+				return self.append("flavorId") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var codec: BaseTokenizedObject {
+			get {
+				return self.append("codec") 
+			}
+		}
+		
+		public var frameRate: BaseTokenizedObject {
+			get {
+				return self.append("frameRate") 
+			}
+		}
+		
+		public var keyFrameInterval: BaseTokenizedObject {
+			get {
+				return self.append("keyFrameInterval") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+	}
+
 	/**  Bit rate of the stream. (i.e. 900)  */
 	public var bitrate: Int? = nil
 	/**  flavor asset id  */
@@ -53,6 +104,38 @@ open class LiveStreamParams: ObjectBase {
 	public var language: String? = nil
 
 
+	public func setMultiRequestToken(bitrate: String) {
+		self.dict["bitrate"] = bitrate
+	}
+	
+	public func setMultiRequestToken(flavorId: String) {
+		self.dict["flavorId"] = flavorId
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(codec: String) {
+		self.dict["codec"] = codec
+	}
+	
+	public func setMultiRequestToken(frameRate: String) {
+		self.dict["frameRate"] = frameRate
+	}
+	
+	public func setMultiRequestToken(keyFrameInterval: String) {
+		self.dict["keyFrameInterval"] = keyFrameInterval
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

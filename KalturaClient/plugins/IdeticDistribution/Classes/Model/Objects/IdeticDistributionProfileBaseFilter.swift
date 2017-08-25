@@ -35,6 +35,9 @@
 
 open class IdeticDistributionProfileBaseFilter: ConfigurableDistributionProfileFilter {
 
+	public class IdeticDistributionProfileBaseFilterTokenizer: ConfigurableDistributionProfileFilter.ConfigurableDistributionProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

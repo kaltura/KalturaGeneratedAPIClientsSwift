@@ -36,33 +36,66 @@
 /**  Bulk upload service is used to upload &amp; manage bulk uploads  */
 public final class BulkService{
 
+	public class AbortTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Aborts the bulk upload and all its child jobs  */
-	public static func abort(id: Int) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "bulkupload_bulk", action: "abort")
+	public static func abort(id: Int) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AbortTokenizer>(service: "bulkupload_bulk", action: "abort")
 			.setBody(key: "id", value: id)
 
 		return request
+	}
+
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
 	}
 
 	/**  Get bulk upload batch job by id  */
-	public static func get(id: Int) -> RequestBuilder<BulkUpload> {
-		let request: RequestBuilder<BulkUpload> = RequestBuilder<BulkUpload>(service: "bulkupload_bulk", action: "get")
+	public static func get(id: Int) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, GetTokenizer>(service: "bulkupload_bulk", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<BulkUploadListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var bulkUploadFilter: BulkUploadFilter.BulkUploadFilterTokenizer {
+			get {
+				return BulkUploadFilter.BulkUploadFilterTokenizer(self.append("bulkUploadFilter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> {
 		return list(bulkUploadFilter: nil)
 	}
 
-	public static func list(bulkUploadFilter: BulkUploadFilter?) -> RequestBuilder<BulkUploadListResponse> {
+	public static func list(bulkUploadFilter: BulkUploadFilter?) -> RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> {
 		return list(bulkUploadFilter: bulkUploadFilter, pager: nil)
 	}
 
 	/**  List bulk upload batch jobs  */
-	public static func list(bulkUploadFilter: BulkUploadFilter?, pager: FilterPager?) -> RequestBuilder<BulkUploadListResponse> {
-		let request: RequestBuilder<BulkUploadListResponse> = RequestBuilder<BulkUploadListResponse>(service: "bulkupload_bulk", action: "list")
+	public static func list(bulkUploadFilter: BulkUploadFilter?, pager: FilterPager?) -> RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer> = RequestBuilder<BulkUploadListResponse, BulkUploadListResponse.BulkUploadListResponseTokenizer, ListTokenizer>(service: "bulkupload_bulk", action: "list")
 			.setBody(key: "bulkUploadFilter", value: bulkUploadFilter)
 			.setBody(key: "pager", value: pager)
 

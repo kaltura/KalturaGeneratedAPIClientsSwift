@@ -35,6 +35,27 @@
 
 open class EventNotificationParameter: ObjectBase {
 
+	public class EventNotificationParameterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var value: StringValue.StringValueTokenizer {
+			get {
+				return StringValue.StringValueTokenizer(self.append("value")) 
+			}
+		}
+	}
+
 	/**  The key in the subject and body to be replaced with the dynamic value  */
 	public var key: String? = nil
 	public var description: String? = nil
@@ -42,6 +63,14 @@ open class EventNotificationParameter: ObjectBase {
 	public var value: StringValue? = nil
 
 
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

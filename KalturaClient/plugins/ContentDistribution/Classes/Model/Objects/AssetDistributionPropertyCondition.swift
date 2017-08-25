@@ -37,6 +37,21 @@
   if its inherited objects)  */
 open class AssetDistributionPropertyCondition: AssetDistributionCondition {
 
+	public class AssetDistributionPropertyConditionTokenizer: AssetDistributionCondition.AssetDistributionConditionTokenizer {
+		
+		public var propertyName: BaseTokenizedObject {
+			get {
+				return self.append("propertyName") 
+			}
+		}
+		
+		public var propertyValue: BaseTokenizedObject {
+			get {
+				return self.append("propertyValue") 
+			}
+		}
+	}
+
 	/**  The property name to look for, this will match to a getter on the asset object. 
 	   Should be camelCase naming convention (defining "myPropertyName" will look for
 	  getMyPropertyName())  */
@@ -45,6 +60,14 @@ open class AssetDistributionPropertyCondition: AssetDistributionCondition {
 	public var propertyValue: String? = nil
 
 
+	public func setMultiRequestToken(propertyName: String) {
+		self.dict["propertyName"] = propertyName
+	}
+	
+	public func setMultiRequestToken(propertyValue: String) {
+		self.dict["propertyValue"] = propertyValue
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

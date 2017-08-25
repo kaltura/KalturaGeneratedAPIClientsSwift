@@ -35,6 +35,9 @@
 
 open class MetadataResponseProfileMapping: ResponseProfileMapping {
 
+	public class MetadataResponseProfileMappingTokenizer: ResponseProfileMapping.ResponseProfileMappingTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

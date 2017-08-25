@@ -35,9 +35,22 @@
 
 open class BatchJobFilterExt: BatchJobFilter {
 
+	public class BatchJobFilterExtTokenizer: BatchJobFilter.BatchJobFilterTokenizer {
+		
+		public var jobTypeAndSubTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("jobTypeAndSubTypeIn") 
+			}
+		}
+	}
+
 	public var jobTypeAndSubTypeIn: String? = nil
 
 
+	public func setMultiRequestToken(jobTypeAndSubTypeIn: String) {
+		self.dict["jobTypeAndSubTypeIn"] = jobTypeAndSubTypeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,39 @@
 
 open class ThumbAssetBaseFilter: AssetFilter {
 
+	public class ThumbAssetBaseFilterTokenizer: AssetFilter.AssetFilterTokenizer {
+		
+		public var thumbParamsIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsIdEqual") 
+			}
+		}
+		
+		public var thumbParamsIdIn: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsIdIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+	}
+
 	public var thumbParamsIdEqual: Int? = nil
 	public var thumbParamsIdIn: String? = nil
 	public var statusEqual: ThumbAssetStatus? = nil
@@ -42,6 +75,26 @@ open class ThumbAssetBaseFilter: AssetFilter {
 	public var statusNotIn: String? = nil
 
 
+	public func setMultiRequestToken(thumbParamsIdEqual: String) {
+		self.dict["thumbParamsIdEqual"] = thumbParamsIdEqual
+	}
+	
+	public func setMultiRequestToken(thumbParamsIdIn: String) {
+		self.dict["thumbParamsIdIn"] = thumbParamsIdIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

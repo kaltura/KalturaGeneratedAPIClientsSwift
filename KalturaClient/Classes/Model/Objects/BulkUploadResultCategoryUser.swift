@@ -35,6 +35,45 @@
 
 open class BulkUploadResultCategoryUser: BulkUploadResult {
 
+	public class BulkUploadResultCategoryUserTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var categoryReferenceId: BaseTokenizedObject {
+			get {
+				return self.append("categoryReferenceId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var permissionLevel: BaseTokenizedObject {
+			get {
+				return self.append("permissionLevel") 
+			}
+		}
+		
+		public var updateMethod: BaseTokenizedObject {
+			get {
+				return self.append("updateMethod") 
+			}
+		}
+		
+		public var requiredObjectStatus: BaseTokenizedObject {
+			get {
+				return self.append("requiredObjectStatus") 
+			}
+		}
+	}
+
 	public var categoryId: Int? = nil
 	public var categoryReferenceId: String? = nil
 	public var userId: String? = nil
@@ -43,6 +82,30 @@ open class BulkUploadResultCategoryUser: BulkUploadResult {
 	public var requiredObjectStatus: Int? = nil
 
 
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(categoryReferenceId: String) {
+		self.dict["categoryReferenceId"] = categoryReferenceId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(permissionLevel: String) {
+		self.dict["permissionLevel"] = permissionLevel
+	}
+	
+	public func setMultiRequestToken(updateMethod: String) {
+		self.dict["updateMethod"] = updateMethod
+	}
+	
+	public func setMultiRequestToken(requiredObjectStatus: String) {
+		self.dict["requiredObjectStatus"] = requiredObjectStatus
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

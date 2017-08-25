@@ -35,6 +35,129 @@
 
 open class DeliveryProfile: ObjectBase {
 
+	public class DeliveryProfileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var streamerType: BaseTokenizedObject {
+			get {
+				return self.append("streamerType") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+		
+		public var hostName: BaseTokenizedObject {
+			get {
+				return self.append("hostName") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var recognizer: UrlRecognizer.UrlRecognizerTokenizer {
+			get {
+				return UrlRecognizer.UrlRecognizerTokenizer(self.append("recognizer")) 
+			}
+		}
+		
+		public var tokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+			get {
+				return UrlTokenizer.UrlTokenizerTokenizer(self.append("tokenizer")) 
+			}
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var mediaProtocols: BaseTokenizedObject {
+			get {
+				return self.append("mediaProtocols") 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var extraParams: BaseTokenizedObject {
+			get {
+				return self.append("extraParams") 
+			}
+		}
+		
+		public var supplementaryAssetsFilter: AssetFilter.AssetFilterTokenizer {
+			get {
+				return AssetFilter.AssetFilterTokenizer(self.append("supplementaryAssetsFilter")) 
+			}
+		}
+	}
+
 	/**  The id of the Delivery  */
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
@@ -72,6 +195,74 @@ open class DeliveryProfile: ObjectBase {
 	public var supplementaryAssetsFilter: AssetFilter? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(streamerType: String) {
+		self.dict["streamerType"] = streamerType
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
+	public func setMultiRequestToken(hostName: String) {
+		self.dict["hostName"] = hostName
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(mediaProtocols: String) {
+		self.dict["mediaProtocols"] = mediaProtocols
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(extraParams: String) {
+		self.dict["extraParams"] = extraParams
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

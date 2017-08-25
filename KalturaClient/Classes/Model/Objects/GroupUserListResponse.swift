@@ -35,6 +35,15 @@
 
 open class GroupUserListResponse: ListResponse {
 
+	public class GroupUserListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<GroupUser.GroupUserTokenizer> {
+			get {
+				return ArrayTokenizedObject<GroupUser.GroupUserTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<GroupUser>? = nil
 
 

@@ -35,6 +35,57 @@
 
 open class ViewHistoryUserEntryAdvancedFilter: SearchItem {
 
+	public class ViewHistoryUserEntryAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var userIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("userIdEqual") 
+			}
+		}
+		
+		public var userIdIn: BaseTokenizedObject {
+			get {
+				return self.append("userIdIn") 
+			}
+		}
+		
+		public var updatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var updatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("updatedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var extendedStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusEqual") 
+			}
+		}
+		
+		public var extendedStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusIn") 
+			}
+		}
+	}
+
 	public var idEqual: String? = nil
 	public var idIn: String? = nil
 	public var userIdEqual: String? = nil
@@ -45,6 +96,38 @@ open class ViewHistoryUserEntryAdvancedFilter: SearchItem {
 	public var extendedStatusIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(userIdEqual: String) {
+		self.dict["userIdEqual"] = userIdEqual
+	}
+	
+	public func setMultiRequestToken(userIdIn: String) {
+		self.dict["userIdIn"] = userIdIn
+	}
+	
+	public func setMultiRequestToken(updatedAtGreaterThanOrEqual: String) {
+		self.dict["updatedAtGreaterThanOrEqual"] = updatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
+		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(extendedStatusEqual: String) {
+		self.dict["extendedStatusEqual"] = extendedStatusEqual
+	}
+	
+	public func setMultiRequestToken(extendedStatusIn: String) {
+		self.dict["extendedStatusIn"] = extendedStatusIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

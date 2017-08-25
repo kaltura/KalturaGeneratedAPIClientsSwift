@@ -35,6 +35,69 @@
 
 open class AkamaiUniversalProvisionJobData: ProvisionJobData {
 
+	public class AkamaiUniversalProvisionJobDataTokenizer: ProvisionJobData.ProvisionJobDataTokenizer {
+		
+		public var streamId: BaseTokenizedObject {
+			get {
+				return self.append("streamId") 
+			}
+		}
+		
+		public var systemUserName: BaseTokenizedObject {
+			get {
+				return self.append("systemUserName") 
+			}
+		}
+		
+		public var systemPassword: BaseTokenizedObject {
+			get {
+				return self.append("systemPassword") 
+			}
+		}
+		
+		public var domainName: BaseTokenizedObject {
+			get {
+				return self.append("domainName") 
+			}
+		}
+		
+		public var dvrEnabled: BaseTokenizedObject {
+			get {
+				return self.append("dvrEnabled") 
+			}
+		}
+		
+		public var dvrWindow: BaseTokenizedObject {
+			get {
+				return self.append("dvrWindow") 
+			}
+		}
+		
+		public var primaryContact: BaseTokenizedObject {
+			get {
+				return self.append("primaryContact") 
+			}
+		}
+		
+		public var secondaryContact: BaseTokenizedObject {
+			get {
+				return self.append("secondaryContact") 
+			}
+		}
+		
+		public var streamType: BaseTokenizedObject {
+			get {
+				return self.append("streamType") 
+			}
+		}
+		
+		public var notificationEmail: BaseTokenizedObject {
+			get {
+				return self.append("notificationEmail") 
+			}
+		}
+	}
+
 	public var streamId: Int? = nil
 	public var systemUserName: String? = nil
 	public var systemPassword: String? = nil
@@ -47,6 +110,46 @@ open class AkamaiUniversalProvisionJobData: ProvisionJobData {
 	public var notificationEmail: String? = nil
 
 
+	public func setMultiRequestToken(streamId: String) {
+		self.dict["streamId"] = streamId
+	}
+	
+	public func setMultiRequestToken(systemUserName: String) {
+		self.dict["systemUserName"] = systemUserName
+	}
+	
+	public func setMultiRequestToken(systemPassword: String) {
+		self.dict["systemPassword"] = systemPassword
+	}
+	
+	public func setMultiRequestToken(domainName: String) {
+		self.dict["domainName"] = domainName
+	}
+	
+	public func setMultiRequestToken(dvrEnabled: String) {
+		self.dict["dvrEnabled"] = dvrEnabled
+	}
+	
+	public func setMultiRequestToken(dvrWindow: String) {
+		self.dict["dvrWindow"] = dvrWindow
+	}
+	
+	public func setMultiRequestToken(primaryContact: String) {
+		self.dict["primaryContact"] = primaryContact
+	}
+	
+	public func setMultiRequestToken(secondaryContact: String) {
+		self.dict["secondaryContact"] = secondaryContact
+	}
+	
+	public func setMultiRequestToken(streamType: String) {
+		self.dict["streamType"] = streamType
+	}
+	
+	public func setMultiRequestToken(notificationEmail: String) {
+		self.dict["notificationEmail"] = notificationEmail
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

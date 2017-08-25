@@ -35,9 +35,22 @@
 
 open class AssetFilter: AssetBaseFilter {
 
+	public class AssetFilterTokenizer: AssetBaseFilter.AssetBaseFilterTokenizer {
+		
+		public var typeIn: BaseTokenizedObject {
+			get {
+				return self.append("typeIn") 
+			}
+		}
+	}
+
 	public var typeIn: String? = nil
 
 
+	public func setMultiRequestToken(typeIn: String) {
+		self.dict["typeIn"] = typeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

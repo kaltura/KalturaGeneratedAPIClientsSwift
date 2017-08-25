@@ -35,6 +35,9 @@
 
 open class RegexCondition: MatchCondition {
 
+	public class RegexConditionTokenizer: MatchCondition.MatchConditionTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

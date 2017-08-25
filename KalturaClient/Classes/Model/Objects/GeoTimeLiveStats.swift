@@ -35,6 +35,21 @@
 
 open class GeoTimeLiveStats: EntryLiveStats {
 
+	public class GeoTimeLiveStatsTokenizer: EntryLiveStats.EntryLiveStatsTokenizer {
+		
+		public var city: Coordinate.CoordinateTokenizer {
+			get {
+				return Coordinate.CoordinateTokenizer(self.append("city")) 
+			}
+		}
+		
+		public var country: Coordinate.CoordinateTokenizer {
+			get {
+				return Coordinate.CoordinateTokenizer(self.append("country")) 
+			}
+		}
+	}
+
 	public var city: Coordinate? = nil
 	public var country: Coordinate? = nil
 

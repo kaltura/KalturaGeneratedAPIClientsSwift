@@ -35,6 +35,69 @@
 
 open class AnnotationBaseFilter: CuePointFilter {
 
+	public class AnnotationBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var parentIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("parentIdEqual") 
+			}
+		}
+		
+		public var parentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("parentIdIn") 
+			}
+		}
+		
+		public var textLike: BaseTokenizedObject {
+			get {
+				return self.append("textLike") 
+			}
+		}
+		
+		public var textMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("textMultiLikeOr") 
+			}
+		}
+		
+		public var textMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("textMultiLikeAnd") 
+			}
+		}
+		
+		public var endTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var endTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("endTimeLessThanOrEqual") 
+			}
+		}
+		
+		public var durationGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationGreaterThanOrEqual") 
+			}
+		}
+		
+		public var durationLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationLessThanOrEqual") 
+			}
+		}
+		
+		public var isPublicEqual: BaseTokenizedObject {
+			get {
+				return self.append("isPublicEqual") 
+			}
+		}
+	}
+
 	public var parentIdEqual: String? = nil
 	public var parentIdIn: String? = nil
 	public var textLike: String? = nil
@@ -47,6 +110,46 @@ open class AnnotationBaseFilter: CuePointFilter {
 	public var isPublicEqual: Bool? = nil
 
 
+	public func setMultiRequestToken(parentIdEqual: String) {
+		self.dict["parentIdEqual"] = parentIdEqual
+	}
+	
+	public func setMultiRequestToken(parentIdIn: String) {
+		self.dict["parentIdIn"] = parentIdIn
+	}
+	
+	public func setMultiRequestToken(textLike: String) {
+		self.dict["textLike"] = textLike
+	}
+	
+	public func setMultiRequestToken(textMultiLikeOr: String) {
+		self.dict["textMultiLikeOr"] = textMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(textMultiLikeAnd: String) {
+		self.dict["textMultiLikeAnd"] = textMultiLikeAnd
+	}
+	
+	public func setMultiRequestToken(endTimeGreaterThanOrEqual: String) {
+		self.dict["endTimeGreaterThanOrEqual"] = endTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(endTimeLessThanOrEqual: String) {
+		self.dict["endTimeLessThanOrEqual"] = endTimeLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationGreaterThanOrEqual: String) {
+		self.dict["durationGreaterThanOrEqual"] = durationGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationLessThanOrEqual: String) {
+		self.dict["durationLessThanOrEqual"] = durationLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(isPublicEqual: String) {
+		self.dict["isPublicEqual"] = isPublicEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

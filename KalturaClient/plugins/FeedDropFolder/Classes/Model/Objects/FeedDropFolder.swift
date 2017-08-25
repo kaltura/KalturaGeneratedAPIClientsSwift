@@ -35,10 +35,29 @@
 
 open class FeedDropFolder: DropFolder {
 
+	public class FeedDropFolderTokenizer: DropFolder.DropFolderTokenizer {
+		
+		public var itemHandlingLimit: BaseTokenizedObject {
+			get {
+				return self.append("itemHandlingLimit") 
+			}
+		}
+		
+		public var feedItemInfo: FeedItemInfo.FeedItemInfoTokenizer {
+			get {
+				return FeedItemInfo.FeedItemInfoTokenizer(self.append("feedItemInfo")) 
+			}
+		}
+	}
+
 	public var itemHandlingLimit: Int? = nil
 	public var feedItemInfo: FeedItemInfo? = nil
 
 
+	public func setMultiRequestToken(itemHandlingLimit: String) {
+		self.dict["itemHandlingLimit"] = itemHandlingLimit
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

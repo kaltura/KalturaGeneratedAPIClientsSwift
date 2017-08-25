@@ -35,6 +35,15 @@
 
 open class DeliveryProfileListResponse: ListResponse {
 
+	public class DeliveryProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DeliveryProfile.DeliveryProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DeliveryProfile.DeliveryProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DeliveryProfile>? = nil
 
 

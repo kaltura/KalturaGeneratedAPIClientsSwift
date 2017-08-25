@@ -35,6 +35,9 @@
 
 open class FacebookDistributionProfileBaseFilter: ConfigurableDistributionProfileFilter {
 
+	public class FacebookDistributionProfileBaseFilterTokenizer: ConfigurableDistributionProfileFilter.ConfigurableDistributionProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

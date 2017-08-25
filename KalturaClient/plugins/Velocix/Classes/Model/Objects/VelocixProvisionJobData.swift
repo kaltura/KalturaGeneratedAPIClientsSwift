@@ -35,11 +35,40 @@
 
 open class VelocixProvisionJobData: ProvisionJobData {
 
+	public class VelocixProvisionJobDataTokenizer: ProvisionJobData.ProvisionJobDataTokenizer {
+		
+		public var provisioningParams: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("provisioningParams"))
+			} 
+		}
+		
+		public var userName: BaseTokenizedObject {
+			get {
+				return self.append("userName") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+	}
+
 	public var provisioningParams: Array<KeyValue>? = nil
 	public var userName: String? = nil
 	public var password: String? = nil
 
 
+	public func setMultiRequestToken(userName: String) {
+		self.dict["userName"] = userName
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

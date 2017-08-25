@@ -35,6 +35,45 @@
 
 open class AssetParamsOutput: AssetParams {
 
+	public class AssetParamsOutputTokenizer: AssetParams.AssetParamsTokenizer {
+		
+		public var assetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsId") 
+			}
+		}
+		
+		public var assetParamsVersion: BaseTokenizedObject {
+			get {
+				return self.append("assetParamsVersion") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var assetVersion: BaseTokenizedObject {
+			get {
+				return self.append("assetVersion") 
+			}
+		}
+		
+		public var readyBehavior: BaseTokenizedObject {
+			get {
+				return self.append("readyBehavior") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+	}
+
 	public var assetParamsId: Int? = nil
 	public var assetParamsVersion: String? = nil
 	public var assetId: String? = nil
@@ -44,6 +83,30 @@ open class AssetParamsOutput: AssetParams {
 	public var format: ContainerFormat? = nil
 
 
+	public func setMultiRequestToken(assetParamsId: String) {
+		self.dict["assetParamsId"] = assetParamsId
+	}
+	
+	public func setMultiRequestToken(assetParamsVersion: String) {
+		self.dict["assetParamsVersion"] = assetParamsVersion
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(assetVersion: String) {
+		self.dict["assetVersion"] = assetVersion
+	}
+	
+	public func setMultiRequestToken(readyBehavior: String) {
+		self.dict["readyBehavior"] = readyBehavior
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

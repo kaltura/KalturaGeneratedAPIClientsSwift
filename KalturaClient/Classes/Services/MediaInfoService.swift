@@ -36,17 +36,32 @@
 /**  Media Info service  */
 public final class MediaInfoService{
 
-	public static func list() -> RequestBuilder<MediaInfoListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: MediaInfoFilter.MediaInfoFilterTokenizer {
+			get {
+				return MediaInfoFilter.MediaInfoFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<MediaInfoListResponse, MediaInfoListResponse.MediaInfoListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: MediaInfoFilter?) -> RequestBuilder<MediaInfoListResponse> {
+	public static func list(filter: MediaInfoFilter?) -> RequestBuilder<MediaInfoListResponse, MediaInfoListResponse.MediaInfoListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List media info objects by filter and pager  */
-	public static func list(filter: MediaInfoFilter?, pager: FilterPager?) -> RequestBuilder<MediaInfoListResponse> {
-		let request: RequestBuilder<MediaInfoListResponse> = RequestBuilder<MediaInfoListResponse>(service: "mediainfo", action: "list")
+	public static func list(filter: MediaInfoFilter?, pager: FilterPager?) -> RequestBuilder<MediaInfoListResponse, MediaInfoListResponse.MediaInfoListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<MediaInfoListResponse, MediaInfoListResponse.MediaInfoListResponseTokenizer, ListTokenizer> = RequestBuilder<MediaInfoListResponse, MediaInfoListResponse.MediaInfoListResponseTokenizer, ListTokenizer>(service: "mediainfo", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

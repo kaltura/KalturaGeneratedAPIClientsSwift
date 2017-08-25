@@ -35,6 +35,51 @@
 
 open class PlayableEntryBaseFilter: BaseEntryFilter {
 
+	public class PlayableEntryBaseFilterTokenizer: BaseEntryFilter.BaseEntryFilterTokenizer {
+		
+		public var lastPlayedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("lastPlayedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var lastPlayedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("lastPlayedAtLessThanOrEqual") 
+			}
+		}
+		
+		public var durationLessThan: BaseTokenizedObject {
+			get {
+				return self.append("durationLessThan") 
+			}
+		}
+		
+		public var durationGreaterThan: BaseTokenizedObject {
+			get {
+				return self.append("durationGreaterThan") 
+			}
+		}
+		
+		public var durationLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationLessThanOrEqual") 
+			}
+		}
+		
+		public var durationGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("durationGreaterThanOrEqual") 
+			}
+		}
+		
+		public var durationTypeMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("durationTypeMatchOr") 
+			}
+		}
+	}
+
 	public var lastPlayedAtGreaterThanOrEqual: Int? = nil
 	public var lastPlayedAtLessThanOrEqual: Int? = nil
 	public var durationLessThan: Int? = nil
@@ -44,6 +89,34 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 	public var durationTypeMatchOr: String? = nil
 
 
+	public func setMultiRequestToken(lastPlayedAtGreaterThanOrEqual: String) {
+		self.dict["lastPlayedAtGreaterThanOrEqual"] = lastPlayedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(lastPlayedAtLessThanOrEqual: String) {
+		self.dict["lastPlayedAtLessThanOrEqual"] = lastPlayedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationLessThan: String) {
+		self.dict["durationLessThan"] = durationLessThan
+	}
+	
+	public func setMultiRequestToken(durationGreaterThan: String) {
+		self.dict["durationGreaterThan"] = durationGreaterThan
+	}
+	
+	public func setMultiRequestToken(durationLessThanOrEqual: String) {
+		self.dict["durationLessThanOrEqual"] = durationLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationGreaterThanOrEqual: String) {
+		self.dict["durationGreaterThanOrEqual"] = durationGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(durationTypeMatchOr: String) {
+		self.dict["durationTypeMatchOr"] = durationTypeMatchOr
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

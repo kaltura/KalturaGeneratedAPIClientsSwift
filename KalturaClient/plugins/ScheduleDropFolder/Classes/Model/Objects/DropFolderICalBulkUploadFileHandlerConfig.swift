@@ -35,10 +35,23 @@
 
 open class DropFolderICalBulkUploadFileHandlerConfig: DropFolderFileHandlerConfig {
 
+	public class DropFolderICalBulkUploadFileHandlerConfigTokenizer: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer {
+		
+		public var eventsType: BaseTokenizedObject {
+			get {
+				return self.append("eventsType") 
+			}
+		}
+	}
+
 	/**  The type of the events that ill be created by this upload  */
 	public var eventsType: ScheduleEventType? = nil
 
 
+	public func setMultiRequestToken(eventsType: String) {
+		self.dict["eventsType"] = eventsType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

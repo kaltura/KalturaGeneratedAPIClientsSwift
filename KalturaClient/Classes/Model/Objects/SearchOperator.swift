@@ -35,10 +35,29 @@
 
 open class SearchOperator: SearchItem {
 
+	public class SearchOperatorTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var items: ArrayTokenizedObject<SearchItem.SearchItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<SearchItem.SearchItemTokenizer>(self.append("items"))
+			} 
+		}
+	}
+
 	public var type: SearchOperatorType? = nil
 	public var items: Array<SearchItem>? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

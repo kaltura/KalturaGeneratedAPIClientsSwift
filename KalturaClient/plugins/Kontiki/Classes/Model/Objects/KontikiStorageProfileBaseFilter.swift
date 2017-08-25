@@ -35,6 +35,9 @@
 
 open class KontikiStorageProfileBaseFilter: StorageProfileFilter {
 
+	public class KontikiStorageProfileBaseFilterTokenizer: StorageProfileFilter.StorageProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,39 @@
 
 open class ThumbParamsOutput: ThumbParams {
 
+	public class ThumbParamsOutputTokenizer: ThumbParams.ThumbParamsTokenizer {
+		
+		public var thumbParamsId: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsId") 
+			}
+		}
+		
+		public var thumbParamsVersion: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsVersion") 
+			}
+		}
+		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+		
+		public var thumbAssetVersion: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetVersion") 
+			}
+		}
+		
+		public var rotate: BaseTokenizedObject {
+			get {
+				return self.append("rotate") 
+			}
+		}
+	}
+
 	public var thumbParamsId: Int? = nil
 	public var thumbParamsVersion: String? = nil
 	public var thumbAssetId: String? = nil
@@ -42,6 +75,26 @@ open class ThumbParamsOutput: ThumbParams {
 	public var rotate: Int? = nil
 
 
+	public func setMultiRequestToken(thumbParamsId: String) {
+		self.dict["thumbParamsId"] = thumbParamsId
+	}
+	
+	public func setMultiRequestToken(thumbParamsVersion: String) {
+		self.dict["thumbParamsVersion"] = thumbParamsVersion
+	}
+	
+	public func setMultiRequestToken(thumbAssetId: String) {
+		self.dict["thumbAssetId"] = thumbAssetId
+	}
+	
+	public func setMultiRequestToken(thumbAssetVersion: String) {
+		self.dict["thumbAssetVersion"] = thumbAssetVersion
+	}
+	
+	public func setMultiRequestToken(rotate: String) {
+		self.dict["rotate"] = rotate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

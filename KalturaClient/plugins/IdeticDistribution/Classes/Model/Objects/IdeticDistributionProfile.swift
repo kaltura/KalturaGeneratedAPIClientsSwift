@@ -35,12 +35,55 @@
 
 open class IdeticDistributionProfile: ConfigurableDistributionProfile {
 
+	public class IdeticDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var ftpPath: BaseTokenizedObject {
+			get {
+				return self.append("ftpPath") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var domain: BaseTokenizedObject {
+			get {
+				return self.append("domain") 
+			}
+		}
+	}
+
 	public var ftpPath: String? = nil
 	public var username: String? = nil
 	public var password: String? = nil
 	public var domain: String? = nil
 
 
+	public func setMultiRequestToken(ftpPath: String) {
+		self.dict["ftpPath"] = ftpPath
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(domain: String) {
+		self.dict["domain"] = domain
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

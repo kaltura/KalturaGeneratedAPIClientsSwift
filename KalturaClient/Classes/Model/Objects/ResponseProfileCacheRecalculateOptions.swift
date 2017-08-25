@@ -35,6 +35,51 @@
 
 open class ResponseProfileCacheRecalculateOptions: ObjectBase {
 
+	public class ResponseProfileCacheRecalculateOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var limit: BaseTokenizedObject {
+			get {
+				return self.append("limit") 
+			}
+		}
+		
+		public var cachedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("cachedObjectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var startObjectKey: BaseTokenizedObject {
+			get {
+				return self.append("startObjectKey") 
+			}
+		}
+		
+		public var endObjectKey: BaseTokenizedObject {
+			get {
+				return self.append("endObjectKey") 
+			}
+		}
+		
+		public var jobCreatedAt: BaseTokenizedObject {
+			get {
+				return self.append("jobCreatedAt") 
+			}
+		}
+		
+		public var isFirstLoop: BaseTokenizedObject {
+			get {
+				return self.append("isFirstLoop") 
+			}
+		}
+	}
+
 	/**  Maximum number of keys to recalculate  */
 	public var limit: Int? = nil
 	/**  Class name  */
@@ -46,6 +91,34 @@ open class ResponseProfileCacheRecalculateOptions: ObjectBase {
 	public var isFirstLoop: Bool? = nil
 
 
+	public func setMultiRequestToken(limit: String) {
+		self.dict["limit"] = limit
+	}
+	
+	public func setMultiRequestToken(cachedObjectType: String) {
+		self.dict["cachedObjectType"] = cachedObjectType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(startObjectKey: String) {
+		self.dict["startObjectKey"] = startObjectKey
+	}
+	
+	public func setMultiRequestToken(endObjectKey: String) {
+		self.dict["endObjectKey"] = endObjectKey
+	}
+	
+	public func setMultiRequestToken(jobCreatedAt: String) {
+		self.dict["jobCreatedAt"] = jobCreatedAt
+	}
+	
+	public func setMultiRequestToken(isFirstLoop: String) {
+		self.dict["isFirstLoop"] = isFirstLoop
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,9 +35,22 @@
 
 open class DeliveryProfileGenericSilverLight: DeliveryProfile {
 
+	public class DeliveryProfileGenericSilverLightTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var pattern: BaseTokenizedObject {
+			get {
+				return self.append("pattern") 
+			}
+		}
+	}
+
 	public var pattern: String? = nil
 
 
+	public func setMultiRequestToken(pattern: String) {
+		self.dict["pattern"] = pattern
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

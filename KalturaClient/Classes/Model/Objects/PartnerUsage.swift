@@ -35,6 +35,45 @@
 
 open class PartnerUsage: ObjectBase {
 
+	public class PartnerUsageTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var hostingGB: BaseTokenizedObject {
+			get {
+				return self.append("hostingGB") 
+			}
+		}
+		
+		public var Percent: BaseTokenizedObject {
+			get {
+				return self.append("Percent") 
+			}
+		}
+		
+		public var packageBW: BaseTokenizedObject {
+			get {
+				return self.append("packageBW") 
+			}
+		}
+		
+		public var usageGB: BaseTokenizedObject {
+			get {
+				return self.append("usageGB") 
+			}
+		}
+		
+		public var reachedLimitDate: BaseTokenizedObject {
+			get {
+				return self.append("reachedLimitDate") 
+			}
+		}
+		
+		public var usageGraph: BaseTokenizedObject {
+			get {
+				return self.append("usageGraph") 
+			}
+		}
+	}
+
 	/**  Partner total hosting in GB on the disk  */
 	public var hostingGB: Double? = nil
 	/**  percent of usage out of partner's package. if usageGB is 5 and package is 10GB,
@@ -53,6 +92,30 @@ open class PartnerUsage: ObjectBase {
 	public var usageGraph: String? = nil
 
 
+	public func setMultiRequestToken(hostingGB: String) {
+		self.dict["hostingGB"] = hostingGB
+	}
+	
+	public func setMultiRequestToken(Percent: String) {
+		self.dict["Percent"] = Percent
+	}
+	
+	public func setMultiRequestToken(packageBW: String) {
+		self.dict["packageBW"] = packageBW
+	}
+	
+	public func setMultiRequestToken(usageGB: String) {
+		self.dict["usageGB"] = usageGB
+	}
+	
+	public func setMultiRequestToken(reachedLimitDate: String) {
+		self.dict["reachedLimitDate"] = reachedLimitDate
+	}
+	
+	public func setMultiRequestToken(usageGraph: String) {
+		self.dict["usageGraph"] = usageGraph
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

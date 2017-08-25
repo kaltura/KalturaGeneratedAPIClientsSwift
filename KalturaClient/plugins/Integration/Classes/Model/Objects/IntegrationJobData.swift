@@ -35,6 +35,39 @@
 
 open class IntegrationJobData: JobData {
 
+	public class IntegrationJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var callbackNotificationUrl: BaseTokenizedObject {
+			get {
+				return self.append("callbackNotificationUrl") 
+			}
+		}
+		
+		public var providerType: BaseTokenizedObject {
+			get {
+				return self.append("providerType") 
+			}
+		}
+		
+		public var providerData: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer {
+			get {
+				return IntegrationJobProviderData.IntegrationJobProviderDataTokenizer(self.append("providerData")) 
+			}
+		}
+		
+		public var triggerType: BaseTokenizedObject {
+			get {
+				return self.append("triggerType") 
+			}
+		}
+		
+		public var triggerData: IntegrationJobTriggerData.IntegrationJobTriggerDataTokenizer {
+			get {
+				return IntegrationJobTriggerData.IntegrationJobTriggerDataTokenizer(self.append("triggerData")) 
+			}
+		}
+	}
+
 	public var callbackNotificationUrl: String? = nil
 	public var providerType: IntegrationProviderType? = nil
 	/**  Additional data that relevant for the provider only  */
@@ -44,6 +77,18 @@ open class IntegrationJobData: JobData {
 	public var triggerData: IntegrationJobTriggerData? = nil
 
 
+	public func setMultiRequestToken(callbackNotificationUrl: String) {
+		self.dict["callbackNotificationUrl"] = callbackNotificationUrl
+	}
+	
+	public func setMultiRequestToken(providerType: String) {
+		self.dict["providerType"] = providerType
+	}
+	
+	public func setMultiRequestToken(triggerType: String) {
+		self.dict["triggerType"] = triggerType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

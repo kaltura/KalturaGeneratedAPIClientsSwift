@@ -35,6 +35,9 @@
 
 open class MediaFlavorParamsFilter: MediaFlavorParamsBaseFilter {
 
+	public class MediaFlavorParamsFilterTokenizer: MediaFlavorParamsBaseFilter.MediaFlavorParamsBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

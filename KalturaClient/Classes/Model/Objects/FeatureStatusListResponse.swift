@@ -35,6 +35,15 @@
 
 open class FeatureStatusListResponse: ListResponse {
 
+	public class FeatureStatusListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<FeatureStatus.FeatureStatusTokenizer> {
+			get {
+				return ArrayTokenizedObject<FeatureStatus.FeatureStatusTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<FeatureStatus>? = nil
 
 

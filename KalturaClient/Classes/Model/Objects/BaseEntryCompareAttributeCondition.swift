@@ -37,9 +37,22 @@
   KalturaBaseEntryCompareAttribute enum to provide attribute name. /  */
 open class BaseEntryCompareAttributeCondition: SearchComparableAttributeCondition {
 
+	public class BaseEntryCompareAttributeConditionTokenizer: SearchComparableAttributeCondition.SearchComparableAttributeConditionTokenizer {
+		
+		public var attribute: BaseTokenizedObject {
+			get {
+				return self.append("attribute") 
+			}
+		}
+	}
+
 	public var attribute: BaseEntryCompareAttribute? = nil
 
 
+	public func setMultiRequestToken(attribute: String) {
+		self.dict["attribute"] = attribute
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

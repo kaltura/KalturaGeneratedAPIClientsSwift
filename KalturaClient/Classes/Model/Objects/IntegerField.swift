@@ -36,6 +36,9 @@
 /**  An int representation to return evaluated dynamic value  */
 open class IntegerField: IntegerValue {
 
+	public class IntegerFieldTokenizer: IntegerValue.IntegerValueTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

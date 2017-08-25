@@ -35,6 +35,9 @@
 
 open class WowzaMediaServerNodeFilter: WowzaMediaServerNodeBaseFilter {
 
+	public class WowzaMediaServerNodeFilterTokenizer: WowzaMediaServerNodeBaseFilter.WowzaMediaServerNodeBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

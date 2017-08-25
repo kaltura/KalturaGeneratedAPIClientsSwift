@@ -35,6 +35,9 @@
 
 open class UiConfFilter: UiConfBaseFilter {
 
+	public class UiConfFilterTokenizer: UiConfBaseFilter.UiConfBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

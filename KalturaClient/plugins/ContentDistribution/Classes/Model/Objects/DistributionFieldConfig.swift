@@ -35,6 +35,57 @@
 
 open class DistributionFieldConfig: ObjectBase {
 
+	public class DistributionFieldConfigTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var fieldName: BaseTokenizedObject {
+			get {
+				return self.append("fieldName") 
+			}
+		}
+		
+		public var userFriendlyFieldName: BaseTokenizedObject {
+			get {
+				return self.append("userFriendlyFieldName") 
+			}
+		}
+		
+		public var entryMrssXslt: BaseTokenizedObject {
+			get {
+				return self.append("entryMrssXslt") 
+			}
+		}
+		
+		public var isRequired: BaseTokenizedObject {
+			get {
+				return self.append("isRequired") 
+			}
+		}
+		
+		public var updateOnChange: BaseTokenizedObject {
+			get {
+				return self.append("updateOnChange") 
+			}
+		}
+		
+		public var updateParams: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("updateParams"))
+			} 
+		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
+		
+		public var triggerDeleteOnError: BaseTokenizedObject {
+			get {
+				return self.append("triggerDeleteOnError") 
+			}
+		}
+	}
+
 	/**  A value taken from a connector field enum which associates the current
 	  configuration to that connector field      Field enum class should be returned
 	  by the provider's getFieldEnumClass function.  */
@@ -58,6 +109,34 @@ open class DistributionFieldConfig: ObjectBase {
 	public var triggerDeleteOnError: Bool? = nil
 
 
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
+	public func setMultiRequestToken(userFriendlyFieldName: String) {
+		self.dict["userFriendlyFieldName"] = userFriendlyFieldName
+	}
+	
+	public func setMultiRequestToken(entryMrssXslt: String) {
+		self.dict["entryMrssXslt"] = entryMrssXslt
+	}
+	
+	public func setMultiRequestToken(isRequired: String) {
+		self.dict["isRequired"] = isRequired
+	}
+	
+	public func setMultiRequestToken(updateOnChange: String) {
+		self.dict["updateOnChange"] = updateOnChange
+	}
+	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
+	public func setMultiRequestToken(triggerDeleteOnError: String) {
+		self.dict["triggerDeleteOnError"] = triggerDeleteOnError
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

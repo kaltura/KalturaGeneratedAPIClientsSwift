@@ -35,6 +35,27 @@
 
 open class BulkDownloadJobData: JobData {
 
+	public class BulkDownloadJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var entryIds: BaseTokenizedObject {
+			get {
+				return self.append("entryIds") 
+			}
+		}
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+		
+		public var puserId: BaseTokenizedObject {
+			get {
+				return self.append("puserId") 
+			}
+		}
+	}
+
 	/**  Comma separated list of entry ids  */
 	public var entryIds: String? = nil
 	/**  Flavor params id to use for conversion  */
@@ -43,6 +64,18 @@ open class BulkDownloadJobData: JobData {
 	public var puserId: String? = nil
 
 
+	public func setMultiRequestToken(entryIds: String) {
+		self.dict["entryIds"] = entryIds
+	}
+	
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	public func setMultiRequestToken(puserId: String) {
+		self.dict["puserId"] = puserId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

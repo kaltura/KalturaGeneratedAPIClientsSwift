@@ -35,6 +35,33 @@
 
 open class ThumbAsset: Asset {
 
+	public class ThumbAssetTokenizer: Asset.AssetTokenizer {
+		
+		public var thumbParamsId: BaseTokenizedObject {
+			get {
+				return self.append("thumbParamsId") 
+			}
+		}
+		
+		public var width: BaseTokenizedObject {
+			get {
+				return self.append("width") 
+			}
+		}
+		
+		public var height: BaseTokenizedObject {
+			get {
+				return self.append("height") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
 	/**  The Flavor Params used to create this Flavor Asset  */
 	public var thumbParamsId: Int? = nil
 	/**  The width of the Flavor Asset  */
@@ -45,6 +72,22 @@ open class ThumbAsset: Asset {
 	public var status: ThumbAssetStatus? = nil
 
 
+	public func setMultiRequestToken(thumbParamsId: String) {
+		self.dict["thumbParamsId"] = thumbParamsId
+	}
+	
+	public func setMultiRequestToken(width: String) {
+		self.dict["width"] = width
+	}
+	
+	public func setMultiRequestToken(height: String) {
+		self.dict["height"] = height
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

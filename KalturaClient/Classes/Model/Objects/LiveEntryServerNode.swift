@@ -35,6 +35,21 @@
 
 open class LiveEntryServerNode: EntryServerNode {
 
+	public class LiveEntryServerNodeTokenizer: EntryServerNode.EntryServerNodeTokenizer {
+		
+		public var streams: ArrayTokenizedObject<LiveStreamParams.LiveStreamParamsTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveStreamParams.LiveStreamParamsTokenizer>(self.append("streams"))
+			} 
+		}
+		
+		public var recordingInfo: ArrayTokenizedObject<LiveEntryServerNodeRecordingInfo.LiveEntryServerNodeRecordingInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveEntryServerNodeRecordingInfo.LiveEntryServerNodeRecordingInfoTokenizer>(self.append("recordingInfo"))
+			} 
+		}
+	}
+
 	/**  parameters of the stream we got  */
 	public var streams: Array<LiveStreamParams>? = nil
 	public var recordingInfo: Array<LiveEntryServerNodeRecordingInfo>? = nil

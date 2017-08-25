@@ -35,6 +35,51 @@
 
 open class BulkUploadBaseFilter: Filter {
 
+	public class BulkUploadBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var uploadedOnGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("uploadedOnGreaterThanOrEqual") 
+			}
+		}
+		
+		public var uploadedOnLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("uploadedOnLessThanOrEqual") 
+			}
+		}
+		
+		public var uploadedOnEqual: BaseTokenizedObject {
+			get {
+				return self.append("uploadedOnEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var bulkUploadObjectTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadObjectTypeEqual") 
+			}
+		}
+		
+		public var bulkUploadObjectTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("bulkUploadObjectTypeIn") 
+			}
+		}
+	}
+
 	public var uploadedOnGreaterThanOrEqual: Int? = nil
 	public var uploadedOnLessThanOrEqual: Int? = nil
 	public var uploadedOnEqual: Int? = nil
@@ -44,6 +89,34 @@ open class BulkUploadBaseFilter: Filter {
 	public var bulkUploadObjectTypeIn: String? = nil
 
 
+	public func setMultiRequestToken(uploadedOnGreaterThanOrEqual: String) {
+		self.dict["uploadedOnGreaterThanOrEqual"] = uploadedOnGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(uploadedOnLessThanOrEqual: String) {
+		self.dict["uploadedOnLessThanOrEqual"] = uploadedOnLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(uploadedOnEqual: String) {
+		self.dict["uploadedOnEqual"] = uploadedOnEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(bulkUploadObjectTypeEqual: String) {
+		self.dict["bulkUploadObjectTypeEqual"] = bulkUploadObjectTypeEqual
+	}
+	
+	public func setMultiRequestToken(bulkUploadObjectTypeIn: String) {
+		self.dict["bulkUploadObjectTypeIn"] = bulkUploadObjectTypeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

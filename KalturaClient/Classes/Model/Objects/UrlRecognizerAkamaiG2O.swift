@@ -35,6 +35,33 @@
 
 open class UrlRecognizerAkamaiG2O: UrlRecognizer {
 
+	public class UrlRecognizerAkamaiG2OTokenizer: UrlRecognizer.UrlRecognizerTokenizer {
+		
+		public var headerData: BaseTokenizedObject {
+			get {
+				return self.append("headerData") 
+			}
+		}
+		
+		public var headerSign: BaseTokenizedObject {
+			get {
+				return self.append("headerSign") 
+			}
+		}
+		
+		public var timeout: BaseTokenizedObject {
+			get {
+				return self.append("timeout") 
+			}
+		}
+		
+		public var salt: BaseTokenizedObject {
+			get {
+				return self.append("salt") 
+			}
+		}
+	}
+
 	/**  headerData  */
 	public var headerData: String? = nil
 	/**  headerSign  */
@@ -45,6 +72,22 @@ open class UrlRecognizerAkamaiG2O: UrlRecognizer {
 	public var salt: String? = nil
 
 
+	public func setMultiRequestToken(headerData: String) {
+		self.dict["headerData"] = headerData
+	}
+	
+	public func setMultiRequestToken(headerSign: String) {
+		self.dict["headerSign"] = headerSign
+	}
+	
+	public func setMultiRequestToken(timeout: String) {
+		self.dict["timeout"] = timeout
+	}
+	
+	public func setMultiRequestToken(salt: String) {
+		self.dict["salt"] = salt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

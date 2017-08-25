@@ -35,11 +35,44 @@
 
 open class QuestionCuePointBaseFilter: CuePointFilter {
 
+	public class QuestionCuePointBaseFilterTokenizer: CuePointFilter.CuePointFilterTokenizer {
+		
+		public var questionLike: BaseTokenizedObject {
+			get {
+				return self.append("questionLike") 
+			}
+		}
+		
+		public var questionMultiLikeOr: BaseTokenizedObject {
+			get {
+				return self.append("questionMultiLikeOr") 
+			}
+		}
+		
+		public var questionMultiLikeAnd: BaseTokenizedObject {
+			get {
+				return self.append("questionMultiLikeAnd") 
+			}
+		}
+	}
+
 	public var questionLike: String? = nil
 	public var questionMultiLikeOr: String? = nil
 	public var questionMultiLikeAnd: String? = nil
 
 
+	public func setMultiRequestToken(questionLike: String) {
+		self.dict["questionLike"] = questionLike
+	}
+	
+	public func setMultiRequestToken(questionMultiLikeOr: String) {
+		self.dict["questionMultiLikeOr"] = questionMultiLikeOr
+	}
+	
+	public func setMultiRequestToken(questionMultiLikeAnd: String) {
+		self.dict["questionMultiLikeAnd"] = questionMultiLikeAnd
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

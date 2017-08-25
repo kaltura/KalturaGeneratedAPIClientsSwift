@@ -35,6 +35,9 @@
 
 open class DropFolderFileFilter: DropFolderFileBaseFilter {
 
+	public class DropFolderFileFilterTokenizer: DropFolderFileBaseFilter.DropFolderFileBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

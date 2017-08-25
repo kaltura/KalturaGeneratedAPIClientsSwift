@@ -35,6 +35,15 @@
 
 open class EntryDistributionListResponse: ListResponse {
 
+	public class EntryDistributionListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<EntryDistribution.EntryDistributionTokenizer> {
+			get {
+				return ArrayTokenizedObject<EntryDistribution.EntryDistributionTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<EntryDistribution>? = nil
 
 

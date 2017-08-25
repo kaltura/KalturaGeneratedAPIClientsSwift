@@ -35,9 +35,22 @@
 
 open class DeliveryProfileVodPackagerPlayServer: DeliveryProfile {
 
+	public class DeliveryProfileVodPackagerPlayServerTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var adStitchingEnabled: BaseTokenizedObject {
+			get {
+				return self.append("adStitchingEnabled") 
+			}
+		}
+	}
+
 	public var adStitchingEnabled: Bool? = nil
 
 
+	public func setMultiRequestToken(adStitchingEnabled: String) {
+		self.dict["adStitchingEnabled"] = adStitchingEnabled
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

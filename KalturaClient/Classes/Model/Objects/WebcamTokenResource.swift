@@ -37,10 +37,23 @@
   returned from media server such as FMS or red5.  */
 open class WebcamTokenResource: DataCenterContentResource {
 
+	public class WebcamTokenResourceTokenizer: DataCenterContentResource.DataCenterContentResourceTokenizer {
+		
+		public var token: BaseTokenizedObject {
+			get {
+				return self.append("token") 
+			}
+		}
+	}
+
 	/**  Token that returned from media server such as FMS or red5.  */
 	public var token: String? = nil
 
 
+	public func setMultiRequestToken(token: String) {
+		self.dict["token"] = token
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

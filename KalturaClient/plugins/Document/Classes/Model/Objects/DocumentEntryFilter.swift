@@ -35,6 +35,9 @@
 
 open class DocumentEntryFilter: DocumentEntryBaseFilter {
 
+	public class DocumentEntryFilterTokenizer: DocumentEntryBaseFilter.DocumentEntryBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

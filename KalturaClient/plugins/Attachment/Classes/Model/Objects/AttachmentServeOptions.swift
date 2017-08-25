@@ -35,6 +35,9 @@
 
 open class AttachmentServeOptions: AssetServeOptions {
 
+	public class AttachmentServeOptionsTokenizer: AssetServeOptions.AssetServeOptionsTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

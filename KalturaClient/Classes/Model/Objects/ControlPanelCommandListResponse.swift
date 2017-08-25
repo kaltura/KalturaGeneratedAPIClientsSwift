@@ -35,6 +35,15 @@
 
 open class ControlPanelCommandListResponse: ListResponse {
 
+	public class ControlPanelCommandListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ControlPanelCommand.ControlPanelCommandTokenizer> {
+			get {
+				return ArrayTokenizedObject<ControlPanelCommand.ControlPanelCommandTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<ControlPanelCommand>? = nil
 
 

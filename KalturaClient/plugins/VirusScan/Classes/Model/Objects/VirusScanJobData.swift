@@ -35,12 +35,55 @@
 
 open class VirusScanJobData: JobData {
 
+	public class VirusScanJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var srcFilePath: BaseTokenizedObject {
+			get {
+				return self.append("srcFilePath") 
+			}
+		}
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var scanResult: BaseTokenizedObject {
+			get {
+				return self.append("scanResult") 
+			}
+		}
+		
+		public var virusFoundAction: BaseTokenizedObject {
+			get {
+				return self.append("virusFoundAction") 
+			}
+		}
+	}
+
 	public var srcFilePath: String? = nil
 	public var flavorAssetId: String? = nil
 	public var scanResult: VirusScanJobResult? = nil
 	public var virusFoundAction: VirusFoundAction? = nil
 
 
+	public func setMultiRequestToken(srcFilePath: String) {
+		self.dict["srcFilePath"] = srcFilePath
+	}
+	
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(scanResult: String) {
+		self.dict["scanResult"] = scanResult
+	}
+	
+	public func setMultiRequestToken(virusFoundAction: String) {
+		self.dict["virusFoundAction"] = virusFoundAction
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

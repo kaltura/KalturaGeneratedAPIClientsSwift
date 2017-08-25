@@ -35,10 +35,29 @@
 
 open class ReportResponse: ObjectBase {
 
+	public class ReportResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var columns: BaseTokenizedObject {
+			get {
+				return self.append("columns") 
+			}
+		}
+		
+		public var results: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("results"))
+			} 
+		}
+	}
+
 	public var columns: String? = nil
 	public var results: Array<StringHolder>? = nil
 
 
+	public func setMultiRequestToken(columns: String) {
+		self.dict["columns"] = columns
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

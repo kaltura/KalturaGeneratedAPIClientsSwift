@@ -35,6 +35,9 @@
 
 open class TranscriptAssetFilter: TranscriptAssetBaseFilter {
 
+	public class TranscriptAssetFilterTokenizer: TranscriptAssetBaseFilter.TranscriptAssetBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

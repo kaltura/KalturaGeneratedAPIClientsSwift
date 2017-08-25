@@ -37,41 +37,83 @@
   settings as well  */
 public final class PartnerService{
 
-	public static func count() -> RequestBuilder<Int> {
+	public class CountTokenizer: ClientTokenizer  {
+		
+		public var filter: PartnerFilter.PartnerFilterTokenizer {
+			get {
+				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
+			}
+		}
+	}
+
+	public static func count() -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		return count(filter: nil)
 	}
 
 	/**  Count partner's existing sub-publishers (count includes the partner itself).  */
-	public static func count(filter: PartnerFilter?) -> RequestBuilder<Int> {
-		let request: RequestBuilder<Int> = RequestBuilder<Int>(service: "partner", action: "count")
+	public static func count(filter: PartnerFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "partner", action: "count")
 			.setBody(key: "filter", value: filter)
 
 		return request
 	}
 
-	public static func get() -> RequestBuilder<Partner> {
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func get() -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> {
 		return get(id: nil)
 	}
 
 	/**  Retrieve partner object by Id  */
-	public static func get(id: Int?) -> RequestBuilder<Partner> {
-		let request: RequestBuilder<Partner> = RequestBuilder<Partner>(service: "partner", action: "get")
+	public static func get(id: Int?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> {
+		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer>(service: "partner", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
+	public class GetInfoTokenizer: ClientTokenizer  {
+	}
+
 	/**  Retrieve all info attributed to the partner   This action expects no parameters.
 	  It returns information for the current KS partnerId.  */
-	public static func getInfo() -> RequestBuilder<Partner> {
-		let request: RequestBuilder<Partner> = RequestBuilder<Partner>(service: "partner", action: "getInfo")
+	public static func getInfo() -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetInfoTokenizer> {
+		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetInfoTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetInfoTokenizer>(service: "partner", action: "getInfo")
 
 		return request
 	}
 
+	public class GetSecretsTokenizer: ClientTokenizer  {
+		
+		public override var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var adminEmail: BaseTokenizedObject {
+			get {
+				return self.append("adminEmail") 
+			}
+		}
+		
+		public var cmsPassword: BaseTokenizedObject {
+			get {
+				return self.append("cmsPassword") 
+			}
+		}
+	}
+
 	/**  Retrieve partner secret and admin secret  */
-	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String) -> RequestBuilder<Partner> {
-		let request: RequestBuilder<Partner> = RequestBuilder<Partner>(service: "partner", action: "getSecrets")
+	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> {
+		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer>(service: "partner", action: "getSecrets")
 			.setBody(key: "partnerId", value: partnerId)
 			.setBody(key: "adminEmail", value: adminEmail)
 			.setBody(key: "cmsPassword", value: cmsPassword)
@@ -79,31 +121,55 @@ public final class PartnerService{
 		return request
 	}
 
+	public class GetStatisticsTokenizer: ClientTokenizer  {
+	}
+
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
 	  package  */
-	public static func getStatistics() -> RequestBuilder<PartnerStatistics> {
-		let request: RequestBuilder<PartnerStatistics> = RequestBuilder<PartnerStatistics>(service: "partner", action: "getStatistics")
+	public static func getStatistics() -> RequestBuilder<PartnerStatistics, PartnerStatistics.PartnerStatisticsTokenizer, GetStatisticsTokenizer> {
+		let request: RequestBuilder<PartnerStatistics, PartnerStatistics.PartnerStatisticsTokenizer, GetStatisticsTokenizer> = RequestBuilder<PartnerStatistics, PartnerStatistics.PartnerStatisticsTokenizer, GetStatisticsTokenizer>(service: "partner", action: "getStatistics")
 
 		return request
 	}
 
-	public static func getUsage() -> RequestBuilder<PartnerUsage> {
+	public class GetUsageTokenizer: ClientTokenizer  {
+		
+		public var year: BaseTokenizedObject {
+			get {
+				return self.append("year") 
+			}
+		}
+		
+		public var month: BaseTokenizedObject {
+			get {
+				return self.append("month") 
+			}
+		}
+		
+		public var resolution: BaseTokenizedObject {
+			get {
+				return self.append("resolution") 
+			}
+		}
+	}
+
+	public static func getUsage() -> RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> {
 		return getUsage(year: nil)
 	}
 
-	public static func getUsage(year: Int?) -> RequestBuilder<PartnerUsage> {
+	public static func getUsage(year: Int?) -> RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> {
 		return getUsage(year: year, month: 1)
 	}
 
-	public static func getUsage(year: Int?, month: Int?) -> RequestBuilder<PartnerUsage> {
+	public static func getUsage(year: Int?, month: Int?) -> RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> {
 		return getUsage(year: year, month: month, resolution: nil)
 	}
 
 	/**  Get usage statistics for a partner   Calculation is done according to partner's
 	  package   Additional data returned is a graph points of streaming usage in a
 	  timeframe   The resolution can be "days" or "months"  */
-	public static func getUsage(year: Int?, month: Int?, resolution: ReportInterval?) -> RequestBuilder<PartnerUsage> {
-		let request: RequestBuilder<PartnerUsage> = RequestBuilder<PartnerUsage>(service: "partner", action: "getUsage")
+	public static func getUsage(year: Int?, month: Int?, resolution: ReportInterval?) -> RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> {
+		let request: RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> = RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer>(service: "partner", action: "getUsage")
 			.setBody(key: "year", value: year)
 			.setBody(key: "month", value: month)
 			.setBody(key: "resolution", value: resolution?.rawValue)
@@ -111,11 +177,26 @@ public final class PartnerService{
 		return request
 	}
 
-	public static func list() -> RequestBuilder<PartnerListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var filter: PartnerFilter.PartnerFilterTokenizer {
+			get {
+				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func list() -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: PartnerFilter?) -> RequestBuilder<PartnerListResponse> {
+	public static func list(filter: PartnerFilter?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
@@ -123,53 +204,98 @@ public final class PartnerService{
 	  list the sub partners of the partner initiating the api call (using the current
 	  KS).   This action is only partially implemented to support listing sub partners
 	  of a VAR partner.  */
-	public static func list(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse> {
-		let request: RequestBuilder<PartnerListResponse> = RequestBuilder<PartnerListResponse>(service: "partner", action: "list")
+	public static func list(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> = RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer>(service: "partner", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class ListFeatureStatusTokenizer: ClientTokenizer  {
+	}
+
 	/**  List partner's current processes' statuses  */
-	public static func listFeatureStatus() -> RequestBuilder<FeatureStatusListResponse> {
-		let request: RequestBuilder<FeatureStatusListResponse> = RequestBuilder<FeatureStatusListResponse>(service: "partner", action: "listFeatureStatus")
+	public static func listFeatureStatus() -> RequestBuilder<FeatureStatusListResponse, FeatureStatusListResponse.FeatureStatusListResponseTokenizer, ListFeatureStatusTokenizer> {
+		let request: RequestBuilder<FeatureStatusListResponse, FeatureStatusListResponse.FeatureStatusListResponseTokenizer, ListFeatureStatusTokenizer> = RequestBuilder<FeatureStatusListResponse, FeatureStatusListResponse.FeatureStatusListResponseTokenizer, ListFeatureStatusTokenizer>(service: "partner", action: "listFeatureStatus")
 
 		return request
 	}
 
-	public static func listPartnersForUser() -> RequestBuilder<PartnerListResponse> {
+	public class ListPartnersForUserTokenizer: ClientTokenizer  {
+		
+		public var partnerFilter: PartnerFilter.PartnerFilterTokenizer {
+			get {
+				return PartnerFilter.PartnerFilterTokenizer(self.append("partnerFilter")) 
+			}
+		}
+		
+		public var pager: FilterPager.FilterPagerTokenizer {
+			get {
+				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
+			}
+		}
+	}
+
+	public static func listPartnersForUser() -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> {
 		return listPartnersForUser(partnerFilter: nil)
 	}
 
-	public static func listPartnersForUser(partnerFilter: PartnerFilter?) -> RequestBuilder<PartnerListResponse> {
+	public static func listPartnersForUser(partnerFilter: PartnerFilter?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> {
 		return listPartnersForUser(partnerFilter: partnerFilter, pager: nil)
 	}
 
 	/**  Retrieve a list of partner objects which the current user is allowed to access.  */
-	public static func listPartnersForUser(partnerFilter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse> {
-		let request: RequestBuilder<PartnerListResponse> = RequestBuilder<PartnerListResponse>(service: "partner", action: "listPartnersForUser")
+	public static func listPartnersForUser(partnerFilter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> {
+		let request: RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> = RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer>(service: "partner", action: "listPartnersForUser")
 			.setBody(key: "partnerFilter", value: partnerFilter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
-	public static func register(partner: Partner) -> RequestBuilder<Partner> {
+	public class RegisterTokenizer: ClientTokenizer  {
+		
+		public var partner: Partner.PartnerTokenizer {
+			get {
+				return Partner.PartnerTokenizer(self.append("partner")) 
+			}
+		}
+		
+		public var cmsPassword: BaseTokenizedObject {
+			get {
+				return self.append("cmsPassword") 
+			}
+		}
+		
+		public var templatePartnerId: BaseTokenizedObject {
+			get {
+				return self.append("templatePartnerId") 
+			}
+		}
+		
+		public var silent: BaseTokenizedObject {
+			get {
+				return self.append("silent") 
+			}
+		}
+	}
+
+	public static func register(partner: Partner) -> RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> {
 		return register(partner: partner, cmsPassword: "")
 	}
 
-	public static func register(partner: Partner, cmsPassword: String?) -> RequestBuilder<Partner> {
+	public static func register(partner: Partner, cmsPassword: String?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> {
 		return register(partner: partner, cmsPassword: cmsPassword, templatePartnerId: nil)
 	}
 
-	public static func register(partner: Partner, cmsPassword: String?, templatePartnerId: Int?) -> RequestBuilder<Partner> {
+	public static func register(partner: Partner, cmsPassword: String?, templatePartnerId: Int?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> {
 		return register(partner: partner, cmsPassword: cmsPassword, templatePartnerId: templatePartnerId, silent: false)
 	}
 
 	/**  Create a new Partner object  */
-	public static func register(partner: Partner, cmsPassword: String?, templatePartnerId: Int?, silent: Bool?) -> RequestBuilder<Partner> {
-		let request: RequestBuilder<Partner> = RequestBuilder<Partner>(service: "partner", action: "register")
+	public static func register(partner: Partner, cmsPassword: String?, templatePartnerId: Int?, silent: Bool?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> {
+		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer>(service: "partner", action: "register")
 			.setBody(key: "partner", value: partner)
 			.setBody(key: "cmsPassword", value: cmsPassword)
 			.setBody(key: "templatePartnerId", value: templatePartnerId)
@@ -178,13 +304,28 @@ public final class PartnerService{
 		return request
 	}
 
-	public static func update(partner: Partner) -> RequestBuilder<Partner> {
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var partner: Partner.PartnerTokenizer {
+			get {
+				return Partner.PartnerTokenizer(self.append("partner")) 
+			}
+		}
+		
+		public var allowEmpty: BaseTokenizedObject {
+			get {
+				return self.append("allowEmpty") 
+			}
+		}
+	}
+
+	public static func update(partner: Partner) -> RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer> {
 		return update(partner: partner, allowEmpty: false)
 	}
 
 	/**  Update details and settings of an existing partner  */
-	public static func update(partner: Partner, allowEmpty: Bool?) -> RequestBuilder<Partner> {
-		let request: RequestBuilder<Partner> = RequestBuilder<Partner>(service: "partner", action: "update")
+	public static func update(partner: Partner, allowEmpty: Bool?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer>(service: "partner", action: "update")
 			.setBody(key: "partner", value: partner)
 			.setBody(key: "allowEmpty", value: allowEmpty)
 

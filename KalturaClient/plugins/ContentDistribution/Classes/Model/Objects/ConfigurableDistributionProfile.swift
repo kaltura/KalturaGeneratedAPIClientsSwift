@@ -35,6 +35,27 @@
 
 open class ConfigurableDistributionProfile: DistributionProfile {
 
+	public class ConfigurableDistributionProfileTokenizer: DistributionProfile.DistributionProfileTokenizer {
+		
+		public var fieldConfigArray: ArrayTokenizedObject<DistributionFieldConfig.DistributionFieldConfigTokenizer> {
+			get {
+				return ArrayTokenizedObject<DistributionFieldConfig.DistributionFieldConfigTokenizer>(self.append("fieldConfigArray"))
+			} 
+		}
+		
+		public var itemXpathsToExtend: ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<ExtendingItemMrssParameter.ExtendingItemMrssParameterTokenizer>(self.append("itemXpathsToExtend"))
+			} 
+		}
+		
+		public var useCategoryEntries: BaseTokenizedObject {
+			get {
+				return self.append("useCategoryEntries") 
+			}
+		}
+	}
+
 	public var fieldConfigArray: Array<DistributionFieldConfig>? = nil
 	public var itemXpathsToExtend: Array<ExtendingItemMrssParameter>? = nil
 	/**  When checking custom XSLT conditions using the fieldConfigArray - address only
@@ -42,6 +63,10 @@ open class ConfigurableDistributionProfile: DistributionProfile {
 	public var useCategoryEntries: Bool? = nil
 
 
+	public func setMultiRequestToken(useCategoryEntries: String) {
+		self.dict["useCategoryEntries"] = useCategoryEntries
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,63 @@
 
 open class DistributionProvider: ObjectBase {
 
+	public class DistributionProviderTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var scheduleUpdateEnabled: BaseTokenizedObject {
+			get {
+				return self.append("scheduleUpdateEnabled") 
+			}
+		}
+		
+		public var availabilityUpdateEnabled: BaseTokenizedObject {
+			get {
+				return self.append("availabilityUpdateEnabled") 
+			}
+		}
+		
+		public var deleteInsteadUpdate: BaseTokenizedObject {
+			get {
+				return self.append("deleteInsteadUpdate") 
+			}
+		}
+		
+		public var intervalBeforeSunrise: BaseTokenizedObject {
+			get {
+				return self.append("intervalBeforeSunrise") 
+			}
+		}
+		
+		public var intervalBeforeSunset: BaseTokenizedObject {
+			get {
+				return self.append("intervalBeforeSunset") 
+			}
+		}
+		
+		public var updateRequiredEntryFields: BaseTokenizedObject {
+			get {
+				return self.append("updateRequiredEntryFields") 
+			}
+		}
+		
+		public var updateRequiredMetadataXPaths: BaseTokenizedObject {
+			get {
+				return self.append("updateRequiredMetadataXPaths") 
+			}
+		}
+	}
+
 	public var type: DistributionProviderType? = nil
 	public var name: String? = nil
 	public var scheduleUpdateEnabled: Bool? = nil
@@ -46,6 +103,42 @@ open class DistributionProvider: ObjectBase {
 	public var updateRequiredMetadataXPaths: String? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(scheduleUpdateEnabled: String) {
+		self.dict["scheduleUpdateEnabled"] = scheduleUpdateEnabled
+	}
+	
+	public func setMultiRequestToken(availabilityUpdateEnabled: String) {
+		self.dict["availabilityUpdateEnabled"] = availabilityUpdateEnabled
+	}
+	
+	public func setMultiRequestToken(deleteInsteadUpdate: String) {
+		self.dict["deleteInsteadUpdate"] = deleteInsteadUpdate
+	}
+	
+	public func setMultiRequestToken(intervalBeforeSunrise: String) {
+		self.dict["intervalBeforeSunrise"] = intervalBeforeSunrise
+	}
+	
+	public func setMultiRequestToken(intervalBeforeSunset: String) {
+		self.dict["intervalBeforeSunset"] = intervalBeforeSunset
+	}
+	
+	public func setMultiRequestToken(updateRequiredEntryFields: String) {
+		self.dict["updateRequiredEntryFields"] = updateRequiredEntryFields
+	}
+	
+	public func setMultiRequestToken(updateRequiredMetadataXPaths: String) {
+		self.dict["updateRequiredMetadataXPaths"] = updateRequiredMetadataXPaths
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

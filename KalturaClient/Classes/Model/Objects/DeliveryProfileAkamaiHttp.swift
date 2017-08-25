@@ -35,10 +35,23 @@
 
 open class DeliveryProfileAkamaiHttp: DeliveryProfile {
 
+	public class DeliveryProfileAkamaiHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var useIntelliseek: BaseTokenizedObject {
+			get {
+				return self.append("useIntelliseek") 
+			}
+		}
+	}
+
 	/**  Should we use intelliseek  */
 	public var useIntelliseek: Bool? = nil
 
 
+	public func setMultiRequestToken(useIntelliseek: String) {
+		self.dict["useIntelliseek"] = useIntelliseek
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

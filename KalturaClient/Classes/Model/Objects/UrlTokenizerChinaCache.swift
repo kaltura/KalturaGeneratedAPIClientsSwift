@@ -35,10 +35,33 @@
 
 open class UrlTokenizerChinaCache: UrlTokenizer {
 
+	public class UrlTokenizerChinaCacheTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var algorithmId: BaseTokenizedObject {
+			get {
+				return self.append("algorithmId") 
+			}
+		}
+		
+		public var keyId: BaseTokenizedObject {
+			get {
+				return self.append("keyId") 
+			}
+		}
+	}
+
 	public var algorithmId: ChinaCacheAlgorithmType? = nil
 	public var keyId: Int? = nil
 
 
+	public func setMultiRequestToken(algorithmId: String) {
+		self.dict["algorithmId"] = algorithmId
+	}
+	
+	public func setMultiRequestToken(keyId: String) {
+		self.dict["keyId"] = keyId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,10 +35,23 @@
 
 open class TimedThumbAsset: ThumbAsset {
 
+	public class TimedThumbAssetTokenizer: ThumbAsset.ThumbAssetTokenizer {
+		
+		public var cuePointId: BaseTokenizedObject {
+			get {
+				return self.append("cuePointId") 
+			}
+		}
+	}
+
 	/**  Associated thumb cue point ID  */
 	public var cuePointId: String? = nil
 
 
+	public func setMultiRequestToken(cuePointId: String) {
+		self.dict["cuePointId"] = cuePointId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

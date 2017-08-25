@@ -35,11 +35,44 @@
 
 open class SshImportJobData: ImportJobData {
 
+	public class SshImportJobDataTokenizer: ImportJobData.ImportJobDataTokenizer {
+		
+		public var privateKey: BaseTokenizedObject {
+			get {
+				return self.append("privateKey") 
+			}
+		}
+		
+		public var publicKey: BaseTokenizedObject {
+			get {
+				return self.append("publicKey") 
+			}
+		}
+		
+		public var passPhrase: BaseTokenizedObject {
+			get {
+				return self.append("passPhrase") 
+			}
+		}
+	}
+
 	public var privateKey: String? = nil
 	public var publicKey: String? = nil
 	public var passPhrase: String? = nil
 
 
+	public func setMultiRequestToken(privateKey: String) {
+		self.dict["privateKey"] = privateKey
+	}
+	
+	public func setMultiRequestToken(publicKey: String) {
+		self.dict["publicKey"] = publicKey
+	}
+	
+	public func setMultiRequestToken(passPhrase: String) {
+		self.dict["passPhrase"] = passPhrase
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

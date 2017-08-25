@@ -35,9 +35,22 @@
 
 open class ListResponse: ObjectBase {
 
+	public class ListResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var totalCount: BaseTokenizedObject {
+			get {
+				return self.append("totalCount") 
+			}
+		}
+	}
+
 	public var totalCount: Int? = nil
 
 
+	public func setMultiRequestToken(totalCount: String) {
+		self.dict["totalCount"] = totalCount
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

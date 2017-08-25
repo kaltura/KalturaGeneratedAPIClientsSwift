@@ -35,6 +35,105 @@
 
 open class LiveStreamEntry: LiveEntry {
 
+	public class LiveStreamEntryTokenizer: LiveEntry.LiveEntryTokenizer {
+		
+		public var streamRemoteId: BaseTokenizedObject {
+			get {
+				return self.append("streamRemoteId") 
+			}
+		}
+		
+		public var streamRemoteBackupId: BaseTokenizedObject {
+			get {
+				return self.append("streamRemoteBackupId") 
+			}
+		}
+		
+		public var bitrates: ArrayTokenizedObject<LiveStreamBitrate.LiveStreamBitrateTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveStreamBitrate.LiveStreamBitrateTokenizer>(self.append("bitrates"))
+			} 
+		}
+		
+		public var primaryBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("primaryBroadcastingUrl") 
+			}
+		}
+		
+		public var secondaryBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("secondaryBroadcastingUrl") 
+			}
+		}
+		
+		public var primaryRtspBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("primaryRtspBroadcastingUrl") 
+			}
+		}
+		
+		public var secondaryRtspBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("secondaryRtspBroadcastingUrl") 
+			}
+		}
+		
+		public var streamName: BaseTokenizedObject {
+			get {
+				return self.append("streamName") 
+			}
+		}
+		
+		public var streamUrl: BaseTokenizedObject {
+			get {
+				return self.append("streamUrl") 
+			}
+		}
+		
+		public var hlsStreamUrl: BaseTokenizedObject {
+			get {
+				return self.append("hlsStreamUrl") 
+			}
+		}
+		
+		public var urlManager: BaseTokenizedObject {
+			get {
+				return self.append("urlManager") 
+			}
+		}
+		
+		public var encodingIP1: BaseTokenizedObject {
+			get {
+				return self.append("encodingIP1") 
+			}
+		}
+		
+		public var encodingIP2: BaseTokenizedObject {
+			get {
+				return self.append("encodingIP2") 
+			}
+		}
+		
+		public var streamPassword: BaseTokenizedObject {
+			get {
+				return self.append("streamPassword") 
+			}
+		}
+		
+		public var streamUsername: BaseTokenizedObject {
+			get {
+				return self.append("streamUsername") 
+			}
+		}
+		
+		public var primaryServerNodeId: BaseTokenizedObject {
+			get {
+				return self.append("primaryServerNodeId") 
+			}
+		}
+	}
+
 	/**  The stream id as provided by the provider  */
 	public var streamRemoteId: String? = nil
 	/**  The backup stream id as provided by the provider  */
@@ -64,6 +163,66 @@ open class LiveStreamEntry: LiveEntry {
 	public var primaryServerNodeId: Int? = nil
 
 
+	public func setMultiRequestToken(streamRemoteId: String) {
+		self.dict["streamRemoteId"] = streamRemoteId
+	}
+	
+	public func setMultiRequestToken(streamRemoteBackupId: String) {
+		self.dict["streamRemoteBackupId"] = streamRemoteBackupId
+	}
+	
+	public func setMultiRequestToken(primaryBroadcastingUrl: String) {
+		self.dict["primaryBroadcastingUrl"] = primaryBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(secondaryBroadcastingUrl: String) {
+		self.dict["secondaryBroadcastingUrl"] = secondaryBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(primaryRtspBroadcastingUrl: String) {
+		self.dict["primaryRtspBroadcastingUrl"] = primaryRtspBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(secondaryRtspBroadcastingUrl: String) {
+		self.dict["secondaryRtspBroadcastingUrl"] = secondaryRtspBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(streamName: String) {
+		self.dict["streamName"] = streamName
+	}
+	
+	public func setMultiRequestToken(streamUrl: String) {
+		self.dict["streamUrl"] = streamUrl
+	}
+	
+	public func setMultiRequestToken(hlsStreamUrl: String) {
+		self.dict["hlsStreamUrl"] = hlsStreamUrl
+	}
+	
+	public func setMultiRequestToken(urlManager: String) {
+		self.dict["urlManager"] = urlManager
+	}
+	
+	public func setMultiRequestToken(encodingIP1: String) {
+		self.dict["encodingIP1"] = encodingIP1
+	}
+	
+	public func setMultiRequestToken(encodingIP2: String) {
+		self.dict["encodingIP2"] = encodingIP2
+	}
+	
+	public func setMultiRequestToken(streamPassword: String) {
+		self.dict["streamPassword"] = streamPassword
+	}
+	
+	public func setMultiRequestToken(streamUsername: String) {
+		self.dict["streamUsername"] = streamUsername
+	}
+	
+	public func setMultiRequestToken(primaryServerNodeId: String) {
+		self.dict["primaryServerNodeId"] = primaryServerNodeId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

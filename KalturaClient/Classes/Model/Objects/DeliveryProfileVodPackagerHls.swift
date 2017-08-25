@@ -35,9 +35,22 @@
 
 open class DeliveryProfileVodPackagerHls: DeliveryProfileVodPackagerPlayServer {
 
+	public class DeliveryProfileVodPackagerHlsTokenizer: DeliveryProfileVodPackagerPlayServer.DeliveryProfileVodPackagerPlayServerTokenizer {
+		
+		public var allowFairplayOffline: BaseTokenizedObject {
+			get {
+				return self.append("allowFairplayOffline") 
+			}
+		}
+	}
+
 	public var allowFairplayOffline: Bool? = nil
 
 
+	public func setMultiRequestToken(allowFairplayOffline: String) {
+		self.dict["allowFairplayOffline"] = allowFairplayOffline
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,27 @@
 
 open class UrlTokenizerLevel3: UrlTokenizer {
 
+	public class UrlTokenizerLevel3Tokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var paramName: BaseTokenizedObject {
+			get {
+				return self.append("paramName") 
+			}
+		}
+		
+		public var expiryName: BaseTokenizedObject {
+			get {
+				return self.append("expiryName") 
+			}
+		}
+		
+		public var gen: BaseTokenizedObject {
+			get {
+				return self.append("gen") 
+			}
+		}
+	}
+
 	/**  paramName  */
 	public var paramName: String? = nil
 	/**  expiryName  */
@@ -43,6 +64,18 @@ open class UrlTokenizerLevel3: UrlTokenizer {
 	public var gen: String? = nil
 
 
+	public func setMultiRequestToken(paramName: String) {
+		self.dict["paramName"] = paramName
+	}
+	
+	public func setMultiRequestToken(expiryName: String) {
+		self.dict["expiryName"] = expiryName
+	}
+	
+	public func setMultiRequestToken(gen: String) {
+		self.dict["gen"] = gen
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

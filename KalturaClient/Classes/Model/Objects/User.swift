@@ -35,6 +35,231 @@
 
 open class User: ObjectBase {
 
+	public class UserTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
+		public var screenName: BaseTokenizedObject {
+			get {
+				return self.append("screenName") 
+			}
+		}
+		
+		public var fullName: BaseTokenizedObject {
+			get {
+				return self.append("fullName") 
+			}
+		}
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var dateOfBirth: BaseTokenizedObject {
+			get {
+				return self.append("dateOfBirth") 
+			}
+		}
+		
+		public var country: BaseTokenizedObject {
+			get {
+				return self.append("country") 
+			}
+		}
+		
+		public var state: BaseTokenizedObject {
+			get {
+				return self.append("state") 
+			}
+		}
+		
+		public var city: BaseTokenizedObject {
+			get {
+				return self.append("city") 
+			}
+		}
+		
+		public var zip: BaseTokenizedObject {
+			get {
+				return self.append("zip") 
+			}
+		}
+		
+		public var thumbnailUrl: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailUrl") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var tags: BaseTokenizedObject {
+			get {
+				return self.append("tags") 
+			}
+		}
+		
+		public var adminTags: BaseTokenizedObject {
+			get {
+				return self.append("adminTags") 
+			}
+		}
+		
+		public var gender: BaseTokenizedObject {
+			get {
+				return self.append("gender") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var indexedPartnerDataInt: BaseTokenizedObject {
+			get {
+				return self.append("indexedPartnerDataInt") 
+			}
+		}
+		
+		public var indexedPartnerDataString: BaseTokenizedObject {
+			get {
+				return self.append("indexedPartnerDataString") 
+			}
+		}
+		
+		public var storageSize: BaseTokenizedObject {
+			get {
+				return self.append("storageSize") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var firstName: BaseTokenizedObject {
+			get {
+				return self.append("firstName") 
+			}
+		}
+		
+		public var lastName: BaseTokenizedObject {
+			get {
+				return self.append("lastName") 
+			}
+		}
+		
+		public var isAdmin: BaseTokenizedObject {
+			get {
+				return self.append("isAdmin") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var lastLoginTime: BaseTokenizedObject {
+			get {
+				return self.append("lastLoginTime") 
+			}
+		}
+		
+		public var statusUpdatedAt: BaseTokenizedObject {
+			get {
+				return self.append("statusUpdatedAt") 
+			}
+		}
+		
+		public var deletedAt: BaseTokenizedObject {
+			get {
+				return self.append("deletedAt") 
+			}
+		}
+		
+		public var loginEnabled: BaseTokenizedObject {
+			get {
+				return self.append("loginEnabled") 
+			}
+		}
+		
+		public var roleIds: BaseTokenizedObject {
+			get {
+				return self.append("roleIds") 
+			}
+		}
+		
+		public var roleNames: BaseTokenizedObject {
+			get {
+				return self.append("roleNames") 
+			}
+		}
+		
+		public var isAccountOwner: BaseTokenizedObject {
+			get {
+				return self.append("isAccountOwner") 
+			}
+		}
+		
+		public var allowedPartnerIds: BaseTokenizedObject {
+			get {
+				return self.append("allowedPartnerIds") 
+			}
+		}
+		
+		public var allowedPartnerPackages: BaseTokenizedObject {
+			get {
+				return self.append("allowedPartnerPackages") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var partnerId: Int? = nil
 	public var type: UserType? = nil
@@ -78,6 +303,154 @@ open class User: ObjectBase {
 	public var allowedPartnerPackages: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
+	public func setMultiRequestToken(screenName: String) {
+		self.dict["screenName"] = screenName
+	}
+	
+	public func setMultiRequestToken(fullName: String) {
+		self.dict["fullName"] = fullName
+	}
+	
+	public func setMultiRequestToken(email: String) {
+		self.dict["email"] = email
+	}
+	
+	public func setMultiRequestToken(dateOfBirth: String) {
+		self.dict["dateOfBirth"] = dateOfBirth
+	}
+	
+	public func setMultiRequestToken(country: String) {
+		self.dict["country"] = country
+	}
+	
+	public func setMultiRequestToken(state: String) {
+		self.dict["state"] = state
+	}
+	
+	public func setMultiRequestToken(city: String) {
+		self.dict["city"] = city
+	}
+	
+	public func setMultiRequestToken(zip: String) {
+		self.dict["zip"] = zip
+	}
+	
+	public func setMultiRequestToken(thumbnailUrl: String) {
+		self.dict["thumbnailUrl"] = thumbnailUrl
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(tags: String) {
+		self.dict["tags"] = tags
+	}
+	
+	public func setMultiRequestToken(adminTags: String) {
+		self.dict["adminTags"] = adminTags
+	}
+	
+	public func setMultiRequestToken(gender: String) {
+		self.dict["gender"] = gender
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(indexedPartnerDataInt: String) {
+		self.dict["indexedPartnerDataInt"] = indexedPartnerDataInt
+	}
+	
+	public func setMultiRequestToken(indexedPartnerDataString: String) {
+		self.dict["indexedPartnerDataString"] = indexedPartnerDataString
+	}
+	
+	public func setMultiRequestToken(storageSize: String) {
+		self.dict["storageSize"] = storageSize
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(firstName: String) {
+		self.dict["firstName"] = firstName
+	}
+	
+	public func setMultiRequestToken(lastName: String) {
+		self.dict["lastName"] = lastName
+	}
+	
+	public func setMultiRequestToken(isAdmin: String) {
+		self.dict["isAdmin"] = isAdmin
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(lastLoginTime: String) {
+		self.dict["lastLoginTime"] = lastLoginTime
+	}
+	
+	public func setMultiRequestToken(statusUpdatedAt: String) {
+		self.dict["statusUpdatedAt"] = statusUpdatedAt
+	}
+	
+	public func setMultiRequestToken(deletedAt: String) {
+		self.dict["deletedAt"] = deletedAt
+	}
+	
+	public func setMultiRequestToken(loginEnabled: String) {
+		self.dict["loginEnabled"] = loginEnabled
+	}
+	
+	public func setMultiRequestToken(roleIds: String) {
+		self.dict["roleIds"] = roleIds
+	}
+	
+	public func setMultiRequestToken(roleNames: String) {
+		self.dict["roleNames"] = roleNames
+	}
+	
+	public func setMultiRequestToken(isAccountOwner: String) {
+		self.dict["isAccountOwner"] = isAccountOwner
+	}
+	
+	public func setMultiRequestToken(allowedPartnerIds: String) {
+		self.dict["allowedPartnerIds"] = allowedPartnerIds
+	}
+	
+	public func setMultiRequestToken(allowedPartnerPackages: String) {
+		self.dict["allowedPartnerPackages"] = allowedPartnerPackages
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

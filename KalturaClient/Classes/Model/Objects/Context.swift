@@ -35,6 +35,9 @@
 
 open class Context: ObjectBase {
 
+	public class ContextTokenizer: ObjectBase.ObjectBaseTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

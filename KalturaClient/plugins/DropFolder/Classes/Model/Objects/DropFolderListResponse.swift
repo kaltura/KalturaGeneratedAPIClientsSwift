@@ -35,6 +35,15 @@
 
 open class DropFolderListResponse: ListResponse {
 
+	public class DropFolderListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DropFolder.DropFolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<DropFolder.DropFolderTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DropFolder>? = nil
 
 

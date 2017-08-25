@@ -35,6 +35,9 @@
 
 open class AdCuePointFilter: AdCuePointBaseFilter {
 
+	public class AdCuePointFilterTokenizer: AdCuePointBaseFilter.AdCuePointBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -35,6 +35,15 @@
 
 open class FileAssetListResponse: ListResponse {
 
+	public class FileAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<FileAsset.FileAssetTokenizer> {
+			get {
+				return ArrayTokenizedObject<FileAsset.FileAssetTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<FileAsset>? = nil
 
 

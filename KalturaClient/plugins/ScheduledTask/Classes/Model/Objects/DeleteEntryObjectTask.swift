@@ -35,6 +35,9 @@
 
 open class DeleteEntryObjectTask: ObjectTask {
 
+	public class DeleteEntryObjectTaskTokenizer: ObjectTask.ObjectTaskTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

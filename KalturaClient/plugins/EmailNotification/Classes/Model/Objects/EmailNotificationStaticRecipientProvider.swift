@@ -36,6 +36,15 @@
 /**  API class for recipient provider containing a static list of email recipients.  */
 open class EmailNotificationStaticRecipientProvider: EmailNotificationRecipientProvider {
 
+	public class EmailNotificationStaticRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
+		
+		public var emailRecipients: ArrayTokenizedObject<EmailNotificationRecipient.EmailNotificationRecipientTokenizer> {
+			get {
+				return ArrayTokenizedObject<EmailNotificationRecipient.EmailNotificationRecipientTokenizer>(self.append("emailRecipients"))
+			} 
+		}
+	}
+
 	/**  Email to emails and names  */
 	public var emailRecipients: Array<EmailNotificationRecipient>? = nil
 

@@ -35,6 +35,45 @@
 
 open class AnswerCuePoint: CuePoint {
 
+	public class AnswerCuePointTokenizer: CuePoint.CuePointTokenizer {
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+		
+		public var quizUserEntryId: BaseTokenizedObject {
+			get {
+				return self.append("quizUserEntryId") 
+			}
+		}
+		
+		public var answerKey: BaseTokenizedObject {
+			get {
+				return self.append("answerKey") 
+			}
+		}
+		
+		public var isCorrect: BaseTokenizedObject {
+			get {
+				return self.append("isCorrect") 
+			}
+		}
+		
+		public var correctAnswerKeys: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("correctAnswerKeys"))
+			} 
+		}
+		
+		public var explanation: BaseTokenizedObject {
+			get {
+				return self.append("explanation") 
+			}
+		}
+	}
+
 	public var parentId: String? = nil
 	public var quizUserEntryId: String? = nil
 	public var answerKey: String? = nil
@@ -44,6 +83,26 @@ open class AnswerCuePoint: CuePoint {
 	public var explanation: String? = nil
 
 
+	public func setMultiRequestToken(parentId: String) {
+		self.dict["parentId"] = parentId
+	}
+	
+	public func setMultiRequestToken(quizUserEntryId: String) {
+		self.dict["quizUserEntryId"] = quizUserEntryId
+	}
+	
+	public func setMultiRequestToken(answerKey: String) {
+		self.dict["answerKey"] = answerKey
+	}
+	
+	public func setMultiRequestToken(isCorrect: String) {
+		self.dict["isCorrect"] = isCorrect
+	}
+	
+	public func setMultiRequestToken(explanation: String) {
+		self.dict["explanation"] = explanation
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

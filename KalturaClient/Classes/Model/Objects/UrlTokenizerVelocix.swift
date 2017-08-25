@@ -35,6 +35,27 @@
 
 open class UrlTokenizerVelocix: UrlTokenizer {
 
+	public class UrlTokenizerVelocixTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var hdsPaths: BaseTokenizedObject {
+			get {
+				return self.append("hdsPaths") 
+			}
+		}
+		
+		public var paramName: BaseTokenizedObject {
+			get {
+				return self.append("paramName") 
+			}
+		}
+		
+		public var authPrefix: BaseTokenizedObject {
+			get {
+				return self.append("authPrefix") 
+			}
+		}
+	}
+
 	/**  hdsPaths  */
 	public var hdsPaths: String? = nil
 	/**  tokenParamName  */
@@ -43,6 +64,18 @@ open class UrlTokenizerVelocix: UrlTokenizer {
 	public var authPrefix: String? = nil
 
 
+	public func setMultiRequestToken(hdsPaths: String) {
+		self.dict["hdsPaths"] = hdsPaths
+	}
+	
+	public func setMultiRequestToken(paramName: String) {
+		self.dict["paramName"] = paramName
+	}
+	
+	public func setMultiRequestToken(authPrefix: String) {
+		self.dict["authPrefix"] = authPrefix
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

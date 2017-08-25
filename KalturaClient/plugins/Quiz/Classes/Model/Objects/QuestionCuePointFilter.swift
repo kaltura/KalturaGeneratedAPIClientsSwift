@@ -35,6 +35,9 @@
 
 open class QuestionCuePointFilter: QuestionCuePointBaseFilter {
 
+	public class QuestionCuePointFilterTokenizer: QuestionCuePointBaseFilter.QuestionCuePointBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

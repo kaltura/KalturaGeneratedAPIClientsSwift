@@ -37,6 +37,9 @@
   recording, imported URL or existing file sync.  */
 open class ContentResource: Resource {
 
+	public class ContentResourceTokenizer: Resource.ResourceTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

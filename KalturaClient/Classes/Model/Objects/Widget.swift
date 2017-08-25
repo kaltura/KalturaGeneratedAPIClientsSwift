@@ -35,6 +35,105 @@
 
 open class Widget: ObjectBase {
 
+	public class WidgetTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var sourceWidgetId: BaseTokenizedObject {
+			get {
+				return self.append("sourceWidgetId") 
+			}
+		}
+		
+		public var rootWidgetId: BaseTokenizedObject {
+			get {
+				return self.append("rootWidgetId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var uiConfId: BaseTokenizedObject {
+			get {
+				return self.append("uiConfId") 
+			}
+		}
+		
+		public var securityType: BaseTokenizedObject {
+			get {
+				return self.append("securityType") 
+			}
+		}
+		
+		public var securityPolicy: BaseTokenizedObject {
+			get {
+				return self.append("securityPolicy") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var partnerData: BaseTokenizedObject {
+			get {
+				return self.append("partnerData") 
+			}
+		}
+		
+		public var widgetHTML: BaseTokenizedObject {
+			get {
+				return self.append("widgetHTML") 
+			}
+		}
+		
+		public var enforceEntitlement: BaseTokenizedObject {
+			get {
+				return self.append("enforceEntitlement") 
+			}
+		}
+		
+		public var privacyContext: BaseTokenizedObject {
+			get {
+				return self.append("privacyContext") 
+			}
+		}
+		
+		public var addEmbedHtml5Support: BaseTokenizedObject {
+			get {
+				return self.append("addEmbedHtml5Support") 
+			}
+		}
+		
+		public var roles: BaseTokenizedObject {
+			get {
+				return self.append("roles") 
+			}
+		}
+	}
+
 	public var id: String? = nil
 	public var sourceWidgetId: String? = nil
 	public var rootWidgetId: String? = nil
@@ -58,6 +157,70 @@ open class Widget: ObjectBase {
 	public var roles: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(sourceWidgetId: String) {
+		self.dict["sourceWidgetId"] = sourceWidgetId
+	}
+	
+	public func setMultiRequestToken(rootWidgetId: String) {
+		self.dict["rootWidgetId"] = rootWidgetId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(uiConfId: String) {
+		self.dict["uiConfId"] = uiConfId
+	}
+	
+	public func setMultiRequestToken(securityType: String) {
+		self.dict["securityType"] = securityType
+	}
+	
+	public func setMultiRequestToken(securityPolicy: String) {
+		self.dict["securityPolicy"] = securityPolicy
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(partnerData: String) {
+		self.dict["partnerData"] = partnerData
+	}
+	
+	public func setMultiRequestToken(widgetHTML: String) {
+		self.dict["widgetHTML"] = widgetHTML
+	}
+	
+	public func setMultiRequestToken(enforceEntitlement: String) {
+		self.dict["enforceEntitlement"] = enforceEntitlement
+	}
+	
+	public func setMultiRequestToken(privacyContext: String) {
+		self.dict["privacyContext"] = privacyContext
+	}
+	
+	public func setMultiRequestToken(addEmbedHtml5Support: String) {
+		self.dict["addEmbedHtml5Support"] = addEmbedHtml5Support
+	}
+	
+	public func setMultiRequestToken(roles: String) {
+		self.dict["roles"] = roles
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

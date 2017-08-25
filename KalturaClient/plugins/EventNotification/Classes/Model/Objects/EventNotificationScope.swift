@@ -35,10 +35,33 @@
 
 open class EventNotificationScope: Scope {
 
+	public class EventNotificationScopeTokenizer: Scope.ScopeTokenizer {
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var scopeObjectType: BaseTokenizedObject {
+			get {
+				return self.append("scopeObjectType") 
+			}
+		}
+	}
+
 	public var objectId: String? = nil
 	public var scopeObjectType: EventNotificationEventObjectType? = nil
 
 
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(scopeObjectType: String) {
+		self.dict["scopeObjectType"] = scopeObjectType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

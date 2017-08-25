@@ -35,6 +35,21 @@
 
 open class DataEntry: BaseEntry {
 
+	public class DataEntryTokenizer: BaseEntry.BaseEntryTokenizer {
+		
+		public var dataContent: BaseTokenizedObject {
+			get {
+				return self.append("dataContent") 
+			}
+		}
+		
+		public var retrieveDataContentByGet: BaseTokenizedObject {
+			get {
+				return self.append("retrieveDataContentByGet") 
+			}
+		}
+	}
+
 	/**  The data of the entry  */
 	public var dataContent: String? = nil
 	/**  indicator whether to return the object for get action with the dataContent
@@ -42,6 +57,14 @@ open class DataEntry: BaseEntry {
 	public var retrieveDataContentByGet: Bool? = nil
 
 
+	public func setMultiRequestToken(dataContent: String) {
+		self.dict["dataContent"] = dataContent
+	}
+	
+	public func setMultiRequestToken(retrieveDataContentByGet: String) {
+		self.dict["retrieveDataContentByGet"] = retrieveDataContentByGet
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

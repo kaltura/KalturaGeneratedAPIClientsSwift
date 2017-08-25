@@ -35,6 +35,39 @@
 
 open class FlavorAssetBaseFilter: AssetFilter {
 
+	public class FlavorAssetBaseFilterTokenizer: AssetFilter.AssetFilterTokenizer {
+		
+		public var flavorParamsIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIdEqual") 
+			}
+		}
+		
+		public var flavorParamsIdIn: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsIdIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+		
+		public var statusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("statusNotIn") 
+			}
+		}
+	}
+
 	public var flavorParamsIdEqual: Int? = nil
 	public var flavorParamsIdIn: String? = nil
 	public var statusEqual: FlavorAssetStatus? = nil
@@ -42,6 +75,26 @@ open class FlavorAssetBaseFilter: AssetFilter {
 	public var statusNotIn: String? = nil
 
 
+	public func setMultiRequestToken(flavorParamsIdEqual: String) {
+		self.dict["flavorParamsIdEqual"] = flavorParamsIdEqual
+	}
+	
+	public func setMultiRequestToken(flavorParamsIdIn: String) {
+		self.dict["flavorParamsIdIn"] = flavorParamsIdIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
+	public func setMultiRequestToken(statusNotIn: String) {
+		self.dict["statusNotIn"] = statusNotIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

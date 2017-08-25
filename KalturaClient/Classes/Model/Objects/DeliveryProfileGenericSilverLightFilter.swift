@@ -35,6 +35,9 @@
 
 open class DeliveryProfileGenericSilverLightFilter: DeliveryProfileGenericSilverLightBaseFilter {
 
+	public class DeliveryProfileGenericSilverLightFilterTokenizer: DeliveryProfileGenericSilverLightBaseFilter.DeliveryProfileGenericSilverLightBaseFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
