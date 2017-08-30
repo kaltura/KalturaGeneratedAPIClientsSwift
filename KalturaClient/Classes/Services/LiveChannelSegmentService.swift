@@ -63,7 +63,7 @@ public final class LiveChannelSegmentService{
 	}
 
 	/**  Delete live channel segment by id  */
-	public static func delete(id: Int) -> NullRequestBuilder {
+	public static func delete(id: Int64) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "livechannelsegment", action: "delete")
 			.setBody(key: "id", value: id)
 
@@ -80,7 +80,7 @@ public final class LiveChannelSegmentService{
 	}
 
 	/**  Get live channel segment by id  */
-	public static func get(id: Int) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> {
 		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer>(service: "livechannelsegment", action: "get")
 			.setBody(key: "id", value: id)
 
@@ -135,7 +135,7 @@ public final class LiveChannelSegmentService{
 	}
 
 	/**  Update live channel segment by id  */
-	public static func update(id: Int, liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer>(service: "livechannelsegment", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "liveChannelSegment", value: liveChannelSegment)

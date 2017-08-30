@@ -104,7 +104,7 @@ open class FileAsset: ObjectBase {
 		}
 	}
 
-	public var id: Int? = nil
+	public var id: Int64? = nil
 	public var partnerId: Int? = nil
 	public var fileAssetObjectType: FileAssetObjectType? = nil
 	public var objectId: String? = nil
@@ -165,7 +165,7 @@ open class FileAsset: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? Int
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int

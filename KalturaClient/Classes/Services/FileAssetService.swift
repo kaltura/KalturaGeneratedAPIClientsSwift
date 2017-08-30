@@ -63,7 +63,7 @@ public final class FileAssetService{
 	}
 
 	/**  Delete file asset by id  */
-	public static func delete(id: Int) -> NullRequestBuilder {
+	public static func delete(id: Int64) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "fileasset", action: "delete")
 			.setBody(key: "id", value: id)
 
@@ -80,7 +80,7 @@ public final class FileAssetService{
 	}
 
 	/**  Get file asset by id  */
-	public static func get(id: Int) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer>(service: "fileasset", action: "get")
 			.setBody(key: "id", value: id)
 
@@ -131,7 +131,7 @@ public final class FileAssetService{
 	}
 
 	/**  Set content of file asset  */
-	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> {
+	public static func setContent(id: Int64, contentResource: ContentResource) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer>(service: "fileasset", action: "setContent")
 			.setBody(key: "id", value: id)
 			.setBody(key: "contentResource", value: contentResource)
@@ -155,7 +155,7 @@ public final class FileAssetService{
 	}
 
 	/**  Update file asset by id  */
-	public static func update(id: Int, fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer>(service: "fileasset", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "fileAsset", value: fileAsset)

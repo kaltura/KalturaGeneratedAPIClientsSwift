@@ -129,7 +129,7 @@ open class LiveChannelSegment: ObjectBase {
 	}
 
 	/**  Unique identifier  */
-	public var id: String? = nil
+	public var id: Int64? = nil
 	public var partnerId: Int? = nil
 	/**  Segment creation date as Unix timestamp (In seconds)  */
 	public var createdAt: Int? = nil
@@ -152,7 +152,7 @@ open class LiveChannelSegment: ObjectBase {
 	/**  Segment start time trigger type  */
 	public var triggerType: LiveChannelSegmentTriggerType? = nil
 	/**  Live channel segment that the trigger relates to  */
-	public var triggerSegmentId: String? = nil
+	public var triggerSegmentId: Int64? = nil
 	/**  Segment play start time, in mili-seconds, according to trigger type  */
 	public var startTime: Double? = nil
 	/**  Segment play duration time, in mili-seconds  */
@@ -223,7 +223,7 @@ open class LiveChannelSegment: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? String
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
@@ -259,7 +259,7 @@ open class LiveChannelSegment: ObjectBase {
 			triggerType = LiveChannelSegmentTriggerType(rawValue: "\(dict["triggerType"]!)")
 		}
 		if dict["triggerSegmentId"] != nil {
-			triggerSegmentId = dict["triggerSegmentId"] as? String
+			triggerSegmentId = Int64("\(dict["triggerSegmentId"]!)")
 		}
 		if dict["startTime"] != nil {
 			startTime = dict["startTime"] as? Double
