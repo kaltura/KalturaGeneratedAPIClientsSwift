@@ -180,6 +180,12 @@ open class ConversionProfile: ObjectBase {
 				return self.append("mediaInfoXslTransformation") 
 			}
 		}
+		
+		public var defaultReplacementOptions: EntryReplacementOptions.EntryReplacementOptionsTokenizer {
+			get {
+				return EntryReplacementOptions.EntryReplacementOptionsTokenizer(self.append("defaultReplacementOptions")) 
+			}
+		}
 	}
 
 	/**  The id of the Conversion Profile  */
@@ -229,6 +235,8 @@ open class ConversionProfile: ObjectBase {
 	public var detectGOP: Int? = nil
 	/**  XSL to transform ingestion Media Info XML  */
 	public var mediaInfoXslTransformation: String? = nil
+	/**  Default replacement options to be applied to entries  */
+	public var defaultReplacementOptions: EntryReplacementOptions? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -397,6 +405,8 @@ open class ConversionProfile: ObjectBase {
 		if dict["mediaInfoXslTransformation"] != nil {
 			mediaInfoXslTransformation = dict["mediaInfoXslTransformation"] as? String
 		}
+		if dict["defaultReplacementOptions"] != nil {
+		defaultReplacementOptions = try JSONParser.parse(object: dict["defaultReplacementOptions"] as! [String: Any])		}
 
 	}
 
@@ -461,6 +471,9 @@ open class ConversionProfile: ObjectBase {
 		}
 		if(mediaInfoXslTransformation != nil) {
 			dict["mediaInfoXslTransformation"] = mediaInfoXslTransformation!
+		}
+		if(defaultReplacementOptions != nil) {
+			dict["defaultReplacementOptions"] = defaultReplacementOptions!.toDictionary()
 		}
 		return dict
 	}
