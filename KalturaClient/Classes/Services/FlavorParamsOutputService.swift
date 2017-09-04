@@ -55,16 +55,12 @@ public final class FlavorParamsOutputService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer {
-			get {
-				return FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

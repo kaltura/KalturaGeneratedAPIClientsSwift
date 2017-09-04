@@ -44,10 +44,8 @@ public final class DocumentsService{
 			}
 		}
 		
-		public var documentEntry: DocumentEntry.DocumentEntryTokenizer {
-			get {
-				return DocumentEntry.DocumentEntryTokenizer(self.append("documentEntry")) 
-			}
+		public func documentEntry<T: DocumentEntry.DocumentEntryTokenizer>() -> T {
+			return T(self.append("documentEntry"))
 		}
 		
 		public var sourceFlavorParamsId: BaseTokenizedObject {
@@ -83,10 +81,8 @@ public final class DocumentsService{
 			}
 		}
 		
-		public var documentEntry: DocumentEntry.DocumentEntryTokenizer {
-			get {
-				return DocumentEntry.DocumentEntryTokenizer(self.append("documentEntry")) 
-			}
+		public func documentEntry<T: DocumentEntry.DocumentEntryTokenizer>() -> T {
+			return T(self.append("documentEntry"))
 		}
 	}
 
@@ -105,10 +101,8 @@ public final class DocumentsService{
 
 	public class AddFromUploadedFileTokenizer: ClientTokenizer  {
 		
-		public var documentEntry: DocumentEntry.DocumentEntryTokenizer {
-			get {
-				return DocumentEntry.DocumentEntryTokenizer(self.append("documentEntry")) 
-			}
+		public func documentEntry<T: DocumentEntry.DocumentEntryTokenizer>() -> T {
+			return T(self.append("documentEntry"))
 		}
 		
 		public var uploadTokenId: BaseTokenizedObject {
@@ -266,16 +260,12 @@ public final class DocumentsService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DocumentEntryFilter.DocumentEntryFilterTokenizer {
-			get {
-				return DocumentEntryFilter.DocumentEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DocumentEntryFilter.DocumentEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -304,10 +294,8 @@ public final class DocumentsService{
 			}
 		}
 		
-		public var documentEntry: DocumentEntry.DocumentEntryTokenizer {
-			get {
-				return DocumentEntry.DocumentEntryTokenizer(self.append("documentEntry")) 
-			}
+		public func documentEntry<T: DocumentEntry.DocumentEntryTokenizer>() -> T {
+			return T(self.append("documentEntry"))
 		}
 	}
 
@@ -328,10 +316,8 @@ public final class DocumentsService{
 			}
 		}
 		
-		public var resource: Resource.ResourceTokenizer {
-			get {
-				return Resource.ResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var conversionProfileId: BaseTokenizedObject {

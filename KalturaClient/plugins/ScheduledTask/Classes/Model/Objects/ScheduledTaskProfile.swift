@@ -79,10 +79,8 @@ open class ScheduledTaskProfile: ObjectBase {
 			}
 		}
 		
-		public var objectFilter: Filter.FilterTokenizer {
-			get {
-				return Filter.FilterTokenizer(self.append("objectFilter")) 
-			}
+		public func objectFilter<T: Filter.FilterTokenizer>() -> T {
+			return T(self.append("objectFilter"))
 		}
 		
 		public var objectTasks: ArrayTokenizedObject<ObjectTask.ObjectTaskTokenizer> {

@@ -37,10 +37,8 @@ open class EventFieldCondition: Condition {
 
 	public class EventFieldConditionTokenizer: Condition.ConditionTokenizer {
 		
-		public var field: BooleanField.BooleanFieldTokenizer {
-			get {
-				return BooleanField.BooleanFieldTokenizer(self.append("field")) 
-			}
+		public func field<T: BooleanField.BooleanFieldTokenizer>() -> T {
+			return T(self.append("field"))
 		}
 	}
 

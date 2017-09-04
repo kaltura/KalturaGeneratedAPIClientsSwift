@@ -38,10 +38,8 @@ public final class PermissionService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var permission: Permission.PermissionTokenizer {
-			get {
-				return Permission.PermissionTokenizer(self.append("permission")) 
-			}
+		public func permission<T: Permission.PermissionTokenizer>() -> T {
+			return T(self.append("permission"))
 		}
 	}
 
@@ -99,16 +97,12 @@ public final class PermissionService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: PermissionFilter.PermissionFilterTokenizer {
-			get {
-				return PermissionFilter.PermissionFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PermissionFilter.PermissionFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -139,10 +133,8 @@ public final class PermissionService{
 			}
 		}
 		
-		public var permission: Permission.PermissionTokenizer {
-			get {
-				return Permission.PermissionTokenizer(self.append("permission")) 
-			}
+		public func permission<T: Permission.PermissionTokenizer>() -> T {
+			return T(self.append("permission"))
 		}
 	}
 

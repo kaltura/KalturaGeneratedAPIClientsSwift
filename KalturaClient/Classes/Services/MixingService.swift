@@ -41,10 +41,8 @@ public final class MixingService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var mixEntry: MixEntry.MixEntryTokenizer {
-			get {
-				return MixEntry.MixEntryTokenizer(self.append("mixEntry")) 
-			}
+		public func mixEntry<T: MixEntry.MixEntryTokenizer>() -> T {
+			return T(self.append("mixEntry"))
 		}
 	}
 
@@ -125,10 +123,8 @@ public final class MixingService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
-			get {
-				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MediaEntryFilter.MediaEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -236,16 +232,12 @@ public final class MixingService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: MixEntryFilter.MixEntryFilterTokenizer {
-			get {
-				return MixEntryFilter.MixEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MixEntryFilter.MixEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -275,10 +267,8 @@ public final class MixingService{
 			}
 		}
 		
-		public var mixEntry: MixEntry.MixEntryTokenizer {
-			get {
-				return MixEntry.MixEntryTokenizer(self.append("mixEntry")) 
-			}
+		public func mixEntry<T: MixEntry.MixEntryTokenizer>() -> T {
+			return T(self.append("mixEntry"))
 		}
 	}
 

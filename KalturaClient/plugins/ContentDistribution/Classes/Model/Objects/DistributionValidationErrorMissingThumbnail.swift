@@ -37,10 +37,8 @@ open class DistributionValidationErrorMissingThumbnail: DistributionValidationEr
 
 	public class DistributionValidationErrorMissingThumbnailTokenizer: DistributionValidationError.DistributionValidationErrorTokenizer {
 		
-		public var dimensions: DistributionThumbDimensions.DistributionThumbDimensionsTokenizer {
-			get {
-				return DistributionThumbDimensions.DistributionThumbDimensionsTokenizer(self.append("dimensions")) 
-			}
+		public func dimensions<T: DistributionThumbDimensions.DistributionThumbDimensionsTokenizer>() -> T {
+			return T(self.append("dimensions"))
 		}
 	}
 

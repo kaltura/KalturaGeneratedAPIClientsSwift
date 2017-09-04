@@ -38,16 +38,12 @@ open class BulkUploadFilterJobData: BulkUploadJobData {
 
 	public class BulkUploadFilterJobDataTokenizer: BulkUploadJobData.BulkUploadJobDataTokenizer {
 		
-		public var filter: Filter.FilterTokenizer {
-			get {
-				return Filter.FilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: Filter.FilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var templateObject: ObjectBase.ObjectBaseTokenizer {
-			get {
-				return ObjectBase.ObjectBaseTokenizer(self.append("templateObject")) 
-			}
+		public func templateObject<T: ObjectBase.ObjectBaseTokenizer>() -> T {
+			return T(self.append("templateObject"))
 		}
 	}
 

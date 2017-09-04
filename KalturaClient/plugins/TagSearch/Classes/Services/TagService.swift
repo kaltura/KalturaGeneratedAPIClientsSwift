@@ -79,16 +79,12 @@ public final class TagService{
 
 	public class SearchTokenizer: ClientTokenizer  {
 		
-		public var tagFilter: TagFilter.TagFilterTokenizer {
-			get {
-				return TagFilter.TagFilterTokenizer(self.append("tagFilter")) 
-			}
+		public func tagFilter<T: TagFilter.TagFilterTokenizer>() -> T {
+			return T(self.append("tagFilter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

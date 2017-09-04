@@ -39,10 +39,8 @@ public final class UiConfService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var uiConf: UiConf.UiConfTokenizer {
-			get {
-				return UiConf.UiConfTokenizer(self.append("uiConf")) 
-			}
+		public func uiConf<T: UiConf.UiConfTokenizer>() -> T {
+			return T(self.append("uiConf"))
 		}
 	}
 
@@ -117,16 +115,12 @@ public final class UiConfService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UiConfFilter.UiConfFilterTokenizer {
-			get {
-				return UiConfFilter.UiConfFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UiConfFilter.UiConfFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -149,16 +143,12 @@ public final class UiConfService{
 
 	public class ListTemplatesTokenizer: ClientTokenizer  {
 		
-		public var filter: UiConfFilter.UiConfFilterTokenizer {
-			get {
-				return UiConfFilter.UiConfFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UiConfFilter.UiConfFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -187,10 +177,8 @@ public final class UiConfService{
 			}
 		}
 		
-		public var uiConf: UiConf.UiConfTokenizer {
-			get {
-				return UiConf.UiConfTokenizer(self.append("uiConf")) 
-			}
+		public func uiConf<T: UiConf.UiConfTokenizer>() -> T {
+			return T(self.append("uiConf"))
 		}
 	}
 

@@ -39,10 +39,8 @@ public final class ExternalMediaService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var entry: ExternalMediaEntry.ExternalMediaEntryTokenizer {
-			get {
-				return ExternalMediaEntry.ExternalMediaEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: ExternalMediaEntry.ExternalMediaEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 	}
 
@@ -56,10 +54,8 @@ public final class ExternalMediaService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer {
-			get {
-				return ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -111,16 +107,12 @@ public final class ExternalMediaService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer {
-			get {
-				return ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ExternalMediaEntryFilter.ExternalMediaEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -149,10 +141,8 @@ public final class ExternalMediaService{
 			}
 		}
 		
-		public var entry: ExternalMediaEntry.ExternalMediaEntryTokenizer {
-			get {
-				return ExternalMediaEntry.ExternalMediaEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: ExternalMediaEntry.ExternalMediaEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 	}
 

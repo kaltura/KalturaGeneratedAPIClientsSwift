@@ -37,10 +37,8 @@ open class FieldMatchCondition: MatchCondition {
 
 	public class FieldMatchConditionTokenizer: MatchCondition.MatchConditionTokenizer {
 		
-		public var field: StringField.StringFieldTokenizer {
-			get {
-				return StringField.StringFieldTokenizer(self.append("field")) 
-			}
+		public func field<T: StringField.StringFieldTokenizer>() -> T {
+			return T(self.append("field"))
 		}
 	}
 

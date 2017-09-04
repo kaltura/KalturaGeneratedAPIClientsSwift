@@ -40,10 +40,8 @@ extension UserService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var user: User.UserTokenizer {
-			get {
-				return User.UserTokenizer(self.append("user")) 
-			}
+		public func user<T: User.UserTokenizer>() -> T {
+			return T(self.append("user"))
 		}
 	}
 
@@ -58,10 +56,8 @@ extension UserService{
 
 	public class CheckLoginDataExistsTokenizer: ClientTokenizer  {
 		
-		public var filter: UserLoginDataFilter.UserLoginDataFilterTokenizer {
-			get {
-				return UserLoginDataFilter.UserLoginDataFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserLoginDataFilter.UserLoginDataFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -229,16 +225,12 @@ extension UserService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UserFilter.UserFilterTokenizer {
-			get {
-				return UserFilter.UserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserFilter.UserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -449,10 +441,8 @@ extension UserService{
 			}
 		}
 		
-		public var user: User.UserTokenizer {
-			get {
-				return User.UserTokenizer(self.append("user")) 
-			}
+		public func user<T: User.UserTokenizer>() -> T {
+			return T(self.append("user"))
 		}
 	}
 

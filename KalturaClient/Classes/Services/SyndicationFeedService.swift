@@ -38,10 +38,8 @@ public final class SyndicationFeedService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var syndicationFeed: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
-			get {
-				return BaseSyndicationFeed.BaseSyndicationFeedTokenizer(self.append("syndicationFeed")) 
-			}
+		public func syndicationFeed<T: BaseSyndicationFeed.BaseSyndicationFeedTokenizer>() -> T {
+			return T(self.append("syndicationFeed"))
 		}
 	}
 
@@ -106,16 +104,12 @@ public final class SyndicationFeedService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: BaseSyndicationFeedFilter.BaseSyndicationFeedFilterTokenizer {
-			get {
-				return BaseSyndicationFeedFilter.BaseSyndicationFeedFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: BaseSyndicationFeedFilter.BaseSyndicationFeedFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -162,10 +156,8 @@ public final class SyndicationFeedService{
 			}
 		}
 		
-		public var syndicationFeed: BaseSyndicationFeed.BaseSyndicationFeedTokenizer {
-			get {
-				return BaseSyndicationFeed.BaseSyndicationFeedTokenizer(self.append("syndicationFeed")) 
-			}
+		public func syndicationFeed<T: BaseSyndicationFeed.BaseSyndicationFeedTokenizer>() -> T {
+			return T(self.append("syndicationFeed"))
 		}
 	}
 

@@ -38,10 +38,8 @@ public final class DeliveryProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var delivery: DeliveryProfile.DeliveryProfileTokenizer {
-			get {
-				return DeliveryProfile.DeliveryProfileTokenizer(self.append("delivery")) 
-			}
+		public func delivery<T: DeliveryProfile.DeliveryProfileTokenizer>() -> T {
+			return T(self.append("delivery"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class DeliveryProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DeliveryProfileFilter.DeliveryProfileFilterTokenizer {
-			get {
-				return DeliveryProfileFilter.DeliveryProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DeliveryProfileFilter.DeliveryProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +121,8 @@ public final class DeliveryProfileService{
 			}
 		}
 		
-		public var delivery: DeliveryProfile.DeliveryProfileTokenizer {
-			get {
-				return DeliveryProfile.DeliveryProfileTokenizer(self.append("delivery")) 
-			}
+		public func delivery<T: DeliveryProfile.DeliveryProfileTokenizer>() -> T {
+			return T(self.append("delivery"))
 		}
 	}
 

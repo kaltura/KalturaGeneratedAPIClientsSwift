@@ -38,10 +38,8 @@ public final class StatsService{
 
 	public class CollectTokenizer: ClientTokenizer  {
 		
-		public var event: StatsEvent.StatsEventTokenizer {
-			get {
-				return StatsEvent.StatsEventTokenizer(self.append("event")) 
-			}
+		public func event<T: StatsEvent.StatsEventTokenizer>() -> T {
+			return T(self.append("event"))
 		}
 	}
 
@@ -63,10 +61,8 @@ public final class StatsService{
 
 	public class KmcCollectTokenizer: ClientTokenizer  {
 		
-		public var kmcEvent: StatsKmcEvent.StatsKmcEventTokenizer {
-			get {
-				return StatsKmcEvent.StatsKmcEventTokenizer(self.append("kmcEvent")) 
-			}
+		public func kmcEvent<T: StatsKmcEvent.StatsKmcEventTokenizer>() -> T {
+			return T(self.append("kmcEvent"))
 		}
 	}
 
@@ -123,10 +119,8 @@ public final class StatsService{
 
 	public class ReportKceErrorTokenizer: ClientTokenizer  {
 		
-		public var kalturaCEError: CEError.CEErrorTokenizer {
-			get {
-				return CEError.CEErrorTokenizer(self.append("kalturaCEError")) 
-			}
+		public func kalturaCEError<T: CEError.CEErrorTokenizer>() -> T {
+			return T(self.append("kalturaCEError"))
 		}
 	}
 

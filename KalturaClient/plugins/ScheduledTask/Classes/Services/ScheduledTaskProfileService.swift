@@ -38,10 +38,8 @@ public final class ScheduledTaskProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var scheduledTaskProfile: ScheduledTaskProfile.ScheduledTaskProfileTokenizer {
-			get {
-				return ScheduledTaskProfile.ScheduledTaskProfileTokenizer(self.append("scheduledTaskProfile")) 
-			}
+		public func scheduledTaskProfile<T: ScheduledTaskProfile.ScheduledTaskProfileTokenizer>() -> T {
+			return T(self.append("scheduledTaskProfile"))
 		}
 	}
 
@@ -105,16 +103,12 @@ public final class ScheduledTaskProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ScheduledTaskProfileFilter.ScheduledTaskProfileFilterTokenizer {
-			get {
-				return ScheduledTaskProfileFilter.ScheduledTaskProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ScheduledTaskProfileFilter.ScheduledTaskProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -170,10 +164,8 @@ public final class ScheduledTaskProfileService{
 			}
 		}
 		
-		public var scheduledTaskProfile: ScheduledTaskProfile.ScheduledTaskProfileTokenizer {
-			get {
-				return ScheduledTaskProfile.ScheduledTaskProfileTokenizer(self.append("scheduledTaskProfile")) 
-			}
+		public func scheduledTaskProfile<T: ScheduledTaskProfile.ScheduledTaskProfileTokenizer>() -> T {
+			return T(self.append("scheduledTaskProfile"))
 		}
 	}
 

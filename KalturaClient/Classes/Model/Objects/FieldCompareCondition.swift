@@ -37,10 +37,8 @@ open class FieldCompareCondition: CompareCondition {
 
 	public class FieldCompareConditionTokenizer: CompareCondition.CompareConditionTokenizer {
 		
-		public var field: IntegerField.IntegerFieldTokenizer {
-			get {
-				return IntegerField.IntegerFieldTokenizer(self.append("field")) 
-			}
+		public func field<T: IntegerField.IntegerFieldTokenizer>() -> T {
+			return T(self.append("field"))
 		}
 	}
 

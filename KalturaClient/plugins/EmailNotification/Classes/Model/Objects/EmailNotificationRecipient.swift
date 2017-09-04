@@ -37,16 +37,12 @@ open class EmailNotificationRecipient: ObjectBase {
 
 	public class EmailNotificationRecipientTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var email: StringValue.StringValueTokenizer {
-			get {
-				return StringValue.StringValueTokenizer(self.append("email")) 
-			}
+		public func email<T: StringValue.StringValueTokenizer>() -> T {
+			return T(self.append("email"))
 		}
 		
-		public var name: StringValue.StringValueTokenizer {
-			get {
-				return StringValue.StringValueTokenizer(self.append("name")) 
-			}
+		public func name<T: StringValue.StringValueTokenizer>() -> T {
+			return T(self.append("name"))
 		}
 	}
 

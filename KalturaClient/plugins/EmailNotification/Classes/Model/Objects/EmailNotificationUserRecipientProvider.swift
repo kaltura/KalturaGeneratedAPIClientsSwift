@@ -39,10 +39,8 @@ open class EmailNotificationUserRecipientProvider: EmailNotificationRecipientPro
 
 	public class EmailNotificationUserRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
 		
-		public var filter: UserFilter.UserFilterTokenizer {
-			get {
-				return UserFilter.UserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserFilter.UserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 

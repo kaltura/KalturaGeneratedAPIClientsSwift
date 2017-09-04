@@ -38,10 +38,8 @@ public final class AccessControlProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var accessControlProfile: AccessControlProfile.AccessControlProfileTokenizer {
-			get {
-				return AccessControlProfile.AccessControlProfileTokenizer(self.append("accessControlProfile")) 
-			}
+		public func accessControlProfile<T: AccessControlProfile.AccessControlProfileTokenizer>() -> T {
+			return T(self.append("accessControlProfile"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class AccessControlProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: AccessControlProfileFilter.AccessControlProfileFilterTokenizer {
-			get {
-				return AccessControlProfileFilter.AccessControlProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AccessControlProfileFilter.AccessControlProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +121,8 @@ public final class AccessControlProfileService{
 			}
 		}
 		
-		public var accessControlProfile: AccessControlProfile.AccessControlProfileTokenizer {
-			get {
-				return AccessControlProfile.AccessControlProfileTokenizer(self.append("accessControlProfile")) 
-			}
+		public func accessControlProfile<T: AccessControlProfile.AccessControlProfileTokenizer>() -> T {
+			return T(self.append("accessControlProfile"))
 		}
 	}
 

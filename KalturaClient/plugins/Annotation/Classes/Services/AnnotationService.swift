@@ -38,10 +38,8 @@ public final class AnnotationService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var annotation: CuePoint.CuePointTokenizer {
-			get {
-				return CuePoint.CuePointTokenizer(self.append("annotation")) 
-			}
+		public func annotation<T: CuePoint.CuePointTokenizer>() -> T {
+			return T(self.append("annotation"))
 		}
 	}
 
@@ -91,10 +89,8 @@ public final class AnnotationService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: CuePointFilter.CuePointFilterTokenizer {
-			get {
-				return CuePointFilter.CuePointFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CuePointFilter.CuePointFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -146,16 +142,12 @@ public final class AnnotationService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CuePointFilter.CuePointFilterTokenizer {
-			get {
-				return CuePointFilter.CuePointFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CuePointFilter.CuePointFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -184,10 +176,8 @@ public final class AnnotationService{
 			}
 		}
 		
-		public var annotation: CuePoint.CuePointTokenizer {
-			get {
-				return CuePoint.CuePointTokenizer(self.append("annotation")) 
-			}
+		public func annotation<T: CuePoint.CuePointTokenizer>() -> T {
+			return T(self.append("annotation"))
 		}
 	}
 

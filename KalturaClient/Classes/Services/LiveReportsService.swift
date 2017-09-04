@@ -43,10 +43,8 @@ public final class LiveReportsService{
 			}
 		}
 		
-		public var params: LiveReportExportParams.LiveReportExportParamsTokenizer {
-			get {
-				return LiveReportExportParams.LiveReportExportParamsTokenizer(self.append("params")) 
-			}
+		public func params<T: LiveReportExportParams.LiveReportExportParamsTokenizer>() -> T {
+			return T(self.append("params"))
 		}
 	}
 
@@ -66,16 +64,12 @@ public final class LiveReportsService{
 			}
 		}
 		
-		public var filter: LiveReportInputFilter.LiveReportInputFilterTokenizer {
-			get {
-				return LiveReportInputFilter.LiveReportInputFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: LiveReportInputFilter.LiveReportInputFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -104,16 +98,12 @@ public final class LiveReportsService{
 			}
 		}
 		
-		public var filter: LiveReportInputFilter.LiveReportInputFilterTokenizer {
-			get {
-				return LiveReportInputFilter.LiveReportInputFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: LiveReportInputFilter.LiveReportInputFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

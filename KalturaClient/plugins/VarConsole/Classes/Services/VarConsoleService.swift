@@ -38,22 +38,16 @@ public final class VarConsoleService{
 
 	public class GetPartnerUsageTokenizer: ClientTokenizer  {
 		
-		public var partnerFilter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("partnerFilter")) 
-			}
+		public func partnerFilter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("partnerFilter"))
 		}
 		
-		public var usageFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("usageFilter")) 
-			}
+		public func usageFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("usageFilter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

@@ -39,10 +39,8 @@ public final class EventNotificationTemplateService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var eventNotificationTemplate: EventNotificationTemplate.EventNotificationTemplateTokenizer {
-			get {
-				return EventNotificationTemplate.EventNotificationTemplateTokenizer(self.append("eventNotificationTemplate")) 
-			}
+		public func eventNotificationTemplate<T: EventNotificationTemplate.EventNotificationTemplateTokenizer>() -> T {
+			return T(self.append("eventNotificationTemplate"))
 		}
 	}
 
@@ -65,10 +63,8 @@ public final class EventNotificationTemplateService{
 			}
 		}
 		
-		public var eventNotificationTemplate: EventNotificationTemplate.EventNotificationTemplateTokenizer {
-			get {
-				return EventNotificationTemplate.EventNotificationTemplateTokenizer(self.append("eventNotificationTemplate")) 
-			}
+		public func eventNotificationTemplate<T: EventNotificationTemplate.EventNotificationTemplateTokenizer>() -> T {
+			return T(self.append("eventNotificationTemplate"))
 		}
 	}
 
@@ -113,10 +109,8 @@ public final class EventNotificationTemplateService{
 			}
 		}
 		
-		public var scope: EventNotificationScope.EventNotificationScopeTokenizer {
-			get {
-				return EventNotificationScope.EventNotificationScopeTokenizer(self.append("scope")) 
-			}
+		public func scope<T: EventNotificationScope.EventNotificationScopeTokenizer>() -> T {
+			return T(self.append("scope"))
 		}
 	}
 
@@ -148,16 +142,12 @@ public final class EventNotificationTemplateService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer {
-			get {
-				return EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -180,16 +170,12 @@ public final class EventNotificationTemplateService{
 
 	public class ListByPartnerTokenizer: ClientTokenizer  {
 		
-		public var filter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -211,16 +197,12 @@ public final class EventNotificationTemplateService{
 
 	public class ListTemplatesTokenizer: ClientTokenizer  {
 		
-		public var filter: EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer {
-			get {
-				return EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: EventNotificationTemplateFilter.EventNotificationTemplateFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -249,10 +231,8 @@ public final class EventNotificationTemplateService{
 			}
 		}
 		
-		public var eventNotificationTemplate: EventNotificationTemplate.EventNotificationTemplateTokenizer {
-			get {
-				return EventNotificationTemplate.EventNotificationTemplateTokenizer(self.append("eventNotificationTemplate")) 
-			}
+		public func eventNotificationTemplate<T: EventNotificationTemplate.EventNotificationTemplateTokenizer>() -> T {
+			return T(self.append("eventNotificationTemplate"))
 		}
 	}
 

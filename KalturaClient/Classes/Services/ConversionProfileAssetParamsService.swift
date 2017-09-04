@@ -38,16 +38,12 @@ public final class ConversionProfileAssetParamsService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ConversionProfileAssetParamsFilter.ConversionProfileAssetParamsFilterTokenizer {
-			get {
-				return ConversionProfileAssetParamsFilter.ConversionProfileAssetParamsFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ConversionProfileAssetParamsFilter.ConversionProfileAssetParamsFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -82,10 +78,8 @@ public final class ConversionProfileAssetParamsService{
 			}
 		}
 		
-		public var conversionProfileAssetParams: ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer {
-			get {
-				return ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer(self.append("conversionProfileAssetParams")) 
-			}
+		public func conversionProfileAssetParams<T: ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer>() -> T {
+			return T(self.append("conversionProfileAssetParams"))
 		}
 	}
 

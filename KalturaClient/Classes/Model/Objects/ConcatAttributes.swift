@@ -38,10 +38,8 @@ open class ConcatAttributes: OperationAttributes {
 
 	public class ConcatAttributesTokenizer: OperationAttributes.OperationAttributesTokenizer {
 		
-		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
-			get {
-				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: DataCenterContentResource.DataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 	}
 

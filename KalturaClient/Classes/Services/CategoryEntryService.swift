@@ -62,10 +62,8 @@ public final class CategoryEntryService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var categoryEntry: CategoryEntry.CategoryEntryTokenizer {
-			get {
-				return CategoryEntry.CategoryEntryTokenizer(self.append("categoryEntry")) 
-			}
+		public func categoryEntry<T: CategoryEntry.CategoryEntryTokenizer>() -> T {
+			return T(self.append("categoryEntry"))
 		}
 	}
 
@@ -138,16 +136,12 @@ public final class CategoryEntryService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CategoryEntryFilter.CategoryEntryFilterTokenizer {
-			get {
-				return CategoryEntryFilter.CategoryEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CategoryEntryFilter.CategoryEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

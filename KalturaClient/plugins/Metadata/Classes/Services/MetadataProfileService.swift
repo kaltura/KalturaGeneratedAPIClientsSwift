@@ -38,10 +38,8 @@ public final class MetadataProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
-			get {
-				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
-			}
+		public func metadataProfile<T: MetadataProfile.MetadataProfileTokenizer>() -> T {
+			return T(self.append("metadataProfile"))
 		}
 		
 		public var xsdData: BaseTokenizedObject {
@@ -74,10 +72,8 @@ public final class MetadataProfileService{
 
 	public class AddFromFileTokenizer: ClientTokenizer  {
 		
-		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
-			get {
-				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
-			}
+		public func metadataProfile<T: MetadataProfile.MetadataProfileTokenizer>() -> T {
+			return T(self.append("metadataProfile"))
 		}
 	}
 
@@ -132,16 +128,12 @@ public final class MetadataProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: MetadataProfileFilter.MetadataProfileFilterTokenizer {
-			get {
-				return MetadataProfileFilter.MetadataProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MetadataProfileFilter.MetadataProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -211,10 +203,8 @@ public final class MetadataProfileService{
 			}
 		}
 		
-		public var metadataProfile: MetadataProfile.MetadataProfileTokenizer {
-			get {
-				return MetadataProfile.MetadataProfileTokenizer(self.append("metadataProfile")) 
-			}
+		public func metadataProfile<T: MetadataProfile.MetadataProfileTokenizer>() -> T {
+			return T(self.append("metadataProfile"))
 		}
 		
 		public var xsdData: BaseTokenizedObject {

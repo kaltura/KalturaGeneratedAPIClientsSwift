@@ -72,16 +72,12 @@ public final class BulkService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadFilter: BulkUploadFilter.BulkUploadFilterTokenizer {
-			get {
-				return BulkUploadFilter.BulkUploadFilterTokenizer(self.append("bulkUploadFilter")) 
-			}
+		public func bulkUploadFilter<T: BulkUploadFilter.BulkUploadFilterTokenizer>() -> T {
+			return T(self.append("bulkUploadFilter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

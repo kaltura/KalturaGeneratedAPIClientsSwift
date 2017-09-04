@@ -39,10 +39,8 @@ public final class PlaylistService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var playlist: Playlist.PlaylistTokenizer {
-			get {
-				return Playlist.PlaylistTokenizer(self.append("playlist")) 
-			}
+		public func playlist<T: Playlist.PlaylistTokenizer>() -> T {
+			return T(self.append("playlist"))
 		}
 		
 		public var updateStats: BaseTokenizedObject {
@@ -74,10 +72,8 @@ public final class PlaylistService{
 			}
 		}
 		
-		public var newPlaylist: Playlist.PlaylistTokenizer {
-			get {
-				return Playlist.PlaylistTokenizer(self.append("newPlaylist")) 
-			}
+		public func newPlaylist<T: Playlist.PlaylistTokenizer>() -> T {
+			return T(self.append("newPlaylist"))
 		}
 	}
 
@@ -125,22 +121,16 @@ public final class PlaylistService{
 			}
 		}
 		
-		public var playlistContext: Context.ContextTokenizer {
-			get {
-				return Context.ContextTokenizer(self.append("playlistContext")) 
-			}
+		public func playlistContext<T: Context.ContextTokenizer>() -> T {
+			return T(self.append("playlistContext"))
 		}
 		
-		public var filter: MediaEntryFilterForPlaylist.MediaEntryFilterForPlaylistTokenizer {
-			get {
-				return MediaEntryFilterForPlaylist.MediaEntryFilterForPlaylistTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MediaEntryFilterForPlaylist.MediaEntryFilterForPlaylistTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -192,10 +182,8 @@ public final class PlaylistService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -238,10 +226,8 @@ public final class PlaylistService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -318,16 +304,12 @@ public final class PlaylistService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: PlaylistFilter.PlaylistFilterTokenizer {
-			get {
-				return PlaylistFilter.PlaylistFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PlaylistFilter.PlaylistFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -356,10 +338,8 @@ public final class PlaylistService{
 			}
 		}
 		
-		public var playlist: Playlist.PlaylistTokenizer {
-			get {
-				return Playlist.PlaylistTokenizer(self.append("playlist")) 
-			}
+		public func playlist<T: Playlist.PlaylistTokenizer>() -> T {
+			return T(self.append("playlist"))
 		}
 		
 		public var updateStats: BaseTokenizedObject {

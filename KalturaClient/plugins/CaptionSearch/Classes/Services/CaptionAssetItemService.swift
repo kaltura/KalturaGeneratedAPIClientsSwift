@@ -36,24 +36,53 @@
 /**  Search caption asset items  */
 public final class CaptionAssetItemService{
 
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var captionAssetId: BaseTokenizedObject {
+			get {
+				return self.append("captionAssetId") 
+			}
+		}
+		
+		public func captionAssetItemFilter<T: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer>() -> T {
+			return T(self.append("captionAssetItemFilter"))
+		}
+		
+		public func captionAssetItemPager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("captionAssetItemPager"))
+		}
+	}
+
+	public static func list(captionAssetId: String) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> {
+		return list(captionAssetId: captionAssetId, captionAssetItemFilter: nil)
+	}
+
+	public static func list(captionAssetId: String, captionAssetItemFilter: CaptionAssetItemFilter?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> {
+		return list(captionAssetId: captionAssetId, captionAssetItemFilter: captionAssetItemFilter, captionAssetItemPager: nil)
+	}
+
+	/**  List caption asset items by filter and pager  */
+	public static func list(captionAssetId: String, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> = RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer>(service: "captionsearch_captionassetitem", action: "list")
+			.setBody(key: "captionAssetId", value: captionAssetId)
+			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
+			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)
+
+		return request
+	}
+
 	public class SearchTokenizer: ClientTokenizer  {
 		
-		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
-			}
+		public func entryFilter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("entryFilter"))
 		}
 		
-		public var captionAssetItemFilter: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer {
-			get {
-				return CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer(self.append("captionAssetItemFilter")) 
-			}
+		public func captionAssetItemFilter<T: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer>() -> T {
+			return T(self.append("captionAssetItemFilter"))
 		}
 		
-		public var captionAssetItemPager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("captionAssetItemPager")) 
-			}
+		public func captionAssetItemPager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("captionAssetItemPager"))
 		}
 	}
 
@@ -81,22 +110,16 @@ public final class CaptionAssetItemService{
 
 	public class SearchEntriesTokenizer: ClientTokenizer  {
 		
-		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
-			}
+		public func entryFilter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("entryFilter"))
 		}
 		
-		public var captionAssetItemFilter: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer {
-			get {
-				return CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer(self.append("captionAssetItemFilter")) 
-			}
+		public func captionAssetItemFilter<T: CaptionAssetItemFilter.CaptionAssetItemFilterTokenizer>() -> T {
+			return T(self.append("captionAssetItemFilter"))
 		}
 		
-		public var captionAssetItemPager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("captionAssetItemPager")) 
-			}
+		public func captionAssetItemPager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("captionAssetItemPager"))
 		}
 	}
 

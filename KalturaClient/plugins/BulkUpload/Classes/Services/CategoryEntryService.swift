@@ -62,10 +62,8 @@ extension CategoryEntryService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var categoryEntry: CategoryEntry.CategoryEntryTokenizer {
-			get {
-				return CategoryEntry.CategoryEntryTokenizer(self.append("categoryEntry")) 
-			}
+		public func categoryEntry<T: CategoryEntry.CategoryEntryTokenizer>() -> T {
+			return T(self.append("categoryEntry"))
 		}
 	}
 
@@ -79,16 +77,12 @@ extension CategoryEntryService{
 
 	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadData: BulkServiceData.BulkServiceDataTokenizer {
-			get {
-				return BulkServiceData.BulkServiceDataTokenizer(self.append("bulkUploadData")) 
-			}
+		public func bulkUploadData<T: BulkServiceData.BulkServiceDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
 		}
 		
-		public var bulkUploadCategoryEntryData: BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer {
-			get {
-				return BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer(self.append("bulkUploadCategoryEntryData")) 
-			}
+		public func bulkUploadCategoryEntryData<T: BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer>() -> T {
+			return T(self.append("bulkUploadCategoryEntryData"))
 		}
 	}
 
@@ -165,16 +159,12 @@ extension CategoryEntryService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CategoryEntryFilter.CategoryEntryFilterTokenizer {
-			get {
-				return CategoryEntryFilter.CategoryEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CategoryEntryFilter.CategoryEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

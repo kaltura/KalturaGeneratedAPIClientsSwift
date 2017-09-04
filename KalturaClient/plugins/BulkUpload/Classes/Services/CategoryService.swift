@@ -38,10 +38,8 @@ extension CategoryService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var category: Category.CategoryTokenizer {
-			get {
-				return Category.CategoryTokenizer(self.append("category")) 
-			}
+		public func category<T: Category.CategoryTokenizer>() -> T {
+			return T(self.append("category"))
 		}
 	}
 
@@ -55,16 +53,12 @@ extension CategoryService{
 
 	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadData: BulkUploadJobData.BulkUploadJobDataTokenizer {
-			get {
-				return BulkUploadJobData.BulkUploadJobDataTokenizer(self.append("bulkUploadData")) 
-			}
+		public func bulkUploadData<T: BulkUploadJobData.BulkUploadJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
 		}
 		
-		public var bulkUploadCategoryData: BulkUploadCategoryData.BulkUploadCategoryDataTokenizer {
-			get {
-				return BulkUploadCategoryData.BulkUploadCategoryDataTokenizer(self.append("bulkUploadCategoryData")) 
-			}
+		public func bulkUploadCategoryData<T: BulkUploadCategoryData.BulkUploadCategoryDataTokenizer>() -> T {
+			return T(self.append("bulkUploadCategoryData"))
 		}
 	}
 
@@ -160,16 +154,12 @@ extension CategoryService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CategoryFilter.CategoryFilterTokenizer {
-			get {
-				return CategoryFilter.CategoryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CategoryFilter.CategoryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -233,10 +223,8 @@ extension CategoryService{
 			}
 		}
 		
-		public var category: Category.CategoryTokenizer {
-			get {
-				return Category.CategoryTokenizer(self.append("category")) 
-			}
+		public func category<T: Category.CategoryTokenizer>() -> T {
+			return T(self.append("category"))
 		}
 	}
 

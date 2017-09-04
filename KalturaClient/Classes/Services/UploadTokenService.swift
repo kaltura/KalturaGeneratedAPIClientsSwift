@@ -37,10 +37,8 @@ public final class UploadTokenService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var uploadToken: UploadToken.UploadTokenTokenizer {
-			get {
-				return UploadToken.UploadTokenTokenizer(self.append("uploadToken")) 
-			}
+		public func uploadToken<T: UploadToken.UploadTokenTokenizer>() -> T {
+			return T(self.append("uploadToken"))
 		}
 	}
 
@@ -92,16 +90,12 @@ public final class UploadTokenService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UploadTokenFilter.UploadTokenFilterTokenizer {
-			get {
-				return UploadTokenFilter.UploadTokenFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UploadTokenFilter.UploadTokenFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

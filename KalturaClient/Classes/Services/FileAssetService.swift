@@ -38,10 +38,8 @@ public final class FileAssetService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var fileAsset: FileAsset.FileAssetTokenizer {
-			get {
-				return FileAsset.FileAssetTokenizer(self.append("fileAsset")) 
-			}
+		public func fileAsset<T: FileAsset.FileAssetTokenizer>() -> T {
+			return T(self.append("fileAsset"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class FileAssetService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: FileAssetFilter.FileAssetFilterTokenizer {
-			get {
-				return FileAssetFilter.FileAssetFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: FileAssetFilter.FileAssetFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -123,10 +117,8 @@ public final class FileAssetService{
 			}
 		}
 		
-		public var contentResource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
-			}
+		public func contentResource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("contentResource"))
 		}
 	}
 
@@ -147,10 +139,8 @@ public final class FileAssetService{
 			}
 		}
 		
-		public var fileAsset: FileAsset.FileAssetTokenizer {
-			get {
-				return FileAsset.FileAssetTokenizer(self.append("fileAsset")) 
-			}
+		public func fileAsset<T: FileAsset.FileAssetTokenizer>() -> T {
+			return T(self.append("fileAsset"))
 		}
 	}
 

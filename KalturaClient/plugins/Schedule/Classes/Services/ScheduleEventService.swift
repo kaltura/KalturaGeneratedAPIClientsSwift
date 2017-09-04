@@ -39,10 +39,8 @@ public final class ScheduleEventService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
-			get {
-				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
-			}
+		public func scheduleEvent<T: ScheduleEvent.ScheduleEventTokenizer>() -> T {
+			return T(self.append("scheduleEvent"))
 		}
 	}
 
@@ -113,10 +111,8 @@ public final class ScheduleEventService{
 			}
 		}
 		
-		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
-			get {
-				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
-			}
+		public func scheduleEvent<T: ScheduleEvent.ScheduleEventTokenizer>() -> T {
+			return T(self.append("scheduleEvent"))
 		}
 		
 		public var scheduleEventIdToIgnore: BaseTokenizedObject {
@@ -142,16 +138,12 @@ public final class ScheduleEventService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ScheduleEventFilter.ScheduleEventFilterTokenizer {
-			get {
-				return ScheduleEventFilter.ScheduleEventFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ScheduleEventFilter.ScheduleEventFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -180,10 +172,8 @@ public final class ScheduleEventService{
 			}
 		}
 		
-		public var scheduleEvent: ScheduleEvent.ScheduleEventTokenizer {
-			get {
-				return ScheduleEvent.ScheduleEventTokenizer(self.append("scheduleEvent")) 
-			}
+		public func scheduleEvent<T: ScheduleEvent.ScheduleEventTokenizer>() -> T {
+			return T(self.append("scheduleEvent"))
 		}
 	}
 

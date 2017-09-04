@@ -38,10 +38,8 @@ public final class BaseEntryService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var entry: BaseEntry.BaseEntryTokenizer {
-			get {
-				return BaseEntry.BaseEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: BaseEntry.BaseEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 		
 		public var type: BaseTokenizedObject {
@@ -72,10 +70,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var resource: Resource.ResourceTokenizer {
-			get {
-				return Resource.ResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 	}
 
@@ -90,10 +86,8 @@ public final class BaseEntryService{
 
 	public class AddFromUploadedFileTokenizer: ClientTokenizer  {
 		
-		public var entry: BaseEntry.BaseEntryTokenizer {
-			get {
-				return BaseEntry.BaseEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: BaseEntry.BaseEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 		
 		public var uploadTokenId: BaseTokenizedObject {
@@ -196,10 +190,8 @@ public final class BaseEntryService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -257,10 +249,8 @@ public final class BaseEntryService{
 
 	public class FlagTokenizer: ClientTokenizer  {
 		
-		public var moderationFlag: ModerationFlag.ModerationFlagTokenizer {
-			get {
-				return ModerationFlag.ModerationFlagTokenizer(self.append("moderationFlag")) 
-			}
+		public func moderationFlag<T: ModerationFlag.ModerationFlagTokenizer>() -> T {
+			return T(self.append("moderationFlag"))
 		}
 	}
 
@@ -325,10 +315,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var contextDataParams: EntryContextDataParams.EntryContextDataParamsTokenizer {
-			get {
-				return EntryContextDataParams.EntryContextDataParamsTokenizer(self.append("contextDataParams")) 
-			}
+		public func contextDataParams<T: EntryContextDataParams.EntryContextDataParamsTokenizer>() -> T {
+			return T(self.append("contextDataParams"))
 		}
 	}
 
@@ -350,10 +338,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var contextDataParams: PlaybackContextOptions.PlaybackContextOptionsTokenizer {
-			get {
-				return PlaybackContextOptions.PlaybackContextOptionsTokenizer(self.append("contextDataParams")) 
-			}
+		public func contextDataParams<T: PlaybackContextOptions.PlaybackContextOptionsTokenizer>() -> T {
+			return T(self.append("contextDataParams"))
 		}
 	}
 
@@ -413,16 +399,12 @@ public final class BaseEntryService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -451,10 +433,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -479,10 +459,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -525,10 +503,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var baseEntry: BaseEntry.BaseEntryTokenizer {
-			get {
-				return BaseEntry.BaseEntryTokenizer(self.append("baseEntry")) 
-			}
+		public func baseEntry<T: BaseEntry.BaseEntryTokenizer>() -> T {
+			return T(self.append("baseEntry"))
 		}
 	}
 
@@ -549,10 +525,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var resource: Resource.ResourceTokenizer {
-			get {
-				return Resource.ResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var conversionProfileId: BaseTokenizedObject {
@@ -561,10 +535,8 @@ public final class BaseEntryService{
 			}
 		}
 		
-		public var advancedOptions: EntryReplacementOptions.EntryReplacementOptionsTokenizer {
-			get {
-				return EntryReplacementOptions.EntryReplacementOptionsTokenizer(self.append("advancedOptions")) 
-			}
+		public func advancedOptions<T: EntryReplacementOptions.EntryReplacementOptionsTokenizer>() -> T {
+			return T(self.append("advancedOptions"))
 		}
 	}
 

@@ -181,10 +181,8 @@ open class ScheduleEvent: ObjectBase {
 			}
 		}
 		
-		public var recurrence: ScheduleEventRecurrence.ScheduleEventRecurrenceTokenizer {
-			get {
-				return ScheduleEventRecurrence.ScheduleEventRecurrenceTokenizer(self.append("recurrence")) 
-			}
+		public func recurrence<T: ScheduleEventRecurrence.ScheduleEventRecurrenceTokenizer>() -> T {
+			return T(self.append("recurrence"))
 		}
 	}
 

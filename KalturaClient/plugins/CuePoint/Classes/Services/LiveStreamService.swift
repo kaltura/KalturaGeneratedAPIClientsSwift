@@ -38,10 +38,8 @@ extension LiveStreamService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var liveStreamEntry: LiveStreamEntry.LiveStreamEntryTokenizer {
-			get {
-				return LiveStreamEntry.LiveStreamEntryTokenizer(self.append("liveStreamEntry")) 
-			}
+		public func liveStreamEntry<T: LiveStreamEntry.LiveStreamEntryTokenizer>() -> T {
+			return T(self.append("liveStreamEntry"))
 		}
 		
 		public var sourceType: BaseTokenizedObject {
@@ -84,10 +82,8 @@ extension LiveStreamService{
 			}
 		}
 		
-		public var liveStreamConfiguration: LiveStreamConfiguration.LiveStreamConfigurationTokenizer {
-			get {
-				return LiveStreamConfiguration.LiveStreamConfigurationTokenizer(self.append("liveStreamConfiguration")) 
-			}
+		public func liveStreamConfiguration<T: LiveStreamConfiguration.LiveStreamConfigurationTokenizer>() -> T {
+			return T(self.append("liveStreamConfiguration"))
 		}
 	}
 
@@ -130,10 +126,8 @@ extension LiveStreamService{
 			}
 		}
 		
-		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
-			get {
-				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: DataCenterContentResource.DataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var duration: BaseTokenizedObject {
@@ -355,16 +349,12 @@ extension LiveStreamService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: LiveStreamEntryFilter.LiveStreamEntryFilterTokenizer {
-			get {
-				return LiveStreamEntryFilter.LiveStreamEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: LiveStreamEntryFilter.LiveStreamEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -504,10 +494,8 @@ extension LiveStreamService{
 			}
 		}
 		
-		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
-			get {
-				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: DataCenterContentResource.DataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var duration: BaseTokenizedObject {
@@ -589,10 +577,8 @@ extension LiveStreamService{
 			}
 		}
 		
-		public var liveStreamEntry: LiveStreamEntry.LiveStreamEntryTokenizer {
-			get {
-				return LiveStreamEntry.LiveStreamEntryTokenizer(self.append("liveStreamEntry")) 
-			}
+		public func liveStreamEntry<T: LiveStreamEntry.LiveStreamEntryTokenizer>() -> T {
+			return T(self.append("liveStreamEntry"))
 		}
 	}
 

@@ -109,16 +109,12 @@ open class DeliveryProfile: ObjectBase {
 			}
 		}
 		
-		public var recognizer: UrlRecognizer.UrlRecognizerTokenizer {
-			get {
-				return UrlRecognizer.UrlRecognizerTokenizer(self.append("recognizer")) 
-			}
+		public func recognizer<T: UrlRecognizer.UrlRecognizerTokenizer>() -> T {
+			return T(self.append("recognizer"))
 		}
 		
-		public var tokenizer: UrlTokenizer.UrlTokenizerTokenizer {
-			get {
-				return UrlTokenizer.UrlTokenizerTokenizer(self.append("tokenizer")) 
-			}
+		public func tokenizer<T: UrlTokenizer.UrlTokenizerTokenizer>() -> T {
+			return T(self.append("tokenizer"))
 		}
 		
 		public var isDefault: BaseTokenizedObject {
@@ -151,10 +147,8 @@ open class DeliveryProfile: ObjectBase {
 			}
 		}
 		
-		public var supplementaryAssetsFilter: AssetFilter.AssetFilterTokenizer {
-			get {
-				return AssetFilter.AssetFilterTokenizer(self.append("supplementaryAssetsFilter")) 
-			}
+		public func supplementaryAssetsFilter<T: AssetFilter.AssetFilterTokenizer>() -> T {
+			return T(self.append("supplementaryAssetsFilter"))
 		}
 	}
 

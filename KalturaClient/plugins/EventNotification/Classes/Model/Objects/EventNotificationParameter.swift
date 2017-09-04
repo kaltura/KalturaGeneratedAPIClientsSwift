@@ -49,10 +49,8 @@ open class EventNotificationParameter: ObjectBase {
 			}
 		}
 		
-		public var value: StringValue.StringValueTokenizer {
-			get {
-				return StringValue.StringValueTokenizer(self.append("value")) 
-			}
+		public func value<T: StringValue.StringValueTokenizer>() -> T {
+			return T(self.append("value"))
 		}
 	}
 

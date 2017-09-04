@@ -38,10 +38,8 @@ public final class EntryDistributionService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
-			get {
-				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
-			}
+		public func entryDistribution<T: EntryDistribution.EntryDistributionTokenizer>() -> T {
+			return T(self.append("entryDistribution"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class EntryDistributionService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: EntryDistributionFilter.EntryDistributionFilterTokenizer {
-			get {
-				return EntryDistributionFilter.EntryDistributionFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: EntryDistributionFilter.EntryDistributionFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -223,10 +217,8 @@ public final class EntryDistributionService{
 			}
 		}
 		
-		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
-			get {
-				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
-			}
+		public func entryDistribution<T: EntryDistribution.EntryDistributionTokenizer>() -> T {
+			return T(self.append("entryDistribution"))
 		}
 	}
 

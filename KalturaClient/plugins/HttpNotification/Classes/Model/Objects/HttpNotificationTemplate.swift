@@ -49,10 +49,8 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 			}
 		}
 		
-		public var data: HttpNotificationData.HttpNotificationDataTokenizer {
-			get {
-				return HttpNotificationData.HttpNotificationDataTokenizer(self.append("data")) 
-			}
+		public func data<T: HttpNotificationData.HttpNotificationDataTokenizer>() -> T {
+			return T(self.append("data"))
 		}
 		
 		public var timeout: BaseTokenizedObject {

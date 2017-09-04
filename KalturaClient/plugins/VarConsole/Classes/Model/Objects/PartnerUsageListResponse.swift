@@ -37,10 +37,8 @@ open class PartnerUsageListResponse: ListResponse {
 
 	public class PartnerUsageListResponseTokenizer: ListResponse.ListResponseTokenizer {
 		
-		public var total: VarPartnerUsageItem.VarPartnerUsageItemTokenizer {
-			get {
-				return VarPartnerUsageItem.VarPartnerUsageItemTokenizer(self.append("total")) 
-			}
+		public func total<T: VarPartnerUsageItem.VarPartnerUsageItemTokenizer>() -> T {
+			return T(self.append("total"))
 		}
 		
 		public var objects: ArrayTokenizedObject<VarPartnerUsageItem.VarPartnerUsageItemTokenizer> {

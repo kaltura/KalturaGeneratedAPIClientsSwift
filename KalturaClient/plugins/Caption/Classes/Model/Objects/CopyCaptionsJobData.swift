@@ -33,16 +33,14 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class FlavorAssetWithParams: ObjectBase {
+open class CopyCaptionsJobData: JobData {
 
-	public class FlavorAssetWithParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class CopyCaptionsJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public func flavorAsset<T: FlavorAsset.FlavorAssetTokenizer>() -> T {
-			return T(self.append("flavorAsset"))
-		}
-		
-		public func flavorParams<T: FlavorParams.FlavorParamsTokenizer>() -> T {
-			return T(self.append("flavorParams"))
+		public var sourceEntryId: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryId") 
+			}
 		}
 		
 		public var entryId: BaseTokenizedObject {
@@ -50,43 +48,94 @@ open class FlavorAssetWithParams: ObjectBase {
 				return self.append("entryId") 
 			}
 		}
+		
+		public var offset: BaseTokenizedObject {
+			get {
+				return self.append("offset") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var fullCopy: BaseTokenizedObject {
+			get {
+				return self.append("fullCopy") 
+			}
+		}
 	}
 
-	/**  The Flavor Asset (Can be null when there are params without asset)  */
-	public var flavorAsset: FlavorAsset? = nil
-	/**  The Flavor Params  */
-	public var flavorParams: FlavorParams? = nil
-	/**  The entry id  */
+	/**  source entry Id  */
+	public var sourceEntryId: String? = nil
+	/**  entry Id  */
 	public var entryId: String? = nil
+	/**  clip offset  */
+	public var offset: Int? = nil
+	/**  clip duration  */
+	public var duration: Int? = nil
+	public var fullCopy: Bool? = nil
 
 
+	public func setMultiRequestToken(sourceEntryId: String) {
+		self.dict["sourceEntryId"] = sourceEntryId
+	}
+	
 	public func setMultiRequestToken(entryId: String) {
 		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(offset: String) {
+		self.dict["offset"] = offset
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(fullCopy: String) {
+		self.dict["fullCopy"] = fullCopy
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["flavorAsset"] != nil {
-		flavorAsset = try JSONParser.parse(object: dict["flavorAsset"] as! [String: Any])		}
-		if dict["flavorParams"] != nil {
-		flavorParams = try JSONParser.parse(object: dict["flavorParams"] as! [String: Any])		}
+		if dict["sourceEntryId"] != nil {
+			sourceEntryId = dict["sourceEntryId"] as? String
+		}
 		if dict["entryId"] != nil {
 			entryId = dict["entryId"] as? String
+		}
+		if dict["offset"] != nil {
+			offset = dict["offset"] as? Int
+		}
+		if dict["duration"] != nil {
+			duration = dict["duration"] as? Int
+		}
+		if dict["fullCopy"] != nil {
+			fullCopy = dict["fullCopy"] as? Bool
 		}
 
 	}
 
 	public override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(flavorAsset != nil) {
-			dict["flavorAsset"] = flavorAsset!.toDictionary()
-		}
-		if(flavorParams != nil) {
-			dict["flavorParams"] = flavorParams!.toDictionary()
+		if(sourceEntryId != nil) {
+			dict["sourceEntryId"] = sourceEntryId!
 		}
 		if(entryId != nil) {
 			dict["entryId"] = entryId!
+		}
+		if(offset != nil) {
+			dict["offset"] = offset!
+		}
+		if(duration != nil) {
+			dict["duration"] = duration!
+		}
+		if(fullCopy != nil) {
+			dict["fullCopy"] = fullCopy!
 		}
 		return dict
 	}

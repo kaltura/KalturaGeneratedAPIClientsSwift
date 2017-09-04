@@ -79,10 +79,8 @@ open class VirusScanProfile: ObjectBase {
 			}
 		}
 		
-		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
-			}
+		public func entryFilter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("entryFilter"))
 		}
 		
 		public var actionIfInfected: BaseTokenizedObject {

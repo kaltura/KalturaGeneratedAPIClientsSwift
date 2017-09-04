@@ -62,10 +62,8 @@ public final class CategoryUserService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var categoryUser: CategoryUser.CategoryUserTokenizer {
-			get {
-				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
-			}
+		public func categoryUser<T: CategoryUser.CategoryUserTokenizer>() -> T {
+			return T(self.append("categoryUser"))
 		}
 	}
 
@@ -203,16 +201,12 @@ public final class CategoryUserService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CategoryUserFilter.CategoryUserFilterTokenizer {
-			get {
-				return CategoryUserFilter.CategoryUserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CategoryUserFilter.CategoryUserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -247,10 +241,8 @@ public final class CategoryUserService{
 			}
 		}
 		
-		public var categoryUser: CategoryUser.CategoryUserTokenizer {
-			get {
-				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
-			}
+		public func categoryUser<T: CategoryUser.CategoryUserTokenizer>() -> T {
+			return T(self.append("categoryUser"))
 		}
 		
 		public var override: BaseTokenizedObject {

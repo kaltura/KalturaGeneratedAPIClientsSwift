@@ -38,10 +38,8 @@ public final class FlavorParamsService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var flavorParams: FlavorParams.FlavorParamsTokenizer {
-			get {
-				return FlavorParams.FlavorParamsTokenizer(self.append("flavorParams")) 
-			}
+		public func flavorParams<T: FlavorParams.FlavorParamsTokenizer>() -> T {
+			return T(self.append("flavorParams"))
 		}
 	}
 
@@ -106,16 +104,12 @@ public final class FlavorParamsService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: FlavorParamsFilter.FlavorParamsFilterTokenizer {
-			get {
-				return FlavorParamsFilter.FlavorParamsFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: FlavorParamsFilter.FlavorParamsFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -145,10 +139,8 @@ public final class FlavorParamsService{
 			}
 		}
 		
-		public var flavorParams: FlavorParams.FlavorParamsTokenizer {
-			get {
-				return FlavorParams.FlavorParamsTokenizer(self.append("flavorParams")) 
-			}
+		public func flavorParams<T: FlavorParams.FlavorParamsTokenizer>() -> T {
+			return T(self.append("flavorParams"))
 		}
 	}
 

@@ -38,10 +38,8 @@ public final class LiveChannelSegmentService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var liveChannelSegment: LiveChannelSegment.LiveChannelSegmentTokenizer {
-			get {
-				return LiveChannelSegment.LiveChannelSegmentTokenizer(self.append("liveChannelSegment")) 
-			}
+		public func liveChannelSegment<T: LiveChannelSegment.LiveChannelSegmentTokenizer>() -> T {
+			return T(self.append("liveChannelSegment"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class LiveChannelSegmentService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: LiveChannelSegmentFilter.LiveChannelSegmentFilterTokenizer {
-			get {
-				return LiveChannelSegmentFilter.LiveChannelSegmentFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: LiveChannelSegmentFilter.LiveChannelSegmentFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +121,8 @@ public final class LiveChannelSegmentService{
 			}
 		}
 		
-		public var liveChannelSegment: LiveChannelSegment.LiveChannelSegmentTokenizer {
-			get {
-				return LiveChannelSegment.LiveChannelSegmentTokenizer(self.append("liveChannelSegment")) 
-			}
+		public func liveChannelSegment<T: LiveChannelSegment.LiveChannelSegmentTokenizer>() -> T {
+			return T(self.append("liveChannelSegment"))
 		}
 	}
 

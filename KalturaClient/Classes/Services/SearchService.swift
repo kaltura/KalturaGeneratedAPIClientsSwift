@@ -69,10 +69,8 @@ public final class SearchService{
 
 	public class GetMediaInfoTokenizer: ClientTokenizer  {
 		
-		public var searchResult: SearchResult.SearchResultTokenizer {
-			get {
-				return SearchResult.SearchResultTokenizer(self.append("searchResult")) 
-			}
+		public func searchResult<T: SearchResult.SearchResultTokenizer>() -> T {
+			return T(self.append("searchResult"))
 		}
 	}
 
@@ -88,16 +86,12 @@ public final class SearchService{
 
 	public class SearchTokenizer: ClientTokenizer  {
 		
-		public var search_: Search.SearchTokenizer {
-			get {
-				return Search.SearchTokenizer(self.append("search_")) 
-			}
+		public func search_<T: Search.SearchTokenizer>() -> T {
+			return T(self.append("search_"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

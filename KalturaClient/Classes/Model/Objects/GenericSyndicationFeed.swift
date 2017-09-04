@@ -49,10 +49,8 @@ open class GenericSyndicationFeed: BaseSyndicationFeed {
 			}
 		}
 		
-		public var entryFilter: BaseEntryFilter.BaseEntryFilterTokenizer {
-			get {
-				return BaseEntryFilter.BaseEntryFilterTokenizer(self.append("entryFilter")) 
-			}
+		public func entryFilter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("entryFilter"))
 		}
 		
 		public var pageSize: BaseTokenizedObject {

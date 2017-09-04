@@ -38,10 +38,8 @@ open class EmailNotificationCategoryRecipientJobData: EmailNotificationRecipient
 
 	public class EmailNotificationCategoryRecipientJobDataTokenizer: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
 		
-		public var categoryUserFilter: CategoryUserFilter.CategoryUserFilterTokenizer {
-			get {
-				return CategoryUserFilter.CategoryUserFilterTokenizer(self.append("categoryUserFilter")) 
-			}
+		public func categoryUserFilter<T: CategoryUserFilter.CategoryUserFilterTokenizer>() -> T {
+			return T(self.append("categoryUserFilter"))
 		}
 	}
 

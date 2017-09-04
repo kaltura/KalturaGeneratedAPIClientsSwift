@@ -38,10 +38,8 @@ public final class EmailIngestionProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var EmailIP: EmailIngestionProfile.EmailIngestionProfileTokenizer {
-			get {
-				return EmailIngestionProfile.EmailIngestionProfileTokenizer(self.append("EmailIP")) 
-			}
+		public func EmailIP<T: EmailIngestionProfile.EmailIngestionProfileTokenizer>() -> T {
+			return T(self.append("EmailIP"))
 		}
 	}
 
@@ -56,10 +54,8 @@ public final class EmailIngestionProfileService{
 
 	public class AddMediaEntryTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var uploadTokenId: BaseTokenizedObject {
@@ -158,10 +154,8 @@ public final class EmailIngestionProfileService{
 			}
 		}
 		
-		public var EmailIP: EmailIngestionProfile.EmailIngestionProfileTokenizer {
-			get {
-				return EmailIngestionProfile.EmailIngestionProfileTokenizer(self.append("EmailIP")) 
-			}
+		public func EmailIP<T: EmailIngestionProfile.EmailIngestionProfileTokenizer>() -> T {
+			return T(self.append("EmailIP"))
 		}
 	}
 

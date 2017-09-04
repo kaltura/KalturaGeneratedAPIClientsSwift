@@ -44,10 +44,8 @@ public final class QuizService{
 			}
 		}
 		
-		public var quiz: Quiz.QuizTokenizer {
-			get {
-				return Quiz.QuizTokenizer(self.append("quiz")) 
-			}
+		public func quiz<T: Quiz.QuizTokenizer>() -> T {
+			return T(self.append("quiz"))
 		}
 	}
 
@@ -103,16 +101,12 @@ public final class QuizService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: QuizFilter.QuizFilterTokenizer {
-			get {
-				return QuizFilter.QuizFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: QuizFilter.QuizFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -141,10 +135,8 @@ public final class QuizService{
 			}
 		}
 		
-		public var quiz: Quiz.QuizTokenizer {
-			get {
-				return Quiz.QuizTokenizer(self.append("quiz")) 
-			}
+		public func quiz<T: Quiz.QuizTokenizer>() -> T {
+			return T(self.append("quiz"))
 		}
 	}
 

@@ -38,10 +38,8 @@ public final class DistributionProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
-			get {
-				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
-			}
+		public func distributionProfile<T: DistributionProfile.DistributionProfileTokenizer>() -> T {
+			return T(self.append("distributionProfile"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class DistributionProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DistributionProfileFilter.DistributionProfileFilterTokenizer {
-			get {
-				return DistributionProfileFilter.DistributionProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DistributionProfileFilter.DistributionProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -121,16 +115,12 @@ public final class DistributionProfileService{
 
 	public class ListByPartnerTokenizer: ClientTokenizer  {
 		
-		public var filter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -158,10 +148,8 @@ public final class DistributionProfileService{
 			}
 		}
 		
-		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
-			get {
-				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
-			}
+		public func distributionProfile<T: DistributionProfile.DistributionProfileTokenizer>() -> T {
+			return T(self.append("distributionProfile"))
 		}
 	}
 

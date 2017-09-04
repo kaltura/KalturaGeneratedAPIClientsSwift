@@ -40,10 +40,8 @@ extension ScheduleResourceService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var scheduleResource: ScheduleResource.ScheduleResourceTokenizer {
-			get {
-				return ScheduleResource.ScheduleResourceTokenizer(self.append("scheduleResource")) 
-			}
+		public func scheduleResource<T: ScheduleResource.ScheduleResourceTokenizer>() -> T {
+			return T(self.append("scheduleResource"))
 		}
 	}
 
@@ -57,10 +55,8 @@ extension ScheduleResourceService{
 
 	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadData: BulkUploadCsvJobData.BulkUploadCsvJobDataTokenizer {
-			get {
-				return BulkUploadCsvJobData.BulkUploadCsvJobDataTokenizer(self.append("bulkUploadData")) 
-			}
+		public func bulkUploadData<T: BulkUploadCsvJobData.BulkUploadCsvJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
 		}
 	}
 
@@ -113,16 +109,12 @@ extension ScheduleResourceService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ScheduleResourceFilter.ScheduleResourceFilterTokenizer {
-			get {
-				return ScheduleResourceFilter.ScheduleResourceFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ScheduleResourceFilter.ScheduleResourceFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -151,10 +143,8 @@ extension ScheduleResourceService{
 			}
 		}
 		
-		public var scheduleResource: ScheduleResource.ScheduleResourceTokenizer {
-			get {
-				return ScheduleResource.ScheduleResourceTokenizer(self.append("scheduleResource")) 
-			}
+		public func scheduleResource<T: ScheduleResource.ScheduleResourceTokenizer>() -> T {
+			return T(self.append("scheduleResource"))
 		}
 	}
 

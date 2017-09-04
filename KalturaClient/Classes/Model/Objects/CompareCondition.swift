@@ -37,10 +37,8 @@ open class CompareCondition: Condition {
 
 	public class CompareConditionTokenizer: Condition.ConditionTokenizer {
 		
-		public var value: IntegerValue.IntegerValueTokenizer {
-			get {
-				return IntegerValue.IntegerValueTokenizer(self.append("value")) 
-			}
+		public func value<T: IntegerValue.IntegerValueTokenizer>() -> T {
+			return T(self.append("value"))
 		}
 		
 		public var comparison: BaseTokenizedObject {

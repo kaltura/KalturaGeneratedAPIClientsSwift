@@ -38,10 +38,8 @@ public final class GroupUserService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var groupUser: GroupUser.GroupUserTokenizer {
-			get {
-				return GroupUser.GroupUserTokenizer(self.append("groupUser")) 
-			}
+		public func groupUser<T: GroupUser.GroupUserTokenizer>() -> T {
+			return T(self.append("groupUser"))
 		}
 	}
 
@@ -79,16 +77,12 @@ public final class GroupUserService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: GroupUserFilter.GroupUserFilterTokenizer {
-			get {
-				return GroupUserFilter.GroupUserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: GroupUserFilter.GroupUserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

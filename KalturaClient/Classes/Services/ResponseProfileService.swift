@@ -38,10 +38,8 @@ public final class ResponseProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var addResponseProfile: ResponseProfile.ResponseProfileTokenizer {
-			get {
-				return ResponseProfile.ResponseProfileTokenizer(self.append("addResponseProfile")) 
-			}
+		public func addResponseProfile<T: ResponseProfile.ResponseProfileTokenizer>() -> T {
+			return T(self.append("addResponseProfile"))
 		}
 	}
 
@@ -61,10 +59,8 @@ public final class ResponseProfileService{
 			}
 		}
 		
-		public var profile: ResponseProfile.ResponseProfileTokenizer {
-			get {
-				return ResponseProfile.ResponseProfileTokenizer(self.append("profile")) 
-			}
+		public func profile<T: ResponseProfile.ResponseProfileTokenizer>() -> T {
+			return T(self.append("profile"))
 		}
 	}
 
@@ -113,16 +109,12 @@ public final class ResponseProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ResponseProfileFilter.ResponseProfileFilterTokenizer {
-			get {
-				return ResponseProfileFilter.ResponseProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ResponseProfileFilter.ResponseProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -145,10 +137,8 @@ public final class ResponseProfileService{
 
 	public class RecalculateTokenizer: ClientTokenizer  {
 		
-		public var options: ResponseProfileCacheRecalculateOptions.ResponseProfileCacheRecalculateOptionsTokenizer {
-			get {
-				return ResponseProfileCacheRecalculateOptions.ResponseProfileCacheRecalculateOptionsTokenizer(self.append("options")) 
-			}
+		public func options<T: ResponseProfileCacheRecalculateOptions.ResponseProfileCacheRecalculateOptionsTokenizer>() -> T {
+			return T(self.append("options"))
 		}
 	}
 
@@ -168,10 +158,8 @@ public final class ResponseProfileService{
 			}
 		}
 		
-		public var updateResponseProfile: ResponseProfile.ResponseProfileTokenizer {
-			get {
-				return ResponseProfile.ResponseProfileTokenizer(self.append("updateResponseProfile")) 
-			}
+		public func updateResponseProfile<T: ResponseProfile.ResponseProfileTokenizer>() -> T {
+			return T(self.append("updateResponseProfile"))
 		}
 	}
 

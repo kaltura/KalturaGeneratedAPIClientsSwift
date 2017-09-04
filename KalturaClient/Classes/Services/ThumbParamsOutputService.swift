@@ -55,16 +55,12 @@ public final class ThumbParamsOutputService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ThumbParamsOutputFilter.ThumbParamsOutputFilterTokenizer {
-			get {
-				return ThumbParamsOutputFilter.ThumbParamsOutputFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ThumbParamsOutputFilter.ThumbParamsOutputFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

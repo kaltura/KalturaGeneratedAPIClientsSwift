@@ -38,10 +38,8 @@ open class HttpNotification: ObjectBase {
 
 	public class HttpNotificationTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var object: ObjectBase.ObjectBaseTokenizer {
-			get {
-				return ObjectBase.ObjectBaseTokenizer(self.append("object")) 
-			}
+		public func object<T: ObjectBase.ObjectBaseTokenizer>() -> T {
+			return T(self.append("object"))
 		}
 		
 		public var eventObjectType: BaseTokenizedObject {

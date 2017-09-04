@@ -38,10 +38,8 @@ public final class WidgetService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var widget: Widget.WidgetTokenizer {
-			get {
-				return Widget.WidgetTokenizer(self.append("widget")) 
-			}
+		public func widget<T: Widget.WidgetTokenizer>() -> T {
+			return T(self.append("widget"))
 		}
 	}
 
@@ -55,10 +53,8 @@ public final class WidgetService{
 
 	public class CloneTokenizer: ClientTokenizer  {
 		
-		public var widget: Widget.WidgetTokenizer {
-			get {
-				return Widget.WidgetTokenizer(self.append("widget")) 
-			}
+		public func widget<T: Widget.WidgetTokenizer>() -> T {
+			return T(self.append("widget"))
 		}
 	}
 
@@ -89,16 +85,12 @@ public final class WidgetService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: WidgetFilter.WidgetFilterTokenizer {
-			get {
-				return WidgetFilter.WidgetFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: WidgetFilter.WidgetFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +119,8 @@ public final class WidgetService{
 			}
 		}
 		
-		public var widget: Widget.WidgetTokenizer {
-			get {
-				return Widget.WidgetTokenizer(self.append("widget")) 
-			}
+		public func widget<T: Widget.WidgetTokenizer>() -> T {
+			return T(self.append("widget"))
 		}
 	}
 

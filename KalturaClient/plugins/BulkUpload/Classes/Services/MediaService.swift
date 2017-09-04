@@ -39,10 +39,8 @@ extension MediaService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var entry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 	}
 
@@ -62,10 +60,8 @@ extension MediaService{
 			}
 		}
 		
-		public var resource: Resource.ResourceTokenizer {
-			get {
-				return Resource.ResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 	}
 
@@ -86,10 +82,8 @@ extension MediaService{
 
 	public class AddFromBulkTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var url: BaseTokenizedObject {
@@ -125,10 +119,8 @@ extension MediaService{
 			}
 		}
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var sourceFlavorParamsId: BaseTokenizedObject {
@@ -164,10 +156,8 @@ extension MediaService{
 			}
 		}
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 	}
 
@@ -186,10 +176,8 @@ extension MediaService{
 
 	public class AddFromRecordedWebcamTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var webcamTokenId: BaseTokenizedObject {
@@ -210,16 +198,12 @@ extension MediaService{
 
 	public class AddFromSearchResultTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
-		public var searchResult: SearchResult.SearchResultTokenizer {
-			get {
-				return SearchResult.SearchResultTokenizer(self.append("searchResult")) 
-			}
+		public func searchResult<T: SearchResult.SearchResultTokenizer>() -> T {
+			return T(self.append("searchResult"))
 		}
 	}
 
@@ -243,10 +227,8 @@ extension MediaService{
 
 	public class AddFromUploadedFileTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var uploadTokenId: BaseTokenizedObject {
@@ -268,10 +250,8 @@ extension MediaService{
 
 	public class AddFromUrlTokenizer: ClientTokenizer  {
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 		
 		public var url: BaseTokenizedObject {
@@ -352,16 +332,12 @@ extension MediaService{
 
 	public class BulkUploadAddTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadData: BulkUploadJobData.BulkUploadJobDataTokenizer {
-			get {
-				return BulkUploadJobData.BulkUploadJobDataTokenizer(self.append("bulkUploadData")) 
-			}
+		public func bulkUploadData<T: BulkUploadJobData.BulkUploadJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
 		}
 		
-		public var bulkUploadEntryData: BulkUploadEntryData.BulkUploadEntryDataTokenizer {
-			get {
-				return BulkUploadEntryData.BulkUploadEntryDataTokenizer(self.append("bulkUploadEntryData")) 
-			}
+		public func bulkUploadEntryData<T: BulkUploadEntryData.BulkUploadEntryDataTokenizer>() -> T {
+			return T(self.append("bulkUploadEntryData"))
 		}
 	}
 
@@ -443,10 +419,8 @@ extension MediaService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
-			get {
-				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MediaEntryFilter.MediaEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -481,10 +455,8 @@ extension MediaService{
 
 	public class FlagTokenizer: ClientTokenizer  {
 		
-		public var moderationFlag: ModerationFlag.ModerationFlagTokenizer {
-			get {
-				return ModerationFlag.ModerationFlagTokenizer(self.append("moderationFlag")) 
-			}
+		public func moderationFlag<T: ModerationFlag.ModerationFlagTokenizer>() -> T {
+			return T(self.append("moderationFlag"))
 		}
 	}
 
@@ -565,16 +537,12 @@ extension MediaService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: MediaEntryFilter.MediaEntryFilterTokenizer {
-			get {
-				return MediaEntryFilter.MediaEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: MediaEntryFilter.MediaEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -603,10 +571,8 @@ extension MediaService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -674,10 +640,8 @@ extension MediaService{
 			}
 		}
 		
-		public var mediaEntry: MediaEntry.MediaEntryTokenizer {
-			get {
-				return MediaEntry.MediaEntryTokenizer(self.append("mediaEntry")) 
-			}
+		public func mediaEntry<T: MediaEntry.MediaEntryTokenizer>() -> T {
+			return T(self.append("mediaEntry"))
 		}
 	}
 
@@ -698,10 +662,8 @@ extension MediaService{
 			}
 		}
 		
-		public var resource: Resource.ResourceTokenizer {
-			get {
-				return Resource.ResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var conversionProfileId: BaseTokenizedObject {
@@ -710,10 +672,8 @@ extension MediaService{
 			}
 		}
 		
-		public var advancedOptions: EntryReplacementOptions.EntryReplacementOptionsTokenizer {
-			get {
-				return EntryReplacementOptions.EntryReplacementOptionsTokenizer(self.append("advancedOptions")) 
-			}
+		public func advancedOptions<T: EntryReplacementOptions.EntryReplacementOptionsTokenizer>() -> T {
+			return T(self.append("advancedOptions"))
 		}
 	}
 

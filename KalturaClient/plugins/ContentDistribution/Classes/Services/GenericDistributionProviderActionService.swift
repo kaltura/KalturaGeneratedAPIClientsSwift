@@ -38,10 +38,8 @@ public final class GenericDistributionProviderActionService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
-			get {
-				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
-			}
+		public func genericDistributionProviderAction<T: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer>() -> T {
+			return T(self.append("genericDistributionProviderAction"))
 		}
 	}
 
@@ -263,16 +261,12 @@ public final class GenericDistributionProviderActionService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: GenericDistributionProviderActionFilter.GenericDistributionProviderActionFilterTokenizer {
-			get {
-				return GenericDistributionProviderActionFilter.GenericDistributionProviderActionFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: GenericDistributionProviderActionFilter.GenericDistributionProviderActionFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -301,10 +295,8 @@ public final class GenericDistributionProviderActionService{
 			}
 		}
 		
-		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
-			get {
-				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
-			}
+		public func genericDistributionProviderAction<T: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer>() -> T {
+			return T(self.append("genericDistributionProviderAction"))
 		}
 	}
 
@@ -331,10 +323,8 @@ public final class GenericDistributionProviderActionService{
 			}
 		}
 		
-		public var genericDistributionProviderAction: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer {
-			get {
-				return GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer(self.append("genericDistributionProviderAction")) 
-			}
+		public func genericDistributionProviderAction<T: GenericDistributionProviderAction.GenericDistributionProviderActionTokenizer>() -> T {
+			return T(self.append("genericDistributionProviderAction"))
 		}
 	}
 

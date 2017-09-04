@@ -43,28 +43,20 @@ open class GenericDistributionProfile: DistributionProfile {
 			}
 		}
 		
-		public var submitAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
-			get {
-				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("submitAction")) 
-			}
+		public func submitAction<T: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer>() -> T {
+			return T(self.append("submitAction"))
 		}
 		
-		public var updateAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
-			get {
-				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("updateAction")) 
-			}
+		public func updateAction<T: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer>() -> T {
+			return T(self.append("updateAction"))
 		}
 		
-		public var deleteAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
-			get {
-				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("deleteAction")) 
-			}
+		public func deleteAction<T: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer>() -> T {
+			return T(self.append("deleteAction"))
 		}
 		
-		public var fetchReportAction: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer {
-			get {
-				return GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer(self.append("fetchReportAction")) 
-			}
+		public func fetchReportAction<T: GenericDistributionProfileAction.GenericDistributionProfileActionTokenizer>() -> T {
+			return T(self.append("fetchReportAction"))
 		}
 		
 		public var updateRequiredEntryFields: BaseTokenizedObject {

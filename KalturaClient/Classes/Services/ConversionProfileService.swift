@@ -38,10 +38,8 @@ public final class ConversionProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var conversionProfile: ConversionProfile.ConversionProfileTokenizer {
-			get {
-				return ConversionProfile.ConversionProfileTokenizer(self.append("conversionProfile")) 
-			}
+		public func conversionProfile<T: ConversionProfile.ConversionProfileTokenizer>() -> T {
+			return T(self.append("conversionProfile"))
 		}
 	}
 
@@ -110,16 +108,12 @@ public final class ConversionProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ConversionProfileFilter.ConversionProfileFilterTokenizer {
-			get {
-				return ConversionProfileFilter.ConversionProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ConversionProfileFilter.ConversionProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -165,10 +159,8 @@ public final class ConversionProfileService{
 			}
 		}
 		
-		public var conversionProfile: ConversionProfile.ConversionProfileTokenizer {
-			get {
-				return ConversionProfile.ConversionProfileTokenizer(self.append("conversionProfile")) 
-			}
+		public func conversionProfile<T: ConversionProfile.ConversionProfileTokenizer>() -> T {
+			return T(self.append("conversionProfile"))
 		}
 	}
 

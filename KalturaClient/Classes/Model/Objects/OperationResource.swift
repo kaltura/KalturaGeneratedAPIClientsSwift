@@ -39,10 +39,8 @@ open class OperationResource: ContentResource {
 
 	public class OperationResourceTokenizer: ContentResource.ContentResourceTokenizer {
 		
-		public var resource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {

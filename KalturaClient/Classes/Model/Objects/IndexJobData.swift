@@ -37,10 +37,8 @@ open class IndexJobData: JobData {
 
 	public class IndexJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public var filter: Filter.FilterTokenizer {
-			get {
-				return Filter.FilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: Filter.FilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
 		public var lastIndexId: BaseTokenizedObject {

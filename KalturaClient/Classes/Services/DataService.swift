@@ -38,10 +38,8 @@ public final class DataService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var dataEntry: DataEntry.DataEntryTokenizer {
-			get {
-				return DataEntry.DataEntryTokenizer(self.append("dataEntry")) 
-			}
+		public func dataEntry<T: DataEntry.DataEntryTokenizer>() -> T {
+			return T(self.append("dataEntry"))
 		}
 	}
 
@@ -61,10 +59,8 @@ public final class DataService{
 			}
 		}
 		
-		public var resource: GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer {
-			get {
-				return GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: GenericDataCenterContentResource.GenericDataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 	}
 
@@ -124,16 +120,12 @@ public final class DataService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DataEntryFilter.DataEntryFilterTokenizer {
-			get {
-				return DataEntryFilter.DataEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DataEntryFilter.DataEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -162,10 +154,8 @@ public final class DataService{
 			}
 		}
 		
-		public var documentEntry: DataEntry.DataEntryTokenizer {
-			get {
-				return DataEntry.DataEntryTokenizer(self.append("documentEntry")) 
-			}
+		public func documentEntry<T: DataEntry.DataEntryTokenizer>() -> T {
+			return T(self.append("documentEntry"))
 		}
 	}
 

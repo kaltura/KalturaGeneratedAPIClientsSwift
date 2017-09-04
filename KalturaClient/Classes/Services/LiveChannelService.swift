@@ -38,10 +38,8 @@ public final class LiveChannelService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var liveChannel: LiveChannel.LiveChannelTokenizer {
-			get {
-				return LiveChannel.LiveChannelTokenizer(self.append("liveChannel")) 
-			}
+		public func liveChannel<T: LiveChannel.LiveChannelTokenizer>() -> T {
+			return T(self.append("liveChannel"))
 		}
 	}
 
@@ -73,10 +71,8 @@ public final class LiveChannelService{
 			}
 		}
 		
-		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
-			get {
-				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: DataCenterContentResource.DataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var duration: BaseTokenizedObject {
@@ -192,16 +188,12 @@ public final class LiveChannelService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: LiveChannelFilter.LiveChannelFilterTokenizer {
-			get {
-				return LiveChannelFilter.LiveChannelFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: LiveChannelFilter.LiveChannelFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -300,10 +292,8 @@ public final class LiveChannelService{
 			}
 		}
 		
-		public var resource: DataCenterContentResource.DataCenterContentResourceTokenizer {
-			get {
-				return DataCenterContentResource.DataCenterContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: DataCenterContentResource.DataCenterContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var duration: BaseTokenizedObject {
@@ -385,10 +375,8 @@ public final class LiveChannelService{
 			}
 		}
 		
-		public var liveChannel: LiveChannel.LiveChannelTokenizer {
-			get {
-				return LiveChannel.LiveChannelTokenizer(self.append("liveChannel")) 
-			}
+		public func liveChannel<T: LiveChannel.LiveChannelTokenizer>() -> T {
+			return T(self.append("liveChannel"))
 		}
 	}
 

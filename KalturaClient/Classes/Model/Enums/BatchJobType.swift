@@ -88,4 +88,5 @@ public enum BatchJobType: String {
 	case LIVE_REPORT_EXPORT = "40"
 	case RECALCULATE_CACHE = "41"
 	case LIVE_TO_VOD = "42"
+	case COPY_CAPTIONS = "43"
 }

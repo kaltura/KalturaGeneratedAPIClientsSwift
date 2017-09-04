@@ -38,10 +38,8 @@ public final class ShortLinkService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var shortLink: ShortLink.ShortLinkTokenizer {
-			get {
-				return ShortLink.ShortLinkTokenizer(self.append("shortLink")) 
-			}
+		public func shortLink<T: ShortLink.ShortLinkTokenizer>() -> T {
+			return T(self.append("shortLink"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class ShortLinkService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ShortLinkFilter.ShortLinkFilterTokenizer {
-			get {
-				return ShortLinkFilter.ShortLinkFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ShortLinkFilter.ShortLinkFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +121,8 @@ public final class ShortLinkService{
 			}
 		}
 		
-		public var shortLink: ShortLink.ShortLinkTokenizer {
-			get {
-				return ShortLink.ShortLinkTokenizer(self.append("shortLink")) 
-			}
+		public func shortLink<T: ShortLink.ShortLinkTokenizer>() -> T {
+			return T(self.append("shortLink"))
 		}
 	}
 

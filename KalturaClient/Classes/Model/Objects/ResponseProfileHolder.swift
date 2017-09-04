@@ -51,7 +51,7 @@ open class ResponseProfileHolder: BaseResponseProfile {
 	}
 
 	/**  Auto generated numeric identifier  */
-	public var id: Int? = nil
+	public var id: Int64? = nil
 	/**  Unique system name  */
 	public var systemName: String? = nil
 
@@ -68,7 +68,7 @@ open class ResponseProfileHolder: BaseResponseProfile {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? Int
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["systemName"] != nil {
 			systemName = dict["systemName"] as? String

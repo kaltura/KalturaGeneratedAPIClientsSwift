@@ -44,10 +44,8 @@ public final class CaptionAssetService{
 			}
 		}
 		
-		public var captionAsset: CaptionAsset.CaptionAssetTokenizer {
-			get {
-				return CaptionAsset.CaptionAssetTokenizer(self.append("captionAsset")) 
-			}
+		public func captionAsset<T: CaptionAsset.CaptionAssetTokenizer>() -> T {
+			return T(self.append("captionAsset"))
 		}
 	}
 
@@ -139,16 +137,12 @@ public final class CaptionAssetService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: AssetFilter.AssetFilterTokenizer {
-			get {
-				return AssetFilter.AssetFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AssetFilter.AssetFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -195,10 +189,8 @@ public final class CaptionAssetService{
 			}
 		}
 		
-		public var contentResource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
-			}
+		public func contentResource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("contentResource"))
 		}
 	}
 
@@ -219,10 +211,8 @@ public final class CaptionAssetService{
 			}
 		}
 		
-		public var captionAsset: CaptionAsset.CaptionAssetTokenizer {
-			get {
-				return CaptionAsset.CaptionAssetTokenizer(self.append("captionAsset")) 
-			}
+		public func captionAsset<T: CaptionAsset.CaptionAssetTokenizer>() -> T {
+			return T(self.append("captionAsset"))
 		}
 	}
 

@@ -109,10 +109,8 @@ open class BatchJob: ObjectBase {
 			}
 		}
 		
-		public var data: JobData.JobDataTokenizer {
-			get {
-				return JobData.JobDataTokenizer(self.append("data")) 
-			}
+		public func data<T: JobData.JobDataTokenizer>() -> T {
+			return T(self.append("data"))
 		}
 		
 		public var status: BaseTokenizedObject {

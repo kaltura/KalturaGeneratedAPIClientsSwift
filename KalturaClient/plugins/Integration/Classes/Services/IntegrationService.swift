@@ -38,10 +38,8 @@ public final class IntegrationService{
 
 	public class DispatchTokenizer: ClientTokenizer  {
 		
-		public var data: IntegrationJobData.IntegrationJobDataTokenizer {
-			get {
-				return IntegrationJobData.IntegrationJobDataTokenizer(self.append("data")) 
-			}
+		public func data<T: IntegrationJobData.IntegrationJobDataTokenizer>() -> T {
+			return T(self.append("data"))
 		}
 		
 		public var objectType: BaseTokenizedObject {

@@ -38,16 +38,12 @@ public final class DistributionProviderService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DistributionProviderFilter.DistributionProviderFilterTokenizer {
-			get {
-				return DistributionProviderFilter.DistributionProviderFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DistributionProviderFilter.DistributionProviderFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

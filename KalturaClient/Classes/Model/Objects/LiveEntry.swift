@@ -109,10 +109,8 @@ open class LiveEntry: MediaEntry {
 			}
 		}
 		
-		public var recordingOptions: LiveEntryRecordingOptions.LiveEntryRecordingOptionsTokenizer {
-			get {
-				return LiveEntryRecordingOptions.LiveEntryRecordingOptionsTokenizer(self.append("recordingOptions")) 
-			}
+		public func recordingOptions<T: LiveEntryRecordingOptions.LiveEntryRecordingOptionsTokenizer>() -> T {
+			return T(self.append("recordingOptions"))
 		}
 		
 		public var liveStatus: BaseTokenizedObject {

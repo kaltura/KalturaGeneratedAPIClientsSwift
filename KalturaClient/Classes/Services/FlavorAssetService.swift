@@ -44,10 +44,8 @@ public final class FlavorAssetService{
 			}
 		}
 		
-		public var flavorAsset: FlavorAsset.FlavorAssetTokenizer {
-			get {
-				return FlavorAsset.FlavorAssetTokenizer(self.append("flavorAsset")) 
-			}
+		public func flavorAsset<T: FlavorAsset.FlavorAssetTokenizer>() -> T {
+			return T(self.append("flavorAsset"))
 		}
 	}
 
@@ -270,10 +268,8 @@ public final class FlavorAssetService{
 			}
 		}
 		
-		public var options: FlavorAssetUrlOptions.FlavorAssetUrlOptionsTokenizer {
-			get {
-				return FlavorAssetUrlOptions.FlavorAssetUrlOptionsTokenizer(self.append("options")) 
-			}
+		public func options<T: FlavorAssetUrlOptions.FlavorAssetUrlOptionsTokenizer>() -> T {
+			return T(self.append("options"))
 		}
 	}
 
@@ -319,16 +315,12 @@ public final class FlavorAssetService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: AssetFilter.AssetFilterTokenizer {
-			get {
-				return AssetFilter.AssetFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AssetFilter.AssetFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -430,10 +422,8 @@ public final class FlavorAssetService{
 			}
 		}
 		
-		public var contentResource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
-			}
+		public func contentResource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("contentResource"))
 		}
 	}
 
@@ -454,10 +444,8 @@ public final class FlavorAssetService{
 			}
 		}
 		
-		public var flavorAsset: FlavorAsset.FlavorAssetTokenizer {
-			get {
-				return FlavorAsset.FlavorAssetTokenizer(self.append("flavorAsset")) 
-			}
+		public func flavorAsset<T: FlavorAsset.FlavorAssetTokenizer>() -> T {
+			return T(self.append("flavorAsset"))
 		}
 	}
 

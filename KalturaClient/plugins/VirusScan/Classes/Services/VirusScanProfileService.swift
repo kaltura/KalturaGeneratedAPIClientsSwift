@@ -38,10 +38,8 @@ public final class VirusScanProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var virusScanProfile: VirusScanProfile.VirusScanProfileTokenizer {
-			get {
-				return VirusScanProfile.VirusScanProfileTokenizer(self.append("virusScanProfile")) 
-			}
+		public func virusScanProfile<T: VirusScanProfile.VirusScanProfileTokenizer>() -> T {
+			return T(self.append("virusScanProfile"))
 		}
 	}
 
@@ -90,16 +88,12 @@ public final class VirusScanProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: VirusScanProfileFilter.VirusScanProfileFilterTokenizer {
-			get {
-				return VirusScanProfileFilter.VirusScanProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: VirusScanProfileFilter.VirusScanProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -156,10 +150,8 @@ public final class VirusScanProfileService{
 			}
 		}
 		
-		public var virusScanProfile: VirusScanProfile.VirusScanProfileTokenizer {
-			get {
-				return VirusScanProfile.VirusScanProfileTokenizer(self.append("virusScanProfile")) 
-			}
+		public func virusScanProfile<T: VirusScanProfile.VirusScanProfileTokenizer>() -> T {
+			return T(self.append("virusScanProfile"))
 		}
 	}
 

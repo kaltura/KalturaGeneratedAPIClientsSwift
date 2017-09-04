@@ -38,10 +38,8 @@ public final class GenericDistributionProviderService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var genericDistributionProvider: GenericDistributionProvider.GenericDistributionProviderTokenizer {
-			get {
-				return GenericDistributionProvider.GenericDistributionProviderTokenizer(self.append("genericDistributionProvider")) 
-			}
+		public func genericDistributionProvider<T: GenericDistributionProvider.GenericDistributionProviderTokenizer>() -> T {
+			return T(self.append("genericDistributionProvider"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class GenericDistributionProviderService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: GenericDistributionProviderFilter.GenericDistributionProviderFilterTokenizer {
-			get {
-				return GenericDistributionProviderFilter.GenericDistributionProviderFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: GenericDistributionProviderFilter.GenericDistributionProviderFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -127,10 +121,8 @@ public final class GenericDistributionProviderService{
 			}
 		}
 		
-		public var genericDistributionProvider: GenericDistributionProvider.GenericDistributionProviderTokenizer {
-			get {
-				return GenericDistributionProvider.GenericDistributionProviderTokenizer(self.append("genericDistributionProvider")) 
-			}
+		public func genericDistributionProvider<T: GenericDistributionProvider.GenericDistributionProviderTokenizer>() -> T {
+			return T(self.append("genericDistributionProvider"))
 		}
 	}
 

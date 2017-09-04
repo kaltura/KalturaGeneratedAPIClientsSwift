@@ -43,10 +43,8 @@ open class ExtendingItemMrssParameter: ObjectBase {
 			}
 		}
 		
-		public var identifier: ObjectIdentifier.ObjectIdentifierTokenizer {
-			get {
-				return ObjectIdentifier.ObjectIdentifierTokenizer(self.append("identifier")) 
-			}
+		public func identifier<T: ObjectIdentifier.ObjectIdentifierTokenizer>() -> T {
+			return T(self.append("identifier"))
 		}
 		
 		public var extensionMode: BaseTokenizedObject {

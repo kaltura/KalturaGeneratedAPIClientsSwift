@@ -50,10 +50,8 @@ open class RequestConfiguration: ObjectBase {
 			}
 		}
 		
-		public var responseProfile: BaseResponseProfile.BaseResponseProfileTokenizer {
-			get {
-				return BaseResponseProfile.BaseResponseProfileTokenizer(self.append("responseProfile")) 
-			}
+		public func responseProfile<T: BaseResponseProfile.BaseResponseProfileTokenizer>() -> T {
+			return T(self.append("responseProfile"))
 		}
 	}
 

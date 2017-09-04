@@ -37,16 +37,12 @@ open class CaptionAssetItem: ObjectBase {
 
 	public class CaptionAssetItemTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var asset: CaptionAsset.CaptionAssetTokenizer {
-			get {
-				return CaptionAsset.CaptionAssetTokenizer(self.append("asset")) 
-			}
+		public func asset<T: CaptionAsset.CaptionAssetTokenizer>() -> T {
+			return T(self.append("asset"))
 		}
 		
-		public var entry: BaseEntry.BaseEntryTokenizer {
-			get {
-				return BaseEntry.BaseEntryTokenizer(self.append("entry")) 
-			}
+		public func entry<T: BaseEntry.BaseEntryTokenizer>() -> T {
+			return T(self.append("entry"))
 		}
 		
 		public var startTime: BaseTokenizedObject {

@@ -39,10 +39,8 @@ public final class PartnerService{
 
 	public class CountTokenizer: ClientTokenizer  {
 		
-		public var filter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -179,16 +177,12 @@ public final class PartnerService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -224,16 +218,12 @@ public final class PartnerService{
 
 	public class ListPartnersForUserTokenizer: ClientTokenizer  {
 		
-		public var partnerFilter: PartnerFilter.PartnerFilterTokenizer {
-			get {
-				return PartnerFilter.PartnerFilterTokenizer(self.append("partnerFilter")) 
-			}
+		public func partnerFilter<T: PartnerFilter.PartnerFilterTokenizer>() -> T {
+			return T(self.append("partnerFilter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -256,10 +246,8 @@ public final class PartnerService{
 
 	public class RegisterTokenizer: ClientTokenizer  {
 		
-		public var partner: Partner.PartnerTokenizer {
-			get {
-				return Partner.PartnerTokenizer(self.append("partner")) 
-			}
+		public func partner<T: Partner.PartnerTokenizer>() -> T {
+			return T(self.append("partner"))
 		}
 		
 		public var cmsPassword: BaseTokenizedObject {
@@ -306,10 +294,8 @@ public final class PartnerService{
 
 	public class UpdateTokenizer: ClientTokenizer  {
 		
-		public var partner: Partner.PartnerTokenizer {
-			get {
-				return Partner.PartnerTokenizer(self.append("partner")) 
-			}
+		public func partner<T: Partner.PartnerTokenizer>() -> T {
+			return T(self.append("partner"))
 		}
 		
 		public var allowEmpty: BaseTokenizedObject {

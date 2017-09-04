@@ -71,10 +71,8 @@ public final class ReportService{
 			}
 		}
 		
-		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
-			}
+		public func reportInputFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("reportInputFilter"))
 		}
 		
 		public var objectIds: BaseTokenizedObject {
@@ -106,10 +104,8 @@ public final class ReportService{
 			}
 		}
 		
-		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
-			}
+		public func reportInputFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("reportInputFilter"))
 		}
 		
 		public var dimension: BaseTokenizedObject {
@@ -152,16 +148,12 @@ public final class ReportService{
 			}
 		}
 		
-		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
-			}
+		public func reportInputFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("reportInputFilter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 		
 		public var order: BaseTokenizedObject {
@@ -205,10 +197,8 @@ public final class ReportService{
 			}
 		}
 		
-		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
-			}
+		public func reportInputFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("reportInputFilter"))
 		}
 		
 		public var objectIds: BaseTokenizedObject {
@@ -258,10 +248,8 @@ public final class ReportService{
 			}
 		}
 		
-		public var reportInputFilter: ReportInputFilter.ReportInputFilterTokenizer {
-			get {
-				return ReportInputFilter.ReportInputFilterTokenizer(self.append("reportInputFilter")) 
-			}
+		public func reportInputFilter<T: ReportInputFilter.ReportInputFilterTokenizer>() -> T {
+			return T(self.append("reportInputFilter"))
 		}
 		
 		public var dimension: BaseTokenizedObject {
@@ -270,10 +258,8 @@ public final class ReportService{
 			}
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 		
 		public var order: BaseTokenizedObject {

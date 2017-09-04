@@ -44,10 +44,8 @@ public final class ThumbAssetService{
 			}
 		}
 		
-		public var thumbAsset: ThumbAsset.ThumbAssetTokenizer {
-			get {
-				return ThumbAsset.ThumbAssetTokenizer(self.append("thumbAsset")) 
-			}
+		public func thumbAsset<T: ThumbAsset.ThumbAssetTokenizer>() -> T {
+			return T(self.append("thumbAsset"))
 		}
 	}
 
@@ -148,10 +146,8 @@ public final class ThumbAssetService{
 			}
 		}
 		
-		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
-			get {
-				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
-			}
+		public func thumbParams<T: ThumbParams.ThumbParamsTokenizer>() -> T {
+			return T(self.append("thumbParams"))
 		}
 		
 		public var sourceAssetId: BaseTokenizedObject {
@@ -260,10 +256,8 @@ public final class ThumbAssetService{
 			}
 		}
 		
-		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
-			get {
-				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
-			}
+		public func thumbParams<T: ThumbParams.ThumbParamsTokenizer>() -> T {
+			return T(self.append("thumbParams"))
 		}
 	}
 
@@ -287,16 +281,12 @@ public final class ThumbAssetService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: AssetFilter.AssetFilterTokenizer {
-			get {
-				return AssetFilter.AssetFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AssetFilter.AssetFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -360,10 +350,8 @@ public final class ThumbAssetService{
 			}
 		}
 		
-		public var contentResource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("contentResource")) 
-			}
+		public func contentResource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("contentResource"))
 		}
 	}
 
@@ -384,10 +372,8 @@ public final class ThumbAssetService{
 			}
 		}
 		
-		public var thumbAsset: ThumbAsset.ThumbAssetTokenizer {
-			get {
-				return ThumbAsset.ThumbAssetTokenizer(self.append("thumbAsset")) 
-			}
+		public func thumbAsset<T: ThumbAsset.ThumbAssetTokenizer>() -> T {
+			return T(self.append("thumbAsset"))
 		}
 	}
 

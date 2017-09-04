@@ -37,16 +37,12 @@ open class ConversionProfileAssetParamsFilter: ConversionProfileAssetParamsBaseF
 
 	public class ConversionProfileAssetParamsFilterTokenizer: ConversionProfileAssetParamsBaseFilter.ConversionProfileAssetParamsBaseFilterTokenizer {
 		
-		public var conversionProfileIdFilter: ConversionProfileFilter.ConversionProfileFilterTokenizer {
-			get {
-				return ConversionProfileFilter.ConversionProfileFilterTokenizer(self.append("conversionProfileIdFilter")) 
-			}
+		public func conversionProfileIdFilter<T: ConversionProfileFilter.ConversionProfileFilterTokenizer>() -> T {
+			return T(self.append("conversionProfileIdFilter"))
 		}
 		
-		public var assetParamsIdFilter: AssetParamsFilter.AssetParamsFilterTokenizer {
-			get {
-				return AssetParamsFilter.AssetParamsFilterTokenizer(self.append("assetParamsIdFilter")) 
-			}
+		public func assetParamsIdFilter<T: AssetParamsFilter.AssetParamsFilterTokenizer>() -> T {
+			return T(self.append("assetParamsIdFilter"))
 		}
 	}
 

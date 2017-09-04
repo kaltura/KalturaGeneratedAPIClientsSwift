@@ -38,10 +38,8 @@ public final class AppTokenService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var appToken: AppToken.AppTokenTokenizer {
-			get {
-				return AppToken.AppTokenTokenizer(self.append("appToken")) 
-			}
+		public func appToken<T: AppToken.AppTokenTokenizer>() -> T {
+			return T(self.append("appToken"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class AppTokenService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: AppTokenFilter.AppTokenFilterTokenizer {
-			get {
-				return AppTokenFilter.AppTokenFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AppTokenFilter.AppTokenFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -184,10 +178,8 @@ public final class AppTokenService{
 			}
 		}
 		
-		public var appToken: AppToken.AppTokenTokenizer {
-			get {
-				return AppToken.AppTokenTokenizer(self.append("appToken")) 
-			}
+		public func appToken<T: AppToken.AppTokenTokenizer>() -> T {
+			return T(self.append("appToken"))
 		}
 	}
 

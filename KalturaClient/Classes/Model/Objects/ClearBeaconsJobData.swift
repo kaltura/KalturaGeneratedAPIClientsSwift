@@ -33,42 +33,53 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  API object which provides the recipients of category related notifications.  */
-open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipientProvider {
+open class ClearBeaconsJobData: JobData {
 
-	public class EmailNotificationCategoryRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
+	public class ClearBeaconsJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public func categoryId<T: StringValue.StringValueTokenizer>() -> T {
-			return T(self.append("categoryId"))
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
 		}
 		
-		public func categoryUserFilter<T: CategoryUserProviderFilter.CategoryUserProviderFilterTokenizer>() -> T {
-			return T(self.append("categoryUserFilter"))
+		public var relatedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("relatedObjectType") 
+			}
 		}
 	}
 
-	/**  The ID of the category whose subscribers should receive the email notification.  */
-	public var categoryId: StringValue? = nil
-	public var categoryUserFilter: CategoryUserProviderFilter? = nil
+	/**  Beacon object Id to clear info for  */
+	public var objectId: String? = nil
+	/**  Beacon object Type to clear info for  */
+	public var relatedObjectType: Int? = nil
 
 
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(relatedObjectType: String) {
+		self.dict["relatedObjectType"] = relatedObjectType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["categoryId"] != nil {
-		categoryId = try JSONParser.parse(object: dict["categoryId"] as! [String: Any])		}
-		if dict["categoryUserFilter"] != nil {
-		categoryUserFilter = try JSONParser.parse(object: dict["categoryUserFilter"] as! [String: Any])		}
+		if dict["objectId"] != nil {
+			objectId = dict["objectId"] as? String
+		}
+		if dict["relatedObjectType"] != nil {
+			relatedObjectType = dict["relatedObjectType"] as? Int
+		}
 
 	}
 
 	public override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(categoryId != nil) {
-			dict["categoryId"] = categoryId!.toDictionary()
-		}
-		if(categoryUserFilter != nil) {
-			dict["categoryUserFilter"] = categoryUserFilter!.toDictionary()
+		if(relatedObjectType != nil) {
+			dict["relatedObjectType"] = relatedObjectType!
 		}
 		return dict
 	}

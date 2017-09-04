@@ -73,10 +73,8 @@ open class ConvartableJobData: JobData {
 			}
 		}
 		
-		public var flavorParamsOutput: FlavorParamsOutput.FlavorParamsOutputTokenizer {
-			get {
-				return FlavorParamsOutput.FlavorParamsOutputTokenizer(self.append("flavorParamsOutput")) 
-			}
+		public func flavorParamsOutput<T: FlavorParamsOutput.FlavorParamsOutputTokenizer>() -> T {
+			return T(self.append("flavorParamsOutput"))
 		}
 		
 		public var mediaInfoId: BaseTokenizedObject {

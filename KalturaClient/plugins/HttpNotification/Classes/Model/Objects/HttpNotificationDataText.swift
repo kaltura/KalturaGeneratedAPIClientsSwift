@@ -37,10 +37,8 @@ open class HttpNotificationDataText: HttpNotificationData {
 
 	public class HttpNotificationDataTextTokenizer: HttpNotificationData.HttpNotificationDataTokenizer {
 		
-		public var content: StringValue.StringValueTokenizer {
-			get {
-				return StringValue.StringValueTokenizer(self.append("content")) 
-			}
+		public func content<T: StringValue.StringValueTokenizer>() -> T {
+			return T(self.append("content"))
 		}
 	}
 

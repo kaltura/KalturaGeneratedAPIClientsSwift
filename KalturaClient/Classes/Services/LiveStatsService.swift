@@ -38,10 +38,8 @@ public final class LiveStatsService{
 
 	public class CollectTokenizer: ClientTokenizer  {
 		
-		public var event: LiveStatsEvent.LiveStatsEventTokenizer {
-			get {
-				return LiveStatsEvent.LiveStatsEventTokenizer(self.append("event")) 
-			}
+		public func event<T: LiveStatsEvent.LiveStatsEventTokenizer>() -> T {
+			return T(self.append("event"))
 		}
 	}
 

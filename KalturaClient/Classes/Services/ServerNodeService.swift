@@ -38,10 +38,8 @@ public final class ServerNodeService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var serverNode: ServerNode.ServerNodeTokenizer {
-			get {
-				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
-			}
+		public func serverNode<T: ServerNode.ServerNodeTokenizer>() -> T {
+			return T(self.append("serverNode"))
 		}
 	}
 
@@ -123,16 +121,12 @@ public final class ServerNodeService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ServerNodeFilter.ServerNodeFilterTokenizer {
-			get {
-				return ServerNodeFilter.ServerNodeFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ServerNodeFilter.ServerNodeFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -160,10 +154,8 @@ public final class ServerNodeService{
 			}
 		}
 		
-		public var serverNode: ServerNode.ServerNodeTokenizer {
-			get {
-				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
-			}
+		public func serverNode<T: ServerNode.ServerNodeTokenizer>() -> T {
+			return T(self.append("serverNode"))
 		}
 	}
 
@@ -188,10 +180,8 @@ public final class ServerNodeService{
 			}
 		}
 		
-		public var serverNode: ServerNode.ServerNodeTokenizer {
-			get {
-				return ServerNode.ServerNodeTokenizer(self.append("serverNode")) 
-			}
+		public func serverNode<T: ServerNode.ServerNodeTokenizer>() -> T {
+			return T(self.append("serverNode"))
 		}
 	}
 

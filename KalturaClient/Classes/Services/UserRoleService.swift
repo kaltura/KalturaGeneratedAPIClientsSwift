@@ -38,10 +38,8 @@ public final class UserRoleService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var userRole: UserRole.UserRoleTokenizer {
-			get {
-				return UserRole.UserRoleTokenizer(self.append("userRole")) 
-			}
+		public func userRole<T: UserRole.UserRoleTokenizer>() -> T {
+			return T(self.append("userRole"))
 		}
 	}
 
@@ -106,16 +104,12 @@ public final class UserRoleService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UserRoleFilter.UserRoleFilterTokenizer {
-			get {
-				return UserRoleFilter.UserRoleFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserRoleFilter.UserRoleFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -146,10 +140,8 @@ public final class UserRoleService{
 			}
 		}
 		
-		public var userRole: UserRole.UserRoleTokenizer {
-			get {
-				return UserRole.UserRoleTokenizer(self.append("userRole")) 
-			}
+		public func userRole<T: UserRole.UserRoleTokenizer>() -> T {
+			return T(self.append("userRole"))
 		}
 	}
 

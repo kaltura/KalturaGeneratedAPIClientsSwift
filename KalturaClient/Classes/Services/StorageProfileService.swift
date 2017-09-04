@@ -38,10 +38,8 @@ public final class StorageProfileService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var storageProfile: StorageProfile.StorageProfileTokenizer {
-			get {
-				return StorageProfile.StorageProfileTokenizer(self.append("storageProfile")) 
-			}
+		public func storageProfile<T: StorageProfile.StorageProfileTokenizer>() -> T {
+			return T(self.append("storageProfile"))
 		}
 	}
 
@@ -72,16 +70,12 @@ public final class StorageProfileService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: StorageProfileFilter.StorageProfileFilterTokenizer {
-			get {
-				return StorageProfileFilter.StorageProfileFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: StorageProfileFilter.StorageProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -109,10 +103,8 @@ public final class StorageProfileService{
 			}
 		}
 		
-		public var storageProfile: StorageProfile.StorageProfileTokenizer {
-			get {
-				return StorageProfile.StorageProfileTokenizer(self.append("storageProfile")) 
-			}
+		public func storageProfile<T: StorageProfile.StorageProfileTokenizer>() -> T {
+			return T(self.append("storageProfile"))
 		}
 	}
 

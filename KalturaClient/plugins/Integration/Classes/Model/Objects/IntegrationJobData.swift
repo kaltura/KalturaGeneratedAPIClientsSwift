@@ -49,10 +49,8 @@ open class IntegrationJobData: JobData {
 			}
 		}
 		
-		public var providerData: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer {
-			get {
-				return IntegrationJobProviderData.IntegrationJobProviderDataTokenizer(self.append("providerData")) 
-			}
+		public func providerData<T: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer>() -> T {
+			return T(self.append("providerData"))
 		}
 		
 		public var triggerType: BaseTokenizedObject {
@@ -61,10 +59,8 @@ open class IntegrationJobData: JobData {
 			}
 		}
 		
-		public var triggerData: IntegrationJobTriggerData.IntegrationJobTriggerDataTokenizer {
-			get {
-				return IntegrationJobTriggerData.IntegrationJobTriggerDataTokenizer(self.append("triggerData")) 
-			}
+		public func triggerData<T: IntegrationJobTriggerData.IntegrationJobTriggerDataTokenizer>() -> T {
+			return T(self.append("triggerData"))
 		}
 	}
 

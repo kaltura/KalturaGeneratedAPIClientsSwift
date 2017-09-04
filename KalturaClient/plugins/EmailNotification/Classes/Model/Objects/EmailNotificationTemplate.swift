@@ -67,28 +67,20 @@ open class EmailNotificationTemplate: EventNotificationTemplate {
 			}
 		}
 		
-		public var to: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
-			get {
-				return EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer(self.append("to")) 
-			}
+		public func to<T: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer>() -> T {
+			return T(self.append("to"))
 		}
 		
-		public var cc: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
-			get {
-				return EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer(self.append("cc")) 
-			}
+		public func cc<T: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer>() -> T {
+			return T(self.append("cc"))
 		}
 		
-		public var bcc: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
-			get {
-				return EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer(self.append("bcc")) 
-			}
+		public func bcc<T: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer>() -> T {
+			return T(self.append("bcc"))
 		}
 		
-		public var replyTo: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
-			get {
-				return EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer(self.append("replyTo")) 
-			}
+		public func replyTo<T: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer>() -> T {
+			return T(self.append("replyTo"))
 		}
 		
 		public var priority: BaseTokenizedObject {

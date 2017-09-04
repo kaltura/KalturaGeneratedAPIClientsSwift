@@ -37,10 +37,8 @@ open class AssetParamsResourceContainer: Resource {
 
 	public class AssetParamsResourceContainerTokenizer: Resource.ResourceTokenizer {
 		
-		public var resource: ContentResource.ContentResourceTokenizer {
-			get {
-				return ContentResource.ContentResourceTokenizer(self.append("resource")) 
-			}
+		public func resource<T: ContentResource.ContentResourceTokenizer>() -> T {
+			return T(self.append("resource"))
 		}
 		
 		public var assetParamsId: BaseTokenizedObject {

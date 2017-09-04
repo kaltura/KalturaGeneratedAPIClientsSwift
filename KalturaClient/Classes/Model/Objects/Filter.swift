@@ -43,10 +43,8 @@ open class Filter: ObjectBase {
 			}
 		}
 		
-		public var advancedSearch: SearchItem.SearchItemTokenizer {
-			get {
-				return SearchItem.SearchItemTokenizer(self.append("advancedSearch")) 
-			}
+		public func advancedSearch<T: SearchItem.SearchItemTokenizer>() -> T {
+			return T(self.append("advancedSearch"))
 		}
 	}
 

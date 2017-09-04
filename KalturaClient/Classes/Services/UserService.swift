@@ -40,10 +40,8 @@ public final class UserService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var user: User.UserTokenizer {
-			get {
-				return User.UserTokenizer(self.append("user")) 
-			}
+		public func user<T: User.UserTokenizer>() -> T {
+			return T(self.append("user"))
 		}
 	}
 
@@ -212,16 +210,12 @@ public final class UserService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UserFilter.UserFilterTokenizer {
-			get {
-				return UserFilter.UserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserFilter.UserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -432,10 +426,8 @@ public final class UserService{
 			}
 		}
 		
-		public var user: User.UserTokenizer {
-			get {
-				return User.UserTokenizer(self.append("user")) 
-			}
+		public func user<T: User.UserTokenizer>() -> T {
+			return T(self.append("user"))
 		}
 	}
 

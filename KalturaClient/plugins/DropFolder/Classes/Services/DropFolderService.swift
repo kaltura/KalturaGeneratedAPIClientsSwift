@@ -38,10 +38,8 @@ public final class DropFolderService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var dropFolder: DropFolder.DropFolderTokenizer {
-			get {
-				return DropFolder.DropFolderTokenizer(self.append("dropFolder")) 
-			}
+		public func dropFolder<T: DropFolder.DropFolderTokenizer>() -> T {
+			return T(self.append("dropFolder"))
 		}
 	}
 
@@ -152,16 +150,12 @@ public final class DropFolderService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: DropFolderFilter.DropFolderFilterTokenizer {
-			get {
-				return DropFolderFilter.DropFolderFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: DropFolderFilter.DropFolderFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -190,10 +184,8 @@ public final class DropFolderService{
 			}
 		}
 		
-		public var dropFolder: DropFolder.DropFolderTokenizer {
-			get {
-				return DropFolder.DropFolderTokenizer(self.append("dropFolder")) 
-			}
+		public func dropFolder<T: DropFolder.DropFolderTokenizer>() -> T {
+			return T(self.append("dropFolder"))
 		}
 	}
 

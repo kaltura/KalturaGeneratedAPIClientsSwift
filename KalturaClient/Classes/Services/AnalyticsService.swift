@@ -38,16 +38,12 @@ public final class AnalyticsService{
 
 	public class QueryTokenizer: ClientTokenizer  {
 		
-		public var filter: AnalyticsFilter.AnalyticsFilterTokenizer {
-			get {
-				return AnalyticsFilter.AnalyticsFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: AnalyticsFilter.AnalyticsFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 

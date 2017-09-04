@@ -54,16 +54,12 @@ public final class EntryServerNodeService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: EntryServerNodeFilter.EntryServerNodeFilterTokenizer {
-			get {
-				return EntryServerNodeFilter.EntryServerNodeFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: EntryServerNodeFilter.EntryServerNodeFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -91,10 +87,8 @@ public final class EntryServerNodeService{
 			}
 		}
 		
-		public var entryServerNode: EntryServerNode.EntryServerNodeTokenizer {
-			get {
-				return EntryServerNode.EntryServerNodeTokenizer(self.append("entryServerNode")) 
-			}
+		public func entryServerNode<T: EntryServerNode.EntryServerNodeTokenizer>() -> T {
+			return T(self.append("entryServerNode"))
 		}
 	}
 

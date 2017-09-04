@@ -38,10 +38,8 @@ public final class CaptionParamsService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var captionParams: CaptionParams.CaptionParamsTokenizer {
-			get {
-				return CaptionParams.CaptionParamsTokenizer(self.append("captionParams")) 
-			}
+		public func captionParams<T: CaptionParams.CaptionParamsTokenizer>() -> T {
+			return T(self.append("captionParams"))
 		}
 	}
 
@@ -89,16 +87,12 @@ public final class CaptionParamsService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CaptionParamsFilter.CaptionParamsFilterTokenizer {
-			get {
-				return CaptionParamsFilter.CaptionParamsFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CaptionParamsFilter.CaptionParamsFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -128,10 +122,8 @@ public final class CaptionParamsService{
 			}
 		}
 		
-		public var captionParams: CaptionParams.CaptionParamsTokenizer {
-			get {
-				return CaptionParams.CaptionParamsTokenizer(self.append("captionParams")) 
-			}
+		public func captionParams<T: CaptionParams.CaptionParamsTokenizer>() -> T {
+			return T(self.append("captionParams"))
 		}
 	}
 

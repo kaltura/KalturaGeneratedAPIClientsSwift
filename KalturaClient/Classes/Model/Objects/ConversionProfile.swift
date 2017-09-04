@@ -115,10 +115,8 @@ open class ConversionProfile: ObjectBase {
 			}
 		}
 		
-		public var cropDimensions: CropDimensions.CropDimensionsTokenizer {
-			get {
-				return CropDimensions.CropDimensionsTokenizer(self.append("cropDimensions")) 
-			}
+		public func cropDimensions<T: CropDimensions.CropDimensionsTokenizer>() -> T {
+			return T(self.append("cropDimensions"))
 		}
 		
 		public var clipStart: BaseTokenizedObject {
@@ -181,10 +179,8 @@ open class ConversionProfile: ObjectBase {
 			}
 		}
 		
-		public var defaultReplacementOptions: EntryReplacementOptions.EntryReplacementOptionsTokenizer {
-			get {
-				return EntryReplacementOptions.EntryReplacementOptionsTokenizer(self.append("defaultReplacementOptions")) 
-			}
+		public func defaultReplacementOptions<T: EntryReplacementOptions.EntryReplacementOptionsTokenizer>() -> T {
+			return T(self.append("defaultReplacementOptions"))
 		}
 	}
 

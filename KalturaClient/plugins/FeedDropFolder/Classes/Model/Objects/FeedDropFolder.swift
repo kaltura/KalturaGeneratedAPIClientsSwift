@@ -43,10 +43,8 @@ open class FeedDropFolder: DropFolder {
 			}
 		}
 		
-		public var feedItemInfo: FeedItemInfo.FeedItemInfoTokenizer {
-			get {
-				return FeedItemInfo.FeedItemInfoTokenizer(self.append("feedItemInfo")) 
-			}
+		public func feedItemInfo<T: FeedItemInfo.FeedItemInfoTokenizer>() -> T {
+			return T(self.append("feedItemInfo"))
 		}
 	}
 

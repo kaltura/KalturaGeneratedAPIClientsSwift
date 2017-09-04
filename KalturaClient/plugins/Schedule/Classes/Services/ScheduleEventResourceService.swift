@@ -40,10 +40,8 @@ public final class ScheduleEventResourceService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var scheduleEventResource: ScheduleEventResource.ScheduleEventResourceTokenizer {
-			get {
-				return ScheduleEventResource.ScheduleEventResourceTokenizer(self.append("scheduleEventResource")) 
-			}
+		public func scheduleEventResource<T: ScheduleEventResource.ScheduleEventResourceTokenizer>() -> T {
+			return T(self.append("scheduleEventResource"))
 		}
 	}
 
@@ -105,16 +103,12 @@ public final class ScheduleEventResourceService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ScheduleEventResourceFilter.ScheduleEventResourceFilterTokenizer {
-			get {
-				return ScheduleEventResourceFilter.ScheduleEventResourceFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ScheduleEventResourceFilter.ScheduleEventResourceFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -149,10 +143,8 @@ public final class ScheduleEventResourceService{
 			}
 		}
 		
-		public var scheduleEventResource: ScheduleEventResource.ScheduleEventResourceTokenizer {
-			get {
-				return ScheduleEventResource.ScheduleEventResourceTokenizer(self.append("scheduleEventResource")) 
-			}
+		public func scheduleEventResource<T: ScheduleEventResource.ScheduleEventResourceTokenizer>() -> T {
+			return T(self.append("scheduleEventResource"))
 		}
 	}
 

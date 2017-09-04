@@ -121,10 +121,8 @@ open class DropFolder: ObjectBase {
 			}
 		}
 		
-		public var fileHandlerConfig: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer {
-			get {
-				return DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer(self.append("fileHandlerConfig")) 
-			}
+		public func fileHandlerConfig<T: DropFolderFileHandlerConfig.DropFolderFileHandlerConfigTokenizer>() -> T {
+			return T(self.append("fileHandlerConfig"))
 		}
 		
 		public var tags: BaseTokenizedObject {

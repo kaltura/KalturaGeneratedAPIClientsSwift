@@ -43,10 +43,8 @@ open class DistributionJobData: JobData {
 			}
 		}
 		
-		public var distributionProfile: DistributionProfile.DistributionProfileTokenizer {
-			get {
-				return DistributionProfile.DistributionProfileTokenizer(self.append("distributionProfile")) 
-			}
+		public func distributionProfile<T: DistributionProfile.DistributionProfileTokenizer>() -> T {
+			return T(self.append("distributionProfile"))
 		}
 		
 		public var entryDistributionId: BaseTokenizedObject {
@@ -55,10 +53,8 @@ open class DistributionJobData: JobData {
 			}
 		}
 		
-		public var entryDistribution: EntryDistribution.EntryDistributionTokenizer {
-			get {
-				return EntryDistribution.EntryDistributionTokenizer(self.append("entryDistribution")) 
-			}
+		public func entryDistribution<T: EntryDistribution.EntryDistributionTokenizer>() -> T {
+			return T(self.append("entryDistribution"))
 		}
 		
 		public var remoteId: BaseTokenizedObject {
@@ -73,10 +69,8 @@ open class DistributionJobData: JobData {
 			}
 		}
 		
-		public var providerData: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
-			get {
-				return DistributionJobProviderData.DistributionJobProviderDataTokenizer(self.append("providerData")) 
-			}
+		public func providerData<T: DistributionJobProviderData.DistributionJobProviderDataTokenizer>() -> T {
+			return T(self.append("providerData"))
 		}
 		
 		public var results: BaseTokenizedObject {

@@ -49,28 +49,20 @@ open class EmailNotificationDispatchJobData: EventNotificationDispatchJobData {
 			}
 		}
 		
-		public var to: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
-			get {
-				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("to")) 
-			}
+		public func to<T: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer>() -> T {
+			return T(self.append("to"))
 		}
 		
-		public var cc: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
-			get {
-				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("cc")) 
-			}
+		public func cc<T: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer>() -> T {
+			return T(self.append("cc"))
 		}
 		
-		public var bcc: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
-			get {
-				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("bcc")) 
-			}
+		public func bcc<T: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer>() -> T {
+			return T(self.append("bcc"))
 		}
 		
-		public var replyTo: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer {
-			get {
-				return EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer(self.append("replyTo")) 
-			}
+		public func replyTo<T: EmailNotificationRecipientJobData.EmailNotificationRecipientJobDataTokenizer>() -> T {
+			return T(self.append("replyTo"))
 		}
 		
 		public var priority: BaseTokenizedObject {

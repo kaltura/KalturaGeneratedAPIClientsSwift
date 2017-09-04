@@ -97,10 +97,8 @@ open class BulkUploadJobData: JobData {
 			}
 		}
 		
-		public var objectData: BulkUploadObjectData.BulkUploadObjectDataTokenizer {
-			get {
-				return BulkUploadObjectData.BulkUploadObjectDataTokenizer(self.append("objectData")) 
-			}
+		public func objectData<T: BulkUploadObjectData.BulkUploadObjectDataTokenizer>() -> T {
+			return T(self.append("objectData"))
 		}
 		
 		public var type: BaseTokenizedObject {

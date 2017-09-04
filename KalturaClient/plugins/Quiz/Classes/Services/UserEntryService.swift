@@ -37,10 +37,8 @@ extension UserEntryService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var userEntry: UserEntry.UserEntryTokenizer {
-			get {
-				return UserEntry.UserEntryTokenizer(self.append("userEntry")) 
-			}
+		public func userEntry<T: UserEntry.UserEntryTokenizer>() -> T {
+			return T(self.append("userEntry"))
 		}
 	}
 
@@ -54,10 +52,8 @@ extension UserEntryService{
 
 	public class BulkDeleteTokenizer: ClientTokenizer  {
 		
-		public var filter: UserEntryFilter.UserEntryFilterTokenizer {
-			get {
-				return UserEntryFilter.UserEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserEntryFilter.UserEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 	}
 
@@ -102,16 +98,12 @@ extension UserEntryService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: UserEntryFilter.UserEntryFilterTokenizer {
-			get {
-				return UserEntryFilter.UserEntryFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: UserEntryFilter.UserEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -157,10 +149,8 @@ extension UserEntryService{
 			}
 		}
 		
-		public var userEntry: UserEntry.UserEntryTokenizer {
-			get {
-				return UserEntry.UserEntryTokenizer(self.append("userEntry")) 
-			}
+		public func userEntry<T: UserEntry.UserEntryTokenizer>() -> T {
+			return T(self.append("userEntry"))
 		}
 	}
 

@@ -38,10 +38,8 @@ public final class ThumbParamsService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
-			get {
-				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
-			}
+		public func thumbParams<T: ThumbParams.ThumbParamsTokenizer>() -> T {
+			return T(self.append("thumbParams"))
 		}
 	}
 
@@ -106,16 +104,12 @@ public final class ThumbParamsService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: ThumbParamsFilter.ThumbParamsFilterTokenizer {
-			get {
-				return ThumbParamsFilter.ThumbParamsFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: ThumbParamsFilter.ThumbParamsFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -145,10 +139,8 @@ public final class ThumbParamsService{
 			}
 		}
 		
-		public var thumbParams: ThumbParams.ThumbParamsTokenizer {
-			get {
-				return ThumbParams.ThumbParamsTokenizer(self.append("thumbParams")) 
-			}
+		public func thumbParams<T: ThumbParams.ThumbParamsTokenizer>() -> T {
+			return T(self.append("thumbParams"))
 		}
 	}
 

@@ -62,10 +62,8 @@ extension CategoryUserService{
 
 	public class AddTokenizer: ClientTokenizer  {
 		
-		public var categoryUser: CategoryUser.CategoryUserTokenizer {
-			get {
-				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
-			}
+		public func categoryUser<T: CategoryUser.CategoryUserTokenizer>() -> T {
+			return T(self.append("categoryUser"))
 		}
 	}
 
@@ -79,16 +77,12 @@ extension CategoryUserService{
 
 	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
 		
-		public var bulkUploadData: BulkUploadJobData.BulkUploadJobDataTokenizer {
-			get {
-				return BulkUploadJobData.BulkUploadJobDataTokenizer(self.append("bulkUploadData")) 
-			}
+		public func bulkUploadData<T: BulkUploadJobData.BulkUploadJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
 		}
 		
-		public var bulkUploadCategoryUserData: BulkUploadCategoryUserData.BulkUploadCategoryUserDataTokenizer {
-			get {
-				return BulkUploadCategoryUserData.BulkUploadCategoryUserDataTokenizer(self.append("bulkUploadCategoryUserData")) 
-			}
+		public func bulkUploadCategoryUserData<T: BulkUploadCategoryUserData.BulkUploadCategoryUserDataTokenizer>() -> T {
+			return T(self.append("bulkUploadCategoryUserData"))
 		}
 	}
 
@@ -235,16 +229,12 @@ extension CategoryUserService{
 
 	public class ListTokenizer: ClientTokenizer  {
 		
-		public var filter: CategoryUserFilter.CategoryUserFilterTokenizer {
-			get {
-				return CategoryUserFilter.CategoryUserFilterTokenizer(self.append("filter")) 
-			}
+		public func filter<T: CategoryUserFilter.CategoryUserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
 		}
 		
-		public var pager: FilterPager.FilterPagerTokenizer {
-			get {
-				return FilterPager.FilterPagerTokenizer(self.append("pager")) 
-			}
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
 		}
 	}
 
@@ -279,10 +269,8 @@ extension CategoryUserService{
 			}
 		}
 		
-		public var categoryUser: CategoryUser.CategoryUserTokenizer {
-			get {
-				return CategoryUser.CategoryUserTokenizer(self.append("categoryUser")) 
-			}
+		public func categoryUser<T: CategoryUser.CategoryUserTokenizer>() -> T {
+			return T(self.append("categoryUser"))
 		}
 		
 		public var override: BaseTokenizedObject {
