@@ -48,10 +48,17 @@ open class LiveEntryServerNodeRecordingInfo: ObjectBase {
 				return self.append("duration") 
 			}
 		}
+		
+		public var recordingStatus: BaseTokenizedObject {
+			get {
+				return self.append("recordingStatus") 
+			}
+		}
 	}
 
 	public var recordedEntryId: String? = nil
 	public var duration: Int? = nil
+	public var recordingStatus: EntryServerNodeRecordingStatus? = nil
 
 
 	public func setMultiRequestToken(recordedEntryId: String) {
@@ -60,6 +67,10 @@ open class LiveEntryServerNodeRecordingInfo: ObjectBase {
 	
 	public func setMultiRequestToken(duration: String) {
 		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(recordingStatus: String) {
+		self.dict["recordingStatus"] = recordingStatus
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +82,9 @@ open class LiveEntryServerNodeRecordingInfo: ObjectBase {
 		if dict["duration"] != nil {
 			duration = dict["duration"] as? Int
 		}
+		if dict["recordingStatus"] != nil {
+			recordingStatus = EntryServerNodeRecordingStatus(rawValue: (dict["recordingStatus"] as? Int)!)
+		}
 
 	}
 
@@ -81,6 +95,9 @@ open class LiveEntryServerNodeRecordingInfo: ObjectBase {
 		}
 		if(duration != nil) {
 			dict["duration"] = duration!
+		}
+		if(recordingStatus != nil) {
+			dict["recordingStatus"] = recordingStatus!.rawValue
 		}
 		return dict
 	}
