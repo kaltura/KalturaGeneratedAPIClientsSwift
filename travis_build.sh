@@ -1,7 +1,7 @@
 # Abort on Error
 set -e
 
-SLEEP=30s
+SLEEP=60s
 BUILD_OUTPUT=/tmp/build.out
 
 touch $BUILD_OUTPUT
@@ -20,7 +20,7 @@ trap 'error_handler' ERR
 
 # Set up a repeating loop to send some output to Travis.
 
-bash -c "while true; do tail -100 $BUILD_OUTPUT; sleep $SLEEP; done" &
+bash -c "while true; do tail -10 $BUILD_OUTPUT; sleep $SLEEP; done" &
 PING_LOOP_PID=$!
 
 xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' > $BUILD_OUTPUT 2>&1
