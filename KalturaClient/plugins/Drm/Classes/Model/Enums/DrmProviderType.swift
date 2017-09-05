@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DrmProviderType: String {
+	case FAIRPLAY = "fairplay.FAIRPLAY"
 	case PLAY_READY = "playReady.PLAY_READY"
 	case WIDEVINE = "widevine.WIDEVINE"
 	case CENC = "1"

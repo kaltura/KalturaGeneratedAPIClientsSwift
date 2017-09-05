@@ -27,13 +27,118 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class QuickPlayDistributionProfile: ConfigurableDistributionProfile {
+
+	public class QuickPlayDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var sftpHost: BaseTokenizedObject {
+			get {
+				return self.append("sftpHost") 
+			}
+		}
+		
+		public var sftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("sftpLogin") 
+			}
+		}
+		
+		public var sftpPass: BaseTokenizedObject {
+			get {
+				return self.append("sftpPass") 
+			}
+		}
+		
+		public var sftpBasePath: BaseTokenizedObject {
+			get {
+				return self.append("sftpBasePath") 
+			}
+		}
+		
+		public var channelTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelTitle") 
+			}
+		}
+		
+		public var channelLink: BaseTokenizedObject {
+			get {
+				return self.append("channelLink") 
+			}
+		}
+		
+		public var channelDescription: BaseTokenizedObject {
+			get {
+				return self.append("channelDescription") 
+			}
+		}
+		
+		public var channelManagingEditor: BaseTokenizedObject {
+			get {
+				return self.append("channelManagingEditor") 
+			}
+		}
+		
+		public var channelLanguage: BaseTokenizedObject {
+			get {
+				return self.append("channelLanguage") 
+			}
+		}
+		
+		public var channelImageTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelImageTitle") 
+			}
+		}
+		
+		public var channelImageWidth: BaseTokenizedObject {
+			get {
+				return self.append("channelImageWidth") 
+			}
+		}
+		
+		public var channelImageHeight: BaseTokenizedObject {
+			get {
+				return self.append("channelImageHeight") 
+			}
+		}
+		
+		public var channelImageLink: BaseTokenizedObject {
+			get {
+				return self.append("channelImageLink") 
+			}
+		}
+		
+		public var channelImageUrl: BaseTokenizedObject {
+			get {
+				return self.append("channelImageUrl") 
+			}
+		}
+		
+		public var channelCopyright: BaseTokenizedObject {
+			get {
+				return self.append("channelCopyright") 
+			}
+		}
+		
+		public var channelGenerator: BaseTokenizedObject {
+			get {
+				return self.append("channelGenerator") 
+			}
+		}
+		
+		public var channelRating: BaseTokenizedObject {
+			get {
+				return self.append("channelRating") 
+			}
+		}
+	}
 
 	public var sftpHost: String? = nil
 	public var sftpLogin: String? = nil
@@ -54,6 +159,74 @@ open class QuickPlayDistributionProfile: ConfigurableDistributionProfile {
 	public var channelRating: String? = nil
 
 
+	public func setMultiRequestToken(sftpHost: String) {
+		self.dict["sftpHost"] = sftpHost
+	}
+	
+	public func setMultiRequestToken(sftpLogin: String) {
+		self.dict["sftpLogin"] = sftpLogin
+	}
+	
+	public func setMultiRequestToken(sftpPass: String) {
+		self.dict["sftpPass"] = sftpPass
+	}
+	
+	public func setMultiRequestToken(sftpBasePath: String) {
+		self.dict["sftpBasePath"] = sftpBasePath
+	}
+	
+	public func setMultiRequestToken(channelTitle: String) {
+		self.dict["channelTitle"] = channelTitle
+	}
+	
+	public func setMultiRequestToken(channelLink: String) {
+		self.dict["channelLink"] = channelLink
+	}
+	
+	public func setMultiRequestToken(channelDescription: String) {
+		self.dict["channelDescription"] = channelDescription
+	}
+	
+	public func setMultiRequestToken(channelManagingEditor: String) {
+		self.dict["channelManagingEditor"] = channelManagingEditor
+	}
+	
+	public func setMultiRequestToken(channelLanguage: String) {
+		self.dict["channelLanguage"] = channelLanguage
+	}
+	
+	public func setMultiRequestToken(channelImageTitle: String) {
+		self.dict["channelImageTitle"] = channelImageTitle
+	}
+	
+	public func setMultiRequestToken(channelImageWidth: String) {
+		self.dict["channelImageWidth"] = channelImageWidth
+	}
+	
+	public func setMultiRequestToken(channelImageHeight: String) {
+		self.dict["channelImageHeight"] = channelImageHeight
+	}
+	
+	public func setMultiRequestToken(channelImageLink: String) {
+		self.dict["channelImageLink"] = channelImageLink
+	}
+	
+	public func setMultiRequestToken(channelImageUrl: String) {
+		self.dict["channelImageUrl"] = channelImageUrl
+	}
+	
+	public func setMultiRequestToken(channelCopyright: String) {
+		self.dict["channelCopyright"] = channelCopyright
+	}
+	
+	public func setMultiRequestToken(channelGenerator: String) {
+		self.dict["channelGenerator"] = channelGenerator
+	}
+	
+	public func setMultiRequestToken(channelRating: String) {
+		self.dict["channelRating"] = channelRating
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class UnicornDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class UnicornDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var catalogGuid: BaseTokenizedObject {
+			get {
+				return self.append("catalogGuid") 
+			}
+		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var mediaChanged: BaseTokenizedObject {
+			get {
+				return self.append("mediaChanged") 
+			}
+		}
+		
+		public var flavorAssetVersion: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetVersion") 
+			}
+		}
+		
+		public var notificationBaseUrl: BaseTokenizedObject {
+			get {
+				return self.append("notificationBaseUrl") 
+			}
+		}
+	}
 
 	/**  The Catalog GUID the video is in or will be ingested into.  */
 	public var catalogGuid: String? = nil
@@ -49,6 +82,26 @@ open class UnicornDistributionJobProviderData: ConfigurableDistributionJobProvid
 	public var notificationBaseUrl: String? = nil
 
 
+	public func setMultiRequestToken(catalogGuid: String) {
+		self.dict["catalogGuid"] = catalogGuid
+	}
+	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(mediaChanged: String) {
+		self.dict["mediaChanged"] = mediaChanged
+	}
+	
+	public func setMultiRequestToken(flavorAssetVersion: String) {
+		self.dict["flavorAssetVersion"] = flavorAssetVersion
+	}
+	
+	public func setMultiRequestToken(notificationBaseUrl: String) {
+		self.dict["notificationBaseUrl"] = notificationBaseUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

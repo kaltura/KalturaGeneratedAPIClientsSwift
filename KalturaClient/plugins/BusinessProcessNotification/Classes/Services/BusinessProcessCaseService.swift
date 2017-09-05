@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,8 +36,29 @@
 /**  Business-process case service lets you get information about processes  */
 public final class BusinessProcessCaseService{
 
+	public class AbortTokenizer: ClientTokenizer  {
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var businessProcessStartNotificationTemplateId: BaseTokenizedObject {
+			get {
+				return self.append("businessProcessStartNotificationTemplateId") 
+			}
+		}
+	}
+
 	/**  Abort business-process case  */
-	public static func abort(objectType: EventNotificationEventObjectType, objectId: String, businessProcessStartNotificationTemplateId: Int) -> RequestBuilder<Void> {
+	public static func abort(objectType: EventNotificationEventObjectType, objectId: String, businessProcessStartNotificationTemplateId: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "businessprocessnotification_businessprocesscase", action: "abort")
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
@@ -46,9 +67,24 @@ public final class BusinessProcessCaseService{
 		return request
 	}
 
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public var objectType: BaseTokenizedObject {
+			get {
+				return self.append("objectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+	}
+
 	/**  list business-process cases  */
-	public static func list(objectType: EventNotificationEventObjectType, objectId: String) -> RequestBuilder<Array<BusinessProcessCase>> {
-		let request: ArrayRequestBuilder<BusinessProcessCase> = ArrayRequestBuilder<BusinessProcessCase>(service: "businessprocessnotification_businessprocesscase", action: "list")
+	public static func list(objectType: EventNotificationEventObjectType, objectId: String) -> ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer> {
+		let request: ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer> = ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer>(service: "businessprocessnotification_businessprocesscase", action: "list")
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
 

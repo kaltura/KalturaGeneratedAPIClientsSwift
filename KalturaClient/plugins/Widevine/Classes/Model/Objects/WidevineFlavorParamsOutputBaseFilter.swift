@@ -35,6 +35,9 @@
 
 open class WidevineFlavorParamsOutputBaseFilter: FlavorParamsOutputFilter {
 
+	public class WidevineFlavorParamsOutputBaseFilterTokenizer: FlavorParamsOutputFilter.FlavorParamsOutputFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

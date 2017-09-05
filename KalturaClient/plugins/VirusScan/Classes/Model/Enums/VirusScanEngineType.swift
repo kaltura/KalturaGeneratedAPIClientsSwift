@@ -33,4 +33,7 @@
  */
 public enum VirusScanEngineType: String {
 	case CLAMAV_SCAN_ENGINE = "clamAVScanEngine.ClamAV"
+	case SYMANTEC_SCAN_DIRECT_ENGINE = "symantecScanEngine.SymantecScanDirectEngine"
+	case SYMANTEC_SCAN_ENGINE = "symantecScanEngine.SymantecScanEngine"
+	case SYMANTEC_SCAN_JAVA_ENGINE = "symantecScanEngine.SymantecScanJavaEngine"
 }

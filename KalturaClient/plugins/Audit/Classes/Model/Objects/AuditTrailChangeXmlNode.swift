@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,9 +35,22 @@
 
 open class AuditTrailChangeXmlNode: AuditTrailChangeItem {
 
+	public class AuditTrailChangeXmlNodeTokenizer: AuditTrailChangeItem.AuditTrailChangeItemTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+	}
+
 	public var type: AuditTrailChangeXmlNodeType? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

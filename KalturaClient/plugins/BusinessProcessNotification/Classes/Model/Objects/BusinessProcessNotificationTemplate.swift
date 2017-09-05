@@ -27,13 +27,34 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class BusinessProcessNotificationTemplate: EventNotificationTemplate {
+
+	public class BusinessProcessNotificationTemplateTokenizer: EventNotificationTemplate.EventNotificationTemplateTokenizer {
+		
+		public var serverId: BaseTokenizedObject {
+			get {
+				return self.append("serverId") 
+			}
+		}
+		
+		public var processId: BaseTokenizedObject {
+			get {
+				return self.append("processId") 
+			}
+		}
+		
+		public var mainObjectCode: BaseTokenizedObject {
+			get {
+				return self.append("mainObjectCode") 
+			}
+		}
+	}
 
 	/**  Define the integrated BPM server id  */
 	public var serverId: Int? = nil
@@ -43,6 +64,18 @@ open class BusinessProcessNotificationTemplate: EventNotificationTemplate {
 	public var mainObjectCode: String? = nil
 
 
+	public func setMultiRequestToken(serverId: String) {
+		self.dict["serverId"] = serverId
+	}
+	
+	public func setMultiRequestToken(processId: String) {
+		self.dict["processId"] = processId
+	}
+	
+	public func setMultiRequestToken(mainObjectCode: String) {
+		self.dict["mainObjectCode"] = mainObjectCode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

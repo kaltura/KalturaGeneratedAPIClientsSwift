@@ -35,6 +35,9 @@
 
 open class WidevineProfileBaseFilter: DrmProfileFilter {
 
+	public class WidevineProfileBaseFilterTokenizer: DrmProfileFilter.DrmProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

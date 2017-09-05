@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,11 +35,44 @@
 
 open class DailymotionDistributionProfile: ConfigurableDistributionProfile {
 
+	public class DailymotionDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var user: BaseTokenizedObject {
+			get {
+				return self.append("user") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var geoBlockingMapping: BaseTokenizedObject {
+			get {
+				return self.append("geoBlockingMapping") 
+			}
+		}
+	}
+
 	public var user: String? = nil
 	public var password: String? = nil
 	public var geoBlockingMapping: DailymotionGeoBlockingMapping? = nil
 
 
+	public func setMultiRequestToken(user: String) {
+		self.dict["user"] = user
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(geoBlockingMapping: String) {
+		self.dict["geoBlockingMapping"] = geoBlockingMapping
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,45 +35,105 @@
 
 public final class PlayReadyDrmService{
 
+	public class GenerateKeyTokenizer: ClientTokenizer  {
+	}
+
 	/**  Generate key id and content key for PlayReady encryption  */
-	public static func generateKey() -> RequestBuilder<PlayReadyContentKey> {
-		let request: RequestBuilder<PlayReadyContentKey> = RequestBuilder<PlayReadyContentKey>(service: "playready_playreadydrm", action: "generateKey")
+	public static func generateKey() -> RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GenerateKeyTokenizer> {
+		let request: RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GenerateKeyTokenizer> = RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GenerateKeyTokenizer>(service: "playready_playreadydrm", action: "generateKey")
 
 		return request
 	}
 
+	public class GetContentKeysTokenizer: ClientTokenizer  {
+		
+		public var keyIds: BaseTokenizedObject {
+			get {
+				return self.append("keyIds") 
+			}
+		}
+	}
+
 	/**  Get content keys for input key ids  */
-	public static func getContentKeys(keyIds: String) -> RequestBuilder<Array<PlayReadyContentKey>> {
-		let request: ArrayRequestBuilder<PlayReadyContentKey> = ArrayRequestBuilder<PlayReadyContentKey>(service: "playready_playreadydrm", action: "getContentKeys")
+	public static func getContentKeys(keyIds: String) -> ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer> {
+		let request: ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer> = ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer>(service: "playready_playreadydrm", action: "getContentKeys")
 			.setBody(key: "keyIds", value: keyIds)
 
 		return request
 	}
 
-	public static func getEntryContentKey(entryId: String) -> RequestBuilder<PlayReadyContentKey> {
+	public class GetEntryContentKeyTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var createIfMissing: BaseTokenizedObject {
+			get {
+				return self.append("createIfMissing") 
+			}
+		}
+	}
+
+	public static func getEntryContentKey(entryId: String) -> RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer> {
 		return getEntryContentKey(entryId: entryId, createIfMissing: false)
 	}
 
 	/**  Get content key and key id for the given entry  */
-	public static func getEntryContentKey(entryId: String, createIfMissing: Bool?) -> RequestBuilder<PlayReadyContentKey> {
-		let request: RequestBuilder<PlayReadyContentKey> = RequestBuilder<PlayReadyContentKey>(service: "playready_playreadydrm", action: "getEntryContentKey")
+	public static func getEntryContentKey(entryId: String, createIfMissing: Bool?) -> RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer> {
+		let request: RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer> = RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer>(service: "playready_playreadydrm", action: "getEntryContentKey")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "createIfMissing", value: createIfMissing)
 
 		return request
 	}
 
-	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int) -> RequestBuilder<PlayReadyLicenseDetails> {
+	public class GetLicenseDetailsTokenizer: ClientTokenizer  {
+		
+		public var keyId: BaseTokenizedObject {
+			get {
+				return self.append("keyId") 
+			}
+		}
+		
+		public var deviceId: BaseTokenizedObject {
+			get {
+				return self.append("deviceId") 
+			}
+		}
+		
+		public var deviceType: BaseTokenizedObject {
+			get {
+				return self.append("deviceType") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
+	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int) -> RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> {
 		return getLicenseDetails(keyId: keyId, deviceId: deviceId, deviceType: deviceType, entryId: nil)
 	}
 
-	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int, entryId: String?) -> RequestBuilder<PlayReadyLicenseDetails> {
+	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int, entryId: String?) -> RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> {
 		return getLicenseDetails(keyId: keyId, deviceId: deviceId, deviceType: deviceType, entryId: entryId, referrer: nil)
 	}
 
 	/**  Get Play Ready policy and dates for license creation  */
-	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int, entryId: String?, referrer: String?) -> RequestBuilder<PlayReadyLicenseDetails> {
-		let request: RequestBuilder<PlayReadyLicenseDetails> = RequestBuilder<PlayReadyLicenseDetails>(service: "playready_playreadydrm", action: "getLicenseDetails")
+	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int, entryId: String?, referrer: String?) -> RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> {
+		let request: RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> = RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer>(service: "playready_playreadydrm", action: "getLicenseDetails")
 			.setBody(key: "keyId", value: keyId)
 			.setBody(key: "deviceId", value: deviceId)
 			.setBody(key: "deviceType", value: deviceType)

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,34 +36,61 @@
 /**  Audit Trail service  */
 public final class AuditTrailService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public func auditTrail<T: AuditTrail.AuditTrailTokenizer>() -> T {
+			return T(self.append("auditTrail"))
+		}
+	}
+
 	/**  Allows you to add an audit trail object and audit trail content associated with
 	  Kaltura object  */
-	public static func add(auditTrail: AuditTrail) -> RequestBuilder<AuditTrail> {
-		let request: RequestBuilder<AuditTrail> = RequestBuilder<AuditTrail>(service: "audit_audittrail", action: "add")
+	public static func add(auditTrail: AuditTrail) -> RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer> {
+		let request: RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer> = RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer>(service: "audit_audittrail", action: "add")
 			.setBody(key: "auditTrail", value: auditTrail)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
 	/**  Retrieve an audit trail object by id  */
-	public static func get(id: Int) -> RequestBuilder<AuditTrail> {
-		let request: RequestBuilder<AuditTrail> = RequestBuilder<AuditTrail>(service: "audit_audittrail", action: "get")
+	public static func get(id: Int) -> RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer> {
+		let request: RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer> = RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer>(service: "audit_audittrail", action: "get")
 			.setBody(key: "id", value: id)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<AuditTrailListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public func filter<T: AuditTrailFilter.AuditTrailFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
+		}
+	}
+
+	public static func list() -> RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: AuditTrailFilter?) -> RequestBuilder<AuditTrailListResponse> {
+	public static func list(filter: AuditTrailFilter?) -> RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List audit trail objects by filter and pager  */
-	public static func list(filter: AuditTrailFilter?, pager: FilterPager?) -> RequestBuilder<AuditTrailListResponse> {
-		let request: RequestBuilder<AuditTrailListResponse> = RequestBuilder<AuditTrailListResponse>(service: "audit_audittrail", action: "list")
+	public static func list(filter: AuditTrailFilter?, pager: FilterPager?) -> RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> = RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer>(service: "audit_audittrail", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 

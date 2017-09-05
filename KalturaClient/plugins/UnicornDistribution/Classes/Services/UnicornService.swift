@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,7 +36,16 @@
 /**  Unicorn Service  */
 public final class UnicornService{
 
-	public static func notify(id: Int) -> RequestBuilder<Void> {
+	public class NotifyTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func notify(id: Int) -> NullRequestBuilder {
 		let request: NullRequestBuilder = NullRequestBuilder(service: "unicorndistribution_unicorn", action: "notify")
 			.setBody(key: "id", value: id)
 

@@ -35,6 +35,15 @@
 
 open class DrmPolicyListResponse: ListResponse {
 
+	public class DrmPolicyListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DrmPolicy.DrmPolicyTokenizer> {
+			get {
+				return ArrayTokenizedObject<DrmPolicy.DrmPolicyTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DrmPolicy>? = nil
 
 

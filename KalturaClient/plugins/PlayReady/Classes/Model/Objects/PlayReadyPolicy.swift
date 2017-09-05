@@ -35,6 +35,39 @@
 
 open class PlayReadyPolicy: DrmPolicy {
 
+	public class PlayReadyPolicyTokenizer: DrmPolicy.DrmPolicyTokenizer {
+		
+		public var gracePeriod: BaseTokenizedObject {
+			get {
+				return self.append("gracePeriod") 
+			}
+		}
+		
+		public var licenseRemovalPolicy: BaseTokenizedObject {
+			get {
+				return self.append("licenseRemovalPolicy") 
+			}
+		}
+		
+		public var licenseRemovalDuration: BaseTokenizedObject {
+			get {
+				return self.append("licenseRemovalDuration") 
+			}
+		}
+		
+		public var minSecurityLevel: BaseTokenizedObject {
+			get {
+				return self.append("minSecurityLevel") 
+			}
+		}
+		
+		public var rights: ArrayTokenizedObject<PlayReadyRight.PlayReadyRightTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlayReadyRight.PlayReadyRightTokenizer>(self.append("rights"))
+			} 
+		}
+	}
+
 	public var gracePeriod: Int? = nil
 	public var licenseRemovalPolicy: PlayReadyLicenseRemovalPolicy? = nil
 	public var licenseRemovalDuration: Int? = nil
@@ -42,6 +75,22 @@ open class PlayReadyPolicy: DrmPolicy {
 	public var rights: Array<PlayReadyRight>? = nil
 
 
+	public func setMultiRequestToken(gracePeriod: String) {
+		self.dict["gracePeriod"] = gracePeriod
+	}
+	
+	public func setMultiRequestToken(licenseRemovalPolicy: String) {
+		self.dict["licenseRemovalPolicy"] = licenseRemovalPolicy
+	}
+	
+	public func setMultiRequestToken(licenseRemovalDuration: String) {
+		self.dict["licenseRemovalDuration"] = licenseRemovalDuration
+	}
+	
+	public func setMultiRequestToken(minSecurityLevel: String) {
+		self.dict["minSecurityLevel"] = minSecurityLevel
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

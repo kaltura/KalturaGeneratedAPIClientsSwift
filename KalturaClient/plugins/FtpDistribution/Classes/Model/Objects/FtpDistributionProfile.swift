@@ -27,13 +27,124 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FtpDistributionProfile: ConfigurableDistributionProfile {
+
+	public class FtpDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var host: BaseTokenizedObject {
+			get {
+				return self.append("host") 
+			}
+		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+		
+		public var basePath: BaseTokenizedObject {
+			get {
+				return self.append("basePath") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var passphrase: BaseTokenizedObject {
+			get {
+				return self.append("passphrase") 
+			}
+		}
+		
+		public var sftpPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("sftpPublicKey") 
+			}
+		}
+		
+		public var sftpPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("sftpPrivateKey") 
+			}
+		}
+		
+		public var disableMetadata: BaseTokenizedObject {
+			get {
+				return self.append("disableMetadata") 
+			}
+		}
+		
+		public var metadataXslt: BaseTokenizedObject {
+			get {
+				return self.append("metadataXslt") 
+			}
+		}
+		
+		public var metadataFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("metadataFilenameXslt") 
+			}
+		}
+		
+		public var flavorAssetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetFilenameXslt") 
+			}
+		}
+		
+		public var thumbnailAssetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailAssetFilenameXslt") 
+			}
+		}
+		
+		public var assetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("assetFilenameXslt") 
+			}
+		}
+		
+		public var asperaPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("asperaPublicKey") 
+			}
+		}
+		
+		public var asperaPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("asperaPrivateKey") 
+			}
+		}
+		
+		public var sendMetadataAfterAssets: BaseTokenizedObject {
+			get {
+				return self.append("sendMetadataAfterAssets") 
+			}
+		}
+	}
 
 	public var protocol_: DistributionProtocol? = nil
 	public var host: String? = nil
@@ -55,6 +166,78 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 	public var sendMetadataAfterAssets: Bool? = nil
 
 
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(host: String) {
+		self.dict["host"] = host
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
+	public func setMultiRequestToken(basePath: String) {
+		self.dict["basePath"] = basePath
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(passphrase: String) {
+		self.dict["passphrase"] = passphrase
+	}
+	
+	public func setMultiRequestToken(sftpPublicKey: String) {
+		self.dict["sftpPublicKey"] = sftpPublicKey
+	}
+	
+	public func setMultiRequestToken(sftpPrivateKey: String) {
+		self.dict["sftpPrivateKey"] = sftpPrivateKey
+	}
+	
+	public func setMultiRequestToken(disableMetadata: String) {
+		self.dict["disableMetadata"] = disableMetadata
+	}
+	
+	public func setMultiRequestToken(metadataXslt: String) {
+		self.dict["metadataXslt"] = metadataXslt
+	}
+	
+	public func setMultiRequestToken(metadataFilenameXslt: String) {
+		self.dict["metadataFilenameXslt"] = metadataFilenameXslt
+	}
+	
+	public func setMultiRequestToken(flavorAssetFilenameXslt: String) {
+		self.dict["flavorAssetFilenameXslt"] = flavorAssetFilenameXslt
+	}
+	
+	public func setMultiRequestToken(thumbnailAssetFilenameXslt: String) {
+		self.dict["thumbnailAssetFilenameXslt"] = thumbnailAssetFilenameXslt
+	}
+	
+	public func setMultiRequestToken(assetFilenameXslt: String) {
+		self.dict["assetFilenameXslt"] = assetFilenameXslt
+	}
+	
+	public func setMultiRequestToken(asperaPublicKey: String) {
+		self.dict["asperaPublicKey"] = asperaPublicKey
+	}
+	
+	public func setMultiRequestToken(asperaPrivateKey: String) {
+		self.dict["asperaPrivateKey"] = asperaPrivateKey
+	}
+	
+	public func setMultiRequestToken(sendMetadataAfterAssets: String) {
+		self.dict["sendMetadataAfterAssets"] = sendMetadataAfterAssets
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

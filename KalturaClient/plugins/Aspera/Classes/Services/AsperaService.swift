@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,8 +36,17 @@
 /**  Aspera service  */
 public final class AsperaService{
 
-	public static func getFaspUrl(flavorAssetId: String) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "aspera_aspera", action: "getFaspUrl")
+	public class GetFaspUrlTokenizer: ClientTokenizer  {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+	}
+
+	public static func getFaspUrl(flavorAssetId: String) -> RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer>(service: "aspera_aspera", action: "getFaspUrl")
 			.setBody(key: "flavorAssetId", value: flavorAssetId)
 
 		return request

@@ -36,9 +36,30 @@
 /**  Retrieve information and invoke actions on Flavor Asset  */
 public final class DrmLicenseAccessService{
 
+	public class GetAccessTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var flavorIds: BaseTokenizedObject {
+			get {
+				return self.append("flavorIds") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
 	/**  getAccessAction      input: flavor ids, drmProvider      Get Access Action  */
-	public static func getAccess(entryId: String, flavorIds: String, referrer: String) -> RequestBuilder<DrmLicenseAccessDetails> {
-		let request: RequestBuilder<DrmLicenseAccessDetails> = RequestBuilder<DrmLicenseAccessDetails>(service: "drm_drmlicenseaccess", action: "getAccess")
+	public static func getAccess(entryId: String, flavorIds: String, referrer: String) -> RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer> {
+		let request: RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer> = RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer>(service: "drm_drmlicenseaccess", action: "getAccess")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "flavorIds", value: flavorIds)
 			.setBody(key: "referrer", value: referrer)

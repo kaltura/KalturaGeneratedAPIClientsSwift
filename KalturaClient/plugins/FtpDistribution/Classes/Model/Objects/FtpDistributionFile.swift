@@ -27,13 +27,52 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FtpDistributionFile: ObjectBase {
+
+	public class FtpDistributionFileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var filename: BaseTokenizedObject {
+			get {
+				return self.append("filename") 
+			}
+		}
+		
+		public var contents: BaseTokenizedObject {
+			get {
+				return self.append("contents") 
+			}
+		}
+		
+		public var localFilePath: BaseTokenizedObject {
+			get {
+				return self.append("localFilePath") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var hash: BaseTokenizedObject {
+			get {
+				return self.append("hash") 
+			}
+		}
+	}
 
 	public var assetId: String? = nil
 	public var filename: String? = nil
@@ -43,6 +82,30 @@ open class FtpDistributionFile: ObjectBase {
 	public var hash: String? = nil
 
 
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(filename: String) {
+		self.dict["filename"] = filename
+	}
+	
+	public func setMultiRequestToken(contents: String) {
+		self.dict["contents"] = contents
+	}
+	
+	public func setMultiRequestToken(localFilePath: String) {
+		self.dict["localFilePath"] = localFilePath
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(hash: String) {
+		self.dict["hash"] = hash
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

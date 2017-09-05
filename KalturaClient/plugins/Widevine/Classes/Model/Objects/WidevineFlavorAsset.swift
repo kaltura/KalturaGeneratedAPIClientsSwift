@@ -35,6 +35,27 @@
 
 open class WidevineFlavorAsset: FlavorAsset {
 
+	public class WidevineFlavorAssetTokenizer: FlavorAsset.FlavorAssetTokenizer {
+		
+		public var widevineDistributionStartDate: BaseTokenizedObject {
+			get {
+				return self.append("widevineDistributionStartDate") 
+			}
+		}
+		
+		public var widevineDistributionEndDate: BaseTokenizedObject {
+			get {
+				return self.append("widevineDistributionEndDate") 
+			}
+		}
+		
+		public var widevineAssetId: BaseTokenizedObject {
+			get {
+				return self.append("widevineAssetId") 
+			}
+		}
+	}
+
 	/**  License distribution window start date  */
 	public var widevineDistributionStartDate: Int? = nil
 	/**  License distribution window end date  */
@@ -43,6 +64,18 @@ open class WidevineFlavorAsset: FlavorAsset {
 	public var widevineAssetId: Int? = nil
 
 
+	public func setMultiRequestToken(widevineDistributionStartDate: String) {
+		self.dict["widevineDistributionStartDate"] = widevineDistributionStartDate
+	}
+	
+	public func setMultiRequestToken(widevineDistributionEndDate: String) {
+		self.dict["widevineDistributionEndDate"] = widevineDistributionEndDate
+	}
+	
+	public func setMultiRequestToken(widevineAssetId: String) {
+		self.dict["widevineAssetId"] = widevineAssetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

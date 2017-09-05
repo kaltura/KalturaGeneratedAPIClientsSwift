@@ -27,13 +27,58 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class DoubleClickDistributionProfile: ConfigurableDistributionProfile {
+
+	public class DoubleClickDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var channelTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelTitle") 
+			}
+		}
+		
+		public var channelLink: BaseTokenizedObject {
+			get {
+				return self.append("channelLink") 
+			}
+		}
+		
+		public var channelDescription: BaseTokenizedObject {
+			get {
+				return self.append("channelDescription") 
+			}
+		}
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var cuePointsProvider: BaseTokenizedObject {
+			get {
+				return self.append("cuePointsProvider") 
+			}
+		}
+		
+		public var itemsPerPage: BaseTokenizedObject {
+			get {
+				return self.append("itemsPerPage") 
+			}
+		}
+		
+		public var ignoreSchedulingInFeed: BaseTokenizedObject {
+			get {
+				return self.append("ignoreSchedulingInFeed") 
+			}
+		}
+	}
 
 	public var channelTitle: String? = nil
 	public var channelLink: String? = nil
@@ -44,6 +89,34 @@ open class DoubleClickDistributionProfile: ConfigurableDistributionProfile {
 	public var ignoreSchedulingInFeed: Bool? = nil
 
 
+	public func setMultiRequestToken(channelTitle: String) {
+		self.dict["channelTitle"] = channelTitle
+	}
+	
+	public func setMultiRequestToken(channelLink: String) {
+		self.dict["channelLink"] = channelLink
+	}
+	
+	public func setMultiRequestToken(channelDescription: String) {
+		self.dict["channelDescription"] = channelDescription
+	}
+	
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(cuePointsProvider: String) {
+		self.dict["cuePointsProvider"] = cuePointsProvider
+	}
+	
+	public func setMultiRequestToken(itemsPerPage: String) {
+		self.dict["itemsPerPage"] = itemsPerPage
+	}
+	
+	public func setMultiRequestToken(ignoreSchedulingInFeed: String) {
+		self.dict["ignoreSchedulingInFeed"] = ignoreSchedulingInFeed
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

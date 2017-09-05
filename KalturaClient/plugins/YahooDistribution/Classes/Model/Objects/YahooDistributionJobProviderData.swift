@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,11 +35,44 @@
 
 open class YahooDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class YahooDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var smallThumbPath: BaseTokenizedObject {
+			get {
+				return self.append("smallThumbPath") 
+			}
+		}
+		
+		public var largeThumbPath: BaseTokenizedObject {
+			get {
+				return self.append("largeThumbPath") 
+			}
+		}
+		
+		public var videoAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("videoAssetFilePath") 
+			}
+		}
+	}
+
 	public var smallThumbPath: String? = nil
 	public var largeThumbPath: String? = nil
 	public var videoAssetFilePath: String? = nil
 
 
+	public func setMultiRequestToken(smallThumbPath: String) {
+		self.dict["smallThumbPath"] = smallThumbPath
+	}
+	
+	public func setMultiRequestToken(largeThumbPath: String) {
+		self.dict["largeThumbPath"] = largeThumbPath
+	}
+	
+	public func setMultiRequestToken(videoAssetFilePath: String) {
+		self.dict["videoAssetFilePath"] = videoAssetFilePath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

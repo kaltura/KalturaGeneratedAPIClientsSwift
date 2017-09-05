@@ -35,12 +35,35 @@
 
 open class WidevineFlavorParamsOutput: FlavorParamsOutput {
 
+	public class WidevineFlavorParamsOutputTokenizer: FlavorParamsOutput.FlavorParamsOutputTokenizer {
+		
+		public var widevineDistributionStartDate: BaseTokenizedObject {
+			get {
+				return self.append("widevineDistributionStartDate") 
+			}
+		}
+		
+		public var widevineDistributionEndDate: BaseTokenizedObject {
+			get {
+				return self.append("widevineDistributionEndDate") 
+			}
+		}
+	}
+
 	/**  License distribution window start date  */
 	public var widevineDistributionStartDate: Int? = nil
 	/**  License distribution window end date  */
 	public var widevineDistributionEndDate: Int? = nil
 
 
+	public func setMultiRequestToken(widevineDistributionStartDate: String) {
+		self.dict["widevineDistributionStartDate"] = widevineDistributionStartDate
+	}
+	
+	public func setMultiRequestToken(widevineDistributionEndDate: String) {
+		self.dict["widevineDistributionEndDate"] = widevineDistributionEndDate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

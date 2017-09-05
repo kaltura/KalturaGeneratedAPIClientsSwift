@@ -35,59 +35,117 @@
 
 public final class DrmProfileService{
 
+	public class AddTokenizer: ClientTokenizer  {
+		
+		public func drmProfile<T: DrmProfile.DrmProfileTokenizer>() -> T {
+			return T(self.append("drmProfile"))
+		}
+	}
+
 	/**  Allows you to add a new DrmProfile object  */
-	public static func add(drmProfile: DrmProfile) -> RequestBuilder<DrmProfile> {
-		let request: RequestBuilder<DrmProfile> = RequestBuilder<DrmProfile>(service: "drm_drmprofile", action: "add")
+	public static func add(drmProfile: DrmProfile) -> RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, AddTokenizer> {
+		let request: RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, AddTokenizer> = RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, AddTokenizer>(service: "drm_drmprofile", action: "add")
 			.setBody(key: "drmProfile", value: drmProfile)
 
 		return request
 	}
 
+	public class DeleteTokenizer: ClientTokenizer  {
+		
+		public var drmProfileId: BaseTokenizedObject {
+			get {
+				return self.append("drmProfileId") 
+			}
+		}
+	}
+
 	/**  Mark the KalturaDrmProfile object as deleted  */
-	public static func delete(drmProfileId: Int) -> RequestBuilder<DrmProfile> {
-		let request: RequestBuilder<DrmProfile> = RequestBuilder<DrmProfile>(service: "drm_drmprofile", action: "delete")
+	public static func delete(drmProfileId: Int) -> RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, DeleteTokenizer> {
+		let request: RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, DeleteTokenizer> = RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, DeleteTokenizer>(service: "drm_drmprofile", action: "delete")
 			.setBody(key: "drmProfileId", value: drmProfileId)
 
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public var drmProfileId: BaseTokenizedObject {
+			get {
+				return self.append("drmProfileId") 
+			}
+		}
+	}
+
 	/**  Retrieve a KalturaDrmProfile object by ID  */
-	public static func get(drmProfileId: Int) -> RequestBuilder<DrmProfile> {
-		let request: RequestBuilder<DrmProfile> = RequestBuilder<DrmProfile>(service: "drm_drmprofile", action: "get")
+	public static func get(drmProfileId: Int) -> RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetTokenizer> {
+		let request: RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetTokenizer> = RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetTokenizer>(service: "drm_drmprofile", action: "get")
 			.setBody(key: "drmProfileId", value: drmProfileId)
 
 		return request
+	}
+
+	public class GetByProviderTokenizer: ClientTokenizer  {
+		
+		public var provider: BaseTokenizedObject {
+			get {
+				return self.append("provider") 
+			}
+		}
 	}
 
 	/**  Retrieve a KalturaDrmProfile object by provider, if no specific profile defined
 	  return default profile  */
-	public static func getByProvider(provider: DrmProviderType) -> RequestBuilder<DrmProfile> {
-		let request: RequestBuilder<DrmProfile> = RequestBuilder<DrmProfile>(service: "drm_drmprofile", action: "getByProvider")
+	public static func getByProvider(provider: DrmProviderType) -> RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetByProviderTokenizer> {
+		let request: RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetByProviderTokenizer> = RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, GetByProviderTokenizer>(service: "drm_drmprofile", action: "getByProvider")
 			.setBody(key: "provider", value: provider.rawValue)
 
 		return request
 	}
 
-	public static func list() -> RequestBuilder<DrmProfileListResponse> {
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public func filter<T: DrmProfileFilter.DrmProfileFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
+		}
+	}
+
+	public static func list() -> RequestBuilder<DrmProfileListResponse, DrmProfileListResponse.DrmProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: nil)
 	}
 
-	public static func list(filter: DrmProfileFilter?) -> RequestBuilder<DrmProfileListResponse> {
+	public static func list(filter: DrmProfileFilter?) -> RequestBuilder<DrmProfileListResponse, DrmProfileListResponse.DrmProfileListResponseTokenizer, ListTokenizer> {
 		return list(filter: filter, pager: nil)
 	}
 
 	/**  List KalturaDrmProfile objects  */
-	public static func list(filter: DrmProfileFilter?, pager: FilterPager?) -> RequestBuilder<DrmProfileListResponse> {
-		let request: RequestBuilder<DrmProfileListResponse> = RequestBuilder<DrmProfileListResponse>(service: "drm_drmprofile", action: "list")
+	public static func list(filter: DrmProfileFilter?, pager: FilterPager?) -> RequestBuilder<DrmProfileListResponse, DrmProfileListResponse.DrmProfileListResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<DrmProfileListResponse, DrmProfileListResponse.DrmProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<DrmProfileListResponse, DrmProfileListResponse.DrmProfileListResponseTokenizer, ListTokenizer>(service: "drm_drmprofile", action: "list")
 			.setBody(key: "filter", value: filter)
 			.setBody(key: "pager", value: pager)
 
 		return request
 	}
 
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var drmProfileId: BaseTokenizedObject {
+			get {
+				return self.append("drmProfileId") 
+			}
+		}
+		
+		public func drmProfile<T: DrmProfile.DrmProfileTokenizer>() -> T {
+			return T(self.append("drmProfile"))
+		}
+	}
+
 	/**  Update an existing KalturaDrmProfile object  */
-	public static func update(drmProfileId: Int, drmProfile: DrmProfile) -> RequestBuilder<DrmProfile> {
-		let request: RequestBuilder<DrmProfile> = RequestBuilder<DrmProfile>(service: "drm_drmprofile", action: "update")
+	public static func update(drmProfileId: Int, drmProfile: DrmProfile) -> RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, UpdateTokenizer> = RequestBuilder<DrmProfile, DrmProfile.DrmProfileTokenizer, UpdateTokenizer>(service: "drm_drmprofile", action: "update")
 			.setBody(key: "drmProfileId", value: drmProfileId)
 			.setBody(key: "drmProfile", value: drmProfile)
 

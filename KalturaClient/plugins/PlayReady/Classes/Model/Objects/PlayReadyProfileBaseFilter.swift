@@ -35,6 +35,9 @@
 
 open class PlayReadyProfileBaseFilter: DrmProfileFilter {
 
+	public class PlayReadyProfileBaseFilterTokenizer: DrmProfileFilter.DrmProfileFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -27,13 +27,124 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
+
+	public class CrossKalturaDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var targetServiceUrl: BaseTokenizedObject {
+			get {
+				return self.append("targetServiceUrl") 
+			}
+		}
+		
+		public var targetAccountId: BaseTokenizedObject {
+			get {
+				return self.append("targetAccountId") 
+			}
+		}
+		
+		public var targetLoginId: BaseTokenizedObject {
+			get {
+				return self.append("targetLoginId") 
+			}
+		}
+		
+		public var targetLoginPassword: BaseTokenizedObject {
+			get {
+				return self.append("targetLoginPassword") 
+			}
+		}
+		
+		public var metadataXslt: BaseTokenizedObject {
+			get {
+				return self.append("metadataXslt") 
+			}
+		}
+		
+		public var metadataXpathsTriggerUpdate: ArrayTokenizedObject<StringValue.StringValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringValue.StringValueTokenizer>(self.append("metadataXpathsTriggerUpdate"))
+			} 
+		}
+		
+		public var distributeCaptions: BaseTokenizedObject {
+			get {
+				return self.append("distributeCaptions") 
+			}
+		}
+		
+		public var distributeCuePoints: BaseTokenizedObject {
+			get {
+				return self.append("distributeCuePoints") 
+			}
+		}
+		
+		public var distributeRemoteFlavorAssetContent: BaseTokenizedObject {
+			get {
+				return self.append("distributeRemoteFlavorAssetContent") 
+			}
+		}
+		
+		public var distributeRemoteThumbAssetContent: BaseTokenizedObject {
+			get {
+				return self.append("distributeRemoteThumbAssetContent") 
+			}
+		}
+		
+		public var distributeRemoteCaptionAssetContent: BaseTokenizedObject {
+			get {
+				return self.append("distributeRemoteCaptionAssetContent") 
+			}
+		}
+		
+		public var mapAccessControlProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapAccessControlProfileIds"))
+			} 
+		}
+		
+		public var mapConversionProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapConversionProfileIds"))
+			} 
+		}
+		
+		public var mapMetadataProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapMetadataProfileIds"))
+			} 
+		}
+		
+		public var mapStorageProfileIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapStorageProfileIds"))
+			} 
+		}
+		
+		public var mapFlavorParamsIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapFlavorParamsIds"))
+			} 
+		}
+		
+		public var mapThumbParamsIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapThumbParamsIds"))
+			} 
+		}
+		
+		public var mapCaptionParamsIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapCaptionParamsIds"))
+			} 
+		}
+	}
 
 	public var targetServiceUrl: String? = nil
 	public var targetAccountId: Int? = nil
@@ -55,6 +166,46 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 	public var mapCaptionParamsIds: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(targetServiceUrl: String) {
+		self.dict["targetServiceUrl"] = targetServiceUrl
+	}
+	
+	public func setMultiRequestToken(targetAccountId: String) {
+		self.dict["targetAccountId"] = targetAccountId
+	}
+	
+	public func setMultiRequestToken(targetLoginId: String) {
+		self.dict["targetLoginId"] = targetLoginId
+	}
+	
+	public func setMultiRequestToken(targetLoginPassword: String) {
+		self.dict["targetLoginPassword"] = targetLoginPassword
+	}
+	
+	public func setMultiRequestToken(metadataXslt: String) {
+		self.dict["metadataXslt"] = metadataXslt
+	}
+	
+	public func setMultiRequestToken(distributeCaptions: String) {
+		self.dict["distributeCaptions"] = distributeCaptions
+	}
+	
+	public func setMultiRequestToken(distributeCuePoints: String) {
+		self.dict["distributeCuePoints"] = distributeCuePoints
+	}
+	
+	public func setMultiRequestToken(distributeRemoteFlavorAssetContent: String) {
+		self.dict["distributeRemoteFlavorAssetContent"] = distributeRemoteFlavorAssetContent
+	}
+	
+	public func setMultiRequestToken(distributeRemoteThumbAssetContent: String) {
+		self.dict["distributeRemoteThumbAssetContent"] = distributeRemoteThumbAssetContent
+	}
+	
+	public func setMultiRequestToken(distributeRemoteCaptionAssetContent: String) {
+		self.dict["distributeRemoteCaptionAssetContent"] = distributeRemoteCaptionAssetContent
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

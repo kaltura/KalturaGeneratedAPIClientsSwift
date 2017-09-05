@@ -27,13 +27,158 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class AuditTrail: ObjectBase {
+
+	public class AuditTrailTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var parsedAt: BaseTokenizedObject {
+			get {
+				return self.append("parsedAt") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var auditObjectType: BaseTokenizedObject {
+			get {
+				return self.append("auditObjectType") 
+			}
+		}
+		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
+		public var relatedObjectId: BaseTokenizedObject {
+			get {
+				return self.append("relatedObjectId") 
+			}
+		}
+		
+		public var relatedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("relatedObjectType") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var masterPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("masterPartnerId") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var requestId: BaseTokenizedObject {
+			get {
+				return self.append("requestId") 
+			}
+		}
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+		
+		public func data<T: AuditTrailInfo.AuditTrailInfoTokenizer>() -> T {
+			return T(self.append("data"))
+		}
+		
+		public var ks: BaseTokenizedObject {
+			get {
+				return self.append("ks") 
+			}
+		}
+		
+		public var context: BaseTokenizedObject {
+			get {
+				return self.append("context") 
+			}
+		}
+		
+		public var entryPoint: BaseTokenizedObject {
+			get {
+				return self.append("entryPoint") 
+			}
+		}
+		
+		public var serverName: BaseTokenizedObject {
+			get {
+				return self.append("serverName") 
+			}
+		}
+		
+		public var ipAddress: BaseTokenizedObject {
+			get {
+				return self.append("ipAddress") 
+			}
+		}
+		
+		public var userAgent: BaseTokenizedObject {
+			get {
+				return self.append("userAgent") 
+			}
+		}
+		
+		public var clientTag: BaseTokenizedObject {
+			get {
+				return self.append("clientTag") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var errorDescription: BaseTokenizedObject {
+			get {
+				return self.append("errorDescription") 
+			}
+		}
+	}
 
 	public var id: Int? = nil
 	public var createdAt: Int? = nil
@@ -63,6 +208,98 @@ open class AuditTrail: ObjectBase {
 	public var errorDescription: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(parsedAt: String) {
+		self.dict["parsedAt"] = parsedAt
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(auditObjectType: String) {
+		self.dict["auditObjectType"] = auditObjectType
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(relatedObjectId: String) {
+		self.dict["relatedObjectId"] = relatedObjectId
+	}
+	
+	public func setMultiRequestToken(relatedObjectType: String) {
+		self.dict["relatedObjectType"] = relatedObjectType
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(masterPartnerId: String) {
+		self.dict["masterPartnerId"] = masterPartnerId
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(requestId: String) {
+		self.dict["requestId"] = requestId
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
+	public func setMultiRequestToken(ks: String) {
+		self.dict["ks"] = ks
+	}
+	
+	public func setMultiRequestToken(context: String) {
+		self.dict["context"] = context
+	}
+	
+	public func setMultiRequestToken(entryPoint: String) {
+		self.dict["entryPoint"] = entryPoint
+	}
+	
+	public func setMultiRequestToken(serverName: String) {
+		self.dict["serverName"] = serverName
+	}
+	
+	public func setMultiRequestToken(ipAddress: String) {
+		self.dict["ipAddress"] = ipAddress
+	}
+	
+	public func setMultiRequestToken(userAgent: String) {
+		self.dict["userAgent"] = userAgent
+	}
+	
+	public func setMultiRequestToken(clientTag: String) {
+		self.dict["clientTag"] = clientTag
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(errorDescription: String) {
+		self.dict["errorDescription"] = errorDescription
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

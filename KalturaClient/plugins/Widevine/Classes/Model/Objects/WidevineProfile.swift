@@ -35,6 +35,45 @@
 
 open class WidevineProfile: DrmProfile {
 
+	public class WidevineProfileTokenizer: DrmProfile.DrmProfileTokenizer {
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+		
+		public var iv: BaseTokenizedObject {
+			get {
+				return self.append("iv") 
+			}
+		}
+		
+		public var owner: BaseTokenizedObject {
+			get {
+				return self.append("owner") 
+			}
+		}
+		
+		public var portal: BaseTokenizedObject {
+			get {
+				return self.append("portal") 
+			}
+		}
+		
+		public var maxGop: BaseTokenizedObject {
+			get {
+				return self.append("maxGop") 
+			}
+		}
+		
+		public var regServerHost: BaseTokenizedObject {
+			get {
+				return self.append("regServerHost") 
+			}
+		}
+	}
+
 	public var key: String? = nil
 	public var iv: String? = nil
 	public var owner: String? = nil
@@ -43,6 +82,30 @@ open class WidevineProfile: DrmProfile {
 	public var regServerHost: String? = nil
 
 
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	public func setMultiRequestToken(iv: String) {
+		self.dict["iv"] = iv
+	}
+	
+	public func setMultiRequestToken(owner: String) {
+		self.dict["owner"] = owner
+	}
+	
+	public func setMultiRequestToken(portal: String) {
+		self.dict["portal"] = portal
+	}
+	
+	public func setMultiRequestToken(maxGop: String) {
+		self.dict["maxGop"] = maxGop
+	}
+	
+	public func setMultiRequestToken(regServerHost: String) {
+		self.dict["regServerHost"] = regServerHost
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

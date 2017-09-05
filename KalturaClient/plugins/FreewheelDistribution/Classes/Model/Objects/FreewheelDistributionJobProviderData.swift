@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,12 +35,31 @@
 
 open class FreewheelDistributionJobProviderData: DistributionJobProviderData {
 
+	public class FreewheelDistributionJobProviderDataTokenizer: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
+		
+		public var videoAssetFilePaths: ArrayTokenizedObject<FreewheelDistributionAssetPath.FreewheelDistributionAssetPathTokenizer> {
+			get {
+				return ArrayTokenizedObject<FreewheelDistributionAssetPath.FreewheelDistributionAssetPathTokenizer>(self.append("videoAssetFilePaths"))
+			} 
+		}
+		
+		public var thumbAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetFilePath") 
+			}
+		}
+	}
+
 	/**  Demonstrate passing array of paths to the job  */
 	public var videoAssetFilePaths: Array<FreewheelDistributionAssetPath>? = nil
 	/**  Demonstrate passing single path to the job  */
 	public var thumbAssetFilePath: String? = nil
 
 
+	public func setMultiRequestToken(thumbAssetFilePath: String) {
+		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

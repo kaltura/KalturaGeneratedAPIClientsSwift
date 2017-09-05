@@ -27,13 +27,58 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class DailymotionDistributionCaptionInfo: ObjectBase {
+
+	public class DailymotionDistributionCaptionInfoTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
+		
+		public var filePath: BaseTokenizedObject {
+			get {
+				return self.append("filePath") 
+			}
+		}
+		
+		public var remoteId: BaseTokenizedObject {
+			get {
+				return self.append("remoteId") 
+			}
+		}
+		
+		public var action: BaseTokenizedObject {
+			get {
+				return self.append("action") 
+			}
+		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+	}
 
 	public var language: String? = nil
 	public var filePath: String? = nil
@@ -44,6 +89,34 @@ open class DailymotionDistributionCaptionInfo: ObjectBase {
 	public var format: DailymotionDistributionCaptionFormat? = nil
 
 
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(filePath: String) {
+		self.dict["filePath"] = filePath
+	}
+	
+	public func setMultiRequestToken(remoteId: String) {
+		self.dict["remoteId"] = remoteId
+	}
+	
+	public func setMultiRequestToken(action: String) {
+		self.dict["action"] = action
+	}
+	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

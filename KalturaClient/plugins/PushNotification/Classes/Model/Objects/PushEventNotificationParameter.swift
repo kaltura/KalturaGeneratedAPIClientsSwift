@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,9 +35,22 @@
 
 open class PushEventNotificationParameter: EventNotificationParameter {
 
+	public class PushEventNotificationParameterTokenizer: EventNotificationParameter.EventNotificationParameterTokenizer {
+		
+		public var queueKeyToken: BaseTokenizedObject {
+			get {
+				return self.append("queueKeyToken") 
+			}
+		}
+	}
+
 	public var queueKeyToken: String? = nil
 
 
+	public func setMultiRequestToken(queueKeyToken: String) {
+		self.dict["queueKeyToken"] = queueKeyToken
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

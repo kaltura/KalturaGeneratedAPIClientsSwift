@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,11 +35,36 @@
 
 open class QuickPlayDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class QuickPlayDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var xml: BaseTokenizedObject {
+			get {
+				return self.append("xml") 
+			}
+		}
+		
+		public var videoFilePaths: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("videoFilePaths"))
+			} 
+		}
+		
+		public var thumbnailFilePaths: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("thumbnailFilePaths"))
+			} 
+		}
+	}
+
 	public var xml: String? = nil
 	public var videoFilePaths: Array<StringHolder>? = nil
 	public var thumbnailFilePaths: Array<StringHolder>? = nil
 
 
+	public func setMultiRequestToken(xml: String) {
+		self.dict["xml"] = xml
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

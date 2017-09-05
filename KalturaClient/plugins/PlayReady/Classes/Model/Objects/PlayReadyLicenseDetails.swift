@@ -35,6 +35,31 @@
 
 open class PlayReadyLicenseDetails: ObjectBase {
 
+	public class PlayReadyLicenseDetailsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public func policy<T: PlayReadyPolicy.PlayReadyPolicyTokenizer>() -> T {
+			return T(self.append("policy"))
+		}
+		
+		public var beginDate: BaseTokenizedObject {
+			get {
+				return self.append("beginDate") 
+			}
+		}
+		
+		public var expirationDate: BaseTokenizedObject {
+			get {
+				return self.append("expirationDate") 
+			}
+		}
+		
+		public var removalDate: BaseTokenizedObject {
+			get {
+				return self.append("removalDate") 
+			}
+		}
+	}
+
 	/**  PlayReady policy object  */
 	public var policy: PlayReadyPolicy? = nil
 	/**  License begin date  */
@@ -45,6 +70,18 @@ open class PlayReadyLicenseDetails: ObjectBase {
 	public var removalDate: Int? = nil
 
 
+	public func setMultiRequestToken(beginDate: String) {
+		self.dict["beginDate"] = beginDate
+	}
+	
+	public func setMultiRequestToken(expirationDate: String) {
+		self.dict["expirationDate"] = expirationDate
+	}
+	
+	public func setMultiRequestToken(removalDate: String) {
+		self.dict["removalDate"] = removalDate
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

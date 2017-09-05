@@ -27,13 +27,52 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FreewheelDistributionProfile: DistributionProfile {
+
+	public class FreewheelDistributionProfileTokenizer: DistributionProfile.DistributionProfileTokenizer {
+		
+		public var apikey: BaseTokenizedObject {
+			get {
+				return self.append("apikey") 
+			}
+		}
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var sftpPass: BaseTokenizedObject {
+			get {
+				return self.append("sftpPass") 
+			}
+		}
+		
+		public var sftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("sftpLogin") 
+			}
+		}
+		
+		public var accountId: BaseTokenizedObject {
+			get {
+				return self.append("accountId") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+	}
 
 	public var apikey: String? = nil
 	public var email: String? = nil
@@ -43,6 +82,30 @@ open class FreewheelDistributionProfile: DistributionProfile {
 	public var metadataProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(apikey: String) {
+		self.dict["apikey"] = apikey
+	}
+	
+	public func setMultiRequestToken(email: String) {
+		self.dict["email"] = email
+	}
+	
+	public func setMultiRequestToken(sftpPass: String) {
+		self.dict["sftpPass"] = sftpPass
+	}
+	
+	public func setMultiRequestToken(sftpLogin: String) {
+		self.dict["sftpLogin"] = sftpLogin
+	}
+	
+	public func setMultiRequestToken(accountId: String) {
+		self.dict["accountId"] = accountId
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

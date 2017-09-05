@@ -1,0 +1,46 @@
+// ===================================================================================================
+//                           _  __     _ _
+//                          | |/ /__ _| | |_ _  _ _ _ __ _
+//                          | ' </ _` | |  _| || | '_/ _` |
+//                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
+//
+// This file is part of the Kaltura Collaborative Media Suite which allows users
+// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// text.
+//
+// Copyright (C) 2006-2017  Kaltura Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// @ignore
+// ===================================================================================================
+/**
+ * This class was generated using generate.php
+ * against an XML schema provided by Kaltura.
+ * 
+ * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
+ */
+public enum ESearchUserFieldName: String {
+	case USER_CREATED_AT = "created_at"
+	case USER_EMAIL = "email"
+	case USER_FIRST_NAME = "first_name"
+	case USER_GROUP_IDS = "group_ids"
+	case USER_TYPE = "kuser_type"
+	case USER_LAST_NAME = "last_name"
+	case USER_PERMISSION_NAMES = "permission_names"
+	case USER_ROLE_IDS = "role_ids"
+	case USER_SCREEN_NAME = "screen_name"
+	case USER_TAGS = "tags"
+	case USER_UPDATED_AT = "updated_at"
+}

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,27 @@
 
 open class BusinessProcessNotificationDispatchJobData: EventNotificationDispatchJobData {
 
+	public class BusinessProcessNotificationDispatchJobDataTokenizer: EventNotificationDispatchJobData.EventNotificationDispatchJobDataTokenizer {
+		
+		public func server<T: BusinessProcessServer.BusinessProcessServerTokenizer>() -> T {
+			return T(self.append("server"))
+		}
+		
+		public var caseId: BaseTokenizedObject {
+			get {
+				return self.append("caseId") 
+			}
+		}
+	}
+
 	public var server: BusinessProcessServer? = nil
 	public var caseId: String? = nil
 
 
+	public func setMultiRequestToken(caseId: String) {
+		self.dict["caseId"] = caseId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -27,13 +27,82 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FreewheelGenericDistributionProfile: ConfigurableDistributionProfile {
+
+	public class FreewheelGenericDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var apikey: BaseTokenizedObject {
+			get {
+				return self.append("apikey") 
+			}
+		}
+		
+		public var email: BaseTokenizedObject {
+			get {
+				return self.append("email") 
+			}
+		}
+		
+		public var sftpPass: BaseTokenizedObject {
+			get {
+				return self.append("sftpPass") 
+			}
+		}
+		
+		public var sftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("sftpLogin") 
+			}
+		}
+		
+		public var contentOwner: BaseTokenizedObject {
+			get {
+				return self.append("contentOwner") 
+			}
+		}
+		
+		public var upstreamVideoId: BaseTokenizedObject {
+			get {
+				return self.append("upstreamVideoId") 
+			}
+		}
+		
+		public var upstreamNetworkName: BaseTokenizedObject {
+			get {
+				return self.append("upstreamNetworkName") 
+			}
+		}
+		
+		public var upstreamNetworkId: BaseTokenizedObject {
+			get {
+				return self.append("upstreamNetworkId") 
+			}
+		}
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var replaceGroup: BaseTokenizedObject {
+			get {
+				return self.append("replaceGroup") 
+			}
+		}
+		
+		public var replaceAirDates: BaseTokenizedObject {
+			get {
+				return self.append("replaceAirDates") 
+			}
+		}
+	}
 
 	public var apikey: String? = nil
 	public var email: String? = nil
@@ -48,6 +117,50 @@ open class FreewheelGenericDistributionProfile: ConfigurableDistributionProfile 
 	public var replaceAirDates: Bool? = nil
 
 
+	public func setMultiRequestToken(apikey: String) {
+		self.dict["apikey"] = apikey
+	}
+	
+	public func setMultiRequestToken(email: String) {
+		self.dict["email"] = email
+	}
+	
+	public func setMultiRequestToken(sftpPass: String) {
+		self.dict["sftpPass"] = sftpPass
+	}
+	
+	public func setMultiRequestToken(sftpLogin: String) {
+		self.dict["sftpLogin"] = sftpLogin
+	}
+	
+	public func setMultiRequestToken(contentOwner: String) {
+		self.dict["contentOwner"] = contentOwner
+	}
+	
+	public func setMultiRequestToken(upstreamVideoId: String) {
+		self.dict["upstreamVideoId"] = upstreamVideoId
+	}
+	
+	public func setMultiRequestToken(upstreamNetworkName: String) {
+		self.dict["upstreamNetworkName"] = upstreamNetworkName
+	}
+	
+	public func setMultiRequestToken(upstreamNetworkId: String) {
+		self.dict["upstreamNetworkId"] = upstreamNetworkId
+	}
+	
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(replaceGroup: String) {
+		self.dict["replaceGroup"] = replaceGroup
+	}
+	
+	public func setMultiRequestToken(replaceAirDates: String) {
+		self.dict["replaceAirDates"] = replaceAirDates
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

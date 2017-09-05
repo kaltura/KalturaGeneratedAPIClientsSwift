@@ -27,13 +27,76 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class MetroPcsDistributionProfile: ConfigurableDistributionProfile {
+
+	public class MetroPcsDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var ftpHost: BaseTokenizedObject {
+			get {
+				return self.append("ftpHost") 
+			}
+		}
+		
+		public var ftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("ftpLogin") 
+			}
+		}
+		
+		public var ftpPass: BaseTokenizedObject {
+			get {
+				return self.append("ftpPass") 
+			}
+		}
+		
+		public var ftpPath: BaseTokenizedObject {
+			get {
+				return self.append("ftpPath") 
+			}
+		}
+		
+		public var providerName: BaseTokenizedObject {
+			get {
+				return self.append("providerName") 
+			}
+		}
+		
+		public var providerId: BaseTokenizedObject {
+			get {
+				return self.append("providerId") 
+			}
+		}
+		
+		public var copyright: BaseTokenizedObject {
+			get {
+				return self.append("copyright") 
+			}
+		}
+		
+		public var entitlements: BaseTokenizedObject {
+			get {
+				return self.append("entitlements") 
+			}
+		}
+		
+		public var rating: BaseTokenizedObject {
+			get {
+				return self.append("rating") 
+			}
+		}
+		
+		public var itemType: BaseTokenizedObject {
+			get {
+				return self.append("itemType") 
+			}
+		}
+	}
 
 	public var ftpHost: String? = nil
 	public var ftpLogin: String? = nil
@@ -47,6 +110,46 @@ open class MetroPcsDistributionProfile: ConfigurableDistributionProfile {
 	public var itemType: String? = nil
 
 
+	public func setMultiRequestToken(ftpHost: String) {
+		self.dict["ftpHost"] = ftpHost
+	}
+	
+	public func setMultiRequestToken(ftpLogin: String) {
+		self.dict["ftpLogin"] = ftpLogin
+	}
+	
+	public func setMultiRequestToken(ftpPass: String) {
+		self.dict["ftpPass"] = ftpPass
+	}
+	
+	public func setMultiRequestToken(ftpPath: String) {
+		self.dict["ftpPath"] = ftpPath
+	}
+	
+	public func setMultiRequestToken(providerName: String) {
+		self.dict["providerName"] = providerName
+	}
+	
+	public func setMultiRequestToken(providerId: String) {
+		self.dict["providerId"] = providerId
+	}
+	
+	public func setMultiRequestToken(copyright: String) {
+		self.dict["copyright"] = copyright
+	}
+	
+	public func setMultiRequestToken(entitlements: String) {
+		self.dict["entitlements"] = entitlements
+	}
+	
+	public func setMultiRequestToken(rating: String) {
+		self.dict["rating"] = rating
+	}
+	
+	public func setMultiRequestToken(itemType: String) {
+		self.dict["itemType"] = itemType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

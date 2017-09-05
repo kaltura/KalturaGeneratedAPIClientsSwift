@@ -27,13 +27,58 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class CrossKalturaDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var distributedFlavorAssets: BaseTokenizedObject {
+			get {
+				return self.append("distributedFlavorAssets") 
+			}
+		}
+		
+		public var distributedThumbAssets: BaseTokenizedObject {
+			get {
+				return self.append("distributedThumbAssets") 
+			}
+		}
+		
+		public var distributedMetadata: BaseTokenizedObject {
+			get {
+				return self.append("distributedMetadata") 
+			}
+		}
+		
+		public var distributedCaptionAssets: BaseTokenizedObject {
+			get {
+				return self.append("distributedCaptionAssets") 
+			}
+		}
+		
+		public var distributedCuePoints: BaseTokenizedObject {
+			get {
+				return self.append("distributedCuePoints") 
+			}
+		}
+		
+		public var distributedThumbCuePoints: BaseTokenizedObject {
+			get {
+				return self.append("distributedThumbCuePoints") 
+			}
+		}
+		
+		public var distributedTimedThumbAssets: BaseTokenizedObject {
+			get {
+				return self.append("distributedTimedThumbAssets") 
+			}
+		}
+	}
 
 	/**  Key-value array where the keys are IDs of distributed flavor assets in the
 	  source account and the values are the matching IDs in the target account  */
@@ -58,6 +103,34 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 	public var distributedTimedThumbAssets: String? = nil
 
 
+	public func setMultiRequestToken(distributedFlavorAssets: String) {
+		self.dict["distributedFlavorAssets"] = distributedFlavorAssets
+	}
+	
+	public func setMultiRequestToken(distributedThumbAssets: String) {
+		self.dict["distributedThumbAssets"] = distributedThumbAssets
+	}
+	
+	public func setMultiRequestToken(distributedMetadata: String) {
+		self.dict["distributedMetadata"] = distributedMetadata
+	}
+	
+	public func setMultiRequestToken(distributedCaptionAssets: String) {
+		self.dict["distributedCaptionAssets"] = distributedCaptionAssets
+	}
+	
+	public func setMultiRequestToken(distributedCuePoints: String) {
+		self.dict["distributedCuePoints"] = distributedCuePoints
+	}
+	
+	public func setMultiRequestToken(distributedThumbCuePoints: String) {
+		self.dict["distributedThumbCuePoints"] = distributedThumbCuePoints
+	}
+	
+	public func setMultiRequestToken(distributedTimedThumbAssets: String) {
+		self.dict["distributedTimedThumbAssets"] = distributedTimedThumbAssets
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

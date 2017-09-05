@@ -27,13 +27,22 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class AuditTrailChangeInfo: AuditTrailInfo {
+
+	public class AuditTrailChangeInfoTokenizer: AuditTrailInfo.AuditTrailInfoTokenizer {
+		
+		public var changedItems: ArrayTokenizedObject<AuditTrailChangeItem.AuditTrailChangeItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<AuditTrailChangeItem.AuditTrailChangeItemTokenizer>(self.append("changedItems"))
+			} 
+		}
+	}
 
 	public var changedItems: Array<AuditTrailChangeItem>? = nil
 

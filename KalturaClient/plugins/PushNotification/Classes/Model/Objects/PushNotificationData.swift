@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,11 +35,44 @@
 
 open class PushNotificationData: ObjectBase {
 
+	public class PushNotificationDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var queueName: BaseTokenizedObject {
+			get {
+				return self.append("queueName") 
+			}
+		}
+		
+		public var queueKey: BaseTokenizedObject {
+			get {
+				return self.append("queueKey") 
+			}
+		}
+		
+		public var url: BaseTokenizedObject {
+			get {
+				return self.append("url") 
+			}
+		}
+	}
+
 	public var queueName: String? = nil
 	public var queueKey: String? = nil
 	public var url: String? = nil
 
 
+	public func setMultiRequestToken(queueName: String) {
+		self.dict["queueName"] = queueName
+	}
+	
+	public func setMultiRequestToken(queueKey: String) {
+		self.dict["queueKey"] = queueKey
+	}
+	
+	public func setMultiRequestToken(url: String) {
+		self.dict["url"] = url
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

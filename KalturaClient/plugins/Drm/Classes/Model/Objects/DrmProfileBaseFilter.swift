@@ -35,6 +35,63 @@
 
 open class DrmProfileBaseFilter: Filter {
 
+	public class DrmProfileBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
+		public var partnerIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdEqual") 
+			}
+		}
+		
+		public var partnerIdIn: BaseTokenizedObject {
+			get {
+				return self.append("partnerIdIn") 
+			}
+		}
+		
+		public var nameLike: BaseTokenizedObject {
+			get {
+				return self.append("nameLike") 
+			}
+		}
+		
+		public var providerEqual: BaseTokenizedObject {
+			get {
+				return self.append("providerEqual") 
+			}
+		}
+		
+		public var providerIn: BaseTokenizedObject {
+			get {
+				return self.append("providerIn") 
+			}
+		}
+		
+		public var statusEqual: BaseTokenizedObject {
+			get {
+				return self.append("statusEqual") 
+			}
+		}
+		
+		public var statusIn: BaseTokenizedObject {
+			get {
+				return self.append("statusIn") 
+			}
+		}
+	}
+
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
 	public var partnerIdEqual: Int? = nil
@@ -46,6 +103,42 @@ open class DrmProfileBaseFilter: Filter {
 	public var statusIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(partnerIdEqual: String) {
+		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(partnerIdIn: String) {
+		self.dict["partnerIdIn"] = partnerIdIn
+	}
+	
+	public func setMultiRequestToken(nameLike: String) {
+		self.dict["nameLike"] = nameLike
+	}
+	
+	public func setMultiRequestToken(providerEqual: String) {
+		self.dict["providerEqual"] = providerEqual
+	}
+	
+	public func setMultiRequestToken(providerIn: String) {
+		self.dict["providerIn"] = providerIn
+	}
+	
+	public func setMultiRequestToken(statusEqual: String) {
+		self.dict["statusEqual"] = statusEqual
+	}
+	
+	public func setMultiRequestToken(statusIn: String) {
+		self.dict["statusIn"] = statusIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

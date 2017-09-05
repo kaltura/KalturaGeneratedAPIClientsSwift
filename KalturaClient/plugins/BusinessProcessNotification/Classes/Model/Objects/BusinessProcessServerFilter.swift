@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,33 @@
 
 open class BusinessProcessServerFilter: BusinessProcessServerBaseFilter {
 
+	public class BusinessProcessServerFilterTokenizer: BusinessProcessServerBaseFilter.BusinessProcessServerBaseFilterTokenizer {
+		
+		public var currentDcOrExternal: BaseTokenizedObject {
+			get {
+				return self.append("currentDcOrExternal") 
+			}
+		}
+		
+		public var currentDc: BaseTokenizedObject {
+			get {
+				return self.append("currentDc") 
+			}
+		}
+	}
+
 	public var currentDcOrExternal: Bool? = nil
 	public var currentDc: Bool? = nil
 
 
+	public func setMultiRequestToken(currentDcOrExternal: String) {
+		self.dict["currentDcOrExternal"] = currentDcOrExternal
+	}
+	
+	public func setMultiRequestToken(currentDc: String) {
+		self.dict["currentDc"] = currentDc
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

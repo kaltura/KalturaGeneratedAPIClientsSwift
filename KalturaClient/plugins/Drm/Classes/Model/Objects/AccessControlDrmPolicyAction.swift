@@ -35,10 +35,23 @@
 
 open class AccessControlDrmPolicyAction: RuleAction {
 
+	public class AccessControlDrmPolicyActionTokenizer: RuleAction.RuleActionTokenizer {
+		
+		public var policyId: BaseTokenizedObject {
+			get {
+				return self.append("policyId") 
+			}
+		}
+	}
+
 	/**  Drm policy id  */
 	public var policyId: Int? = nil
 
 
+	public func setMultiRequestToken(policyId: String) {
+		self.dict["policyId"] = policyId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

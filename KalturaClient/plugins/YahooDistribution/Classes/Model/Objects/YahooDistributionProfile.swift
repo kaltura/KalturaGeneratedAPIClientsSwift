@@ -27,13 +27,58 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class YahooDistributionProfile: ConfigurableDistributionProfile {
+
+	public class YahooDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var ftpPath: BaseTokenizedObject {
+			get {
+				return self.append("ftpPath") 
+			}
+		}
+		
+		public var ftpUsername: BaseTokenizedObject {
+			get {
+				return self.append("ftpUsername") 
+			}
+		}
+		
+		public var ftpPassword: BaseTokenizedObject {
+			get {
+				return self.append("ftpPassword") 
+			}
+		}
+		
+		public var ftpHost: BaseTokenizedObject {
+			get {
+				return self.append("ftpHost") 
+			}
+		}
+		
+		public var contactTelephone: BaseTokenizedObject {
+			get {
+				return self.append("contactTelephone") 
+			}
+		}
+		
+		public var contactEmail: BaseTokenizedObject {
+			get {
+				return self.append("contactEmail") 
+			}
+		}
+		
+		public var processFeed: BaseTokenizedObject {
+			get {
+				return self.append("processFeed") 
+			}
+		}
+	}
 
 	public var ftpPath: String? = nil
 	public var ftpUsername: String? = nil
@@ -44,6 +89,34 @@ open class YahooDistributionProfile: ConfigurableDistributionProfile {
 	public var processFeed: YahooDistributionProcessFeedActionStatus? = nil
 
 
+	public func setMultiRequestToken(ftpPath: String) {
+		self.dict["ftpPath"] = ftpPath
+	}
+	
+	public func setMultiRequestToken(ftpUsername: String) {
+		self.dict["ftpUsername"] = ftpUsername
+	}
+	
+	public func setMultiRequestToken(ftpPassword: String) {
+		self.dict["ftpPassword"] = ftpPassword
+	}
+	
+	public func setMultiRequestToken(ftpHost: String) {
+		self.dict["ftpHost"] = ftpHost
+	}
+	
+	public func setMultiRequestToken(contactTelephone: String) {
+		self.dict["contactTelephone"] = contactTelephone
+	}
+	
+	public func setMultiRequestToken(contactEmail: String) {
+		self.dict["contactEmail"] = contactEmail
+	}
+	
+	public func setMultiRequestToken(processFeed: String) {
+		self.dict["processFeed"] = processFeed
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

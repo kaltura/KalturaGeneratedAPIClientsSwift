@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class BusinessProcessCase: ObjectBase {
+
+	public class BusinessProcessCaseTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var businessProcessId: BaseTokenizedObject {
+			get {
+				return self.append("businessProcessId") 
+			}
+		}
+		
+		public var businessProcessStartNotificationTemplateId: BaseTokenizedObject {
+			get {
+				return self.append("businessProcessStartNotificationTemplateId") 
+			}
+		}
+		
+		public var suspended: BaseTokenizedObject {
+			get {
+				return self.append("suspended") 
+			}
+		}
+		
+		public var activityId: BaseTokenizedObject {
+			get {
+				return self.append("activityId") 
+			}
+		}
+	}
 
 	public var id: String? = nil
 	public var businessProcessId: String? = nil
@@ -42,6 +75,26 @@ open class BusinessProcessCase: ObjectBase {
 	public var activityId: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(businessProcessId: String) {
+		self.dict["businessProcessId"] = businessProcessId
+	}
+	
+	public func setMultiRequestToken(businessProcessStartNotificationTemplateId: String) {
+		self.dict["businessProcessStartNotificationTemplateId"] = businessProcessStartNotificationTemplateId
+	}
+	
+	public func setMultiRequestToken(suspended: String) {
+		self.dict["suspended"] = suspended
+	}
+	
+	public func setMultiRequestToken(activityId: String) {
+		self.dict["activityId"] = activityId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

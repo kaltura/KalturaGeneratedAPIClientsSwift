@@ -35,9 +35,22 @@
 
 open class PlayReadyProfile: DrmProfile {
 
+	public class PlayReadyProfileTokenizer: DrmProfile.DrmProfileTokenizer {
+		
+		public var keySeed: BaseTokenizedObject {
+			get {
+				return self.append("keySeed") 
+			}
+		}
+	}
+
 	public var keySeed: String? = nil
 
 
+	public func setMultiRequestToken(keySeed: String) {
+		self.dict["keySeed"] = keySeed
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

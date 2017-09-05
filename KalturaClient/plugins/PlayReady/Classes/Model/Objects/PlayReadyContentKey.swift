@@ -35,12 +35,35 @@
 
 open class PlayReadyContentKey: ObjectBase {
 
+	public class PlayReadyContentKeyTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var keyId: BaseTokenizedObject {
+			get {
+				return self.append("keyId") 
+			}
+		}
+		
+		public var contentKey: BaseTokenizedObject {
+			get {
+				return self.append("contentKey") 
+			}
+		}
+	}
+
 	/**  Guid - key id of the specific content  */
 	public var keyId: String? = nil
 	/**  License content key 64 bit encoded  */
 	public var contentKey: String? = nil
 
 
+	public func setMultiRequestToken(keyId: String) {
+		self.dict["keyId"] = keyId
+	}
+	
+	public func setMultiRequestToken(contentKey: String) {
+		self.dict["contentKey"] = contentKey
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

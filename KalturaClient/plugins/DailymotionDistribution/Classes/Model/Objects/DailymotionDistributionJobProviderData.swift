@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,12 +35,51 @@
 
 open class DailymotionDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class DailymotionDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var videoAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("videoAssetFilePath") 
+			}
+		}
+		
+		public var accessControlGeoBlockingOperation: BaseTokenizedObject {
+			get {
+				return self.append("accessControlGeoBlockingOperation") 
+			}
+		}
+		
+		public var accessControlGeoBlockingCountryList: BaseTokenizedObject {
+			get {
+				return self.append("accessControlGeoBlockingCountryList") 
+			}
+		}
+		
+		public var captionsInfo: ArrayTokenizedObject<DailymotionDistributionCaptionInfo.DailymotionDistributionCaptionInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<DailymotionDistributionCaptionInfo.DailymotionDistributionCaptionInfoTokenizer>(self.append("captionsInfo"))
+			} 
+		}
+	}
+
 	public var videoAssetFilePath: String? = nil
 	public var accessControlGeoBlockingOperation: String? = nil
 	public var accessControlGeoBlockingCountryList: String? = nil
 	public var captionsInfo: Array<DailymotionDistributionCaptionInfo>? = nil
 
 
+	public func setMultiRequestToken(videoAssetFilePath: String) {
+		self.dict["videoAssetFilePath"] = videoAssetFilePath
+	}
+	
+	public func setMultiRequestToken(accessControlGeoBlockingOperation: String) {
+		self.dict["accessControlGeoBlockingOperation"] = accessControlGeoBlockingOperation
+	}
+	
+	public func setMultiRequestToken(accessControlGeoBlockingCountryList: String) {
+		self.dict["accessControlGeoBlockingCountryList"] = accessControlGeoBlockingCountryList
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

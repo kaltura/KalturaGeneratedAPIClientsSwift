@@ -35,10 +35,23 @@
 
 open class PlayReadyCopyEnablerHolder: ObjectBase {
 
+	public class PlayReadyCopyEnablerHolderTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+	}
+
 	/**  The type of the copy enabler  */
 	public var type: PlayReadyCopyEnablerType? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

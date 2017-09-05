@@ -35,6 +35,93 @@
 
 open class DrmPolicy: ObjectBase {
 
+	public class DrmPolicyTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var name: BaseTokenizedObject {
+			get {
+				return self.append("name") 
+			}
+		}
+		
+		public var systemName: BaseTokenizedObject {
+			get {
+				return self.append("systemName") 
+			}
+		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
+		
+		public var provider: BaseTokenizedObject {
+			get {
+				return self.append("provider") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var scenario: BaseTokenizedObject {
+			get {
+				return self.append("scenario") 
+			}
+		}
+		
+		public var licenseType: BaseTokenizedObject {
+			get {
+				return self.append("licenseType") 
+			}
+		}
+		
+		public var licenseExpirationPolicy: BaseTokenizedObject {
+			get {
+				return self.append("licenseExpirationPolicy") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var licenseParams: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("licenseParams"))
+			} 
+		}
+	}
+
 	public var id: Int? = nil
 	public var partnerId: Int? = nil
 	public var name: String? = nil
@@ -52,6 +139,58 @@ open class DrmPolicy: ObjectBase {
 	public var licenseParams: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(systemName: String) {
+		self.dict["systemName"] = systemName
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
+	}
+	
+	public func setMultiRequestToken(provider: String) {
+		self.dict["provider"] = provider
+	}
+	
+	public func setMultiRequestToken(status: String) {
+		self.dict["status"] = status
+	}
+	
+	public func setMultiRequestToken(scenario: String) {
+		self.dict["scenario"] = scenario
+	}
+	
+	public func setMultiRequestToken(licenseType: String) {
+		self.dict["licenseType"] = licenseType
+	}
+	
+	public func setMultiRequestToken(licenseExpirationPolicy: String) {
+		self.dict["licenseExpirationPolicy"] = licenseExpirationPolicy
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

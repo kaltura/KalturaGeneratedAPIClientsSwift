@@ -27,13 +27,22 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class BusinessProcessServerListResponse: ListResponse {
+
+	public class BusinessProcessServerListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<BusinessProcessServer.BusinessProcessServerTokenizer> {
+			get {
+				return ArrayTokenizedObject<BusinessProcessServer.BusinessProcessServerTokenizer>(self.append("objects"))
+			} 
+		}
+	}
 
 	public var objects: Array<BusinessProcessServer>? = nil
 

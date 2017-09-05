@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class AuditTrailFileSyncCreateInfo: AuditTrailInfo {
+
+	public class AuditTrailFileSyncCreateInfoTokenizer: AuditTrailInfo.AuditTrailInfoTokenizer {
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
+		
+		public var objectSubType: BaseTokenizedObject {
+			get {
+				return self.append("objectSubType") 
+			}
+		}
+		
+		public var dc: BaseTokenizedObject {
+			get {
+				return self.append("dc") 
+			}
+		}
+		
+		public var original: BaseTokenizedObject {
+			get {
+				return self.append("original") 
+			}
+		}
+		
+		public var fileType: BaseTokenizedObject {
+			get {
+				return self.append("fileType") 
+			}
+		}
+	}
 
 	public var version: String? = nil
 	public var objectSubType: Int? = nil
@@ -42,6 +75,26 @@ open class AuditTrailFileSyncCreateInfo: AuditTrailInfo {
 	public var fileType: AuditTrailFileSyncType? = nil
 
 
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(objectSubType: String) {
+		self.dict["objectSubType"] = objectSubType
+	}
+	
+	public func setMultiRequestToken(dc: String) {
+		self.dict["dc"] = dc
+	}
+	
+	public func setMultiRequestToken(original: String) {
+		self.dict["original"] = original
+	}
+	
+	public func setMultiRequestToken(fileType: String) {
+		self.dict["fileType"] = fileType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

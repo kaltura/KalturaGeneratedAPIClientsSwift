@@ -35,12 +35,55 @@
 
 open class WidevineRepositorySyncJobData: JobData {
 
+	public class WidevineRepositorySyncJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var syncMode: BaseTokenizedObject {
+			get {
+				return self.append("syncMode") 
+			}
+		}
+		
+		public var wvAssetIds: BaseTokenizedObject {
+			get {
+				return self.append("wvAssetIds") 
+			}
+		}
+		
+		public var modifiedAttributes: BaseTokenizedObject {
+			get {
+				return self.append("modifiedAttributes") 
+			}
+		}
+		
+		public var monitorSyncCompletion: BaseTokenizedObject {
+			get {
+				return self.append("monitorSyncCompletion") 
+			}
+		}
+	}
+
 	public var syncMode: WidevineRepositorySyncMode? = nil
 	public var wvAssetIds: String? = nil
 	public var modifiedAttributes: String? = nil
 	public var monitorSyncCompletion: Int? = nil
 
 
+	public func setMultiRequestToken(syncMode: String) {
+		self.dict["syncMode"] = syncMode
+	}
+	
+	public func setMultiRequestToken(wvAssetIds: String) {
+		self.dict["wvAssetIds"] = wvAssetIds
+	}
+	
+	public func setMultiRequestToken(modifiedAttributes: String) {
+		self.dict["modifiedAttributes"] = modifiedAttributes
+	}
+	
+	public func setMultiRequestToken(monitorSyncCompletion: String) {
+		self.dict["monitorSyncCompletion"] = monitorSyncCompletion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

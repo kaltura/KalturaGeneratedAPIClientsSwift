@@ -35,10 +35,29 @@
 
 open class PlayReadyCopyRight: PlayReadyRight {
 
+	public class PlayReadyCopyRightTokenizer: PlayReadyRight.PlayReadyRightTokenizer {
+		
+		public var copyCount: BaseTokenizedObject {
+			get {
+				return self.append("copyCount") 
+			}
+		}
+		
+		public var copyEnablers: ArrayTokenizedObject<PlayReadyCopyEnablerHolder.PlayReadyCopyEnablerHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlayReadyCopyEnablerHolder.PlayReadyCopyEnablerHolderTokenizer>(self.append("copyEnablers"))
+			} 
+		}
+	}
+
 	public var copyCount: Int? = nil
 	public var copyEnablers: Array<PlayReadyCopyEnablerHolder>? = nil
 
 
+	public func setMultiRequestToken(copyCount: String) {
+		self.dict["copyCount"] = copyCount
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

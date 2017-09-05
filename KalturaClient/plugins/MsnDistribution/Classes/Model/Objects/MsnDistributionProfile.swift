@@ -27,13 +27,106 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class MsnDistributionProfile: ConfigurableDistributionProfile {
+
+	public class MsnDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var domain: BaseTokenizedObject {
+			get {
+				return self.append("domain") 
+			}
+		}
+		
+		public var csId: BaseTokenizedObject {
+			get {
+				return self.append("csId") 
+			}
+		}
+		
+		public var source: BaseTokenizedObject {
+			get {
+				return self.append("source") 
+			}
+		}
+		
+		public var sourceFriendlyName: BaseTokenizedObject {
+			get {
+				return self.append("sourceFriendlyName") 
+			}
+		}
+		
+		public var pageGroup: BaseTokenizedObject {
+			get {
+				return self.append("pageGroup") 
+			}
+		}
+		
+		public var sourceFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("sourceFlavorParamsId") 
+			}
+		}
+		
+		public var wmvFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("wmvFlavorParamsId") 
+			}
+		}
+		
+		public var flvFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flvFlavorParamsId") 
+			}
+		}
+		
+		public var slFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("slFlavorParamsId") 
+			}
+		}
+		
+		public var slHdFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("slHdFlavorParamsId") 
+			}
+		}
+		
+		public var msnvideoCat: BaseTokenizedObject {
+			get {
+				return self.append("msnvideoCat") 
+			}
+		}
+		
+		public var msnvideoTop: BaseTokenizedObject {
+			get {
+				return self.append("msnvideoTop") 
+			}
+		}
+		
+		public var msnvideoTopCat: BaseTokenizedObject {
+			get {
+				return self.append("msnvideoTopCat") 
+			}
+		}
+	}
 
 	public var username: String? = nil
 	public var password: String? = nil
@@ -52,6 +145,66 @@ open class MsnDistributionProfile: ConfigurableDistributionProfile {
 	public var msnvideoTopCat: String? = nil
 
 
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(domain: String) {
+		self.dict["domain"] = domain
+	}
+	
+	public func setMultiRequestToken(csId: String) {
+		self.dict["csId"] = csId
+	}
+	
+	public func setMultiRequestToken(source: String) {
+		self.dict["source"] = source
+	}
+	
+	public func setMultiRequestToken(sourceFriendlyName: String) {
+		self.dict["sourceFriendlyName"] = sourceFriendlyName
+	}
+	
+	public func setMultiRequestToken(pageGroup: String) {
+		self.dict["pageGroup"] = pageGroup
+	}
+	
+	public func setMultiRequestToken(sourceFlavorParamsId: String) {
+		self.dict["sourceFlavorParamsId"] = sourceFlavorParamsId
+	}
+	
+	public func setMultiRequestToken(wmvFlavorParamsId: String) {
+		self.dict["wmvFlavorParamsId"] = wmvFlavorParamsId
+	}
+	
+	public func setMultiRequestToken(flvFlavorParamsId: String) {
+		self.dict["flvFlavorParamsId"] = flvFlavorParamsId
+	}
+	
+	public func setMultiRequestToken(slFlavorParamsId: String) {
+		self.dict["slFlavorParamsId"] = slFlavorParamsId
+	}
+	
+	public func setMultiRequestToken(slHdFlavorParamsId: String) {
+		self.dict["slHdFlavorParamsId"] = slHdFlavorParamsId
+	}
+	
+	public func setMultiRequestToken(msnvideoCat: String) {
+		self.dict["msnvideoCat"] = msnvideoCat
+	}
+	
+	public func setMultiRequestToken(msnvideoTop: String) {
+		self.dict["msnvideoTop"] = msnvideoTop
+	}
+	
+	public func setMultiRequestToken(msnvideoTopCat: String) {
+		self.dict["msnvideoTopCat"] = msnvideoTopCat
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

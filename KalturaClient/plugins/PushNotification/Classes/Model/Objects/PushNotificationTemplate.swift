@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class PushNotificationTemplate: EventNotificationTemplate {
+
+	public class PushNotificationTemplateTokenizer: EventNotificationTemplate.EventNotificationTemplateTokenizer {
+		
+		public var queueNameParameters: ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer>(self.append("queueNameParameters"))
+			} 
+		}
+		
+		public var queueKeyParameters: ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer>(self.append("queueKeyParameters"))
+			} 
+		}
+		
+		public var apiObjectType: BaseTokenizedObject {
+			get {
+				return self.append("apiObjectType") 
+			}
+		}
+		
+		public var objectFormat: BaseTokenizedObject {
+			get {
+				return self.append("objectFormat") 
+			}
+		}
+		
+		public var responseProfileId: BaseTokenizedObject {
+			get {
+				return self.append("responseProfileId") 
+			}
+		}
+	}
 
 	/**  Define the content dynamic parameters  */
 	public var queueNameParameters: Array<PushEventNotificationParameter>? = nil
@@ -47,6 +80,18 @@ open class PushNotificationTemplate: EventNotificationTemplate {
 	public var responseProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(apiObjectType: String) {
+		self.dict["apiObjectType"] = apiObjectType
+	}
+	
+	public func setMultiRequestToken(objectFormat: String) {
+		self.dict["objectFormat"] = objectFormat
+	}
+	
+	public func setMultiRequestToken(responseProfileId: String) {
+		self.dict["responseProfileId"] = responseProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

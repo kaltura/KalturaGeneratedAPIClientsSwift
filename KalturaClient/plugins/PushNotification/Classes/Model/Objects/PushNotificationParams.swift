@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,6 +35,15 @@
 
 /**  Object which contains contextual entry-related data.  */
 open class PushNotificationParams: ObjectBase {
+
+	public class PushNotificationParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var userParams: ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer> {
+			get {
+				return ArrayTokenizedObject<PushEventNotificationParameter.PushEventNotificationParameterTokenizer>(self.append("userParams"))
+			} 
+		}
+	}
 
 	/**  User params  */
 	public var userParams: Array<PushEventNotificationParameter>? = nil

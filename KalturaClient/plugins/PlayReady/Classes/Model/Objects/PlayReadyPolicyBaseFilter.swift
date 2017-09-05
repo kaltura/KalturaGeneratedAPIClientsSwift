@@ -35,6 +35,9 @@
 
 open class PlayReadyPolicyBaseFilter: DrmPolicyFilter {
 
+	public class PlayReadyPolicyBaseFilterTokenizer: DrmPolicyFilter.DrmPolicyFilterTokenizer {
+	}
+
 
 
 	internal override func populate(_ dict: [String: Any]) throws {

@@ -36,13 +36,28 @@
 /**  WidevineDrmService serves as a license proxy to a Widevine license server  */
 public final class WidevineDrmService{
 
-	public static func getLicense(flavorAssetId: String) -> RequestBuilder<String> {
+	public class GetLicenseTokenizer: ClientTokenizer  {
+		
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
+		}
+		
+		public var referrer: BaseTokenizedObject {
+			get {
+				return self.append("referrer") 
+			}
+		}
+	}
+
+	public static func getLicense(flavorAssetId: String) -> RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer> {
 		return getLicense(flavorAssetId: flavorAssetId, referrer: nil)
 	}
 
 	/**  Get license for encrypted content playback  */
-	public static func getLicense(flavorAssetId: String, referrer: String?) -> RequestBuilder<String> {
-		let request: RequestBuilder<String> = RequestBuilder<String>(service: "widevine_widevinedrm", action: "getLicense")
+	public static func getLicense(flavorAssetId: String, referrer: String?) -> RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer>(service: "widevine_widevinedrm", action: "getLicense")
 			.setBody(key: "flavorAssetId", value: flavorAssetId)
 			.setBody(key: "referrer", value: referrer)
 

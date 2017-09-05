@@ -35,6 +35,63 @@
 
 open class PlayReadyPlayRight: PlayReadyRight {
 
+	public class PlayReadyPlayRightTokenizer: PlayReadyRight.PlayReadyRightTokenizer {
+		
+		public var analogVideoOPL: BaseTokenizedObject {
+			get {
+				return self.append("analogVideoOPL") 
+			}
+		}
+		
+		public var analogVideoOutputProtectionList: ArrayTokenizedObject<PlayReadyAnalogVideoOPIdHolder.PlayReadyAnalogVideoOPIdHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlayReadyAnalogVideoOPIdHolder.PlayReadyAnalogVideoOPIdHolderTokenizer>(self.append("analogVideoOutputProtectionList"))
+			} 
+		}
+		
+		public var compressedDigitalAudioOPL: BaseTokenizedObject {
+			get {
+				return self.append("compressedDigitalAudioOPL") 
+			}
+		}
+		
+		public var compressedDigitalVideoOPL: BaseTokenizedObject {
+			get {
+				return self.append("compressedDigitalVideoOPL") 
+			}
+		}
+		
+		public var digitalAudioOutputProtectionList: ArrayTokenizedObject<PlayReadyDigitalAudioOPIdHolder.PlayReadyDigitalAudioOPIdHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlayReadyDigitalAudioOPIdHolder.PlayReadyDigitalAudioOPIdHolderTokenizer>(self.append("digitalAudioOutputProtectionList"))
+			} 
+		}
+		
+		public var uncompressedDigitalAudioOPL: BaseTokenizedObject {
+			get {
+				return self.append("uncompressedDigitalAudioOPL") 
+			}
+		}
+		
+		public var uncompressedDigitalVideoOPL: BaseTokenizedObject {
+			get {
+				return self.append("uncompressedDigitalVideoOPL") 
+			}
+		}
+		
+		public var firstPlayExpiration: BaseTokenizedObject {
+			get {
+				return self.append("firstPlayExpiration") 
+			}
+		}
+		
+		public var playEnablers: ArrayTokenizedObject<PlayReadyPlayEnablerHolder.PlayReadyPlayEnablerHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<PlayReadyPlayEnablerHolder.PlayReadyPlayEnablerHolderTokenizer>(self.append("playEnablers"))
+			} 
+		}
+	}
+
 	public var analogVideoOPL: PlayReadyAnalogVideoOPL? = nil
 	public var analogVideoOutputProtectionList: Array<PlayReadyAnalogVideoOPIdHolder>? = nil
 	public var compressedDigitalAudioOPL: PlayReadyDigitalAudioOPL? = nil
@@ -46,6 +103,30 @@ open class PlayReadyPlayRight: PlayReadyRight {
 	public var playEnablers: Array<PlayReadyPlayEnablerHolder>? = nil
 
 
+	public func setMultiRequestToken(analogVideoOPL: String) {
+		self.dict["analogVideoOPL"] = analogVideoOPL
+	}
+	
+	public func setMultiRequestToken(compressedDigitalAudioOPL: String) {
+		self.dict["compressedDigitalAudioOPL"] = compressedDigitalAudioOPL
+	}
+	
+	public func setMultiRequestToken(compressedDigitalVideoOPL: String) {
+		self.dict["compressedDigitalVideoOPL"] = compressedDigitalVideoOPL
+	}
+	
+	public func setMultiRequestToken(uncompressedDigitalAudioOPL: String) {
+		self.dict["uncompressedDigitalAudioOPL"] = uncompressedDigitalAudioOPL
+	}
+	
+	public func setMultiRequestToken(uncompressedDigitalVideoOPL: String) {
+		self.dict["uncompressedDigitalVideoOPL"] = uncompressedDigitalVideoOPL
+	}
+	
+	public func setMultiRequestToken(firstPlayExpiration: String) {
+		self.dict["firstPlayExpiration"] = firstPlayExpiration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

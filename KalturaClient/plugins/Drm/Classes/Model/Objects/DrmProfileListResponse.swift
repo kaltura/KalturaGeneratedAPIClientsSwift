@@ -35,6 +35,15 @@
 
 open class DrmProfileListResponse: ListResponse {
 
+	public class DrmProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<DrmProfile.DrmProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<DrmProfile.DrmProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
 	public var objects: Array<DrmProfile>? = nil
 
 

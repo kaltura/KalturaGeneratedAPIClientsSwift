@@ -27,13 +27,88 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class ComcastMrssDistributionProfile: ConfigurableDistributionProfile {
+
+	public class ComcastMrssDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var feedTitle: BaseTokenizedObject {
+			get {
+				return self.append("feedTitle") 
+			}
+		}
+		
+		public var feedLink: BaseTokenizedObject {
+			get {
+				return self.append("feedLink") 
+			}
+		}
+		
+		public var feedDescription: BaseTokenizedObject {
+			get {
+				return self.append("feedDescription") 
+			}
+		}
+		
+		public var feedLastBuildDate: BaseTokenizedObject {
+			get {
+				return self.append("feedLastBuildDate") 
+			}
+		}
+		
+		public var itemLink: BaseTokenizedObject {
+			get {
+				return self.append("itemLink") 
+			}
+		}
+		
+		public var cPlatformTvSeries: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("cPlatformTvSeries"))
+			} 
+		}
+		
+		public var cPlatformTvSeriesField: BaseTokenizedObject {
+			get {
+				return self.append("cPlatformTvSeriesField") 
+			}
+		}
+		
+		public var shouldIncludeCuePoints: BaseTokenizedObject {
+			get {
+				return self.append("shouldIncludeCuePoints") 
+			}
+		}
+		
+		public var shouldIncludeCaptions: BaseTokenizedObject {
+			get {
+				return self.append("shouldIncludeCaptions") 
+			}
+		}
+		
+		public var shouldAddThumbExtension: BaseTokenizedObject {
+			get {
+				return self.append("shouldAddThumbExtension") 
+			}
+		}
+	}
 
 	public var metadataProfileId: Int? = nil
 	public var feedUrl: String? = nil
@@ -49,6 +124,50 @@ open class ComcastMrssDistributionProfile: ConfigurableDistributionProfile {
 	public var shouldAddThumbExtension: Bool? = nil
 
 
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(feedTitle: String) {
+		self.dict["feedTitle"] = feedTitle
+	}
+	
+	public func setMultiRequestToken(feedLink: String) {
+		self.dict["feedLink"] = feedLink
+	}
+	
+	public func setMultiRequestToken(feedDescription: String) {
+		self.dict["feedDescription"] = feedDescription
+	}
+	
+	public func setMultiRequestToken(feedLastBuildDate: String) {
+		self.dict["feedLastBuildDate"] = feedLastBuildDate
+	}
+	
+	public func setMultiRequestToken(itemLink: String) {
+		self.dict["itemLink"] = itemLink
+	}
+	
+	public func setMultiRequestToken(cPlatformTvSeriesField: String) {
+		self.dict["cPlatformTvSeriesField"] = cPlatformTvSeriesField
+	}
+	
+	public func setMultiRequestToken(shouldIncludeCuePoints: String) {
+		self.dict["shouldIncludeCuePoints"] = shouldIncludeCuePoints
+	}
+	
+	public func setMultiRequestToken(shouldIncludeCaptions: String) {
+		self.dict["shouldIncludeCaptions"] = shouldIncludeCaptions
+	}
+	
+	public func setMultiRequestToken(shouldAddThumbExtension: String) {
+		self.dict["shouldAddThumbExtension"] = shouldAddThumbExtension
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

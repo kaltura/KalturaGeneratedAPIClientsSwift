@@ -27,13 +27,70 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class WebexDropFolder: DropFolder {
+
+	public class WebexDropFolderTokenizer: DropFolder.DropFolderTokenizer {
+		
+		public var webexUserId: BaseTokenizedObject {
+			get {
+				return self.append("webexUserId") 
+			}
+		}
+		
+		public var webexPassword: BaseTokenizedObject {
+			get {
+				return self.append("webexPassword") 
+			}
+		}
+		
+		public var webexSiteId: BaseTokenizedObject {
+			get {
+				return self.append("webexSiteId") 
+			}
+		}
+		
+		public var webexPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("webexPartnerId") 
+			}
+		}
+		
+		public var webexServiceUrl: BaseTokenizedObject {
+			get {
+				return self.append("webexServiceUrl") 
+			}
+		}
+		
+		public var webexHostIdMetadataFieldName: BaseTokenizedObject {
+			get {
+				return self.append("webexHostIdMetadataFieldName") 
+			}
+		}
+		
+		public var deleteFromRecycleBin: BaseTokenizedObject {
+			get {
+				return self.append("deleteFromRecycleBin") 
+			}
+		}
+		
+		public var webexServiceType: BaseTokenizedObject {
+			get {
+				return self.append("webexServiceType") 
+			}
+		}
+		
+		public var deleteFromTimestamp: BaseTokenizedObject {
+			get {
+				return self.append("deleteFromTimestamp") 
+			}
+		}
+	}
 
 	public var webexUserId: String? = nil
 	public var webexPassword: String? = nil
@@ -43,8 +100,45 @@ open class WebexDropFolder: DropFolder {
 	public var webexHostIdMetadataFieldName: String? = nil
 	public var deleteFromRecycleBin: Bool? = nil
 	public var webexServiceType: String? = nil
+	public var deleteFromTimestamp: Int? = nil
 
 
+	public func setMultiRequestToken(webexUserId: String) {
+		self.dict["webexUserId"] = webexUserId
+	}
+	
+	public func setMultiRequestToken(webexPassword: String) {
+		self.dict["webexPassword"] = webexPassword
+	}
+	
+	public func setMultiRequestToken(webexSiteId: String) {
+		self.dict["webexSiteId"] = webexSiteId
+	}
+	
+	public func setMultiRequestToken(webexPartnerId: String) {
+		self.dict["webexPartnerId"] = webexPartnerId
+	}
+	
+	public func setMultiRequestToken(webexServiceUrl: String) {
+		self.dict["webexServiceUrl"] = webexServiceUrl
+	}
+	
+	public func setMultiRequestToken(webexHostIdMetadataFieldName: String) {
+		self.dict["webexHostIdMetadataFieldName"] = webexHostIdMetadataFieldName
+	}
+	
+	public func setMultiRequestToken(deleteFromRecycleBin: String) {
+		self.dict["deleteFromRecycleBin"] = deleteFromRecycleBin
+	}
+	
+	public func setMultiRequestToken(webexServiceType: String) {
+		self.dict["webexServiceType"] = webexServiceType
+	}
+	
+	public func setMultiRequestToken(deleteFromTimestamp: String) {
+		self.dict["deleteFromTimestamp"] = deleteFromTimestamp
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -71,6 +165,9 @@ open class WebexDropFolder: DropFolder {
 		}
 		if dict["webexServiceType"] != nil {
 			webexServiceType = dict["webexServiceType"] as? String
+		}
+		if dict["deleteFromTimestamp"] != nil {
+			deleteFromTimestamp = dict["deleteFromTimestamp"] as? Int
 		}
 
 	}
@@ -100,6 +197,9 @@ open class WebexDropFolder: DropFolder {
 		}
 		if(webexServiceType != nil) {
 			dict["webexServiceType"] = webexServiceType!
+		}
+		if(deleteFromTimestamp != nil) {
+			dict["deleteFromTimestamp"] = deleteFromTimestamp!
 		}
 		return dict
 	}

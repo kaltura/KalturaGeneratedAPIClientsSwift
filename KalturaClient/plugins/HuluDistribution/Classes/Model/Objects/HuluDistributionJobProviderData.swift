@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class HuluDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class HuluDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var videoAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("videoAssetFilePath") 
+			}
+		}
+		
+		public var thumbAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetFilePath") 
+			}
+		}
+		
+		public var cuePoints: ArrayTokenizedObject<CuePoint.CuePointTokenizer> {
+			get {
+				return ArrayTokenizedObject<CuePoint.CuePointTokenizer>(self.append("cuePoints"))
+			} 
+		}
+		
+		public var fileBaseName: BaseTokenizedObject {
+			get {
+				return self.append("fileBaseName") 
+			}
+		}
+		
+		public var captionLocalPaths: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("captionLocalPaths"))
+			} 
+		}
+	}
 
 	public var videoAssetFilePath: String? = nil
 	public var thumbAssetFilePath: String? = nil
@@ -42,6 +75,18 @@ open class HuluDistributionJobProviderData: ConfigurableDistributionJobProviderD
 	public var captionLocalPaths: Array<StringHolder>? = nil
 
 
+	public func setMultiRequestToken(videoAssetFilePath: String) {
+		self.dict["videoAssetFilePath"] = videoAssetFilePath
+	}
+	
+	public func setMultiRequestToken(thumbAssetFilePath: String) {
+		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	}
+	
+	public func setMultiRequestToken(fileBaseName: String) {
+		self.dict["fileBaseName"] = fileBaseName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

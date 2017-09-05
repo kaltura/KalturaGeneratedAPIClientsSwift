@@ -27,13 +27,70 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class UnicornDistributionProfile: ConfigurableDistributionProfile {
+
+	public class UnicornDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var domainName: BaseTokenizedObject {
+			get {
+				return self.append("domainName") 
+			}
+		}
+		
+		public var channelGuid: BaseTokenizedObject {
+			get {
+				return self.append("channelGuid") 
+			}
+		}
+		
+		public var apiHostUrl: BaseTokenizedObject {
+			get {
+				return self.append("apiHostUrl") 
+			}
+		}
+		
+		public var domainGuid: BaseTokenizedObject {
+			get {
+				return self.append("domainGuid") 
+			}
+		}
+		
+		public var adFreeApplicationGuid: BaseTokenizedObject {
+			get {
+				return self.append("adFreeApplicationGuid") 
+			}
+		}
+		
+		public var remoteAssetParamsId: BaseTokenizedObject {
+			get {
+				return self.append("remoteAssetParamsId") 
+			}
+		}
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+	}
 
 	/**  The email address associated with the Upload User, used to authorize the
 	  incoming request.  */
@@ -62,6 +119,42 @@ open class UnicornDistributionProfile: ConfigurableDistributionProfile {
 	public var storageProfileId: String? = nil
 
 
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(domainName: String) {
+		self.dict["domainName"] = domainName
+	}
+	
+	public func setMultiRequestToken(channelGuid: String) {
+		self.dict["channelGuid"] = channelGuid
+	}
+	
+	public func setMultiRequestToken(apiHostUrl: String) {
+		self.dict["apiHostUrl"] = apiHostUrl
+	}
+	
+	public func setMultiRequestToken(domainGuid: String) {
+		self.dict["domainGuid"] = domainGuid
+	}
+	
+	public func setMultiRequestToken(adFreeApplicationGuid: String) {
+		self.dict["adFreeApplicationGuid"] = adFreeApplicationGuid
+	}
+	
+	public func setMultiRequestToken(remoteAssetParamsId: String) {
+		self.dict["remoteAssetParamsId"] = remoteAssetParamsId
+	}
+	
+	public func setMultiRequestToken(storageProfileId: String) {
+		self.dict["storageProfileId"] = storageProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

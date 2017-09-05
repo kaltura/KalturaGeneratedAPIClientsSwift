@@ -27,13 +27,244 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
+
+	public class YouTubeDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var feedSpecVersion: BaseTokenizedObject {
+			get {
+				return self.append("feedSpecVersion") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var notificationEmail: BaseTokenizedObject {
+			get {
+				return self.append("notificationEmail") 
+			}
+		}
+		
+		public var sftpHost: BaseTokenizedObject {
+			get {
+				return self.append("sftpHost") 
+			}
+		}
+		
+		public var sftpPort: BaseTokenizedObject {
+			get {
+				return self.append("sftpPort") 
+			}
+		}
+		
+		public var sftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("sftpLogin") 
+			}
+		}
+		
+		public var sftpPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("sftpPublicKey") 
+			}
+		}
+		
+		public var sftpPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("sftpPrivateKey") 
+			}
+		}
+		
+		public var sftpBaseDir: BaseTokenizedObject {
+			get {
+				return self.append("sftpBaseDir") 
+			}
+		}
+		
+		public var ownerName: BaseTokenizedObject {
+			get {
+				return self.append("ownerName") 
+			}
+		}
+		
+		public var defaultCategory: BaseTokenizedObject {
+			get {
+				return self.append("defaultCategory") 
+			}
+		}
+		
+		public var allowComments: BaseTokenizedObject {
+			get {
+				return self.append("allowComments") 
+			}
+		}
+		
+		public var allowEmbedding: BaseTokenizedObject {
+			get {
+				return self.append("allowEmbedding") 
+			}
+		}
+		
+		public var allowRatings: BaseTokenizedObject {
+			get {
+				return self.append("allowRatings") 
+			}
+		}
+		
+		public var allowResponses: BaseTokenizedObject {
+			get {
+				return self.append("allowResponses") 
+			}
+		}
+		
+		public var commercialPolicy: BaseTokenizedObject {
+			get {
+				return self.append("commercialPolicy") 
+			}
+		}
+		
+		public var ugcPolicy: BaseTokenizedObject {
+			get {
+				return self.append("ugcPolicy") 
+			}
+		}
+		
+		public var target: BaseTokenizedObject {
+			get {
+				return self.append("target") 
+			}
+		}
+		
+		public var adServerPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("adServerPartnerId") 
+			}
+		}
+		
+		public var enableAdServer: BaseTokenizedObject {
+			get {
+				return self.append("enableAdServer") 
+			}
+		}
+		
+		public var allowPreRollAds: BaseTokenizedObject {
+			get {
+				return self.append("allowPreRollAds") 
+			}
+		}
+		
+		public var allowPostRollAds: BaseTokenizedObject {
+			get {
+				return self.append("allowPostRollAds") 
+			}
+		}
+		
+		public var strict: BaseTokenizedObject {
+			get {
+				return self.append("strict") 
+			}
+		}
+		
+		public var overrideManualEdits: BaseTokenizedObject {
+			get {
+				return self.append("overrideManualEdits") 
+			}
+		}
+		
+		public var urgentReference: BaseTokenizedObject {
+			get {
+				return self.append("urgentReference") 
+			}
+		}
+		
+		public var allowSyndication: BaseTokenizedObject {
+			get {
+				return self.append("allowSyndication") 
+			}
+		}
+		
+		public var hideViewCount: BaseTokenizedObject {
+			get {
+				return self.append("hideViewCount") 
+			}
+		}
+		
+		public var allowAdsenseForVideo: BaseTokenizedObject {
+			get {
+				return self.append("allowAdsenseForVideo") 
+			}
+		}
+		
+		public var allowInvideo: BaseTokenizedObject {
+			get {
+				return self.append("allowInvideo") 
+			}
+		}
+		
+		public var allowMidRollAds: BaseTokenizedObject {
+			get {
+				return self.append("allowMidRollAds") 
+			}
+		}
+		
+		public var instreamStandard: BaseTokenizedObject {
+			get {
+				return self.append("instreamStandard") 
+			}
+		}
+		
+		public var instreamTrueview: BaseTokenizedObject {
+			get {
+				return self.append("instreamTrueview") 
+			}
+		}
+		
+		public var claimType: BaseTokenizedObject {
+			get {
+				return self.append("claimType") 
+			}
+		}
+		
+		public var blockOutsideOwnership: BaseTokenizedObject {
+			get {
+				return self.append("blockOutsideOwnership") 
+			}
+		}
+		
+		public var captionAutosync: BaseTokenizedObject {
+			get {
+				return self.append("captionAutosync") 
+			}
+		}
+		
+		public var deleteReference: BaseTokenizedObject {
+			get {
+				return self.append("deleteReference") 
+			}
+		}
+		
+		public var releaseClaims: BaseTokenizedObject {
+			get {
+				return self.append("releaseClaims") 
+			}
+		}
+		
+		public var apiAuthorizeUrl: BaseTokenizedObject {
+			get {
+				return self.append("apiAuthorizeUrl") 
+			}
+		}
+	}
 
 	public var feedSpecVersion: YouTubeDistributionFeedSpecVersion? = nil
 	public var username: String? = nil
@@ -75,6 +306,158 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 	public var apiAuthorizeUrl: String? = nil
 
 
+	public func setMultiRequestToken(feedSpecVersion: String) {
+		self.dict["feedSpecVersion"] = feedSpecVersion
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(notificationEmail: String) {
+		self.dict["notificationEmail"] = notificationEmail
+	}
+	
+	public func setMultiRequestToken(sftpHost: String) {
+		self.dict["sftpHost"] = sftpHost
+	}
+	
+	public func setMultiRequestToken(sftpPort: String) {
+		self.dict["sftpPort"] = sftpPort
+	}
+	
+	public func setMultiRequestToken(sftpLogin: String) {
+		self.dict["sftpLogin"] = sftpLogin
+	}
+	
+	public func setMultiRequestToken(sftpPublicKey: String) {
+		self.dict["sftpPublicKey"] = sftpPublicKey
+	}
+	
+	public func setMultiRequestToken(sftpPrivateKey: String) {
+		self.dict["sftpPrivateKey"] = sftpPrivateKey
+	}
+	
+	public func setMultiRequestToken(sftpBaseDir: String) {
+		self.dict["sftpBaseDir"] = sftpBaseDir
+	}
+	
+	public func setMultiRequestToken(ownerName: String) {
+		self.dict["ownerName"] = ownerName
+	}
+	
+	public func setMultiRequestToken(defaultCategory: String) {
+		self.dict["defaultCategory"] = defaultCategory
+	}
+	
+	public func setMultiRequestToken(allowComments: String) {
+		self.dict["allowComments"] = allowComments
+	}
+	
+	public func setMultiRequestToken(allowEmbedding: String) {
+		self.dict["allowEmbedding"] = allowEmbedding
+	}
+	
+	public func setMultiRequestToken(allowRatings: String) {
+		self.dict["allowRatings"] = allowRatings
+	}
+	
+	public func setMultiRequestToken(allowResponses: String) {
+		self.dict["allowResponses"] = allowResponses
+	}
+	
+	public func setMultiRequestToken(commercialPolicy: String) {
+		self.dict["commercialPolicy"] = commercialPolicy
+	}
+	
+	public func setMultiRequestToken(ugcPolicy: String) {
+		self.dict["ugcPolicy"] = ugcPolicy
+	}
+	
+	public func setMultiRequestToken(target: String) {
+		self.dict["target"] = target
+	}
+	
+	public func setMultiRequestToken(adServerPartnerId: String) {
+		self.dict["adServerPartnerId"] = adServerPartnerId
+	}
+	
+	public func setMultiRequestToken(enableAdServer: String) {
+		self.dict["enableAdServer"] = enableAdServer
+	}
+	
+	public func setMultiRequestToken(allowPreRollAds: String) {
+		self.dict["allowPreRollAds"] = allowPreRollAds
+	}
+	
+	public func setMultiRequestToken(allowPostRollAds: String) {
+		self.dict["allowPostRollAds"] = allowPostRollAds
+	}
+	
+	public func setMultiRequestToken(strict: String) {
+		self.dict["strict"] = strict
+	}
+	
+	public func setMultiRequestToken(overrideManualEdits: String) {
+		self.dict["overrideManualEdits"] = overrideManualEdits
+	}
+	
+	public func setMultiRequestToken(urgentReference: String) {
+		self.dict["urgentReference"] = urgentReference
+	}
+	
+	public func setMultiRequestToken(allowSyndication: String) {
+		self.dict["allowSyndication"] = allowSyndication
+	}
+	
+	public func setMultiRequestToken(hideViewCount: String) {
+		self.dict["hideViewCount"] = hideViewCount
+	}
+	
+	public func setMultiRequestToken(allowAdsenseForVideo: String) {
+		self.dict["allowAdsenseForVideo"] = allowAdsenseForVideo
+	}
+	
+	public func setMultiRequestToken(allowInvideo: String) {
+		self.dict["allowInvideo"] = allowInvideo
+	}
+	
+	public func setMultiRequestToken(allowMidRollAds: String) {
+		self.dict["allowMidRollAds"] = allowMidRollAds
+	}
+	
+	public func setMultiRequestToken(instreamStandard: String) {
+		self.dict["instreamStandard"] = instreamStandard
+	}
+	
+	public func setMultiRequestToken(instreamTrueview: String) {
+		self.dict["instreamTrueview"] = instreamTrueview
+	}
+	
+	public func setMultiRequestToken(claimType: String) {
+		self.dict["claimType"] = claimType
+	}
+	
+	public func setMultiRequestToken(blockOutsideOwnership: String) {
+		self.dict["blockOutsideOwnership"] = blockOutsideOwnership
+	}
+	
+	public func setMultiRequestToken(captionAutosync: String) {
+		self.dict["captionAutosync"] = captionAutosync
+	}
+	
+	public func setMultiRequestToken(deleteReference: String) {
+		self.dict["deleteReference"] = deleteReference
+	}
+	
+	public func setMultiRequestToken(releaseClaims: String) {
+		self.dict["releaseClaims"] = releaseClaims
+	}
+	
+	public func setMultiRequestToken(apiAuthorizeUrl: String) {
+		self.dict["apiAuthorizeUrl"] = apiAuthorizeUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

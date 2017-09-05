@@ -27,13 +27,22 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FtpDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class FtpDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var filesForDistribution: ArrayTokenizedObject<FtpDistributionFile.FtpDistributionFileTokenizer> {
+			get {
+				return ArrayTokenizedObject<FtpDistributionFile.FtpDistributionFileTokenizer>(self.append("filesForDistribution"))
+			} 
+		}
+	}
 
 	public var filesForDistribution: Array<FtpDistributionFile>? = nil
 

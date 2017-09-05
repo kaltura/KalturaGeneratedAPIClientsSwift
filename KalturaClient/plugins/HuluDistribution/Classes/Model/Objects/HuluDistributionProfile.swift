@@ -27,13 +27,130 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class HuluDistributionProfile: ConfigurableDistributionProfile {
+
+	public class HuluDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var sftpHost: BaseTokenizedObject {
+			get {
+				return self.append("sftpHost") 
+			}
+		}
+		
+		public var sftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("sftpLogin") 
+			}
+		}
+		
+		public var sftpPass: BaseTokenizedObject {
+			get {
+				return self.append("sftpPass") 
+			}
+		}
+		
+		public var seriesChannel: BaseTokenizedObject {
+			get {
+				return self.append("seriesChannel") 
+			}
+		}
+		
+		public var seriesPrimaryCategory: BaseTokenizedObject {
+			get {
+				return self.append("seriesPrimaryCategory") 
+			}
+		}
+		
+		public var seriesAdditionalCategories: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("seriesAdditionalCategories"))
+			} 
+		}
+		
+		public var seasonNumber: BaseTokenizedObject {
+			get {
+				return self.append("seasonNumber") 
+			}
+		}
+		
+		public var seasonSynopsis: BaseTokenizedObject {
+			get {
+				return self.append("seasonSynopsis") 
+			}
+		}
+		
+		public var seasonTuneInInformation: BaseTokenizedObject {
+			get {
+				return self.append("seasonTuneInInformation") 
+			}
+		}
+		
+		public var videoMediaType: BaseTokenizedObject {
+			get {
+				return self.append("videoMediaType") 
+			}
+		}
+		
+		public var disableEpisodeNumberCustomValidation: BaseTokenizedObject {
+			get {
+				return self.append("disableEpisodeNumberCustomValidation") 
+			}
+		}
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var asperaHost: BaseTokenizedObject {
+			get {
+				return self.append("asperaHost") 
+			}
+		}
+		
+		public var asperaLogin: BaseTokenizedObject {
+			get {
+				return self.append("asperaLogin") 
+			}
+		}
+		
+		public var asperaPass: BaseTokenizedObject {
+			get {
+				return self.append("asperaPass") 
+			}
+		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+		
+		public var passphrase: BaseTokenizedObject {
+			get {
+				return self.append("passphrase") 
+			}
+		}
+		
+		public var asperaPublicKey: BaseTokenizedObject {
+			get {
+				return self.append("asperaPublicKey") 
+			}
+		}
+		
+		public var asperaPrivateKey: BaseTokenizedObject {
+			get {
+				return self.append("asperaPrivateKey") 
+			}
+		}
+	}
 
 	public var sftpHost: String? = nil
 	public var sftpLogin: String? = nil
@@ -56,6 +173,78 @@ open class HuluDistributionProfile: ConfigurableDistributionProfile {
 	public var asperaPrivateKey: String? = nil
 
 
+	public func setMultiRequestToken(sftpHost: String) {
+		self.dict["sftpHost"] = sftpHost
+	}
+	
+	public func setMultiRequestToken(sftpLogin: String) {
+		self.dict["sftpLogin"] = sftpLogin
+	}
+	
+	public func setMultiRequestToken(sftpPass: String) {
+		self.dict["sftpPass"] = sftpPass
+	}
+	
+	public func setMultiRequestToken(seriesChannel: String) {
+		self.dict["seriesChannel"] = seriesChannel
+	}
+	
+	public func setMultiRequestToken(seriesPrimaryCategory: String) {
+		self.dict["seriesPrimaryCategory"] = seriesPrimaryCategory
+	}
+	
+	public func setMultiRequestToken(seasonNumber: String) {
+		self.dict["seasonNumber"] = seasonNumber
+	}
+	
+	public func setMultiRequestToken(seasonSynopsis: String) {
+		self.dict["seasonSynopsis"] = seasonSynopsis
+	}
+	
+	public func setMultiRequestToken(seasonTuneInInformation: String) {
+		self.dict["seasonTuneInInformation"] = seasonTuneInInformation
+	}
+	
+	public func setMultiRequestToken(videoMediaType: String) {
+		self.dict["videoMediaType"] = videoMediaType
+	}
+	
+	public func setMultiRequestToken(disableEpisodeNumberCustomValidation: String) {
+		self.dict["disableEpisodeNumberCustomValidation"] = disableEpisodeNumberCustomValidation
+	}
+	
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(asperaHost: String) {
+		self.dict["asperaHost"] = asperaHost
+	}
+	
+	public func setMultiRequestToken(asperaLogin: String) {
+		self.dict["asperaLogin"] = asperaLogin
+	}
+	
+	public func setMultiRequestToken(asperaPass: String) {
+		self.dict["asperaPass"] = asperaPass
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
+	public func setMultiRequestToken(passphrase: String) {
+		self.dict["passphrase"] = passphrase
+	}
+	
+	public func setMultiRequestToken(asperaPublicKey: String) {
+		self.dict["asperaPublicKey"] = asperaPublicKey
+	}
+	
+	public func setMultiRequestToken(asperaPrivateKey: String) {
+		self.dict["asperaPrivateKey"] = asperaPrivateKey
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

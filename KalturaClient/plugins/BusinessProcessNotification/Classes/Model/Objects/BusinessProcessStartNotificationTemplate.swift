@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,23 @@
 
 open class BusinessProcessStartNotificationTemplate: BusinessProcessNotificationTemplate {
 
+	public class BusinessProcessStartNotificationTemplateTokenizer: BusinessProcessNotificationTemplate.BusinessProcessNotificationTemplateTokenizer {
+		
+		public var abortOnDeletion: BaseTokenizedObject {
+			get {
+				return self.append("abortOnDeletion") 
+			}
+		}
+	}
+
 	/**  Abort the process automatically if the triggering object deleted  */
 	public var abortOnDeletion: Bool? = nil
 
 
+	public func setMultiRequestToken(abortOnDeletion: String) {
+		self.dict["abortOnDeletion"] = abortOnDeletion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

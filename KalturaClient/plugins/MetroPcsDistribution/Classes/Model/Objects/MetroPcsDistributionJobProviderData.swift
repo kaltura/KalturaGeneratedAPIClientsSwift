@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,33 @@
 
 open class MetroPcsDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class MetroPcsDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var assetLocalPaths: BaseTokenizedObject {
+			get {
+				return self.append("assetLocalPaths") 
+			}
+		}
+		
+		public var thumbUrls: BaseTokenizedObject {
+			get {
+				return self.append("thumbUrls") 
+			}
+		}
+	}
+
 	public var assetLocalPaths: String? = nil
 	public var thumbUrls: String? = nil
 
 
+	public func setMultiRequestToken(assetLocalPaths: String) {
+		self.dict["assetLocalPaths"] = assetLocalPaths
+	}
+	
+	public func setMultiRequestToken(thumbUrls: String) {
+		self.dict["thumbUrls"] = thumbUrls
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -35,6 +35,33 @@
 
 open class DrmLicenseAccessDetails: ObjectBase {
 
+	public class DrmLicenseAccessDetailsTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var policy: BaseTokenizedObject {
+			get {
+				return self.append("policy") 
+			}
+		}
+		
+		public var duration: BaseTokenizedObject {
+			get {
+				return self.append("duration") 
+			}
+		}
+		
+		public var absolute_duration: BaseTokenizedObject {
+			get {
+				return self.append("absolute_duration") 
+			}
+		}
+		
+		public var licenseParams: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("licenseParams"))
+			} 
+		}
+	}
+
 	/**  Drm policy name  */
 	public var policy: String? = nil
 	/**  movie duration in seconds  */
@@ -44,6 +71,18 @@ open class DrmLicenseAccessDetails: ObjectBase {
 	public var licenseParams: Array<KeyValue>? = nil
 
 
+	public func setMultiRequestToken(policy: String) {
+		self.dict["policy"] = policy
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(absolute_duration: String) {
+		self.dict["absolute_duration"] = absolute_duration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -27,13 +27,16 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class FreewheelDistributionProvider: DistributionProvider {
+
+	public class FreewheelDistributionProviderTokenizer: DistributionProvider.DistributionProviderTokenizer {
+	}
 
 
 

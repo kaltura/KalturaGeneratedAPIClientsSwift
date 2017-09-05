@@ -35,10 +35,23 @@
 
 open class PlayReadyDigitalAudioOPIdHolder: ObjectBase {
 
+	public class PlayReadyDigitalAudioOPIdHolderTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+	}
+
 	/**  The type of the play enabler  */
 	public var type: PlayReadyDigitalAudioOPId? = nil
 
 
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:

@@ -32,6 +32,10 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationTemplateType: String {
+	case BPM_ABORT = "businessProcessNotification.BusinessProcessAbort"
+	case BPM_SIGNAL = "businessProcessNotification.BusinessProcessSignal"
+	case BPM_START = "businessProcessNotification.BusinessProcessStart"
 	case EMAIL = "emailNotification.Email"
 	case HTTP = "httpNotification.Http"
+	case PUSH = "pushNotification.Push"
 }
