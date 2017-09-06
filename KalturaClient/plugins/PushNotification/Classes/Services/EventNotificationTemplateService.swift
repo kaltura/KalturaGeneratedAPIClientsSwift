@@ -94,8 +94,8 @@ extension EventNotificationTemplateService{
 	}
 
 	/**  Delete an event notification template object  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "eventnotification_eventnotificationtemplate", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -266,8 +266,8 @@ extension EventNotificationTemplateService{
 	}
 
 	/**  Clear queue messages  */
-	public static func sendCommand(notificationTemplateSystemName: String, pushNotificationParams: PushNotificationParams, command: PushNotificationCommandType) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "eventnotification_eventnotificationtemplate", action: "sendCommand")
+	public static func sendCommand(notificationTemplateSystemName: String, pushNotificationParams: PushNotificationParams, command: PushNotificationCommandType) -> NullRequestBuilder<SendCommandTokenizer> {
+		let request: NullRequestBuilder<SendCommandTokenizer> = NullRequestBuilder<SendCommandTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "sendCommand")
 			.setBody(key: "notificationTemplateSystemName", value: notificationTemplateSystemName)
 			.setBody(key: "pushNotificationParams", value: pushNotificationParams)
 			.setBody(key: "command", value: command.rawValue)

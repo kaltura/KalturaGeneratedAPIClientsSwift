@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum SourceType: String {
+	case LIMELIGHT_LIVE = "limeLight.LIVE_STREAM"
 	case VELOCIX_LIVE = "velocix.VELOCIX_LIVE"
 	case FILE = "1"
 	case WEBCAM = "2"

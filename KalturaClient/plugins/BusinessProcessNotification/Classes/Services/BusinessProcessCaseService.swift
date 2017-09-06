@@ -58,8 +58,8 @@ public final class BusinessProcessCaseService{
 	}
 
 	/**  Abort business-process case  */
-	public static func abort(objectType: EventNotificationEventObjectType, objectId: String, businessProcessStartNotificationTemplateId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "businessprocessnotification_businessprocesscase", action: "abort")
+	public static func abort(objectType: EventNotificationEventObjectType, objectId: String, businessProcessStartNotificationTemplateId: Int) -> NullRequestBuilder<AbortTokenizer> {
+		let request: NullRequestBuilder<AbortTokenizer> = NullRequestBuilder<AbortTokenizer>(service: "businessprocessnotification_businessprocesscase", action: "abort")
 			.setBody(key: "objectType", value: objectType.rawValue)
 			.setBody(key: "objectId", value: objectId)
 			.setBody(key: "businessProcessStartNotificationTemplateId", value: businessProcessStartNotificationTemplateId)

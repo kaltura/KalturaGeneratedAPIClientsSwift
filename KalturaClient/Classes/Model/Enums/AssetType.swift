@@ -40,6 +40,7 @@ public enum AssetType: String {
 	case SWF = "document.SWF"
 	case TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb"
 	case TRANSCRIPT = "transcript.Transcript"
+	case WIDEVINE_FLAVOR = "widevine.WidevineFlavor"
 	case FLAVOR = "1"
 	case THUMBNAIL = "2"
 	case LIVE = "3"
