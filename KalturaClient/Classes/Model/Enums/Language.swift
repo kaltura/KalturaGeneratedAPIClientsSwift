@@ -173,7 +173,6 @@ public enum Language: String {
 	case ENM = "English Middle (1100-1500)"
 	case EN_US = "English (American)"
 	case EN_GB = "English (British)"
-	case ENM = "English Middle (1100-1500)"
 	case MYV = "Erzya"
 	case EO = "Esperanto"
 	case ET = "Estonian"
