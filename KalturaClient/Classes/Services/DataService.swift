@@ -83,8 +83,8 @@ public final class DataService{
 	}
 
 	/**  Delete a data entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "data", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "data", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

@@ -61,8 +61,8 @@ public final class ConversionProfileService{
 	}
 
 	/**  Delete Conversion Profile by ID  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "conversionprofile", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "conversionprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

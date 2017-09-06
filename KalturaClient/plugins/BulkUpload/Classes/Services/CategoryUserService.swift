@@ -113,8 +113,8 @@ extension CategoryUserService{
 	}
 
 	/**  Copy all memeber from parent category  */
-	public static func copyFromCategory(categoryId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryuser", action: "copyFromCategory")
+	public static func copyFromCategory(categoryId: Int) -> NullRequestBuilder<CopyFromCategoryTokenizer> {
+		let request: NullRequestBuilder<CopyFromCategoryTokenizer> = NullRequestBuilder<CopyFromCategoryTokenizer>(service: "categoryuser", action: "copyFromCategory")
 			.setBody(key: "categoryId", value: categoryId)
 
 		return request
@@ -160,8 +160,8 @@ extension CategoryUserService{
 	}
 
 	/**  Delete a CategoryUser  */
-	public static func delete(categoryId: Int, userId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryuser", action: "delete")
+	public static func delete(categoryId: Int, userId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "categoryuser", action: "delete")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "userId", value: userId)
 

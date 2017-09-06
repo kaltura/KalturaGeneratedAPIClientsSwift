@@ -81,8 +81,8 @@ public final class ExternalMediaService{
 	}
 
 	/**  Delete a external media entry.  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "externalmedia_externalmedia", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "externalmedia_externalmedia", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

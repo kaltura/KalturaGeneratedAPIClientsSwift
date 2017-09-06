@@ -61,8 +61,8 @@ public final class FlavorParamsService{
 	}
 
 	/**  Delete Flavor Params by ID  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorparams", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "flavorparams", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

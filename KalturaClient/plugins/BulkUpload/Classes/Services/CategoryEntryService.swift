@@ -52,8 +52,8 @@ extension CategoryEntryService{
 	}
 
 	/**  activate CategoryEntry when it is pending moderation  */
-	public static func activate(entryId: String, categoryId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "activate")
+	public static func activate(entryId: String, categoryId: Int) -> NullRequestBuilder<ActivateTokenizer> {
+		let request: NullRequestBuilder<ActivateTokenizer> = NullRequestBuilder<ActivateTokenizer>(service: "categoryentry", action: "activate")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
 
@@ -114,8 +114,8 @@ extension CategoryEntryService{
 	}
 
 	/**  Delete CategoryEntry  */
-	public static func delete(entryId: String, categoryId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "delete")
+	public static func delete(entryId: String, categoryId: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "categoryentry", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
 
@@ -201,8 +201,8 @@ extension CategoryEntryService{
 	}
 
 	/**  activate CategoryEntry when it is pending moderation  */
-	public static func reject(entryId: String, categoryId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "reject")
+	public static func reject(entryId: String, categoryId: Int) -> NullRequestBuilder<RejectTokenizer> {
+		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "categoryentry", action: "reject")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
 
@@ -225,8 +225,8 @@ extension CategoryEntryService{
 	}
 
 	/**  update privacy context from the category  */
-	public static func syncPrivacyContext(entryId: String, categoryId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "categoryentry", action: "syncPrivacyContext")
+	public static func syncPrivacyContext(entryId: String, categoryId: Int) -> NullRequestBuilder<SyncPrivacyContextTokenizer> {
+		let request: NullRequestBuilder<SyncPrivacyContextTokenizer> = NullRequestBuilder<SyncPrivacyContextTokenizer>(service: "categoryentry", action: "syncPrivacyContext")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "categoryId", value: categoryId)
 

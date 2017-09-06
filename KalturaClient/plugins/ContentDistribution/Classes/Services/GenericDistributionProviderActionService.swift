@@ -187,8 +187,8 @@ public final class GenericDistributionProviderActionService{
 	}
 
 	/**  Delete Generic Distribution Provider Action by id  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_genericdistributionprovideraction", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -210,8 +210,8 @@ public final class GenericDistributionProviderActionService{
 	}
 
 	/**  Delete Generic Distribution Provider Action by provider id  */
-	public static func deleteByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_genericdistributionprovideraction", action: "deleteByProviderId")
+	public static func deleteByProviderId(genericDistributionProviderId: Int, actionType: DistributionAction) -> NullRequestBuilder<DeleteByProviderIdTokenizer> {
+		let request: NullRequestBuilder<DeleteByProviderIdTokenizer> = NullRequestBuilder<DeleteByProviderIdTokenizer>(service: "contentdistribution_genericdistributionprovideraction", action: "deleteByProviderId")
 			.setBody(key: "genericDistributionProviderId", value: genericDistributionProviderId)
 			.setBody(key: "actionType", value: actionType.rawValue)
 

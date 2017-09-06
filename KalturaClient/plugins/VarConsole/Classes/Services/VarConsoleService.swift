@@ -89,8 +89,8 @@ public final class VarConsoleService{
 	}
 
 	/**  Function to change a sub-publisher's status  */
-	public static func updateStatus(id: Int, status: PartnerStatus) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "varconsole_varconsole", action: "updateStatus")
+	public static func updateStatus(id: Int, status: PartnerStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
+		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "varconsole_varconsole", action: "updateStatus")
 			.setBody(key: "id", value: id)
 			.setBody(key: "status", value: status.rawValue)
 

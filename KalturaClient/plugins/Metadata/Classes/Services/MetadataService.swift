@@ -195,8 +195,8 @@ public final class MetadataService{
 	}
 
 	/**  Delete an existing metadata  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadata", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "metadata_metadata", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -258,13 +258,13 @@ public final class MetadataService{
 		}
 	}
 
-	public static func invalidate(id: Int) -> NullRequestBuilder {
+	public static func invalidate(id: Int) -> NullRequestBuilder<InvalidateTokenizer> {
 		return invalidate(id: id, version: nil)
 	}
 
 	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
-	public static func invalidate(id: Int, version: Int?) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadata", action: "invalidate")
+	public static func invalidate(id: Int, version: Int?) -> NullRequestBuilder<InvalidateTokenizer> {
+		let request: NullRequestBuilder<InvalidateTokenizer> = NullRequestBuilder<InvalidateTokenizer>(service: "metadata_metadata", action: "invalidate")
 			.setBody(key: "id", value: id)
 			.setBody(key: "version", value: version)
 

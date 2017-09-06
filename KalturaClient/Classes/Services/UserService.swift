@@ -370,8 +370,8 @@ public final class UserService{
 	}
 
 	/**  Notifies that a user is banned from an account.  */
-	public static func notifyBan(userId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "user", action: "notifyBan")
+	public static func notifyBan(userId: String) -> NullRequestBuilder<NotifyBanTokenizer> {
+		let request: NullRequestBuilder<NotifyBanTokenizer> = NullRequestBuilder<NotifyBanTokenizer>(service: "user", action: "notifyBan")
 			.setBody(key: "userId", value: userId)
 
 		return request
@@ -387,8 +387,8 @@ public final class UserService{
 	}
 
 	/**  Reset user's password and send the user an email to generate a new one.  */
-	public static func resetPassword(email: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "user", action: "resetPassword")
+	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
+		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "user", action: "resetPassword")
 			.setBody(key: "email", value: email)
 
 		return request
@@ -410,8 +410,8 @@ public final class UserService{
 	}
 
 	/**  Set initial users password  */
-	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "user", action: "setInitialPassword")
+	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
+		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "user", action: "setInitialPassword")
 			.setBody(key: "hashKey", value: hashKey)
 			.setBody(key: "newPassword", value: newPassword)
 
@@ -480,25 +480,25 @@ public final class UserService{
 		}
 	}
 
-	public static func updateLoginData(oldLoginId: String, password: String) -> NullRequestBuilder {
+	public static func updateLoginData(oldLoginId: String, password: String) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: "")
 	}
 
-	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?) -> NullRequestBuilder {
+	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: newLoginId, newPassword: "")
 	}
 
-	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?) -> NullRequestBuilder {
+	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: newLoginId, newPassword: newPassword, newFirstName: nil)
 	}
 
-	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?) -> NullRequestBuilder {
+	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: newLoginId, newPassword: newPassword, newFirstName: newFirstName, newLastName: nil)
 	}
 
 	/**  Updates a user's login data: email, password, name.  */
-	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?, newLastName: String?) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "user", action: "updateLoginData")
+	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?, newLastName: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
+		let request: NullRequestBuilder<UpdateLoginDataTokenizer> = NullRequestBuilder<UpdateLoginDataTokenizer>(service: "user", action: "updateLoginData")
 			.setBody(key: "oldLoginId", value: oldLoginId)
 			.setBody(key: "password", value: password)
 			.setBody(key: "newLoginId", value: newLoginId)

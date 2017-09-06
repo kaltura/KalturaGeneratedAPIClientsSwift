@@ -257,8 +257,8 @@ public final class LiveStreamService{
 	}
 
 	/**  Delete a live stream entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livestream", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -354,8 +354,8 @@ public final class LiveStreamService{
 	}
 
 	/**  Regenerate new secure token for liveStream  */
-	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "regenerateStreamToken")
+	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder<RegenerateStreamTokenTokenizer> {
+		let request: NullRequestBuilder<RegenerateStreamTokenTokenizer> = NullRequestBuilder<RegenerateStreamTokenTokenizer>(service: "livestream", action: "regenerateStreamToken")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -612,8 +612,8 @@ public final class LiveStreamService{
 	}
 
 	/**  Validates all registered media servers  */
-	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "validateRegisteredMediaServers")
+	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> {
+		let request: NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> = NullRequestBuilder<ValidateRegisteredMediaServersTokenizer>(service: "livestream", action: "validateRegisteredMediaServers")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

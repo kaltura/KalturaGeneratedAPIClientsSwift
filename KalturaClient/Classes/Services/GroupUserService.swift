@@ -67,8 +67,8 @@ public final class GroupUserService{
 	}
 
 	/**  delete by userId and groupId  */
-	public static func delete(userId: String, groupId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "groupuser", action: "delete")
+	public static func delete(userId: String, groupId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "groupuser", action: "delete")
 			.setBody(key: "userId", value: userId)
 			.setBody(key: "groupId", value: groupId)
 

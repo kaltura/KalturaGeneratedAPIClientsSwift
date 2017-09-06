@@ -79,8 +79,8 @@ public final class UiConfService{
 	}
 
 	/**  Delete an existing UIConf  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "uiconf", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "uiconf", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

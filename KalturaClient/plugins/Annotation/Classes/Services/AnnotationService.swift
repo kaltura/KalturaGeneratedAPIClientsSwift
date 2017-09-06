@@ -116,8 +116,8 @@ public final class AnnotationService{
 	}
 
 	/**  delete cue point by id, and delete all children cue points  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "annotation_annotation", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "annotation_annotation", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -206,8 +206,8 @@ public final class AnnotationService{
 	}
 
 	/**  Update cuePoint status by id  */
-	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "annotation_annotation", action: "updateStatus")
+	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
+		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "annotation_annotation", action: "updateStatus")
 			.setBody(key: "id", value: id)
 			.setBody(key: "status", value: status.rawValue)
 

@@ -61,8 +61,8 @@ public final class SyndicationFeedService{
 	}
 
 	/**  Delete Syndication Feed by ID  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "syndicationfeed", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "syndicationfeed", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

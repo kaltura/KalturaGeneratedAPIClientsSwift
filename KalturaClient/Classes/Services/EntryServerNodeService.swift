@@ -110,8 +110,8 @@ public final class EntryServerNodeService{
 	}
 
 	/**  Validates server node still registered on entry  */
-	public static func validateRegisteredEntryServerNode(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "entryservernode", action: "validateRegisteredEntryServerNode")
+	public static func validateRegisteredEntryServerNode(id: Int) -> NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> {
+		let request: NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> = NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer>(service: "entryservernode", action: "validateRegisteredEntryServerNode")
 			.setBody(key: "id", value: id)
 
 		return request

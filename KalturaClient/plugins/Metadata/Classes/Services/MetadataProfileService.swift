@@ -102,8 +102,8 @@ public final class MetadataProfileService{
 	}
 
 	/**  Delete an existing metadata profile  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "metadata_metadataprofile", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "metadata_metadataprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

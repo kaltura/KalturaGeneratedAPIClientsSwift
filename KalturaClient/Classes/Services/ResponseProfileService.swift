@@ -83,8 +83,8 @@ public final class ResponseProfileService{
 	}
 
 	/**  Delete response profile by id  */
-	public static func delete(id: Int64) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "responseprofile", action: "delete")
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "responseprofile", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

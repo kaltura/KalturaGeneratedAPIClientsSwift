@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType: String {
+	case CONVERT = "0"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
 	case DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete"
@@ -41,7 +42,6 @@ public enum BatchJobType: String {
 	case DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit"
 	case DISTRIBUTION_SYNC = "contentDistribution.DistributionSync"
 	case DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate"
-	case CONVERT = "0"
 	case DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor"
 	case DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher"
 	case EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler"
@@ -50,7 +50,6 @@ public enum BatchJobType: String {
 	case INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext"
 	case TAG_RESOLVE = "tagSearch.TagResolve"
 	case VIRUS_SCAN = "virusScan.VirusScan"
-	case WIDEVINE_REPOSITORY_SYNC = "widevine.WidevineRepositorySync"
 	case IMPORT = "1"
 	case DELETE = "2"
 	case FLATTEN = "3"

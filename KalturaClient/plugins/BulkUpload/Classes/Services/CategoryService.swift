@@ -94,13 +94,13 @@ extension CategoryService{
 		}
 	}
 
-	public static func delete(id: Int) -> NullRequestBuilder {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		return delete(id: id, moveEntriesToParentCategory: true)
 	}
 
 	/**  Delete a Category  */
-	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "category", action: "delete")
+	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "category", action: "delete")
 			.setBody(key: "id", value: id)
 			.setBody(key: "moveEntriesToParentCategory", value: moveEntriesToParentCategory)
 
@@ -209,8 +209,8 @@ extension CategoryService{
 	}
 
 	/**  Unlock categories  */
-	public static func unlockCategories() -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "category", action: "unlockCategories")
+	public static func unlockCategories() -> NullRequestBuilder<UnlockCategoriesTokenizer> {
+		let request: NullRequestBuilder<UnlockCategoriesTokenizer> = NullRequestBuilder<UnlockCategoriesTokenizer>(service: "category", action: "unlockCategories")
 
 		return request
 	}

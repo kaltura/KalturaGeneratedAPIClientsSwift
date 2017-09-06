@@ -61,8 +61,8 @@ public final class EntryDistributionService{
 	}
 
 	/**  Delete Entry Distribution by id  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "contentdistribution_entrydistribution", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "contentdistribution_entrydistribution", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

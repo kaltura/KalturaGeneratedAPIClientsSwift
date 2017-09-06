@@ -69,8 +69,8 @@ public final class ScheduleEventResourceService{
 	}
 
 	/**  Mark the KalturaScheduleEventResource object as deleted  */
-	public static func delete(scheduleEventId: Int, scheduleResourceId: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "schedule_scheduleeventresource", action: "delete")
+	public static func delete(scheduleEventId: Int, scheduleResourceId: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "schedule_scheduleeventresource", action: "delete")
 			.setBody(key: "scheduleEventId", value: scheduleEventId)
 			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
 

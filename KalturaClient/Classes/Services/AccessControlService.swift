@@ -61,8 +61,8 @@ public final class AccessControlService{
 	}
 
 	/**  Delete Access Control Profile by id  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "accesscontrol", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "accesscontrol", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

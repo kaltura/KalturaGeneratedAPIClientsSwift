@@ -61,8 +61,8 @@ public final class LiveChannelSegmentService{
 	}
 
 	/**  Delete live channel segment by id  */
-	public static func delete(id: Int64) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livechannelsegment", action: "delete")
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livechannelsegment", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

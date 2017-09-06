@@ -116,8 +116,8 @@ public final class PollService{
 	}
 
 	/**  Get resetVotes Action  */
-	public static func resetVotes(pollId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "poll_poll", action: "resetVotes")
+	public static func resetVotes(pollId: String) -> NullRequestBuilder<ResetVotesTokenizer> {
+		let request: NullRequestBuilder<ResetVotesTokenizer> = NullRequestBuilder<ResetVotesTokenizer>(service: "poll_poll", action: "resetVotes")
 			.setBody(key: "pollId", value: pollId)
 
 		return request

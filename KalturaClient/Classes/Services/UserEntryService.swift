@@ -136,8 +136,8 @@ public final class UserEntryService{
 		}
 	}
 
-	public static func update(id: Int, userEntry: UserEntry) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "userentry", action: "update")
+	public static func update(id: Int, userEntry: UserEntry) -> NullRequestBuilder<UpdateTokenizer> {
+		let request: NullRequestBuilder<UpdateTokenizer> = NullRequestBuilder<UpdateTokenizer>(service: "userentry", action: "update")
 			.setBody(key: "id", value: id)
 			.setBody(key: "userEntry", value: userEntry)
 

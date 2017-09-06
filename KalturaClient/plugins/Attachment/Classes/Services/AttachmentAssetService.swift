@@ -67,8 +67,8 @@ public final class AttachmentAssetService{
 		}
 	}
 
-	public static func delete(attachmentAssetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "attachment_attachmentasset", action: "delete")
+	public static func delete(attachmentAssetId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "attachment_attachmentasset", action: "delete")
 			.setBody(key: "attachmentAssetId", value: attachmentAssetId)
 
 		return request

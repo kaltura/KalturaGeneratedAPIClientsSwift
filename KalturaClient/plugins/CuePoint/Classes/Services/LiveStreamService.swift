@@ -239,8 +239,8 @@ extension LiveStreamService{
 	}
 
 	/**  Creates perioding metadata sync-point events on a live stream  */
-	public static func createPeriodicSyncPoints(entryId: String, interval: Int, duration: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "createPeriodicSyncPoints")
+	public static func createPeriodicSyncPoints(entryId: String, interval: Int, duration: Int) -> NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> {
+		let request: NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> = NullRequestBuilder<CreatePeriodicSyncPointsTokenizer>(service: "livestream", action: "createPeriodicSyncPoints")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "interval", value: interval)
 			.setBody(key: "duration", value: duration)
@@ -288,8 +288,8 @@ extension LiveStreamService{
 	}
 
 	/**  Delete a live stream entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livestream", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -385,8 +385,8 @@ extension LiveStreamService{
 	}
 
 	/**  Regenerate new secure token for liveStream  */
-	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "regenerateStreamToken")
+	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder<RegenerateStreamTokenTokenizer> {
+		let request: NullRequestBuilder<RegenerateStreamTokenTokenizer> = NullRequestBuilder<RegenerateStreamTokenTokenizer>(service: "livestream", action: "regenerateStreamToken")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -643,8 +643,8 @@ extension LiveStreamService{
 	}
 
 	/**  Validates all registered media servers  */
-	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livestream", action: "validateRegisteredMediaServers")
+	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> {
+		let request: NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> = NullRequestBuilder<ValidateRegisteredMediaServersTokenizer>(service: "livestream", action: "validateRegisteredMediaServers")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

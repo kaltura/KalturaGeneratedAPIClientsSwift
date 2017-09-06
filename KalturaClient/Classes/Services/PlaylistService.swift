@@ -100,8 +100,8 @@ public final class PlaylistService{
 	}
 
 	/**  Delete existing playlist  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "playlist", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "playlist", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

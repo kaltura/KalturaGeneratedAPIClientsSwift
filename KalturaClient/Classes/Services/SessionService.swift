@@ -40,8 +40,8 @@ public final class SessionService{
 	}
 
 	/**  End a session with the Kaltura server, making the current KS invalid.  */
-	public static func end() -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "session", action: "end")
+	public static func end() -> NullRequestBuilder<EndTokenizer> {
+		let request: NullRequestBuilder<EndTokenizer> = NullRequestBuilder<EndTokenizer>(service: "session", action: "end")
 
 		return request
 	}

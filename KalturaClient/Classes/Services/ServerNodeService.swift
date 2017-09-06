@@ -61,8 +61,8 @@ public final class ServerNodeService{
 	}
 
 	/**  delete server node by id  */
-	public static func delete(serverNodeId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "servernode", action: "delete")
+	public static func delete(serverNodeId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "servernode", action: "delete")
 			.setBody(key: "serverNodeId", value: serverNodeId)
 
 		return request

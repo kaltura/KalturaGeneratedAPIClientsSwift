@@ -116,8 +116,8 @@ public final class CuePointService{
 	}
 
 	/**  delete cue point by id, and delete all children cue points  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "cuepoint_cuepoint", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "cuepoint_cuepoint", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -206,8 +206,8 @@ public final class CuePointService{
 	}
 
 	/**  Update cuePoint status by id  */
-	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "cuepoint_cuepoint", action: "updateStatus")
+	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
+		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "cuepoint_cuepoint", action: "updateStatus")
 			.setBody(key: "id", value: id)
 			.setBody(key: "status", value: status.rawValue)
 

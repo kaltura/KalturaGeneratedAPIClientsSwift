@@ -79,13 +79,13 @@ public final class FlavorAssetService{
 		}
 	}
 
-	public static func convert(entryId: String, flavorParamsId: Int) -> NullRequestBuilder {
+	public static func convert(entryId: String, flavorParamsId: Int) -> NullRequestBuilder<ConvertTokenizer> {
 		return convert(entryId: entryId, flavorParamsId: flavorParamsId, priority: 0)
 	}
 
 	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
-	public static func convert(entryId: String, flavorParamsId: Int, priority: Int?) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorasset", action: "convert")
+	public static func convert(entryId: String, flavorParamsId: Int, priority: Int?) -> NullRequestBuilder<ConvertTokenizer> {
+		let request: NullRequestBuilder<ConvertTokenizer> = NullRequestBuilder<ConvertTokenizer>(service: "flavorasset", action: "convert")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "flavorParamsId", value: flavorParamsId)
 			.setBody(key: "priority", value: priority)
@@ -103,8 +103,8 @@ public final class FlavorAssetService{
 	}
 
 	/**  Delete Flavor Asset by ID  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorasset", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "flavorasset", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -120,8 +120,8 @@ public final class FlavorAssetService{
 	}
 
 	/**  delete all local file syncs for this asset  */
-	public static func deleteLocalContent(assetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorasset", action: "deleteLocalContent")
+	public static func deleteLocalContent(assetId: String) -> NullRequestBuilder<DeleteLocalContentTokenizer> {
+		let request: NullRequestBuilder<DeleteLocalContentTokenizer> = NullRequestBuilder<DeleteLocalContentTokenizer>(service: "flavorasset", action: "deleteLocalContent")
 			.setBody(key: "assetId", value: assetId)
 
 		return request
@@ -351,8 +351,8 @@ public final class FlavorAssetService{
 	}
 
 	/**  Reconvert Flavor Asset by ID  */
-	public static func reconvert(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorasset", action: "reconvert")
+	public static func reconvert(id: String) -> NullRequestBuilder<ReconvertTokenizer> {
+		let request: NullRequestBuilder<ReconvertTokenizer> = NullRequestBuilder<ReconvertTokenizer>(service: "flavorasset", action: "reconvert")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -407,8 +407,8 @@ public final class FlavorAssetService{
 	}
 
 	/**  Set a given flavor as the original flavor  */
-	public static func setAsSource(assetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "flavorasset", action: "setAsSource")
+	public static func setAsSource(assetId: String) -> NullRequestBuilder<SetAsSourceTokenizer> {
+		let request: NullRequestBuilder<SetAsSourceTokenizer> = NullRequestBuilder<SetAsSourceTokenizer>(service: "flavorasset", action: "setAsSource")
 			.setBody(key: "assetId", value: assetId)
 
 		return request

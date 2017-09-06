@@ -64,8 +64,8 @@ public final class UploadTokenService{
 	}
 
 	/**  Deletes the upload token by upload token id  */
-	public static func delete(uploadTokenId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "uploadtoken", action: "delete")
+	public static func delete(uploadTokenId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "uploadtoken", action: "delete")
 			.setBody(key: "uploadTokenId", value: uploadTokenId)
 
 		return request

@@ -61,8 +61,8 @@ public final class CaptionParamsService{
 	}
 
 	/**  Delete Caption Params by ID  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionparams", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "caption_captionparams", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

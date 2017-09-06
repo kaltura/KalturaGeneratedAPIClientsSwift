@@ -107,8 +107,8 @@ public final class ThumbAssetService{
 		}
 	}
 
-	public static func delete(thumbAssetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "thumbasset", action: "delete")
+	public static func delete(thumbAssetId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "thumbasset", action: "delete")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request
@@ -335,8 +335,8 @@ public final class ThumbAssetService{
 	/**  Tags the thumbnail as DEFAULT_THUMB and removes that tag from all other
 	  thumbnail assets of the entry.   Create a new file sync link on the entry
 	  thumbnail that points to the thumbnail asset file sync.  */
-	public static func setAsDefault(thumbAssetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "thumbasset", action: "setAsDefault")
+	public static func setAsDefault(thumbAssetId: String) -> NullRequestBuilder<SetAsDefaultTokenizer> {
+		let request: NullRequestBuilder<SetAsDefaultTokenizer> = NullRequestBuilder<SetAsDefaultTokenizer>(service: "thumbasset", action: "setAsDefault")
 			.setBody(key: "thumbAssetId", value: thumbAssetId)
 
 		return request

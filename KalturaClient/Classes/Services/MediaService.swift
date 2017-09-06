@@ -287,8 +287,8 @@ public final class MediaService{
 	}
 
 	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
-	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "anonymousRank")
+	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
+		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "media", action: "anonymousRank")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "rank", value: rank)
 
@@ -306,8 +306,8 @@ public final class MediaService{
 
 	/**  Approve the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry playable)  */
-	public static func approve(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "approve")
+	public static func approve(entryId: String) -> NullRequestBuilder<ApproveTokenizer> {
+		let request: NullRequestBuilder<ApproveTokenizer> = NullRequestBuilder<ApproveTokenizer>(service: "media", action: "approve")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -415,8 +415,8 @@ public final class MediaService{
 	}
 
 	/**  Delete a media entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "media", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -430,8 +430,8 @@ public final class MediaService{
 	}
 
 	/**  Flag inappropriate media entry for moderation  */
-	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "flag")
+	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder<FlagTokenizer> {
+		let request: NullRequestBuilder<FlagTokenizer> = NullRequestBuilder<FlagTokenizer>(service: "media", action: "flag")
 			.setBody(key: "moderationFlag", value: moderationFlag)
 
 		return request
@@ -569,8 +569,8 @@ public final class MediaService{
 
 	/**  Reject the media entry and mark the pending flags (if any) as moderated (this
 	  will make the entry non playable)  */
-	public static func reject(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "media", action: "reject")
+	public static func reject(entryId: String) -> NullRequestBuilder<RejectTokenizer> {
+		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "media", action: "reject")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

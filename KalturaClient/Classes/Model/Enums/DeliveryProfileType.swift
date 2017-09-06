@@ -71,6 +71,7 @@ public enum DeliveryProfileType: String {
 	case VOD_PACKAGER_HDS = "63"
 	case VOD_PACKAGER_MSS = "67"
 	case VOD_PACKAGER_DASH = "68"
+	case VOD_PACKAGER_HLS_MANIFEST = "69"
 	case LIVE_HLS = "1001"
 	case LIVE_HDS = "1002"
 	case LIVE_DASH = "1003"

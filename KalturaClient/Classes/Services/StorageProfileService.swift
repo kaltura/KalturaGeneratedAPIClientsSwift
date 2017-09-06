@@ -132,8 +132,8 @@ public final class StorageProfileService{
 		}
 	}
 
-	public static func updateStatus(storageId: Int, status: StorageProfileStatus) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "storageprofile", action: "updateStatus")
+	public static func updateStatus(storageId: Int, status: StorageProfileStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
+		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "storageprofile", action: "updateStatus")
 			.setBody(key: "storageId", value: storageId)
 			.setBody(key: "status", value: status.rawValue)
 

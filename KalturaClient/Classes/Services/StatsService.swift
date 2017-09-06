@@ -69,8 +69,8 @@ public final class StatsService{
 	/**  Will collect the kmcEvent sent form the KMC client   // this will actually be an
 	  empty function because all events will be sent using GET and will anyway be
 	  logged in the apache log  */
-	public static func kmcCollect(kmcEvent: StatsKmcEvent) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "stats", action: "kmcCollect")
+	public static func kmcCollect(kmcEvent: StatsKmcEvent) -> NullRequestBuilder<KmcCollectTokenizer> {
+		let request: NullRequestBuilder<KmcCollectTokenizer> = NullRequestBuilder<KmcCollectTokenizer>(service: "stats", action: "kmcCollect")
 			.setBody(key: "kmcEvent", value: kmcEvent)
 
 		return request
@@ -86,8 +86,8 @@ public final class StatsService{
 	}
 
 	/**  Use this action to report device capabilities to the kaltura server.  */
-	public static func reportDeviceCapabilities(data: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "stats", action: "reportDeviceCapabilities")
+	public static func reportDeviceCapabilities(data: String) -> NullRequestBuilder<ReportDeviceCapabilitiesTokenizer> {
+		let request: NullRequestBuilder<ReportDeviceCapabilitiesTokenizer> = NullRequestBuilder<ReportDeviceCapabilitiesTokenizer>(service: "stats", action: "reportDeviceCapabilities")
 			.setBody(key: "data", value: data)
 
 		return request
@@ -109,8 +109,8 @@ public final class StatsService{
 	}
 
 	/**  Use this action to report errors to the kaltura server.  */
-	public static func reportError(errorCode: String, errorMessage: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "stats", action: "reportError")
+	public static func reportError(errorCode: String, errorMessage: String) -> NullRequestBuilder<ReportErrorTokenizer> {
+		let request: NullRequestBuilder<ReportErrorTokenizer> = NullRequestBuilder<ReportErrorTokenizer>(service: "stats", action: "reportError")
 			.setBody(key: "errorCode", value: errorCode)
 			.setBody(key: "errorMessage", value: errorMessage)
 

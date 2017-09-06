@@ -74,8 +74,8 @@ public final class IntegrationService{
 		}
 	}
 
-	public static func notify(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "integration_integration", action: "notify")
+	public static func notify(id: Int) -> NullRequestBuilder<NotifyTokenizer> {
+		let request: NullRequestBuilder<NotifyTokenizer> = NullRequestBuilder<NotifyTokenizer>(service: "integration_integration", action: "notify")
 			.setBody(key: "id", value: id)
 
 		return request

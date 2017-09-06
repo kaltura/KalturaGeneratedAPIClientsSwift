@@ -134,8 +134,8 @@ public final class BaseEntryService{
 	}
 
 	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
-	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "baseentry", action: "anonymousRank")
+	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
+		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "baseentry", action: "anonymousRank")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "rank", value: rank)
 
@@ -153,8 +153,8 @@ public final class BaseEntryService{
 
 	/**  Approve the entry and mark the pending flags (if any) as moderated (this will
 	  make the entry playable).  */
-	public static func approve(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "baseentry", action: "approve")
+	public static func approve(entryId: String) -> NullRequestBuilder<ApproveTokenizer> {
+		let request: NullRequestBuilder<ApproveTokenizer> = NullRequestBuilder<ApproveTokenizer>(service: "baseentry", action: "approve")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -217,8 +217,8 @@ public final class BaseEntryService{
 	}
 
 	/**  Delete an entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "baseentry", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "baseentry", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
@@ -255,8 +255,8 @@ public final class BaseEntryService{
 	}
 
 	/**  Flag inappropriate entry for moderation.  */
-	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "baseentry", action: "flag")
+	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder<FlagTokenizer> {
+		let request: NullRequestBuilder<FlagTokenizer> = NullRequestBuilder<FlagTokenizer>(service: "baseentry", action: "flag")
 			.setBody(key: "moderationFlag", value: moderationFlag)
 
 		return request
@@ -488,8 +488,8 @@ public final class BaseEntryService{
 
 	/**  Reject the entry and mark the pending flags (if any) as moderated (this will
 	  make the entry non-playable).  */
-	public static func reject(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "baseentry", action: "reject")
+	public static func reject(entryId: String) -> NullRequestBuilder<RejectTokenizer> {
+		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "baseentry", action: "reject")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

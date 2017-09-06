@@ -94,8 +94,8 @@ public final class EventNotificationTemplateService{
 	}
 
 	/**  Delete an event notification template object  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "eventnotification_eventnotificationtemplate", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

@@ -61,8 +61,8 @@ public final class FileAssetService{
 	}
 
 	/**  Delete file asset by id  */
-	public static func delete(id: Int64) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "fileasset", action: "delete")
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "fileasset", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

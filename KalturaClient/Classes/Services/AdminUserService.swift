@@ -82,8 +82,8 @@ public final class AdminUserService{
 	}
 
 	/**  Reset admin user password and send it to the users email address  */
-	public static func resetPassword(email: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "adminuser", action: "resetPassword")
+	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
+		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "adminuser", action: "resetPassword")
 			.setBody(key: "email", value: email)
 
 		return request
@@ -105,8 +105,8 @@ public final class AdminUserService{
 	}
 
 	/**  Set initial users password  */
-	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "adminuser", action: "setInitialPassword")
+	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
+		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "adminuser", action: "setInitialPassword")
 			.setBody(key: "hashKey", value: hashKey)
 			.setBody(key: "newPassword", value: newPassword)
 

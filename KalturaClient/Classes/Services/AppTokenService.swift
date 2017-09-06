@@ -61,8 +61,8 @@ public final class AppTokenService{
 	}
 
 	/**  Delete application authentication token by id  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "apptoken", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "apptoken", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

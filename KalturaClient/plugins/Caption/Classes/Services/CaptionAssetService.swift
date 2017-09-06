@@ -67,8 +67,8 @@ public final class CaptionAssetService{
 		}
 	}
 
-	public static func delete(captionAssetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionasset", action: "delete")
+	public static func delete(captionAssetId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "caption_captionasset", action: "delete")
 			.setBody(key: "captionAssetId", value: captionAssetId)
 
 		return request
@@ -174,8 +174,8 @@ public final class CaptionAssetService{
 
 	/**  Markss the caption as default and removes that mark from all other caption
 	  assets of the entry.  */
-	public static func setAsDefault(captionAssetId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "caption_captionasset", action: "setAsDefault")
+	public static func setAsDefault(captionAssetId: String) -> NullRequestBuilder<SetAsDefaultTokenizer> {
+		let request: NullRequestBuilder<SetAsDefaultTokenizer> = NullRequestBuilder<SetAsDefaultTokenizer>(service: "caption_captionasset", action: "setAsDefault")
 			.setBody(key: "captionAssetId", value: captionAssetId)
 
 		return request

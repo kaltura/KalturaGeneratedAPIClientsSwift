@@ -71,8 +71,8 @@ public final class MixingService{
 	}
 
 	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
-	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "mixing", action: "anonymousRank")
+	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
+		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "mixing", action: "anonymousRank")
 			.setBody(key: "entryId", value: entryId)
 			.setBody(key: "rank", value: rank)
 
@@ -150,8 +150,8 @@ public final class MixingService{
 	}
 
 	/**  Delete a mix entry.  */
-	public static func delete(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "mixing", action: "delete")
+	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "mixing", action: "delete")
 			.setBody(key: "entryId", value: entryId)
 
 		return request

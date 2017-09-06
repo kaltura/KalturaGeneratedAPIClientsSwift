@@ -68,8 +68,8 @@ public final class TagService{
 		}
 	}
 
-	public static func indexCategoryEntryTags(categoryId: Int, pcToDecrement: String, pcToIncrement: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "tagsearch_tag", action: "indexCategoryEntryTags")
+	public static func indexCategoryEntryTags(categoryId: Int, pcToDecrement: String, pcToIncrement: String) -> NullRequestBuilder<IndexCategoryEntryTagsTokenizer> {
+		let request: NullRequestBuilder<IndexCategoryEntryTagsTokenizer> = NullRequestBuilder<IndexCategoryEntryTagsTokenizer>(service: "tagsearch_tag", action: "indexCategoryEntryTags")
 			.setBody(key: "categoryId", value: categoryId)
 			.setBody(key: "pcToDecrement", value: pcToDecrement)
 			.setBody(key: "pcToIncrement", value: pcToIncrement)

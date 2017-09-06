@@ -61,8 +61,8 @@ public final class ThumbParamsService{
 	}
 
 	/**  Delete Thumb Params by ID  */
-	public static func delete(id: Int) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "thumbparams", action: "delete")
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "thumbparams", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request

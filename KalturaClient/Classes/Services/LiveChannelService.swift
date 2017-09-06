@@ -145,8 +145,8 @@ public final class LiveChannelService{
 	}
 
 	/**  Delete a live channel.  */
-	public static func delete(id: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livechannel", action: "delete")
+	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
+		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livechannel", action: "delete")
 			.setBody(key: "id", value: id)
 
 		return request
@@ -399,8 +399,8 @@ public final class LiveChannelService{
 	}
 
 	/**  Validates all registered media servers  */
-	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder {
-		let request: NullRequestBuilder = NullRequestBuilder(service: "livechannel", action: "validateRegisteredMediaServers")
+	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> {
+		let request: NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> = NullRequestBuilder<ValidateRegisteredMediaServersTokenizer>(service: "livechannel", action: "validateRegisteredMediaServers")
 			.setBody(key: "entryId", value: entryId)
 
 		return request
