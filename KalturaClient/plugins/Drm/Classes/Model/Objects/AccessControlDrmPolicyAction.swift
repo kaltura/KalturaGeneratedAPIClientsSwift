@@ -61,7 +61,7 @@ open class AccessControlDrmPolicyAction: RuleAction {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(policyId != nil) {
 			dict["policyId"] = policyId!

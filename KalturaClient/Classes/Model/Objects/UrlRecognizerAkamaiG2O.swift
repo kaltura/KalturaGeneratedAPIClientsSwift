@@ -106,7 +106,7 @@ open class UrlRecognizerAkamaiG2O: UrlRecognizer {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(headerData != nil) {
 			dict["headerData"] = headerData!

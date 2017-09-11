@@ -89,7 +89,7 @@ open class SourceFileSyncDescriptor: FileSyncDescriptor {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(actualFileSyncLocalPath != nil) {
 			dict["actualFileSyncLocalPath"] = actualFileSyncLocalPath!

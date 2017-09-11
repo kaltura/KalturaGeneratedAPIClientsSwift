@@ -186,7 +186,7 @@ open class MediaEntryBaseFilter: PlayableEntryFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(mediaTypeEqual != nil) {
 			dict["mediaTypeEqual"] = mediaTypeEqual!.rawValue

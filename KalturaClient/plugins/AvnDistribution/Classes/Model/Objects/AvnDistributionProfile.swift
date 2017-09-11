@@ -74,7 +74,7 @@ open class AvnDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(feedTitle != nil) {
 			dict["feedTitle"] = feedTitle!

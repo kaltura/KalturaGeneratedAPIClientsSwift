@@ -74,7 +74,7 @@ open class UrlTokenizerCloudFront: UrlTokenizer {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(keyPairId != nil) {
 			dict["keyPairId"] = keyPairId!

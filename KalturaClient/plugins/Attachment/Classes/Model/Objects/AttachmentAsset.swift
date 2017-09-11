@@ -106,7 +106,7 @@ open class AttachmentAsset: Asset {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(filename != nil) {
 			dict["filename"] = filename!

@@ -60,7 +60,7 @@ open class FileSyncFilter: FileSyncBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(currentDc != nil) {
 			dict["currentDc"] = currentDc!

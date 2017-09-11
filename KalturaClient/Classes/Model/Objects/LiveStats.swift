@@ -158,7 +158,7 @@ open class LiveStats: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(audience != nil) {
 			dict["audience"] = audience!

@@ -60,7 +60,7 @@ open class PlayReadyProfile: DrmProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(keySeed != nil) {
 			dict["keySeed"] = keySeed!

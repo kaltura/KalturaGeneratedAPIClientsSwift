@@ -76,7 +76,7 @@ open class ConvertEntryFlavorsObjectTask: ObjectTask {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(flavorParamsIds != nil) {
 			dict["flavorParamsIds"] = flavorParamsIds!

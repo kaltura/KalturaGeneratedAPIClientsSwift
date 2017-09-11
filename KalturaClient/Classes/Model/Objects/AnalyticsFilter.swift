@@ -147,7 +147,7 @@ open class AnalyticsFilter: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(from_time != nil) {
 			dict["from_time"] = from_time!

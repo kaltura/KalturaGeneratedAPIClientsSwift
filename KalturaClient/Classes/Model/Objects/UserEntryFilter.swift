@@ -102,7 +102,7 @@ open class UserEntryFilter: UserEntryBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(userIdEqualCurrent != nil) {
 			dict["userIdEqualCurrent"] = userIdEqualCurrent!

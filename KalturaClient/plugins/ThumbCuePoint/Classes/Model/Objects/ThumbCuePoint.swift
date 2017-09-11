@@ -103,7 +103,7 @@ open class ThumbCuePoint: CuePoint {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(assetId != nil) {
 			dict["assetId"] = assetId!

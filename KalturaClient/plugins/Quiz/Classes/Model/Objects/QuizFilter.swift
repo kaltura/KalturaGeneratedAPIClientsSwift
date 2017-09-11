@@ -78,7 +78,7 @@ open class QuizFilter: RelatedFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(entryIdEqual != nil) {
 			dict["entryIdEqual"] = entryIdEqual!

@@ -166,7 +166,7 @@ open class SchedulerStatus: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(schedulerConfiguredId != nil) {
 			dict["schedulerConfiguredId"] = schedulerConfiguredId!

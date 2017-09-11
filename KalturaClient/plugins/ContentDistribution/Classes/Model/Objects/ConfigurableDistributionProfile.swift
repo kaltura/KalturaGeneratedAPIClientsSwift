@@ -82,7 +82,7 @@ open class ConfigurableDistributionProfile: DistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(fieldConfigArray != nil) {
 			dict["fieldConfigArray"] = fieldConfigArray!.map { value in value.toDictionary() }

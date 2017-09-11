@@ -60,7 +60,7 @@ open class LiveEntryScheduleResource: ScheduleResource {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(entryId != nil) {
 			dict["entryId"] = entryId!

@@ -62,7 +62,7 @@ open class DistributionDeleteJobData: DistributionJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(keepDistributionItem != nil) {
 			dict["keepDistributionItem"] = keepDistributionItem!

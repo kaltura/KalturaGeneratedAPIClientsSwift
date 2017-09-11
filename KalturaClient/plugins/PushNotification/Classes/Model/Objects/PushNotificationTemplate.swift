@@ -113,7 +113,7 @@ open class PushNotificationTemplate: EventNotificationTemplate {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(queueNameParameters != nil) {
 			dict["queueNameParameters"] = queueNameParameters!.map { value in value.toDictionary() }

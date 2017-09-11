@@ -619,7 +619,7 @@ open class FlavorParams: AssetParams {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(videoCodec != nil) {
 			dict["videoCodec"] = videoCodec!.rawValue

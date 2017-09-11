@@ -60,7 +60,7 @@ open class ConversionProfileAssetParamsFilter: ConversionProfileAssetParamsBaseF
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(conversionProfileIdFilter != nil) {
 			dict["conversionProfileIdFilter"] = conversionProfileIdFilter!.toDictionary()

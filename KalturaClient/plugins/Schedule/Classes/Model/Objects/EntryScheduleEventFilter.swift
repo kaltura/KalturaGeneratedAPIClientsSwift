@@ -88,7 +88,7 @@ open class EntryScheduleEventFilter: EntryScheduleEventBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(parentCategoryIdsLike != nil) {
 			dict["parentCategoryIdsLike"] = parentCategoryIdsLike!

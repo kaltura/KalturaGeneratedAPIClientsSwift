@@ -118,7 +118,7 @@ open class ScheduleEventResource: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventId != nil) {
 			dict["eventId"] = eventId!

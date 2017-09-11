@@ -277,7 +277,7 @@ open class LiveStreamEntry: LiveEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(bitrates != nil) {
 			dict["bitrates"] = bitrates!.map { value in value.toDictionary() }

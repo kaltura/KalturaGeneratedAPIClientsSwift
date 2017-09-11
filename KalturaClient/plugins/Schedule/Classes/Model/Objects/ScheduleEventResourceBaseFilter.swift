@@ -158,7 +158,7 @@ open class ScheduleEventResourceBaseFilter: RelatedFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventIdEqual != nil) {
 			dict["eventIdEqual"] = eventIdEqual!

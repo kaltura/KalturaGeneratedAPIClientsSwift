@@ -54,7 +54,7 @@ open class EmailNotificationCategoryRecipientJobData: EmailNotificationRecipient
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(categoryUserFilter != nil) {
 			dict["categoryUserFilter"] = categoryUserFilter!.toDictionary()

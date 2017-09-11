@@ -57,7 +57,7 @@ open class DeliveryServerNode: ServerNode {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(deliveryProfileIds != nil) {
 			dict["deliveryProfileIds"] = deliveryProfileIds!.map { value in value.toDictionary() }

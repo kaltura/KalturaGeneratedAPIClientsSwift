@@ -60,7 +60,7 @@ open class KontikiStorageProfile: StorageProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(serviceToken != nil) {
 			dict["serviceToken"] = serviceToken!

@@ -186,7 +186,7 @@ open class AkamaiUniversalProvisionJobData: ProvisionJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(streamId != nil) {
 			dict["streamId"] = streamId!

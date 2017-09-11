@@ -61,7 +61,7 @@ open class UrlTokenizerBitGravity: UrlTokenizer {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(hashPatternRegex != nil) {
 			dict["hashPatternRegex"] = hashPatternRegex!

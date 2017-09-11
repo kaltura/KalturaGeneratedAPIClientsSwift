@@ -186,7 +186,7 @@ open class GroupUserBaseFilter: RelatedFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(userIdEqual != nil) {
 			dict["userIdEqual"] = userIdEqual!

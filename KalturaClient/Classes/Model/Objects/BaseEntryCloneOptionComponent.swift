@@ -75,7 +75,7 @@ open class BaseEntryCloneOptionComponent: BaseEntryCloneOptionItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(itemType != nil) {
 			dict["itemType"] = itemType!.rawValue

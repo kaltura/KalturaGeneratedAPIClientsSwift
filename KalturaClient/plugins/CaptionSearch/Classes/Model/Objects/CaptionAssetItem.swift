@@ -104,7 +104,7 @@ open class CaptionAssetItem: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(asset != nil) {
 			dict["asset"] = asset!.toDictionary()

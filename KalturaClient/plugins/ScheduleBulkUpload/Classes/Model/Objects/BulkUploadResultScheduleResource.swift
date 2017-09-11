@@ -158,7 +158,7 @@ open class BulkUploadResultScheduleResource: BulkUploadResult {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(resourceId != nil) {
 			dict["resourceId"] = resourceId!

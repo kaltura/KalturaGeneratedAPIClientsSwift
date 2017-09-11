@@ -118,7 +118,7 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(freeText != nil) {
 			dict["freeText"] = freeText!

@@ -76,7 +76,7 @@ open class FeedDropFolderFile: DropFolderFile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(hash != nil) {
 			dict["hash"] = hash!

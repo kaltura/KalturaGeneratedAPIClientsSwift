@@ -62,7 +62,7 @@ open class BulkUploadICalJobData: BulkUploadJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventsType != nil) {
 			dict["eventsType"] = eventsType!.rawValue

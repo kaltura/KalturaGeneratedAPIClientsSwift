@@ -61,7 +61,7 @@ open class BusinessProcessStartNotificationTemplate: BusinessProcessNotification
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(abortOnDeletion != nil) {
 			dict["abortOnDeletion"] = abortOnDeletion!

@@ -60,7 +60,7 @@ open class EventCuePoint: CuePoint {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventType != nil) {
 			dict["eventType"] = eventType!.rawValue

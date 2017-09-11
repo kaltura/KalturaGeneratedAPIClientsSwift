@@ -116,7 +116,7 @@ open class ImageFlavorParams: FlavorParams {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(densityWidth != nil) {
 			dict["densityWidth"] = densityWidth!

@@ -166,7 +166,7 @@ open class PlayableEntry: BaseEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(msDuration != nil) {
 			dict["msDuration"] = msDuration!

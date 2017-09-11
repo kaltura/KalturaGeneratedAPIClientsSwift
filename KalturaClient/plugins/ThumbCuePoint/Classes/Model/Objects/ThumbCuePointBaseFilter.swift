@@ -158,7 +158,7 @@ open class ThumbCuePointBaseFilter: CuePointFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(descriptionLike != nil) {
 			dict["descriptionLike"] = descriptionLike!

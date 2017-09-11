@@ -144,7 +144,7 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(lastPlayedAtGreaterThanOrEqual != nil) {
 			dict["lastPlayedAtGreaterThanOrEqual"] = lastPlayedAtGreaterThanOrEqual!

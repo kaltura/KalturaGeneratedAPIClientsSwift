@@ -144,7 +144,7 @@ open class EntryScheduleEventBaseFilter: ScheduleEventFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(templateEntryIdEqual != nil) {
 			dict["templateEntryIdEqual"] = templateEntryIdEqual!

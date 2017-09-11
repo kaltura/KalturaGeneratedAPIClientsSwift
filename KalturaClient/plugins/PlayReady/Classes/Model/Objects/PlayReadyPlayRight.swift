@@ -160,7 +160,7 @@ open class PlayReadyPlayRight: PlayReadyRight {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(analogVideoOPL != nil) {
 			dict["analogVideoOPL"] = analogVideoOPL!.rawValue

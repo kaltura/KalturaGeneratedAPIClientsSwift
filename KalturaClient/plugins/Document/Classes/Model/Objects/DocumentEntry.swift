@@ -76,7 +76,7 @@ open class DocumentEntry: BaseEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(documentType != nil) {
 			dict["documentType"] = documentType!.rawValue

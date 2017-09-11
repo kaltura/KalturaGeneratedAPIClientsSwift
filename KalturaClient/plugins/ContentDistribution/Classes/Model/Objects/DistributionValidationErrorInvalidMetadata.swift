@@ -60,7 +60,7 @@ open class DistributionValidationErrorInvalidMetadata: DistributionValidationErr
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(metadataProfileId != nil) {
 			dict["metadataProfileId"] = metadataProfileId!

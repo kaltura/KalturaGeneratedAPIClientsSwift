@@ -92,7 +92,7 @@ open class MixEntry: PlayableEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(editorType != nil) {
 			dict["editorType"] = editorType!.rawValue

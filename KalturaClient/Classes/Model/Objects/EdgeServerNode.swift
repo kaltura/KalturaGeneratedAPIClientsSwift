@@ -76,7 +76,7 @@ open class EdgeServerNode: DeliveryServerNode {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(playbackDomain != nil) {
 			dict["playbackDomain"] = playbackDomain!

@@ -84,7 +84,7 @@ open class VelocixProvisionJobData: ProvisionJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(provisioningParams != nil) {
 			dict["provisioningParams"] = provisioningParams!.map { value in value.toDictionary() }

@@ -55,7 +55,7 @@ open class EmailNotificationUserRecipientProvider: EmailNotificationRecipientPro
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(filter != nil) {
 			dict["filter"] = filter!.toDictionary()

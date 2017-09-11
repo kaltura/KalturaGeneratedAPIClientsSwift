@@ -74,7 +74,7 @@ open class EventCuePointBaseFilter: CuePointFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventTypeEqual != nil) {
 			dict["eventTypeEqual"] = eventTypeEqual!.rawValue

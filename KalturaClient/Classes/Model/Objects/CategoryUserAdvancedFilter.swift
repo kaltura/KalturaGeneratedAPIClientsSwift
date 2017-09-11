@@ -102,7 +102,7 @@ open class CategoryUserAdvancedFilter: SearchItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(memberIdEq != nil) {
 			dict["memberIdEq"] = memberIdEq!

@@ -144,7 +144,7 @@ open class YahooDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(ftpPath != nil) {
 			dict["ftpPath"] = ftpPath!

@@ -94,7 +94,7 @@ open class CompareMetadataCondition: CompareCondition {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(xPath != nil) {
 			dict["xPath"] = xPath!

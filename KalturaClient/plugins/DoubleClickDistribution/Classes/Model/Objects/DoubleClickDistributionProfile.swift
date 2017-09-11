@@ -144,7 +144,7 @@ open class DoubleClickDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(channelTitle != nil) {
 			dict["channelTitle"] = channelTitle!

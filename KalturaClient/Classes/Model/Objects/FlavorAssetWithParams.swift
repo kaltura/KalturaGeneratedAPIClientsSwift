@@ -77,7 +77,7 @@ open class FlavorAssetWithParams: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(flavorAsset != nil) {
 			dict["flavorAsset"] = flavorAsset!.toDictionary()

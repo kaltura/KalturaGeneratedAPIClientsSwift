@@ -72,7 +72,7 @@ open class ModifyCategoriesObjectTask: ObjectTask {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(addRemoveType != nil) {
 			dict["addRemoveType"] = addRemoveType!.rawValue

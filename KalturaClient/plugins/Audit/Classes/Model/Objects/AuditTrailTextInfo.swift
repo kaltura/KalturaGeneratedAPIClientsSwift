@@ -60,7 +60,7 @@ open class AuditTrailTextInfo: AuditTrailInfo {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(info != nil) {
 			dict["info"] = info!

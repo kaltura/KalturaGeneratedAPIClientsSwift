@@ -88,7 +88,7 @@ open class EdgeServerNodeBaseFilter: DeliveryServerNodeFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(playbackDomainLike != nil) {
 			dict["playbackDomainLike"] = playbackDomainLike!

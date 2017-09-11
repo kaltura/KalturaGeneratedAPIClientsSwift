@@ -60,7 +60,7 @@ open class BulkUploadResultScheduleEvent: BulkUploadResult {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(referenceId != nil) {
 			dict["referenceId"] = referenceId!

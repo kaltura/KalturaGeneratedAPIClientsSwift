@@ -74,7 +74,7 @@ open class SyndicationDistributionProfile: DistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(xsl != nil) {
 			dict["xsl"] = xsl!

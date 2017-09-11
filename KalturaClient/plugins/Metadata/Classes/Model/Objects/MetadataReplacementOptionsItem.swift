@@ -62,7 +62,7 @@ open class MetadataReplacementOptionsItem: PluginReplacementOptionsItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(shouldCopyMetadata != nil) {
 			dict["shouldCopyMetadata"] = shouldCopyMetadata!

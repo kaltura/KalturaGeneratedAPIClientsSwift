@@ -56,7 +56,7 @@ open class AuditTrailChangeInfo: AuditTrailInfo {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(changedItems != nil) {
 			dict["changedItems"] = changedItems!.map { value in value.toDictionary() }

@@ -62,7 +62,7 @@ open class EmailNotificationRecipient: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(email != nil) {
 			dict["email"] = email!.toDictionary()

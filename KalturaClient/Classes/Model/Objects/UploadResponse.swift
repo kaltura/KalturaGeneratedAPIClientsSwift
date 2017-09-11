@@ -102,7 +102,7 @@ open class UploadResponse: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(uploadTokenId != nil) {
 			dict["uploadTokenId"] = uploadTokenId!

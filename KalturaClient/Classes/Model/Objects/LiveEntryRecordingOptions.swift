@@ -103,7 +103,7 @@ open class LiveEntryRecordingOptions: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(shouldCopyEntitlement != nil) {
 			dict["shouldCopyEntitlement"] = shouldCopyEntitlement!

@@ -107,7 +107,7 @@ open class EntryContextDataParams: AccessControlScope {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(flavorAssetId != nil) {
 			dict["flavorAssetId"] = flavorAssetId!

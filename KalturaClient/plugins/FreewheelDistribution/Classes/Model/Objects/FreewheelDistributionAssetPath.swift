@@ -60,7 +60,7 @@ open class FreewheelDistributionAssetPath: DistributionJobProviderData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(path != nil) {
 			dict["path"] = path!

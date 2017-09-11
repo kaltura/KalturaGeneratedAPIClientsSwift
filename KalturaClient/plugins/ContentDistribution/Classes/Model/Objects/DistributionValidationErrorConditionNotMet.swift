@@ -60,7 +60,7 @@ open class DistributionValidationErrorConditionNotMet: DistributionValidationErr
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(conditionName != nil) {
 			dict["conditionName"] = conditionName!

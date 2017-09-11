@@ -130,7 +130,7 @@ open class FlavorParamsOutput: FlavorParams {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(flavorParamsId != nil) {
 			dict["flavorParamsId"] = flavorParamsId!

@@ -158,7 +158,7 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(distributedFlavorAssets != nil) {
 			dict["distributedFlavorAssets"] = distributedFlavorAssets!

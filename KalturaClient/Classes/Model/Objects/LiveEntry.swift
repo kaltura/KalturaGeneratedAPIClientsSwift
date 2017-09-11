@@ -257,7 +257,7 @@ open class LiveEntry: MediaEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(offlineMessage != nil) {
 			dict["offlineMessage"] = offlineMessage!

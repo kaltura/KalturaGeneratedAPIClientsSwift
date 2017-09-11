@@ -116,7 +116,7 @@ open class ThumbParamsOutput: ThumbParams {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(thumbParamsId != nil) {
 			dict["thumbParamsId"] = thumbParamsId!

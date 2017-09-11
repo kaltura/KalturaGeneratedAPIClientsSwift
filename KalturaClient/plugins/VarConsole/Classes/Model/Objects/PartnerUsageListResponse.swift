@@ -63,7 +63,7 @@ open class PartnerUsageListResponse: ListResponse {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(total != nil) {
 			dict["total"] = total!.toDictionary()

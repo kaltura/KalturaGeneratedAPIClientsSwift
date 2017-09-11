@@ -68,7 +68,7 @@ open class ContextDataResult: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(messages != nil) {
 			dict["messages"] = messages!.map { value in value.toDictionary() }

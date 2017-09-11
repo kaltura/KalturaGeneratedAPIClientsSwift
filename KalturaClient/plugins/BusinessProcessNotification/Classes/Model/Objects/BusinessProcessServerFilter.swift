@@ -74,7 +74,7 @@ open class BusinessProcessServerFilter: BusinessProcessServerBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(currentDcOrExternal != nil) {
 			dict["currentDcOrExternal"] = currentDcOrExternal!

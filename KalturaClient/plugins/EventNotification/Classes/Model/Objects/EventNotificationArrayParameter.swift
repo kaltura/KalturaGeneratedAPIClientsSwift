@@ -67,7 +67,7 @@ open class EventNotificationArrayParameter: EventNotificationParameter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(values != nil) {
 			dict["values"] = values!.map { value in value.toDictionary() }

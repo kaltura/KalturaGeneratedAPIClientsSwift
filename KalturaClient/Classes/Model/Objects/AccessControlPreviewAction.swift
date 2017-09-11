@@ -60,7 +60,7 @@ open class AccessControlPreviewAction: RuleAction {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(limit != nil) {
 			dict["limit"] = limit!

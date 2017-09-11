@@ -60,7 +60,7 @@ open class FlavorParamsBaseFilter: AssetParamsFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(formatEqual != nil) {
 			dict["formatEqual"] = formatEqual!.rawValue

@@ -88,7 +88,7 @@ open class EntryCaptionAssetSearchItem: SearchItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(contentLike != nil) {
 			dict["contentLike"] = contentLike!

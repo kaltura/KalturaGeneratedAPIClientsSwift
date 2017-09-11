@@ -191,7 +191,7 @@ open class ScheduleResource: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(parentId != nil) {
 			dict["parentId"] = parentId!

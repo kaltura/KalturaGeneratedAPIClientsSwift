@@ -132,7 +132,7 @@ open class ConcatJobData: JobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(srcFiles != nil) {
 			dict["srcFiles"] = srcFiles!.map { value in value.toDictionary() }

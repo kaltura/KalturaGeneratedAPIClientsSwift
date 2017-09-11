@@ -61,7 +61,7 @@ open class AccessControlServeRemoteEdgeServerAction: RuleAction {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(edgeServerIds != nil) {
 			dict["edgeServerIds"] = edgeServerIds!

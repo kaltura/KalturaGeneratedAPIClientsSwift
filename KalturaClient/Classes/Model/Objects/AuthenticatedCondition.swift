@@ -57,7 +57,7 @@ open class AuthenticatedCondition: Condition {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(privileges != nil) {
 			dict["privileges"] = privileges!.map { value in value.toDictionary() }

@@ -74,7 +74,7 @@ open class StorageExportJobData: StorageJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(force != nil) {
 			dict["force"] = force!

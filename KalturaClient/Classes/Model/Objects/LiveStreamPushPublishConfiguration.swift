@@ -89,7 +89,7 @@ open class LiveStreamPushPublishConfiguration: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(publishUrl != nil) {
 			dict["publishUrl"] = publishUrl!

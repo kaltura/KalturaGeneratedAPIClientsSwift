@@ -65,7 +65,7 @@ open class RemoteStorageResource: UrlResource {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(storageProfileId != nil) {
 			dict["storageProfileId"] = storageProfileId!

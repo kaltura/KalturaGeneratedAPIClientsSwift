@@ -91,7 +91,7 @@ open class WidevineFlavorAsset: FlavorAsset {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(widevineDistributionStartDate != nil) {
 			dict["widevineDistributionStartDate"] = widevineDistributionStartDate!

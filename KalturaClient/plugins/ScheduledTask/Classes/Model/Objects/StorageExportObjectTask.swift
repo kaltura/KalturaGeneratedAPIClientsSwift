@@ -61,7 +61,7 @@ open class StorageExportObjectTask: ObjectTask {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(storageId != nil) {
 			dict["storageId"] = storageId!

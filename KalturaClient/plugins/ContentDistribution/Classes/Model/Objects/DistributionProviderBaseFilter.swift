@@ -74,7 +74,7 @@ open class DistributionProviderBaseFilter: Filter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(typeEqual != nil) {
 			dict["typeEqual"] = typeEqual!.rawValue

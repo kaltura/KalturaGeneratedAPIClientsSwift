@@ -112,7 +112,7 @@ open class PlayReadyPolicy: DrmPolicy {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(gracePeriod != nil) {
 			dict["gracePeriod"] = gracePeriod!

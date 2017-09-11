@@ -74,7 +74,7 @@ open class EventNotificationScope: Scope {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(objectId != nil) {
 			dict["objectId"] = objectId!

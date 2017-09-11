@@ -75,7 +75,7 @@ open class KontikiStorageDeleteJobData: StorageDeleteJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(contentMoid != nil) {
 			dict["contentMoid"] = contentMoid!

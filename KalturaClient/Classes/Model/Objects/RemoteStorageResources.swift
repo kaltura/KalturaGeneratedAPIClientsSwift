@@ -60,7 +60,7 @@ open class RemoteStorageResources: ContentResource {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(resources != nil) {
 			dict["resources"] = resources!.map { value in value.toDictionary() }

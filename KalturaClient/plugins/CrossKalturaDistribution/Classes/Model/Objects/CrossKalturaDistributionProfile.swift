@@ -266,7 +266,7 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(targetServiceUrl != nil) {
 			dict["targetServiceUrl"] = targetServiceUrl!

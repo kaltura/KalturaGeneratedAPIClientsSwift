@@ -58,7 +58,7 @@ open class AssetPropertiesCompareCondition: Condition {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(properties != nil) {
 			dict["properties"] = properties!.map { value in value.toDictionary() }

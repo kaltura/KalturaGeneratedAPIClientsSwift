@@ -60,7 +60,7 @@ open class DeleteFileJobData: JobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(localFileSyncPath != nil) {
 			dict["localFileSyncPath"] = localFileSyncPath!

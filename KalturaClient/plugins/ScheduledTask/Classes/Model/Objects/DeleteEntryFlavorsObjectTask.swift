@@ -76,7 +76,7 @@ open class DeleteEntryFlavorsObjectTask: ObjectTask {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(deleteType != nil) {
 			dict["deleteType"] = deleteType!.rawValue

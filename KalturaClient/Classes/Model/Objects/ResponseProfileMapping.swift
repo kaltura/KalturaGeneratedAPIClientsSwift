@@ -88,7 +88,7 @@ open class ResponseProfileMapping: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(parentProperty != nil) {
 			dict["parentProperty"] = parentProperty!

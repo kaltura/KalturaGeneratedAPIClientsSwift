@@ -136,7 +136,7 @@ open class ReportInputFilter: ReportInputBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(keywords != nil) {
 			dict["keywords"] = keywords!

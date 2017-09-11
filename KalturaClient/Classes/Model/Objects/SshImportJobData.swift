@@ -88,7 +88,7 @@ open class SshImportJobData: ImportJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(privateKey != nil) {
 			dict["privateKey"] = privateKey!

@@ -116,7 +116,7 @@ open class WebexDropFolderFile: DropFolderFile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(recordingId != nil) {
 			dict["recordingId"] = recordingId!

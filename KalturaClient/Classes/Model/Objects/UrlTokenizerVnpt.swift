@@ -74,7 +74,7 @@ open class UrlTokenizerVnpt: UrlTokenizer {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(tokenizationFormat != nil) {
 			dict["tokenizationFormat"] = tokenizationFormat!

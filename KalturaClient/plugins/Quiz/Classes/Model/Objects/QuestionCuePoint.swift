@@ -99,7 +99,7 @@ open class QuestionCuePoint: CuePoint {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(optionalAnswers != nil) {
 			dict["optionalAnswers"] = optionalAnswers!.map { key, value in (key, value.toDictionary()) }

@@ -186,7 +186,7 @@ open class AnnotationBaseFilter: CuePointFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(parentIdEqual != nil) {
 			dict["parentIdEqual"] = parentIdEqual!

@@ -61,7 +61,7 @@ open class DispatchEventNotificationObjectTask: ObjectTask {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventNotificationTemplateId != nil) {
 			dict["eventNotificationTemplateId"] = eventNotificationTemplateId!

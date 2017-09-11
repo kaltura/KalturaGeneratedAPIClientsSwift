@@ -91,7 +91,7 @@ open class EntryScheduleEvent: ScheduleEvent {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(templateEntryId != nil) {
 			dict["templateEntryId"] = templateEntryId!

@@ -256,7 +256,7 @@ open class MetadataProfile: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(metadataObjectType != nil) {
 			dict["metadataObjectType"] = metadataObjectType!.rawValue

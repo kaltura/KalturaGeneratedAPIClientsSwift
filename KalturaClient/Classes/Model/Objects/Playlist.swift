@@ -162,7 +162,7 @@ open class Playlist: BaseEntry {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(playlistContent != nil) {
 			dict["playlistContent"] = playlistContent!

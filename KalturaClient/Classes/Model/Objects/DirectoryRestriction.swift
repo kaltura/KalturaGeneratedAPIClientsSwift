@@ -61,7 +61,7 @@ open class DirectoryRestriction: BaseRestriction {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(directoryRestrictionType != nil) {
 			dict["directoryRestrictionType"] = directoryRestrictionType!.rawValue

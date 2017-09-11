@@ -60,7 +60,7 @@ open class ParseCaptionAssetJobData: JobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(captionAssetId != nil) {
 			dict["captionAssetId"] = captionAssetId!

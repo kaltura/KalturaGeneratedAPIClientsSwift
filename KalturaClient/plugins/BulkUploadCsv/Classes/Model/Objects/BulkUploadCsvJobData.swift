@@ -73,7 +73,7 @@ open class BulkUploadCsvJobData: BulkUploadJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(columns != nil) {
 			dict["columns"] = columns!.map { value in value.toDictionary() }

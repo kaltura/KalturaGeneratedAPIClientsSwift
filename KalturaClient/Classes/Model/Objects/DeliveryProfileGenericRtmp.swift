@@ -75,7 +75,7 @@ open class DeliveryProfileGenericRtmp: DeliveryProfileRtmp {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(pattern != nil) {
 			dict["pattern"] = pattern!

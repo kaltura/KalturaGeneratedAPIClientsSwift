@@ -116,7 +116,7 @@ open class ThumbAssetBaseFilter: AssetFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(thumbParamsIdEqual != nil) {
 			dict["thumbParamsIdEqual"] = thumbParamsIdEqual!

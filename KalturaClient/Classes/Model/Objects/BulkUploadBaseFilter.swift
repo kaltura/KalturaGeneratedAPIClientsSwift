@@ -144,7 +144,7 @@ open class BulkUploadBaseFilter: Filter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(uploadedOnGreaterThanOrEqual != nil) {
 			dict["uploadedOnGreaterThanOrEqual"] = uploadedOnGreaterThanOrEqual!

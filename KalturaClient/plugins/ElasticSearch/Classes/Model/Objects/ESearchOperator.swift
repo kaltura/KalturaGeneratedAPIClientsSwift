@@ -70,7 +70,7 @@ open class ESearchOperator: ESearchBaseItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(operator != nil) {
 			dict["operator"] = operator!.rawValue

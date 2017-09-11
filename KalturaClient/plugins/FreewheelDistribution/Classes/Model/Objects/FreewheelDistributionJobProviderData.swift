@@ -72,7 +72,7 @@ open class FreewheelDistributionJobProviderData: DistributionJobProviderData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(videoAssetFilePaths != nil) {
 			dict["videoAssetFilePaths"] = videoAssetFilePaths!.map { value in value.toDictionary() }

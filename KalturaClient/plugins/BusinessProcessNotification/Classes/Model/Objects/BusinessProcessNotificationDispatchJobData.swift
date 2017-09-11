@@ -67,7 +67,7 @@ open class BusinessProcessNotificationDispatchJobData: EventNotificationDispatch
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(server != nil) {
 			dict["server"] = server!.toDictionary()

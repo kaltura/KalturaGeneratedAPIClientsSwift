@@ -131,7 +131,7 @@ open class AssetParamsOutput: AssetParams {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(assetParamsId != nil) {
 			dict["assetParamsId"] = assetParamsId!

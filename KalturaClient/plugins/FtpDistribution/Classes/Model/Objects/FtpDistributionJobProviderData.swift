@@ -56,7 +56,7 @@ open class FtpDistributionJobProviderData: ConfigurableDistributionJobProviderDa
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(filesForDistribution != nil) {
 			dict["filesForDistribution"] = filesForDistribution!.map { value in value.toDictionary() }

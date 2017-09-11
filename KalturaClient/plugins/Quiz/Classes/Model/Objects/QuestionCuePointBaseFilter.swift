@@ -88,7 +88,7 @@ open class QuestionCuePointBaseFilter: CuePointFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(questionLike != nil) {
 			dict["questionLike"] = questionLike!

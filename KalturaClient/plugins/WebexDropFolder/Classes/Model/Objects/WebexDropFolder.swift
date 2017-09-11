@@ -172,7 +172,7 @@ open class WebexDropFolder: DropFolder {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(webexUserId != nil) {
 			dict["webexUserId"] = webexUserId!

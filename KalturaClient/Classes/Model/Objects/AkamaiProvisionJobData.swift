@@ -130,7 +130,7 @@ open class AkamaiProvisionJobData: ProvisionJobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(wsdlUsername != nil) {
 			dict["wsdlUsername"] = wsdlUsername!

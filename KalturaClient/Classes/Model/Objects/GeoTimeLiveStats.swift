@@ -60,7 +60,7 @@ open class GeoTimeLiveStats: EntryLiveStats {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(city != nil) {
 			dict["city"] = city!.toDictionary()

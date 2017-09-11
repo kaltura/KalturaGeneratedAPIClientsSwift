@@ -130,7 +130,7 @@ open class AmazonS3StorageProfile: StorageProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(filesPermissionInS3 != nil) {
 			dict["filesPermissionInS3"] = filesPermissionInS3!.rawValue

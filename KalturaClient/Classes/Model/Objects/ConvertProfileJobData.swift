@@ -92,7 +92,7 @@ open class ConvertProfileJobData: JobData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(inputFileSyncLocalPath != nil) {
 			dict["inputFileSyncLocalPath"] = inputFileSyncLocalPath!

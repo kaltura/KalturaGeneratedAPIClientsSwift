@@ -62,7 +62,7 @@ open class ScheduleEventResourceFilter: ScheduleEventResourceBaseFilter {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(eventIdOrItsParentIdEqual != nil) {
 			dict["eventIdOrItsParentIdEqual"] = eventIdOrItsParentIdEqual!

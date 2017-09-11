@@ -63,7 +63,7 @@ open class LiveStreamAdminEntryCompareAttributeCondition: SearchComparableAttrib
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(attribute != nil) {
 			dict["attribute"] = attribute!.rawValue
