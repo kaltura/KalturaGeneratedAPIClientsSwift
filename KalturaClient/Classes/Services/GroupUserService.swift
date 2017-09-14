@@ -46,7 +46,7 @@ public final class GroupUserService{
 	/**  Add new GroupUser  */
 	public static func add(groupUser: GroupUser) -> RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer> {
 		let request: RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer> = RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, AddTokenizer>(service: "groupuser", action: "add")
-			.setBody(key: "groupUser", value: groupUser)
+			.setParam(key: "groupUser", value: groupUser)
 
 		return request
 	}
@@ -69,8 +69,8 @@ public final class GroupUserService{
 	/**  delete by userId and groupId  */
 	public static func delete(userId: String, groupId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "groupuser", action: "delete")
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "groupId", value: groupId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "groupId", value: groupId)
 
 		return request
 	}
@@ -97,8 +97,8 @@ public final class GroupUserService{
 	/**  List all GroupUsers  */
 	public static func list(filter: GroupUserFilter?, pager: FilterPager?) -> RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer> = RequestBuilder<GroupUserListResponse, GroupUserListResponse.GroupUserListResponseTokenizer, ListTokenizer>(service: "groupuser", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

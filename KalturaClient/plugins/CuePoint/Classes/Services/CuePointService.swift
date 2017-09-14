@@ -46,7 +46,7 @@ public final class CuePointService{
 	/**  Allows you to add an cue point object associated with an entry  */
 	public static func add(cuePoint: CuePoint) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, AddTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, AddTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, AddTokenizer>(service: "cuepoint_cuepoint", action: "add")
-			.setBody(key: "cuePoint", value: cuePoint)
+			.setParam(key: "cuePoint", value: cuePoint)
 
 		return request
 	}
@@ -81,8 +81,8 @@ public final class CuePointService{
 	/**  Clone cuePoint with id to given entry  */
 	public static func clone(id: String, entryId: String) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer>(service: "cuepoint_cuepoint", action: "clone")
-			.setBody(key: "id", value: id)
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "id", value: id)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -101,7 +101,7 @@ public final class CuePointService{
 	/**  count cue point objects by filter  */
 	public static func count(filter: CuePointFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "cuepoint_cuepoint", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -118,7 +118,7 @@ public final class CuePointService{
 	/**  delete cue point by id, and delete all children cue points  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "cuepoint_cuepoint", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -135,7 +135,7 @@ public final class CuePointService{
 	/**  Retrieve an CuePoint object by id  */
 	public static func get(id: String) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer>(service: "cuepoint_cuepoint", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -162,8 +162,8 @@ public final class CuePointService{
 	/**  List cue point objects by filter and pager  */
 	public static func list(filter: CuePointFilter?, pager: FilterPager?) -> RequestBuilder<CuePointListResponse, CuePointListResponse.CuePointListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<CuePointListResponse, CuePointListResponse.CuePointListResponseTokenizer, ListTokenizer> = RequestBuilder<CuePointListResponse, CuePointListResponse.CuePointListResponseTokenizer, ListTokenizer>(service: "cuepoint_cuepoint", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -184,8 +184,8 @@ public final class CuePointService{
 	/**  Update cue point by id  */
 	public static func update(id: String, cuePoint: CuePoint) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateTokenizer>(service: "cuepoint_cuepoint", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "cuePoint", value: cuePoint)
+			.setParam(key: "id", value: id)
+			.setParam(key: "cuePoint", value: cuePoint)
 
 		return request
 	}
@@ -208,8 +208,8 @@ public final class CuePointService{
 	/**  Update cuePoint status by id  */
 	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
 		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "cuepoint_cuepoint", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

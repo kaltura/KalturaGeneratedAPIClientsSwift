@@ -46,7 +46,7 @@ public final class SyndicationFeedService{
 	/**  Add new Syndication Feed  */
 	public static func add(syndicationFeed: BaseSyndicationFeed) -> RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, AddTokenizer> {
 		let request: RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, AddTokenizer> = RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, AddTokenizer>(service: "syndicationfeed", action: "add")
-			.setBody(key: "syndicationFeed", value: syndicationFeed)
+			.setParam(key: "syndicationFeed", value: syndicationFeed)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class SyndicationFeedService{
 	/**  Delete Syndication Feed by ID  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "syndicationfeed", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class SyndicationFeedService{
 	/**  Get Syndication Feed by ID  */
 	public static func get(id: String) -> RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, GetTokenizer> {
 		let request: RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, GetTokenizer> = RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, GetTokenizer>(service: "syndicationfeed", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -97,7 +97,7 @@ public final class SyndicationFeedService{
 	/**  get entry count for a syndication feed  */
 	public static func getEntryCount(feedId: String) -> RequestBuilder<SyndicationFeedEntryCount, SyndicationFeedEntryCount.SyndicationFeedEntryCountTokenizer, GetEntryCountTokenizer> {
 		let request: RequestBuilder<SyndicationFeedEntryCount, SyndicationFeedEntryCount.SyndicationFeedEntryCountTokenizer, GetEntryCountTokenizer> = RequestBuilder<SyndicationFeedEntryCount, SyndicationFeedEntryCount.SyndicationFeedEntryCountTokenizer, GetEntryCountTokenizer>(service: "syndicationfeed", action: "getEntryCount")
-			.setBody(key: "feedId", value: feedId)
+			.setParam(key: "feedId", value: feedId)
 
 		return request
 	}
@@ -124,8 +124,8 @@ public final class SyndicationFeedService{
 	/**  List Syndication Feeds by filter with paging support  */
 	public static func list(filter: BaseSyndicationFeedFilter?, pager: FilterPager?) -> RequestBuilder<BaseSyndicationFeedListResponse, BaseSyndicationFeedListResponse.BaseSyndicationFeedListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<BaseSyndicationFeedListResponse, BaseSyndicationFeedListResponse.BaseSyndicationFeedListResponseTokenizer, ListTokenizer> = RequestBuilder<BaseSyndicationFeedListResponse, BaseSyndicationFeedListResponse.BaseSyndicationFeedListResponseTokenizer, ListTokenizer>(service: "syndicationfeed", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -143,7 +143,7 @@ public final class SyndicationFeedService{
 	  returns a comma-separated ids of conversion jobs  */
 	public static func requestConversion(feedId: String) -> RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer> = RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer>(service: "syndicationfeed", action: "requestConversion")
-			.setBody(key: "feedId", value: feedId)
+			.setParam(key: "feedId", value: feedId)
 
 		return request
 	}
@@ -164,8 +164,8 @@ public final class SyndicationFeedService{
 	/**  Update Syndication Feed by ID  */
 	public static func update(id: String, syndicationFeed: BaseSyndicationFeed) -> RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, UpdateTokenizer> = RequestBuilder<BaseSyndicationFeed, BaseSyndicationFeed.BaseSyndicationFeedTokenizer, UpdateTokenizer>(service: "syndicationfeed", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "syndicationFeed", value: syndicationFeed)
+			.setParam(key: "id", value: id)
+			.setParam(key: "syndicationFeed", value: syndicationFeed)
 
 		return request
 	}

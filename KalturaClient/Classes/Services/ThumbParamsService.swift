@@ -46,7 +46,7 @@ public final class ThumbParamsService{
 	/**  Add new Thumb Params  */
 	public static func add(thumbParams: ThumbParams) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, AddTokenizer> = RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, AddTokenizer>(service: "thumbparams", action: "add")
-			.setBody(key: "thumbParams", value: thumbParams)
+			.setParam(key: "thumbParams", value: thumbParams)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class ThumbParamsService{
 	/**  Delete Thumb Params by ID  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "thumbparams", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class ThumbParamsService{
 	/**  Get Thumb Params by ID  */
 	public static func get(id: Int) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer> = RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer>(service: "thumbparams", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -97,7 +97,7 @@ public final class ThumbParamsService{
 	/**  Get Thumb Params by Conversion Profile ID  */
 	public static func getByConversionProfileId(conversionProfileId: Int) -> ArrayRequestBuilder<ThumbParams, ArrayTokenizedObject<ThumbParams.ThumbParamsTokenizer>, GetByConversionProfileIdTokenizer> {
 		let request: ArrayRequestBuilder<ThumbParams, ArrayTokenizedObject<ThumbParams.ThumbParamsTokenizer>, GetByConversionProfileIdTokenizer> = ArrayRequestBuilder<ThumbParams, ArrayTokenizedObject<ThumbParams.ThumbParamsTokenizer>, GetByConversionProfileIdTokenizer>(service: "thumbparams", action: "getByConversionProfileId")
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
 
 		return request
 	}
@@ -125,8 +125,8 @@ public final class ThumbParamsService{
 	  params will be listed too)  */
 	public static func list(filter: ThumbParamsFilter?, pager: FilterPager?) -> RequestBuilder<ThumbParamsListResponse, ThumbParamsListResponse.ThumbParamsListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ThumbParamsListResponse, ThumbParamsListResponse.ThumbParamsListResponseTokenizer, ListTokenizer> = RequestBuilder<ThumbParamsListResponse, ThumbParamsListResponse.ThumbParamsListResponseTokenizer, ListTokenizer>(service: "thumbparams", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -147,8 +147,8 @@ public final class ThumbParamsService{
 	/**  Update Thumb Params by ID  */
 	public static func update(id: Int, thumbParams: ThumbParams) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer> = RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer>(service: "thumbparams", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "thumbParams", value: thumbParams)
+			.setParam(key: "id", value: id)
+			.setParam(key: "thumbParams", value: thumbParams)
 
 		return request
 	}

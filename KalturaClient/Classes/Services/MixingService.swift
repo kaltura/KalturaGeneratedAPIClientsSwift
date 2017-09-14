@@ -50,7 +50,7 @@ public final class MixingService{
 	  created.  */
 	public static func add(mixEntry: MixEntry) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AddTokenizer>(service: "mixing", action: "add")
-			.setBody(key: "mixEntry", value: mixEntry)
+			.setParam(key: "mixEntry", value: mixEntry)
 
 		return request
 	}
@@ -73,8 +73,8 @@ public final class MixingService{
 	/**  Anonymously rank a mix entry, no validation is done on duplicate rankings  */
 	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
 		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "mixing", action: "anonymousRank")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "rank", value: rank)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "rank", value: rank)
 
 		return request
 	}
@@ -98,8 +98,8 @@ public final class MixingService{
 	  timeline as a new version.  */
 	public static func appendMediaEntry(mixEntryId: String, mediaEntryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer>(service: "mixing", action: "appendMediaEntry")
-			.setBody(key: "mixEntryId", value: mixEntryId)
-			.setBody(key: "mediaEntryId", value: mediaEntryId)
+			.setParam(key: "mixEntryId", value: mixEntryId)
+			.setParam(key: "mediaEntryId", value: mediaEntryId)
 
 		return request
 	}
@@ -116,7 +116,7 @@ public final class MixingService{
 	/**  Clones an existing mix.  */
 	public static func clone(entryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, CloneTokenizer>(service: "mixing", action: "clone")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -135,7 +135,7 @@ public final class MixingService{
 	/**  Count mix entries by filter.  */
 	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "mixing", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -152,7 +152,7 @@ public final class MixingService{
 	/**  Delete a mix entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "mixing", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -179,8 +179,8 @@ public final class MixingService{
 	/**  Get mix entry by id.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, GetTokenizer>(service: "mixing", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -197,7 +197,7 @@ public final class MixingService{
 	/**  Get the mixes in which the media entry is included  */
 	public static func getMixesByMediaId(mediaEntryId: String) -> ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer> {
 		let request: ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer> = ArrayRequestBuilder<MixEntry, ArrayTokenizedObject<MixEntry.MixEntryTokenizer>, GetMixesByMediaIdTokenizer>(service: "mixing", action: "getMixesByMediaId")
-			.setBody(key: "mediaEntryId", value: mediaEntryId)
+			.setParam(key: "mediaEntryId", value: mediaEntryId)
 
 		return request
 	}
@@ -224,8 +224,8 @@ public final class MixingService{
 	/**  Get all ready media entries that exist in the given mix id  */
 	public static func getReadyMediaEntries(mixId: String, version: Int?) -> ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer> {
 		let request: ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer> = ArrayRequestBuilder<MediaEntry, ArrayTokenizedObject<MediaEntry.MediaEntryTokenizer>, GetReadyMediaEntriesTokenizer>(service: "mixing", action: "getReadyMediaEntries")
-			.setBody(key: "mixId", value: mixId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "mixId", value: mixId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -253,8 +253,8 @@ public final class MixingService{
 	  mix entries.  */
 	public static func list(filter: MixEntryFilter?, pager: FilterPager?) -> RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer> = RequestBuilder<MixListResponse, MixListResponse.MixListResponseTokenizer, ListTokenizer>(service: "mixing", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -275,8 +275,8 @@ public final class MixingService{
 	/**  Update mix entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, mixEntry: MixEntry) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, UpdateTokenizer>(service: "mixing", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mixEntry", value: mixEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mixEntry", value: mixEntry)
 
 		return request
 	}

@@ -46,7 +46,7 @@ public final class ShortLinkService{
 	/**  Allows you to add a short link object  */
 	public static func add(shortLink: ShortLink) -> RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, AddTokenizer> = RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, AddTokenizer>(service: "shortlink_shortlink", action: "add")
-			.setBody(key: "shortLink", value: shortLink)
+			.setParam(key: "shortLink", value: shortLink)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class ShortLinkService{
 	/**  Mark the short link as deleted  */
 	public static func delete(id: String) -> RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, DeleteTokenizer> = RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, DeleteTokenizer>(service: "shortlink_shortlink", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class ShortLinkService{
 	/**  Retrieve an short link object by id  */
 	public static func get(id: String) -> RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, GetTokenizer> = RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, GetTokenizer>(service: "shortlink_shortlink", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class ShortLinkService{
 	/**  List short link objects by filter and pager  */
 	public static func list(filter: ShortLinkFilter?, pager: FilterPager?) -> RequestBuilder<ShortLinkListResponse, ShortLinkListResponse.ShortLinkListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ShortLinkListResponse, ShortLinkListResponse.ShortLinkListResponseTokenizer, ListTokenizer> = RequestBuilder<ShortLinkListResponse, ShortLinkListResponse.ShortLinkListResponseTokenizer, ListTokenizer>(service: "shortlink_shortlink", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class ShortLinkService{
 	/**  Update exisitng short link  */
 	public static func update(id: String, shortLink: ShortLink) -> RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer> = RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer>(service: "shortlink_shortlink", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "shortLink", value: shortLink)
+			.setParam(key: "id", value: id)
+			.setParam(key: "shortLink", value: shortLink)
 
 		return request
 	}

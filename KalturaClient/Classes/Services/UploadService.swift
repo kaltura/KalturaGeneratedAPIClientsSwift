@@ -46,7 +46,7 @@ public final class UploadService{
 
 	public static func getUploadedFileTokenByFileName(fileName: String) -> RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer> {
 		let request: RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer> = RequestBuilder<UploadResponse, UploadResponse.UploadResponseTokenizer, GetUploadedFileTokenByFileNameTokenizer>(service: "upload", action: "getUploadedFileTokenByFileName")
-			.setBody(key: "fileName", value: fileName)
+			.setParam(key: "fileName", value: fileName)
 
 		return request
 	}

@@ -47,7 +47,7 @@ public final class UnicornService{
 
 	public static func notify(id: Int) -> NullRequestBuilder<NotifyTokenizer> {
 		let request: NullRequestBuilder<NotifyTokenizer> = NullRequestBuilder<NotifyTokenizer>(service: "unicorndistribution_unicorn", action: "notify")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}

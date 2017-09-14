@@ -40,7 +40,7 @@
 		
 		super.init()
 		
-		clientTag = "swift:17-09-13"
+		clientTag = "swift:17-09-14"
 		apiVersion = "3.3.0"
 	}
 }
@@ -102,7 +102,7 @@ extension RequestBuilderData{
 			return params["clientTag"] as? String
 		}
 		set(value){
-			setBody(key: "clientTag", value: value)
+			setParam(key: "clientTag", value: value)
 		}
 	}
 	
@@ -111,7 +111,7 @@ extension RequestBuilderData{
 			return params["apiVersion"] as? String
 		}
 		set(value){
-			setBody(key: "apiVersion", value: value)
+			setParam(key: "apiVersion", value: value)
 		}
 	}
 	
@@ -123,7 +123,7 @@ extension RequestBuilderData{
 			return params["partnerId"] as? Int
 		}
 		set(value){
-			setBody(key: "partnerId", value: value)
+			setParam(key: "partnerId", value: value)
 		}
 	}
 	
@@ -135,7 +135,7 @@ extension RequestBuilderData{
 			return params["ks"] as? String
 		}
 		set(value){
-			setBody(key: "ks", value: value)
+			setParam(key: "ks", value: value)
 		}
 	}
 	
@@ -147,7 +147,7 @@ extension RequestBuilderData{
 			return params["ks"] as? String
 		}
 		set(value){
-			setBody(key: "ks", value: value)
+			setParam(key: "ks", value: value)
 		}
 	}
 	
@@ -159,7 +159,7 @@ extension RequestBuilderData{
 			return params["responseProfile"] as? BaseResponseProfile
 		}
 		set(value){
-			setBody(key: "responseProfile", value: value)
+			setParam(key: "responseProfile", value: value)
 		}
 	}
 	

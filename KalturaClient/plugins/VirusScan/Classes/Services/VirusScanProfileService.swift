@@ -47,7 +47,7 @@ public final class VirusScanProfileService{
 	  associated with Kaltura object  */
 	public static func add(virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, AddTokenizer>(service: "virusscan_virusscanprofile", action: "add")
-			.setBody(key: "virusScanProfile", value: virusScanProfile)
+			.setParam(key: "virusScanProfile", value: virusScanProfile)
 
 		return request
 	}
@@ -64,7 +64,7 @@ public final class VirusScanProfileService{
 	/**  Mark the virus scan profile as deleted  */
 	public static func delete(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, DeleteTokenizer>(service: "virusscan_virusscanprofile", action: "delete")
-			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
+			.setParam(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
 	}
@@ -81,7 +81,7 @@ public final class VirusScanProfileService{
 	/**  Retrieve an virus scan profile object by id  */
 	public static func get(virusScanProfileId: Int) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, GetTokenizer>(service: "virusscan_virusscanprofile", action: "get")
-			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
+			.setParam(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
 	}
@@ -108,8 +108,8 @@ public final class VirusScanProfileService{
 	/**  List virus scan profile objects by filter and pager  */
 	public static func list(filter: VirusScanProfileFilter?, pager: FilterPager?) -> RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<VirusScanProfileListResponse, VirusScanProfileListResponse.VirusScanProfileListResponseTokenizer, ListTokenizer>(service: "virusscan_virusscanprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -136,8 +136,8 @@ public final class VirusScanProfileService{
 	/**  Scan flavor asset according to virus scan profile  */
 	public static func scan(flavorAssetId: String, virusScanProfileId: Int?) -> RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer> = RequestBuilder<Int, BaseTokenizedObject, ScanTokenizer>(service: "virusscan_virusscanprofile", action: "scan")
-			.setBody(key: "flavorAssetId", value: flavorAssetId)
-			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
+			.setParam(key: "flavorAssetId", value: flavorAssetId)
+			.setParam(key: "virusScanProfileId", value: virusScanProfileId)
 
 		return request
 	}
@@ -159,8 +159,8 @@ public final class VirusScanProfileService{
 	  profile id too  */
 	public static func update(virusScanProfileId: Int, virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer>(service: "virusscan_virusscanprofile", action: "update")
-			.setBody(key: "virusScanProfileId", value: virusScanProfileId)
-			.setBody(key: "virusScanProfile", value: virusScanProfile)
+			.setParam(key: "virusScanProfileId", value: virusScanProfileId)
+			.setParam(key: "virusScanProfile", value: virusScanProfile)
 
 		return request
 	}

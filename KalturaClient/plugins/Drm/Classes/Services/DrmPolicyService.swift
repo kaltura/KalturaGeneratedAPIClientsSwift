@@ -45,7 +45,7 @@ public final class DrmPolicyService{
 	/**  Allows you to add a new DrmPolicy object  */
 	public static func add(drmPolicy: DrmPolicy) -> RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, AddTokenizer> {
 		let request: RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, AddTokenizer> = RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, AddTokenizer>(service: "drm_drmpolicy", action: "add")
-			.setBody(key: "drmPolicy", value: drmPolicy)
+			.setParam(key: "drmPolicy", value: drmPolicy)
 
 		return request
 	}
@@ -62,7 +62,7 @@ public final class DrmPolicyService{
 	/**  Mark the KalturaDrmPolicy object as deleted  */
 	public static func delete(drmPolicyId: Int) -> RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, DeleteTokenizer> = RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, DeleteTokenizer>(service: "drm_drmpolicy", action: "delete")
-			.setBody(key: "drmPolicyId", value: drmPolicyId)
+			.setParam(key: "drmPolicyId", value: drmPolicyId)
 
 		return request
 	}
@@ -79,7 +79,7 @@ public final class DrmPolicyService{
 	/**  Retrieve a KalturaDrmPolicy object by ID  */
 	public static func get(drmPolicyId: Int) -> RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, GetTokenizer> {
 		let request: RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, GetTokenizer> = RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, GetTokenizer>(service: "drm_drmpolicy", action: "get")
-			.setBody(key: "drmPolicyId", value: drmPolicyId)
+			.setParam(key: "drmPolicyId", value: drmPolicyId)
 
 		return request
 	}
@@ -106,8 +106,8 @@ public final class DrmPolicyService{
 	/**  List KalturaDrmPolicy objects  */
 	public static func list(filter: DrmPolicyFilter?, pager: FilterPager?) -> RequestBuilder<DrmPolicyListResponse, DrmPolicyListResponse.DrmPolicyListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DrmPolicyListResponse, DrmPolicyListResponse.DrmPolicyListResponseTokenizer, ListTokenizer> = RequestBuilder<DrmPolicyListResponse, DrmPolicyListResponse.DrmPolicyListResponseTokenizer, ListTokenizer>(service: "drm_drmpolicy", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -128,8 +128,8 @@ public final class DrmPolicyService{
 	/**  Update an existing KalturaDrmPolicy object  */
 	public static func update(drmPolicyId: Int, drmPolicy: DrmPolicy) -> RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, UpdateTokenizer> = RequestBuilder<DrmPolicy, DrmPolicy.DrmPolicyTokenizer, UpdateTokenizer>(service: "drm_drmpolicy", action: "update")
-			.setBody(key: "drmPolicyId", value: drmPolicyId)
-			.setBody(key: "drmPolicy", value: drmPolicy)
+			.setParam(key: "drmPolicyId", value: drmPolicyId)
+			.setParam(key: "drmPolicy", value: drmPolicy)
 
 		return request
 	}

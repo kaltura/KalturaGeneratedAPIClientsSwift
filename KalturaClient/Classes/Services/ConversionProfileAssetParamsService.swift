@@ -58,8 +58,8 @@ public final class ConversionProfileAssetParamsService{
 	/**  Lists asset parmas of conversion profile by ID  */
 	public static func list(filter: ConversionProfileAssetParamsFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer> = RequestBuilder<ConversionProfileAssetParamsListResponse, ConversionProfileAssetParamsListResponse.ConversionProfileAssetParamsListResponseTokenizer, ListTokenizer>(service: "conversionprofileassetparams", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -86,9 +86,9 @@ public final class ConversionProfileAssetParamsService{
 	/**  Update asset parmas of conversion profile by ID  */
 	public static func update(conversionProfileId: Int, assetParamsId: Int, conversionProfileAssetParams: ConversionProfileAssetParams) -> RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer> = RequestBuilder<ConversionProfileAssetParams, ConversionProfileAssetParams.ConversionProfileAssetParamsTokenizer, UpdateTokenizer>(service: "conversionprofileassetparams", action: "update")
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
-			.setBody(key: "assetParamsId", value: assetParamsId)
-			.setBody(key: "conversionProfileAssetParams", value: conversionProfileAssetParams)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "assetParamsId", value: assetParamsId)
+			.setParam(key: "conversionProfileAssetParams", value: conversionProfileAssetParams)
 
 		return request
 	}

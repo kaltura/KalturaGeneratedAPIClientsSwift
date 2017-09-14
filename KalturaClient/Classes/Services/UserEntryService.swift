@@ -45,7 +45,7 @@ public final class UserEntryService{
 	/**  Adds a user_entry to the Kaltura DB.  */
 	public static func add(userEntry: UserEntry) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, AddTokenizer>(service: "userentry", action: "add")
-			.setBody(key: "userEntry", value: userEntry)
+			.setParam(key: "userEntry", value: userEntry)
 
 		return request
 	}
@@ -59,7 +59,7 @@ public final class UserEntryService{
 
 	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> = RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -75,7 +75,7 @@ public final class UserEntryService{
 
 	public static func delete(id: Int) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer>(service: "userentry", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -91,7 +91,7 @@ public final class UserEntryService{
 
 	public static func get(id: String) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, GetTokenizer>(service: "userentry", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -117,8 +117,8 @@ public final class UserEntryService{
 
 	public static func list(filter: UserEntryFilter?, pager: FilterPager?) -> RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer> = RequestBuilder<UserEntryListResponse, UserEntryListResponse.UserEntryListResponseTokenizer, ListTokenizer>(service: "userentry", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -138,8 +138,8 @@ public final class UserEntryService{
 
 	public static func update(id: Int, userEntry: UserEntry) -> NullRequestBuilder<UpdateTokenizer> {
 		let request: NullRequestBuilder<UpdateTokenizer> = NullRequestBuilder<UpdateTokenizer>(service: "userentry", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "userEntry", value: userEntry)
+			.setParam(key: "id", value: id)
+			.setParam(key: "userEntry", value: userEntry)
 
 		return request
 	}

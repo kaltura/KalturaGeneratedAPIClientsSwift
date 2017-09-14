@@ -57,8 +57,8 @@ public final class LikeService{
 
 	public static func checkLikeExists(entryId: String, userId: String?) -> RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CheckLikeExistsTokenizer>(service: "like_like", action: "checkLikeExists")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -74,7 +74,7 @@ public final class LikeService{
 
 	public static func like(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, LikeTokenizer>(service: "like_like", action: "like")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -100,8 +100,8 @@ public final class LikeService{
 
 	public static func list(filter: LikeFilter?, pager: FilterPager?) -> RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer> = RequestBuilder<LikeListResponse, LikeListResponse.LikeListResponseTokenizer, ListTokenizer>(service: "like_like", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -117,7 +117,7 @@ public final class LikeService{
 
 	public static func unlike(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, UnlikeTokenizer>(service: "like_like", action: "unlike")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}

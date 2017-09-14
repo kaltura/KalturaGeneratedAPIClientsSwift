@@ -52,8 +52,8 @@ public final class AttachmentAssetService{
 	/**  Add attachment asset  */
 	public static func add(entryId: String, attachmentAsset: AttachmentAsset) -> RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, AddTokenizer> {
 		let request: RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, AddTokenizer> = RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, AddTokenizer>(service: "attachment_attachmentasset", action: "add")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "attachmentAsset", value: attachmentAsset)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "attachmentAsset", value: attachmentAsset)
 
 		return request
 	}
@@ -69,7 +69,7 @@ public final class AttachmentAssetService{
 
 	public static func delete(attachmentAssetId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "attachment_attachmentasset", action: "delete")
-			.setBody(key: "attachmentAssetId", value: attachmentAssetId)
+			.setParam(key: "attachmentAssetId", value: attachmentAssetId)
 
 		return request
 	}
@@ -85,7 +85,7 @@ public final class AttachmentAssetService{
 
 	public static func get(attachmentAssetId: String) -> RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, GetTokenizer> = RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, GetTokenizer>(service: "attachment_attachmentasset", action: "get")
-			.setBody(key: "attachmentAssetId", value: attachmentAssetId)
+			.setParam(key: "attachmentAssetId", value: attachmentAssetId)
 
 		return request
 	}
@@ -102,7 +102,7 @@ public final class AttachmentAssetService{
 	/**  Get remote storage existing paths for the asset  */
 	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> {
 		let request: RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> = RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer>(service: "attachment_attachmentasset", action: "getRemotePaths")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class AttachmentAssetService{
 	/**  Get download URL for the asset  */
 	public static func getUrl(id: String, storageId: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "attachment_attachmentasset", action: "getUrl")
-			.setBody(key: "id", value: id)
-			.setBody(key: "storageId", value: storageId)
+			.setParam(key: "id", value: id)
+			.setParam(key: "storageId", value: storageId)
 
 		return request
 	}
@@ -157,8 +157,8 @@ public final class AttachmentAssetService{
 	/**  List attachment Assets by filter and pager  */
 	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<AttachmentAssetListResponse, AttachmentAssetListResponse.AttachmentAssetListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<AttachmentAssetListResponse, AttachmentAssetListResponse.AttachmentAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<AttachmentAssetListResponse, AttachmentAssetListResponse.AttachmentAssetListResponseTokenizer, ListTokenizer>(service: "attachment_attachmentasset", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -179,8 +179,8 @@ public final class AttachmentAssetService{
 	/**  Update content of attachment asset  */
 	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, SetContentTokenizer> {
 		let request: RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, SetContentTokenizer> = RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, SetContentTokenizer>(service: "attachment_attachmentasset", action: "setContent")
-			.setBody(key: "id", value: id)
-			.setBody(key: "contentResource", value: contentResource)
+			.setParam(key: "id", value: id)
+			.setParam(key: "contentResource", value: contentResource)
 
 		return request
 	}
@@ -201,8 +201,8 @@ public final class AttachmentAssetService{
 	/**  Update attachment asset  */
 	public static func update(id: String, attachmentAsset: AttachmentAsset) -> RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, UpdateTokenizer> = RequestBuilder<AttachmentAsset, AttachmentAsset.AttachmentAssetTokenizer, UpdateTokenizer>(service: "attachment_attachmentasset", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "attachmentAsset", value: attachmentAsset)
+			.setParam(key: "id", value: id)
+			.setParam(key: "attachmentAsset", value: attachmentAsset)
 
 		return request
 	}

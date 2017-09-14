@@ -46,7 +46,7 @@ public final class DistributionProfileService{
 	/**  Add new Distribution Profile  */
 	public static func add(distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, AddTokenizer>(service: "contentdistribution_distributionprofile", action: "add")
-			.setBody(key: "distributionProfile", value: distributionProfile)
+			.setParam(key: "distributionProfile", value: distributionProfile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class DistributionProfileService{
 	/**  Delete Distribution Profile by id  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "contentdistribution_distributionprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class DistributionProfileService{
 	/**  Get Distribution Profile by id  */
 	public static func get(id: Int) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, GetTokenizer>(service: "contentdistribution_distributionprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class DistributionProfileService{
 	/**  List all distribution providers  */
 	public static func list(filter: DistributionProfileFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListTokenizer>(service: "contentdistribution_distributionprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -134,8 +134,8 @@ public final class DistributionProfileService{
 
 	public static func listByPartner(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> {
 		let request: RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer> = RequestBuilder<DistributionProfileListResponse, DistributionProfileListResponse.DistributionProfileListResponseTokenizer, ListByPartnerTokenizer>(service: "contentdistribution_distributionprofile", action: "listByPartner")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -156,8 +156,8 @@ public final class DistributionProfileService{
 	/**  Update Distribution Profile by id  */
 	public static func update(id: Int, distributionProfile: DistributionProfile) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateTokenizer>(service: "contentdistribution_distributionprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "distributionProfile", value: distributionProfile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "distributionProfile", value: distributionProfile)
 
 		return request
 	}
@@ -180,8 +180,8 @@ public final class DistributionProfileService{
 	/**  Update Distribution Profile status by id  */
 	public static func updateStatus(id: Int, status: DistributionProfileStatus) -> RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer> {
 		let request: RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer> = RequestBuilder<DistributionProfile, DistributionProfile.DistributionProfileTokenizer, UpdateStatusTokenizer>(service: "contentdistribution_distributionprofile", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

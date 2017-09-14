@@ -46,7 +46,7 @@ public final class UserRoleService{
 	/**  Adds a new user role object to the account.  */
 	public static func add(userRole: UserRole) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer> {
 		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, AddTokenizer>(service: "userrole", action: "add")
-			.setBody(key: "userRole", value: userRole)
+			.setParam(key: "userRole", value: userRole)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class UserRoleService{
 	/**  Creates a new user role object that is a duplicate of an existing role.  */
 	public static func clone(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, CloneTokenizer>(service: "userrole", action: "clone")
-			.setBody(key: "userRoleId", value: userRoleId)
+			.setParam(key: "userRoleId", value: userRoleId)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class UserRoleService{
 	/**  Deletes an existing user role object.  */
 	public static func delete(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, DeleteTokenizer>(service: "userrole", action: "delete")
-			.setBody(key: "userRoleId", value: userRoleId)
+			.setParam(key: "userRoleId", value: userRoleId)
 
 		return request
 	}
@@ -97,7 +97,7 @@ public final class UserRoleService{
 	/**  Retrieves a user role object using its ID.  */
 	public static func get(userRoleId: Int) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer> {
 		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, GetTokenizer>(service: "userrole", action: "get")
-			.setBody(key: "userRoleId", value: userRoleId)
+			.setParam(key: "userRoleId", value: userRoleId)
 
 		return request
 	}
@@ -126,8 +126,8 @@ public final class UserRoleService{
 	  are not listed unless you use a filter to include them.  */
 	public static func list(filter: UserRoleFilter?, pager: FilterPager?) -> RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer> = RequestBuilder<UserRoleListResponse, UserRoleListResponse.UserRoleListResponseTokenizer, ListTokenizer>(service: "userrole", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -148,8 +148,8 @@ public final class UserRoleService{
 	/**  Updates an existing user role object.  */
 	public static func update(userRoleId: Int, userRole: UserRole) -> RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer> = RequestBuilder<UserRole, UserRole.UserRoleTokenizer, UpdateTokenizer>(service: "userrole", action: "update")
-			.setBody(key: "userRoleId", value: userRoleId)
-			.setBody(key: "userRole", value: userRole)
+			.setParam(key: "userRoleId", value: userRoleId)
+			.setParam(key: "userRole", value: userRole)
 
 		return request
 	}

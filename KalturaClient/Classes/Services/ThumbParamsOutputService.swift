@@ -48,7 +48,7 @@ public final class ThumbParamsOutputService{
 	/**  Get thumb params output object by ID  */
 	public static func get(id: Int) -> RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> = RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer>(service: "thumbparamsoutput", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -75,8 +75,8 @@ public final class ThumbParamsOutputService{
 	/**  List thumb params output objects by filter and pager  */
 	public static func list(filter: ThumbParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer> = RequestBuilder<ThumbParamsOutputListResponse, ThumbParamsOutputListResponse.ThumbParamsOutputListResponseTokenizer, ListTokenizer>(service: "thumbparamsoutput", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

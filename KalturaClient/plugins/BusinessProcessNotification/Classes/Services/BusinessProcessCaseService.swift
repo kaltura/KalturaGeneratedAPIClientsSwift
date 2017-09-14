@@ -60,9 +60,9 @@ public final class BusinessProcessCaseService{
 	/**  Abort business-process case  */
 	public static func abort(objectType: EventNotificationEventObjectType, objectId: String, businessProcessStartNotificationTemplateId: Int) -> NullRequestBuilder<AbortTokenizer> {
 		let request: NullRequestBuilder<AbortTokenizer> = NullRequestBuilder<AbortTokenizer>(service: "businessprocessnotification_businessprocesscase", action: "abort")
-			.setBody(key: "objectType", value: objectType.rawValue)
-			.setBody(key: "objectId", value: objectId)
-			.setBody(key: "businessProcessStartNotificationTemplateId", value: businessProcessStartNotificationTemplateId)
+			.setParam(key: "objectType", value: objectType.rawValue)
+			.setParam(key: "objectId", value: objectId)
+			.setParam(key: "businessProcessStartNotificationTemplateId", value: businessProcessStartNotificationTemplateId)
 
 		return request
 	}
@@ -85,8 +85,8 @@ public final class BusinessProcessCaseService{
 	/**  list business-process cases  */
 	public static func list(objectType: EventNotificationEventObjectType, objectId: String) -> ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer> {
 		let request: ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer> = ArrayRequestBuilder<BusinessProcessCase, ArrayTokenizedObject<BusinessProcessCase.BusinessProcessCaseTokenizer>, ListTokenizer>(service: "businessprocessnotification_businessprocesscase", action: "list")
-			.setBody(key: "objectType", value: objectType.rawValue)
-			.setBody(key: "objectId", value: objectId)
+			.setParam(key: "objectType", value: objectType.rawValue)
+			.setParam(key: "objectId", value: objectId)
 
 		return request
 	}

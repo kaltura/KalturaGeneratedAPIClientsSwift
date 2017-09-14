@@ -47,7 +47,7 @@ extension MediaService{
 	/**  Add entry  */
 	public static func add(entry: MediaEntry) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddTokenizer>(service: "media", action: "add")
-			.setBody(key: "entry", value: entry)
+			.setParam(key: "entry", value: entry)
 
 		return request
 	}
@@ -74,8 +74,8 @@ extension MediaService{
 	  associated content, use action updateContent.  */
 	public static func addContent(entryId: String, resource: Resource?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddContentTokenizer>(service: "media", action: "addContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
 
 		return request
 	}
@@ -104,9 +104,9 @@ extension MediaService{
 	  batches  */
 	public static func addFromBulk(mediaEntry: MediaEntry, url: String, bulkUploadId: Int) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromBulkTokenizer>(service: "media", action: "addFromBulk")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "url", value: url)
-			.setBody(key: "bulkUploadId", value: bulkUploadId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "url", value: url)
+			.setParam(key: "bulkUploadId", value: bulkUploadId)
 
 		return request
 	}
@@ -141,9 +141,9 @@ extension MediaService{
 	/**  Copy entry into new entry  */
 	public static func addFromEntry(sourceEntryId: String, mediaEntry: MediaEntry?, sourceFlavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromEntryTokenizer>(service: "media", action: "addFromEntry")
-			.setBody(key: "sourceEntryId", value: sourceEntryId)
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "sourceFlavorParamsId", value: sourceFlavorParamsId)
+			.setParam(key: "sourceEntryId", value: sourceEntryId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "sourceFlavorParamsId", value: sourceFlavorParamsId)
 
 		return request
 	}
@@ -168,8 +168,8 @@ extension MediaService{
 	/**  Copy flavor asset into new entry  */
 	public static func addFromFlavorAsset(sourceFlavorAssetId: String, mediaEntry: MediaEntry?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromFlavorAssetTokenizer>(service: "media", action: "addFromFlavorAsset")
-			.setBody(key: "sourceFlavorAssetId", value: sourceFlavorAssetId)
-			.setBody(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "sourceFlavorAssetId", value: sourceFlavorAssetId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
 
 		return request
 	}
@@ -190,8 +190,8 @@ extension MediaService{
 	/**  Add new entry after the file was recored on the server and the token id exists  */
 	public static func addFromRecordedWebcam(mediaEntry: MediaEntry, webcamTokenId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer>(service: "media", action: "addFromRecordedWebcam")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "webcamTokenId", value: webcamTokenId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "webcamTokenId", value: webcamTokenId)
 
 		return request
 	}
@@ -219,8 +219,8 @@ extension MediaService{
 	  action should be used with the search service result.  */
 	public static func addFromSearchResult(mediaEntry: MediaEntry?, searchResult: SearchResult?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromSearchResultTokenizer>(service: "media", action: "addFromSearchResult")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "searchResult", value: searchResult)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "searchResult", value: searchResult)
 
 		return request
 	}
@@ -242,8 +242,8 @@ extension MediaService{
 	  exists  */
 	public static func addFromUploadedFile(mediaEntry: MediaEntry, uploadTokenId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUploadedFileTokenizer>(service: "media", action: "addFromUploadedFile")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
@@ -265,8 +265,8 @@ extension MediaService{
 	  for import and then for conversion.  */
 	public static func addFromUrl(mediaEntry: MediaEntry, url: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromUrlTokenizer>(service: "media", action: "addFromUrl")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "url", value: url)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "url", value: url)
 
 		return request
 	}
@@ -289,8 +289,8 @@ extension MediaService{
 	/**  Anonymously rank a media entry, no validation is done on duplicate rankings  */
 	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
 		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "media", action: "anonymousRank")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "rank", value: rank)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "rank", value: rank)
 
 		return request
 	}
@@ -308,7 +308,7 @@ extension MediaService{
 	  will make the entry playable)  */
 	public static func approve(entryId: String) -> NullRequestBuilder<ApproveTokenizer> {
 		let request: NullRequestBuilder<ApproveTokenizer> = NullRequestBuilder<ApproveTokenizer>(service: "media", action: "approve")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -325,7 +325,7 @@ extension MediaService{
 	/**  Approves media replacement  */
 	public static func approveReplace(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, ApproveReplaceTokenizer>(service: "media", action: "approveReplace")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -355,8 +355,8 @@ extension MediaService{
 	public static func bulkUploadAdd(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadEntryData: BulkUploadEntryData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkUploadAddTokenizer> {
 		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkUploadAddTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkUploadAddTokenizer>(service: "media", action: "bulkUploadAdd")
 			.setFile(key: "fileData", value: fileData)
-			.setBody(key: "bulkUploadData", value: bulkUploadData)
-			.setBody(key: "bulkUploadEntryData", value: bulkUploadEntryData)
+			.setParam(key: "bulkUploadData", value: bulkUploadData)
+			.setParam(key: "bulkUploadEntryData", value: bulkUploadEntryData)
 
 		return request
 	}
@@ -373,7 +373,7 @@ extension MediaService{
 	/**  Cancels media replacement  */
 	public static func cancelReplace(entryId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, CancelReplaceTokenizer>(service: "media", action: "cancelReplace")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -410,9 +410,9 @@ extension MediaService{
 	/**  Convert entry  */
 	public static func convert(entryId: String, conversionProfileId: Int?, dynamicConversionAttributes: Array<ConversionAttribute>?) -> RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> {
 		let request: RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> = RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer>(service: "media", action: "convert")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
-			.setBody(key: "dynamicConversionAttributes", value: dynamicConversionAttributes)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "dynamicConversionAttributes", value: dynamicConversionAttributes)
 
 		return request
 	}
@@ -431,7 +431,7 @@ extension MediaService{
 	/**  Count media entries by filter.  */
 	public static func count(filter: MediaEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "media", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -448,7 +448,7 @@ extension MediaService{
 	/**  Delete a media entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "media", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -463,7 +463,7 @@ extension MediaService{
 	/**  Flag inappropriate media entry for moderation  */
 	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder<FlagTokenizer> {
 		let request: NullRequestBuilder<FlagTokenizer> = NullRequestBuilder<FlagTokenizer>(service: "media", action: "flag")
-			.setBody(key: "moderationFlag", value: moderationFlag)
+			.setParam(key: "moderationFlag", value: moderationFlag)
 
 		return request
 	}
@@ -490,8 +490,8 @@ extension MediaService{
 	/**  Get media entry by ID.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, GetTokenizer>(service: "media", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -528,9 +528,9 @@ extension MediaService{
 	/**  Get MRSS by entry id      XML will return as an escaped string  */
 	public static func getMrss(entryId: String, extendingItemsArray: Array<ExtendingItemMrssParameter>?, features: String?) -> RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetMrssTokenizer>(service: "media", action: "getMrss")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "extendingItemsArray", value: extendingItemsArray)
-			.setBody(key: "features", value: features)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "extendingItemsArray", value: extendingItemsArray)
+			.setParam(key: "features", value: features)
 
 		return request
 	}
@@ -557,8 +557,8 @@ extension MediaService{
 	/**  List media entries by filter with paging support.  */
 	public static func list(filter: MediaEntryFilter?, pager: FilterPager?) -> RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer> = RequestBuilder<MediaListResponse, MediaListResponse.MediaListResponseTokenizer, ListTokenizer>(service: "media", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -583,8 +583,8 @@ extension MediaService{
 	/**  List all pending flags for the media entry  */
 	public static func listFlags(entryId: String, pager: FilterPager?) -> RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> {
 		let request: RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> = RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer>(service: "media", action: "listFlags")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -602,7 +602,7 @@ extension MediaService{
 	  will make the entry non playable)  */
 	public static func reject(entryId: String) -> NullRequestBuilder<RejectTokenizer> {
 		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "media", action: "reject")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -626,8 +626,8 @@ extension MediaService{
 	  different format  */
 	public static func requestConversion(entryId: String, fileFormat: String) -> RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer> = RequestBuilder<Int, BaseTokenizedObject, RequestConversionTokenizer>(service: "media", action: "requestConversion")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "fileFormat", value: fileFormat)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "fileFormat", value: fileFormat)
 
 		return request
 	}
@@ -648,8 +648,8 @@ extension MediaService{
 	/**  Update media entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, mediaEntry: MediaEntry) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateTokenizer>(service: "media", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
 
 		return request
 	}
@@ -688,10 +688,10 @@ extension MediaService{
 	/**  Replace content associated with the media entry.  */
 	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?, advancedOptions: EntryReplacementOptions?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateContentTokenizer>(service: "media", action: "updateContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
-			.setBody(key: "advancedOptions", value: advancedOptions)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "advancedOptions", value: advancedOptions)
 
 		return request
 	}
@@ -725,9 +725,9 @@ extension MediaService{
 	  params id not specified, source flavor will be used by default  */
 	public static func updateThumbnail(entryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailTokenizer>(service: "media", action: "updateThumbnail")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "timeOffset", value: timeOffset)
-			.setBody(key: "flavorParamsId", value: flavorParamsId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "timeOffset", value: timeOffset)
+			.setParam(key: "flavorParamsId", value: flavorParamsId)
 
 		return request
 	}
@@ -768,10 +768,10 @@ extension MediaService{
 	  default  */
 	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int, flavorParamsId: Int?) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer>(service: "media", action: "updateThumbnailFromSourceEntry")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "sourceEntryId", value: sourceEntryId)
-			.setBody(key: "timeOffset", value: timeOffset)
-			.setBody(key: "flavorParamsId", value: flavorParamsId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "sourceEntryId", value: sourceEntryId)
+			.setParam(key: "timeOffset", value: timeOffset)
+			.setParam(key: "flavorParamsId", value: flavorParamsId)
 
 		return request
 	}
@@ -794,8 +794,8 @@ extension MediaService{
 	/**  Update entry thumbnail using url  */
 	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer>(service: "media", action: "updateThumbnailFromUrl")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "url", value: url)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "url", value: url)
 
 		return request
 	}
@@ -812,7 +812,7 @@ extension MediaService{
 	/**  Update media entry thumbnail using a raw jpeg file  */
 	public static func updateThumbnailJpeg(entryId: String, fileData: RequestFile) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, UpdateThumbnailJpegTokenizer>(service: "media", action: "updateThumbnailJpeg")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 			.setFile(key: "fileData", value: fileData)
 
 		return request

@@ -46,7 +46,7 @@ public final class ConversionProfileService{
 	/**  Add new Conversion Profile  */
 	public static func add(conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, AddTokenizer>(service: "conversionprofile", action: "add")
-			.setBody(key: "conversionProfile", value: conversionProfile)
+			.setParam(key: "conversionProfile", value: conversionProfile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class ConversionProfileService{
 	/**  Delete Conversion Profile by ID  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "conversionprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class ConversionProfileService{
 	/**  Get Conversion Profile by ID  */
 	public static func get(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer>(service: "conversionprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -101,7 +101,7 @@ public final class ConversionProfileService{
 	/**  Get the partner's default conversion profile  */
 	public static func getDefault(type: ConversionProfileType?) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetDefaultTokenizer>(service: "conversionprofile", action: "getDefault")
-			.setBody(key: "type", value: type?.rawValue)
+			.setParam(key: "type", value: type?.rawValue)
 
 		return request
 	}
@@ -128,8 +128,8 @@ public final class ConversionProfileService{
 	/**  List Conversion Profiles by filter with paging support  */
 	public static func list(filter: ConversionProfileFilter?, pager: FilterPager?) -> RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<ConversionProfileListResponse, ConversionProfileListResponse.ConversionProfileListResponseTokenizer, ListTokenizer>(service: "conversionprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -146,7 +146,7 @@ public final class ConversionProfileService{
 	/**  Set Conversion Profile to be the partner default  */
 	public static func setAsDefault(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer>(service: "conversionprofile", action: "setAsDefault")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -167,8 +167,8 @@ public final class ConversionProfileService{
 	/**  Update Conversion Profile by ID  */
 	public static func update(id: Int, conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer>(service: "conversionprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "conversionProfile", value: conversionProfile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "conversionProfile", value: conversionProfile)
 
 		return request
 	}

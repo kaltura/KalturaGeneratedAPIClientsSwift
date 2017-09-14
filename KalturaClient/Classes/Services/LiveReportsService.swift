@@ -50,8 +50,8 @@ public final class LiveReportsService{
 
 	public static func exportToCsv(reportType: LiveReportExportType, params: LiveReportExportParams) -> RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer> {
 		let request: RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer> = RequestBuilder<LiveReportExportResponse, LiveReportExportResponse.LiveReportExportResponseTokenizer, ExportToCsvTokenizer>(service: "livereports", action: "exportToCsv")
-			.setBody(key: "reportType", value: reportType.rawValue)
-			.setBody(key: "params", value: params)
+			.setParam(key: "reportType", value: reportType.rawValue)
+			.setParam(key: "params", value: params)
 
 		return request
 	}
@@ -83,9 +83,9 @@ public final class LiveReportsService{
 
 	public static func getEvents(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> {
 		let request: ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer> = ArrayRequestBuilder<ReportGraph, ArrayTokenizedObject<ReportGraph.ReportGraphTokenizer>, GetEventsTokenizer>(service: "livereports", action: "getEvents")
-			.setBody(key: "reportType", value: reportType.rawValue)
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "reportType", value: reportType.rawValue)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -117,9 +117,9 @@ public final class LiveReportsService{
 
 	public static func getReport(reportType: LiveReportType, filter: LiveReportInputFilter?, pager: FilterPager?) -> RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> {
 		let request: RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer> = RequestBuilder<LiveStatsListResponse, LiveStatsListResponse.LiveStatsListResponseTokenizer, GetReportTokenizer>(service: "livereports", action: "getReport")
-			.setBody(key: "reportType", value: reportType.rawValue)
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "reportType", value: reportType.rawValue)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -136,7 +136,7 @@ public final class LiveReportsService{
 	/**  Will serve a requested report  */
 	public static func serveReport(id: String) -> RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeReportTokenizer>(service: "livereports", action: "serveReport")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}

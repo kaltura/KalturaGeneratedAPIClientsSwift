@@ -47,7 +47,7 @@ public final class UiConfService{
 	/**  UIConf Add action allows you to add a UIConf to Kaltura DB  */
 	public static func add(uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, AddTokenizer>(service: "uiconf", action: "add")
-			.setBody(key: "uiConf", value: uiConf)
+			.setParam(key: "uiConf", value: uiConf)
 
 		return request
 	}
@@ -64,7 +64,7 @@ public final class UiConfService{
 	/**  Clone an existing UIConf  */
 	public static func clone(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer>(service: "uiconf", action: "clone")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -81,7 +81,7 @@ public final class UiConfService{
 	/**  Delete an existing UIConf  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "uiconf", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -98,7 +98,7 @@ public final class UiConfService{
 	/**  Retrieve a UIConf by id  */
 	public static func get(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer>(service: "uiconf", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -135,8 +135,8 @@ public final class UiConfService{
 	/**  Retrieve a list of available UIConfs  */
 	public static func list(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer> = RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTokenizer>(service: "uiconf", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -163,8 +163,8 @@ public final class UiConfService{
 	/**  retrieve a list of available template UIConfs  */
 	public static func listTemplates(filter: UiConfFilter?, pager: FilterPager?) -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> {
 		let request: RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer> = RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListTemplatesTokenizer>(service: "uiconf", action: "listTemplates")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -185,8 +185,8 @@ public final class UiConfService{
 	/**  Update an existing UIConf  */
 	public static func update(id: Int, uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer>(service: "uiconf", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "uiConf", value: uiConf)
+			.setParam(key: "id", value: id)
+			.setParam(key: "uiConf", value: uiConf)
 
 		return request
 	}

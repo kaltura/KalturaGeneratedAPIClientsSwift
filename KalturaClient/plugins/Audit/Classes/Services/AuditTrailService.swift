@@ -47,7 +47,7 @@ public final class AuditTrailService{
 	  Kaltura object  */
 	public static func add(auditTrail: AuditTrail) -> RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer> {
 		let request: RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer> = RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, AddTokenizer>(service: "audit_audittrail", action: "add")
-			.setBody(key: "auditTrail", value: auditTrail)
+			.setParam(key: "auditTrail", value: auditTrail)
 
 		return request
 	}
@@ -64,7 +64,7 @@ public final class AuditTrailService{
 	/**  Retrieve an audit trail object by id  */
 	public static func get(id: Int) -> RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer> = RequestBuilder<AuditTrail, AuditTrail.AuditTrailTokenizer, GetTokenizer>(service: "audit_audittrail", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -91,8 +91,8 @@ public final class AuditTrailService{
 	/**  List audit trail objects by filter and pager  */
 	public static func list(filter: AuditTrailFilter?, pager: FilterPager?) -> RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer> = RequestBuilder<AuditTrailListResponse, AuditTrailListResponse.AuditTrailListResponseTokenizer, ListTokenizer>(service: "audit_audittrail", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

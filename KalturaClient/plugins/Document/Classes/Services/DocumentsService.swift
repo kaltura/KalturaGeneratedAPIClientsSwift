@@ -66,9 +66,9 @@ public final class DocumentsService{
 	/**  Copy entry into new entry  */
 	public static func addFromEntry(sourceEntryId: String, documentEntry: DocumentEntry?, sourceFlavorParamsId: Int?) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromEntryTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromEntryTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromEntryTokenizer>(service: "document_documents", action: "addFromEntry")
-			.setBody(key: "sourceEntryId", value: sourceEntryId)
-			.setBody(key: "documentEntry", value: documentEntry)
-			.setBody(key: "sourceFlavorParamsId", value: sourceFlavorParamsId)
+			.setParam(key: "sourceEntryId", value: sourceEntryId)
+			.setParam(key: "documentEntry", value: documentEntry)
+			.setParam(key: "sourceFlavorParamsId", value: sourceFlavorParamsId)
 
 		return request
 	}
@@ -93,8 +93,8 @@ public final class DocumentsService{
 	/**  Copy flavor asset into new entry  */
 	public static func addFromFlavorAsset(sourceFlavorAssetId: String, documentEntry: DocumentEntry?) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromFlavorAssetTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromFlavorAssetTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromFlavorAssetTokenizer>(service: "document_documents", action: "addFromFlavorAsset")
-			.setBody(key: "sourceFlavorAssetId", value: sourceFlavorAssetId)
-			.setBody(key: "documentEntry", value: documentEntry)
+			.setParam(key: "sourceFlavorAssetId", value: sourceFlavorAssetId)
+			.setParam(key: "documentEntry", value: documentEntry)
 
 		return request
 	}
@@ -116,8 +116,8 @@ public final class DocumentsService{
 	  upload token id exists  */
 	public static func addFromUploadedFile(documentEntry: DocumentEntry, uploadTokenId: String) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromUploadedFileTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromUploadedFileTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddFromUploadedFileTokenizer>(service: "document_documents", action: "addFromUploadedFile")
-			.setBody(key: "documentEntry", value: documentEntry)
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "documentEntry", value: documentEntry)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
@@ -134,7 +134,7 @@ public final class DocumentsService{
 	/**  Approves document replacement  */
 	public static func approveReplace(entryId: String) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, ApproveReplaceTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, ApproveReplaceTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, ApproveReplaceTokenizer>(service: "document_documents", action: "approveReplace")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -151,7 +151,7 @@ public final class DocumentsService{
 	/**  Cancels document replacement  */
 	public static func cancelReplace(entryId: String) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, CancelReplaceTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, CancelReplaceTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, CancelReplaceTokenizer>(service: "document_documents", action: "cancelReplace")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -188,9 +188,9 @@ public final class DocumentsService{
 	/**  Convert entry  */
 	public static func convert(entryId: String, conversionProfileId: Int?, dynamicConversionAttributes: Array<ConversionAttribute>?) -> RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> {
 		let request: RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer> = RequestBuilder<Int64, BaseTokenizedObject, ConvertTokenizer>(service: "document_documents", action: "convert")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
-			.setBody(key: "dynamicConversionAttributes", value: dynamicConversionAttributes)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "dynamicConversionAttributes", value: dynamicConversionAttributes)
 
 		return request
 	}
@@ -208,7 +208,7 @@ public final class DocumentsService{
 	  the URL where the new swf will be available  */
 	public static func convertPptToSwf(entryId: String) -> RequestBuilder<String, BaseTokenizedObject, ConvertPptToSwfTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ConvertPptToSwfTokenizer> = RequestBuilder<String, BaseTokenizedObject, ConvertPptToSwfTokenizer>(service: "document_documents", action: "convertPptToSwf")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -225,7 +225,7 @@ public final class DocumentsService{
 	/**  Delete a document entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "document_documents", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -252,8 +252,8 @@ public final class DocumentsService{
 	/**  Get document entry by ID.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, GetTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, GetTokenizer>(service: "document_documents", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -280,8 +280,8 @@ public final class DocumentsService{
 	/**  List document entries by filter with paging support.  */
 	public static func list(filter: DocumentEntryFilter?, pager: FilterPager?) -> RequestBuilder<DocumentListResponse, DocumentListResponse.DocumentListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DocumentListResponse, DocumentListResponse.DocumentListResponseTokenizer, ListTokenizer> = RequestBuilder<DocumentListResponse, DocumentListResponse.DocumentListResponseTokenizer, ListTokenizer>(service: "document_documents", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -302,8 +302,8 @@ public final class DocumentsService{
 	/**  Update document entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, documentEntry: DocumentEntry) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateTokenizer>(service: "document_documents", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "documentEntry", value: documentEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "documentEntry", value: documentEntry)
 
 		return request
 	}
@@ -334,9 +334,9 @@ public final class DocumentsService{
 	/**  Replace content associated with the given document entry.  */
 	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateContentTokenizer> {
 		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateContentTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, UpdateContentTokenizer>(service: "document_documents", action: "updateContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
 
 		return request
 	}

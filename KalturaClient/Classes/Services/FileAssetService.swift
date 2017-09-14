@@ -46,7 +46,7 @@ public final class FileAssetService{
 	/**  Add new file asset  */
 	public static func add(fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, AddTokenizer>(service: "fileasset", action: "add")
-			.setBody(key: "fileAsset", value: fileAsset)
+			.setParam(key: "fileAsset", value: fileAsset)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class FileAssetService{
 	/**  Delete file asset by id  */
 	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "fileasset", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class FileAssetService{
 	/**  Get file asset by id  */
 	public static func get(id: Int64) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, GetTokenizer>(service: "fileasset", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -103,8 +103,8 @@ public final class FileAssetService{
 	/**  List file assets by filter and pager  */
 	public static func list(filter: FileAssetFilter, pager: FilterPager?) -> RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<FileAssetListResponse, FileAssetListResponse.FileAssetListResponseTokenizer, ListTokenizer>(service: "fileasset", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -125,8 +125,8 @@ public final class FileAssetService{
 	/**  Set content of file asset  */
 	public static func setContent(id: Int64, contentResource: ContentResource) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, SetContentTokenizer>(service: "fileasset", action: "setContent")
-			.setBody(key: "id", value: id)
-			.setBody(key: "contentResource", value: contentResource)
+			.setParam(key: "id", value: id)
+			.setParam(key: "contentResource", value: contentResource)
 
 		return request
 	}
@@ -147,8 +147,8 @@ public final class FileAssetService{
 	/**  Update file asset by id  */
 	public static func update(id: Int64, fileAsset: FileAsset) -> RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer> = RequestBuilder<FileAsset, FileAsset.FileAssetTokenizer, UpdateTokenizer>(service: "fileasset", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "fileAsset", value: fileAsset)
+			.setParam(key: "id", value: id)
+			.setParam(key: "fileAsset", value: fileAsset)
 
 		return request
 	}

@@ -58,9 +58,9 @@ public final class IntegrationService{
 	/**  Dispatch integration task  */
 	public static func dispatch(data: IntegrationJobData, objectType: BatchJobObjectType, objectId: String) -> RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> = RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer>(service: "integration_integration", action: "dispatch")
-			.setBody(key: "data", value: data)
-			.setBody(key: "objectType", value: objectType.rawValue)
-			.setBody(key: "objectId", value: objectId)
+			.setParam(key: "data", value: data)
+			.setParam(key: "objectType", value: objectType.rawValue)
+			.setParam(key: "objectId", value: objectId)
 
 		return request
 	}
@@ -76,7 +76,7 @@ public final class IntegrationService{
 
 	public static func notify(id: Int) -> NullRequestBuilder<NotifyTokenizer> {
 		let request: NullRequestBuilder<NotifyTokenizer> = NullRequestBuilder<NotifyTokenizer>(service: "integration_integration", action: "notify")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}

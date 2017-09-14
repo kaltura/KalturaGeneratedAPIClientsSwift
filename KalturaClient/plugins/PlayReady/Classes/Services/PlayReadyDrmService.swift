@@ -57,7 +57,7 @@ public final class PlayReadyDrmService{
 	/**  Get content keys for input key ids  */
 	public static func getContentKeys(keyIds: String) -> ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer> {
 		let request: ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer> = ArrayRequestBuilder<PlayReadyContentKey, ArrayTokenizedObject<PlayReadyContentKey.PlayReadyContentKeyTokenizer>, GetContentKeysTokenizer>(service: "playready_playreadydrm", action: "getContentKeys")
-			.setBody(key: "keyIds", value: keyIds)
+			.setParam(key: "keyIds", value: keyIds)
 
 		return request
 	}
@@ -84,8 +84,8 @@ public final class PlayReadyDrmService{
 	/**  Get content key and key id for the given entry  */
 	public static func getEntryContentKey(entryId: String, createIfMissing: Bool?) -> RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer> {
 		let request: RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer> = RequestBuilder<PlayReadyContentKey, PlayReadyContentKey.PlayReadyContentKeyTokenizer, GetEntryContentKeyTokenizer>(service: "playready_playreadydrm", action: "getEntryContentKey")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "createIfMissing", value: createIfMissing)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "createIfMissing", value: createIfMissing)
 
 		return request
 	}
@@ -134,11 +134,11 @@ public final class PlayReadyDrmService{
 	/**  Get Play Ready policy and dates for license creation  */
 	public static func getLicenseDetails(keyId: String, deviceId: String, deviceType: Int, entryId: String?, referrer: String?) -> RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> {
 		let request: RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer> = RequestBuilder<PlayReadyLicenseDetails, PlayReadyLicenseDetails.PlayReadyLicenseDetailsTokenizer, GetLicenseDetailsTokenizer>(service: "playready_playreadydrm", action: "getLicenseDetails")
-			.setBody(key: "keyId", value: keyId)
-			.setBody(key: "deviceId", value: deviceId)
-			.setBody(key: "deviceType", value: deviceType)
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "referrer", value: referrer)
+			.setParam(key: "keyId", value: keyId)
+			.setParam(key: "deviceId", value: deviceId)
+			.setParam(key: "deviceType", value: deviceType)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "referrer", value: referrer)
 
 		return request
 	}

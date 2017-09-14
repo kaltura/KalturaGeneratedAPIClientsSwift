@@ -46,7 +46,7 @@ public final class AccessControlProfileService{
 	/**  Add new access control profile  */
 	public static func add(accessControlProfile: AccessControlProfile) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, AddTokenizer> = RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, AddTokenizer>(service: "accesscontrolprofile", action: "add")
-			.setBody(key: "accessControlProfile", value: accessControlProfile)
+			.setParam(key: "accessControlProfile", value: accessControlProfile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class AccessControlProfileService{
 	/**  Delete access control profile by id  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "accesscontrolprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class AccessControlProfileService{
 	/**  Get access control profile by id  */
 	public static func get(id: Int) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer> = RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer>(service: "accesscontrolprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class AccessControlProfileService{
 	/**  List access control profiles by filter and pager  */
 	public static func list(filter: AccessControlProfileFilter?, pager: FilterPager?) -> RequestBuilder<AccessControlProfileListResponse, AccessControlProfileListResponse.AccessControlProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<AccessControlProfileListResponse, AccessControlProfileListResponse.AccessControlProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<AccessControlProfileListResponse, AccessControlProfileListResponse.AccessControlProfileListResponseTokenizer, ListTokenizer>(service: "accesscontrolprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class AccessControlProfileService{
 	/**  Update access control profile by id  */
 	public static func update(id: Int, accessControlProfile: AccessControlProfile) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer> = RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer>(service: "accesscontrolprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "accessControlProfile", value: accessControlProfile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "accessControlProfile", value: accessControlProfile)
 
 		return request
 	}

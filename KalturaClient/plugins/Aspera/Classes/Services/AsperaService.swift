@@ -47,7 +47,7 @@ public final class AsperaService{
 
 	public static func getFaspUrl(flavorAssetId: String) -> RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetFaspUrlTokenizer>(service: "aspera_aspera", action: "getFaspUrl")
-			.setBody(key: "flavorAssetId", value: flavorAssetId)
+			.setParam(key: "flavorAssetId", value: flavorAssetId)
 
 		return request
 	}

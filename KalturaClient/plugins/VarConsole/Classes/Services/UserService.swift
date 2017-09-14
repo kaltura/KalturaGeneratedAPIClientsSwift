@@ -49,7 +49,7 @@ extension UserService{
 	  $id is the unique identifier in the partner's system.  */
 	public static func add(user: User) -> RequestBuilder<User, User.UserTokenizer, AddTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, AddTokenizer> = RequestBuilder<User, User.UserTokenizer, AddTokenizer>(service: "user", action: "add")
-			.setBody(key: "user", value: user)
+			.setParam(key: "user", value: user)
 
 		return request
 	}
@@ -64,7 +64,7 @@ extension UserService{
 	/**  Action which checks whther user login  */
 	public static func checkLoginDataExists(filter: UserLoginDataFilter) -> RequestBuilder<Bool, BaseTokenizedObject, CheckLoginDataExistsTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, CheckLoginDataExistsTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CheckLoginDataExistsTokenizer>(service: "user", action: "checkLoginDataExists")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -81,7 +81,7 @@ extension UserService{
 	/**  Deletes a user from a partner account.  */
 	public static func delete(userId: String) -> RequestBuilder<User, User.UserTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, DeleteTokenizer> = RequestBuilder<User, User.UserTokenizer, DeleteTokenizer>(service: "user", action: "delete")
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -114,8 +114,8 @@ extension UserService{
 	  action.  */
 	public static func disableLogin(userId: String?, loginId: String?) -> RequestBuilder<User, User.UserTokenizer, DisableLoginTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, DisableLoginTokenizer> = RequestBuilder<User, User.UserTokenizer, DisableLoginTokenizer>(service: "user", action: "disableLogin")
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "loginId", value: loginId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "loginId", value: loginId)
 
 		return request
 	}
@@ -149,9 +149,9 @@ extension UserService{
 	  password  */
 	public static func enableLogin(userId: String, loginId: String, password: String?) -> RequestBuilder<User, User.UserTokenizer, EnableLoginTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, EnableLoginTokenizer> = RequestBuilder<User, User.UserTokenizer, EnableLoginTokenizer>(service: "user", action: "enableLogin")
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "loginId", value: loginId)
-			.setBody(key: "password", value: password)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "loginId", value: loginId)
+			.setParam(key: "password", value: password)
 
 		return request
 	}
@@ -172,7 +172,7 @@ extension UserService{
 	/**  Retrieves a user object for a specified user ID.  */
 	public static func get(userId: String?) -> RequestBuilder<User, User.UserTokenizer, GetTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, GetTokenizer> = RequestBuilder<User, User.UserTokenizer, GetTokenizer>(service: "user", action: "get")
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -190,7 +190,7 @@ extension UserService{
 	  the email address used by a user to log into the system.  */
 	public static func getByLoginId(loginId: String) -> RequestBuilder<User, User.UserTokenizer, GetByLoginIdTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, GetByLoginIdTokenizer> = RequestBuilder<User, User.UserTokenizer, GetByLoginIdTokenizer>(service: "user", action: "getByLoginId")
-			.setBody(key: "loginId", value: loginId)
+			.setParam(key: "loginId", value: loginId)
 
 		return request
 	}
@@ -217,8 +217,8 @@ extension UserService{
 	/**  Index an entry by id.  */
 	public static func index(id: String, shouldUpdate: Bool?) -> RequestBuilder<String, BaseTokenizedObject, IndexTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<String, BaseTokenizedObject, IndexTokenizer>(service: "user", action: "index")
-			.setBody(key: "id", value: id)
-			.setBody(key: "shouldUpdate", value: shouldUpdate)
+			.setParam(key: "id", value: id)
+			.setParam(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
@@ -247,8 +247,8 @@ extension UserService{
 	  unless you use a filter to include them.  */
 	public static func list(filter: UserFilter?, pager: FilterPager?) -> RequestBuilder<UserListResponse, UserListResponse.UserListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<UserListResponse, UserListResponse.UserListResponseTokenizer, ListTokenizer> = RequestBuilder<UserListResponse, UserListResponse.UserListResponseTokenizer, ListTokenizer>(service: "user", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -298,11 +298,11 @@ extension UserService{
 	  and a user password.  */
 	public static func login(partnerId: Int, userId: String, password: String, expiry: Int?, privileges: String?) -> RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> = RequestBuilder<String, BaseTokenizedObject, LoginTokenizer>(service: "user", action: "login")
-			.setBody(key: "partnerId", value: partnerId)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "password", value: password)
-			.setBody(key: "expiry", value: expiry)
-			.setBody(key: "privileges", value: privileges)
+			.setParam(key: "partnerId", value: partnerId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "password", value: password)
+			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "privileges", value: privileges)
 
 		return request
 	}
@@ -365,12 +365,12 @@ extension UserService{
 	/**  Logs a user into a partner account with a user login ID and a user password.  */
 	public static func loginByLoginId(loginId: String, password: String, partnerId: Int?, expiry: Int?, privileges: String?, otp: String?) -> RequestBuilder<String, BaseTokenizedObject, LoginByLoginIdTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, LoginByLoginIdTokenizer> = RequestBuilder<String, BaseTokenizedObject, LoginByLoginIdTokenizer>(service: "user", action: "loginByLoginId")
-			.setBody(key: "loginId", value: loginId)
-			.setBody(key: "password", value: password)
-			.setBody(key: "partnerId", value: partnerId)
-			.setBody(key: "expiry", value: expiry)
-			.setBody(key: "privileges", value: privileges)
-			.setBody(key: "otp", value: otp)
+			.setParam(key: "loginId", value: loginId)
+			.setParam(key: "password", value: password)
+			.setParam(key: "partnerId", value: partnerId)
+			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "privileges", value: privileges)
+			.setParam(key: "otp", value: otp)
 
 		return request
 	}
@@ -387,7 +387,7 @@ extension UserService{
 	/**  Notifies that a user is banned from an account.  */
 	public static func notifyBan(userId: String) -> NullRequestBuilder<NotifyBanTokenizer> {
 		let request: NullRequestBuilder<NotifyBanTokenizer> = NullRequestBuilder<NotifyBanTokenizer>(service: "user", action: "notifyBan")
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -404,7 +404,7 @@ extension UserService{
 	/**  Reset user's password and send the user an email to generate a new one.  */
 	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
 		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "user", action: "resetPassword")
-			.setBody(key: "email", value: email)
+			.setParam(key: "email", value: email)
 
 		return request
 	}
@@ -427,8 +427,8 @@ extension UserService{
 	/**  Set initial users password  */
 	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
 		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "user", action: "setInitialPassword")
-			.setBody(key: "hashKey", value: hashKey)
-			.setBody(key: "newPassword", value: newPassword)
+			.setParam(key: "hashKey", value: hashKey)
+			.setParam(key: "newPassword", value: newPassword)
 
 		return request
 	}
@@ -450,8 +450,8 @@ extension UserService{
 	  userId.  */
 	public static func update(userId: String, user: User) -> RequestBuilder<User, User.UserTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<User, User.UserTokenizer, UpdateTokenizer> = RequestBuilder<User, User.UserTokenizer, UpdateTokenizer>(service: "user", action: "update")
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "user", value: user)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "user", value: user)
 
 		return request
 	}
@@ -514,12 +514,12 @@ extension UserService{
 	/**  Updates a user's login data: email, password, name.  */
 	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?, newLastName: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		let request: NullRequestBuilder<UpdateLoginDataTokenizer> = NullRequestBuilder<UpdateLoginDataTokenizer>(service: "user", action: "updateLoginData")
-			.setBody(key: "oldLoginId", value: oldLoginId)
-			.setBody(key: "password", value: password)
-			.setBody(key: "newLoginId", value: newLoginId)
-			.setBody(key: "newPassword", value: newPassword)
-			.setBody(key: "newFirstName", value: newFirstName)
-			.setBody(key: "newLastName", value: newLastName)
+			.setParam(key: "oldLoginId", value: oldLoginId)
+			.setParam(key: "password", value: password)
+			.setParam(key: "newLoginId", value: newLoginId)
+			.setParam(key: "newPassword", value: newPassword)
+			.setParam(key: "newFirstName", value: newFirstName)
+			.setParam(key: "newLastName", value: newLastName)
 
 		return request
 	}

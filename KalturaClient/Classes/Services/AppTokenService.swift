@@ -46,7 +46,7 @@ public final class AppTokenService{
 	/**  Add new application authentication token  */
 	public static func add(appToken: AppToken) -> RequestBuilder<AppToken, AppToken.AppTokenTokenizer, AddTokenizer> {
 		let request: RequestBuilder<AppToken, AppToken.AppTokenTokenizer, AddTokenizer> = RequestBuilder<AppToken, AppToken.AppTokenTokenizer, AddTokenizer>(service: "apptoken", action: "add")
-			.setBody(key: "appToken", value: appToken)
+			.setParam(key: "appToken", value: appToken)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class AppTokenService{
 	/**  Delete application authentication token by id  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "apptoken", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class AppTokenService{
 	/**  Get application authentication token by id  */
 	public static func get(id: String) -> RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer> = RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer>(service: "apptoken", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class AppTokenService{
 	/**  List application authentication tokens by filter and pager  */
 	public static func list(filter: AppTokenFilter?, pager: FilterPager?) -> RequestBuilder<AppTokenListResponse, AppTokenListResponse.AppTokenListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<AppTokenListResponse, AppTokenListResponse.AppTokenListResponseTokenizer, ListTokenizer> = RequestBuilder<AppTokenListResponse, AppTokenListResponse.AppTokenListResponseTokenizer, ListTokenizer>(service: "apptoken", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -161,11 +161,11 @@ public final class AppTokenService{
 	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
 	public static func startSession(id: String, tokenHash: String, userId: String?, type: SessionType?, expiry: Int?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
 		let request: RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> = RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer>(service: "apptoken", action: "startSession")
-			.setBody(key: "id", value: id)
-			.setBody(key: "tokenHash", value: tokenHash)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "type", value: type?.rawValue)
-			.setBody(key: "expiry", value: expiry)
+			.setParam(key: "id", value: id)
+			.setParam(key: "tokenHash", value: tokenHash)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "type", value: type?.rawValue)
+			.setParam(key: "expiry", value: expiry)
 
 		return request
 	}
@@ -186,8 +186,8 @@ public final class AppTokenService{
 	/**  Update application authentication token by id  */
 	public static func update(id: String, appToken: AppToken) -> RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer> = RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer>(service: "apptoken", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "appToken", value: appToken)
+			.setParam(key: "id", value: id)
+			.setParam(key: "appToken", value: appToken)
 
 		return request
 	}

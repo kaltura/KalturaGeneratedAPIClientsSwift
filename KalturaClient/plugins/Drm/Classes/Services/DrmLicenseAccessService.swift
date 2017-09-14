@@ -60,9 +60,9 @@ public final class DrmLicenseAccessService{
 	/**  getAccessAction      input: flavor ids, drmProvider      Get Access Action  */
 	public static func getAccess(entryId: String, flavorIds: String, referrer: String) -> RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer> {
 		let request: RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer> = RequestBuilder<DrmLicenseAccessDetails, DrmLicenseAccessDetails.DrmLicenseAccessDetailsTokenizer, GetAccessTokenizer>(service: "drm_drmlicenseaccess", action: "getAccess")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "flavorIds", value: flavorIds)
-			.setBody(key: "referrer", value: referrer)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "flavorIds", value: flavorIds)
+			.setParam(key: "referrer", value: referrer)
 
 		return request
 	}

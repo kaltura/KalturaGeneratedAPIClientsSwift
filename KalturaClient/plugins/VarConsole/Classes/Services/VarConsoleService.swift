@@ -66,9 +66,9 @@ public final class VarConsoleService{
 	/**  Function which calulates partner usage of a group of a VAR's sub-publishers  */
 	public static func getPartnerUsage(partnerFilter: PartnerFilter?, usageFilter: ReportInputFilter?, pager: FilterPager?) -> RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> {
 		let request: RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer> = RequestBuilder<PartnerUsageListResponse, PartnerUsageListResponse.PartnerUsageListResponseTokenizer, GetPartnerUsageTokenizer>(service: "varconsole_varconsole", action: "getPartnerUsage")
-			.setBody(key: "partnerFilter", value: partnerFilter)
-			.setBody(key: "usageFilter", value: usageFilter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "partnerFilter", value: partnerFilter)
+			.setParam(key: "usageFilter", value: usageFilter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -91,8 +91,8 @@ public final class VarConsoleService{
 	/**  Function to change a sub-publisher's status  */
 	public static func updateStatus(id: Int, status: PartnerStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
 		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "varconsole_varconsole", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

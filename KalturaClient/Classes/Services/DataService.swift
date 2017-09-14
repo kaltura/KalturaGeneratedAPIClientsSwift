@@ -46,7 +46,7 @@ public final class DataService{
 	/**  Adds a new data entry  */
 	public static func add(dataEntry: DataEntry) -> RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, AddTokenizer> = RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, AddTokenizer>(service: "data", action: "add")
-			.setBody(key: "dataEntry", value: dataEntry)
+			.setParam(key: "dataEntry", value: dataEntry)
 
 		return request
 	}
@@ -67,8 +67,8 @@ public final class DataService{
 	/**  Update the dataContent of data entry using a resource  */
 	public static func addContent(entryId: String, resource: GenericDataCenterContentResource) -> RequestBuilder<String, BaseTokenizedObject, AddContentTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, AddContentTokenizer> = RequestBuilder<String, BaseTokenizedObject, AddContentTokenizer>(service: "data", action: "addContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
 
 		return request
 	}
@@ -85,7 +85,7 @@ public final class DataService{
 	/**  Delete a data entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "data", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -112,8 +112,8 @@ public final class DataService{
 	/**  Get data entry by ID.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, GetTokenizer> = RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, GetTokenizer>(service: "data", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -140,8 +140,8 @@ public final class DataService{
 	/**  List data entries by filter with paging support.  */
 	public static func list(filter: DataEntryFilter?, pager: FilterPager?) -> RequestBuilder<DataListResponse, DataListResponse.DataListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DataListResponse, DataListResponse.DataListResponseTokenizer, ListTokenizer> = RequestBuilder<DataListResponse, DataListResponse.DataListResponseTokenizer, ListTokenizer>(service: "data", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -162,8 +162,8 @@ public final class DataService{
 	/**  Update data entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, documentEntry: DataEntry) -> RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, UpdateTokenizer> = RequestBuilder<DataEntry, DataEntry.DataEntryTokenizer, UpdateTokenizer>(service: "data", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "documentEntry", value: documentEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "documentEntry", value: documentEntry)
 
 		return request
 	}

@@ -70,9 +70,9 @@ public final class TagService{
 
 	public static func indexCategoryEntryTags(categoryId: Int, pcToDecrement: String, pcToIncrement: String) -> NullRequestBuilder<IndexCategoryEntryTagsTokenizer> {
 		let request: NullRequestBuilder<IndexCategoryEntryTagsTokenizer> = NullRequestBuilder<IndexCategoryEntryTagsTokenizer>(service: "tagsearch_tag", action: "indexCategoryEntryTags")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "pcToDecrement", value: pcToDecrement)
-			.setBody(key: "pcToIncrement", value: pcToIncrement)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "pcToDecrement", value: pcToDecrement)
+			.setParam(key: "pcToIncrement", value: pcToIncrement)
 
 		return request
 	}
@@ -94,8 +94,8 @@ public final class TagService{
 
 	public static func search(tagFilter: TagFilter, pager: FilterPager?) -> RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer> {
 		let request: RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer> = RequestBuilder<TagListResponse, TagListResponse.TagListResponseTokenizer, SearchTokenizer>(service: "tagsearch_tag", action: "search")
-			.setBody(key: "tagFilter", value: tagFilter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "tagFilter", value: tagFilter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

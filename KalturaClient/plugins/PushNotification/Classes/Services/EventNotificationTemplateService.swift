@@ -50,7 +50,7 @@ extension EventNotificationTemplateService{
 	  instead.  */
 	public static func add(eventNotificationTemplate: EventNotificationTemplate) -> RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, AddTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, AddTokenizer> = RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, AddTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "add")
-			.setBody(key: "eventNotificationTemplate", value: eventNotificationTemplate)
+			.setParam(key: "eventNotificationTemplate", value: eventNotificationTemplate)
 
 		return request
 	}
@@ -78,8 +78,8 @@ extension EventNotificationTemplateService{
 	  listTemplates action.  */
 	public static func clone(id: Int, eventNotificationTemplate: EventNotificationTemplate?) -> RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, CloneTokenizer> = RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, CloneTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "clone")
-			.setBody(key: "id", value: id)
-			.setBody(key: "eventNotificationTemplate", value: eventNotificationTemplate)
+			.setParam(key: "id", value: id)
+			.setParam(key: "eventNotificationTemplate", value: eventNotificationTemplate)
 
 		return request
 	}
@@ -96,7 +96,7 @@ extension EventNotificationTemplateService{
 	/**  Delete an event notification template object  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -117,8 +117,8 @@ extension EventNotificationTemplateService{
 	/**  Dispatch event notification object by id  */
 	public static func dispatch(id: Int, scope: EventNotificationScope) -> RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer> = RequestBuilder<Int, BaseTokenizedObject, DispatchTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "dispatch")
-			.setBody(key: "id", value: id)
-			.setBody(key: "scope", value: scope)
+			.setParam(key: "id", value: id)
+			.setParam(key: "scope", value: scope)
 
 		return request
 	}
@@ -135,7 +135,7 @@ extension EventNotificationTemplateService{
 	/**  Retrieve an event notification template object by id  */
 	public static func get(id: Int) -> RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, GetTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, GetTokenizer> = RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, GetTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -162,8 +162,8 @@ extension EventNotificationTemplateService{
 	/**  list event notification template objects  */
 	public static func list(filter: EventNotificationTemplateFilter?, pager: FilterPager?) -> RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTokenizer> = RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -189,8 +189,8 @@ extension EventNotificationTemplateService{
 
 	public static func listByPartner(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListByPartnerTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListByPartnerTokenizer> = RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListByPartnerTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "listByPartner")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -217,8 +217,8 @@ extension EventNotificationTemplateService{
 	/**  Action lists the template partner event notification templates.  */
 	public static func listTemplates(filter: EventNotificationTemplateFilter?, pager: FilterPager?) -> RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTemplatesTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTemplatesTokenizer> = RequestBuilder<EventNotificationTemplateListResponse, EventNotificationTemplateListResponse.EventNotificationTemplateListResponseTokenizer, ListTemplatesTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "listTemplates")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -240,8 +240,8 @@ extension EventNotificationTemplateService{
 	  given template. Queue will be created if not already exists  */
 	public static func register(notificationTemplateSystemName: String, pushNotificationParams: PushNotificationParams) -> RequestBuilder<PushNotificationData, PushNotificationData.PushNotificationDataTokenizer, RegisterTokenizer> {
 		let request: RequestBuilder<PushNotificationData, PushNotificationData.PushNotificationDataTokenizer, RegisterTokenizer> = RequestBuilder<PushNotificationData, PushNotificationData.PushNotificationDataTokenizer, RegisterTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "register")
-			.setBody(key: "notificationTemplateSystemName", value: notificationTemplateSystemName)
-			.setBody(key: "pushNotificationParams", value: pushNotificationParams)
+			.setParam(key: "notificationTemplateSystemName", value: notificationTemplateSystemName)
+			.setParam(key: "pushNotificationParams", value: pushNotificationParams)
 
 		return request
 	}
@@ -268,9 +268,9 @@ extension EventNotificationTemplateService{
 	/**  Clear queue messages  */
 	public static func sendCommand(notificationTemplateSystemName: String, pushNotificationParams: PushNotificationParams, command: PushNotificationCommandType) -> NullRequestBuilder<SendCommandTokenizer> {
 		let request: NullRequestBuilder<SendCommandTokenizer> = NullRequestBuilder<SendCommandTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "sendCommand")
-			.setBody(key: "notificationTemplateSystemName", value: notificationTemplateSystemName)
-			.setBody(key: "pushNotificationParams", value: pushNotificationParams)
-			.setBody(key: "command", value: command.rawValue)
+			.setParam(key: "notificationTemplateSystemName", value: notificationTemplateSystemName)
+			.setParam(key: "pushNotificationParams", value: pushNotificationParams)
+			.setParam(key: "command", value: command.rawValue)
 
 		return request
 	}
@@ -291,8 +291,8 @@ extension EventNotificationTemplateService{
 	/**  Update an existing event notification template object  */
 	public static func update(id: Int, eventNotificationTemplate: EventNotificationTemplate) -> RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateTokenizer> = RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "eventNotificationTemplate", value: eventNotificationTemplate)
+			.setParam(key: "id", value: id)
+			.setParam(key: "eventNotificationTemplate", value: eventNotificationTemplate)
 
 		return request
 	}
@@ -315,8 +315,8 @@ extension EventNotificationTemplateService{
 	/**  Update event notification template status by id  */
 	public static func updateStatus(id: Int, status: EventNotificationTemplateStatus) -> RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateStatusTokenizer> {
 		let request: RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateStatusTokenizer> = RequestBuilder<EventNotificationTemplate, EventNotificationTemplate.EventNotificationTemplateTokenizer, UpdateStatusTokenizer>(service: "eventnotification_eventnotificationtemplate", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

@@ -54,8 +54,8 @@ extension CategoryUserService{
 	/**  activate CategoryUser  */
 	public static func activate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer> {
 		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, ActivateTokenizer>(service: "categoryuser", action: "activate")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -70,7 +70,7 @@ extension CategoryUserService{
 	/**  Add new CategoryUser  */
 	public static func add(categoryUser: CategoryUser) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer> {
 		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, AddTokenizer>(service: "categoryuser", action: "add")
-			.setBody(key: "categoryUser", value: categoryUser)
+			.setParam(key: "categoryUser", value: categoryUser)
 
 		return request
 	}
@@ -97,8 +97,8 @@ extension CategoryUserService{
 	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadCategoryUserData: BulkUploadCategoryUserData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "categoryuser", action: "addFromBulkUpload")
 			.setFile(key: "fileData", value: fileData)
-			.setBody(key: "bulkUploadData", value: bulkUploadData)
-			.setBody(key: "bulkUploadCategoryUserData", value: bulkUploadCategoryUserData)
+			.setParam(key: "bulkUploadData", value: bulkUploadData)
+			.setParam(key: "bulkUploadCategoryUserData", value: bulkUploadCategoryUserData)
 
 		return request
 	}
@@ -115,7 +115,7 @@ extension CategoryUserService{
 	/**  Copy all memeber from parent category  */
 	public static func copyFromCategory(categoryId: Int) -> NullRequestBuilder<CopyFromCategoryTokenizer> {
 		let request: NullRequestBuilder<CopyFromCategoryTokenizer> = NullRequestBuilder<CopyFromCategoryTokenizer>(service: "categoryuser", action: "copyFromCategory")
-			.setBody(key: "categoryId", value: categoryId)
+			.setParam(key: "categoryId", value: categoryId)
 
 		return request
 	}
@@ -138,8 +138,8 @@ extension CategoryUserService{
 	/**  reject CategoryUser  */
 	public static func deactivate(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer> {
 		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, DeactivateTokenizer>(service: "categoryuser", action: "deactivate")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -162,8 +162,8 @@ extension CategoryUserService{
 	/**  Delete a CategoryUser  */
 	public static func delete(categoryId: Int, userId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "categoryuser", action: "delete")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -186,8 +186,8 @@ extension CategoryUserService{
 	/**  Get CategoryUser by id  */
 	public static func get(categoryId: Int, userId: String) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer> {
 		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, GetTokenizer>(service: "categoryuser", action: "get")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -220,9 +220,9 @@ extension CategoryUserService{
 	/**  Index CategoryUser by userid and category id  */
 	public static func index(userId: String, categoryId: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "categoryuser", action: "index")
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "shouldUpdate", value: shouldUpdate)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
@@ -249,8 +249,8 @@ extension CategoryUserService{
 	/**  List all categories  */
 	public static func list(filter: CategoryUserFilter?, pager: FilterPager?) -> RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer> = RequestBuilder<CategoryUserListResponse, CategoryUserListResponse.CategoryUserListResponseTokenizer, ListTokenizer>(service: "categoryuser", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -287,10 +287,10 @@ extension CategoryUserService{
 	/**  Update CategoryUser by id  */
 	public static func update(categoryId: Int, userId: String, categoryUser: CategoryUser, override: Bool?) -> RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer> = RequestBuilder<CategoryUser, CategoryUser.CategoryUserTokenizer, UpdateTokenizer>(service: "categoryuser", action: "update")
-			.setBody(key: "categoryId", value: categoryId)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "categoryUser", value: categoryUser)
-			.setBody(key: "override", value: override)
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "categoryUser", value: categoryUser)
+			.setParam(key: "override", value: override)
 
 		return request
 	}

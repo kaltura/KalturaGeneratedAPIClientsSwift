@@ -58,8 +58,8 @@ public final class WidevineDrmService{
 	/**  Get license for encrypted content playback  */
 	public static func getLicense(flavorAssetId: String, referrer: String?) -> RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetLicenseTokenizer>(service: "widevine_widevinedrm", action: "getLicense")
-			.setBody(key: "flavorAssetId", value: flavorAssetId)
-			.setBody(key: "referrer", value: referrer)
+			.setParam(key: "flavorAssetId", value: flavorAssetId)
+			.setParam(key: "referrer", value: referrer)
 
 		return request
 	}

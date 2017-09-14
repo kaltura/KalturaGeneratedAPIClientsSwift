@@ -54,7 +54,7 @@ public final class StatsService{
 	  point referrer       KalturaStatsEvent $event  */
 	public static func collect(event: StatsEvent) -> RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer>(service: "stats", action: "collect")
-			.setBody(key: "event", value: event)
+			.setParam(key: "event", value: event)
 
 		return request
 	}
@@ -71,7 +71,7 @@ public final class StatsService{
 	  logged in the apache log  */
 	public static func kmcCollect(kmcEvent: StatsKmcEvent) -> NullRequestBuilder<KmcCollectTokenizer> {
 		let request: NullRequestBuilder<KmcCollectTokenizer> = NullRequestBuilder<KmcCollectTokenizer>(service: "stats", action: "kmcCollect")
-			.setBody(key: "kmcEvent", value: kmcEvent)
+			.setParam(key: "kmcEvent", value: kmcEvent)
 
 		return request
 	}
@@ -88,7 +88,7 @@ public final class StatsService{
 	/**  Use this action to report device capabilities to the kaltura server.  */
 	public static func reportDeviceCapabilities(data: String) -> NullRequestBuilder<ReportDeviceCapabilitiesTokenizer> {
 		let request: NullRequestBuilder<ReportDeviceCapabilitiesTokenizer> = NullRequestBuilder<ReportDeviceCapabilitiesTokenizer>(service: "stats", action: "reportDeviceCapabilities")
-			.setBody(key: "data", value: data)
+			.setParam(key: "data", value: data)
 
 		return request
 	}
@@ -111,8 +111,8 @@ public final class StatsService{
 	/**  Use this action to report errors to the kaltura server.  */
 	public static func reportError(errorCode: String, errorMessage: String) -> NullRequestBuilder<ReportErrorTokenizer> {
 		let request: NullRequestBuilder<ReportErrorTokenizer> = NullRequestBuilder<ReportErrorTokenizer>(service: "stats", action: "reportError")
-			.setBody(key: "errorCode", value: errorCode)
-			.setBody(key: "errorMessage", value: errorMessage)
+			.setParam(key: "errorCode", value: errorCode)
+			.setParam(key: "errorMessage", value: errorMessage)
 
 		return request
 	}
@@ -126,7 +126,7 @@ public final class StatsService{
 
 	public static func reportKceError(kalturaCEError: CEError) -> RequestBuilder<CEError, CEError.CEErrorTokenizer, ReportKceErrorTokenizer> {
 		let request: RequestBuilder<CEError, CEError.CEErrorTokenizer, ReportKceErrorTokenizer> = RequestBuilder<CEError, CEError.CEErrorTokenizer, ReportKceErrorTokenizer>(service: "stats", action: "reportKceError")
-			.setBody(key: "kalturaCEError", value: kalturaCEError)
+			.setParam(key: "kalturaCEError", value: kalturaCEError)
 
 		return request
 	}

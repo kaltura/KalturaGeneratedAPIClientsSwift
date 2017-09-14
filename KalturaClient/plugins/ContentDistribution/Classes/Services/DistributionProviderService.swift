@@ -58,8 +58,8 @@ public final class DistributionProviderService{
 	/**  List all distribution providers  */
 	public static func list(filter: DistributionProviderFilter?, pager: FilterPager?) -> RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer> = RequestBuilder<DistributionProviderListResponse, DistributionProviderListResponse.DistributionProviderListResponseTokenizer, ListTokenizer>(service: "contentdistribution_distributionprovider", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

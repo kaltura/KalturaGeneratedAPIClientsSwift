@@ -46,7 +46,7 @@ public final class LiveChannelSegmentService{
 	/**  Add new live channel segment  */
 	public static func add(liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer> {
 		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, AddTokenizer>(service: "livechannelsegment", action: "add")
-			.setBody(key: "liveChannelSegment", value: liveChannelSegment)
+			.setParam(key: "liveChannelSegment", value: liveChannelSegment)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class LiveChannelSegmentService{
 	/**  Delete live channel segment by id  */
 	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livechannelsegment", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class LiveChannelSegmentService{
 	/**  Get live channel segment by id  */
 	public static func get(id: Int64) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> {
 		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, GetTokenizer>(service: "livechannelsegment", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class LiveChannelSegmentService{
 	/**  List live channel segments by filter and pager  */
 	public static func list(filter: LiveChannelSegmentFilter?, pager: FilterPager?) -> RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer> = RequestBuilder<LiveChannelSegmentListResponse, LiveChannelSegmentListResponse.LiveChannelSegmentListResponseTokenizer, ListTokenizer>(service: "livechannelsegment", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class LiveChannelSegmentService{
 	/**  Update live channel segment by id  */
 	public static func update(id: Int64, liveChannelSegment: LiveChannelSegment) -> RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer> = RequestBuilder<LiveChannelSegment, LiveChannelSegment.LiveChannelSegmentTokenizer, UpdateTokenizer>(service: "livechannelsegment", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "liveChannelSegment", value: liveChannelSegment)
+			.setParam(key: "id", value: id)
+			.setParam(key: "liveChannelSegment", value: liveChannelSegment)
 
 		return request
 	}

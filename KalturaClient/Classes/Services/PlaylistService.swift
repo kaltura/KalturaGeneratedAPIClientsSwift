@@ -58,8 +58,8 @@ public final class PlaylistService{
 	  and may appear in KalturaNetwork  */
 	public static func add(playlist: Playlist, updateStats: Bool?) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, AddTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, AddTokenizer>(service: "playlist", action: "add")
-			.setBody(key: "playlist", value: playlist)
-			.setBody(key: "updateStats", value: updateStats)
+			.setParam(key: "playlist", value: playlist)
+			.setParam(key: "updateStats", value: updateStats)
 
 		return request
 	}
@@ -84,8 +84,8 @@ public final class PlaylistService{
 	/**  Clone an existing playlist  */
 	public static func clone(id: String, newPlaylist: Playlist?) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, CloneTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, CloneTokenizer>(service: "playlist", action: "clone")
-			.setBody(key: "id", value: id)
-			.setBody(key: "newPlaylist", value: newPlaylist)
+			.setParam(key: "id", value: id)
+			.setParam(key: "newPlaylist", value: newPlaylist)
 
 		return request
 	}
@@ -102,7 +102,7 @@ public final class PlaylistService{
 	/**  Delete existing playlist  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "playlist", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -153,11 +153,11 @@ public final class PlaylistService{
 	/**  Retrieve playlist for playing purpose  */
 	public static func execute(id: String, detailed: String?, playlistContext: Context?, filter: MediaEntryFilterForPlaylist?, pager: FilterPager?) -> ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteTokenizer> {
 		let request: ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteTokenizer> = ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteTokenizer>(service: "playlist", action: "execute")
-			.setBody(key: "id", value: id)
-			.setBody(key: "detailed", value: detailed)
-			.setBody(key: "playlistContext", value: playlistContext)
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "id", value: id)
+			.setParam(key: "detailed", value: detailed)
+			.setParam(key: "playlistContext", value: playlistContext)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -198,10 +198,10 @@ public final class PlaylistService{
 	/**  Retrieve playlist for playing purpose, based on content  */
 	public static func executeFromContent(playlistType: PlaylistType, playlistContent: String, detailed: String?, pager: FilterPager?) -> ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromContentTokenizer> {
 		let request: ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromContentTokenizer> = ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromContentTokenizer>(service: "playlist", action: "executeFromContent")
-			.setBody(key: "playlistType", value: playlistType.rawValue)
-			.setBody(key: "playlistContent", value: playlistContent)
-			.setBody(key: "detailed", value: detailed)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "playlistType", value: playlistType.rawValue)
+			.setParam(key: "playlistContent", value: playlistContent)
+			.setParam(key: "detailed", value: detailed)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -242,10 +242,10 @@ public final class PlaylistService{
 	/**  Revrieve playlist for playing purpose, based on media entry filters  */
 	public static func executeFromFilters(filters: Array<MediaEntryFilterForPlaylist>, totalResults: Int, detailed: String?, pager: FilterPager?) -> ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer> {
 		let request: ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer> = ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer>(service: "playlist", action: "executeFromFilters")
-			.setBody(key: "filters", value: filters)
-			.setBody(key: "totalResults", value: totalResults)
-			.setBody(key: "detailed", value: detailed)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filters", value: filters)
+			.setParam(key: "totalResults", value: totalResults)
+			.setParam(key: "detailed", value: detailed)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -272,8 +272,8 @@ public final class PlaylistService{
 	/**  Retrieve a playlist  */
 	public static func get(id: String, version: Int?) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetTokenizer>(service: "playlist", action: "get")
-			.setBody(key: "id", value: id)
-			.setBody(key: "version", value: version)
+			.setParam(key: "id", value: id)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -296,8 +296,8 @@ public final class PlaylistService{
 	/**  Retrieve playlist statistics  */
 	public static func getStatsFromContent(playlistType: PlaylistType, playlistContent: String) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetStatsFromContentTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetStatsFromContentTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, GetStatsFromContentTokenizer>(service: "playlist", action: "getStatsFromContent")
-			.setBody(key: "playlistType", value: playlistType.rawValue)
-			.setBody(key: "playlistContent", value: playlistContent)
+			.setParam(key: "playlistType", value: playlistType.rawValue)
+			.setParam(key: "playlistContent", value: playlistContent)
 
 		return request
 	}
@@ -324,8 +324,8 @@ public final class PlaylistService{
 	/**  List available playlists  */
 	public static func list(filter: PlaylistFilter?, pager: FilterPager?) -> RequestBuilder<PlaylistListResponse, PlaylistListResponse.PlaylistListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<PlaylistListResponse, PlaylistListResponse.PlaylistListResponseTokenizer, ListTokenizer> = RequestBuilder<PlaylistListResponse, PlaylistListResponse.PlaylistListResponseTokenizer, ListTokenizer>(service: "playlist", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -357,9 +357,9 @@ public final class PlaylistService{
 	  playlist must be of the same type.  */
 	public static func update(id: String, playlist: Playlist, updateStats: Bool?) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer>(service: "playlist", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "playlist", value: playlist)
-			.setBody(key: "updateStats", value: updateStats)
+			.setParam(key: "id", value: id)
+			.setParam(key: "playlist", value: playlist)
+			.setParam(key: "updateStats", value: updateStats)
 
 		return request
 	}

@@ -56,8 +56,8 @@ extension LiveStreamService{
 	/**  Adds new live stream entry.   The entry will be queued for provision.  */
 	public static func add(liveStreamEntry: LiveStreamEntry, sourceType: SourceType?) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddTokenizer>(service: "livestream", action: "add")
-			.setBody(key: "liveStreamEntry", value: liveStreamEntry)
-			.setBody(key: "sourceType", value: sourceType?.rawValue)
+			.setParam(key: "liveStreamEntry", value: liveStreamEntry)
+			.setParam(key: "sourceType", value: sourceType?.rawValue)
 
 		return request
 	}
@@ -98,10 +98,10 @@ extension LiveStreamService{
 	/**  Add new pushPublish configuration to entry  */
 	public static func addLiveStreamPushPublishConfiguration(entryId: String, protocol_: PlaybackProtocol, url: String?, liveStreamConfiguration: LiveStreamConfiguration?) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddLiveStreamPushPublishConfigurationTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddLiveStreamPushPublishConfigurationTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AddLiveStreamPushPublishConfigurationTokenizer>(service: "livestream", action: "addLiveStreamPushPublishConfiguration")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "protocol", value: protocol_.rawValue)
-			.setBody(key: "url", value: url)
-			.setBody(key: "liveStreamConfiguration", value: liveStreamConfiguration)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "protocol", value: protocol_.rawValue)
+			.setParam(key: "url", value: url)
+			.setParam(key: "liveStreamConfiguration", value: liveStreamConfiguration)
 
 		return request
 	}
@@ -150,12 +150,12 @@ extension LiveStreamService{
 	/**  Append recorded video to live entry  */
 	public static func appendRecording(entryId: String, assetId: String, mediaServerIndex: EntryServerNodeType, resource: DataCenterContentResource, duration: Double, isLastChunk: Bool?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer>(service: "livestream", action: "appendRecording")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "assetId", value: assetId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "duration", value: duration)
-			.setBody(key: "isLastChunk", value: isLastChunk)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "assetId", value: assetId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "duration", value: duration)
+			.setParam(key: "isLastChunk", value: isLastChunk)
 
 		return request
 	}
@@ -208,11 +208,11 @@ extension LiveStreamService{
 	/**  Authenticate live-stream entry against stream token and partner limitations  */
 	public static func authenticate(entryId: String, token: String, hostname: String?, mediaServerIndex: EntryServerNodeType?, applicationName: String?) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AuthenticateTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AuthenticateTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, AuthenticateTokenizer>(service: "livestream", action: "authenticate")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "token", value: token)
-			.setBody(key: "hostname", value: hostname)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex?.rawValue)
-			.setBody(key: "applicationName", value: applicationName)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "token", value: token)
+			.setParam(key: "hostname", value: hostname)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex?.rawValue)
+			.setParam(key: "applicationName", value: applicationName)
 
 		return request
 	}
@@ -241,9 +241,9 @@ extension LiveStreamService{
 	/**  Creates perioding metadata sync-point events on a live stream  */
 	public static func createPeriodicSyncPoints(entryId: String, interval: Int, duration: Int) -> NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> {
 		let request: NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> = NullRequestBuilder<CreatePeriodicSyncPointsTokenizer>(service: "livestream", action: "createPeriodicSyncPoints")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "interval", value: interval)
-			.setBody(key: "duration", value: duration)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "interval", value: interval)
+			.setParam(key: "duration", value: duration)
 
 		return request
 	}
@@ -271,9 +271,9 @@ extension LiveStreamService{
 
 	public static func createRecordedEntry(entryId: String, mediaServerIndex: EntryServerNodeType, liveEntryStatus: EntryServerNodeStatus) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer>(service: "livestream", action: "createRecordedEntry")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "liveEntryStatus", value: liveEntryStatus.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "liveEntryStatus", value: liveEntryStatus.rawValue)
 
 		return request
 	}
@@ -290,7 +290,7 @@ extension LiveStreamService{
 	/**  Delete a live stream entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livestream", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -317,8 +317,8 @@ extension LiveStreamService{
 	/**  Get live stream entry by ID.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, GetTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, GetTokenizer>(service: "livestream", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -341,8 +341,8 @@ extension LiveStreamService{
 	/**  Delivering the status of a live stream (on-air/offline) if it is possible  */
 	public static func isLive(id: String, protocol_: PlaybackProtocol) -> RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer>(service: "livestream", action: "isLive")
-			.setBody(key: "id", value: id)
-			.setBody(key: "protocol", value: protocol_.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "protocol", value: protocol_.rawValue)
 
 		return request
 	}
@@ -369,8 +369,8 @@ extension LiveStreamService{
 	/**  List live stream entries by filter with paging support.  */
 	public static func list(filter: LiveStreamEntryFilter?, pager: FilterPager?) -> RequestBuilder<LiveStreamListResponse, LiveStreamListResponse.LiveStreamListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<LiveStreamListResponse, LiveStreamListResponse.LiveStreamListResponseTokenizer, ListTokenizer> = RequestBuilder<LiveStreamListResponse, LiveStreamListResponse.LiveStreamListResponseTokenizer, ListTokenizer>(service: "livestream", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -387,7 +387,7 @@ extension LiveStreamService{
 	/**  Regenerate new secure token for liveStream  */
 	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder<RegenerateStreamTokenTokenizer> {
 		let request: NullRequestBuilder<RegenerateStreamTokenTokenizer> = NullRequestBuilder<RegenerateStreamTokenTokenizer>(service: "livestream", action: "regenerateStreamToken")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -446,12 +446,12 @@ extension LiveStreamService{
 	/**  Register media server to live entry  */
 	public static func registerMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType, applicationName: String?, liveEntryStatus: EntryServerNodeStatus?, shouldCreateRecordedEntry: Bool?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer>(service: "livestream", action: "registerMediaServer")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "hostname", value: hostname)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "applicationName", value: applicationName)
-			.setBody(key: "liveEntryStatus", value: liveEntryStatus?.rawValue)
-			.setBody(key: "shouldCreateRecordedEntry", value: shouldCreateRecordedEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "hostname", value: hostname)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "applicationName", value: applicationName)
+			.setParam(key: "liveEntryStatus", value: liveEntryStatus?.rawValue)
+			.setParam(key: "shouldCreateRecordedEntry", value: shouldCreateRecordedEntry)
 
 		return request
 	}
@@ -474,8 +474,8 @@ extension LiveStreamService{
 	/**  Remove push publish configuration from entry  */
 	public static func removeLiveStreamPushPublishConfiguration(entryId: String, protocol_: PlaybackProtocol) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, RemoveLiveStreamPushPublishConfigurationTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, RemoveLiveStreamPushPublishConfigurationTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, RemoveLiveStreamPushPublishConfigurationTokenizer>(service: "livestream", action: "removeLiveStreamPushPublishConfiguration")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "protocol", value: protocol_.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "protocol", value: protocol_.rawValue)
 
 		return request
 	}
@@ -528,12 +528,12 @@ extension LiveStreamService{
 	/**  Sey recorded video to live entry  */
 	public static func setRecordedContent(entryId: String, mediaServerIndex: EntryServerNodeType, resource: DataCenterContentResource, duration: Double, recordedEntryId: String?, flavorParamsId: Int?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer>(service: "livestream", action: "setRecordedContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "duration", value: duration)
-			.setBody(key: "recordedEntryId", value: recordedEntryId)
-			.setBody(key: "flavorParamsId", value: flavorParamsId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "duration", value: duration)
+			.setParam(key: "recordedEntryId", value: recordedEntryId)
+			.setParam(key: "flavorParamsId", value: flavorParamsId)
 
 		return request
 	}
@@ -562,9 +562,9 @@ extension LiveStreamService{
 	/**  Unregister media server from live entry  */
 	public static func unregisterMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer>(service: "livestream", action: "unregisterMediaServer")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "hostname", value: hostname)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "hostname", value: hostname)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
 
 		return request
 	}
@@ -585,8 +585,8 @@ extension LiveStreamService{
 	/**  Update live stream entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, liveStreamEntry: LiveStreamEntry) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateTokenizer>(service: "livestream", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "liveStreamEntry", value: liveStreamEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "liveStreamEntry", value: liveStreamEntry)
 
 		return request
 	}
@@ -609,8 +609,8 @@ extension LiveStreamService{
 	/**  Update entry thumbnail using url  */
 	public static func updateOfflineThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailFromUrlTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailFromUrlTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailFromUrlTokenizer>(service: "livestream", action: "updateOfflineThumbnailFromUrl")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "url", value: url)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "url", value: url)
 
 		return request
 	}
@@ -627,7 +627,7 @@ extension LiveStreamService{
 	/**  Update live stream entry thumbnail using a raw jpeg file  */
 	public static func updateOfflineThumbnailJpeg(entryId: String, fileData: RequestFile) -> RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailJpegTokenizer> {
 		let request: RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailJpegTokenizer> = RequestBuilder<LiveStreamEntry, LiveStreamEntry.LiveStreamEntryTokenizer, UpdateOfflineThumbnailJpegTokenizer>(service: "livestream", action: "updateOfflineThumbnailJpeg")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 			.setFile(key: "fileData", value: fileData)
 
 		return request
@@ -645,7 +645,7 @@ extension LiveStreamService{
 	/**  Validates all registered media servers  */
 	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> {
 		let request: NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> = NullRequestBuilder<ValidateRegisteredMediaServersTokenizer>(service: "livestream", action: "validateRegisteredMediaServers")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}

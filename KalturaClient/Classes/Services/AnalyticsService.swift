@@ -55,8 +55,8 @@ public final class AnalyticsService{
 	  dimensions, metrics and filters.  */
 	public static func query(filter: AnalyticsFilter, pager: FilterPager?) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer> {
 		let request: RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer> = RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, QueryTokenizer>(service: "analytics", action: "query")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

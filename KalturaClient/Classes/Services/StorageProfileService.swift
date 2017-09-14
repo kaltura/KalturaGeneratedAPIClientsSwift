@@ -46,7 +46,7 @@ public final class StorageProfileService{
 	/**  Adds a storage profile to the Kaltura DB.  */
 	public static func add(storageProfile: StorageProfile) -> RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, AddTokenizer> = RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, AddTokenizer>(service: "storageprofile", action: "add")
-			.setBody(key: "storageProfile", value: storageProfile)
+			.setParam(key: "storageProfile", value: storageProfile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class StorageProfileService{
 	/**  Get storage profile by id  */
 	public static func get(storageProfileId: Int) -> RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, GetTokenizer> = RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, GetTokenizer>(service: "storageprofile", action: "get")
-			.setBody(key: "storageProfileId", value: storageProfileId)
+			.setParam(key: "storageProfileId", value: storageProfileId)
 
 		return request
 	}
@@ -89,8 +89,8 @@ public final class StorageProfileService{
 
 	public static func list(filter: StorageProfileFilter?, pager: FilterPager?) -> RequestBuilder<StorageProfileListResponse, StorageProfileListResponse.StorageProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<StorageProfileListResponse, StorageProfileListResponse.StorageProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<StorageProfileListResponse, StorageProfileListResponse.StorageProfileListResponseTokenizer, ListTokenizer>(service: "storageprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -111,8 +111,8 @@ public final class StorageProfileService{
 	/**  Update storage profile by id  */
 	public static func update(storageProfileId: Int, storageProfile: StorageProfile) -> RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, UpdateTokenizer> = RequestBuilder<StorageProfile, StorageProfile.StorageProfileTokenizer, UpdateTokenizer>(service: "storageprofile", action: "update")
-			.setBody(key: "storageProfileId", value: storageProfileId)
-			.setBody(key: "storageProfile", value: storageProfile)
+			.setParam(key: "storageProfileId", value: storageProfileId)
+			.setParam(key: "storageProfile", value: storageProfile)
 
 		return request
 	}
@@ -134,8 +134,8 @@ public final class StorageProfileService{
 
 	public static func updateStatus(storageId: Int, status: StorageProfileStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
 		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "storageprofile", action: "updateStatus")
-			.setBody(key: "storageId", value: storageId)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "storageId", value: storageId)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

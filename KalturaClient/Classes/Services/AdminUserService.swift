@@ -65,9 +65,9 @@ public final class AdminUserService{
 	  application)  */
 	public static func login(email: String, password: String, partnerId: Int?) -> RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, LoginTokenizer> = RequestBuilder<String, BaseTokenizedObject, LoginTokenizer>(service: "adminuser", action: "login")
-			.setBody(key: "email", value: email)
-			.setBody(key: "password", value: password)
-			.setBody(key: "partnerId", value: partnerId)
+			.setParam(key: "email", value: email)
+			.setParam(key: "password", value: password)
+			.setParam(key: "partnerId", value: partnerId)
 
 		return request
 	}
@@ -84,7 +84,7 @@ public final class AdminUserService{
 	/**  Reset admin user password and send it to the users email address  */
 	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
 		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "adminuser", action: "resetPassword")
-			.setBody(key: "email", value: email)
+			.setParam(key: "email", value: email)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class AdminUserService{
 	/**  Set initial users password  */
 	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
 		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "adminuser", action: "setInitialPassword")
-			.setBody(key: "hashKey", value: hashKey)
-			.setBody(key: "newPassword", value: newPassword)
+			.setParam(key: "hashKey", value: hashKey)
+			.setParam(key: "newPassword", value: newPassword)
 
 		return request
 	}
@@ -151,10 +151,10 @@ public final class AdminUserService{
 	/**  Update admin user password and email  */
 	public static func updatePassword(email: String, password: String, newEmail: String?, newPassword: String?) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
 		let request: RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> = RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer>(service: "adminuser", action: "updatePassword")
-			.setBody(key: "email", value: email)
-			.setBody(key: "password", value: password)
-			.setBody(key: "newEmail", value: newEmail)
-			.setBody(key: "newPassword", value: newPassword)
+			.setParam(key: "email", value: email)
+			.setParam(key: "password", value: password)
+			.setParam(key: "newEmail", value: newEmail)
+			.setParam(key: "newPassword", value: newPassword)
 
 		return request
 	}

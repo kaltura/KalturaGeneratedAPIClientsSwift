@@ -46,7 +46,7 @@ public final class ScheduledTaskProfileService{
 	/**  Add a new scheduled task profile  */
 	public static func add(scheduledTaskProfile: ScheduledTaskProfile) -> RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, AddTokenizer> = RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, AddTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "add")
-			.setBody(key: "scheduledTaskProfile", value: scheduledTaskProfile)
+			.setParam(key: "scheduledTaskProfile", value: scheduledTaskProfile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class ScheduledTaskProfileService{
 	/**  Delete a scheduled task profile  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class ScheduledTaskProfileService{
 	/**  Retrieve a scheduled task profile by id  */
 	public static func get(id: Int) -> RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, GetTokenizer> = RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, GetTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -96,7 +96,7 @@ public final class ScheduledTaskProfileService{
 
 	public static func getDryRunResults(requestId: Int) -> RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer> {
 		let request: RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer> = RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "getDryRunResults")
-			.setBody(key: "requestId", value: requestId)
+			.setParam(key: "requestId", value: requestId)
 
 		return request
 	}
@@ -123,8 +123,8 @@ public final class ScheduledTaskProfileService{
 	/**  List scheduled task profiles  */
 	public static func list(filter: ScheduledTaskProfileFilter?, pager: FilterPager?) -> RequestBuilder<ScheduledTaskProfileListResponse, ScheduledTaskProfileListResponse.ScheduledTaskProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ScheduledTaskProfileListResponse, ScheduledTaskProfileListResponse.ScheduledTaskProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<ScheduledTaskProfileListResponse, ScheduledTaskProfileListResponse.ScheduledTaskProfileListResponseTokenizer, ListTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -150,8 +150,8 @@ public final class ScheduledTaskProfileService{
 
 	public static func requestDryRun(scheduledTaskProfileId: Int, maxResults: Int?) -> RequestBuilder<Int, BaseTokenizedObject, RequestDryRunTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, RequestDryRunTokenizer> = RequestBuilder<Int, BaseTokenizedObject, RequestDryRunTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "requestDryRun")
-			.setBody(key: "scheduledTaskProfileId", value: scheduledTaskProfileId)
-			.setBody(key: "maxResults", value: maxResults)
+			.setParam(key: "scheduledTaskProfileId", value: scheduledTaskProfileId)
+			.setParam(key: "maxResults", value: maxResults)
 
 		return request
 	}
@@ -172,8 +172,8 @@ public final class ScheduledTaskProfileService{
 	/**  Update an existing scheduled task profile  */
 	public static func update(id: Int, scheduledTaskProfile: ScheduledTaskProfile) -> RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, UpdateTokenizer> = RequestBuilder<ScheduledTaskProfile, ScheduledTaskProfile.ScheduledTaskProfileTokenizer, UpdateTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "scheduledTaskProfile", value: scheduledTaskProfile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "scheduledTaskProfile", value: scheduledTaskProfile)
 
 		return request
 	}

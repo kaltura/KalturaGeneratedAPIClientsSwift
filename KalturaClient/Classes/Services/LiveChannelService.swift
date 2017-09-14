@@ -46,7 +46,7 @@ public final class LiveChannelService{
 	/**  Adds new live channel.  */
 	public static func add(liveChannel: LiveChannel) -> RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, AddTokenizer> {
 		let request: RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, AddTokenizer> = RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, AddTokenizer>(service: "livechannel", action: "add")
-			.setBody(key: "liveChannel", value: liveChannel)
+			.setParam(key: "liveChannel", value: liveChannel)
 
 		return request
 	}
@@ -95,12 +95,12 @@ public final class LiveChannelService{
 	/**  Append recorded video to live entry  */
 	public static func appendRecording(entryId: String, assetId: String, mediaServerIndex: EntryServerNodeType, resource: DataCenterContentResource, duration: Double, isLastChunk: Bool?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, AppendRecordingTokenizer>(service: "livechannel", action: "appendRecording")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "assetId", value: assetId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "duration", value: duration)
-			.setBody(key: "isLastChunk", value: isLastChunk)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "assetId", value: assetId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "duration", value: duration)
+			.setParam(key: "isLastChunk", value: isLastChunk)
 
 		return request
 	}
@@ -128,9 +128,9 @@ public final class LiveChannelService{
 
 	public static func createRecordedEntry(entryId: String, mediaServerIndex: EntryServerNodeType, liveEntryStatus: EntryServerNodeStatus) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer>(service: "livechannel", action: "createRecordedEntry")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "liveEntryStatus", value: liveEntryStatus.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "liveEntryStatus", value: liveEntryStatus.rawValue)
 
 		return request
 	}
@@ -147,7 +147,7 @@ public final class LiveChannelService{
 	/**  Delete a live channel.  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "livechannel", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -164,7 +164,7 @@ public final class LiveChannelService{
 	/**  Get live channel by ID.  */
 	public static func get(id: String) -> RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, GetTokenizer> {
 		let request: RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, GetTokenizer> = RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, GetTokenizer>(service: "livechannel", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -181,7 +181,7 @@ public final class LiveChannelService{
 	/**  Delivering the status of a live channel (on-air/offline)  */
 	public static func isLive(id: String) -> RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer>(service: "livechannel", action: "isLive")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -208,8 +208,8 @@ public final class LiveChannelService{
 	/**  List live channels by filter with paging support.  */
 	public static func list(filter: LiveChannelFilter?, pager: FilterPager?) -> RequestBuilder<LiveChannelListResponse, LiveChannelListResponse.LiveChannelListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<LiveChannelListResponse, LiveChannelListResponse.LiveChannelListResponseTokenizer, ListTokenizer> = RequestBuilder<LiveChannelListResponse, LiveChannelListResponse.LiveChannelListResponseTokenizer, ListTokenizer>(service: "livechannel", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -268,12 +268,12 @@ public final class LiveChannelService{
 	/**  Register media server to live entry  */
 	public static func registerMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType, applicationName: String?, liveEntryStatus: EntryServerNodeStatus?, shouldCreateRecordedEntry: Bool?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegisterMediaServerTokenizer>(service: "livechannel", action: "registerMediaServer")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "hostname", value: hostname)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "applicationName", value: applicationName)
-			.setBody(key: "liveEntryStatus", value: liveEntryStatus?.rawValue)
-			.setBody(key: "shouldCreateRecordedEntry", value: shouldCreateRecordedEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "hostname", value: hostname)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "applicationName", value: applicationName)
+			.setParam(key: "liveEntryStatus", value: liveEntryStatus?.rawValue)
+			.setParam(key: "shouldCreateRecordedEntry", value: shouldCreateRecordedEntry)
 
 		return request
 	}
@@ -326,12 +326,12 @@ public final class LiveChannelService{
 	/**  Sey recorded video to live entry  */
 	public static func setRecordedContent(entryId: String, mediaServerIndex: EntryServerNodeType, resource: DataCenterContentResource, duration: Double, recordedEntryId: String?, flavorParamsId: Int?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer>(service: "livechannel", action: "setRecordedContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "duration", value: duration)
-			.setBody(key: "recordedEntryId", value: recordedEntryId)
-			.setBody(key: "flavorParamsId", value: flavorParamsId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "duration", value: duration)
+			.setParam(key: "recordedEntryId", value: recordedEntryId)
+			.setParam(key: "flavorParamsId", value: flavorParamsId)
 
 		return request
 	}
@@ -360,9 +360,9 @@ public final class LiveChannelService{
 	/**  Unregister media server from live entry  */
 	public static func unregisterMediaServer(entryId: String, hostname: String, mediaServerIndex: EntryServerNodeType) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, UnregisterMediaServerTokenizer>(service: "livechannel", action: "unregisterMediaServer")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "hostname", value: hostname)
-			.setBody(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "hostname", value: hostname)
+			.setParam(key: "mediaServerIndex", value: mediaServerIndex.rawValue)
 
 		return request
 	}
@@ -383,8 +383,8 @@ public final class LiveChannelService{
 	/**  Update live channel. Only the properties that were set will be updated.  */
 	public static func update(id: String, liveChannel: LiveChannel) -> RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, UpdateTokenizer> = RequestBuilder<LiveChannel, LiveChannel.LiveChannelTokenizer, UpdateTokenizer>(service: "livechannel", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "liveChannel", value: liveChannel)
+			.setParam(key: "id", value: id)
+			.setParam(key: "liveChannel", value: liveChannel)
 
 		return request
 	}
@@ -401,7 +401,7 @@ public final class LiveChannelService{
 	/**  Validates all registered media servers  */
 	public static func validateRegisteredMediaServers(entryId: String) -> NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> {
 		let request: NullRequestBuilder<ValidateRegisteredMediaServersTokenizer> = NullRequestBuilder<ValidateRegisteredMediaServersTokenizer>(service: "livechannel", action: "validateRegisteredMediaServers")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}

@@ -46,7 +46,7 @@ public final class WidgetService{
 	/**  Add new widget, can be attached to entry or kshow   SourceWidget is ignored.  */
 	public static func add(widget: Widget) -> RequestBuilder<Widget, Widget.WidgetTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Widget, Widget.WidgetTokenizer, AddTokenizer> = RequestBuilder<Widget, Widget.WidgetTokenizer, AddTokenizer>(service: "widget", action: "add")
-			.setBody(key: "widget", value: widget)
+			.setParam(key: "widget", value: widget)
 
 		return request
 	}
@@ -61,7 +61,7 @@ public final class WidgetService{
 	/**  Add widget based on existing widget.   Must provide valid sourceWidgetId  */
 	public static func clone(widget: Widget) -> RequestBuilder<Widget, Widget.WidgetTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<Widget, Widget.WidgetTokenizer, CloneTokenizer> = RequestBuilder<Widget, Widget.WidgetTokenizer, CloneTokenizer>(service: "widget", action: "clone")
-			.setBody(key: "widget", value: widget)
+			.setParam(key: "widget", value: widget)
 
 		return request
 	}
@@ -78,7 +78,7 @@ public final class WidgetService{
 	/**  Get widget by id  */
 	public static func get(id: String) -> RequestBuilder<Widget, Widget.WidgetTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Widget, Widget.WidgetTokenizer, GetTokenizer> = RequestBuilder<Widget, Widget.WidgetTokenizer, GetTokenizer>(service: "widget", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -105,8 +105,8 @@ public final class WidgetService{
 	/**  Retrieve a list of available widget depends on the filter given  */
 	public static func list(filter: WidgetFilter?, pager: FilterPager?) -> RequestBuilder<WidgetListResponse, WidgetListResponse.WidgetListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<WidgetListResponse, WidgetListResponse.WidgetListResponseTokenizer, ListTokenizer> = RequestBuilder<WidgetListResponse, WidgetListResponse.WidgetListResponseTokenizer, ListTokenizer>(service: "widget", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -127,8 +127,8 @@ public final class WidgetService{
 	/**  Update exisiting widget  */
 	public static func update(id: String, widget: Widget) -> RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer> = RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer>(service: "widget", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "widget", value: widget)
+			.setParam(key: "id", value: id)
+			.setParam(key: "widget", value: widget)
 
 		return request
 	}

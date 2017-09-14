@@ -46,7 +46,7 @@ public final class PermissionService{
 	/**  Adds a new permission object to the account.  */
 	public static func add(permission: Permission) -> RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, AddTokenizer>(service: "permission", action: "add")
-			.setBody(key: "permission", value: permission)
+			.setParam(key: "permission", value: permission)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class PermissionService{
 	/**  Deletes an existing permission object.  */
 	public static func delete(permissionName: String) -> RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, DeleteTokenizer>(service: "permission", action: "delete")
-			.setBody(key: "permissionName", value: permissionName)
+			.setParam(key: "permissionName", value: permissionName)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class PermissionService{
 	/**  Retrieves a permission object using its ID.  */
 	public static func get(permissionName: String) -> RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, GetTokenizer>(service: "permission", action: "get")
-			.setBody(key: "permissionName", value: permissionName)
+			.setParam(key: "permissionName", value: permissionName)
 
 		return request
 	}
@@ -119,8 +119,8 @@ public final class PermissionService{
 	  permissions are listed unless you use a filter to exclude them.  */
 	public static func list(filter: PermissionFilter?, pager: FilterPager?) -> RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer> = RequestBuilder<PermissionListResponse, PermissionListResponse.PermissionListResponseTokenizer, ListTokenizer>(service: "permission", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -141,8 +141,8 @@ public final class PermissionService{
 	/**  Updates an existing permission object.  */
 	public static func update(permissionName: String, permission: Permission) -> RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer> = RequestBuilder<Permission, Permission.PermissionTokenizer, UpdateTokenizer>(service: "permission", action: "update")
-			.setBody(key: "permissionName", value: permissionName)
-			.setBody(key: "permission", value: permission)
+			.setParam(key: "permissionName", value: permissionName)
+			.setParam(key: "permission", value: permission)
 
 		return request
 	}

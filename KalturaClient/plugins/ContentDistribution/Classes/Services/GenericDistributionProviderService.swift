@@ -46,7 +46,7 @@ public final class GenericDistributionProviderService{
 	/**  Add new Generic Distribution Provider  */
 	public static func add(genericDistributionProvider: GenericDistributionProvider) -> RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, AddTokenizer> {
 		let request: RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, AddTokenizer> = RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, AddTokenizer>(service: "contentdistribution_genericdistributionprovider", action: "add")
-			.setBody(key: "genericDistributionProvider", value: genericDistributionProvider)
+			.setParam(key: "genericDistributionProvider", value: genericDistributionProvider)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class GenericDistributionProviderService{
 	/**  Delete Generic Distribution Provider by id  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "contentdistribution_genericdistributionprovider", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class GenericDistributionProviderService{
 	/**  Get Generic Distribution Provider by id  */
 	public static func get(id: Int) -> RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, GetTokenizer> {
 		let request: RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, GetTokenizer> = RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, GetTokenizer>(service: "contentdistribution_genericdistributionprovider", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -107,8 +107,8 @@ public final class GenericDistributionProviderService{
 	/**  List all distribution providers  */
 	public static func list(filter: GenericDistributionProviderFilter?, pager: FilterPager?) -> RequestBuilder<GenericDistributionProviderListResponse, GenericDistributionProviderListResponse.GenericDistributionProviderListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<GenericDistributionProviderListResponse, GenericDistributionProviderListResponse.GenericDistributionProviderListResponseTokenizer, ListTokenizer> = RequestBuilder<GenericDistributionProviderListResponse, GenericDistributionProviderListResponse.GenericDistributionProviderListResponseTokenizer, ListTokenizer>(service: "contentdistribution_genericdistributionprovider", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class GenericDistributionProviderService{
 	/**  Update Generic Distribution Provider by id  */
 	public static func update(id: Int, genericDistributionProvider: GenericDistributionProvider) -> RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, UpdateTokenizer> = RequestBuilder<GenericDistributionProvider, GenericDistributionProvider.GenericDistributionProviderTokenizer, UpdateTokenizer>(service: "contentdistribution_genericdistributionprovider", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "genericDistributionProvider", value: genericDistributionProvider)
+			.setParam(key: "id", value: id)
+			.setParam(key: "genericDistributionProvider", value: genericDistributionProvider)
 
 		return request
 	}

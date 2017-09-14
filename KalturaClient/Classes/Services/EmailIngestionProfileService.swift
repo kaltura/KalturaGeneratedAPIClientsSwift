@@ -47,7 +47,7 @@ public final class EmailIngestionProfileService{
 	  Kaltura DB  */
 	public static func add(EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, AddTokenizer>(service: "emailingestionprofile", action: "add")
-			.setBody(key: "EmailIP", value: EmailIP)
+			.setParam(key: "EmailIP", value: EmailIP)
 
 		return request
 	}
@@ -86,11 +86,11 @@ public final class EmailIngestionProfileService{
 	/**  add KalturaMediaEntry from email ingestion  */
 	public static func addMediaEntry(mediaEntry: MediaEntry, uploadTokenId: String, emailProfId: Int, fromAddress: String, emailMsgId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddMediaEntryTokenizer>(service: "emailingestionprofile", action: "addMediaEntry")
-			.setBody(key: "mediaEntry", value: mediaEntry)
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
-			.setBody(key: "emailProfId", value: emailProfId)
-			.setBody(key: "fromAddress", value: fromAddress)
-			.setBody(key: "emailMsgId", value: emailMsgId)
+			.setParam(key: "mediaEntry", value: mediaEntry)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "emailProfId", value: emailProfId)
+			.setParam(key: "fromAddress", value: fromAddress)
+			.setParam(key: "emailMsgId", value: emailMsgId)
 
 		return request
 	}
@@ -107,7 +107,7 @@ public final class EmailIngestionProfileService{
 	/**  Delete an existing EmailIngestionProfile  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "emailingestionprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -124,7 +124,7 @@ public final class EmailIngestionProfileService{
 	/**  Retrieve a EmailIngestionProfile by id  */
 	public static func get(id: Int) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer>(service: "emailingestionprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -141,7 +141,7 @@ public final class EmailIngestionProfileService{
 	/**  Retrieve a EmailIngestionProfile by email address  */
 	public static func getByEmailAddress(emailAddress: String) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetByEmailAddressTokenizer>(service: "emailingestionprofile", action: "getByEmailAddress")
-			.setBody(key: "emailAddress", value: emailAddress)
+			.setParam(key: "emailAddress", value: emailAddress)
 
 		return request
 	}
@@ -162,8 +162,8 @@ public final class EmailIngestionProfileService{
 	/**  Update an existing EmailIngestionProfile  */
 	public static func update(id: Int, EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer>(service: "emailingestionprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "EmailIP", value: EmailIP)
+			.setParam(key: "id", value: id)
+			.setParam(key: "EmailIP", value: EmailIP)
 
 		return request
 	}

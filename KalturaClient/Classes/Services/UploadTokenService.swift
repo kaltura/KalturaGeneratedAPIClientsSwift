@@ -49,7 +49,7 @@ public final class UploadTokenService{
 	/**  Adds new upload token to upload a file  */
 	public static func add(uploadToken: UploadToken?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer> {
 		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, AddTokenizer>(service: "uploadtoken", action: "add")
-			.setBody(key: "uploadToken", value: uploadToken)
+			.setParam(key: "uploadToken", value: uploadToken)
 
 		return request
 	}
@@ -66,7 +66,7 @@ public final class UploadTokenService{
 	/**  Deletes the upload token by upload token id  */
 	public static func delete(uploadTokenId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "uploadtoken", action: "delete")
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
@@ -83,7 +83,7 @@ public final class UploadTokenService{
 	/**  Get upload token by id  */
 	public static func get(uploadTokenId: String) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer> {
 		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, GetTokenizer>(service: "uploadtoken", action: "get")
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
 
 		return request
 	}
@@ -111,8 +111,8 @@ public final class UploadTokenService{
 	  service will be restricted to users objects only.  */
 	public static func list(filter: UploadTokenFilter?, pager: FilterPager?) -> RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer> = RequestBuilder<UploadTokenListResponse, UploadTokenListResponse.UploadTokenListResponseTokenizer, ListTokenizer>(service: "uploadtoken", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -170,11 +170,11 @@ public final class UploadTokenService{
 	  retried.  */
 	public static func upload(uploadTokenId: String, fileData: RequestFile, resume: Bool?, finalChunk: Bool?, resumeAt: Double?) -> RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> {
 		let request: RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer> = RequestBuilder<UploadToken, UploadToken.UploadTokenTokenizer, UploadTokenizer>(service: "uploadtoken", action: "upload")
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
 			.setFile(key: "fileData", value: fileData)
-			.setBody(key: "resume", value: resume)
-			.setBody(key: "finalChunk", value: finalChunk)
-			.setBody(key: "resumeAt", value: resumeAt)
+			.setParam(key: "resume", value: resume)
+			.setParam(key: "finalChunk", value: finalChunk)
+			.setParam(key: "resumeAt", value: resumeAt)
 
 		return request
 	}

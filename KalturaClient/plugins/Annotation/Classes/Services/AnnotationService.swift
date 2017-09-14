@@ -46,7 +46,7 @@ public final class AnnotationService{
 	/**  Allows you to add an annotation object associated with an entry  */
 	public static func add(annotation: CuePoint) -> RequestBuilder<Annotation, Annotation.AnnotationTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Annotation, Annotation.AnnotationTokenizer, AddTokenizer> = RequestBuilder<Annotation, Annotation.AnnotationTokenizer, AddTokenizer>(service: "annotation_annotation", action: "add")
-			.setBody(key: "annotation", value: annotation)
+			.setParam(key: "annotation", value: annotation)
 
 		return request
 	}
@@ -81,8 +81,8 @@ public final class AnnotationService{
 	/**  Clone cuePoint with id to given entry  */
 	public static func clone(id: String, entryId: String) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer>(service: "annotation_annotation", action: "clone")
-			.setBody(key: "id", value: id)
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "id", value: id)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -101,7 +101,7 @@ public final class AnnotationService{
 	/**  count cue point objects by filter  */
 	public static func count(filter: CuePointFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "annotation_annotation", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -118,7 +118,7 @@ public final class AnnotationService{
 	/**  delete cue point by id, and delete all children cue points  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "annotation_annotation", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -135,7 +135,7 @@ public final class AnnotationService{
 	/**  Retrieve an CuePoint object by id  */
 	public static func get(id: String) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer> {
 		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, GetTokenizer>(service: "annotation_annotation", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -162,8 +162,8 @@ public final class AnnotationService{
 	/**  List annotation objects by filter and pager  */
 	public static func list(filter: CuePointFilter?, pager: FilterPager?) -> RequestBuilder<AnnotationListResponse, AnnotationListResponse.AnnotationListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<AnnotationListResponse, AnnotationListResponse.AnnotationListResponseTokenizer, ListTokenizer> = RequestBuilder<AnnotationListResponse, AnnotationListResponse.AnnotationListResponseTokenizer, ListTokenizer>(service: "annotation_annotation", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -184,8 +184,8 @@ public final class AnnotationService{
 	/**  Update annotation by id  */
 	public static func update(id: String, annotation: CuePoint) -> RequestBuilder<Annotation, Annotation.AnnotationTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Annotation, Annotation.AnnotationTokenizer, UpdateTokenizer> = RequestBuilder<Annotation, Annotation.AnnotationTokenizer, UpdateTokenizer>(service: "annotation_annotation", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "annotation", value: annotation)
+			.setParam(key: "id", value: id)
+			.setParam(key: "annotation", value: annotation)
 
 		return request
 	}
@@ -208,8 +208,8 @@ public final class AnnotationService{
 	/**  Update cuePoint status by id  */
 	public static func updateStatus(id: String, status: CuePointStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
 		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "annotation_annotation", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

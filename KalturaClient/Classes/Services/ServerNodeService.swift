@@ -46,7 +46,7 @@ public final class ServerNodeService{
 	/**  Adds a server node to the Kaltura DB.  */
 	public static func add(serverNode: ServerNode) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, AddTokenizer>(service: "servernode", action: "add")
-			.setBody(key: "serverNode", value: serverNode)
+			.setParam(key: "serverNode", value: serverNode)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class ServerNodeService{
 	/**  delete server node by id  */
 	public static func delete(serverNodeId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "servernode", action: "delete")
-			.setBody(key: "serverNodeId", value: serverNodeId)
+			.setParam(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class ServerNodeService{
 	/**  Disable server node by id  */
 	public static func disable(serverNodeId: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, DisableTokenizer>(service: "servernode", action: "disable")
-			.setBody(key: "serverNodeId", value: serverNodeId)
+			.setParam(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
@@ -97,7 +97,7 @@ public final class ServerNodeService{
 	/**  Enable server node by id  */
 	public static func enable(serverNodeId: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, EnableTokenizer>(service: "servernode", action: "enable")
-			.setBody(key: "serverNodeId", value: serverNodeId)
+			.setParam(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
@@ -114,7 +114,7 @@ public final class ServerNodeService{
 	/**  Get server node by id  */
 	public static func get(serverNodeId: Int) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, GetTokenizer>(service: "servernode", action: "get")
-			.setBody(key: "serverNodeId", value: serverNodeId)
+			.setParam(key: "serverNodeId", value: serverNodeId)
 
 		return request
 	}
@@ -140,8 +140,8 @@ public final class ServerNodeService{
 
 	public static func list(filter: ServerNodeFilter?, pager: FilterPager?) -> RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer> = RequestBuilder<ServerNodeListResponse, ServerNodeListResponse.ServerNodeListResponseTokenizer, ListTokenizer>(service: "servernode", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -166,8 +166,8 @@ public final class ServerNodeService{
 	/**  Update server node status  */
 	public static func reportStatus(hostName: String, serverNode: ServerNode?) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer>(service: "servernode", action: "reportStatus")
-			.setBody(key: "hostName", value: hostName)
-			.setBody(key: "serverNode", value: serverNode)
+			.setParam(key: "hostName", value: hostName)
+			.setParam(key: "serverNode", value: serverNode)
 
 		return request
 	}
@@ -188,8 +188,8 @@ public final class ServerNodeService{
 	/**  Update server node by id  */
 	public static func update(serverNodeId: Int, serverNode: ServerNode) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, UpdateTokenizer>(service: "servernode", action: "update")
-			.setBody(key: "serverNodeId", value: serverNodeId)
-			.setBody(key: "serverNode", value: serverNode)
+			.setParam(key: "serverNodeId", value: serverNodeId)
+			.setParam(key: "serverNode", value: serverNode)
 
 		return request
 	}

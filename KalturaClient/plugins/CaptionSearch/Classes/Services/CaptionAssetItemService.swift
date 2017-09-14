@@ -64,9 +64,9 @@ public final class CaptionAssetItemService{
 	/**  List caption asset items by filter and pager  */
 	public static func list(captionAssetId: String, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer> = RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, ListTokenizer>(service: "captionsearch_captionassetitem", action: "list")
-			.setBody(key: "captionAssetId", value: captionAssetId)
-			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
-			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)
+			.setParam(key: "captionAssetId", value: captionAssetId)
+			.setParam(key: "captionAssetItemFilter", value: captionAssetItemFilter)
+			.setParam(key: "captionAssetItemPager", value: captionAssetItemPager)
 
 		return request
 	}
@@ -101,9 +101,9 @@ public final class CaptionAssetItemService{
 	/**  Search caption asset items by filter, pager and free text  */
 	public static func search(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> {
 		let request: RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer> = RequestBuilder<CaptionAssetItemListResponse, CaptionAssetItemListResponse.CaptionAssetItemListResponseTokenizer, SearchTokenizer>(service: "captionsearch_captionassetitem", action: "search")
-			.setBody(key: "entryFilter", value: entryFilter)
-			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
-			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)
+			.setParam(key: "entryFilter", value: entryFilter)
+			.setParam(key: "captionAssetItemFilter", value: captionAssetItemFilter)
+			.setParam(key: "captionAssetItemPager", value: captionAssetItemPager)
 
 		return request
 	}
@@ -138,9 +138,9 @@ public final class CaptionAssetItemService{
 	/**  Search caption asset items by filter, pager and free text  */
 	public static func searchEntries(entryFilter: BaseEntryFilter?, captionAssetItemFilter: CaptionAssetItemFilter?, captionAssetItemPager: FilterPager?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> {
 		let request: RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer> = RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, SearchEntriesTokenizer>(service: "captionsearch_captionassetitem", action: "searchEntries")
-			.setBody(key: "entryFilter", value: entryFilter)
-			.setBody(key: "captionAssetItemFilter", value: captionAssetItemFilter)
-			.setBody(key: "captionAssetItemPager", value: captionAssetItemPager)
+			.setParam(key: "entryFilter", value: entryFilter)
+			.setParam(key: "captionAssetItemFilter", value: captionAssetItemFilter)
+			.setParam(key: "captionAssetItemPager", value: captionAssetItemPager)
 
 		return request
 	}

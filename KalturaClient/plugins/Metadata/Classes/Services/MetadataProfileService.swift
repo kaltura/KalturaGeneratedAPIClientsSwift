@@ -63,9 +63,9 @@ public final class MetadataProfileService{
 	  associated with Kaltura object type  */
 	public static func add(metadataProfile: MetadataProfile, xsdData: String, viewsData: String?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddTokenizer>(service: "metadata_metadataprofile", action: "add")
-			.setBody(key: "metadataProfile", value: metadataProfile)
-			.setBody(key: "xsdData", value: xsdData)
-			.setBody(key: "viewsData", value: viewsData)
+			.setParam(key: "metadataProfile", value: metadataProfile)
+			.setParam(key: "xsdData", value: xsdData)
+			.setParam(key: "viewsData", value: viewsData)
 
 		return request
 	}
@@ -85,7 +85,7 @@ public final class MetadataProfileService{
 	  with Kaltura object type  */
 	public static func addFromFile(metadataProfile: MetadataProfile, xsdFile: RequestFile, viewsFile: RequestFile?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, AddFromFileTokenizer>(service: "metadata_metadataprofile", action: "addFromFile")
-			.setBody(key: "metadataProfile", value: metadataProfile)
+			.setParam(key: "metadataProfile", value: metadataProfile)
 			.setFile(key: "xsdFile", value: xsdFile)
 			.setFile(key: "viewsFile", value: viewsFile)
 
@@ -104,7 +104,7 @@ public final class MetadataProfileService{
 	/**  Delete an existing metadata profile  */
 	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "metadata_metadataprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -121,7 +121,7 @@ public final class MetadataProfileService{
 	/**  Retrieve a metadata profile object by id  */
 	public static func get(id: Int) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, GetTokenizer>(service: "metadata_metadataprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -148,8 +148,8 @@ public final class MetadataProfileService{
 	/**  List metadata profile objects by filter and pager  */
 	public static func list(filter: MetadataProfileFilter?, pager: FilterPager?) -> RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<MetadataProfileListResponse, MetadataProfileListResponse.MetadataProfileListResponseTokenizer, ListTokenizer>(service: "metadata_metadataprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -166,7 +166,7 @@ public final class MetadataProfileService{
 	/**  List metadata profile fields by metadata profile id  */
 	public static func listFields(metadataProfileId: Int) -> RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer> {
 		let request: RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer> = RequestBuilder<MetadataProfileFieldListResponse, MetadataProfileFieldListResponse.MetadataProfileFieldListResponseTokenizer, ListFieldsTokenizer>(service: "metadata_metadataprofile", action: "listFields")
-			.setBody(key: "metadataProfileId", value: metadataProfileId)
+			.setParam(key: "metadataProfileId", value: metadataProfileId)
 
 		return request
 	}
@@ -189,8 +189,8 @@ public final class MetadataProfileService{
 	/**  Update an existing metadata object definition file  */
 	public static func revert(id: Int, toVersion: Int) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, RevertTokenizer>(service: "metadata_metadataprofile", action: "revert")
-			.setBody(key: "id", value: id)
-			.setBody(key: "toVersion", value: toVersion)
+			.setParam(key: "id", value: id)
+			.setParam(key: "toVersion", value: toVersion)
 
 		return request
 	}
@@ -231,10 +231,10 @@ public final class MetadataProfileService{
 	/**  Update an existing metadata object  */
 	public static func update(id: Int, metadataProfile: MetadataProfile, xsdData: String?, viewsData: String?) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTokenizer>(service: "metadata_metadataprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "metadataProfile", value: metadataProfile)
-			.setBody(key: "xsdData", value: xsdData)
-			.setBody(key: "viewsData", value: viewsData)
+			.setParam(key: "id", value: id)
+			.setParam(key: "metadataProfile", value: metadataProfile)
+			.setParam(key: "xsdData", value: xsdData)
+			.setParam(key: "viewsData", value: viewsData)
 
 		return request
 	}
@@ -251,7 +251,7 @@ public final class MetadataProfileService{
 	/**  Update an existing metadata object definition file  */
 	public static func updateDefinitionFromFile(id: Int, xsdFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateDefinitionFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateDefinitionFromFile")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 			.setFile(key: "xsdFile", value: xsdFile)
 
 		return request
@@ -269,7 +269,7 @@ public final class MetadataProfileService{
 	/**  Update an existing metadata object xslt file  */
 	public static func updateTransformationFromFile(id: Int, xsltFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateTransformationFromFile")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 			.setFile(key: "xsltFile", value: xsltFile)
 
 		return request
@@ -287,7 +287,7 @@ public final class MetadataProfileService{
 	/**  Update an existing metadata object views file  */
 	public static func updateViewsFromFile(id: Int, viewsFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateViewsFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateViewsFromFile")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 			.setFile(key: "viewsFile", value: viewsFile)
 
 		return request

@@ -46,7 +46,7 @@ public final class CategoryService{
 	/**  Add new Category  */
 	public static func add(category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, AddTokenizer>(service: "category", action: "add")
-			.setBody(key: "category", value: category)
+			.setParam(key: "category", value: category)
 
 		return request
 	}
@@ -73,8 +73,8 @@ public final class CategoryService{
 	/**  Delete a Category  */
 	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "category", action: "delete")
-			.setBody(key: "id", value: id)
-			.setBody(key: "moveEntriesToParentCategory", value: moveEntriesToParentCategory)
+			.setParam(key: "id", value: id)
+			.setParam(key: "moveEntriesToParentCategory", value: moveEntriesToParentCategory)
 
 		return request
 	}
@@ -91,7 +91,7 @@ public final class CategoryService{
 	/**  Get Category by id  */
 	public static func get(id: Int) -> RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer>(service: "category", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -118,8 +118,8 @@ public final class CategoryService{
 	/**  Index Category by id  */
 	public static func index(id: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "category", action: "index")
-			.setBody(key: "id", value: id)
-			.setBody(key: "shouldUpdate", value: shouldUpdate)
+			.setParam(key: "id", value: id)
+			.setParam(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
@@ -146,8 +146,8 @@ public final class CategoryService{
 	/**  List all categories  */
 	public static func list(filter: CategoryFilter?, pager: FilterPager?) -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer> = RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, ListTokenizer>(service: "category", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -171,8 +171,8 @@ public final class CategoryService{
 	  enabled only for ks with disable entitlement  */
 	public static func move(categoryIds: String, targetCategoryParentId: Int) -> RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer> {
 		let request: RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer> = RequestBuilder<CategoryListResponse, CategoryListResponse.CategoryListResponseTokenizer, MoveTokenizer>(service: "category", action: "move")
-			.setBody(key: "categoryIds", value: categoryIds)
-			.setBody(key: "targetCategoryParentId", value: targetCategoryParentId)
+			.setParam(key: "categoryIds", value: categoryIds)
+			.setParam(key: "targetCategoryParentId", value: targetCategoryParentId)
 
 		return request
 	}
@@ -203,8 +203,8 @@ public final class CategoryService{
 	/**  Update Category  */
 	public static func update(id: Int, category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer>(service: "category", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "category", value: category)
+			.setParam(key: "id", value: id)
+			.setParam(key: "category", value: category)
 
 		return request
 	}

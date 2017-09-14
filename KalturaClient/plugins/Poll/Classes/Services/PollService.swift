@@ -53,7 +53,7 @@ public final class PollService{
 	/**  Add Action  */
 	public static func add(pollType: String?) -> RequestBuilder<String, BaseTokenizedObject, AddTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, AddTokenizer> = RequestBuilder<String, BaseTokenizedObject, AddTokenizer>(service: "poll_poll", action: "add")
-			.setBody(key: "pollType", value: pollType)
+			.setParam(key: "pollType", value: pollType)
 
 		return request
 	}
@@ -76,8 +76,8 @@ public final class PollService{
 	/**  Vote Action  */
 	public static func getVote(pollId: String, userId: String) -> RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetVoteTokenizer>(service: "poll_poll", action: "getVote")
-			.setBody(key: "pollId", value: pollId)
-			.setBody(key: "userId", value: userId)
+			.setParam(key: "pollId", value: pollId)
+			.setParam(key: "userId", value: userId)
 
 		return request
 	}
@@ -100,8 +100,8 @@ public final class PollService{
 	/**  Get Votes Action  */
 	public static func getVotes(pollId: String, answerIds: String) -> RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetVotesTokenizer>(service: "poll_poll", action: "getVotes")
-			.setBody(key: "pollId", value: pollId)
-			.setBody(key: "answerIds", value: answerIds)
+			.setParam(key: "pollId", value: pollId)
+			.setParam(key: "answerIds", value: answerIds)
 
 		return request
 	}
@@ -118,7 +118,7 @@ public final class PollService{
 	/**  Get resetVotes Action  */
 	public static func resetVotes(pollId: String) -> NullRequestBuilder<ResetVotesTokenizer> {
 		let request: NullRequestBuilder<ResetVotesTokenizer> = NullRequestBuilder<ResetVotesTokenizer>(service: "poll_poll", action: "resetVotes")
-			.setBody(key: "pollId", value: pollId)
+			.setParam(key: "pollId", value: pollId)
 
 		return request
 	}
@@ -147,9 +147,9 @@ public final class PollService{
 	/**  Vote Action  */
 	public static func vote(pollId: String, userId: String, answerIds: String) -> RequestBuilder<String, BaseTokenizedObject, VoteTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, VoteTokenizer> = RequestBuilder<String, BaseTokenizedObject, VoteTokenizer>(service: "poll_poll", action: "vote")
-			.setBody(key: "pollId", value: pollId)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "answerIds", value: answerIds)
+			.setParam(key: "pollId", value: pollId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "answerIds", value: answerIds)
 
 		return request
 	}

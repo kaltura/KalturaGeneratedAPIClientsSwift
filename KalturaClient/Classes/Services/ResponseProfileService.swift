@@ -46,7 +46,7 @@ public final class ResponseProfileService{
 	/**  Add new response profile  */
 	public static func add(addResponseProfile: ResponseProfile) -> RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, AddTokenizer> = RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, AddTokenizer>(service: "responseprofile", action: "add")
-			.setBody(key: "addResponseProfile", value: addResponseProfile)
+			.setParam(key: "addResponseProfile", value: addResponseProfile)
 
 		return request
 	}
@@ -67,8 +67,8 @@ public final class ResponseProfileService{
 	/**  Clone an existing response profile  */
 	public static func clone(id: Int64, profile: ResponseProfile) -> RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, CloneTokenizer> = RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, CloneTokenizer>(service: "responseprofile", action: "clone")
-			.setBody(key: "id", value: id)
-			.setBody(key: "profile", value: profile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "profile", value: profile)
 
 		return request
 	}
@@ -85,7 +85,7 @@ public final class ResponseProfileService{
 	/**  Delete response profile by id  */
 	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "responseprofile", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -102,7 +102,7 @@ public final class ResponseProfileService{
 	/**  Get response profile by id  */
 	public static func get(id: Int64) -> RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, GetTokenizer> = RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, GetTokenizer>(service: "responseprofile", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -129,8 +129,8 @@ public final class ResponseProfileService{
 	/**  List response profiles by filter and pager  */
 	public static func list(filter: ResponseProfileFilter?, pager: FilterPager?) -> RequestBuilder<ResponseProfileListResponse, ResponseProfileListResponse.ResponseProfileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ResponseProfileListResponse, ResponseProfileListResponse.ResponseProfileListResponseTokenizer, ListTokenizer> = RequestBuilder<ResponseProfileListResponse, ResponseProfileListResponse.ResponseProfileListResponseTokenizer, ListTokenizer>(service: "responseprofile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -145,7 +145,7 @@ public final class ResponseProfileService{
 	/**  Recalculate response profile cached objects  */
 	public static func recalculate(options: ResponseProfileCacheRecalculateOptions) -> RequestBuilder<ResponseProfileCacheRecalculateResults, ResponseProfileCacheRecalculateResults.ResponseProfileCacheRecalculateResultsTokenizer, RecalculateTokenizer> {
 		let request: RequestBuilder<ResponseProfileCacheRecalculateResults, ResponseProfileCacheRecalculateResults.ResponseProfileCacheRecalculateResultsTokenizer, RecalculateTokenizer> = RequestBuilder<ResponseProfileCacheRecalculateResults, ResponseProfileCacheRecalculateResults.ResponseProfileCacheRecalculateResultsTokenizer, RecalculateTokenizer>(service: "responseprofile", action: "recalculate")
-			.setBody(key: "options", value: options)
+			.setParam(key: "options", value: options)
 
 		return request
 	}
@@ -166,8 +166,8 @@ public final class ResponseProfileService{
 	/**  Update response profile by id  */
 	public static func update(id: Int64, updateResponseProfile: ResponseProfile) -> RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateTokenizer> = RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateTokenizer>(service: "responseprofile", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "updateResponseProfile", value: updateResponseProfile)
+			.setParam(key: "id", value: id)
+			.setParam(key: "updateResponseProfile", value: updateResponseProfile)
 
 		return request
 	}
@@ -190,8 +190,8 @@ public final class ResponseProfileService{
 	/**  Update response profile status by id  */
 	public static func updateStatus(id: Int64, status: ResponseProfileStatus) -> RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateStatusTokenizer> {
 		let request: RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateStatusTokenizer> = RequestBuilder<ResponseProfile, ResponseProfile.ResponseProfileTokenizer, UpdateStatusTokenizer>(service: "responseprofile", action: "updateStatus")
-			.setBody(key: "id", value: id)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}

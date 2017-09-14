@@ -60,9 +60,9 @@ public final class SearchService{
 
 	public static func externalLogin(searchSource: SearchProviderType, userName: String, password: String) -> RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer> {
 		let request: RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer> = RequestBuilder<SearchAuthData, SearchAuthData.SearchAuthDataTokenizer, ExternalLoginTokenizer>(service: "search", action: "externalLogin")
-			.setBody(key: "searchSource", value: searchSource.rawValue)
-			.setBody(key: "userName", value: userName)
-			.setBody(key: "password", value: password)
+			.setParam(key: "searchSource", value: searchSource.rawValue)
+			.setParam(key: "userName", value: userName)
+			.setParam(key: "password", value: password)
 
 		return request
 	}
@@ -79,7 +79,7 @@ public final class SearchService{
 	  get the rest of the fields.  */
 	public static func getMediaInfo(searchResult: SearchResult) -> RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer> {
 		let request: RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer> = RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, GetMediaInfoTokenizer>(service: "search", action: "getMediaInfo")
-			.setBody(key: "searchResult", value: searchResult)
+			.setParam(key: "searchResult", value: searchResult)
 
 		return request
 	}
@@ -102,8 +102,8 @@ public final class SearchService{
 	/**  Search for media in one of the supported media providers  */
 	public static func search(search_: Search, pager: FilterPager?) -> RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer> {
 		let request: RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer> = RequestBuilder<SearchResultResponse, SearchResultResponse.SearchResultResponseTokenizer, SearchTokenizer>(service: "search", action: "search")
-			.setBody(key: "search", value: search_)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "search", value: search_)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -128,8 +128,8 @@ public final class SearchService{
 	  object based on a given URL (assuming the media provider is supported)  */
 	public static func searchUrl(mediaType: MediaType, url: String) -> RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer> {
 		let request: RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer> = RequestBuilder<SearchResult, SearchResult.SearchResultTokenizer, SearchUrlTokenizer>(service: "search", action: "searchUrl")
-			.setBody(key: "mediaType", value: mediaType.rawValue)
-			.setBody(key: "url", value: url)
+			.setParam(key: "mediaType", value: mediaType.rawValue)
+			.setParam(key: "url", value: url)
 
 		return request
 	}

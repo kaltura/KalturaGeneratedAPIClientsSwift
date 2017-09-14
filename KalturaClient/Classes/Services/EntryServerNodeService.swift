@@ -47,7 +47,7 @@ public final class EntryServerNodeService{
 
 	public static func get(id: String) -> RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, GetTokenizer> {
 		let request: RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, GetTokenizer> = RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, GetTokenizer>(service: "entryservernode", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -73,8 +73,8 @@ public final class EntryServerNodeService{
 
 	public static func list(filter: EntryServerNodeFilter?, pager: FilterPager?) -> RequestBuilder<EntryServerNodeListResponse, EntryServerNodeListResponse.EntryServerNodeListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<EntryServerNodeListResponse, EntryServerNodeListResponse.EntryServerNodeListResponseTokenizer, ListTokenizer> = RequestBuilder<EntryServerNodeListResponse, EntryServerNodeListResponse.EntryServerNodeListResponseTokenizer, ListTokenizer>(service: "entryservernode", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -94,8 +94,8 @@ public final class EntryServerNodeService{
 
 	public static func update(id: Int, entryServerNode: EntryServerNode) -> RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer> = RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer>(service: "entryservernode", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "entryServerNode", value: entryServerNode)
+			.setParam(key: "id", value: id)
+			.setParam(key: "entryServerNode", value: entryServerNode)
 
 		return request
 	}
@@ -112,7 +112,7 @@ public final class EntryServerNodeService{
 	/**  Validates server node still registered on entry  */
 	public static func validateRegisteredEntryServerNode(id: Int) -> NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> {
 		let request: NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> = NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer>(service: "entryservernode", action: "validateRegisteredEntryServerNode")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}

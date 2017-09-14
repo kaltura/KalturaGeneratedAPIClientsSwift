@@ -47,7 +47,7 @@ public final class PermissionItemService{
 	  only to Kaltura system administrators.  */
 	public static func add(permissionItem: PermissionItem) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer> {
 		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, AddTokenizer>(service: "permissionitem", action: "add")
-			.setBody(key: "permissionItem", value: permissionItem)
+			.setParam(key: "permissionItem", value: permissionItem)
 
 		return request
 	}
@@ -65,7 +65,7 @@ public final class PermissionItemService{
 	  Kaltura system administrators.  */
 	public static func delete(permissionItemId: Int) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, DeleteTokenizer>(service: "permissionitem", action: "delete")
-			.setBody(key: "permissionItemId", value: permissionItemId)
+			.setParam(key: "permissionItemId", value: permissionItemId)
 
 		return request
 	}
@@ -82,7 +82,7 @@ public final class PermissionItemService{
 	/**  Retrieves a permission item object using its ID.  */
 	public static func get(permissionItemId: Int) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer> {
 		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, GetTokenizer>(service: "permissionitem", action: "get")
-			.setBody(key: "permissionItemId", value: permissionItemId)
+			.setParam(key: "permissionItemId", value: permissionItemId)
 
 		return request
 	}
@@ -109,8 +109,8 @@ public final class PermissionItemService{
 	/**  Lists permission item objects that are associated with an account.  */
 	public static func list(filter: PermissionItemFilter?, pager: FilterPager?) -> RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer> = RequestBuilder<PermissionItemListResponse, PermissionItemListResponse.PermissionItemListResponseTokenizer, ListTokenizer>(service: "permissionitem", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -132,8 +132,8 @@ public final class PermissionItemService{
 	  Kaltura system administrators.  */
 	public static func update(permissionItemId: Int, permissionItem: PermissionItem) -> RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer> = RequestBuilder<PermissionItem, PermissionItem.PermissionItemTokenizer, UpdateTokenizer>(service: "permissionitem", action: "update")
-			.setBody(key: "permissionItemId", value: permissionItemId)
-			.setBody(key: "permissionItem", value: permissionItem)
+			.setParam(key: "permissionItemId", value: permissionItemId)
+			.setParam(key: "permissionItem", value: permissionItem)
 
 		return request
 	}

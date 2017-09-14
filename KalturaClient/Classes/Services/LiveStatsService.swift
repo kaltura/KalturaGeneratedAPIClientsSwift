@@ -47,7 +47,7 @@ public final class LiveStatsService{
 	  KalturaStatsEvent $event  */
 	public static func collect(event: LiveStatsEvent) -> RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, CollectTokenizer>(service: "livestats", action: "collect")
-			.setBody(key: "event", value: event)
+			.setParam(key: "event", value: event)
 
 		return request
 	}

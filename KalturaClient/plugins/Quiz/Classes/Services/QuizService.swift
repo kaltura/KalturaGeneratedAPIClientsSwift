@@ -52,8 +52,8 @@ public final class QuizService{
 	/**  Allows to add a quiz to an entry  */
 	public static func add(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer> {
 		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, AddTokenizer>(service: "quiz_quiz", action: "add")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "quiz", value: quiz)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "quiz", value: quiz)
 
 		return request
 	}
@@ -70,7 +70,7 @@ public final class QuizService{
 	/**  Allows to get a quiz  */
 	public static func get(entryId: String) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, GetTokenizer>(service: "quiz_quiz", action: "get")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -93,8 +93,8 @@ public final class QuizService{
 	/**  sends a with an api request for pdf from quiz object  */
 	public static func getUrl(entryId: String, quizOutputType: QuizOutputType) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "quiz_quiz", action: "getUrl")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "quizOutputType", value: quizOutputType.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "quizOutputType", value: quizOutputType.rawValue)
 
 		return request
 	}
@@ -121,8 +121,8 @@ public final class QuizService{
 	/**  List quiz objects by filter and pager  */
 	public static func list(filter: QuizFilter?, pager: FilterPager?) -> RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer> = RequestBuilder<QuizListResponse, QuizListResponse.QuizListResponseTokenizer, ListTokenizer>(service: "quiz_quiz", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -143,8 +143,8 @@ public final class QuizService{
 	/**  Allows to update a quiz  */
 	public static func update(entryId: String, quiz: Quiz) -> RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer> = RequestBuilder<Quiz, Quiz.QuizTokenizer, UpdateTokenizer>(service: "quiz_quiz", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "quiz", value: quiz)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "quiz", value: quiz)
 
 		return request
 	}

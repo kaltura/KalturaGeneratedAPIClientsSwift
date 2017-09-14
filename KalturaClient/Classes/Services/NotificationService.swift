@@ -54,8 +54,8 @@ public final class NotificationService{
 	/**  Return the notifications for a specific entry id and type  */
 	public static func getClientNotification(entryId: String, type: NotificationType) -> RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer> {
 		let request: RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer> = RequestBuilder<ClientNotification, ClientNotification.ClientNotificationTokenizer, GetClientNotificationTokenizer>(service: "notification", action: "getClientNotification")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "type", value: type.rawValue)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "type", value: type.rawValue)
 
 		return request
 	}

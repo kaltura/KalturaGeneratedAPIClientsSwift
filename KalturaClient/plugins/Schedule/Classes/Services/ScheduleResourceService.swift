@@ -48,7 +48,7 @@ public final class ScheduleResourceService{
 	/**  Allows you to add a new KalturaScheduleResource object  */
 	public static func add(scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer> {
 		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, AddTokenizer>(service: "schedule_scheduleresource", action: "add")
-			.setBody(key: "scheduleResource", value: scheduleResource)
+			.setParam(key: "scheduleResource", value: scheduleResource)
 
 		return request
 	}
@@ -65,7 +65,7 @@ public final class ScheduleResourceService{
 	/**  Mark the KalturaScheduleResource object as deleted  */
 	public static func delete(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, DeleteTokenizer>(service: "schedule_scheduleresource", action: "delete")
-			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
+			.setParam(key: "scheduleResourceId", value: scheduleResourceId)
 
 		return request
 	}
@@ -82,7 +82,7 @@ public final class ScheduleResourceService{
 	/**  Retrieve a KalturaScheduleResource object by ID  */
 	public static func get(scheduleResourceId: Int) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, GetTokenizer>(service: "schedule_scheduleresource", action: "get")
-			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
+			.setParam(key: "scheduleResourceId", value: scheduleResourceId)
 
 		return request
 	}
@@ -109,8 +109,8 @@ public final class ScheduleResourceService{
 	/**  List KalturaScheduleResource objects  */
 	public static func list(filter: ScheduleResourceFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer> = RequestBuilder<ScheduleResourceListResponse, ScheduleResourceListResponse.ScheduleResourceListResponseTokenizer, ListTokenizer>(service: "schedule_scheduleresource", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -131,8 +131,8 @@ public final class ScheduleResourceService{
 	/**  Update an existing KalturaScheduleResource object  */
 	public static func update(scheduleResourceId: Int, scheduleResource: ScheduleResource) -> RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer> = RequestBuilder<ScheduleResource, ScheduleResource.ScheduleResourceTokenizer, UpdateTokenizer>(service: "schedule_scheduleresource", action: "update")
-			.setBody(key: "scheduleResourceId", value: scheduleResourceId)
-			.setBody(key: "scheduleResource", value: scheduleResource)
+			.setParam(key: "scheduleResourceId", value: scheduleResourceId)
+			.setParam(key: "scheduleResource", value: scheduleResource)
 
 		return request
 	}

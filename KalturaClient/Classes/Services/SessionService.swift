@@ -62,7 +62,7 @@ public final class SessionService{
 	/**  Parse session key and return its info  */
 	public static func get(session: String?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, GetTokenizer> {
 		let request: RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, GetTokenizer> = RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, GetTokenizer>(service: "session", action: "get")
-			.setBody(key: "session", value: session)
+			.setParam(key: "session", value: session)
 
 		return request
 	}
@@ -136,13 +136,13 @@ public final class SessionService{
 	  session key that you should pass to all services that requires a ticket.  */
 	public static func impersonate(secret: String, impersonatedPartnerId: Int, userId: String?, type: SessionType?, partnerId: Int?, expiry: Int?, privileges: String?) -> RequestBuilder<String, BaseTokenizedObject, ImpersonateTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ImpersonateTokenizer> = RequestBuilder<String, BaseTokenizedObject, ImpersonateTokenizer>(service: "session", action: "impersonate")
-			.setBody(key: "secret", value: secret)
-			.setBody(key: "impersonatedPartnerId", value: impersonatedPartnerId)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "type", value: type?.rawValue)
-			.setBody(key: "partnerId", value: partnerId)
-			.setBody(key: "expiry", value: expiry)
-			.setBody(key: "privileges", value: privileges)
+			.setParam(key: "secret", value: secret)
+			.setParam(key: "impersonatedPartnerId", value: impersonatedPartnerId)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "type", value: type?.rawValue)
+			.setParam(key: "partnerId", value: partnerId)
+			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "privileges", value: privileges)
 
 		return request
 	}
@@ -191,10 +191,10 @@ public final class SessionService{
 	  ticket.   Type, expiry and privileges won't be changed if they're not set  */
 	public static func impersonateByKs(session: String, type: SessionType?, expiry: Int?, privileges: String?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, ImpersonateByKsTokenizer> {
 		let request: RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, ImpersonateByKsTokenizer> = RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, ImpersonateByKsTokenizer>(service: "session", action: "impersonateByKs")
-			.setBody(key: "session", value: session)
-			.setBody(key: "type", value: type?.rawValue)
-			.setBody(key: "expiry", value: expiry)
-			.setBody(key: "privileges", value: privileges)
+			.setParam(key: "session", value: session)
+			.setParam(key: "type", value: type?.rawValue)
+			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "privileges", value: privileges)
 
 		return request
 	}
@@ -262,12 +262,12 @@ public final class SessionService{
 	  you should pass to all services that requires a ticket.  */
 	public static func start(secret: String, userId: String?, type: SessionType?, partnerId: Int?, expiry: Int?, privileges: String?) -> RequestBuilder<String, BaseTokenizedObject, StartTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, StartTokenizer> = RequestBuilder<String, BaseTokenizedObject, StartTokenizer>(service: "session", action: "start")
-			.setBody(key: "secret", value: secret)
-			.setBody(key: "userId", value: userId)
-			.setBody(key: "type", value: type?.rawValue)
-			.setBody(key: "partnerId", value: partnerId)
-			.setBody(key: "expiry", value: expiry)
-			.setBody(key: "privileges", value: privileges)
+			.setParam(key: "secret", value: secret)
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "type", value: type?.rawValue)
+			.setParam(key: "partnerId", value: partnerId)
+			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "privileges", value: privileges)
 
 		return request
 	}
@@ -294,8 +294,8 @@ public final class SessionService{
 	/**  Start a session for Kaltura's flash widgets  */
 	public static func startWidgetSession(widgetId: String, expiry: Int?) -> RequestBuilder<StartWidgetSessionResponse, StartWidgetSessionResponse.StartWidgetSessionResponseTokenizer, StartWidgetSessionTokenizer> {
 		let request: RequestBuilder<StartWidgetSessionResponse, StartWidgetSessionResponse.StartWidgetSessionResponseTokenizer, StartWidgetSessionTokenizer> = RequestBuilder<StartWidgetSessionResponse, StartWidgetSessionResponse.StartWidgetSessionResponseTokenizer, StartWidgetSessionTokenizer>(service: "session", action: "startWidgetSession")
-			.setBody(key: "widgetId", value: widgetId)
-			.setBody(key: "expiry", value: expiry)
+			.setParam(key: "widgetId", value: widgetId)
+			.setParam(key: "expiry", value: expiry)
 
 		return request
 	}

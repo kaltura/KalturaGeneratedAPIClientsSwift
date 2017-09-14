@@ -56,8 +56,8 @@ public final class BaseEntryService{
 	/**  Generic add entry, should be used when the uploaded entry type is not known.  */
 	public static func add(entry: BaseEntry, type: EntryType?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddTokenizer>(service: "baseentry", action: "add")
-			.setBody(key: "entry", value: entry)
-			.setBody(key: "type", value: type?.rawValue)
+			.setParam(key: "entry", value: entry)
+			.setParam(key: "type", value: type?.rawValue)
 
 		return request
 	}
@@ -78,8 +78,8 @@ public final class BaseEntryService{
 	/**  Attach content resource to entry in status NO_MEDIA  */
 	public static func addContent(entryId: String, resource: Resource) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddContentTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddContentTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddContentTokenizer>(service: "baseentry", action: "addContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
 
 		return request
 	}
@@ -111,9 +111,9 @@ public final class BaseEntryService{
 	  type is not known.  */
 	public static func addFromUploadedFile(entry: BaseEntry, uploadTokenId: String, type: EntryType?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddFromUploadedFileTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddFromUploadedFileTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, AddFromUploadedFileTokenizer>(service: "baseentry", action: "addFromUploadedFile")
-			.setBody(key: "entry", value: entry)
-			.setBody(key: "uploadTokenId", value: uploadTokenId)
-			.setBody(key: "type", value: type?.rawValue)
+			.setParam(key: "entry", value: entry)
+			.setParam(key: "uploadTokenId", value: uploadTokenId)
+			.setParam(key: "type", value: type?.rawValue)
 
 		return request
 	}
@@ -136,8 +136,8 @@ public final class BaseEntryService{
 	/**  Anonymously rank an entry, no validation is done on duplicate rankings.  */
 	public static func anonymousRank(entryId: String, rank: Int) -> NullRequestBuilder<AnonymousRankTokenizer> {
 		let request: NullRequestBuilder<AnonymousRankTokenizer> = NullRequestBuilder<AnonymousRankTokenizer>(service: "baseentry", action: "anonymousRank")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "rank", value: rank)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "rank", value: rank)
 
 		return request
 	}
@@ -155,7 +155,7 @@ public final class BaseEntryService{
 	  make the entry playable).  */
 	public static func approve(entryId: String) -> NullRequestBuilder<ApproveTokenizer> {
 		let request: NullRequestBuilder<ApproveTokenizer> = NullRequestBuilder<ApproveTokenizer>(service: "baseentry", action: "approve")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -173,17 +173,28 @@ public final class BaseEntryService{
 				return ArrayTokenizedObject<BaseEntryCloneOptionItem.BaseEntryCloneOptionItemTokenizer>(self.append("cloneOptions"))
 			} 
 		}
+		
+		public var setSourceAsRootEntryId: BaseTokenizedObject {
+			get {
+				return self.append("setSourceAsRootEntryId") 
+			}
+		}
 	}
 
 	public static func clone(entryId: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
 		return clone(entryId: entryId, cloneOptions: nil)
 	}
 
-	/**  Clone an entry with optional attributes to apply to the clone  */
 	public static func clone(entryId: String, cloneOptions: Array<BaseEntryCloneOptionItem>?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
+		return clone(entryId: entryId, cloneOptions: cloneOptions, setSourceAsRootEntryId: false)
+	}
+
+	/**  Clone an entry with optional attributes to apply to the clone  */
+	public static func clone(entryId: String, cloneOptions: Array<BaseEntryCloneOptionItem>?, setSourceAsRootEntryId: Bool?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer>(service: "baseentry", action: "clone")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "cloneOptions", value: cloneOptions)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "cloneOptions", value: cloneOptions)
+			.setParam(key: "setSourceAsRootEntryId", value: setSourceAsRootEntryId)
 
 		return request
 	}
@@ -202,7 +213,7 @@ public final class BaseEntryService{
 	/**  Count base entries by filter.  */
 	public static func count(filter: BaseEntryFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "baseentry", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -219,7 +230,7 @@ public final class BaseEntryService{
 	/**  Delete an entry.  */
 	public static func delete(entryId: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "baseentry", action: "delete")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -241,8 +252,8 @@ public final class BaseEntryService{
 
 	public static func export(entryId: String, storageProfileId: Int) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, ExportTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, ExportTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, ExportTokenizer>(service: "baseentry", action: "export")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "storageProfileId", value: storageProfileId)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "storageProfileId", value: storageProfileId)
 
 		return request
 	}
@@ -257,7 +268,7 @@ public final class BaseEntryService{
 	/**  Flag inappropriate entry for moderation.  */
 	public static func flag(moderationFlag: ModerationFlag) -> NullRequestBuilder<FlagTokenizer> {
 		let request: NullRequestBuilder<FlagTokenizer> = NullRequestBuilder<FlagTokenizer>(service: "baseentry", action: "flag")
-			.setBody(key: "moderationFlag", value: moderationFlag)
+			.setParam(key: "moderationFlag", value: moderationFlag)
 
 		return request
 	}
@@ -284,8 +295,8 @@ public final class BaseEntryService{
 	/**  Get base entry by ID.  */
 	public static func get(entryId: String, version: Int?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, GetTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, GetTokenizer>(service: "baseentry", action: "get")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "version", value: version)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "version", value: version)
 
 		return request
 	}
@@ -302,7 +313,7 @@ public final class BaseEntryService{
 	/**  Get an array of KalturaBaseEntry objects by a comma-separated list of ids.  */
 	public static func getByIds(entryIds: String) -> ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, GetByIdsTokenizer> {
 		let request: ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, GetByIdsTokenizer> = ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, GetByIdsTokenizer>(service: "baseentry", action: "getByIds")
-			.setBody(key: "entryIds", value: entryIds)
+			.setParam(key: "entryIds", value: entryIds)
 
 		return request
 	}
@@ -324,8 +335,8 @@ public final class BaseEntryService{
 	  control, restriction, playback format and storage information.  */
 	public static func getContextData(entryId: String, contextDataParams: EntryContextDataParams) -> RequestBuilder<EntryContextDataResult, EntryContextDataResult.EntryContextDataResultTokenizer, GetContextDataTokenizer> {
 		let request: RequestBuilder<EntryContextDataResult, EntryContextDataResult.EntryContextDataResultTokenizer, GetContextDataTokenizer> = RequestBuilder<EntryContextDataResult, EntryContextDataResult.EntryContextDataResultTokenizer, GetContextDataTokenizer>(service: "baseentry", action: "getContextData")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "contextDataParams", value: contextDataParams)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "contextDataParams", value: contextDataParams)
 
 		return request
 	}
@@ -346,8 +357,8 @@ public final class BaseEntryService{
 	/**  This action delivers all data relevant for player  */
 	public static func getPlaybackContext(entryId: String, contextDataParams: PlaybackContextOptions) -> RequestBuilder<PlaybackContext, PlaybackContext.PlaybackContextTokenizer, GetPlaybackContextTokenizer> {
 		let request: RequestBuilder<PlaybackContext, PlaybackContext.PlaybackContextTokenizer, GetPlaybackContextTokenizer> = RequestBuilder<PlaybackContext, PlaybackContext.PlaybackContextTokenizer, GetPlaybackContextTokenizer>(service: "baseentry", action: "getPlaybackContext")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "contextDataParams", value: contextDataParams)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "contextDataParams", value: contextDataParams)
 
 		return request
 	}
@@ -364,7 +375,7 @@ public final class BaseEntryService{
 	/**  Get remote storage existing paths for the asset.  */
 	public static func getRemotePaths(entryId: String) -> RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> {
 		let request: RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> = RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer>(service: "baseentry", action: "getRemotePaths")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -391,8 +402,8 @@ public final class BaseEntryService{
 	/**  Index an entry by id.  */
 	public static func index(id: String, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "baseentry", action: "index")
-			.setBody(key: "id", value: id)
-			.setBody(key: "shouldUpdate", value: shouldUpdate)
+			.setParam(key: "id", value: id)
+			.setParam(key: "shouldUpdate", value: shouldUpdate)
 
 		return request
 	}
@@ -419,8 +430,8 @@ public final class BaseEntryService{
 	/**  List base entries by filter with paging support.  */
 	public static func list(filter: BaseEntryFilter?, pager: FilterPager?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListTokenizer> = RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListTokenizer>(service: "baseentry", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -445,8 +456,8 @@ public final class BaseEntryService{
 	/**  List base entries by filter according to reference id  */
 	public static func listByReferenceId(refId: String, pager: FilterPager?) -> RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListByReferenceIdTokenizer> {
 		let request: RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListByReferenceIdTokenizer> = RequestBuilder<BaseEntryListResponse, BaseEntryListResponse.BaseEntryListResponseTokenizer, ListByReferenceIdTokenizer>(service: "baseentry", action: "listByReferenceId")
-			.setBody(key: "refId", value: refId)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "refId", value: refId)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -471,8 +482,8 @@ public final class BaseEntryService{
 	/**  List all pending flags for the entry.  */
 	public static func listFlags(entryId: String, pager: FilterPager?) -> RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> {
 		let request: RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer> = RequestBuilder<ModerationFlagListResponse, ModerationFlagListResponse.ModerationFlagListResponseTokenizer, ListFlagsTokenizer>(service: "baseentry", action: "listFlags")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -490,7 +501,7 @@ public final class BaseEntryService{
 	  make the entry non-playable).  */
 	public static func reject(entryId: String) -> NullRequestBuilder<RejectTokenizer> {
 		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "baseentry", action: "reject")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -511,8 +522,8 @@ public final class BaseEntryService{
 	/**  Update base entry. Only the properties that were set will be updated.  */
 	public static func update(entryId: String, baseEntry: BaseEntry) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateTokenizer>(service: "baseentry", action: "update")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "baseEntry", value: baseEntry)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "baseEntry", value: baseEntry)
 
 		return request
 	}
@@ -551,10 +562,10 @@ public final class BaseEntryService{
 	/**  Update the content resource associated with the entry.  */
 	public static func updateContent(entryId: String, resource: Resource, conversionProfileId: Int?, advancedOptions: EntryReplacementOptions?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateContentTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateContentTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateContentTokenizer>(service: "baseentry", action: "updateContent")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "resource", value: resource)
-			.setBody(key: "conversionProfileId", value: conversionProfileId)
-			.setBody(key: "advancedOptions", value: advancedOptions)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
+			.setParam(key: "conversionProfileId", value: conversionProfileId)
+			.setParam(key: "advancedOptions", value: advancedOptions)
 
 		return request
 	}
@@ -584,9 +595,9 @@ public final class BaseEntryService{
 	  seconds).  */
 	public static func updateThumbnailFromSourceEntry(entryId: String, sourceEntryId: String, timeOffset: Int) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromSourceEntryTokenizer>(service: "baseentry", action: "updateThumbnailFromSourceEntry")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "sourceEntryId", value: sourceEntryId)
-			.setBody(key: "timeOffset", value: timeOffset)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "sourceEntryId", value: sourceEntryId)
+			.setParam(key: "timeOffset", value: timeOffset)
 
 		return request
 	}
@@ -609,8 +620,8 @@ public final class BaseEntryService{
 	/**  Update entry thumbnail using url.  */
 	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer>(service: "baseentry", action: "updateThumbnailFromUrl")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "url", value: url)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "url", value: url)
 
 		return request
 	}
@@ -627,7 +638,7 @@ public final class BaseEntryService{
 	/**  Update entry thumbnail using a raw jpeg file.  */
 	public static func updateThumbnailJpeg(entryId: String, fileData: RequestFile) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailJpegTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailJpegTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailJpegTokenizer>(service: "baseentry", action: "updateThumbnailJpeg")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 			.setFile(key: "fileData", value: fileData)
 
 		return request

@@ -48,7 +48,7 @@ public final class FlavorParamsOutputService{
 	/**  Get flavor params output object by ID  */
 	public static func get(id: Int) -> RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> = RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer>(service: "flavorparamsoutput", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -75,8 +75,8 @@ public final class FlavorParamsOutputService{
 	/**  List flavor params output objects by filter and pager  */
 	public static func list(filter: FlavorParamsOutputFilter?, pager: FilterPager?) -> RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer> = RequestBuilder<FlavorParamsOutputListResponse, FlavorParamsOutputListResponse.FlavorParamsOutputListResponseTokenizer, ListTokenizer>(service: "flavorparamsoutput", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}

@@ -52,8 +52,8 @@ public final class FlavorAssetService{
 	/**  Add flavor asset  */
 	public static func add(entryId: String, flavorAsset: FlavorAsset) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, AddTokenizer> {
 		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, AddTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, AddTokenizer>(service: "flavorasset", action: "add")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "flavorAsset", value: flavorAsset)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "flavorAsset", value: flavorAsset)
 
 		return request
 	}
@@ -86,9 +86,9 @@ public final class FlavorAssetService{
 	/**  Add and convert new Flavor Asset for Entry with specific Flavor Params  */
 	public static func convert(entryId: String, flavorParamsId: Int, priority: Int?) -> NullRequestBuilder<ConvertTokenizer> {
 		let request: NullRequestBuilder<ConvertTokenizer> = NullRequestBuilder<ConvertTokenizer>(service: "flavorasset", action: "convert")
-			.setBody(key: "entryId", value: entryId)
-			.setBody(key: "flavorParamsId", value: flavorParamsId)
-			.setBody(key: "priority", value: priority)
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "flavorParamsId", value: flavorParamsId)
+			.setParam(key: "priority", value: priority)
 
 		return request
 	}
@@ -105,7 +105,7 @@ public final class FlavorAssetService{
 	/**  Delete Flavor Asset by ID  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "flavorasset", action: "delete")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -122,7 +122,7 @@ public final class FlavorAssetService{
 	/**  delete all local file syncs for this asset  */
 	public static func deleteLocalContent(assetId: String) -> NullRequestBuilder<DeleteLocalContentTokenizer> {
 		let request: NullRequestBuilder<DeleteLocalContentTokenizer> = NullRequestBuilder<DeleteLocalContentTokenizer>(service: "flavorasset", action: "deleteLocalContent")
-			.setBody(key: "assetId", value: assetId)
+			.setParam(key: "assetId", value: assetId)
 
 		return request
 	}
@@ -145,8 +145,8 @@ public final class FlavorAssetService{
 	/**  manually export an asset  */
 	public static func export(assetId: String, storageProfileId: Int) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> {
 		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer>(service: "flavorasset", action: "export")
-			.setBody(key: "assetId", value: assetId)
-			.setBody(key: "storageProfileId", value: storageProfileId)
+			.setParam(key: "assetId", value: assetId)
+			.setParam(key: "storageProfileId", value: storageProfileId)
 
 		return request
 	}
@@ -163,7 +163,7 @@ public final class FlavorAssetService{
 	/**  Get Flavor Asset by ID  */
 	public static func get(id: String) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, GetTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, GetTokenizer>(service: "flavorasset", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -180,7 +180,7 @@ public final class FlavorAssetService{
 	/**  Get Flavor Assets for Entry  */
 	public static func getByEntryId(entryId: String) -> ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetByEntryIdTokenizer> {
 		let request: ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetByEntryIdTokenizer> = ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetByEntryIdTokenizer>(service: "flavorasset", action: "getByEntryId")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -207,8 +207,8 @@ public final class FlavorAssetService{
 	/**  Get download URL for the Flavor Asset  */
 	public static func getDownloadUrl(id: String, useCdn: Bool?) -> RequestBuilder<String, BaseTokenizedObject, GetDownloadUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetDownloadUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetDownloadUrlTokenizer>(service: "flavorasset", action: "getDownloadUrl")
-			.setBody(key: "id", value: id)
-			.setBody(key: "useCdn", value: useCdn)
+			.setParam(key: "id", value: id)
+			.setParam(key: "useCdn", value: useCdn)
 
 		return request
 	}
@@ -226,7 +226,7 @@ public final class FlavorAssetService{
 	  without Flavor Asset &amp; vice versa)  */
 	public static func getFlavorAssetsWithParams(entryId: String) -> ArrayRequestBuilder<FlavorAssetWithParams, ArrayTokenizedObject<FlavorAssetWithParams.FlavorAssetWithParamsTokenizer>, GetFlavorAssetsWithParamsTokenizer> {
 		let request: ArrayRequestBuilder<FlavorAssetWithParams, ArrayTokenizedObject<FlavorAssetWithParams.FlavorAssetWithParamsTokenizer>, GetFlavorAssetsWithParamsTokenizer> = ArrayRequestBuilder<FlavorAssetWithParams, ArrayTokenizedObject<FlavorAssetWithParams.FlavorAssetWithParamsTokenizer>, GetFlavorAssetsWithParamsTokenizer>(service: "flavorasset", action: "getFlavorAssetsWithParams")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -243,7 +243,7 @@ public final class FlavorAssetService{
 	/**  Get remote storage existing paths for the asset  */
 	public static func getRemotePaths(id: String) -> RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> {
 		let request: RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer> = RequestBuilder<RemotePathListResponse, RemotePathListResponse.RemotePathListResponseTokenizer, GetRemotePathsTokenizer>(service: "flavorasset", action: "getRemotePaths")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -288,10 +288,10 @@ public final class FlavorAssetService{
 	/**  Get download URL for the asset  */
 	public static func getUrl(id: String, storageId: Int?, forceProxy: Bool?, options: FlavorAssetUrlOptions?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlTokenizer>(service: "flavorasset", action: "getUrl")
-			.setBody(key: "id", value: id)
-			.setBody(key: "storageId", value: storageId)
-			.setBody(key: "forceProxy", value: forceProxy)
-			.setBody(key: "options", value: options)
+			.setParam(key: "id", value: id)
+			.setParam(key: "storageId", value: storageId)
+			.setParam(key: "forceProxy", value: forceProxy)
+			.setParam(key: "options", value: options)
 
 		return request
 	}
@@ -308,7 +308,7 @@ public final class FlavorAssetService{
 	/**  Get web playable Flavor Assets for Entry  */
 	public static func getWebPlayableByEntryId(entryId: String) -> ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetWebPlayableByEntryIdTokenizer> {
 		let request: ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetWebPlayableByEntryIdTokenizer> = ArrayRequestBuilder<FlavorAsset, ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>, GetWebPlayableByEntryIdTokenizer>(service: "flavorasset", action: "getWebPlayableByEntryId")
-			.setBody(key: "entryId", value: entryId)
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
@@ -335,8 +335,8 @@ public final class FlavorAssetService{
 	/**  List Flavor Assets by filter and pager  */
 	public static func list(filter: AssetFilter?, pager: FilterPager?) -> RequestBuilder<FlavorAssetListResponse, FlavorAssetListResponse.FlavorAssetListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<FlavorAssetListResponse, FlavorAssetListResponse.FlavorAssetListResponseTokenizer, ListTokenizer> = RequestBuilder<FlavorAssetListResponse, FlavorAssetListResponse.FlavorAssetListResponseTokenizer, ListTokenizer>(service: "flavorasset", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -353,7 +353,7 @@ public final class FlavorAssetService{
 	/**  Reconvert Flavor Asset by ID  */
 	public static func reconvert(id: String) -> NullRequestBuilder<ReconvertTokenizer> {
 		let request: NullRequestBuilder<ReconvertTokenizer> = NullRequestBuilder<ReconvertTokenizer>(service: "flavorasset", action: "reconvert")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -390,9 +390,9 @@ public final class FlavorAssetService{
 	/**  serve cmd line to transcode the ad  */
 	public static func serveAdStitchCmd(assetId: String, ffprobeJson: String?, duration: String?) -> RequestBuilder<String, BaseTokenizedObject, ServeAdStitchCmdTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ServeAdStitchCmdTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeAdStitchCmdTokenizer>(service: "flavorasset", action: "serveAdStitchCmd")
-			.setBody(key: "assetId", value: assetId)
-			.setBody(key: "ffprobeJson", value: ffprobeJson)
-			.setBody(key: "duration", value: duration)
+			.setParam(key: "assetId", value: assetId)
+			.setParam(key: "ffprobeJson", value: ffprobeJson)
+			.setParam(key: "duration", value: duration)
 
 		return request
 	}
@@ -409,7 +409,7 @@ public final class FlavorAssetService{
 	/**  Set a given flavor as the original flavor  */
 	public static func setAsSource(assetId: String) -> NullRequestBuilder<SetAsSourceTokenizer> {
 		let request: NullRequestBuilder<SetAsSourceTokenizer> = NullRequestBuilder<SetAsSourceTokenizer>(service: "flavorasset", action: "setAsSource")
-			.setBody(key: "assetId", value: assetId)
+			.setParam(key: "assetId", value: assetId)
 
 		return request
 	}
@@ -430,8 +430,8 @@ public final class FlavorAssetService{
 	/**  Update content of flavor asset  */
 	public static func setContent(id: String, contentResource: ContentResource) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, SetContentTokenizer> {
 		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, SetContentTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, SetContentTokenizer>(service: "flavorasset", action: "setContent")
-			.setBody(key: "id", value: id)
-			.setBody(key: "contentResource", value: contentResource)
+			.setParam(key: "id", value: id)
+			.setParam(key: "contentResource", value: contentResource)
 
 		return request
 	}
@@ -452,8 +452,8 @@ public final class FlavorAssetService{
 	/**  Update flavor asset  */
 	public static func update(id: String, flavorAsset: FlavorAsset) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, UpdateTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, UpdateTokenizer>(service: "flavorasset", action: "update")
-			.setBody(key: "id", value: id)
-			.setBody(key: "flavorAsset", value: flavorAsset)
+			.setParam(key: "id", value: id)
+			.setParam(key: "flavorAsset", value: flavorAsset)
 
 		return request
 	}

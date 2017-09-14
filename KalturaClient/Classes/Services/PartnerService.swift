@@ -51,7 +51,7 @@ public final class PartnerService{
 	/**  Count partner's existing sub-publishers (count includes the partner itself).  */
 	public static func count(filter: PartnerFilter?) -> RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, CountTokenizer> = RequestBuilder<Int, BaseTokenizedObject, CountTokenizer>(service: "partner", action: "count")
-			.setBody(key: "filter", value: filter)
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}
@@ -72,7 +72,7 @@ public final class PartnerService{
 	/**  Retrieve partner object by Id  */
 	public static func get(id: Int?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer>(service: "partner", action: "get")
-			.setBody(key: "id", value: id)
+			.setParam(key: "id", value: id)
 
 		return request
 	}
@@ -112,9 +112,9 @@ public final class PartnerService{
 	/**  Retrieve partner secret and admin secret  */
 	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer>(service: "partner", action: "getSecrets")
-			.setBody(key: "partnerId", value: partnerId)
-			.setBody(key: "adminEmail", value: adminEmail)
-			.setBody(key: "cmsPassword", value: cmsPassword)
+			.setParam(key: "partnerId", value: partnerId)
+			.setParam(key: "adminEmail", value: adminEmail)
+			.setParam(key: "cmsPassword", value: cmsPassword)
 
 		return request
 	}
@@ -168,9 +168,9 @@ public final class PartnerService{
 	  timeframe   The resolution can be "days" or "months"  */
 	public static func getUsage(year: Int?, month: Int?, resolution: ReportInterval?) -> RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> {
 		let request: RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer> = RequestBuilder<PartnerUsage, PartnerUsage.PartnerUsageTokenizer, GetUsageTokenizer>(service: "partner", action: "getUsage")
-			.setBody(key: "year", value: year)
-			.setBody(key: "month", value: month)
-			.setBody(key: "resolution", value: resolution?.rawValue)
+			.setParam(key: "year", value: year)
+			.setParam(key: "month", value: month)
+			.setParam(key: "resolution", value: resolution?.rawValue)
 
 		return request
 	}
@@ -200,8 +200,8 @@ public final class PartnerService{
 	  of a VAR partner.  */
 	public static func list(filter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer> = RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListTokenizer>(service: "partner", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -238,8 +238,8 @@ public final class PartnerService{
 	/**  Retrieve a list of partner objects which the current user is allowed to access.  */
 	public static func listPartnersForUser(partnerFilter: PartnerFilter?, pager: FilterPager?) -> RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> {
 		let request: RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer> = RequestBuilder<PartnerListResponse, PartnerListResponse.PartnerListResponseTokenizer, ListPartnersForUserTokenizer>(service: "partner", action: "listPartnersForUser")
-			.setBody(key: "partnerFilter", value: partnerFilter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "partnerFilter", value: partnerFilter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -284,10 +284,10 @@ public final class PartnerService{
 	/**  Create a new Partner object  */
 	public static func register(partner: Partner, cmsPassword: String?, templatePartnerId: Int?, silent: Bool?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, RegisterTokenizer>(service: "partner", action: "register")
-			.setBody(key: "partner", value: partner)
-			.setBody(key: "cmsPassword", value: cmsPassword)
-			.setBody(key: "templatePartnerId", value: templatePartnerId)
-			.setBody(key: "silent", value: silent)
+			.setParam(key: "partner", value: partner)
+			.setParam(key: "cmsPassword", value: cmsPassword)
+			.setParam(key: "templatePartnerId", value: templatePartnerId)
+			.setParam(key: "silent", value: silent)
 
 		return request
 	}
@@ -312,8 +312,8 @@ public final class PartnerService{
 	/**  Update details and settings of an existing partner  */
 	public static func update(partner: Partner, allowEmpty: Bool?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, UpdateTokenizer>(service: "partner", action: "update")
-			.setBody(key: "partner", value: partner)
-			.setBody(key: "allowEmpty", value: allowEmpty)
+			.setParam(key: "partner", value: partner)
+			.setParam(key: "allowEmpty", value: allowEmpty)
 
 		return request
 	}

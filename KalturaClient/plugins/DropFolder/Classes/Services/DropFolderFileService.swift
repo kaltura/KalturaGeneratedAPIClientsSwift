@@ -46,7 +46,7 @@ public final class DropFolderFileService{
 	/**  Allows you to add a new KalturaDropFolderFile object  */
 	public static func add(dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, AddTokenizer>(service: "dropfolder_dropfolderfile", action: "add")
-			.setBody(key: "dropFolderFile", value: dropFolderFile)
+			.setParam(key: "dropFolderFile", value: dropFolderFile)
 
 		return request
 	}
@@ -63,7 +63,7 @@ public final class DropFolderFileService{
 	/**  Mark the KalturaDropFolderFile object as deleted  */
 	public static func delete(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, DeleteTokenizer>(service: "dropfolder_dropfolderfile", action: "delete")
-			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
+			.setParam(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
 	}
@@ -80,7 +80,7 @@ public final class DropFolderFileService{
 	/**  Retrieve a KalturaDropFolderFile object by ID  */
 	public static func get(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, GetTokenizer>(service: "dropfolder_dropfolderfile", action: "get")
-			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
+			.setParam(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
 	}
@@ -98,7 +98,7 @@ public final class DropFolderFileService{
 	  (KalturaDropFolderFileStatus::IGNORE)  */
 	public static func ignore(dropFolderFileId: Int) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, IgnoreTokenizer>(service: "dropfolder_dropfolderfile", action: "ignore")
-			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
+			.setParam(key: "dropFolderFileId", value: dropFolderFileId)
 
 		return request
 	}
@@ -125,8 +125,8 @@ public final class DropFolderFileService{
 	/**  List KalturaDropFolderFile objects  */
 	public static func list(filter: DropFolderFileFilter?, pager: FilterPager?) -> RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer> = RequestBuilder<DropFolderFileListResponse, DropFolderFileListResponse.DropFolderFileListResponseTokenizer, ListTokenizer>(service: "dropfolder_dropfolderfile", action: "list")
-			.setBody(key: "filter", value: filter)
-			.setBody(key: "pager", value: pager)
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "pager", value: pager)
 
 		return request
 	}
@@ -147,8 +147,8 @@ public final class DropFolderFileService{
 	/**  Update an existing KalturaDropFolderFile object  */
 	public static func update(dropFolderFileId: Int, dropFolderFile: DropFolderFile) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateTokenizer>(service: "dropfolder_dropfolderfile", action: "update")
-			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
-			.setBody(key: "dropFolderFile", value: dropFolderFile)
+			.setParam(key: "dropFolderFileId", value: dropFolderFileId)
+			.setParam(key: "dropFolderFile", value: dropFolderFile)
 
 		return request
 	}
@@ -171,8 +171,8 @@ public final class DropFolderFileService{
 	/**  Update status of KalturaDropFolderFile  */
 	public static func updateStatus(dropFolderFileId: Int, status: DropFolderFileStatus) -> RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer> {
 		let request: RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer> = RequestBuilder<DropFolderFile, DropFolderFile.DropFolderFileTokenizer, UpdateStatusTokenizer>(service: "dropfolder_dropfolderfile", action: "updateStatus")
-			.setBody(key: "dropFolderFileId", value: dropFolderFileId)
-			.setBody(key: "status", value: status.rawValue)
+			.setParam(key: "dropFolderFileId", value: dropFolderFileId)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}
