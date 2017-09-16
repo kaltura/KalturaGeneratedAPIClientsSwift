@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'KalturaClient_Example' do
   pod 'KalturaClient', :path => '../'
-  pod 'SwiftyJSON'
 
   target 'KalturaClient_Tests' do
     inherit! :search_paths
@@ -11,6 +10,5 @@ target 'KalturaClient_Example' do
     pod 'KalturaClient/Metadata', :path => '../'
     pod 'Quick', '~> 1.0.0'
     pod 'Nimble', '~> 5.1.1'
-    pod 'SwiftyJSON'
   end
 end
