@@ -320,6 +320,24 @@ extension UserService{
 		return request
 	}
 
+	public class LoginByKsTokenizer: ClientTokenizer  {
+		
+		public var requestedPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("requestedPartnerId") 
+			}
+		}
+	}
+
+	/**  Loges a user to the destination account as long the ks user id exists in the
+	  desc acount and the loginData id match for both accounts  */
+	public static func loginByKs(requestedPartnerId: Int) -> RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer> {
+		let request: RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer> = RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer>(service: "user", action: "loginByKs")
+			.setParam(key: "requestedPartnerId", value: requestedPartnerId)
+
+		return request
+	}
+
 	public class LoginByLoginIdTokenizer: ClientTokenizer  {
 		
 		public var loginId: BaseTokenizedObject {

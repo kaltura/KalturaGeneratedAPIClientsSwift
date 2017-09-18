@@ -37,10 +37,10 @@ open class QuestionCuePoint: CuePoint {
 
 	public class QuestionCuePointTokenizer: CuePoint.CuePointTokenizer {
 		
-		public var optionalAnswers: DictionaryTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer> {
+		public var optionalAnswers: ArrayTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer> {
 			get {
-				return DictionaryTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer>(self.append("optionalAnswers"))
-			}
+				return ArrayTokenizedObject<OptionalAnswer.OptionalAnswerTokenizer>(self.append("optionalAnswers"))
+			} 
 		}
 		
 		public var hint: BaseTokenizedObject {
@@ -63,7 +63,7 @@ open class QuestionCuePoint: CuePoint {
 	}
 
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
-	public var optionalAnswers: Dictionary<String, OptionalAnswer>? = nil
+	public var optionalAnswers: Array<OptionalAnswer>? = nil
 	public var hint: String? = nil
 	public var question: String? = nil
 	public var explanation: String? = nil
@@ -85,7 +85,7 @@ open class QuestionCuePoint: CuePoint {
 		try super.populate(dict);
 		// set members values:
 		if dict["optionalAnswers"] != nil {
-			optionalAnswers = try JSONParser.parse(map: dict["optionalAnswers"] as! [String: Any])
+			optionalAnswers = try JSONParser.parse(array: dict["optionalAnswers"] as! [Any])
 		}
 		if dict["hint"] != nil {
 			hint = dict["hint"] as? String
@@ -102,7 +102,7 @@ open class QuestionCuePoint: CuePoint {
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(optionalAnswers != nil) {
-			dict["optionalAnswers"] = optionalAnswers!.map { key, value in (key, value.toDictionary()) }
+			dict["optionalAnswers"] = optionalAnswers!.map { value in value.toDictionary() }
 		}
 		if(hint != nil) {
 			dict["hint"] = hint!
