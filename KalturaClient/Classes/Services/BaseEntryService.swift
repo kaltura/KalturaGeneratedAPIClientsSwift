@@ -173,28 +173,17 @@ public final class BaseEntryService{
 				return ArrayTokenizedObject<BaseEntryCloneOptionItem.BaseEntryCloneOptionItemTokenizer>(self.append("cloneOptions"))
 			} 
 		}
-		
-		public var setSourceAsRootEntryId: BaseTokenizedObject {
-			get {
-				return self.append("setSourceAsRootEntryId") 
-			}
-		}
 	}
 
 	public static func clone(entryId: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
 		return clone(entryId: entryId, cloneOptions: nil)
 	}
 
-	public static func clone(entryId: String, cloneOptions: Array<BaseEntryCloneOptionItem>?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
-		return clone(entryId: entryId, cloneOptions: cloneOptions, setSourceAsRootEntryId: false)
-	}
-
 	/**  Clone an entry with optional attributes to apply to the clone  */
-	public static func clone(entryId: String, cloneOptions: Array<BaseEntryCloneOptionItem>?, setSourceAsRootEntryId: Bool?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
+	public static func clone(entryId: String, cloneOptions: Array<BaseEntryCloneOptionItem>?) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, CloneTokenizer>(service: "baseentry", action: "clone")
 			.setParam(key: "entryId", value: entryId)
 			.setParam(key: "cloneOptions", value: cloneOptions)
-			.setParam(key: "setSourceAsRootEntryId", value: setSourceAsRootEntryId)
 
 		return request
 	}
