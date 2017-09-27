@@ -311,7 +311,7 @@ open class EntryContextDataResult: ContextDataResult {
 			dict["msDuration"] = msDuration!
 		}
 		if(pluginData != nil) {
-			dict["pluginData"] = pluginData!.map { key, value in (key, value.toDictionary()) }
+			dict["pluginData"] = pluginData!.toDictionary()
 		}
 		return dict
 	}
