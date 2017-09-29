@@ -469,6 +469,18 @@ open class BaseEntryBaseFilter: RelatedFilter {
 			}
 		}
 		
+		public var entitledUsersViewMatchAnd: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersViewMatchAnd") 
+			}
+		}
+		
+		public var entitledUsersViewMatchOr: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersViewMatchOr") 
+			}
+		}
+		
 		public var tagsNameMultiLikeOr: BaseTokenizedObject {
 			get {
 				return self.append("tagsNameMultiLikeOr") 
@@ -643,6 +655,8 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	public var entitledUsersEditMatchOr: String? = nil
 	public var entitledUsersPublishMatchAnd: String? = nil
 	public var entitledUsersPublishMatchOr: String? = nil
+	public var entitledUsersViewMatchAnd: String? = nil
+	public var entitledUsersViewMatchOr: String? = nil
 	public var tagsNameMultiLikeOr: String? = nil
 	public var tagsAdminTagsMultiLikeOr: String? = nil
 	public var tagsAdminTagsNameMultiLikeOr: String? = nil
@@ -939,6 +953,14 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		self.dict["entitledUsersPublishMatchOr"] = entitledUsersPublishMatchOr
 	}
 	
+	public func setMultiRequestToken(entitledUsersViewMatchAnd: String) {
+		self.dict["entitledUsersViewMatchAnd"] = entitledUsersViewMatchAnd
+	}
+	
+	public func setMultiRequestToken(entitledUsersViewMatchOr: String) {
+		self.dict["entitledUsersViewMatchOr"] = entitledUsersViewMatchOr
+	}
+	
 	public func setMultiRequestToken(tagsNameMultiLikeOr: String) {
 		self.dict["tagsNameMultiLikeOr"] = tagsNameMultiLikeOr
 	}
@@ -1182,6 +1204,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		if dict["entitledUsersPublishMatchOr"] != nil {
 			entitledUsersPublishMatchOr = dict["entitledUsersPublishMatchOr"] as? String
 		}
+		if dict["entitledUsersViewMatchAnd"] != nil {
+			entitledUsersViewMatchAnd = dict["entitledUsersViewMatchAnd"] as? String
+		}
+		if dict["entitledUsersViewMatchOr"] != nil {
+			entitledUsersViewMatchOr = dict["entitledUsersViewMatchOr"] as? String
+		}
 		if dict["tagsNameMultiLikeOr"] != nil {
 			tagsNameMultiLikeOr = dict["tagsNameMultiLikeOr"] as? String
 		}
@@ -1420,6 +1448,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if(entitledUsersPublishMatchOr != nil) {
 			dict["entitledUsersPublishMatchOr"] = entitledUsersPublishMatchOr!
+		}
+		if(entitledUsersViewMatchAnd != nil) {
+			dict["entitledUsersViewMatchAnd"] = entitledUsersViewMatchAnd!
+		}
+		if(entitledUsersViewMatchOr != nil) {
+			dict["entitledUsersViewMatchOr"] = entitledUsersViewMatchOr!
 		}
 		if(tagsNameMultiLikeOr != nil) {
 			dict["tagsNameMultiLikeOr"] = tagsNameMultiLikeOr!

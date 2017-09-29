@@ -283,6 +283,12 @@ open class BaseEntry: ObjectBase {
 			}
 		}
 		
+		public var entitledUsersView: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersView") 
+			}
+		}
+		
 		public var capabilities: BaseTokenizedObject {
 			get {
 				return self.append("capabilities") 
@@ -386,13 +392,17 @@ open class BaseEntry: ObjectBase {
 	/**  clipping, skipping and cropping attributes that used to create this entry  */
 	public var operationAttributes: Array<OperationAttributes>? = nil
 	/**  list of user ids that are entitled to edit the entry (no server enforcement) The
-	  difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only  */
+	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
+	  is applicative only  */
 	public var entitledUsersEdit: String? = nil
 	/**  list of user ids that are entitled to publish the entry (no server enforcement)
-	  The difference between entitledUsersEdit and entitledUsersPublish is applicative
-	  only  */
+	  The difference between entitledUsersEdit, entitledUsersPublish and
+	  entitledUsersView is applicative only  */
 	public var entitledUsersPublish: String? = nil
+	/**  list of user ids that are entitled to view the entry (no server enforcement) The
+	  difference between entitledUsersEdit, entitledUsersPublish and entitledUsersView
+	  is applicative only  */
+	public var entitledUsersView: String? = nil
 	/**  Comma seperated string of the capabilities of the entry. Any capability needed
 	  can be added to this list.  */
 	public var capabilities: String? = nil
@@ -562,6 +572,10 @@ open class BaseEntry: ObjectBase {
 		self.dict["entitledUsersPublish"] = entitledUsersPublish
 	}
 	
+	public func setMultiRequestToken(entitledUsersView: String) {
+		self.dict["entitledUsersView"] = entitledUsersView
+	}
+	
 	public func setMultiRequestToken(capabilities: String) {
 		self.dict["capabilities"] = capabilities
 	}
@@ -700,6 +714,9 @@ open class BaseEntry: ObjectBase {
 		if dict["entitledUsersPublish"] != nil {
 			entitledUsersPublish = dict["entitledUsersPublish"] as? String
 		}
+		if dict["entitledUsersView"] != nil {
+			entitledUsersView = dict["entitledUsersView"] as? String
+		}
 		if dict["capabilities"] != nil {
 			capabilities = dict["capabilities"] as? String
 		}
@@ -782,6 +799,9 @@ open class BaseEntry: ObjectBase {
 		}
 		if(entitledUsersPublish != nil) {
 			dict["entitledUsersPublish"] = entitledUsersPublish!
+		}
+		if(entitledUsersView != nil) {
+			dict["entitledUsersView"] = entitledUsersView!
 		}
 		if(templateEntryId != nil) {
 			dict["templateEntryId"] = templateEntryId!

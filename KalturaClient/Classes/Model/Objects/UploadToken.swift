@@ -90,6 +90,12 @@ open class UploadToken: ObjectBase {
 				return self.append("updatedAt") 
 			}
 		}
+		
+		public var uploadUrl: BaseTokenizedObject {
+			get {
+				return self.append("uploadUrl") 
+			}
+		}
 	}
 
 	/**  Upload token unique ID  */
@@ -113,6 +119,9 @@ open class UploadToken: ObjectBase {
 	public var createdAt: Int? = nil
 	/**  Last update date as Unix timestamp (In seconds)  */
 	public var updatedAt: Int? = nil
+	/**  Upload url - to explicitly determine to which domain to adress the
+	  uploadToken-&gt;upload call  */
+	public var uploadUrl: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -151,6 +160,10 @@ open class UploadToken: ObjectBase {
 		self.dict["updatedAt"] = updatedAt
 	}
 	
+	public func setMultiRequestToken(uploadUrl: String) {
+		self.dict["uploadUrl"] = uploadUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -180,6 +193,9 @@ open class UploadToken: ObjectBase {
 		}
 		if dict["updatedAt"] != nil {
 			updatedAt = dict["updatedAt"] as? Int
+		}
+		if dict["uploadUrl"] != nil {
+			uploadUrl = dict["uploadUrl"] as? String
 		}
 
 	}
