@@ -40,4 +40,6 @@ public enum BaseEntryCloneOptions: String {
 	case CATEGORIES = "2"
 	case CHILD_ENTRIES = "3"
 	case ACCESS_CONTROL = "4"
+	case METADATA = "5"
+	case FLAVORS = "6"
 }
