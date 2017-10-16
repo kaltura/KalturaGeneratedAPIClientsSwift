@@ -42,4 +42,5 @@ public enum BaseEntryCloneOptions: String {
 	case ACCESS_CONTROL = "4"
 	case METADATA = "5"
 	case FLAVORS = "6"
+	case CAPTIONS = "7"
 }
