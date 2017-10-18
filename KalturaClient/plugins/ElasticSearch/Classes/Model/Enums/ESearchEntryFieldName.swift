@@ -63,4 +63,6 @@ public enum ESearchEntryFieldName: String {
 	case ENTRY_TAGS = "tags"
 	case ENTRY_TEMPLATE_ENTRY_ID = "template_entry_id"
 	case ENTRY_UPDATED_AT = "updated_at"
+	case ENTRY_VIEWS = "views"
+	case ENTRY_VOTES = "votes"
 }

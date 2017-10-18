@@ -34,6 +34,9 @@
 public enum ESearchEntryOrderByFieldName: String {
 	case ENTRY_CREATED_AT = "created_at"
 	case ENTRY_END_DATE = "end_date"
+	case ENTRY_NAME = "name.keyword"
 	case ENTRY_START_DATE = "start_date"
 	case ENTRY_UPDATED_AT = "updated_at"
+	case ENTRY_VIEWS = "views"
+	case ENTRY_VOTES = "votes"
 }
