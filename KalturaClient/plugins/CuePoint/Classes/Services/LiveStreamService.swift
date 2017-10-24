@@ -269,6 +269,8 @@ extension LiveStreamService{
 		}
 	}
 
+	/**  Create recorded entry id if it doesn't exist and make sure it happens on the DC
+	  that the live entry was created on.  */
 	public static func createRecordedEntry(entryId: String, mediaServerIndex: EntryServerNodeType, liveEntryStatus: EntryServerNodeStatus) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, CreateRecordedEntryTokenizer>(service: "livestream", action: "createRecordedEntry")
 			.setParam(key: "entryId", value: entryId)
@@ -525,7 +527,7 @@ extension LiveStreamService{
 		return setRecordedContent(entryId: entryId, mediaServerIndex: mediaServerIndex, resource: resource, duration: duration, recordedEntryId: recordedEntryId, flavorParamsId: nil)
 	}
 
-	/**  Sey recorded video to live entry  */
+	/**  Set recorded video to live entry  */
 	public static func setRecordedContent(entryId: String, mediaServerIndex: EntryServerNodeType, resource: DataCenterContentResource, duration: Double, recordedEntryId: String?, flavorParamsId: Int?) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> {
 		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, SetRecordedContentTokenizer>(service: "livestream", action: "setRecordedContent")
 			.setParam(key: "entryId", value: entryId)
