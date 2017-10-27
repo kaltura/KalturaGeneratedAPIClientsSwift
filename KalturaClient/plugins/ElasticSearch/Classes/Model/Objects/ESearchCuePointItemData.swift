@@ -85,6 +85,12 @@ open class ESearchCuePointItemData: ESearchItemData {
 			}
 		}
 		
+		public var question: BaseTokenizedObject {
+			get {
+				return self.append("question") 
+			}
+		}
+		
 		public var answers: BaseTokenizedObject {
 			get {
 				return self.append("answers") 
@@ -112,6 +118,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 	public var startTime: String? = nil
 	public var endTime: String? = nil
 	public var subType: String? = nil
+	public var question: String? = nil
 	public var answers: String? = nil
 	public var hint: String? = nil
 	public var explanation: String? = nil
@@ -147,6 +154,10 @@ open class ESearchCuePointItemData: ESearchItemData {
 	
 	public func setMultiRequestToken(subType: String) {
 		self.dict["subType"] = subType
+	}
+	
+	public func setMultiRequestToken(question: String) {
+		self.dict["question"] = question
 	}
 	
 	public func setMultiRequestToken(answers: String) {
@@ -188,6 +199,9 @@ open class ESearchCuePointItemData: ESearchItemData {
 		if dict["subType"] != nil {
 			subType = dict["subType"] as? String
 		}
+		if dict["question"] != nil {
+			question = dict["question"] as? String
+		}
 		if dict["answers"] != nil {
 			answers = dict["answers"] as? String
 		}
@@ -225,6 +239,9 @@ open class ESearchCuePointItemData: ESearchItemData {
 		}
 		if(subType != nil) {
 			dict["subType"] = subType!
+		}
+		if(question != nil) {
+			dict["question"] = question!
 		}
 		if(answers != nil) {
 			dict["answers"] = answers!
