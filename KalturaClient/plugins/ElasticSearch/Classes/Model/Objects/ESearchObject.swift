@@ -33,59 +33,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchParams: ESearchObject {
+open class ESearchObject: ObjectBase {
 
-	public class ESearchParamsTokenizer: ESearchObject.ESearchObjectTokenizer {
-		
-		public func searchOperator<T: ESearchOperator.ESearchOperatorTokenizer>() -> T {
-			return T(self.append("searchOperator"))
-		}
-		
-		public var objectStatuses: BaseTokenizedObject {
-			get {
-				return self.append("objectStatuses") 
-			}
-		}
-		
-		public func orderBy<T: ESearchOrderBy.ESearchOrderByTokenizer>() -> T {
-			return T(self.append("orderBy"))
-		}
+	public class ESearchObjectTokenizer: ObjectBase.ObjectBaseTokenizer {
 	}
 
-	public var searchOperator: ESearchOperator? = nil
-	public var objectStatuses: String? = nil
-	public var orderBy: ESearchOrderBy? = nil
 
 
-	public func setMultiRequestToken(objectStatuses: String) {
-		self.dict["objectStatuses"] = objectStatuses
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["searchOperator"] != nil {
-		searchOperator = try JSONParser.parse(object: dict["searchOperator"] as! [String: Any])		}
-		if dict["objectStatuses"] != nil {
-			objectStatuses = dict["objectStatuses"] as? String
-		}
-		if dict["orderBy"] != nil {
-		orderBy = try JSONParser.parse(object: dict["orderBy"] as! [String: Any])		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(searchOperator != nil) {
-			dict["searchOperator"] = searchOperator!.toDictionary()
-		}
-		if(objectStatuses != nil) {
-			dict["objectStatuses"] = objectStatuses!
-		}
-		if(orderBy != nil) {
-			dict["orderBy"] = orderBy!.toDictionary()
-		}
-		return dict
-	}
 }
 
