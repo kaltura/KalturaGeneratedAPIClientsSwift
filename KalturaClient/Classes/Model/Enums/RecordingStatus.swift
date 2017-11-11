@@ -25,47 +25,15 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class ESearchQuery: ESearchObject {
-
-	public class ESearchQueryTokenizer: ESearchObject.ESearchObjectTokenizer {
-		
-		public var eSearchQuery: BaseTokenizedObject {
-			get {
-				return self.append("eSearchQuery") 
-			}
-		}
-	}
-
-	public var eSearchQuery: String? = nil
-
-
-	public func setMultiRequestToken(eSearchQuery: String) {
-		self.dict["eSearchQuery"] = eSearchQuery
-	}
-	
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["eSearchQuery"] != nil {
-			eSearchQuery = dict["eSearchQuery"] as? String
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(eSearchQuery != nil) {
-			dict["eSearchQuery"] = eSearchQuery!
-		}
-		return dict
-	}
+public enum RecordingStatus: Int {
+	case STOPPED = 0
+	case PAUSED = 1
+	case ACTIVE = 2
+	case DISABLED = 3
 }
-
