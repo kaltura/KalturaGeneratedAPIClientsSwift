@@ -108,6 +108,12 @@ open class FlavorAsset: Asset {
 				return self.append("label") 
 			}
 		}
+		
+		public var isDefault: BaseTokenizedObject {
+			get {
+				return self.append("isDefault") 
+			}
+		}
 	}
 
 	/**  The Flavor Params used to create this Flavor Asset  */
@@ -134,6 +140,9 @@ open class FlavorAsset: Asset {
 	public var language: Language? = nil
 	/**  The label of the flavor asset  */
 	public var label: String? = nil
+	/**  Is default flavor asset of the entry (This field will be taken into account
+	  selectign which audio flavor will be selected as default)  */
+	public var isDefault: Bool? = nil
 
 
 	public func setMultiRequestToken(flavorParamsId: String) {
@@ -184,6 +193,10 @@ open class FlavorAsset: Asset {
 		self.dict["label"] = label
 	}
 	
+	public func setMultiRequestToken(isDefault: String) {
+		self.dict["isDefault"] = isDefault
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -223,6 +236,9 @@ open class FlavorAsset: Asset {
 		if dict["label"] != nil {
 			label = dict["label"] as? String
 		}
+		if dict["isDefault"] != nil {
+			isDefault = dict["isDefault"] as? Bool
+		}
 
 	}
 
@@ -236,6 +252,9 @@ open class FlavorAsset: Asset {
 		}
 		if(label != nil) {
 			dict["label"] = label!
+		}
+		if(isDefault != nil) {
+			dict["isDefault"] = isDefault!
 		}
 		return dict
 	}
