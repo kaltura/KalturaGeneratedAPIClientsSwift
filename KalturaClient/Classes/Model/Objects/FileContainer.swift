@@ -33,81 +33,71 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VirusScanJobData: JobData {
+open class FileContainer: ObjectBase {
 
-	public class VirusScanJobDataTokenizer: JobData.JobDataTokenizer {
+	public class FileContainerTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public func fileContainer<T: FileContainer.FileContainerTokenizer>() -> T {
-			return T(self.append("fileContainer"))
-		}
-		
-		public var flavorAssetId: BaseTokenizedObject {
+		public var filePath: BaseTokenizedObject {
 			get {
-				return self.append("flavorAssetId") 
+				return self.append("filePath") 
 			}
 		}
 		
-		public var scanResult: BaseTokenizedObject {
+		public var encryptionKey: BaseTokenizedObject {
 			get {
-				return self.append("scanResult") 
+				return self.append("encryptionKey") 
 			}
 		}
 		
-		public var virusFoundAction: BaseTokenizedObject {
+		public var fileSize: BaseTokenizedObject {
 			get {
-				return self.append("virusFoundAction") 
+				return self.append("fileSize") 
 			}
 		}
 	}
 
-	public var fileContainer: FileContainer? = nil
-	public var flavorAssetId: String? = nil
-	public var scanResult: VirusScanJobResult? = nil
-	public var virusFoundAction: VirusFoundAction? = nil
+	public var filePath: String? = nil
+	public var encryptionKey: String? = nil
+	public var fileSize: Int? = nil
 
 
-	public func setMultiRequestToken(flavorAssetId: String) {
-		self.dict["flavorAssetId"] = flavorAssetId
+	public func setMultiRequestToken(filePath: String) {
+		self.dict["filePath"] = filePath
 	}
 	
-	public func setMultiRequestToken(scanResult: String) {
-		self.dict["scanResult"] = scanResult
+	public func setMultiRequestToken(encryptionKey: String) {
+		self.dict["encryptionKey"] = encryptionKey
 	}
 	
-	public func setMultiRequestToken(virusFoundAction: String) {
-		self.dict["virusFoundAction"] = virusFoundAction
+	public func setMultiRequestToken(fileSize: String) {
+		self.dict["fileSize"] = fileSize
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["fileContainer"] != nil {
-		fileContainer = try JSONParser.parse(object: dict["fileContainer"] as! [String: Any])		}
-		if dict["flavorAssetId"] != nil {
-			flavorAssetId = dict["flavorAssetId"] as? String
+		if dict["filePath"] != nil {
+			filePath = dict["filePath"] as? String
 		}
-		if dict["scanResult"] != nil {
-			scanResult = VirusScanJobResult(rawValue: (dict["scanResult"] as? Int)!)
+		if dict["encryptionKey"] != nil {
+			encryptionKey = dict["encryptionKey"] as? String
 		}
-		if dict["virusFoundAction"] != nil {
-			virusFoundAction = VirusFoundAction(rawValue: (dict["virusFoundAction"] as? Int)!)
+		if dict["fileSize"] != nil {
+			fileSize = dict["fileSize"] as? Int
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(fileContainer != nil) {
-			dict["fileContainer"] = fileContainer!.toDictionary()
+		if(filePath != nil) {
+			dict["filePath"] = filePath!
 		}
-		if(flavorAssetId != nil) {
-			dict["flavorAssetId"] = flavorAssetId!
+		if(encryptionKey != nil) {
+			dict["encryptionKey"] = encryptionKey!
 		}
-		if(scanResult != nil) {
-			dict["scanResult"] = scanResult!.rawValue
-		}
-		if(virusFoundAction != nil) {
-			dict["virusFoundAction"] = virusFoundAction!.rawValue
+		if(fileSize != nil) {
+			dict["fileSize"] = fileSize!
 		}
 		return dict
 	}
