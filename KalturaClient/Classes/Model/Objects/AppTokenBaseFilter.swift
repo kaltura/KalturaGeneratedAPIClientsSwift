@@ -84,6 +84,12 @@ open class AppTokenBaseFilter: Filter {
 				return self.append("statusIn") 
 			}
 		}
+		
+		public var sessionUserIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("sessionUserIdEqual") 
+			}
+		}
 	}
 
 	public var idEqual: String? = nil
@@ -94,6 +100,7 @@ open class AppTokenBaseFilter: Filter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 	public var statusEqual: AppTokenStatus? = nil
 	public var statusIn: String? = nil
+	public var sessionUserIdEqual: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -128,6 +135,10 @@ open class AppTokenBaseFilter: Filter {
 		self.dict["statusIn"] = statusIn
 	}
 	
+	public func setMultiRequestToken(sessionUserIdEqual: String) {
+		self.dict["sessionUserIdEqual"] = sessionUserIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -154,6 +165,9 @@ open class AppTokenBaseFilter: Filter {
 		}
 		if dict["statusIn"] != nil {
 			statusIn = dict["statusIn"] as? String
+		}
+		if dict["sessionUserIdEqual"] != nil {
+			sessionUserIdEqual = dict["sessionUserIdEqual"] as? String
 		}
 
 	}
@@ -183,6 +197,9 @@ open class AppTokenBaseFilter: Filter {
 		}
 		if(statusIn != nil) {
 			dict["statusIn"] = statusIn!
+		}
+		if(sessionUserIdEqual != nil) {
+			dict["sessionUserIdEqual"] = sessionUserIdEqual!
 		}
 		return dict
 	}

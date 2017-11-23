@@ -33,37 +33,37 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchQuery: ESearchBaseItem {
+open class ESearchLanguageItem: ObjectBase {
 
-	public class ESearchQueryTokenizer: ESearchBaseItem.ESearchBaseItemTokenizer {
+	public class ESearchLanguageItemTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var eSearchQuery: BaseTokenizedObject {
+		public var eSerachLanguage: BaseTokenizedObject {
 			get {
-				return self.append("eSearchQuery") 
+				return self.append("eSerachLanguage") 
 			}
 		}
 	}
 
-	public var eSearchQuery: String? = nil
+	public var eSerachLanguage: ESearchLanguage? = nil
 
 
-	public func setMultiRequestToken(eSearchQuery: String) {
-		self.dict["eSearchQuery"] = eSearchQuery
+	public func setMultiRequestToken(eSerachLanguage: String) {
+		self.dict["eSerachLanguage"] = eSerachLanguage
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["eSearchQuery"] != nil {
-			eSearchQuery = dict["eSearchQuery"] as? String
+		if dict["eSerachLanguage"] != nil {
+			eSerachLanguage = ESearchLanguage(rawValue: "\(dict["eSerachLanguage"]!)")
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(eSearchQuery != nil) {
-			dict["eSearchQuery"] = eSearchQuery!
+		if(eSerachLanguage != nil) {
+			dict["eSerachLanguage"] = eSerachLanguage!.rawValue
 		}
 		return dict
 	}

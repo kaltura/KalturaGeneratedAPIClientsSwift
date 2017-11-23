@@ -25,47 +25,44 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class ESearchQuery: ESearchBaseItem {
-
-	public class ESearchQueryTokenizer: ESearchBaseItem.ESearchBaseItemTokenizer {
-		
-		public var eSearchQuery: BaseTokenizedObject {
-			get {
-				return self.append("eSearchQuery") 
-			}
-		}
-	}
-
-	public var eSearchQuery: String? = nil
-
-
-	public func setMultiRequestToken(eSearchQuery: String) {
-		self.dict["eSearchQuery"] = eSearchQuery
-	}
-	
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["eSearchQuery"] != nil {
-			eSearchQuery = dict["eSearchQuery"] as? String
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(eSearchQuery != nil) {
-			dict["eSearchQuery"] = eSearchQuery!
-		}
-		return dict
-	}
+public enum ESearchLanguage: String {
+	case ARABIC = "Arabic"
+	case BASQUE = "Basque"
+	case BRAZILIAN = "Brazilian"
+	case BULGARIAN = "Bulgarian"
+	case CATALAN = "Catalan"
+	case CHINESE = "Chinese"
+	case CZECH = "Czech"
+	case DANISH = "Danish"
+	case DUTCH = "Dutch"
+	case ENGLISH = "English"
+	case FINNISH = "Finnish"
+	case FRENCH = "French"
+	case GALICIAN = "Galician"
+	case GERMAN = "German"
+	case GREEK = "Greek"
+	case HINDI = "Hindi"
+	case HUNGRIAN = "Hungarian"
+	case INDONESIAN = "Indonesian"
+	case ITALIAN = "Italian"
+	case JAPANESE = "Japanese"
+	case KOREAN = "Korean"
+	case LATVIAN = "Latvian"
+	case LITHUANIAN = "Lithuanian"
+	case NORWEGIAN = "Norwegian"
+	case PERSIAN = "Persian"
+	case PORTUGUESE = "Prtuguese"
+	case ROMANIAN = "Romanian"
+	case RUSSIAN = "Russian"
+	case SORANI = "Sorani"
+	case SPANISH = "Spanish"
+	case SWEDISH = "Swedish"
+	case THAI = "Thai"
+	case TURKISH = "Turkish"
 }
-

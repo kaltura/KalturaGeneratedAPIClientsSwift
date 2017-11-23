@@ -36,13 +36,36 @@
 open class ESearchItemData: ObjectBase {
 
 	public class ESearchItemDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var highlight: BaseTokenizedObject {
+			get {
+				return self.append("highlight") 
+			}
+		}
 	}
 
+	public var highlight: String? = nil
 
 
+	public func setMultiRequestToken(highlight: String) {
+		self.dict["highlight"] = highlight
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["highlight"] != nil {
+			highlight = dict["highlight"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(highlight != nil) {
+			dict["highlight"] = highlight!
+		}
+		return dict
+	}
 }
 

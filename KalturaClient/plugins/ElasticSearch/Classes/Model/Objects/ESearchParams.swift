@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchParams: ESearchObject {
+open class ESearchParams: ObjectBase {
 
-	public class ESearchParamsTokenizer: ESearchObject.ESearchObjectTokenizer {
+	public class ESearchParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
 		public func searchOperator<T: ESearchOperator.ESearchOperatorTokenizer>() -> T {
 			return T(self.append("searchOperator"))
@@ -47,18 +47,40 @@ open class ESearchParams: ESearchObject {
 			}
 		}
 		
+		public var objectId: BaseTokenizedObject {
+			get {
+				return self.append("objectId") 
+			}
+		}
+		
 		public func orderBy<T: ESearchOrderBy.ESearchOrderByTokenizer>() -> T {
 			return T(self.append("orderBy"))
+		}
+		
+		public var useHighlight: BaseTokenizedObject {
+			get {
+				return self.append("useHighlight") 
+			}
 		}
 	}
 
 	public var searchOperator: ESearchOperator? = nil
 	public var objectStatuses: String? = nil
+	public var objectId: String? = nil
 	public var orderBy: ESearchOrderBy? = nil
+	public var useHighlight: Bool? = nil
 
 
 	public func setMultiRequestToken(objectStatuses: String) {
 		self.dict["objectStatuses"] = objectStatuses
+	}
+	
+	public func setMultiRequestToken(objectId: String) {
+		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(useHighlight: String) {
+		self.dict["useHighlight"] = useHighlight
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -69,8 +91,14 @@ open class ESearchParams: ESearchObject {
 		if dict["objectStatuses"] != nil {
 			objectStatuses = dict["objectStatuses"] as? String
 		}
+		if dict["objectId"] != nil {
+			objectId = dict["objectId"] as? String
+		}
 		if dict["orderBy"] != nil {
 		orderBy = try JSONParser.parse(object: dict["orderBy"] as! [String: Any])		}
+		if dict["useHighlight"] != nil {
+			useHighlight = dict["useHighlight"] as? Bool
+		}
 
 	}
 
@@ -82,8 +110,14 @@ open class ESearchParams: ESearchObject {
 		if(objectStatuses != nil) {
 			dict["objectStatuses"] = objectStatuses!
 		}
+		if(objectId != nil) {
+			dict["objectId"] = objectId!
+		}
 		if(orderBy != nil) {
 			dict["orderBy"] = orderBy!.toDictionary()
+		}
+		if(useHighlight != nil) {
+			dict["useHighlight"] = useHighlight!
 		}
 		return dict
 	}

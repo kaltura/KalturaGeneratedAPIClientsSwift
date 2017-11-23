@@ -354,6 +354,12 @@ open class Partner: ObjectBase {
 				return self.append("timeAlignedRenditions") 
 			}
 		}
+		
+		public var eSearchLanguages: ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer>(self.append("eSearchLanguages"))
+			} 
+		}
 	}
 
 	public var id: Int? = nil
@@ -414,6 +420,7 @@ open class Partner: ObjectBase {
 	public var crmId: String? = nil
 	public var referenceId: String? = nil
 	public var timeAlignedRenditions: Bool? = nil
+	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -778,6 +785,9 @@ open class Partner: ObjectBase {
 		if dict["timeAlignedRenditions"] != nil {
 			timeAlignedRenditions = dict["timeAlignedRenditions"] as? Bool
 		}
+		if dict["eSearchLanguages"] != nil {
+			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
+		}
 
 	}
 
@@ -875,6 +885,9 @@ open class Partner: ObjectBase {
 		}
 		if(referenceId != nil) {
 			dict["referenceId"] = referenceId!
+		}
+		if(eSearchLanguages != nil) {
+			dict["eSearchLanguages"] = eSearchLanguages!.map { value in value.toDictionary() }
 		}
 		return dict
 	}
