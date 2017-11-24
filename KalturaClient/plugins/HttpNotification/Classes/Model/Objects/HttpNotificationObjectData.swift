@@ -61,6 +61,12 @@ open class HttpNotificationObjectData: HttpNotificationData {
 				return self.append("code") 
 			}
 		}
+		
+		public var dataStringReplacements: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("dataStringReplacements"))
+			} 
+		}
 	}
 
 	/**  Kaltura API object type  */
@@ -71,6 +77,8 @@ open class HttpNotificationObjectData: HttpNotificationData {
 	public var ignoreNull: Bool? = nil
 	/**  PHP code  */
 	public var code: String? = nil
+	/**  An array of pattern-replacement pairs used for data string regex replacements  */
+	public var dataStringReplacements: Array<KeyValue>? = nil
 
 
 	public func setMultiRequestToken(apiObjectType: String) {
@@ -104,6 +112,9 @@ open class HttpNotificationObjectData: HttpNotificationData {
 		if dict["code"] != nil {
 			code = dict["code"] as? String
 		}
+		if dict["dataStringReplacements"] != nil {
+			dataStringReplacements = try JSONParser.parse(array: dict["dataStringReplacements"] as! [Any])
+		}
 
 	}
 
@@ -120,6 +131,9 @@ open class HttpNotificationObjectData: HttpNotificationData {
 		}
 		if(code != nil) {
 			dict["code"] = code!
+		}
+		if(dataStringReplacements != nil) {
+			dict["dataStringReplacements"] = dataStringReplacements!.map { value in value.toDictionary() }
 		}
 		return dict
 	}
