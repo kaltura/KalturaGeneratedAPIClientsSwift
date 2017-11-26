@@ -90,6 +90,12 @@ open class VoicebaseJobProviderData: IntegrationJobProviderData {
 				return self.append("replaceMediaContent") 
 			}
 		}
+		
+		public var additionalParameters: BaseTokenizedObject {
+			get {
+				return self.append("additionalParameters") 
+			}
+		}
 	}
 
 	/**  Entry ID  */
@@ -110,6 +116,8 @@ open class VoicebaseJobProviderData: IntegrationJobProviderData {
 	public var fileLocation: String? = nil
 	/**  should replace remote media content  */
 	public var replaceMediaContent: Bool? = nil
+	/**  additional parameters to send to VoiceBase  */
+	public var additionalParameters: String? = nil
 
 
 	public func setMultiRequestToken(entryId: String) {
@@ -148,6 +156,10 @@ open class VoicebaseJobProviderData: IntegrationJobProviderData {
 		self.dict["replaceMediaContent"] = replaceMediaContent
 	}
 	
+	public func setMultiRequestToken(additionalParameters: String) {
+		self.dict["additionalParameters"] = additionalParameters
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -177,6 +189,9 @@ open class VoicebaseJobProviderData: IntegrationJobProviderData {
 		}
 		if dict["replaceMediaContent"] != nil {
 			replaceMediaContent = dict["replaceMediaContent"] as? Bool
+		}
+		if dict["additionalParameters"] != nil {
+			additionalParameters = dict["additionalParameters"] as? String
 		}
 
 	}
