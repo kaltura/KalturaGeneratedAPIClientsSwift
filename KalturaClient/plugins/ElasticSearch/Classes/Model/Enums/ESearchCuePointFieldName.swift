@@ -43,5 +43,4 @@ public enum ESearchCuePointFieldName: String {
 	case CUE_POINT_SUB_TYPE = "cue_points.cue_point_sub_type"
 	case CUE_POINT_TAGS = "cue_points.cue_point_tags"
 	case CUE_POINT_TEXT = "cue_points.cue_point_text"
-	case CUE_POINT_TYPE = "cue_points.cue_point_type"
 }
