@@ -33,33 +33,50 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchItemData: ObjectBase {
+open class ESearchHighlight: ObjectBase {
 
-	public class ESearchItemDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class ESearchHighlightTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var highlight: ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer> {
+		public var fieldName: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer>(self.append("highlight"))
+				return self.append("fieldName") 
+			}
+		}
+		
+		public var hits: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("hits"))
 			} 
 		}
 	}
 
-	public var highlight: Array<ESearchHighlight>? = nil
+	public var fieldName: String? = nil
+	public var hits: Array<StringHolder>? = nil
 
 
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["highlight"] != nil {
-			highlight = try JSONParser.parse(array: dict["highlight"] as! [Any])
+		if dict["fieldName"] != nil {
+			fieldName = dict["fieldName"] as? String
+		}
+		if dict["hits"] != nil {
+			hits = try JSONParser.parse(array: dict["hits"] as! [Any])
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(highlight != nil) {
-			dict["highlight"] = highlight!.map { value in value.toDictionary() }
+		if(fieldName != nil) {
+			dict["fieldName"] = fieldName!
+		}
+		if(hits != nil) {
+			dict["hits"] = hits!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

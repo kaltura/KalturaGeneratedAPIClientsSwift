@@ -41,10 +41,10 @@ open class ESearchResult: ObjectBase {
 			return T(self.append("object"))
 		}
 		
-		public var highlight: BaseTokenizedObject {
+		public var highlight: ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer> {
 			get {
-				return self.append("highlight") 
-			}
+				return ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer>(self.append("highlight"))
+			} 
 		}
 		
 		public var itemsData: ArrayTokenizedObject<ESearchItemDataResult.ESearchItemDataResultTokenizer> {
@@ -55,21 +55,17 @@ open class ESearchResult: ObjectBase {
 	}
 
 	public var object: ObjectBase? = nil
-	public var highlight: String? = nil
+	public var highlight: Array<ESearchHighlight>? = nil
 	public var itemsData: Array<ESearchItemDataResult>? = nil
 
 
-	public func setMultiRequestToken(highlight: String) {
-		self.dict["highlight"] = highlight
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["object"] != nil {
 		object = try JSONParser.parse(object: dict["object"] as! [String: Any])		}
 		if dict["highlight"] != nil {
-			highlight = dict["highlight"] as? String
+			highlight = try JSONParser.parse(array: dict["highlight"] as! [Any])
 		}
 		if dict["itemsData"] != nil {
 			itemsData = try JSONParser.parse(array: dict["itemsData"] as! [Any])
@@ -83,7 +79,7 @@ open class ESearchResult: ObjectBase {
 			dict["object"] = object!.toDictionary()
 		}
 		if(highlight != nil) {
-			dict["highlight"] = highlight!
+			dict["highlight"] = highlight!.map { value in value.toDictionary() }
 		}
 		if(itemsData != nil) {
 			dict["itemsData"] = itemsData!.map { value in value.toDictionary() }
