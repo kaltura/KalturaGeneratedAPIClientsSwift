@@ -33,37 +33,37 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchUserItem: ESearchAbstractUserItem {
+open class ESearchUserQuery: ESearchUserBaseItem {
 
-	public class ESearchUserItemTokenizer: ESearchAbstractUserItem.ESearchAbstractUserItemTokenizer {
+	public class ESearchUserQueryTokenizer: ESearchUserBaseItem.ESearchUserBaseItemTokenizer {
 		
-		public var fieldName: BaseTokenizedObject {
+		public var eSearchQuery: BaseTokenizedObject {
 			get {
-				return self.append("fieldName") 
+				return self.append("eSearchQuery") 
 			}
 		}
 	}
 
-	public var fieldName: ESearchUserFieldName? = nil
+	public var eSearchQuery: String? = nil
 
 
-	public func setMultiRequestToken(fieldName: String) {
-		self.dict["fieldName"] = fieldName
+	public func setMultiRequestToken(eSearchQuery: String) {
+		self.dict["eSearchQuery"] = eSearchQuery
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["fieldName"] != nil {
-			fieldName = ESearchUserFieldName(rawValue: "\(dict["fieldName"]!)")
+		if dict["eSearchQuery"] != nil {
+			eSearchQuery = dict["eSearchQuery"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(fieldName != nil) {
-			dict["fieldName"] = fieldName!.rawValue
+		if(eSearchQuery != nil) {
+			dict["eSearchQuery"] = eSearchQuery!
 		}
 		return dict
 	}

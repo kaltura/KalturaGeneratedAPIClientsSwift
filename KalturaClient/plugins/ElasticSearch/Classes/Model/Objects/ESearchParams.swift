@@ -37,10 +37,6 @@ open class ESearchParams: ObjectBase {
 
 	public class ESearchParamsTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public func searchOperator<T: ESearchOperator.ESearchOperatorTokenizer>() -> T {
-			return T(self.append("searchOperator"))
-		}
-		
 		public var objectStatuses: BaseTokenizedObject {
 			get {
 				return self.append("objectStatuses") 
@@ -64,7 +60,6 @@ open class ESearchParams: ObjectBase {
 		}
 	}
 
-	public var searchOperator: ESearchOperator? = nil
 	public var objectStatuses: String? = nil
 	public var objectId: String? = nil
 	public var orderBy: ESearchOrderBy? = nil
@@ -86,8 +81,6 @@ open class ESearchParams: ObjectBase {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["searchOperator"] != nil {
-		searchOperator = try JSONParser.parse(object: dict["searchOperator"] as! [String: Any])		}
 		if dict["objectStatuses"] != nil {
 			objectStatuses = dict["objectStatuses"] as? String
 		}
@@ -104,9 +97,6 @@ open class ESearchParams: ObjectBase {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(searchOperator != nil) {
-			dict["searchOperator"] = searchOperator!.toDictionary()
-		}
 		if(objectStatuses != nil) {
 			dict["objectStatuses"] = objectStatuses!
 		}

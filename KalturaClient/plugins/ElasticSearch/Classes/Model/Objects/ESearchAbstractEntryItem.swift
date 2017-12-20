@@ -33,37 +33,64 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchUserItem: ESearchAbstractUserItem {
+open class ESearchAbstractEntryItem: ESearchEntryBaseItem {
 
-	public class ESearchUserItemTokenizer: ESearchAbstractUserItem.ESearchAbstractUserItemTokenizer {
+	public class ESearchAbstractEntryItemTokenizer: ESearchEntryBaseItem.ESearchEntryBaseItemTokenizer {
 		
-		public var fieldName: BaseTokenizedObject {
+		public var searchTerm: BaseTokenizedObject {
 			get {
-				return self.append("fieldName") 
+				return self.append("searchTerm") 
 			}
+		}
+		
+		public var itemType: BaseTokenizedObject {
+			get {
+				return self.append("itemType") 
+			}
+		}
+		
+		public func range<T: ESearchRange.ESearchRangeTokenizer>() -> T {
+			return T(self.append("range"))
 		}
 	}
 
-	public var fieldName: ESearchUserFieldName? = nil
+	public var searchTerm: String? = nil
+	public var itemType: ESearchItemType? = nil
+	public var range: ESearchRange? = nil
 
 
-	public func setMultiRequestToken(fieldName: String) {
-		self.dict["fieldName"] = fieldName
+	public func setMultiRequestToken(searchTerm: String) {
+		self.dict["searchTerm"] = searchTerm
+	}
+	
+	public func setMultiRequestToken(itemType: String) {
+		self.dict["itemType"] = itemType
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["fieldName"] != nil {
-			fieldName = ESearchUserFieldName(rawValue: "\(dict["fieldName"]!)")
+		if dict["searchTerm"] != nil {
+			searchTerm = dict["searchTerm"] as? String
 		}
+		if dict["itemType"] != nil {
+			itemType = ESearchItemType(rawValue: (dict["itemType"] as? Int)!)
+		}
+		if dict["range"] != nil {
+		range = try JSONParser.parse(object: dict["range"] as! [String: Any])		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(fieldName != nil) {
-			dict["fieldName"] = fieldName!.rawValue
+		if(searchTerm != nil) {
+			dict["searchTerm"] = searchTerm!
+		}
+		if(itemType != nil) {
+			dict["itemType"] = itemType!.rawValue
+		}
+		if(range != nil) {
+			dict["range"] = range!.toDictionary()
 		}
 		return dict
 	}

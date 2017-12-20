@@ -108,6 +108,12 @@ open class ESearchCuePointItemData: ESearchItemData {
 				return self.append("explanation") 
 			}
 		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
 	}
 
 	public var cuePointType: String? = nil
@@ -122,6 +128,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 	public var answers: String? = nil
 	public var hint: String? = nil
 	public var explanation: String? = nil
+	public var assetId: String? = nil
 
 
 	public func setMultiRequestToken(cuePointType: String) {
@@ -172,6 +179,10 @@ open class ESearchCuePointItemData: ESearchItemData {
 		self.dict["explanation"] = explanation
 	}
 	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -210,6 +221,9 @@ open class ESearchCuePointItemData: ESearchItemData {
 		}
 		if dict["explanation"] != nil {
 			explanation = dict["explanation"] as? String
+		}
+		if dict["assetId"] != nil {
+			assetId = dict["assetId"] as? String
 		}
 
 	}
@@ -251,6 +265,9 @@ open class ESearchCuePointItemData: ESearchItemData {
 		}
 		if(explanation != nil) {
 			dict["explanation"] = explanation!
+		}
+		if(assetId != nil) {
+			dict["assetId"] = assetId!
 		}
 		return dict
 	}

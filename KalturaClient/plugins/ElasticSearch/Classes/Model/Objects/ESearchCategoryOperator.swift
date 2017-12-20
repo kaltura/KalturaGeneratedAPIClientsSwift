@@ -33,37 +33,50 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchUserItem: ESearchAbstractUserItem {
+open class ESearchCategoryOperator: ESearchCategoryBaseItem {
 
-	public class ESearchUserItemTokenizer: ESearchAbstractUserItem.ESearchAbstractUserItemTokenizer {
+	public class ESearchCategoryOperatorTokenizer: ESearchCategoryBaseItem.ESearchCategoryBaseItemTokenizer {
 		
-		public var fieldName: BaseTokenizedObject {
+		public var operator: BaseTokenizedObject {
 			get {
-				return self.append("fieldName") 
+				return self.append("operator") 
 			}
+		}
+		
+		public var searchItems: ArrayTokenizedObject<ESearchCategoryBaseItem.ESearchCategoryBaseItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchCategoryBaseItem.ESearchCategoryBaseItemTokenizer>(self.append("searchItems"))
+			} 
 		}
 	}
 
-	public var fieldName: ESearchUserFieldName? = nil
+	public var operator: ESearchOperatorType? = nil
+	public var searchItems: Array<ESearchCategoryBaseItem>? = nil
 
 
-	public func setMultiRequestToken(fieldName: String) {
-		self.dict["fieldName"] = fieldName
+	public func setMultiRequestToken(operator: String) {
+		self.dict["operator"] = operator
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["fieldName"] != nil {
-			fieldName = ESearchUserFieldName(rawValue: "\(dict["fieldName"]!)")
+		if dict["operator"] != nil {
+			operator = ESearchOperatorType(rawValue: (dict["operator"] as? Int)!)
+		}
+		if dict["searchItems"] != nil {
+			searchItems = try JSONParser.parse(array: dict["searchItems"] as! [Any])
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(fieldName != nil) {
-			dict["fieldName"] = fieldName!.rawValue
+		if(operator != nil) {
+			dict["operator"] = operator!.rawValue
+		}
+		if(searchItems != nil) {
+			dict["searchItems"] = searchItems!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

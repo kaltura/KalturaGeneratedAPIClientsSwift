@@ -33,39 +33,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchUserItem: ESearchAbstractUserItem {
+open class ESearchUserBaseItem: ESearchBaseItem {
 
-	public class ESearchUserItemTokenizer: ESearchAbstractUserItem.ESearchAbstractUserItemTokenizer {
-		
-		public var fieldName: BaseTokenizedObject {
-			get {
-				return self.append("fieldName") 
-			}
-		}
+	public class ESearchUserBaseItemTokenizer: ESearchBaseItem.ESearchBaseItemTokenizer {
 	}
 
-	public var fieldName: ESearchUserFieldName? = nil
 
 
-	public func setMultiRequestToken(fieldName: String) {
-		self.dict["fieldName"] = fieldName
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["fieldName"] != nil {
-			fieldName = ESearchUserFieldName(rawValue: "\(dict["fieldName"]!)")
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(fieldName != nil) {
-			dict["fieldName"] = fieldName!.rawValue
-		}
-		return dict
-	}
 }
 
