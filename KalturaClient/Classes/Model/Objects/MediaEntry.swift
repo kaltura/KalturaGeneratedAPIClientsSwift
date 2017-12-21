@@ -108,6 +108,18 @@ open class MediaEntry: PlayableEntry {
 				return ArrayTokenizedObject<StreamContainer.StreamContainerTokenizer>(self.append("streams"))
 			} 
 		}
+		
+		public var isSequenceEntry: BaseTokenizedObject {
+			get {
+				return self.append("isSequenceEntry") 
+			}
+		}
+		
+		public var sequenceEntryIds: BaseTokenizedObject {
+			get {
+				return self.append("sequenceEntryIds") 
+			}
+		}
 	}
 
 	/**  The media type of the entry  */
@@ -135,6 +147,10 @@ open class MediaEntry: PlayableEntry {
 	public var isTrimDisabled: Bool? = nil
 	/**  Array of streams that exists on the entry  */
 	public var streams: Array<StreamContainer>? = nil
+	/**  True if the entry is a sequence entry  */
+	public var isSequenceEntry: Bool? = nil
+	/**  The sequence entries of the entry  */
+	public var sequenceEntryIds: String? = nil
 
 
 	public func setMultiRequestToken(mediaType: String) {
@@ -181,6 +197,14 @@ open class MediaEntry: PlayableEntry {
 		self.dict["isTrimDisabled"] = isTrimDisabled
 	}
 	
+	public func setMultiRequestToken(isSequenceEntry: String) {
+		self.dict["isSequenceEntry"] = isSequenceEntry
+	}
+	
+	public func setMultiRequestToken(sequenceEntryIds: String) {
+		self.dict["sequenceEntryIds"] = sequenceEntryIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -220,6 +244,12 @@ open class MediaEntry: PlayableEntry {
 		if dict["streams"] != nil {
 			streams = try JSONParser.parse(array: dict["streams"] as! [Any])
 		}
+		if dict["isSequenceEntry"] != nil {
+			isSequenceEntry = dict["isSequenceEntry"] as? Bool
+		}
+		if dict["sequenceEntryIds"] != nil {
+			sequenceEntryIds = dict["sequenceEntryIds"] as? String
+		}
 
 	}
 
@@ -248,6 +278,12 @@ open class MediaEntry: PlayableEntry {
 		}
 		if(streams != nil) {
 			dict["streams"] = streams!.map { value in value.toDictionary() }
+		}
+		if(isSequenceEntry != nil) {
+			dict["isSequenceEntry"] = isSequenceEntry!
+		}
+		if(sequenceEntryIds != nil) {
+			dict["sequenceEntryIds"] = sequenceEntryIds!
 		}
 		return dict
 	}
