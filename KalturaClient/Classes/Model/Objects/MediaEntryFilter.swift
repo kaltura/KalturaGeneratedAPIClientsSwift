@@ -36,53 +36,13 @@
 open class MediaEntryFilter: MediaEntryBaseFilter {
 
 	public class MediaEntryFilterTokenizer: MediaEntryBaseFilter.MediaEntryBaseFilterTokenizer {
-		
-		public var isSequenceEntry: BaseTokenizedObject {
-			get {
-				return self.append("isSequenceEntry") 
-			}
-		}
-		
-		public var sequenceEntryIdsIn: BaseTokenizedObject {
-			get {
-				return self.append("sequenceEntryIdsIn") 
-			}
-		}
 	}
 
-	public var isSequenceEntry: Bool? = nil
-	public var sequenceEntryIdsIn: String? = nil
 
 
-	public func setMultiRequestToken(isSequenceEntry: String) {
-		self.dict["isSequenceEntry"] = isSequenceEntry
-	}
-	
-	public func setMultiRequestToken(sequenceEntryIdsIn: String) {
-		self.dict["sequenceEntryIdsIn"] = sequenceEntryIdsIn
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["isSequenceEntry"] != nil {
-			isSequenceEntry = dict["isSequenceEntry"] as? Bool
-		}
-		if dict["sequenceEntryIdsIn"] != nil {
-			sequenceEntryIdsIn = dict["sequenceEntryIdsIn"] as? String
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(isSequenceEntry != nil) {
-			dict["isSequenceEntry"] = isSequenceEntry!
-		}
-		if(sequenceEntryIdsIn != nil) {
-			dict["sequenceEntryIdsIn"] = sequenceEntryIdsIn!
-		}
-		return dict
-	}
 }
 

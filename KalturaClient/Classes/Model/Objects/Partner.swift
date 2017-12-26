@@ -360,6 +360,24 @@ open class Partner: ObjectBase {
 				return ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer>(self.append("eSearchLanguages"))
 			} 
 		}
+		
+		public var publisherEnvironmentType: BaseTokenizedObject {
+			get {
+				return self.append("publisherEnvironmentType") 
+			}
+		}
+		
+		public var ovpEnvironmentUrl: BaseTokenizedObject {
+			get {
+				return self.append("ovpEnvironmentUrl") 
+			}
+		}
+		
+		public var ottEnvironmentUrl: BaseTokenizedObject {
+			get {
+				return self.append("ottEnvironmentUrl") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -421,6 +439,9 @@ open class Partner: ObjectBase {
 	public var referenceId: String? = nil
 	public var timeAlignedRenditions: Bool? = nil
 	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
+	public var publisherEnvironmentType: Int? = nil
+	public var ovpEnvironmentUrl: String? = nil
+	public var ottEnvironmentUrl: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -623,6 +644,18 @@ open class Partner: ObjectBase {
 		self.dict["timeAlignedRenditions"] = timeAlignedRenditions
 	}
 	
+	public func setMultiRequestToken(publisherEnvironmentType: String) {
+		self.dict["publisherEnvironmentType"] = publisherEnvironmentType
+	}
+	
+	public func setMultiRequestToken(ovpEnvironmentUrl: String) {
+		self.dict["ovpEnvironmentUrl"] = ovpEnvironmentUrl
+	}
+	
+	public func setMultiRequestToken(ottEnvironmentUrl: String) {
+		self.dict["ottEnvironmentUrl"] = ottEnvironmentUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -787,6 +820,15 @@ open class Partner: ObjectBase {
 		}
 		if dict["eSearchLanguages"] != nil {
 			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
+		}
+		if dict["publisherEnvironmentType"] != nil {
+			publisherEnvironmentType = dict["publisherEnvironmentType"] as? Int
+		}
+		if dict["ovpEnvironmentUrl"] != nil {
+			ovpEnvironmentUrl = dict["ovpEnvironmentUrl"] as? String
+		}
+		if dict["ottEnvironmentUrl"] != nil {
+			ottEnvironmentUrl = dict["ottEnvironmentUrl"] as? String
 		}
 
 	}
