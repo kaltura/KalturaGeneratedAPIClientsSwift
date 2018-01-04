@@ -25,44 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchEntryFieldName: String {
-	case ACCESS_CONTROL_ID = "access_control_id"
-	case ADMIN_TAGS = "admin_tags"
-	case CONVERSION_PROFILE_ID = "conversion_profile_id"
-	case CREATED_AT = "created_at"
-	case CREATOR_ID = "creator_kuser_id"
-	case CREDIT = "credit"
-	case DESCRIPTION = "description"
-	case END_DATE = "end_date"
-	case ENTITLED_USER_EDIT = "entitled_kusers_edit"
-	case ENTITLED_USER_PUBLISH = "entitled_kusers_publish"
-	case ENTRY_TYPE = "entry_type"
-	case EXTERNAL_SOURCE_TYPE = "external_source_type"
-	case ID = "id"
-	case IS_LIVE = "is_live"
-	case IS_QUIZ = "is_quiz"
-	case USER_ID = "kuser_id"
-	case LENGTH_IN_MSECS = "length_in_msecs"
-	case MEDIA_TYPE = "media_type"
-	case MODERATION_STATUS = "moderation_status"
-	case NAME = "name"
-	case PARENT_ENTRY_ID = "parent_id"
-	case PUSH_PUBLISH = "push_publish"
-	case RECORDED_ENTRY_ID = "recorded_entry_id"
-	case REDIRECT_ENTRY_ID = "redirect_entry_id"
-	case REFERENCE_ID = "reference_id"
-	case SITE_URL = "site_url"
-	case SOURCE_TYPE = "source_type"
-	case START_DATE = "start_date"
-	case TAGS = "tags"
-	case TEMPLATE_ENTRY_ID = "template_entry_id"
-	case UPDATED_AT = "updated_at"
-	case VIEWS = "views"
-	case VOTES = "votes"
+
+open class ESearchCategoryEntryItem: ESearchAbstractEntryItem {
+
+	public class ESearchCategoryEntryItemTokenizer: ESearchAbstractEntryItem.ESearchAbstractEntryItemTokenizer {
+		
+		public var fieldName: BaseTokenizedObject {
+			get {
+				return self.append("fieldName") 
+			}
+		}
+		
+		public var categoryEntryStatus: BaseTokenizedObject {
+			get {
+				return self.append("categoryEntryStatus") 
+			}
+		}
+	}
+
+	public var fieldName: ESearchCategoryEntryFieldName? = nil
+	public var categoryEntryStatus: CategoryEntryStatus? = nil
+
+
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
+	public func setMultiRequestToken(categoryEntryStatus: String) {
+		self.dict["categoryEntryStatus"] = categoryEntryStatus
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["fieldName"] != nil {
+			fieldName = ESearchCategoryEntryFieldName(rawValue: "\(dict["fieldName"]!)")
+		}
+		if dict["categoryEntryStatus"] != nil {
+			categoryEntryStatus = CategoryEntryStatus(rawValue: (dict["categoryEntryStatus"] as? Int)!)
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(fieldName != nil) {
+			dict["fieldName"] = fieldName!.rawValue
+		}
+		if(categoryEntryStatus != nil) {
+			dict["categoryEntryStatus"] = categoryEntryStatus!.rawValue
+		}
+		return dict
+	}
 }
+
