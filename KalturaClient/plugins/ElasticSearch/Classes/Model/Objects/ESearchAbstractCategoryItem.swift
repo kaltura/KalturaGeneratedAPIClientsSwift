@@ -52,11 +52,18 @@ open class ESearchAbstractCategoryItem: ESearchCategoryBaseItem {
 		public func range<T: ESearchRange.ESearchRangeTokenizer>() -> T {
 			return T(self.append("range"))
 		}
+		
+		public var addHighlight: BaseTokenizedObject {
+			get {
+				return self.append("addHighlight") 
+			}
+		}
 	}
 
 	public var searchTerm: String? = nil
 	public var itemType: ESearchItemType? = nil
 	public var range: ESearchRange? = nil
+	public var addHighlight: Bool? = nil
 
 
 	public func setMultiRequestToken(searchTerm: String) {
@@ -65,6 +72,10 @@ open class ESearchAbstractCategoryItem: ESearchCategoryBaseItem {
 	
 	public func setMultiRequestToken(itemType: String) {
 		self.dict["itemType"] = itemType
+	}
+	
+	public func setMultiRequestToken(addHighlight: String) {
+		self.dict["addHighlight"] = addHighlight
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -78,6 +89,9 @@ open class ESearchAbstractCategoryItem: ESearchCategoryBaseItem {
 		}
 		if dict["range"] != nil {
 		range = try JSONParser.parse(object: dict["range"] as! [String: Any])		}
+		if dict["addHighlight"] != nil {
+			addHighlight = dict["addHighlight"] as? Bool
+		}
 
 	}
 
@@ -91,6 +105,9 @@ open class ESearchAbstractCategoryItem: ESearchCategoryBaseItem {
 		}
 		if(range != nil) {
 			dict["range"] = range!.toDictionary()
+		}
+		if(addHighlight != nil) {
+			dict["addHighlight"] = addHighlight!
 		}
 		return dict
 	}

@@ -52,18 +52,11 @@ open class ESearchParams: ObjectBase {
 		public func orderBy<T: ESearchOrderBy.ESearchOrderByTokenizer>() -> T {
 			return T(self.append("orderBy"))
 		}
-		
-		public var useHighlight: BaseTokenizedObject {
-			get {
-				return self.append("useHighlight") 
-			}
-		}
 	}
 
 	public var objectStatuses: String? = nil
 	public var objectId: String? = nil
 	public var orderBy: ESearchOrderBy? = nil
-	public var useHighlight: Bool? = nil
 
 
 	public func setMultiRequestToken(objectStatuses: String) {
@@ -72,10 +65,6 @@ open class ESearchParams: ObjectBase {
 	
 	public func setMultiRequestToken(objectId: String) {
 		self.dict["objectId"] = objectId
-	}
-	
-	public func setMultiRequestToken(useHighlight: String) {
-		self.dict["useHighlight"] = useHighlight
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -89,9 +78,6 @@ open class ESearchParams: ObjectBase {
 		}
 		if dict["orderBy"] != nil {
 		orderBy = try JSONParser.parse(object: dict["orderBy"] as! [String: Any])		}
-		if dict["useHighlight"] != nil {
-			useHighlight = dict["useHighlight"] as? Bool
-		}
 
 	}
 
@@ -105,9 +91,6 @@ open class ESearchParams: ObjectBase {
 		}
 		if(orderBy != nil) {
 			dict["orderBy"] = orderBy!.toDictionary()
-		}
-		if(useHighlight != nil) {
-			dict["useHighlight"] = useHighlight!
 		}
 		return dict
 	}
