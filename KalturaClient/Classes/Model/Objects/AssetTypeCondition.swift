@@ -25,32 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ConditionType: String {
-	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
-	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
-	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"
-	case METADATA_FIELD_COMPARE = "metadata.FieldCompare"
-	case METADATA_FIELD_MATCH = "metadata.FieldMatch"
-	case AUTHENTICATED = "1"
-	case COUNTRY = "2"
-	case IP_ADDRESS = "3"
-	case SITE = "4"
-	case USER_AGENT = "5"
-	case FIELD_MATCH = "6"
-	case FIELD_COMPARE = "7"
-	case ASSET_PROPERTIES_COMPARE = "8"
-	case USER_ROLE = "9"
-	case GEO_DISTANCE = "10"
-	case OR_OPERATOR = "11"
-	case HASH = "12"
-	case DELIVERY_PROFILE = "13"
-	case ACTIVE_EDGE_VALIDATE = "14"
-	case ANONYMOUS_IP = "15"
-	case ASSET_TYPE = "16"
+
+open class AssetTypeCondition: Condition {
+
+	public class AssetTypeConditionTokenizer: Condition.ConditionTokenizer {
+		
+		public var assetTypes: BaseTokenizedObject {
+			get {
+				return self.append("assetTypes") 
+			}
+		}
+	}
+
+	public var assetTypes: String? = nil
+
+
+	public func setMultiRequestToken(assetTypes: String) {
+		self.dict["assetTypes"] = assetTypes
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["assetTypes"] != nil {
+			assetTypes = dict["assetTypes"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(assetTypes != nil) {
+			dict["assetTypes"] = assetTypes!
+		}
+		return dict
+	}
 }
+
