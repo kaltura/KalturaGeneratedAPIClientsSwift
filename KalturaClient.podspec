@@ -17,25 +17,25 @@ end
 s.subspec 'ActivitiBusinessProcessNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/activitiBusinessProcessNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/businessProcessNotification'
+ ssp.dependency 'KalturaClient/BusinessProcessNotification'
 end
 
 s.subspec 'AdCuePoint' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/adCuePoint/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'AdminConsole' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/adminConsole/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/fileSync'
+ ssp.dependency 'KalturaClient/FileSync'
 end
 
 s.subspec 'Annotation' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/annotation/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'Aspera' do |ssp|
@@ -56,14 +56,14 @@ end
 s.subspec 'AvnDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/avnDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'BpmEventNotificationIntegration' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bpmEventNotificationIntegration/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/integration'
- ssp.dependency 'KalturaClient/businessProcessNotification'
+ ssp.dependency 'KalturaClient/Integration'
+ ssp.dependency 'KalturaClient/BusinessProcessNotification'
 end
 
 s.subspec 'BulkUpload' do |ssp|
@@ -74,32 +74,32 @@ end
 s.subspec 'BulkUploadCsv' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bulkUploadCsv/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/bulkUpload'
+ ssp.dependency 'KalturaClient/BulkUpload'
 end
 
 s.subspec 'BulkUploadFilter' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bulkUploadFilter/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/bulkUpload'
+ ssp.dependency 'KalturaClient/BulkUpload'
 end
 
 s.subspec 'ScheduleBulkUpload' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduleBulkUpload/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/bulkUpload'
- ssp.dependency 'KalturaClient/schedule'
+ ssp.dependency 'KalturaClient/BulkUpload'
+ ssp.dependency 'KalturaClient/Schedule'
 end
 
 s.subspec 'BulkUploadXml' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bulkUploadXml/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/bulkUpload'
+ ssp.dependency 'KalturaClient/BulkUpload'
 end
 
 s.subspec 'BusinessProcessNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/businessProcessNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/eventNotification'
+ ssp.dependency 'KalturaClient/EventNotification'
 end
 
 s.subspec 'Caption' do |ssp|
@@ -110,40 +110,40 @@ end
 s.subspec 'CaptionSearch' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/captionSearch/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/caption'
+ ssp.dependency 'KalturaClient/Caption'
 end
 
 s.subspec 'Cielo24' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/cielo24/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/integration'
- ssp.dependency 'KalturaClient/transcript'
+ ssp.dependency 'KalturaClient/Integration'
+ ssp.dependency 'KalturaClient/Transcript'
 end
 
 s.subspec 'CodeCuePoint' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/codeCuePoint/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'ComcastMrssDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/comcastMrssDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
- ssp.dependency 'KalturaClient/caption'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/ContentDistribution'
+ ssp.dependency 'KalturaClient/Caption'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'ContentDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/contentDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/metadata'
+ ssp.dependency 'KalturaClient/Metadata'
 end
 
 s.subspec 'CrossKalturaDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/crossKalturaDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'CuePoint' do |ssp|
@@ -154,7 +154,7 @@ end
 s.subspec 'DailymotionDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/dailymotionDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'Document' do |ssp|
@@ -165,8 +165,8 @@ end
 s.subspec 'DoubleClickDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/doubleClickDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/ContentDistribution'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'Drm' do |ssp|
@@ -177,21 +177,21 @@ end
 s.subspec 'DropFolder' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/dropFolder/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/metadata'
+ ssp.dependency 'KalturaClient/Metadata'
 end
 
 s.subspec 'ScheduleDropFolder' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduleDropFolder/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/scheduleBulkUpload'
- ssp.dependency 'KalturaClient/dropFolder'
+ ssp.dependency 'KalturaClient/ScheduleBulkUpload'
+ ssp.dependency 'KalturaClient/DropFolder'
 end
 
 s.subspec 'DropFolderXmlBulkUpload' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/dropFolderXmlBulkUpload/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/bulkUploadXml'
- ssp.dependency 'KalturaClient/dropFolder'
+ ssp.dependency 'KalturaClient/BulkUploadXml'
+ ssp.dependency 'KalturaClient/DropFolder'
 end
 
 s.subspec 'ElasticSearch' do |ssp|
@@ -202,13 +202,13 @@ end
 s.subspec 'EmailNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/emailNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/eventNotification'
+ ssp.dependency 'KalturaClient/EventNotification'
 end
 
 s.subspec 'EventCuePoint' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/eventCuePoint/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'EventNotification' do |ssp|
@@ -224,19 +224,19 @@ end
 s.subspec 'FacebookDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/facebookDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'Fairplay' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/fairplay/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/drm'
+ ssp.dependency 'KalturaClient/Drm'
 end
 
 s.subspec 'FeedDropFolder' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/FeedDropFolder/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/dropFolder'
+ ssp.dependency 'KalturaClient/DropFolder'
 end
 
 s.subspec 'FileSync' do |ssp|
@@ -247,45 +247,45 @@ end
 s.subspec 'FreewheelDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/freewheelDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'FreewheelGenericDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/freewheelGenericDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/ContentDistribution'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'FtpDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/ftpDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'HttpNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/httpNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/eventNotification'
+ ssp.dependency 'KalturaClient/EventNotification'
 end
 
 s.subspec 'HuluDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/huluDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/ContentDistribution'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'IdeticDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/ideticDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'Integration' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/integration/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/metadata'
+ ssp.dependency 'KalturaClient/Metadata'
 end
 
 s.subspec 'KalturaInternalTools' do |ssp|
@@ -311,19 +311,19 @@ end
 s.subspec 'MetroPcsDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/metroPcsDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'MsnDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/msnDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'PlayReady' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/playReady/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/drm'
+ ssp.dependency 'KalturaClient/Drm'
 end
 
 s.subspec 'Poll' do |ssp|
@@ -334,19 +334,19 @@ end
 s.subspec 'PushNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/pushNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/eventNotification'
+ ssp.dependency 'KalturaClient/EventNotification'
 end
 
 s.subspec 'QuickPlayDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/quickPlayDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'Quiz' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/quiz/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'Schedule' do |ssp|
@@ -362,22 +362,22 @@ end
 s.subspec 'ScheduledTaskContentDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduledTaskContentDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/scheduledTask'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ScheduledTask'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'ScheduledTaskEventNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduledTaskEventNotification/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/scheduledTask'
- ssp.dependency 'KalturaClient/eventNotification'
+ ssp.dependency 'KalturaClient/ScheduledTask'
+ ssp.dependency 'KalturaClient/EventNotification'
 end
 
 s.subspec 'ScheduledTaskMetadata' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduledTaskMetadata/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/scheduledTask'
- ssp.dependency 'KalturaClient/metadata'
+ ssp.dependency 'KalturaClient/ScheduledTask'
+ ssp.dependency 'KalturaClient/Metadata'
 end
 
 s.subspec 'ShortLink' do |ssp|
@@ -398,19 +398,19 @@ end
 s.subspec 'ThumbCuePoint' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/thumbCuePoint/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/cuePoint'
+ ssp.dependency 'KalturaClient/CuePoint'
 end
 
 s.subspec 'Transcript' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/transcript/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/attachment'
+ ssp.dependency 'KalturaClient/Attachment'
 end
 
 s.subspec 'UnicornDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/unicornDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'VarConsole' do |ssp|
@@ -436,20 +436,20 @@ end
 s.subspec 'Voicebase' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/voicebase/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/integration'
- ssp.dependency 'KalturaClient/transcript'
+ ssp.dependency 'KalturaClient/Integration'
+ ssp.dependency 'KalturaClient/Transcript'
 end
 
 s.subspec 'WebexDropFolder' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/WebexDropFolder/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/dropFolder'
+ ssp.dependency 'KalturaClient/DropFolder'
 end
 
 s.subspec 'Widevine' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/widevine/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/drm'
+ ssp.dependency 'KalturaClient/Drm'
 end
 
 s.subspec 'Wowza' do |ssp|
@@ -460,19 +460,19 @@ end
 s.subspec 'YahooDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/yahooDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'YoutubeApiDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/youtubeApiDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'YouTubeDistribution' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/youTubeDistribution/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/contentDistribution'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.default_subspec = 'Core'
