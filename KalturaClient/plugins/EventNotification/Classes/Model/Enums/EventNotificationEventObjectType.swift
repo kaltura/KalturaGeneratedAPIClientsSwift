@@ -78,4 +78,5 @@ public enum EventNotificationEventObjectType: String {
 	case WIDGET = "36"
 	case CATEGORYENTRY = "37"
 	case LIVE_STREAM = "38"
+	case SERVER_NODE = "39"
 }

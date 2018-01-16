@@ -35,7 +35,6 @@ public enum BatchJobType: String {
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
 	case DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete"
-	case CONVERT = "0"
 	case DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable"
 	case DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable"
 	case DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport"
@@ -43,6 +42,7 @@ public enum BatchJobType: String {
 	case DISTRIBUTION_SYNC = "contentDistribution.DistributionSync"
 	case DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate"
 	case DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor"
+	case CONVERT = "0"
 	case DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher"
 	case EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler"
 	case INTEGRATION = "integration.Integration"
@@ -91,4 +91,5 @@ public enum BatchJobType: String {
 	case LIVE_TO_VOD = "42"
 	case COPY_CAPTIONS = "43"
 	case CHUNKED_ENCODE_JOB_SCHEDULER = "44"
+	case SERVER_NODE_MONITOR = "45"
 }
