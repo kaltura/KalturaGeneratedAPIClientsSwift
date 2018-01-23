@@ -36,32 +36,13 @@
 open class ESearchItemData: ObjectBase {
 
 	public class ESearchItemDataTokenizer: ObjectBase.ObjectBaseTokenizer {
-		
-		public var highlight: ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer>(self.append("highlight"))
-			} 
-		}
 	}
 
-	public var highlight: Array<ESearchHighlight>? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["highlight"] != nil {
-			highlight = try JSONParser.parse(array: dict["highlight"] as! [Any])
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(highlight != nil) {
-			dict["highlight"] = highlight!.map { value in value.toDictionary() }
-		}
-		return dict
-	}
 }
 

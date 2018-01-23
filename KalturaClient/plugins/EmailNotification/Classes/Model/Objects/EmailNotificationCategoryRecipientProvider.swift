@@ -42,10 +42,6 @@ open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipien
 			return T(self.append("categoryId"))
 		}
 		
-		public func categoryIds<T: StringValue.StringValueTokenizer>() -> T {
-			return T(self.append("categoryIds"))
-		}
-		
 		public func categoryUserFilter<T: CategoryUserProviderFilter.CategoryUserProviderFilterTokenizer>() -> T {
 			return T(self.append("categoryUserFilter"))
 		}
@@ -53,9 +49,6 @@ open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipien
 
 	/**  The ID of the category whose subscribers should receive the email notification.  */
 	public var categoryId: StringValue? = nil
-	/**  The IDs of the categories whose subscribers should receive the email
-	  notification.  */
-	public var categoryIds: StringValue? = nil
 	public var categoryUserFilter: CategoryUserProviderFilter? = nil
 
 
@@ -64,8 +57,6 @@ open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipien
 		// set members values:
 		if dict["categoryId"] != nil {
 		categoryId = try JSONParser.parse(object: dict["categoryId"] as! [String: Any])		}
-		if dict["categoryIds"] != nil {
-		categoryIds = try JSONParser.parse(object: dict["categoryIds"] as! [String: Any])		}
 		if dict["categoryUserFilter"] != nil {
 		categoryUserFilter = try JSONParser.parse(object: dict["categoryUserFilter"] as! [String: Any])		}
 
@@ -75,9 +66,6 @@ open class EmailNotificationCategoryRecipientProvider: EmailNotificationRecipien
 		var dict: [String: Any] = super.toDictionary()
 		if(categoryId != nil) {
 			dict["categoryId"] = categoryId!.toDictionary()
-		}
-		if(categoryIds != nil) {
-			dict["categoryIds"] = categoryIds!.toDictionary()
 		}
 		if(categoryUserFilter != nil) {
 			dict["categoryUserFilter"] = categoryUserFilter!.toDictionary()

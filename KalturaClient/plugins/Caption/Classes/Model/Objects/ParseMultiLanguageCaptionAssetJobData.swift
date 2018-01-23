@@ -54,18 +54,11 @@ open class ParseMultiLanguageCaptionAssetJobData: JobData {
 				return self.append("fileLocation") 
 			}
 		}
-		
-		public var fileEncryptionKey: BaseTokenizedObject {
-			get {
-				return self.append("fileEncryptionKey") 
-			}
-		}
 	}
 
 	public var multiLanaguageCaptionAssetId: String? = nil
 	public var entryId: String? = nil
 	public var fileLocation: String? = nil
-	public var fileEncryptionKey: String? = nil
 
 
 	public func setMultiRequestToken(multiLanaguageCaptionAssetId: String) {
@@ -80,10 +73,6 @@ open class ParseMultiLanguageCaptionAssetJobData: JobData {
 		self.dict["fileLocation"] = fileLocation
 	}
 	
-	public func setMultiRequestToken(fileEncryptionKey: String) {
-		self.dict["fileEncryptionKey"] = fileEncryptionKey
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -95,9 +84,6 @@ open class ParseMultiLanguageCaptionAssetJobData: JobData {
 		}
 		if dict["fileLocation"] != nil {
 			fileLocation = dict["fileLocation"] as? String
-		}
-		if dict["fileEncryptionKey"] != nil {
-			fileEncryptionKey = dict["fileEncryptionKey"] as? String
 		}
 
 	}
@@ -112,9 +98,6 @@ open class ParseMultiLanguageCaptionAssetJobData: JobData {
 		}
 		if(fileLocation != nil) {
 			dict["fileLocation"] = fileLocation!
-		}
-		if(fileEncryptionKey != nil) {
-			dict["fileEncryptionKey"] = fileEncryptionKey!
 		}
 		return dict
 	}

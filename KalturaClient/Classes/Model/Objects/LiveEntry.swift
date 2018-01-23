@@ -124,24 +124,6 @@ open class LiveEntry: MediaEntry {
 				return self.append("segmentDuration") 
 			}
 		}
-		
-		public var explicitLive: BaseTokenizedObject {
-			get {
-				return self.append("explicitLive") 
-			}
-		}
-		
-		public var viewMode: BaseTokenizedObject {
-			get {
-				return self.append("viewMode") 
-			}
-		}
-		
-		public var recordingStatus: BaseTokenizedObject {
-			get {
-				return self.append("recordingStatus") 
-			}
-		}
 	}
 
 	/**  The message to be presented when the stream is offline  */
@@ -175,9 +157,6 @@ open class LiveEntry: MediaEntry {
 	public var liveStatus: EntryServerNodeStatus? = nil
 	/**  The chunk duration value in milliseconds  */
 	public var segmentDuration: Int? = nil
-	public var explicitLive: Bool? = nil
-	public var viewMode: ViewMode? = nil
-	public var recordingStatus: RecordingStatus? = nil
 
 
 	public func setMultiRequestToken(offlineMessage: String) {
@@ -228,18 +207,6 @@ open class LiveEntry: MediaEntry {
 		self.dict["segmentDuration"] = segmentDuration
 	}
 	
-	public func setMultiRequestToken(explicitLive: String) {
-		self.dict["explicitLive"] = explicitLive
-	}
-	
-	public func setMultiRequestToken(viewMode: String) {
-		self.dict["viewMode"] = viewMode
-	}
-	
-	public func setMultiRequestToken(recordingStatus: String) {
-		self.dict["recordingStatus"] = recordingStatus
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -287,15 +254,6 @@ open class LiveEntry: MediaEntry {
 		if dict["segmentDuration"] != nil {
 			segmentDuration = dict["segmentDuration"] as? Int
 		}
-		if dict["explicitLive"] != nil {
-			explicitLive = dict["explicitLive"] as? Bool
-		}
-		if dict["viewMode"] != nil {
-			viewMode = ViewMode(rawValue: (dict["viewMode"] as? Int)!)
-		}
-		if dict["recordingStatus"] != nil {
-			recordingStatus = RecordingStatus(rawValue: (dict["recordingStatus"] as? Int)!)
-		}
 
 	}
 
@@ -336,15 +294,6 @@ open class LiveEntry: MediaEntry {
 		}
 		if(segmentDuration != nil) {
 			dict["segmentDuration"] = segmentDuration!
-		}
-		if(explicitLive != nil) {
-			dict["explicitLive"] = explicitLive!
-		}
-		if(viewMode != nil) {
-			dict["viewMode"] = viewMode!.rawValue
-		}
-		if(recordingStatus != nil) {
-			dict["recordingStatus"] = recordingStatus!.rawValue
 		}
 		return dict
 	}

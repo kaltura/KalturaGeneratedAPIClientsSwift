@@ -27,13 +27,52 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class TvinciDistributionTag: ObjectBase {
+
+	public class TvinciDistributionTagTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var tagname: BaseTokenizedObject {
+			get {
+				return self.append("tagname") 
+			}
+		}
+		
+		public var extension_: BaseTokenizedObject {
+			get {
+				return self.append("extension_") 
+			}
+		}
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var format: BaseTokenizedObject {
+			get {
+				return self.append("format") 
+			}
+		}
+		
+		public var filename: BaseTokenizedObject {
+			get {
+				return self.append("filename") 
+			}
+		}
+		
+		public var ppvmodule: BaseTokenizedObject {
+			get {
+				return self.append("ppvmodule") 
+			}
+		}
+	}
 
 	public var tagname: String? = nil
 	public var extension_: String? = nil
@@ -43,6 +82,30 @@ open class TvinciDistributionTag: ObjectBase {
 	public var ppvmodule: String? = nil
 
 
+	public func setMultiRequestToken(tagname: String) {
+		self.dict["tagname"] = tagname
+	}
+	
+	public func setMultiRequestToken(extension_: String) {
+		self.dict["extension"] = extension_
+	}
+	
+	public func setMultiRequestToken(protocol_: String) {
+		self.dict["protocol"] = protocol_
+	}
+	
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(filename: String) {
+		self.dict["filename"] = filename
+	}
+	
+	public func setMultiRequestToken(ppvmodule: String) {
+		self.dict["ppvmodule"] = ppvmodule
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -67,7 +130,7 @@ open class TvinciDistributionTag: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(tagname != nil) {
 			dict["tagname"] = tagname!

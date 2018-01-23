@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,23 @@
 
 open class ExampleIntegrationJobProviderData: IntegrationJobProviderData {
 
+	public class ExampleIntegrationJobProviderDataTokenizer: IntegrationJobProviderData.IntegrationJobProviderDataTokenizer {
+		
+		public var exampleUrl: BaseTokenizedObject {
+			get {
+				return self.append("exampleUrl") 
+			}
+		}
+	}
+
 	/**  Just an example  */
 	public var exampleUrl: String? = nil
 
 
+	public func setMultiRequestToken(exampleUrl: String) {
+		self.dict["exampleUrl"] = exampleUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -48,7 +61,7 @@ open class ExampleIntegrationJobProviderData: IntegrationJobProviderData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(exampleUrl != nil) {
 			dict["exampleUrl"] = exampleUrl!

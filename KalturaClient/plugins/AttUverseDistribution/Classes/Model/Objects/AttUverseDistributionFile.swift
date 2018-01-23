@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,12 +35,55 @@
 
 open class AttUverseDistributionFile: ObjectBase {
 
+	public class AttUverseDistributionFileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var remoteFilename: BaseTokenizedObject {
+			get {
+				return self.append("remoteFilename") 
+			}
+		}
+		
+		public var localFilePath: BaseTokenizedObject {
+			get {
+				return self.append("localFilePath") 
+			}
+		}
+		
+		public var assetType: BaseTokenizedObject {
+			get {
+				return self.append("assetType") 
+			}
+		}
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+	}
+
 	public var remoteFilename: String? = nil
 	public var localFilePath: String? = nil
 	public var assetType: AssetType? = nil
 	public var assetId: String? = nil
 
 
+	public func setMultiRequestToken(remoteFilename: String) {
+		self.dict["remoteFilename"] = remoteFilename
+	}
+	
+	public func setMultiRequestToken(localFilePath: String) {
+		self.dict["localFilePath"] = localFilePath
+	}
+	
+	public func setMultiRequestToken(assetType: String) {
+		self.dict["assetType"] = assetType
+	}
+	
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -59,7 +102,7 @@ open class AttUverseDistributionFile: ObjectBase {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(remoteFilename != nil) {
 			dict["remoteFilename"] = remoteFilename!

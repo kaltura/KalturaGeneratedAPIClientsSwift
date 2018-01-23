@@ -36,37 +36,13 @@
 open class LiveStreamScheduleEvent: EntryScheduleEvent {
 
 	public class LiveStreamScheduleEventTokenizer: EntryScheduleEvent.EntryScheduleEventTokenizer {
-		
-		public var projectedAudience: BaseTokenizedObject {
-			get {
-				return self.append("projectedAudience") 
-			}
-		}
 	}
 
-	/**  Defines the expected audience.  */
-	public var projectedAudience: Int? = nil
 
 
-	public func setMultiRequestToken(projectedAudience: String) {
-		self.dict["projectedAudience"] = projectedAudience
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["projectedAudience"] != nil {
-			projectedAudience = dict["projectedAudience"] as? Int
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(projectedAudience != nil) {
-			dict["projectedAudience"] = projectedAudience!
-		}
-		return dict
-	}
 }
 

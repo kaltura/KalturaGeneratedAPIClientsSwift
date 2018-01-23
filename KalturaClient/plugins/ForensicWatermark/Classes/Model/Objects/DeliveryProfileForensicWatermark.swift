@@ -27,13 +27,40 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class DeliveryProfileForensicWatermark: DeliveryProfile {
+
+	public class DeliveryProfileForensicWatermarkTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var internalUrl: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("internalUrl"))
+			} 
+		}
+		
+		public var encryptionKey: BaseTokenizedObject {
+			get {
+				return self.append("encryptionKey") 
+			}
+		}
+		
+		public var encryptionIv: BaseTokenizedObject {
+			get {
+				return self.append("encryptionIv") 
+			}
+		}
+		
+		public var encryptionRegex: BaseTokenizedObject {
+			get {
+				return self.append("encryptionRegex") 
+			}
+		}
+	}
 
 	/**  The URL used to pull manifest from the server, keyed by dc id, asterisk means
 	  all dcs  */
@@ -47,6 +74,18 @@ open class DeliveryProfileForensicWatermark: DeliveryProfile {
 	public var encryptionRegex: String? = nil
 
 
+	public func setMultiRequestToken(encryptionKey: String) {
+		self.dict["encryptionKey"] = encryptionKey
+	}
+	
+	public func setMultiRequestToken(encryptionIv: String) {
+		self.dict["encryptionIv"] = encryptionIv
+	}
+	
+	public func setMultiRequestToken(encryptionRegex: String) {
+		self.dict["encryptionRegex"] = encryptionRegex
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -65,7 +104,7 @@ open class DeliveryProfileForensicWatermark: DeliveryProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(internalUrl != nil) {
 			dict["internalUrl"] = internalUrl!.map { value in value.toDictionary() }

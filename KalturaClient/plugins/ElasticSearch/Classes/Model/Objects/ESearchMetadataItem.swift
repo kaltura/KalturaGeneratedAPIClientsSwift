@@ -48,17 +48,10 @@ open class ESearchMetadataItem: ESearchItem {
 				return self.append("metadataProfileId") 
 			}
 		}
-		
-		public var metadataFieldId: BaseTokenizedObject {
-			get {
-				return self.append("metadataFieldId") 
-			}
-		}
 	}
 
 	public var xpath: String? = nil
 	public var metadataProfileId: Int? = nil
-	public var metadataFieldId: Int? = nil
 
 
 	public func setMultiRequestToken(xpath: String) {
@@ -67,10 +60,6 @@ open class ESearchMetadataItem: ESearchItem {
 	
 	public func setMultiRequestToken(metadataProfileId: String) {
 		self.dict["metadataProfileId"] = metadataProfileId
-	}
-	
-	public func setMultiRequestToken(metadataFieldId: String) {
-		self.dict["metadataFieldId"] = metadataFieldId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -82,9 +71,6 @@ open class ESearchMetadataItem: ESearchItem {
 		if dict["metadataProfileId"] != nil {
 			metadataProfileId = dict["metadataProfileId"] as? Int
 		}
-		if dict["metadataFieldId"] != nil {
-			metadataFieldId = dict["metadataFieldId"] as? Int
-		}
 
 	}
 
@@ -95,9 +81,6 @@ open class ESearchMetadataItem: ESearchItem {
 		}
 		if(metadataProfileId != nil) {
 			dict["metadataProfileId"] = metadataProfileId!
-		}
-		if(metadataFieldId != nil) {
-			dict["metadataFieldId"] = metadataFieldId!
 		}
 		return dict
 	}

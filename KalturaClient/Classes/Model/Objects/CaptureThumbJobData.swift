@@ -37,8 +37,10 @@ open class CaptureThumbJobData: JobData {
 
 	public class CaptureThumbJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public func fileContainer<T: FileContainer.FileContainerTokenizer>() -> T {
-			return T(self.append("fileContainer"))
+		public var srcFileSyncLocalPath: BaseTokenizedObject {
+			get {
+				return self.append("srcFileSyncLocalPath") 
+			}
 		}
 		
 		public var actualSrcFileSyncLocalPath: BaseTokenizedObject {
@@ -84,7 +86,7 @@ open class CaptureThumbJobData: JobData {
 		}
 	}
 
-	public var fileContainer: FileContainer? = nil
+	public var srcFileSyncLocalPath: String? = nil
 	/**  The translated path as used by the scheduler  */
 	public var actualSrcFileSyncLocalPath: String? = nil
 	public var srcFileSyncRemoteUrl: String? = nil
@@ -95,6 +97,10 @@ open class CaptureThumbJobData: JobData {
 	public var thumbPath: String? = nil
 
 
+	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
+		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
+	}
+	
 	public func setMultiRequestToken(actualSrcFileSyncLocalPath: String) {
 		self.dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath
 	}
@@ -126,8 +132,9 @@ open class CaptureThumbJobData: JobData {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["fileContainer"] != nil {
-		fileContainer = try JSONParser.parse(object: dict["fileContainer"] as! [String: Any])		}
+		if dict["srcFileSyncLocalPath"] != nil {
+			srcFileSyncLocalPath = dict["srcFileSyncLocalPath"] as? String
+		}
 		if dict["actualSrcFileSyncLocalPath"] != nil {
 			actualSrcFileSyncLocalPath = dict["actualSrcFileSyncLocalPath"] as? String
 		}
@@ -154,8 +161,8 @@ open class CaptureThumbJobData: JobData {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(fileContainer != nil) {
-			dict["fileContainer"] = fileContainer!.toDictionary()
+		if(srcFileSyncLocalPath != nil) {
+			dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath!
 		}
 		if(actualSrcFileSyncLocalPath != nil) {
 			dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath!

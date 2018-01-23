@@ -642,14 +642,8 @@ open class User: ObjectBase {
 		if(language != nil) {
 			dict["language"] = language!.rawValue
 		}
-		if(loginEnabled != nil) {
-			dict["loginEnabled"] = loginEnabled!
-		}
 		if(roleIds != nil) {
 			dict["roleIds"] = roleIds!
-		}
-		if(isAccountOwner != nil) {
-			dict["isAccountOwner"] = isAccountOwner!
 		}
 		if(allowedPartnerIds != nil) {
 			dict["allowedPartnerIds"] = allowedPartnerIds!

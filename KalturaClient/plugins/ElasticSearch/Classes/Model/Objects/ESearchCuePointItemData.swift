@@ -85,12 +85,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 			}
 		}
 		
-		public var question: BaseTokenizedObject {
-			get {
-				return self.append("question") 
-			}
-		}
-		
 		public var answers: BaseTokenizedObject {
 			get {
 				return self.append("answers") 
@@ -108,12 +102,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 				return self.append("explanation") 
 			}
 		}
-		
-		public var assetId: BaseTokenizedObject {
-			get {
-				return self.append("assetId") 
-			}
-		}
 	}
 
 	public var cuePointType: String? = nil
@@ -124,11 +112,9 @@ open class ESearchCuePointItemData: ESearchItemData {
 	public var startTime: String? = nil
 	public var endTime: String? = nil
 	public var subType: String? = nil
-	public var question: String? = nil
 	public var answers: String? = nil
 	public var hint: String? = nil
 	public var explanation: String? = nil
-	public var assetId: String? = nil
 
 
 	public func setMultiRequestToken(cuePointType: String) {
@@ -163,10 +149,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		self.dict["subType"] = subType
 	}
 	
-	public func setMultiRequestToken(question: String) {
-		self.dict["question"] = question
-	}
-	
 	public func setMultiRequestToken(answers: String) {
 		self.dict["answers"] = answers
 	}
@@ -177,10 +159,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 	
 	public func setMultiRequestToken(explanation: String) {
 		self.dict["explanation"] = explanation
-	}
-	
-	public func setMultiRequestToken(assetId: String) {
-		self.dict["assetId"] = assetId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -210,9 +188,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		if dict["subType"] != nil {
 			subType = dict["subType"] as? String
 		}
-		if dict["question"] != nil {
-			question = dict["question"] as? String
-		}
 		if dict["answers"] != nil {
 			answers = dict["answers"] as? String
 		}
@@ -221,9 +196,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		}
 		if dict["explanation"] != nil {
 			explanation = dict["explanation"] as? String
-		}
-		if dict["assetId"] != nil {
-			assetId = dict["assetId"] as? String
 		}
 
 	}
@@ -254,9 +226,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		if(subType != nil) {
 			dict["subType"] = subType!
 		}
-		if(question != nil) {
-			dict["question"] = question!
-		}
 		if(answers != nil) {
 			dict["answers"] = answers!
 		}
@@ -265,9 +234,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		}
 		if(explanation != nil) {
 			dict["explanation"] = explanation!
-		}
-		if(assetId != nil) {
-			dict["assetId"] = assetId!
 		}
 		return dict
 	}

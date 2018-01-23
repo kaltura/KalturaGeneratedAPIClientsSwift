@@ -55,12 +55,6 @@ open class YouTubeApiCaptionDistributionInfo: ObjectBase {
 			}
 		}
 		
-		public var encryptionKey: BaseTokenizedObject {
-			get {
-				return self.append("encryptionKey") 
-			}
-		}
-		
 		public var remoteId: BaseTokenizedObject {
 			get {
 				return self.append("remoteId") 
@@ -89,7 +83,6 @@ open class YouTubeApiCaptionDistributionInfo: ObjectBase {
 	public var language: String? = nil
 	public var label: String? = nil
 	public var filePath: String? = nil
-	public var encryptionKey: String? = nil
 	public var remoteId: String? = nil
 	public var action: YouTubeApiDistributionCaptionAction? = nil
 	public var version: String? = nil
@@ -106,10 +99,6 @@ open class YouTubeApiCaptionDistributionInfo: ObjectBase {
 	
 	public func setMultiRequestToken(filePath: String) {
 		self.dict["filePath"] = filePath
-	}
-	
-	public func setMultiRequestToken(encryptionKey: String) {
-		self.dict["encryptionKey"] = encryptionKey
 	}
 	
 	public func setMultiRequestToken(remoteId: String) {
@@ -140,9 +129,6 @@ open class YouTubeApiCaptionDistributionInfo: ObjectBase {
 		if dict["filePath"] != nil {
 			filePath = dict["filePath"] as? String
 		}
-		if dict["encryptionKey"] != nil {
-			encryptionKey = dict["encryptionKey"] as? String
-		}
 		if dict["remoteId"] != nil {
 			remoteId = dict["remoteId"] as? String
 		}
@@ -168,9 +154,6 @@ open class YouTubeApiCaptionDistributionInfo: ObjectBase {
 		}
 		if(filePath != nil) {
 			dict["filePath"] = filePath!
-		}
-		if(encryptionKey != nil) {
-			dict["encryptionKey"] = encryptionKey!
 		}
 		if(remoteId != nil) {
 			dict["remoteId"] = remoteId!

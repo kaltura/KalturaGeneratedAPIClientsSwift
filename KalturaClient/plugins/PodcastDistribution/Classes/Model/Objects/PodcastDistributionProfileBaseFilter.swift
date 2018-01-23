@@ -27,13 +27,16 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class PodcastDistributionProfileBaseFilter: DistributionProfileFilter {
+
+	public class PodcastDistributionProfileBaseFilterTokenizer: DistributionProfileFilter.DistributionProfileFilterTokenizer {
+	}
 
 
 

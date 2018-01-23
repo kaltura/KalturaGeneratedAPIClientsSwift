@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class SynacorHboDistributionProfile: ConfigurableDistributionProfile {
+
+	public class SynacorHboDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var feedTitle: BaseTokenizedObject {
+			get {
+				return self.append("feedTitle") 
+			}
+		}
+		
+		public var feedSubtitle: BaseTokenizedObject {
+			get {
+				return self.append("feedSubtitle") 
+			}
+		}
+		
+		public var feedLink: BaseTokenizedObject {
+			get {
+				return self.append("feedLink") 
+			}
+		}
+		
+		public var feedAuthorName: BaseTokenizedObject {
+			get {
+				return self.append("feedAuthorName") 
+			}
+		}
+	}
 
 	public var feedUrl: String? = nil
 	public var feedTitle: String? = nil
@@ -42,6 +75,26 @@ open class SynacorHboDistributionProfile: ConfigurableDistributionProfile {
 	public var feedAuthorName: String? = nil
 
 
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(feedTitle: String) {
+		self.dict["feedTitle"] = feedTitle
+	}
+	
+	public func setMultiRequestToken(feedSubtitle: String) {
+		self.dict["feedSubtitle"] = feedSubtitle
+	}
+	
+	public func setMultiRequestToken(feedLink: String) {
+		self.dict["feedLink"] = feedLink
+	}
+	
+	public func setMultiRequestToken(feedAuthorName: String) {
+		self.dict["feedAuthorName"] = feedAuthorName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -63,7 +116,7 @@ open class SynacorHboDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(feedTitle != nil) {
 			dict["feedTitle"] = feedTitle!

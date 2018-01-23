@@ -27,13 +27,76 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class NdnDistributionProfile: ConfigurableDistributionProfile {
+
+	public class NdnDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var channelTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelTitle") 
+			}
+		}
+		
+		public var channelLink: BaseTokenizedObject {
+			get {
+				return self.append("channelLink") 
+			}
+		}
+		
+		public var channelDescription: BaseTokenizedObject {
+			get {
+				return self.append("channelDescription") 
+			}
+		}
+		
+		public var channelLanguage: BaseTokenizedObject {
+			get {
+				return self.append("channelLanguage") 
+			}
+		}
+		
+		public var channelCopyright: BaseTokenizedObject {
+			get {
+				return self.append("channelCopyright") 
+			}
+		}
+		
+		public var channelImageTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelImageTitle") 
+			}
+		}
+		
+		public var channelImageUrl: BaseTokenizedObject {
+			get {
+				return self.append("channelImageUrl") 
+			}
+		}
+		
+		public var channelImageLink: BaseTokenizedObject {
+			get {
+				return self.append("channelImageLink") 
+			}
+		}
+		
+		public var itemMediaRating: BaseTokenizedObject {
+			get {
+				return self.append("itemMediaRating") 
+			}
+		}
+	}
 
 	public var feedUrl: String? = nil
 	public var channelTitle: String? = nil
@@ -47,6 +110,46 @@ open class NdnDistributionProfile: ConfigurableDistributionProfile {
 	public var itemMediaRating: String? = nil
 
 
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(channelTitle: String) {
+		self.dict["channelTitle"] = channelTitle
+	}
+	
+	public func setMultiRequestToken(channelLink: String) {
+		self.dict["channelLink"] = channelLink
+	}
+	
+	public func setMultiRequestToken(channelDescription: String) {
+		self.dict["channelDescription"] = channelDescription
+	}
+	
+	public func setMultiRequestToken(channelLanguage: String) {
+		self.dict["channelLanguage"] = channelLanguage
+	}
+	
+	public func setMultiRequestToken(channelCopyright: String) {
+		self.dict["channelCopyright"] = channelCopyright
+	}
+	
+	public func setMultiRequestToken(channelImageTitle: String) {
+		self.dict["channelImageTitle"] = channelImageTitle
+	}
+	
+	public func setMultiRequestToken(channelImageUrl: String) {
+		self.dict["channelImageUrl"] = channelImageUrl
+	}
+	
+	public func setMultiRequestToken(channelImageLink: String) {
+		self.dict["channelImageLink"] = channelImageLink
+	}
+	
+	public func setMultiRequestToken(itemMediaRating: String) {
+		self.dict["itemMediaRating"] = itemMediaRating
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -83,7 +186,7 @@ open class NdnDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(channelTitle != nil) {
 			dict["channelTitle"] = channelTitle!

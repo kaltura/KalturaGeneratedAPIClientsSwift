@@ -33,33 +33,22 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchCuePointItem: ESearchAbstractEntryItem {
+open class ESearchCuePointItem: ESearchItem {
 
-	public class ESearchCuePointItemTokenizer: ESearchAbstractEntryItem.ESearchAbstractEntryItemTokenizer {
+	public class ESearchCuePointItemTokenizer: ESearchItem.ESearchItemTokenizer {
 		
 		public var fieldName: BaseTokenizedObject {
 			get {
 				return self.append("fieldName") 
 			}
 		}
-		
-		public var cuePointType: BaseTokenizedObject {
-			get {
-				return self.append("cuePointType") 
-			}
-		}
 	}
 
 	public var fieldName: ESearchCuePointFieldName? = nil
-	public var cuePointType: CuePointType? = nil
 
 
 	public func setMultiRequestToken(fieldName: String) {
 		self.dict["fieldName"] = fieldName
-	}
-	
-	public func setMultiRequestToken(cuePointType: String) {
-		self.dict["cuePointType"] = cuePointType
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -68,9 +57,6 @@ open class ESearchCuePointItem: ESearchAbstractEntryItem {
 		if dict["fieldName"] != nil {
 			fieldName = ESearchCuePointFieldName(rawValue: "\(dict["fieldName"]!)")
 		}
-		if dict["cuePointType"] != nil {
-			cuePointType = CuePointType(rawValue: "\(dict["cuePointType"]!)")
-		}
 
 	}
 
@@ -78,9 +64,6 @@ open class ESearchCuePointItem: ESearchAbstractEntryItem {
 		var dict: [String: Any] = super.toDictionary()
 		if(fieldName != nil) {
 			dict["fieldName"] = fieldName!.rawValue
-		}
-		if(cuePointType != nil) {
-			dict["cuePointType"] = cuePointType!.rawValue
 		}
 		return dict
 	}

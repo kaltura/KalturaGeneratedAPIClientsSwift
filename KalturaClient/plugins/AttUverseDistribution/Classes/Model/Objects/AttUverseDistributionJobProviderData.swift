@@ -27,13 +27,40 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class AttUverseDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class AttUverseDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var filesForDistribution: ArrayTokenizedObject<AttUverseDistributionFile.AttUverseDistributionFileTokenizer> {
+			get {
+				return ArrayTokenizedObject<AttUverseDistributionFile.AttUverseDistributionFileTokenizer>(self.append("filesForDistribution"))
+			} 
+		}
+		
+		public var remoteAssetFileUrls: BaseTokenizedObject {
+			get {
+				return self.append("remoteAssetFileUrls") 
+			}
+		}
+		
+		public var remoteThumbnailFileUrls: BaseTokenizedObject {
+			get {
+				return self.append("remoteThumbnailFileUrls") 
+			}
+		}
+		
+		public var remoteCaptionFileUrls: BaseTokenizedObject {
+			get {
+				return self.append("remoteCaptionFileUrls") 
+			}
+		}
+	}
 
 	public var filesForDistribution: Array<AttUverseDistributionFile>? = nil
 	/**  The remote URL of the video asset that was distributed  */
@@ -44,6 +71,18 @@ open class AttUverseDistributionJobProviderData: ConfigurableDistributionJobProv
 	public var remoteCaptionFileUrls: String? = nil
 
 
+	public func setMultiRequestToken(remoteAssetFileUrls: String) {
+		self.dict["remoteAssetFileUrls"] = remoteAssetFileUrls
+	}
+	
+	public func setMultiRequestToken(remoteThumbnailFileUrls: String) {
+		self.dict["remoteThumbnailFileUrls"] = remoteThumbnailFileUrls
+	}
+	
+	public func setMultiRequestToken(remoteCaptionFileUrls: String) {
+		self.dict["remoteCaptionFileUrls"] = remoteCaptionFileUrls
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -62,7 +101,7 @@ open class AttUverseDistributionJobProviderData: ConfigurableDistributionJobProv
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(filesForDistribution != nil) {
 			dict["filesForDistribution"] = filesForDistribution!.map { value in value.toDictionary() }

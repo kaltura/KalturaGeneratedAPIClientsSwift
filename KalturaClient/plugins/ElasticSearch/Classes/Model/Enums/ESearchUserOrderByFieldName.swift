@@ -32,6 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserOrderByFieldName: String {
-	case CREATED_AT = "created_at"
-	case UPDATED_AT = "updated_at"
+	case USER_CREATED_AT = "created_at"
+	case USER_UPDATED_AT = "updated_at"
 }

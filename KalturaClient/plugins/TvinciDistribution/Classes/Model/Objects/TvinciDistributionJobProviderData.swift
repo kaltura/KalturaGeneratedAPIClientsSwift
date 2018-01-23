@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,9 +35,22 @@
 
 open class TvinciDistributionJobProviderData: ConfigurableDistributionJobProviderData {
 
+	public class TvinciDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var xml: BaseTokenizedObject {
+			get {
+				return self.append("xml") 
+			}
+		}
+	}
+
 	public var xml: String? = nil
 
 
+	public func setMultiRequestToken(xml: String) {
+		self.dict["xml"] = xml
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -47,7 +60,7 @@ open class TvinciDistributionJobProviderData: ConfigurableDistributionJobProvide
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(xml != nil) {
 			dict["xml"] = xml!

@@ -27,13 +27,34 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class UverseDistributionJobProviderData: ConfigurableDistributionJobProviderData {
+
+	public class UverseDistributionJobProviderDataTokenizer: ConfigurableDistributionJobProviderData.ConfigurableDistributionJobProviderDataTokenizer {
+		
+		public var localAssetFilePath: BaseTokenizedObject {
+			get {
+				return self.append("localAssetFilePath") 
+			}
+		}
+		
+		public var remoteAssetUrl: BaseTokenizedObject {
+			get {
+				return self.append("remoteAssetUrl") 
+			}
+		}
+		
+		public var remoteAssetFileName: BaseTokenizedObject {
+			get {
+				return self.append("remoteAssetFileName") 
+			}
+		}
+	}
 
 	/**  The local file path of the video asset that needs to be distributed  */
 	public var localAssetFilePath: String? = nil
@@ -43,6 +64,18 @@ open class UverseDistributionJobProviderData: ConfigurableDistributionJobProvide
 	public var remoteAssetFileName: String? = nil
 
 
+	public func setMultiRequestToken(localAssetFilePath: String) {
+		self.dict["localAssetFilePath"] = localAssetFilePath
+	}
+	
+	public func setMultiRequestToken(remoteAssetUrl: String) {
+		self.dict["remoteAssetUrl"] = remoteAssetUrl
+	}
+	
+	public func setMultiRequestToken(remoteAssetFileName: String) {
+		self.dict["remoteAssetFileName"] = remoteAssetFileName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -58,7 +91,7 @@ open class UverseDistributionJobProviderData: ConfigurableDistributionJobProvide
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(localAssetFilePath != nil) {
 			dict["localAssetFilePath"] = localAssetFilePath!

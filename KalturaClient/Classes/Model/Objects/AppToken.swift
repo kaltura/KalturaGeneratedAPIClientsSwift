@@ -108,12 +108,6 @@ open class AppToken: ObjectBase {
 				return self.append("hashType") 
 			}
 		}
-		
-		public var description: BaseTokenizedObject {
-			get {
-				return self.append("description") 
-			}
-		}
 	}
 
 	/**  The id of the application token  */
@@ -140,7 +134,6 @@ open class AppToken: ObjectBase {
 	  using the current token  */
 	public var sessionPrivileges: String? = nil
 	public var hashType: AppTokenHashType? = nil
-	public var description: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -191,10 +184,6 @@ open class AppToken: ObjectBase {
 		self.dict["hashType"] = hashType
 	}
 	
-	public func setMultiRequestToken(description: String) {
-		self.dict["description"] = description
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -234,9 +223,6 @@ open class AppToken: ObjectBase {
 		if dict["hashType"] != nil {
 			hashType = AppTokenHashType(rawValue: "\(dict["hashType"]!)")
 		}
-		if dict["description"] != nil {
-			description = dict["description"] as? String
-		}
 
 	}
 
@@ -259,9 +245,6 @@ open class AppToken: ObjectBase {
 		}
 		if(hashType != nil) {
 			dict["hashType"] = hashType!.rawValue
-		}
-		if(description != nil) {
-			dict["description"] = description!
 		}
 		return dict
 	}

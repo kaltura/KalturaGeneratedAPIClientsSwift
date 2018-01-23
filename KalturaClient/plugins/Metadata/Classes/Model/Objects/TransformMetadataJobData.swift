@@ -37,8 +37,10 @@ open class TransformMetadataJobData: JobData {
 
 	public class TransformMetadataJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public func srcXsl<T: FileContainer.FileContainerTokenizer>() -> T {
-			return T(self.append("srcXsl"))
+		public var srcXslPath: BaseTokenizedObject {
+			get {
+				return self.append("srcXslPath") 
+			}
 		}
 		
 		public var srcVersion: BaseTokenizedObject {
@@ -66,13 +68,17 @@ open class TransformMetadataJobData: JobData {
 		}
 	}
 
-	public var srcXsl: FileContainer? = nil
+	public var srcXslPath: String? = nil
 	public var srcVersion: Int? = nil
 	public var destVersion: Int? = nil
 	public var destXsdPath: String? = nil
 	public var metadataProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(srcXslPath: String) {
+		self.dict["srcXslPath"] = srcXslPath
+	}
+	
 	public func setMultiRequestToken(srcVersion: String) {
 		self.dict["srcVersion"] = srcVersion
 	}
@@ -92,8 +98,9 @@ open class TransformMetadataJobData: JobData {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["srcXsl"] != nil {
-		srcXsl = try JSONParser.parse(object: dict["srcXsl"] as! [String: Any])		}
+		if dict["srcXslPath"] != nil {
+			srcXslPath = dict["srcXslPath"] as? String
+		}
 		if dict["srcVersion"] != nil {
 			srcVersion = dict["srcVersion"] as? Int
 		}
@@ -111,8 +118,8 @@ open class TransformMetadataJobData: JobData {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(srcXsl != nil) {
-			dict["srcXsl"] = srcXsl!.toDictionary()
+		if(srcXslPath != nil) {
+			dict["srcXslPath"] = srcXslPath!
 		}
 		if(srcVersion != nil) {
 			dict["srcVersion"] = srcVersion!

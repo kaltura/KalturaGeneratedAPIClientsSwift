@@ -41,12 +41,6 @@ open class ESearchResult: ObjectBase {
 			return T(self.append("object"))
 		}
 		
-		public var highlight: ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer>(self.append("highlight"))
-			} 
-		}
-		
 		public var itemsData: ArrayTokenizedObject<ESearchItemDataResult.ESearchItemDataResultTokenizer> {
 			get {
 				return ArrayTokenizedObject<ESearchItemDataResult.ESearchItemDataResultTokenizer>(self.append("itemsData"))
@@ -55,7 +49,6 @@ open class ESearchResult: ObjectBase {
 	}
 
 	public var object: ObjectBase? = nil
-	public var highlight: Array<ESearchHighlight>? = nil
 	public var itemsData: Array<ESearchItemDataResult>? = nil
 
 
@@ -64,9 +57,6 @@ open class ESearchResult: ObjectBase {
 		// set members values:
 		if dict["object"] != nil {
 		object = try JSONParser.parse(object: dict["object"] as! [String: Any])		}
-		if dict["highlight"] != nil {
-			highlight = try JSONParser.parse(array: dict["highlight"] as! [Any])
-		}
 		if dict["itemsData"] != nil {
 			itemsData = try JSONParser.parse(array: dict["itemsData"] as! [Any])
 		}
@@ -77,9 +67,6 @@ open class ESearchResult: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(object != nil) {
 			dict["object"] = object!.toDictionary()
-		}
-		if(highlight != nil) {
-			dict["highlight"] = highlight!.map { value in value.toDictionary() }
 		}
 		if(itemsData != nil) {
 			dict["itemsData"] = itemsData!.map { value in value.toDictionary() }

@@ -33,5 +33,7 @@
  */
 public enum IntegrationProviderType: String {
 	case CIELO24 = "cielo24.Cielo24"
+	case DEXTER = "dexterIntegration.Dexter"
+	case EXAMPLE = "exampleIntegration.Example"
 	case VOICEBASE = "voicebase.Voicebase"
 }

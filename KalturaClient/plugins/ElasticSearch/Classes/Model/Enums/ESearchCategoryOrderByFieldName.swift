@@ -32,6 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCategoryOrderByFieldName: String {
-	case CREATED_AT = "created_at"
-	case UPDATED_AT = "updated_at"
+	case CATEGORY_CREATED_AT = "created_at"
+	case CATEGORY_UPDATED_AT = "updated_at"
 }

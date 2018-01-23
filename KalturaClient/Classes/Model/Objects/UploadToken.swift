@@ -96,12 +96,6 @@ open class UploadToken: ObjectBase {
 				return self.append("uploadUrl") 
 			}
 		}
-		
-		public var autoFinalize: BaseTokenizedObject {
-			get {
-				return self.append("autoFinalize") 
-			}
-		}
 	}
 
 	/**  Upload token unique ID  */
@@ -128,9 +122,6 @@ open class UploadToken: ObjectBase {
 	/**  Upload url - to explicitly determine to which domain to adress the
 	  uploadToken-&gt;upload call  */
 	public var uploadUrl: String? = nil
-	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
-	  the file size reproted when adding the upload token.  */
-	public var autoFinalize: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -173,10 +164,6 @@ open class UploadToken: ObjectBase {
 		self.dict["uploadUrl"] = uploadUrl
 	}
 	
-	public func setMultiRequestToken(autoFinalize: String) {
-		self.dict["autoFinalize"] = autoFinalize
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -210,9 +197,6 @@ open class UploadToken: ObjectBase {
 		if dict["uploadUrl"] != nil {
 			uploadUrl = dict["uploadUrl"] as? String
 		}
-		if dict["autoFinalize"] != nil {
-			autoFinalize = dict["autoFinalize"] as? Bool
-		}
 
 	}
 
@@ -223,9 +207,6 @@ open class UploadToken: ObjectBase {
 		}
 		if(fileSize != nil) {
 			dict["fileSize"] = fileSize!
-		}
-		if(autoFinalize != nil) {
-			dict["autoFinalize"] = autoFinalize!
 		}
 		return dict
 	}

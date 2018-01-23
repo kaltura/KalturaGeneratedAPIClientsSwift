@@ -27,13 +27,82 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class VerizonVcastDistributionProfile: ConfigurableDistributionProfile {
+
+	public class VerizonVcastDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var ftpHost: BaseTokenizedObject {
+			get {
+				return self.append("ftpHost") 
+			}
+		}
+		
+		public var ftpLogin: BaseTokenizedObject {
+			get {
+				return self.append("ftpLogin") 
+			}
+		}
+		
+		public var ftpPass: BaseTokenizedObject {
+			get {
+				return self.append("ftpPass") 
+			}
+		}
+		
+		public var providerName: BaseTokenizedObject {
+			get {
+				return self.append("providerName") 
+			}
+		}
+		
+		public var providerId: BaseTokenizedObject {
+			get {
+				return self.append("providerId") 
+			}
+		}
+		
+		public var entitlement: BaseTokenizedObject {
+			get {
+				return self.append("entitlement") 
+			}
+		}
+		
+		public var priority: BaseTokenizedObject {
+			get {
+				return self.append("priority") 
+			}
+		}
+		
+		public var allowStreaming: BaseTokenizedObject {
+			get {
+				return self.append("allowStreaming") 
+			}
+		}
+		
+		public var streamingPriceCode: BaseTokenizedObject {
+			get {
+				return self.append("streamingPriceCode") 
+			}
+		}
+		
+		public var allowDownload: BaseTokenizedObject {
+			get {
+				return self.append("allowDownload") 
+			}
+		}
+		
+		public var downloadPriceCode: BaseTokenizedObject {
+			get {
+				return self.append("downloadPriceCode") 
+			}
+		}
+	}
 
 	public var ftpHost: String? = nil
 	public var ftpLogin: String? = nil
@@ -48,6 +117,50 @@ open class VerizonVcastDistributionProfile: ConfigurableDistributionProfile {
 	public var downloadPriceCode: String? = nil
 
 
+	public func setMultiRequestToken(ftpHost: String) {
+		self.dict["ftpHost"] = ftpHost
+	}
+	
+	public func setMultiRequestToken(ftpLogin: String) {
+		self.dict["ftpLogin"] = ftpLogin
+	}
+	
+	public func setMultiRequestToken(ftpPass: String) {
+		self.dict["ftpPass"] = ftpPass
+	}
+	
+	public func setMultiRequestToken(providerName: String) {
+		self.dict["providerName"] = providerName
+	}
+	
+	public func setMultiRequestToken(providerId: String) {
+		self.dict["providerId"] = providerId
+	}
+	
+	public func setMultiRequestToken(entitlement: String) {
+		self.dict["entitlement"] = entitlement
+	}
+	
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
+	}
+	
+	public func setMultiRequestToken(allowStreaming: String) {
+		self.dict["allowStreaming"] = allowStreaming
+	}
+	
+	public func setMultiRequestToken(streamingPriceCode: String) {
+		self.dict["streamingPriceCode"] = streamingPriceCode
+	}
+	
+	public func setMultiRequestToken(allowDownload: String) {
+		self.dict["allowDownload"] = allowDownload
+	}
+	
+	public func setMultiRequestToken(downloadPriceCode: String) {
+		self.dict["downloadPriceCode"] = downloadPriceCode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -87,7 +200,7 @@ open class VerizonVcastDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(ftpHost != nil) {
 			dict["ftpHost"] = ftpHost!

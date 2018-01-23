@@ -49,12 +49,6 @@ open class ESearchMetadataItemData: ESearchItemData {
 			}
 		}
 		
-		public var metadataFieldId: BaseTokenizedObject {
-			get {
-				return self.append("metadataFieldId") 
-			}
-		}
-		
 		public var valueText: BaseTokenizedObject {
 			get {
 				return self.append("valueText") 
@@ -70,7 +64,6 @@ open class ESearchMetadataItemData: ESearchItemData {
 
 	public var xpath: String? = nil
 	public var metadataProfileId: Int? = nil
-	public var metadataFieldId: Int? = nil
 	public var valueText: String? = nil
 	public var valueInt: Int? = nil
 
@@ -81,10 +74,6 @@ open class ESearchMetadataItemData: ESearchItemData {
 	
 	public func setMultiRequestToken(metadataProfileId: String) {
 		self.dict["metadataProfileId"] = metadataProfileId
-	}
-	
-	public func setMultiRequestToken(metadataFieldId: String) {
-		self.dict["metadataFieldId"] = metadataFieldId
 	}
 	
 	public func setMultiRequestToken(valueText: String) {
@@ -104,9 +93,6 @@ open class ESearchMetadataItemData: ESearchItemData {
 		if dict["metadataProfileId"] != nil {
 			metadataProfileId = dict["metadataProfileId"] as? Int
 		}
-		if dict["metadataFieldId"] != nil {
-			metadataFieldId = dict["metadataFieldId"] as? Int
-		}
 		if dict["valueText"] != nil {
 			valueText = dict["valueText"] as? String
 		}
@@ -123,9 +109,6 @@ open class ESearchMetadataItemData: ESearchItemData {
 		}
 		if(metadataProfileId != nil) {
 			dict["metadataProfileId"] = metadataProfileId!
-		}
-		if(metadataFieldId != nil) {
-			dict["metadataFieldId"] = metadataFieldId!
 		}
 		if(valueText != nil) {
 			dict["valueText"] = valueText!

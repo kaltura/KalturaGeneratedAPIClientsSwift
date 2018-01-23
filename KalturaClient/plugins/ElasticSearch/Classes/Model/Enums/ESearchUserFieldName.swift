@@ -32,15 +32,15 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserFieldName: String {
-	case CREATED_AT = "created_at"
-	case EMAIL = "email"
-	case FIRST_NAME = "first_name"
-	case GROUP_IDS = "group_ids"
-	case LAST_NAME = "last_name"
-	case PERMISSION_NAMES = "permission_names"
-	case ROLE_IDS = "role_ids"
-	case SCREEN_NAME = "screen_name"
-	case TAGS = "tags"
-	case UPDATED_AT = "updated_at"
-	case TYPE = "user_type"
+	case USER_CREATED_AT = "created_at"
+	case USER_EMAIL = "email"
+	case USER_FIRST_NAME = "first_name"
+	case USER_GROUP_IDS = "group_ids"
+	case USER_TYPE = "kuser_type"
+	case USER_LAST_NAME = "last_name"
+	case USER_PERMISSION_NAMES = "permission_names"
+	case USER_ROLE_IDS = "role_ids"
+	case USER_SCREEN_NAME = "screen_name"
+	case USER_TAGS = "tags"
+	case USER_UPDATED_AT = "updated_at"
 }

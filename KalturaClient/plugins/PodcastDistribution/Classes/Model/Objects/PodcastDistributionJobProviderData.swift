@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,11 +35,44 @@
 
 open class PodcastDistributionJobProviderData: DistributionJobProviderData {
 
+	public class PodcastDistributionJobProviderDataTokenizer: DistributionJobProviderData.DistributionJobProviderDataTokenizer {
+		
+		public var xml: BaseTokenizedObject {
+			get {
+				return self.append("xml") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var distributionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("distributionProfileId") 
+			}
+		}
+	}
+
 	public var xml: String? = nil
 	public var metadataProfileId: Int? = nil
 	public var distributionProfileId: Int? = nil
 
 
+	public func setMultiRequestToken(xml: String) {
+		self.dict["xml"] = xml
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(distributionProfileId: String) {
+		self.dict["distributionProfileId"] = distributionProfileId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -55,7 +88,7 @@ open class PodcastDistributionJobProviderData: DistributionJobProviderData {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(xml != nil) {
 			dict["xml"] = xml!

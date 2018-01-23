@@ -27,13 +27,70 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class AttUverseDistributionProfile: ConfigurableDistributionProfile {
+
+	public class AttUverseDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var ftpHost: BaseTokenizedObject {
+			get {
+				return self.append("ftpHost") 
+			}
+		}
+		
+		public var ftpUsername: BaseTokenizedObject {
+			get {
+				return self.append("ftpUsername") 
+			}
+		}
+		
+		public var ftpPassword: BaseTokenizedObject {
+			get {
+				return self.append("ftpPassword") 
+			}
+		}
+		
+		public var ftpPath: BaseTokenizedObject {
+			get {
+				return self.append("ftpPath") 
+			}
+		}
+		
+		public var channelTitle: BaseTokenizedObject {
+			get {
+				return self.append("channelTitle") 
+			}
+		}
+		
+		public var flavorAssetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetFilenameXslt") 
+			}
+		}
+		
+		public var thumbnailAssetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("thumbnailAssetFilenameXslt") 
+			}
+		}
+		
+		public var assetFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("assetFilenameXslt") 
+			}
+		}
+	}
 
 	public var feedUrl: String? = nil
 	public var ftpHost: String? = nil
@@ -46,6 +103,42 @@ open class AttUverseDistributionProfile: ConfigurableDistributionProfile {
 	public var assetFilenameXslt: String? = nil
 
 
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(ftpHost: String) {
+		self.dict["ftpHost"] = ftpHost
+	}
+	
+	public func setMultiRequestToken(ftpUsername: String) {
+		self.dict["ftpUsername"] = ftpUsername
+	}
+	
+	public func setMultiRequestToken(ftpPassword: String) {
+		self.dict["ftpPassword"] = ftpPassword
+	}
+	
+	public func setMultiRequestToken(ftpPath: String) {
+		self.dict["ftpPath"] = ftpPath
+	}
+	
+	public func setMultiRequestToken(channelTitle: String) {
+		self.dict["channelTitle"] = channelTitle
+	}
+	
+	public func setMultiRequestToken(flavorAssetFilenameXslt: String) {
+		self.dict["flavorAssetFilenameXslt"] = flavorAssetFilenameXslt
+	}
+	
+	public func setMultiRequestToken(thumbnailAssetFilenameXslt: String) {
+		self.dict["thumbnailAssetFilenameXslt"] = thumbnailAssetFilenameXslt
+	}
+	
+	public func setMultiRequestToken(assetFilenameXslt: String) {
+		self.dict["assetFilenameXslt"] = assetFilenameXslt
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -79,7 +172,7 @@ open class AttUverseDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(ftpHost != nil) {
 			dict["ftpHost"] = ftpHost!

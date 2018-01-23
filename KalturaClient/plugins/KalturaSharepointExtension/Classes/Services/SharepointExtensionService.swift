@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,20 +36,44 @@
 /**  Kaltura Sharepoint Extension Service  */
 public final class SharepointExtensionService{
 
+	public class IsVersionSupportedTokenizer: ClientTokenizer  {
+		
+		public var serverMajor: BaseTokenizedObject {
+			get {
+				return self.append("serverMajor") 
+			}
+		}
+		
+		public var serverMinor: BaseTokenizedObject {
+			get {
+				return self.append("serverMinor") 
+			}
+		}
+		
+		public var serverBuild: BaseTokenizedObject {
+			get {
+				return self.append("serverBuild") 
+			}
+		}
+	}
+
 	/**  Is this Kaltura-Sharepoint-Server-Plugin supports minimum version of
 	  $major.$minor.$build (which is required by the extension)  */
-	public static func isVersionSupported(serverMajor: Int, serverMinor: Int, serverBuild: Int) -> RequestBuilder<Bool> {
-		let request: RequestBuilder<Bool> = RequestBuilder<Bool>(service: "kalturasharepointextension_sharepointextension", action: "isVersionSupported")
-			.setBody(key: "serverMajor", value: serverMajor)
-			.setBody(key: "serverMinor", value: serverMinor)
-			.setBody(key: "serverBuild", value: serverBuild)
+	public static func isVersionSupported(serverMajor: Int, serverMinor: Int, serverBuild: Int) -> RequestBuilder<Bool, BaseTokenizedObject, IsVersionSupportedTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, IsVersionSupportedTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, IsVersionSupportedTokenizer>(service: "kalturasharepointextension_sharepointextension", action: "isVersionSupported")
+			.setParam(key: "serverMajor", value: serverMajor)
+			.setParam(key: "serverMinor", value: serverMinor)
+			.setParam(key: "serverBuild", value: serverBuild)
 
 		return request
 	}
 
+	public class ListUiconfsTokenizer: ClientTokenizer  {
+	}
+
 	/**  list uiconfs for sharepoint extension  */
-	public static func listUiconfs() -> RequestBuilder<UiConfListResponse> {
-		let request: RequestBuilder<UiConfListResponse> = RequestBuilder<UiConfListResponse>(service: "kalturasharepointextension_sharepointextension", action: "listUiconfs")
+	public static func listUiconfs() -> RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListUiconfsTokenizer> {
+		let request: RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListUiconfsTokenizer> = RequestBuilder<UiConfListResponse, UiConfListResponse.UiConfListResponseTokenizer, ListUiconfsTokenizer>(service: "kalturasharepointextension_sharepointextension", action: "listUiconfs")
 
 		return request
 	}

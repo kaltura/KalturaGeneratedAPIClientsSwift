@@ -32,13 +32,8 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchEntryOrderByFieldName: String {
-	case CREATED_AT = "created_at"
-	case END_DATE = "end_date"
-	case LAST_PLAYED_AT = "last_played_at"
-	case NAME = "name"
-	case PLAYS = "plays"
-	case START_DATE = "start_date"
-	case UPDATED_AT = "updated_at"
-	case VIEWS = "views"
-	case VOTES = "votes"
+	case ENTRY_CREATED_AT = "created_at"
+	case ENTRY_END_DATE = "end_date"
+	case ENTRY_START_DATE = "start_date"
+	case ENTRY_UPDATED_AT = "updated_at"
 }

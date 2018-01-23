@@ -42,24 +42,13 @@ open class MediaEntryFilterForPlaylist: MediaEntryFilter {
 				return self.append("limit") 
 			}
 		}
-		
-		public var name: BaseTokenizedObject {
-			get {
-				return self.append("name") 
-			}
-		}
 	}
 
 	public var limit: Int? = nil
-	public var name: String? = nil
 
 
 	public func setMultiRequestToken(limit: String) {
 		self.dict["limit"] = limit
-	}
-	
-	public func setMultiRequestToken(name: String) {
-		self.dict["name"] = name
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -68,9 +57,6 @@ open class MediaEntryFilterForPlaylist: MediaEntryFilter {
 		if dict["limit"] != nil {
 			limit = dict["limit"] as? Int
 		}
-		if dict["name"] != nil {
-			name = dict["name"] as? String
-		}
 
 	}
 
@@ -78,9 +64,6 @@ open class MediaEntryFilterForPlaylist: MediaEntryFilter {
 		var dict: [String: Any] = super.toDictionary()
 		if(limit != nil) {
 			dict["limit"] = limit!
-		}
-		if(name != nil) {
-			dict["name"] = name!
 		}
 		return dict
 	}

@@ -27,13 +27,88 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class TVComDistributionProfile: ConfigurableDistributionProfile {
+
+	public class TVComDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var feedUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedUrl") 
+			}
+		}
+		
+		public var feedTitle: BaseTokenizedObject {
+			get {
+				return self.append("feedTitle") 
+			}
+		}
+		
+		public var feedLink: BaseTokenizedObject {
+			get {
+				return self.append("feedLink") 
+			}
+		}
+		
+		public var feedDescription: BaseTokenizedObject {
+			get {
+				return self.append("feedDescription") 
+			}
+		}
+		
+		public var feedLanguage: BaseTokenizedObject {
+			get {
+				return self.append("feedLanguage") 
+			}
+		}
+		
+		public var feedCopyright: BaseTokenizedObject {
+			get {
+				return self.append("feedCopyright") 
+			}
+		}
+		
+		public var feedImageTitle: BaseTokenizedObject {
+			get {
+				return self.append("feedImageTitle") 
+			}
+		}
+		
+		public var feedImageUrl: BaseTokenizedObject {
+			get {
+				return self.append("feedImageUrl") 
+			}
+		}
+		
+		public var feedImageLink: BaseTokenizedObject {
+			get {
+				return self.append("feedImageLink") 
+			}
+		}
+		
+		public var feedImageWidth: BaseTokenizedObject {
+			get {
+				return self.append("feedImageWidth") 
+			}
+		}
+		
+		public var feedImageHeight: BaseTokenizedObject {
+			get {
+				return self.append("feedImageHeight") 
+			}
+		}
+	}
 
 	public var metadataProfileId: Int? = nil
 	public var feedUrl: String? = nil
@@ -49,6 +124,54 @@ open class TVComDistributionProfile: ConfigurableDistributionProfile {
 	public var feedImageHeight: Int? = nil
 
 
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	public func setMultiRequestToken(feedUrl: String) {
+		self.dict["feedUrl"] = feedUrl
+	}
+	
+	public func setMultiRequestToken(feedTitle: String) {
+		self.dict["feedTitle"] = feedTitle
+	}
+	
+	public func setMultiRequestToken(feedLink: String) {
+		self.dict["feedLink"] = feedLink
+	}
+	
+	public func setMultiRequestToken(feedDescription: String) {
+		self.dict["feedDescription"] = feedDescription
+	}
+	
+	public func setMultiRequestToken(feedLanguage: String) {
+		self.dict["feedLanguage"] = feedLanguage
+	}
+	
+	public func setMultiRequestToken(feedCopyright: String) {
+		self.dict["feedCopyright"] = feedCopyright
+	}
+	
+	public func setMultiRequestToken(feedImageTitle: String) {
+		self.dict["feedImageTitle"] = feedImageTitle
+	}
+	
+	public func setMultiRequestToken(feedImageUrl: String) {
+		self.dict["feedImageUrl"] = feedImageUrl
+	}
+	
+	public func setMultiRequestToken(feedImageLink: String) {
+		self.dict["feedImageLink"] = feedImageLink
+	}
+	
+	public func setMultiRequestToken(feedImageWidth: String) {
+		self.dict["feedImageWidth"] = feedImageWidth
+	}
+	
+	public func setMultiRequestToken(feedImageHeight: String) {
+		self.dict["feedImageHeight"] = feedImageHeight
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -91,7 +214,7 @@ open class TVComDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(metadataProfileId != nil) {
 			dict["metadataProfileId"] = metadataProfileId!

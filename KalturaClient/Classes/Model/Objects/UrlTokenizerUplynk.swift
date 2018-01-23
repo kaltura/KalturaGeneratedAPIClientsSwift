@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,10 +35,23 @@
 
 open class UrlTokenizerUplynk: UrlTokenizer {
 
+	public class UrlTokenizerUplynkTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var accountId: BaseTokenizedObject {
+			get {
+				return self.append("accountId") 
+			}
+		}
+	}
+
 	/**  accountId  */
 	public var accountId: String? = nil
 
 
+	public func setMultiRequestToken(accountId: String) {
+		self.dict["accountId"] = accountId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -48,7 +61,7 @@ open class UrlTokenizerUplynk: UrlTokenizer {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(accountId != nil) {
 			dict["accountId"] = accountId!

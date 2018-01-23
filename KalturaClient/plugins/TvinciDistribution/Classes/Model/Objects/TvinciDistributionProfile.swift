@@ -27,13 +27,46 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
 open class TvinciDistributionProfile: ConfigurableDistributionProfile {
+
+	public class TvinciDistributionProfileTokenizer: ConfigurableDistributionProfile.ConfigurableDistributionProfileTokenizer {
+		
+		public var ingestUrl: BaseTokenizedObject {
+			get {
+				return self.append("ingestUrl") 
+			}
+		}
+		
+		public var username: BaseTokenizedObject {
+			get {
+				return self.append("username") 
+			}
+		}
+		
+		public var password: BaseTokenizedObject {
+			get {
+				return self.append("password") 
+			}
+		}
+		
+		public var tags: ArrayTokenizedObject<TvinciDistributionTag.TvinciDistributionTagTokenizer> {
+			get {
+				return ArrayTokenizedObject<TvinciDistributionTag.TvinciDistributionTagTokenizer>(self.append("tags"))
+			} 
+		}
+		
+		public var xsltFile: BaseTokenizedObject {
+			get {
+				return self.append("xsltFile") 
+			}
+		}
+	}
 
 	public var ingestUrl: String? = nil
 	public var username: String? = nil
@@ -43,6 +76,22 @@ open class TvinciDistributionProfile: ConfigurableDistributionProfile {
 	public var xsltFile: String? = nil
 
 
+	public func setMultiRequestToken(ingestUrl: String) {
+		self.dict["ingestUrl"] = ingestUrl
+	}
+	
+	public func setMultiRequestToken(username: String) {
+		self.dict["username"] = username
+	}
+	
+	public func setMultiRequestToken(password: String) {
+		self.dict["password"] = password
+	}
+	
+	public func setMultiRequestToken(xsltFile: String) {
+		self.dict["xsltFile"] = xsltFile
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -64,7 +113,7 @@ open class TvinciDistributionProfile: ConfigurableDistributionProfile {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(ingestUrl != nil) {
 			dict["ingestUrl"] = ingestUrl!

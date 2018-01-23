@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType: String {
+	case ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark"
 	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
 	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
 	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"
@@ -52,5 +53,4 @@ public enum ConditionType: String {
 	case DELIVERY_PROFILE = "13"
 	case ACTIVE_EDGE_VALIDATE = "14"
 	case ANONYMOUS_IP = "15"
-	case ASSET_TYPE = "16"
 }

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using exec.php
+ * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,9 +35,22 @@
 
 open class ForensicWatermarkAdvancedFilter: SearchItem {
 
+	public class ForensicWatermarkAdvancedFilterTokenizer: SearchItem.SearchItemTokenizer {
+		
+		public var watermarkId: BaseTokenizedObject {
+			get {
+				return self.append("watermarkId") 
+			}
+		}
+	}
+
 	public var watermarkId: Int? = nil
 
 
+	public func setMultiRequestToken(watermarkId: String) {
+		self.dict["watermarkId"] = watermarkId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -47,7 +60,7 @@ open class ForensicWatermarkAdvancedFilter: SearchItem {
 
 	}
 
-	public override func toDictionary() -> [String: Any] {
+	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
 		if(watermarkId != nil) {
 			dict["watermarkId"] = watermarkId!
