@@ -85,6 +85,12 @@ open class StorageJobData: JobData {
 			}
 		}
 		
+		public var srcFileEncryptionKey: BaseTokenizedObject {
+			get {
+				return self.append("srcFileEncryptionKey") 
+			}
+		}
+		
 		public var srcFileSyncId: BaseTokenizedObject {
 			get {
 				return self.append("srcFileSyncId") 
@@ -106,6 +112,7 @@ open class StorageJobData: JobData {
 	public var serverPassPhrase: String? = nil
 	public var ftpPassiveMode: Bool? = nil
 	public var srcFileSyncLocalPath: String? = nil
+	public var srcFileEncryptionKey: String? = nil
 	public var srcFileSyncId: String? = nil
 	public var destFileSyncStoredPath: String? = nil
 
@@ -140,6 +147,10 @@ open class StorageJobData: JobData {
 	
 	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
 		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(srcFileEncryptionKey: String) {
+		self.dict["srcFileEncryptionKey"] = srcFileEncryptionKey
 	}
 	
 	public func setMultiRequestToken(srcFileSyncId: String) {
@@ -177,6 +188,9 @@ open class StorageJobData: JobData {
 		if dict["srcFileSyncLocalPath"] != nil {
 			srcFileSyncLocalPath = dict["srcFileSyncLocalPath"] as? String
 		}
+		if dict["srcFileEncryptionKey"] != nil {
+			srcFileEncryptionKey = dict["srcFileEncryptionKey"] as? String
+		}
 		if dict["srcFileSyncId"] != nil {
 			srcFileSyncId = dict["srcFileSyncId"] as? String
 		}
@@ -211,6 +225,9 @@ open class StorageJobData: JobData {
 		}
 		if(srcFileSyncLocalPath != nil) {
 			dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath!
+		}
+		if(srcFileEncryptionKey != nil) {
+			dict["srcFileEncryptionKey"] = srcFileEncryptionKey!
 		}
 		if(srcFileSyncId != nil) {
 			dict["srcFileSyncId"] = srcFileSyncId!

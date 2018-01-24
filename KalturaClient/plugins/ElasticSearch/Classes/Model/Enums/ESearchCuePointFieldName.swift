@@ -32,16 +32,15 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCuePointFieldName: String {
-	case CUE_POINT_ANSWERS = "cue_points.cue_point_answers"
-	case CUE_POINT_END_TIME = "cue_points.cue_point_end_time"
-	case CUE_POINT_EXPLANATION = "cue_points.cue_point_explanation"
-	case CUE_POINT_HINT = "cue_points.cue_point_hint"
-	case CUE_POINT_ID = "cue_points.cue_point_id"
-	case CUE_POINT_NAME = "cue_points.cue_point_name"
-	case CUE_POINT_QUESTION = "cue_points.cue_point_question"
-	case CUE_POINT_START_TIME = "cue_points.cue_point_start_time"
-	case CUE_POINT_SUB_TYPE = "cue_points.cue_point_sub_type"
-	case CUE_POINT_TAGS = "cue_points.cue_point_tags"
-	case CUE_POINT_TEXT = "cue_points.cue_point_text"
-	case CUE_POINT_TYPE = "cue_points.cue_point_type"
+	case ANSWERS = "answers"
+	case END_TIME = "end_time"
+	case EXPLANATION = "explanation"
+	case HINT = "hint"
+	case ID = "id"
+	case NAME = "name"
+	case QUESTION = "question"
+	case START_TIME = "start_time"
+	case SUB_TYPE = "sub_type"
+	case TAGS = "tags"
+	case TEXT = "text"
 }

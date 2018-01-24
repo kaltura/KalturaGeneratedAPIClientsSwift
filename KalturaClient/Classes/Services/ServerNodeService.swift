@@ -146,6 +146,23 @@ public final class ServerNodeService{
 		return request
 	}
 
+	public class MarkOfflineTokenizer: ClientTokenizer  {
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
+	}
+
+	/**  Mark server node offline  */
+	public static func markOffline(serverNodeId: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, MarkOfflineTokenizer> {
+		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, MarkOfflineTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, MarkOfflineTokenizer>(service: "servernode", action: "markOffline")
+			.setParam(key: "serverNodeId", value: serverNodeId)
+
+		return request
+	}
+
 	public class ReportStatusTokenizer: ClientTokenizer  {
 		
 		public var hostName: BaseTokenizedObject {

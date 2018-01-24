@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchUserItem: ESearchItem {
+open class ESearchUserItem: ESearchAbstractUserItem {
 
-	public class ESearchUserItemTokenizer: ESearchItem.ESearchItemTokenizer {
+	public class ESearchUserItemTokenizer: ESearchAbstractUserItem.ESearchAbstractUserItemTokenizer {
 		
 		public var fieldName: BaseTokenizedObject {
 			get {

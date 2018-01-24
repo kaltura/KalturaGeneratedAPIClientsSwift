@@ -37,10 +37,8 @@ open class VirusScanJobData: JobData {
 
 	public class VirusScanJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public var srcFilePath: BaseTokenizedObject {
-			get {
-				return self.append("srcFilePath") 
-			}
+		public func fileContainer<T: FileContainer.FileContainerTokenizer>() -> T {
+			return T(self.append("fileContainer"))
 		}
 		
 		public var flavorAssetId: BaseTokenizedObject {
@@ -62,16 +60,12 @@ open class VirusScanJobData: JobData {
 		}
 	}
 
-	public var srcFilePath: String? = nil
+	public var fileContainer: FileContainer? = nil
 	public var flavorAssetId: String? = nil
 	public var scanResult: VirusScanJobResult? = nil
 	public var virusFoundAction: VirusFoundAction? = nil
 
 
-	public func setMultiRequestToken(srcFilePath: String) {
-		self.dict["srcFilePath"] = srcFilePath
-	}
-	
 	public func setMultiRequestToken(flavorAssetId: String) {
 		self.dict["flavorAssetId"] = flavorAssetId
 	}
@@ -87,9 +81,8 @@ open class VirusScanJobData: JobData {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["srcFilePath"] != nil {
-			srcFilePath = dict["srcFilePath"] as? String
-		}
+		if dict["fileContainer"] != nil {
+		fileContainer = try JSONParser.parse(object: dict["fileContainer"] as! [String: Any])		}
 		if dict["flavorAssetId"] != nil {
 			flavorAssetId = dict["flavorAssetId"] as? String
 		}
@@ -104,8 +97,8 @@ open class VirusScanJobData: JobData {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(srcFilePath != nil) {
-			dict["srcFilePath"] = srcFilePath!
+		if(fileContainer != nil) {
+			dict["fileContainer"] = fileContainer!.toDictionary()
 		}
 		if(flavorAssetId != nil) {
 			dict["flavorAssetId"] = flavorAssetId!

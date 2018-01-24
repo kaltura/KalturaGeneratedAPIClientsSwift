@@ -34,11 +34,7 @@
 public enum DeliveryProfileType: String {
 	case EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP"
 	case EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP"
-	case FORENSIC_WATERMARK_APPLE_HTTP = "forensicWatermark.FORENSIC_WATERMARK_APPLE_HTTP"
-	case FORENSIC_WATERMARK_DASH = "forensicWatermark.FORENSIC_WATERMARK_DASH"
 	case KONTIKI_HTTP = "kontiki.KONTIKI_HTTP"
-	case UPLYNK_HTTP = "uplynk.UPLYNK_HTTP"
-	case UPLYNK_RTMP = "uplynk.UPLYNK_RTMP"
 	case VELOCIX_HDS = "velocix.VELOCIX_HDS"
 	case VELOCIX_HLS = "velocix.VELOCIX_HLS"
 	case APPLE_HTTP = "1"

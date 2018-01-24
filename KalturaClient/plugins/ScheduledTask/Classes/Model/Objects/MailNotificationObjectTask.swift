@@ -61,6 +61,12 @@ open class MailNotificationObjectTask: ObjectTask {
 			}
 		}
 		
+		public var footer: BaseTokenizedObject {
+			get {
+				return self.append("footer") 
+			}
+		}
+		
 		public var link: BaseTokenizedObject {
 			get {
 				return self.append("link") 
@@ -82,6 +88,8 @@ open class MailNotificationObjectTask: ObjectTask {
 	public var subject: String? = nil
 	/**  The message to send in the notification mail  */
 	public var message: String? = nil
+	/**  The footer of the message to send in the notification mail  */
+	public var footer: String? = nil
 	/**  The basic link for the KMC site  */
 	public var link: String? = nil
 	/**  Send the mail to each user  */
@@ -102,6 +110,10 @@ open class MailNotificationObjectTask: ObjectTask {
 	
 	public func setMultiRequestToken(message: String) {
 		self.dict["message"] = message
+	}
+	
+	public func setMultiRequestToken(footer: String) {
+		self.dict["footer"] = footer
 	}
 	
 	public func setMultiRequestToken(link: String) {
@@ -127,6 +139,9 @@ open class MailNotificationObjectTask: ObjectTask {
 		if dict["message"] != nil {
 			message = dict["message"] as? String
 		}
+		if dict["footer"] != nil {
+			footer = dict["footer"] as? String
+		}
 		if dict["link"] != nil {
 			link = dict["link"] as? String
 		}
@@ -149,6 +164,9 @@ open class MailNotificationObjectTask: ObjectTask {
 		}
 		if(message != nil) {
 			dict["message"] = message!
+		}
+		if(footer != nil) {
+			dict["footer"] = footer!
 		}
 		if(link != nil) {
 			dict["link"] = link!

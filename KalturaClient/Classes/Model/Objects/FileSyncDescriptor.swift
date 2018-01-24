@@ -43,6 +43,12 @@ open class FileSyncDescriptor: ObjectBase {
 			}
 		}
 		
+		public var fileEncryptionKey: BaseTokenizedObject {
+			get {
+				return self.append("fileEncryptionKey") 
+			}
+		}
+		
 		public var fileSyncRemoteUrl: BaseTokenizedObject {
 			get {
 				return self.append("fileSyncRemoteUrl") 
@@ -57,6 +63,7 @@ open class FileSyncDescriptor: ObjectBase {
 	}
 
 	public var fileSyncLocalPath: String? = nil
+	public var fileEncryptionKey: String? = nil
 	/**  The translated path as used by the scheduler  */
 	public var fileSyncRemoteUrl: String? = nil
 	public var fileSyncObjectSubType: Int? = nil
@@ -64,6 +71,10 @@ open class FileSyncDescriptor: ObjectBase {
 
 	public func setMultiRequestToken(fileSyncLocalPath: String) {
 		self.dict["fileSyncLocalPath"] = fileSyncLocalPath
+	}
+	
+	public func setMultiRequestToken(fileEncryptionKey: String) {
+		self.dict["fileEncryptionKey"] = fileEncryptionKey
 	}
 	
 	public func setMultiRequestToken(fileSyncRemoteUrl: String) {
@@ -80,6 +91,9 @@ open class FileSyncDescriptor: ObjectBase {
 		if dict["fileSyncLocalPath"] != nil {
 			fileSyncLocalPath = dict["fileSyncLocalPath"] as? String
 		}
+		if dict["fileEncryptionKey"] != nil {
+			fileEncryptionKey = dict["fileEncryptionKey"] as? String
+		}
 		if dict["fileSyncRemoteUrl"] != nil {
 			fileSyncRemoteUrl = dict["fileSyncRemoteUrl"] as? String
 		}
@@ -93,6 +107,9 @@ open class FileSyncDescriptor: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(fileSyncLocalPath != nil) {
 			dict["fileSyncLocalPath"] = fileSyncLocalPath!
+		}
+		if(fileEncryptionKey != nil) {
+			dict["fileEncryptionKey"] = fileEncryptionKey!
 		}
 		if(fileSyncRemoteUrl != nil) {
 			dict["fileSyncRemoteUrl"] = fileSyncRemoteUrl!

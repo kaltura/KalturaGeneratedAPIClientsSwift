@@ -37,10 +37,8 @@ open class CaptureThumbJobData: JobData {
 
 	public class CaptureThumbJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public var srcFileSyncLocalPath: BaseTokenizedObject {
-			get {
-				return self.append("srcFileSyncLocalPath") 
-			}
+		public func fileContainer<T: FileContainer.FileContainerTokenizer>() -> T {
+			return T(self.append("fileContainer"))
 		}
 		
 		public var actualSrcFileSyncLocalPath: BaseTokenizedObject {
@@ -86,7 +84,7 @@ open class CaptureThumbJobData: JobData {
 		}
 	}
 
-	public var srcFileSyncLocalPath: String? = nil
+	public var fileContainer: FileContainer? = nil
 	/**  The translated path as used by the scheduler  */
 	public var actualSrcFileSyncLocalPath: String? = nil
 	public var srcFileSyncRemoteUrl: String? = nil
@@ -97,10 +95,6 @@ open class CaptureThumbJobData: JobData {
 	public var thumbPath: String? = nil
 
 
-	public func setMultiRequestToken(srcFileSyncLocalPath: String) {
-		self.dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath
-	}
-	
 	public func setMultiRequestToken(actualSrcFileSyncLocalPath: String) {
 		self.dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath
 	}
@@ -132,9 +126,8 @@ open class CaptureThumbJobData: JobData {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["srcFileSyncLocalPath"] != nil {
-			srcFileSyncLocalPath = dict["srcFileSyncLocalPath"] as? String
-		}
+		if dict["fileContainer"] != nil {
+		fileContainer = try JSONParser.parse(object: dict["fileContainer"] as! [String: Any])		}
 		if dict["actualSrcFileSyncLocalPath"] != nil {
 			actualSrcFileSyncLocalPath = dict["actualSrcFileSyncLocalPath"] as? String
 		}
@@ -161,8 +154,8 @@ open class CaptureThumbJobData: JobData {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(srcFileSyncLocalPath != nil) {
-			dict["srcFileSyncLocalPath"] = srcFileSyncLocalPath!
+		if(fileContainer != nil) {
+			dict["fileContainer"] = fileContainer!.toDictionary()
 		}
 		if(actualSrcFileSyncLocalPath != nil) {
 			dict["actualSrcFileSyncLocalPath"] = actualSrcFileSyncLocalPath!

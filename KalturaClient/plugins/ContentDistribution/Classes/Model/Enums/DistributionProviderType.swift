@@ -32,7 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType: String {
-	case ATT_UVERSE = "attUverseDistribution.ATT_UVERSE"
 	case AVN = "avnDistribution.AVN"
 	case COMCAST_MRSS = "comcastMrssDistribution.COMCAST_MRSS"
 	case CROSS_KALTURA = "crossKalturaDistribution.CROSS_KALTURA"
@@ -47,18 +46,8 @@ public enum DistributionProviderType: String {
 	case IDETIC = "ideticDistribution.IDETIC"
 	case METRO_PCS = "metroPcsDistribution.METRO_PCS"
 	case MSN = "msnDistribution.MSN"
-	case NDN = "ndnDistribution.NDN"
-	case PODCAST = "podcastDistribution.PODCAST"
-	case PUSH_TO_NEWS = "pushToNewsDistribution.PUSH_TO_NEWS"
 	case QUICKPLAY = "quickPlayDistribution.QUICKPLAY"
-	case SYNACOR_HBO = "synacorHboDistribution.SYNACOR_HBO"
-	case TIME_WARNER = "timeWarnerDistribution.TIME_WARNER"
-	case TVCOM = "tvComDistribution.TVCOM"
-	case TVINCI = "tvinciDistribution.TVINCI"
 	case UNICORN = "unicornDistribution.UNICORN"
-	case UVERSE_CLICK_TO_ORDER = "uverseClickToOrderDistribution.UVERSE_CLICK_TO_ORDER"
-	case UVERSE = "uverseDistribution.UVERSE"
-	case VERIZON_VCAST = "verizonVcastDistribution.VERIZON_VCAST"
 	case YAHOO = "yahooDistribution.YAHOO"
 	case YOUTUBE = "youTubeDistribution.YOUTUBE"
 	case YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API"
