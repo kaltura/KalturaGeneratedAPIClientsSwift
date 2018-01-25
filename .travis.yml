@@ -6,7 +6,7 @@ xcode_scheme: KalturaClient_Tests
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 before_script:
-  - pod --project-directory=Example install
+  - pod --project-directory=Example install --repo-update
   - gem install xcpretty
 script:
   - ./travis_build.sh 
