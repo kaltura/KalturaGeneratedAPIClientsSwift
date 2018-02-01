@@ -33,71 +33,50 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryMetadataItem: ESearchEntryAbstractNestedItem {
+open class ESearchNestedOperator: ESearchEntryNestedBaseItem {
 
-	public class ESearchEntryMetadataItemTokenizer: ESearchEntryAbstractNestedItem.ESearchEntryAbstractNestedItemTokenizer {
+	public class ESearchNestedOperatorTokenizer: ESearchEntryNestedBaseItem.ESearchEntryNestedBaseItemTokenizer {
 		
-		public var xpath: BaseTokenizedObject {
+		public var operator: BaseTokenizedObject {
 			get {
-				return self.append("xpath") 
+				return self.append("operator") 
 			}
 		}
 		
-		public var metadataProfileId: BaseTokenizedObject {
+		public var searchItems: ArrayTokenizedObject<ESearchEntryNestedBaseItem.ESearchEntryNestedBaseItemTokenizer> {
 			get {
-				return self.append("metadataProfileId") 
-			}
-		}
-		
-		public var metadataFieldId: BaseTokenizedObject {
-			get {
-				return self.append("metadataFieldId") 
-			}
+				return ArrayTokenizedObject<ESearchEntryNestedBaseItem.ESearchEntryNestedBaseItemTokenizer>(self.append("searchItems"))
+			} 
 		}
 	}
 
-	public var xpath: String? = nil
-	public var metadataProfileId: Int? = nil
-	public var metadataFieldId: Int? = nil
+	public var operator: ESearchOperatorType? = nil
+	public var searchItems: Array<ESearchEntryNestedBaseItem>? = nil
 
 
-	public func setMultiRequestToken(xpath: String) {
-		self.dict["xpath"] = xpath
-	}
-	
-	public func setMultiRequestToken(metadataProfileId: String) {
-		self.dict["metadataProfileId"] = metadataProfileId
-	}
-	
-	public func setMultiRequestToken(metadataFieldId: String) {
-		self.dict["metadataFieldId"] = metadataFieldId
+	public func setMultiRequestToken(operator: String) {
+		self.dict["operator"] = operator
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["xpath"] != nil {
-			xpath = dict["xpath"] as? String
+		if dict["operator"] != nil {
+			operator = ESearchOperatorType(rawValue: (dict["operator"] as? Int)!)
 		}
-		if dict["metadataProfileId"] != nil {
-			metadataProfileId = dict["metadataProfileId"] as? Int
-		}
-		if dict["metadataFieldId"] != nil {
-			metadataFieldId = dict["metadataFieldId"] as? Int
+		if dict["searchItems"] != nil {
+			searchItems = try JSONParser.parse(array: dict["searchItems"] as! [Any])
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(xpath != nil) {
-			dict["xpath"] = xpath!
+		if(operator != nil) {
+			dict["operator"] = operator!.rawValue
 		}
-		if(metadataProfileId != nil) {
-			dict["metadataProfileId"] = metadataProfileId!
-		}
-		if(metadataFieldId != nil) {
-			dict["metadataFieldId"] = metadataFieldId!
+		if(searchItems != nil) {
+			dict["searchItems"] = searchItems!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

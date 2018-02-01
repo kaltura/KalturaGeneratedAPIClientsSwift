@@ -33,73 +33,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryMetadataItem: ESearchEntryAbstractNestedItem {
+open class ESearchEntryNestedBaseItem: ESearchEntryBaseNestedObject {
 
-	public class ESearchEntryMetadataItemTokenizer: ESearchEntryAbstractNestedItem.ESearchEntryAbstractNestedItemTokenizer {
-		
-		public var xpath: BaseTokenizedObject {
-			get {
-				return self.append("xpath") 
-			}
-		}
-		
-		public var metadataProfileId: BaseTokenizedObject {
-			get {
-				return self.append("metadataProfileId") 
-			}
-		}
-		
-		public var metadataFieldId: BaseTokenizedObject {
-			get {
-				return self.append("metadataFieldId") 
-			}
-		}
+	public class ESearchEntryNestedBaseItemTokenizer: ESearchEntryBaseNestedObject.ESearchEntryBaseNestedObjectTokenizer {
 	}
 
-	public var xpath: String? = nil
-	public var metadataProfileId: Int? = nil
-	public var metadataFieldId: Int? = nil
 
 
-	public func setMultiRequestToken(xpath: String) {
-		self.dict["xpath"] = xpath
-	}
-	
-	public func setMultiRequestToken(metadataProfileId: String) {
-		self.dict["metadataProfileId"] = metadataProfileId
-	}
-	
-	public func setMultiRequestToken(metadataFieldId: String) {
-		self.dict["metadataFieldId"] = metadataFieldId
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["xpath"] != nil {
-			xpath = dict["xpath"] as? String
-		}
-		if dict["metadataProfileId"] != nil {
-			metadataProfileId = dict["metadataProfileId"] as? Int
-		}
-		if dict["metadataFieldId"] != nil {
-			metadataFieldId = dict["metadataFieldId"] as? Int
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(xpath != nil) {
-			dict["xpath"] = xpath!
-		}
-		if(metadataProfileId != nil) {
-			dict["metadataProfileId"] = metadataProfileId!
-		}
-		if(metadataFieldId != nil) {
-			dict["metadataFieldId"] = metadataFieldId!
-		}
-		return dict
-	}
 }
 

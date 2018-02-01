@@ -61,10 +61,10 @@ open class ESearchCuePointItemData: ESearchItemData {
 			}
 		}
 		
-		public var tags: BaseTokenizedObject {
+		public var tags: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
 			get {
-				return self.append("tags") 
-			}
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("tags"))
+			} 
 		}
 		
 		public var startTime: BaseTokenizedObject {
@@ -91,10 +91,10 @@ open class ESearchCuePointItemData: ESearchItemData {
 			}
 		}
 		
-		public var answers: BaseTokenizedObject {
+		public var answers: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
 			get {
-				return self.append("answers") 
-			}
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("answers"))
+			} 
 		}
 		
 		public var hint: BaseTokenizedObject {
@@ -120,12 +120,12 @@ open class ESearchCuePointItemData: ESearchItemData {
 	public var id: String? = nil
 	public var name: String? = nil
 	public var text: String? = nil
-	public var tags: String? = nil
+	public var tags: Array<StringHolder>? = nil
 	public var startTime: String? = nil
 	public var endTime: String? = nil
 	public var subType: String? = nil
 	public var question: String? = nil
-	public var answers: String? = nil
+	public var answers: Array<StringHolder>? = nil
 	public var hint: String? = nil
 	public var explanation: String? = nil
 	public var assetId: String? = nil
@@ -147,10 +147,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 		self.dict["text"] = text
 	}
 	
-	public func setMultiRequestToken(tags: String) {
-		self.dict["tags"] = tags
-	}
-	
 	public func setMultiRequestToken(startTime: String) {
 		self.dict["startTime"] = startTime
 	}
@@ -165,10 +161,6 @@ open class ESearchCuePointItemData: ESearchItemData {
 	
 	public func setMultiRequestToken(question: String) {
 		self.dict["question"] = question
-	}
-	
-	public func setMultiRequestToken(answers: String) {
-		self.dict["answers"] = answers
 	}
 	
 	public func setMultiRequestToken(hint: String) {
@@ -199,7 +191,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 			text = dict["text"] as? String
 		}
 		if dict["tags"] != nil {
-			tags = dict["tags"] as? String
+			tags = try JSONParser.parse(array: dict["tags"] as! [Any])
 		}
 		if dict["startTime"] != nil {
 			startTime = dict["startTime"] as? String
@@ -214,7 +206,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 			question = dict["question"] as? String
 		}
 		if dict["answers"] != nil {
-			answers = dict["answers"] as? String
+			answers = try JSONParser.parse(array: dict["answers"] as! [Any])
 		}
 		if dict["hint"] != nil {
 			hint = dict["hint"] as? String
@@ -243,7 +235,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 			dict["text"] = text!
 		}
 		if(tags != nil) {
-			dict["tags"] = tags!
+			dict["tags"] = tags!.map { value in value.toDictionary() }
 		}
 		if(startTime != nil) {
 			dict["startTime"] = startTime!
@@ -258,7 +250,7 @@ open class ESearchCuePointItemData: ESearchItemData {
 			dict["question"] = question!
 		}
 		if(answers != nil) {
-			dict["answers"] = answers!
+			dict["answers"] = answers!.map { value in value.toDictionary() }
 		}
 		if(hint != nil) {
 			dict["hint"] = hint!

@@ -31,17 +31,12 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchCuePointFieldName: String {
-	case ANSWERS = "answers"
-	case END_TIME = "end_time"
-	case EXPLANATION = "explanation"
-	case HINT = "hint"
-	case ID = "id"
-	case NAME = "name"
-	case QUESTION = "question"
-	case START_TIME = "start_time"
-	case SUB_TYPE = "sub_type"
-	case TAGS = "tags"
-	case TEXT = "text"
-	case TYPE = "type"
+public enum QuestionType: Int {
+	case MULTIPLE_CHOICE_ANSWER = 1
+	case TRUE_FALSE = 2
+	case REFLECTION_POINT = 3
+	case MULTIPLE_ANSWER_QUESTION = 4
+	case FILL_IN_BLANK = 5
+	case HOT_SPOT = 6
+	case GO_TO = 7
 }

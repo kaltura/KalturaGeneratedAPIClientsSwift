@@ -33,71 +33,81 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryMetadataItem: ESearchEntryAbstractNestedItem {
+open class ESearchEntryAbstractNestedItem: ESearchEntryNestedBaseItem {
 
-	public class ESearchEntryMetadataItemTokenizer: ESearchEntryAbstractNestedItem.ESearchEntryAbstractNestedItemTokenizer {
+	public class ESearchEntryAbstractNestedItemTokenizer: ESearchEntryNestedBaseItem.ESearchEntryNestedBaseItemTokenizer {
 		
-		public var xpath: BaseTokenizedObject {
+		public var searchTerm: BaseTokenizedObject {
 			get {
-				return self.append("xpath") 
+				return self.append("searchTerm") 
 			}
 		}
 		
-		public var metadataProfileId: BaseTokenizedObject {
+		public var itemType: BaseTokenizedObject {
 			get {
-				return self.append("metadataProfileId") 
+				return self.append("itemType") 
 			}
 		}
 		
-		public var metadataFieldId: BaseTokenizedObject {
+		public func range<T: ESearchRange.ESearchRangeTokenizer>() -> T {
+			return T(self.append("range"))
+		}
+		
+		public var addHighlight: BaseTokenizedObject {
 			get {
-				return self.append("metadataFieldId") 
+				return self.append("addHighlight") 
 			}
 		}
 	}
 
-	public var xpath: String? = nil
-	public var metadataProfileId: Int? = nil
-	public var metadataFieldId: Int? = nil
+	public var searchTerm: String? = nil
+	public var itemType: ESearchItemType? = nil
+	public var range: ESearchRange? = nil
+	public var addHighlight: Bool? = nil
 
 
-	public func setMultiRequestToken(xpath: String) {
-		self.dict["xpath"] = xpath
+	public func setMultiRequestToken(searchTerm: String) {
+		self.dict["searchTerm"] = searchTerm
 	}
 	
-	public func setMultiRequestToken(metadataProfileId: String) {
-		self.dict["metadataProfileId"] = metadataProfileId
+	public func setMultiRequestToken(itemType: String) {
+		self.dict["itemType"] = itemType
 	}
 	
-	public func setMultiRequestToken(metadataFieldId: String) {
-		self.dict["metadataFieldId"] = metadataFieldId
+	public func setMultiRequestToken(addHighlight: String) {
+		self.dict["addHighlight"] = addHighlight
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["xpath"] != nil {
-			xpath = dict["xpath"] as? String
+		if dict["searchTerm"] != nil {
+			searchTerm = dict["searchTerm"] as? String
 		}
-		if dict["metadataProfileId"] != nil {
-			metadataProfileId = dict["metadataProfileId"] as? Int
+		if dict["itemType"] != nil {
+			itemType = ESearchItemType(rawValue: (dict["itemType"] as? Int)!)
 		}
-		if dict["metadataFieldId"] != nil {
-			metadataFieldId = dict["metadataFieldId"] as? Int
+		if dict["range"] != nil {
+		range = try JSONParser.parse(object: dict["range"] as! [String: Any])		}
+		if dict["addHighlight"] != nil {
+			addHighlight = dict["addHighlight"] as? Bool
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(xpath != nil) {
-			dict["xpath"] = xpath!
+		if(searchTerm != nil) {
+			dict["searchTerm"] = searchTerm!
 		}
-		if(metadataProfileId != nil) {
-			dict["metadataProfileId"] = metadataProfileId!
+		if(itemType != nil) {
+			dict["itemType"] = itemType!.rawValue
 		}
-		if(metadataFieldId != nil) {
-			dict["metadataFieldId"] = metadataFieldId!
+		if(range != nil) {
+			dict["range"] = range!.toDictionary()
+		}
+		if(addHighlight != nil) {
+			dict["addHighlight"] = addHighlight!
 		}
 		return dict
 	}
