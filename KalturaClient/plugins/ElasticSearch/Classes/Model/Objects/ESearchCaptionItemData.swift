@@ -66,6 +66,12 @@ open class ESearchCaptionItemData: ESearchItemData {
 				return self.append("captionAssetId") 
 			}
 		}
+		
+		public var label: BaseTokenizedObject {
+			get {
+				return self.append("label") 
+			}
+		}
 	}
 
 	public var line: String? = nil
@@ -73,6 +79,7 @@ open class ESearchCaptionItemData: ESearchItemData {
 	public var endsAt: Int? = nil
 	public var language: String? = nil
 	public var captionAssetId: String? = nil
+	public var label: String? = nil
 
 
 	public func setMultiRequestToken(line: String) {
@@ -95,6 +102,10 @@ open class ESearchCaptionItemData: ESearchItemData {
 		self.dict["captionAssetId"] = captionAssetId
 	}
 	
+	public func setMultiRequestToken(label: String) {
+		self.dict["label"] = label
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -112,6 +123,9 @@ open class ESearchCaptionItemData: ESearchItemData {
 		}
 		if dict["captionAssetId"] != nil {
 			captionAssetId = dict["captionAssetId"] as? String
+		}
+		if dict["label"] != nil {
+			label = dict["label"] as? String
 		}
 
 	}
@@ -132,6 +146,9 @@ open class ESearchCaptionItemData: ESearchItemData {
 		}
 		if(captionAssetId != nil) {
 			dict["captionAssetId"] = captionAssetId!
+		}
+		if(label != nil) {
+			dict["label"] = label!
 		}
 		return dict
 	}

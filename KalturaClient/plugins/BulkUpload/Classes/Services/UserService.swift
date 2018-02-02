@@ -169,6 +169,44 @@ extension UserService{
 		return request
 	}
 
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func filter<T: UserFilter.UserFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var additionalFields: ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer>(self.append("additionalFields"))
+			} 
+		}
+	}
+
+	public static func exportToCsv(filter: UserFilter) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: nil)
+	}
+
+	public static func exportToCsv(filter: UserFilter, metadataProfileId: Int?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: nil)
+	}
+
+	/**  add batch job that sends an email with a link to download an updated CSV that
+	  contains list of users  */
+	public static func exportToCsv(filter: UserFilter, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "user", action: "exportToCsv")
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "metadataProfileId", value: metadataProfileId)
+			.setParam(key: "additionalFields", value: additionalFields)
+
+		return request
+	}
+
 	public class GetTokenizer: ClientTokenizer  {
 		
 		public var userId: BaseTokenizedObject {
@@ -436,6 +474,23 @@ extension UserService{
 	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
 		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "user", action: "resetPassword")
 			.setParam(key: "email", value: email)
+
+		return request
+	}
+
+	public class ServeCsvTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	/**  Will serve a requested csv  */
+	public static func serveCsv(id: String) -> RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer>(service: "user", action: "serveCsv")
+			.setParam(key: "id", value: id)
 
 		return request
 	}

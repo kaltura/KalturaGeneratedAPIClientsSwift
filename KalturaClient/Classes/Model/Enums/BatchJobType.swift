@@ -41,8 +41,8 @@ public enum BatchJobType: String {
 	case DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit"
 	case DISTRIBUTION_SYNC = "contentDistribution.DistributionSync"
 	case DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate"
-	case DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor"
 	case CONVERT = "0"
+	case DROP_FOLDER_CONTENT_PROCESSOR = "dropFolder.DropFolderContentProcessor"
 	case DROP_FOLDER_WATCHER = "dropFolder.DropFolderWatcher"
 	case EVENT_NOTIFICATION_HANDLER = "eventNotification.EventNotificationHandler"
 	case INTEGRATION = "integration.Integration"
@@ -92,4 +92,5 @@ public enum BatchJobType: String {
 	case COPY_CAPTIONS = "43"
 	case CHUNKED_ENCODE_JOB_SCHEDULER = "44"
 	case SERVER_NODE_MONITOR = "45"
+	case USERS_CSV = "46"
 }
