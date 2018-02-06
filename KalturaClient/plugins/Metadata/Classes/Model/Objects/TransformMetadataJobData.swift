@@ -53,10 +53,8 @@ open class TransformMetadataJobData: JobData {
 			}
 		}
 		
-		public var destXsdPath: BaseTokenizedObject {
-			get {
-				return self.append("destXsdPath") 
-			}
+		public func destXsd<T: FileContainer.FileContainerTokenizer>() -> T {
+			return T(self.append("destXsd"))
 		}
 		
 		public var metadataProfileId: BaseTokenizedObject {
@@ -69,7 +67,7 @@ open class TransformMetadataJobData: JobData {
 	public var srcXsl: FileContainer? = nil
 	public var srcVersion: Int? = nil
 	public var destVersion: Int? = nil
-	public var destXsdPath: String? = nil
+	public var destXsd: FileContainer? = nil
 	public var metadataProfileId: Int? = nil
 
 
@@ -79,10 +77,6 @@ open class TransformMetadataJobData: JobData {
 	
 	public func setMultiRequestToken(destVersion: String) {
 		self.dict["destVersion"] = destVersion
-	}
-	
-	public func setMultiRequestToken(destXsdPath: String) {
-		self.dict["destXsdPath"] = destXsdPath
 	}
 	
 	public func setMultiRequestToken(metadataProfileId: String) {
@@ -100,9 +94,8 @@ open class TransformMetadataJobData: JobData {
 		if dict["destVersion"] != nil {
 			destVersion = dict["destVersion"] as? Int
 		}
-		if dict["destXsdPath"] != nil {
-			destXsdPath = dict["destXsdPath"] as? String
-		}
+		if dict["destXsd"] != nil {
+		destXsd = try JSONParser.parse(object: dict["destXsd"] as! [String: Any])		}
 		if dict["metadataProfileId"] != nil {
 			metadataProfileId = dict["metadataProfileId"] as? Int
 		}
@@ -120,8 +113,8 @@ open class TransformMetadataJobData: JobData {
 		if(destVersion != nil) {
 			dict["destVersion"] = destVersion!
 		}
-		if(destXsdPath != nil) {
-			dict["destXsdPath"] = destXsdPath!
+		if(destXsd != nil) {
+			dict["destXsd"] = destXsd!.toDictionary()
 		}
 		if(metadataProfileId != nil) {
 			dict["metadataProfileId"] = metadataProfileId!
