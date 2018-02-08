@@ -177,7 +177,5 @@ public enum LanguageCode: String {
 	case YI = "yi"
 	case YO = "yo"
 	case ZH = "zh"
-	case ZH_HANS = "zh_s"
-	case ZH_HANT = "zh_t"
 	case ZU = "zu"
 }
