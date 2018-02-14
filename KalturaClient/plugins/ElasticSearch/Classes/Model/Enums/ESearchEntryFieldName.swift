@@ -57,6 +57,7 @@ public enum ESearchEntryFieldName: String {
 	case RECORDED_ENTRY_ID = "recorded_entry_id"
 	case REDIRECT_ENTRY_ID = "redirect_entry_id"
 	case REFERENCE_ID = "reference_id"
+	case ROOT_ID = "root_id"
 	case SITE_URL = "site_url"
 	case SOURCE_TYPE = "source_type"
 	case START_DATE = "start_date"
