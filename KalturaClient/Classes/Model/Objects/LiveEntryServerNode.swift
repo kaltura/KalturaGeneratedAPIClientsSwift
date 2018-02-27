@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2017  Kaltura Inc.
+// Copyright (C) 2006-2018  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -48,13 +48,24 @@ open class LiveEntryServerNode: EntryServerNode {
 				return ArrayTokenizedObject<LiveEntryServerNodeRecordingInfo.LiveEntryServerNodeRecordingInfoTokenizer>(self.append("recordingInfo"))
 			} 
 		}
+		
+		public var isPlayableUser: BaseTokenizedObject {
+			get {
+				return self.append("isPlayableUser") 
+			}
+		}
 	}
 
 	/**  parameters of the stream we got  */
 	public var streams: Array<LiveStreamParams>? = nil
 	public var recordingInfo: Array<LiveEntryServerNodeRecordingInfo>? = nil
+	public var isPlayableUser: Bool? = nil
 
 
+	public func setMultiRequestToken(isPlayableUser: String) {
+		self.dict["isPlayableUser"] = isPlayableUser
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -63,6 +74,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		}
 		if dict["recordingInfo"] != nil {
 			recordingInfo = try JSONParser.parse(array: dict["recordingInfo"] as! [Any])
+		}
+		if dict["isPlayableUser"] != nil {
+			isPlayableUser = dict["isPlayableUser"] as? Bool
 		}
 
 	}
@@ -74,6 +88,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		}
 		if(recordingInfo != nil) {
 			dict["recordingInfo"] = recordingInfo!.map { value in value.toDictionary() }
+		}
+		if(isPlayableUser != nil) {
+			dict["isPlayableUser"] = isPlayableUser!
 		}
 		return dict
 	}
