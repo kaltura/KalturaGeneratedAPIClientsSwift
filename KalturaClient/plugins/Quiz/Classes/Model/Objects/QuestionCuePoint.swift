@@ -66,6 +66,12 @@ open class QuestionCuePoint: CuePoint {
 				return self.append("questionType") 
 			}
 		}
+		
+		public var presentationOrder: BaseTokenizedObject {
+			get {
+				return self.append("presentationOrder") 
+			}
+		}
 	}
 
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
@@ -74,6 +80,7 @@ open class QuestionCuePoint: CuePoint {
 	public var question: String? = nil
 	public var explanation: String? = nil
 	public var questionType: QuestionType? = nil
+	public var presentationOrder: Int? = nil
 
 
 	public func setMultiRequestToken(hint: String) {
@@ -90,6 +97,10 @@ open class QuestionCuePoint: CuePoint {
 	
 	public func setMultiRequestToken(questionType: String) {
 		self.dict["questionType"] = questionType
+	}
+	
+	public func setMultiRequestToken(presentationOrder: String) {
+		self.dict["presentationOrder"] = presentationOrder
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -110,6 +121,9 @@ open class QuestionCuePoint: CuePoint {
 		if dict["questionType"] != nil {
 			questionType = QuestionType(rawValue: (dict["questionType"] as? Int)!)
 		}
+		if dict["presentationOrder"] != nil {
+			presentationOrder = dict["presentationOrder"] as? Int
+		}
 
 	}
 
@@ -129,6 +143,9 @@ open class QuestionCuePoint: CuePoint {
 		}
 		if(questionType != nil) {
 			dict["questionType"] = questionType!.rawValue
+		}
+		if(presentationOrder != nil) {
+			dict["presentationOrder"] = presentationOrder!
 		}
 		return dict
 	}

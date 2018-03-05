@@ -43,9 +43,9 @@ open class FacebookDistributionJobProviderData: ConfigurableDistributionJobProvi
 			}
 		}
 		
-		public var thumbAssetFilePath: BaseTokenizedObject {
+		public var thumbAssetId: BaseTokenizedObject {
 			get {
-				return self.append("thumbAssetFilePath") 
+				return self.append("thumbAssetId") 
 			}
 		}
 		
@@ -57,7 +57,7 @@ open class FacebookDistributionJobProviderData: ConfigurableDistributionJobProvi
 	}
 
 	public var videoAssetFilePath: String? = nil
-	public var thumbAssetFilePath: String? = nil
+	public var thumbAssetId: String? = nil
 	public var captionsInfo: Array<FacebookCaptionDistributionInfo>? = nil
 
 
@@ -65,8 +65,8 @@ open class FacebookDistributionJobProviderData: ConfigurableDistributionJobProvi
 		self.dict["videoAssetFilePath"] = videoAssetFilePath
 	}
 	
-	public func setMultiRequestToken(thumbAssetFilePath: String) {
-		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	public func setMultiRequestToken(thumbAssetId: String) {
+		self.dict["thumbAssetId"] = thumbAssetId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -75,8 +75,8 @@ open class FacebookDistributionJobProviderData: ConfigurableDistributionJobProvi
 		if dict["videoAssetFilePath"] != nil {
 			videoAssetFilePath = dict["videoAssetFilePath"] as? String
 		}
-		if dict["thumbAssetFilePath"] != nil {
-			thumbAssetFilePath = dict["thumbAssetFilePath"] as? String
+		if dict["thumbAssetId"] != nil {
+			thumbAssetId = dict["thumbAssetId"] as? String
 		}
 		if dict["captionsInfo"] != nil {
 			captionsInfo = try JSONParser.parse(array: dict["captionsInfo"] as! [Any])
@@ -89,8 +89,8 @@ open class FacebookDistributionJobProviderData: ConfigurableDistributionJobProvi
 		if(videoAssetFilePath != nil) {
 			dict["videoAssetFilePath"] = videoAssetFilePath!
 		}
-		if(thumbAssetFilePath != nil) {
-			dict["thumbAssetFilePath"] = thumbAssetFilePath!
+		if(thumbAssetId != nil) {
+			dict["thumbAssetId"] = thumbAssetId!
 		}
 		if(captionsInfo != nil) {
 			dict["captionsInfo"] = captionsInfo!.map { value in value.toDictionary() }
