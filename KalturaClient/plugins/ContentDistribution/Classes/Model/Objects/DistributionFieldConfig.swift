@@ -61,6 +61,12 @@ open class DistributionFieldConfig: ObjectBase {
 			}
 		}
 		
+		public var type: BaseTokenizedObject {
+			get {
+				return self.append("type") 
+			}
+		}
+		
 		public var updateOnChange: BaseTokenizedObject {
 			get {
 				return self.append("updateOnChange") 
@@ -99,6 +105,7 @@ open class DistributionFieldConfig: ObjectBase {
 	public var entryMrssXslt: String? = nil
 	/**  Is the field required to have a value for submission ?  */
 	public var isRequired: DistributionFieldRequiredStatus? = nil
+	public var type: String? = nil
 	/**  Trigger distribution update when this field changes or not ?  */
 	public var updateOnChange: Bool? = nil
 	/**  Entry column or metadata xpath that should trigger an update  */
@@ -123,6 +130,10 @@ open class DistributionFieldConfig: ObjectBase {
 	
 	public func setMultiRequestToken(isRequired: String) {
 		self.dict["isRequired"] = isRequired
+	}
+	
+	public func setMultiRequestToken(type: String) {
+		self.dict["type"] = type
 	}
 	
 	public func setMultiRequestToken(updateOnChange: String) {
@@ -152,6 +163,9 @@ open class DistributionFieldConfig: ObjectBase {
 		if dict["isRequired"] != nil {
 			isRequired = DistributionFieldRequiredStatus(rawValue: (dict["isRequired"] as? Int)!)
 		}
+		if dict["type"] != nil {
+			type = dict["type"] as? String
+		}
 		if dict["updateOnChange"] != nil {
 			updateOnChange = dict["updateOnChange"] as? Bool
 		}
@@ -180,6 +194,9 @@ open class DistributionFieldConfig: ObjectBase {
 		}
 		if(isRequired != nil) {
 			dict["isRequired"] = isRequired!.rawValue
+		}
+		if(type != nil) {
+			dict["type"] = type!
 		}
 		if(updateOnChange != nil) {
 			dict["updateOnChange"] = updateOnChange!
