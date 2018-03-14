@@ -33,4 +33,5 @@
  */
 public enum FileAssetObjectType: String {
 	case UI_CONF = "2"
+	case ENTRY = "3"
 }
