@@ -72,6 +72,12 @@ open class QuestionCuePoint: CuePoint {
 				return self.append("presentationOrder") 
 			}
 		}
+		
+		public var excludeFromScore: BaseTokenizedObject {
+			get {
+				return self.append("excludeFromScore") 
+			}
+		}
 	}
 
 	/**  Array of key value answerKey-&gt;optionAnswer objects  */
@@ -81,6 +87,7 @@ open class QuestionCuePoint: CuePoint {
 	public var explanation: String? = nil
 	public var questionType: QuestionType? = nil
 	public var presentationOrder: Int? = nil
+	public var excludeFromScore: Bool? = nil
 
 
 	public func setMultiRequestToken(hint: String) {
@@ -101,6 +108,10 @@ open class QuestionCuePoint: CuePoint {
 	
 	public func setMultiRequestToken(presentationOrder: String) {
 		self.dict["presentationOrder"] = presentationOrder
+	}
+	
+	public func setMultiRequestToken(excludeFromScore: String) {
+		self.dict["excludeFromScore"] = excludeFromScore
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -124,6 +135,9 @@ open class QuestionCuePoint: CuePoint {
 		if dict["presentationOrder"] != nil {
 			presentationOrder = dict["presentationOrder"] as? Int
 		}
+		if dict["excludeFromScore"] != nil {
+			excludeFromScore = dict["excludeFromScore"] as? Bool
+		}
 
 	}
 
@@ -146,6 +160,9 @@ open class QuestionCuePoint: CuePoint {
 		}
 		if(presentationOrder != nil) {
 			dict["presentationOrder"] = presentationOrder!
+		}
+		if(excludeFromScore != nil) {
+			dict["excludeFromScore"] = excludeFromScore!
 		}
 		return dict
 	}
