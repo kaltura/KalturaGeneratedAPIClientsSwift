@@ -33,5 +33,8 @@
  */
 public enum ESearchCategoryOrderByFieldName: String {
 	case CREATED_AT = "created_at"
+	case ENTRIES_COUNT = "entries_count"
+	case MEMBERS_COUNT = "members_count"
+	case NAME = "name"
 	case UPDATED_AT = "updated_at"
 }

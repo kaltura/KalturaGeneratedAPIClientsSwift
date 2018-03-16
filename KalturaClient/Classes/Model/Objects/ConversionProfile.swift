@@ -182,6 +182,12 @@ open class ConversionProfile: ObjectBase {
 		public func defaultReplacementOptions<T: EntryReplacementOptions.EntryReplacementOptionsTokenizer>() -> T {
 			return T(self.append("defaultReplacementOptions"))
 		}
+		
+		public var defaultAudioLang: BaseTokenizedObject {
+			get {
+				return self.append("defaultAudioLang") 
+			}
+		}
 	}
 
 	/**  The id of the Conversion Profile  */
@@ -233,6 +239,7 @@ open class ConversionProfile: ObjectBase {
 	public var mediaInfoXslTransformation: String? = nil
 	/**  Default replacement options to be applied to entries  */
 	public var defaultReplacementOptions: EntryReplacementOptions? = nil
+	public var defaultAudioLang: Language? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -327,6 +334,10 @@ open class ConversionProfile: ObjectBase {
 		self.dict["mediaInfoXslTransformation"] = mediaInfoXslTransformation
 	}
 	
+	public func setMultiRequestToken(defaultAudioLang: String) {
+		self.dict["defaultAudioLang"] = defaultAudioLang
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -403,6 +414,9 @@ open class ConversionProfile: ObjectBase {
 		}
 		if dict["defaultReplacementOptions"] != nil {
 		defaultReplacementOptions = try JSONParser.parse(object: dict["defaultReplacementOptions"] as! [String: Any])		}
+		if dict["defaultAudioLang"] != nil {
+			defaultAudioLang = Language(rawValue: "\(dict["defaultAudioLang"]!)")
+		}
 
 	}
 
@@ -470,6 +484,9 @@ open class ConversionProfile: ObjectBase {
 		}
 		if(defaultReplacementOptions != nil) {
 			dict["defaultReplacementOptions"] = defaultReplacementOptions!.toDictionary()
+		}
+		if(defaultAudioLang != nil) {
+			dict["defaultAudioLang"] = defaultAudioLang!.rawValue
 		}
 		return dict
 	}
