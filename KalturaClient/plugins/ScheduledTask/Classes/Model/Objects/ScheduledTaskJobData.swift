@@ -43,6 +43,18 @@ open class ScheduledTaskJobData: JobData {
 			}
 		}
 		
+		public var totalCount: BaseTokenizedObject {
+			get {
+				return self.append("totalCount") 
+			}
+		}
+		
+		public var fileFormat: BaseTokenizedObject {
+			get {
+				return self.append("fileFormat") 
+			}
+		}
+		
 		public var resultsFilePath: BaseTokenizedObject {
 			get {
 				return self.append("resultsFilePath") 
@@ -57,12 +69,22 @@ open class ScheduledTaskJobData: JobData {
 	}
 
 	public var maxResults: Int? = nil
+	public var totalCount: Int? = nil
+	public var fileFormat: DryRunFileType? = nil
 	public var resultsFilePath: String? = nil
 	public var referenceTime: Int? = nil
 
 
 	public func setMultiRequestToken(maxResults: String) {
 		self.dict["maxResults"] = maxResults
+	}
+	
+	public func setMultiRequestToken(totalCount: String) {
+		self.dict["totalCount"] = totalCount
+	}
+	
+	public func setMultiRequestToken(fileFormat: String) {
+		self.dict["fileFormat"] = fileFormat
 	}
 	
 	public func setMultiRequestToken(resultsFilePath: String) {
@@ -79,6 +101,12 @@ open class ScheduledTaskJobData: JobData {
 		if dict["maxResults"] != nil {
 			maxResults = dict["maxResults"] as? Int
 		}
+		if dict["totalCount"] != nil {
+			totalCount = dict["totalCount"] as? Int
+		}
+		if dict["fileFormat"] != nil {
+			fileFormat = DryRunFileType(rawValue: (dict["fileFormat"] as? Int)!)
+		}
 		if dict["resultsFilePath"] != nil {
 			resultsFilePath = dict["resultsFilePath"] as? String
 		}
@@ -92,6 +120,12 @@ open class ScheduledTaskJobData: JobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(maxResults != nil) {
 			dict["maxResults"] = maxResults!
+		}
+		if(totalCount != nil) {
+			dict["totalCount"] = totalCount!
+		}
+		if(fileFormat != nil) {
+			dict["fileFormat"] = fileFormat!.rawValue
 		}
 		if(resultsFilePath != nil) {
 			dict["resultsFilePath"] = resultsFilePath!
