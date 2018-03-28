@@ -36,13 +36,29 @@
 open class ESearchUserResult: ESearchResult {
 
 	public class ESearchUserResultTokenizer: ESearchResult.ESearchResultTokenizer {
+		
+		public func object<T: User.UserTokenizer>() -> T {
+			return T(self.append("object"))
+		}
 	}
 
+	public var object: User? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["object"] != nil {
+		object = try JSONParser.parse(object: dict["object"] as! [String: Any])		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(object != nil) {
+			dict["object"] = object!.toDictionary()
+		}
+		return dict
+	}
 }
 

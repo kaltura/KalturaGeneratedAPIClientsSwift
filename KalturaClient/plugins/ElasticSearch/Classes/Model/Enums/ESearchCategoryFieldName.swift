@@ -42,6 +42,7 @@ public enum ESearchCategoryFieldName: String {
 	case ENTRIES_COUNT = "entries_count"
 	case FULL_IDS = "full_ids"
 	case FULL_NAME = "full_name"
+	case ID = "id"
 	case INHERITANCE_TYPE = "inheritance_type"
 	case INHERITED_PARENT_ID = "inherited_parent_id"
 	case MEMBERS_COUNT = "members_count"

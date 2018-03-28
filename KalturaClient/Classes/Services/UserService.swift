@@ -160,17 +160,21 @@ public final class UserService{
 		}
 	}
 
-	public static func exportToCsv(filter: UserFilter) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+	public static func exportToCsv() -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: nil)
+	}
+
+	public static func exportToCsv(filter: UserFilter?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		return exportToCsv(filter: filter, metadataProfileId: nil)
 	}
 
-	public static func exportToCsv(filter: UserFilter, metadataProfileId: Int?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: nil)
 	}
 
 	/**  add batch job that sends an email with a link to download an updated CSV that
 	  contains list of users  */
-	public static func exportToCsv(filter: UserFilter, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "user", action: "exportToCsv")
 			.setParam(key: "filter", value: filter)
 			.setParam(key: "metadataProfileId", value: metadataProfileId)

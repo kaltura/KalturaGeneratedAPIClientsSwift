@@ -37,10 +37,6 @@ open class ESearchResult: ObjectBase {
 
 	public class ESearchResultTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public func object<T: ObjectBase.ObjectBaseTokenizer>() -> T {
-			return T(self.append("object"))
-		}
-		
 		public var highlight: ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer> {
 			get {
 				return ArrayTokenizedObject<ESearchHighlight.ESearchHighlightTokenizer>(self.append("highlight"))
@@ -54,7 +50,6 @@ open class ESearchResult: ObjectBase {
 		}
 	}
 
-	public var object: ObjectBase? = nil
 	public var highlight: Array<ESearchHighlight>? = nil
 	public var itemsData: Array<ESearchItemDataResult>? = nil
 
@@ -62,8 +57,6 @@ open class ESearchResult: ObjectBase {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["object"] != nil {
-		object = try JSONParser.parse(object: dict["object"] as! [String: Any])		}
 		if dict["highlight"] != nil {
 			highlight = try JSONParser.parse(array: dict["highlight"] as! [Any])
 		}
@@ -75,9 +68,6 @@ open class ESearchResult: ObjectBase {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(object != nil) {
-			dict["object"] = object!.toDictionary()
-		}
 		if(highlight != nil) {
 			dict["highlight"] = highlight!.map { value in value.toDictionary() }
 		}
