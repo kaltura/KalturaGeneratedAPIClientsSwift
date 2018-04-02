@@ -87,16 +87,16 @@ public final class ScheduledTaskProfileService{
 
 	public class GetDryRunResultsTokenizer: ClientTokenizer  {
 		
-		public var requestId: BaseTokenizedObject {
+		public var requestId_: BaseTokenizedObject {
 			get {
-				return self.append("requestId") 
+				return self.append("requestId_") 
 			}
 		}
 	}
 
-	public static func getDryRunResults(requestId: Int) -> RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer> {
+	public static func getDryRunResults(requestId_: Int) -> RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer> {
 		let request: RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer> = RequestBuilder<ObjectListResponse, ObjectListResponse.ObjectListResponseTokenizer, GetDryRunResultsTokenizer>(service: "scheduledtask_scheduledtaskprofile", action: "getDryRunResults")
-			.setParam(key: "requestId", value: requestId)
+			.setParam(key: "requestId", value: requestId_)
 
 		return request
 	}

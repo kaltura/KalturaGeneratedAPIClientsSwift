@@ -190,6 +190,40 @@ public final class AnnotationService{
 		return request
 	}
 
+	public class UpdateCuePointsTimesTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var startTime: BaseTokenizedObject {
+			get {
+				return self.append("startTime") 
+			}
+		}
+		
+		public var endTime: BaseTokenizedObject {
+			get {
+				return self.append("endTime") 
+			}
+		}
+	}
+
+	public static func updateCuePointsTimes(id: String, startTime: Int) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateCuePointsTimesTokenizer> {
+		return updateCuePointsTimes(id: id, startTime: startTime, endTime: nil)
+	}
+
+	public static func updateCuePointsTimes(id: String, startTime: Int, endTime: Int?) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateCuePointsTimesTokenizer> {
+		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateCuePointsTimesTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, UpdateCuePointsTimesTokenizer>(service: "annotation_annotation", action: "updateCuePointsTimes")
+			.setParam(key: "id", value: id)
+			.setParam(key: "startTime", value: startTime)
+			.setParam(key: "endTime", value: endTime)
+
+		return request
+	}
+
 	public class UpdateStatusTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

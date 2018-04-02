@@ -72,6 +72,12 @@ open class ConcatJobData: JobData {
 				return self.append("concatenatedDuration") 
 			}
 		}
+		
+		public var shouldSort: BaseTokenizedObject {
+			get {
+				return self.append("shouldSort") 
+			}
+		}
 	}
 
 	/**  Source files to be concatenated  */
@@ -86,6 +92,8 @@ open class ConcatJobData: JobData {
 	public var duration: Double? = nil
 	/**  duration of the concated video  */
 	public var concatenatedDuration: Double? = nil
+	/**  Should Sort the clip parts  */
+	public var shouldSort: Bool? = nil
 
 
 	public func setMultiRequestToken(destFilePath: String) {
@@ -106,6 +114,10 @@ open class ConcatJobData: JobData {
 	
 	public func setMultiRequestToken(concatenatedDuration: String) {
 		self.dict["concatenatedDuration"] = concatenatedDuration
+	}
+	
+	public func setMultiRequestToken(shouldSort: String) {
+		self.dict["shouldSort"] = shouldSort
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -129,6 +141,9 @@ open class ConcatJobData: JobData {
 		if dict["concatenatedDuration"] != nil {
 			concatenatedDuration = dict["concatenatedDuration"] as? Double
 		}
+		if dict["shouldSort"] != nil {
+			shouldSort = dict["shouldSort"] as? Bool
+		}
 
 	}
 
@@ -151,6 +166,9 @@ open class ConcatJobData: JobData {
 		}
 		if(concatenatedDuration != nil) {
 			dict["concatenatedDuration"] = concatenatedDuration!
+		}
+		if(shouldSort != nil) {
+			dict["shouldSort"] = shouldSort!
 		}
 		return dict
 	}

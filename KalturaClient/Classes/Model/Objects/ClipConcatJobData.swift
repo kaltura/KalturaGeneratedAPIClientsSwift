@@ -33,75 +33,71 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Clip operation attributes  */
-open class ClipAttributes: OperationAttributes {
+/**  Created by IntelliJ IDEA.  User: roie.beck  Date: 3/12/2018  Time: 11:20 AM  /  */
+open class ClipConcatJobData: JobData {
 
-	public class ClipAttributesTokenizer: OperationAttributes.OperationAttributesTokenizer {
+	public class ClipConcatJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public var offset: BaseTokenizedObject {
+		public var partnerId: BaseTokenizedObject {
 			get {
-				return self.append("offset") 
+				return self.append("partnerId") 
 			}
 		}
 		
-		public var duration: BaseTokenizedObject {
+		public var priority: BaseTokenizedObject {
 			get {
-				return self.append("duration") 
+				return self.append("priority") 
 			}
 		}
 		
-		public var globalOffsetInDestination: BaseTokenizedObject {
+		public var operationAttributes: ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer> {
 			get {
-				return self.append("globalOffsetInDestination") 
-			}
+				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("operationAttributes"))
+			} 
 		}
 	}
 
-	/**  Offset in milliseconds  */
-	public var offset: Int? = nil
-	/**  Duration in milliseconds  */
-	public var duration: Int? = nil
-	/**  global Offset In Destination in milliseconds  */
-	public var globalOffsetInDestination: Int? = nil
+	/**  $partnerId  */
+	public var partnerId: Int? = nil
+	/**  $priority  */
+	public var priority: Int? = nil
+	/**  clip operations  */
+	public var operationAttributes: Array<ObjectBase>? = nil
 
 
-	public func setMultiRequestToken(offset: String) {
-		self.dict["offset"] = offset
-	}
-	
-	public func setMultiRequestToken(duration: String) {
-		self.dict["duration"] = duration
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
 	}
 	
-	public func setMultiRequestToken(globalOffsetInDestination: String) {
-		self.dict["globalOffsetInDestination"] = globalOffsetInDestination
+	public func setMultiRequestToken(priority: String) {
+		self.dict["priority"] = priority
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["offset"] != nil {
-			offset = dict["offset"] as? Int
+		if dict["partnerId"] != nil {
+			partnerId = dict["partnerId"] as? Int
 		}
-		if dict["duration"] != nil {
-			duration = dict["duration"] as? Int
+		if dict["priority"] != nil {
+			priority = dict["priority"] as? Int
 		}
-		if dict["globalOffsetInDestination"] != nil {
-			globalOffsetInDestination = dict["globalOffsetInDestination"] as? Int
+		if dict["operationAttributes"] != nil {
+			operationAttributes = try JSONParser.parse(array: dict["operationAttributes"] as! [Any])
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(offset != nil) {
-			dict["offset"] = offset!
+		if(partnerId != nil) {
+			dict["partnerId"] = partnerId!
 		}
-		if(duration != nil) {
-			dict["duration"] = duration!
+		if(priority != nil) {
+			dict["priority"] = priority!
 		}
-		if(globalOffsetInDestination != nil) {
-			dict["globalOffsetInDestination"] = globalOffsetInDestination!
+		if(operationAttributes != nil) {
+			dict["operationAttributes"] = operationAttributes!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

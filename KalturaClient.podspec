@@ -11,7 +11,7 @@ s.source_files = 'KalturaClient/Classes/**/*'
 
  
 s.subspec 'Core' do |sp|
-    sp.source_files = 'Classes/**/*'
+    sp.source_files = 'KalturaClient/Classes/**/*'
     sp.dependency 'Log', '1.0'
 end
 s.subspec 'ActivitiBusinessProcessNotification' do |ssp|
@@ -286,11 +286,6 @@ s.subspec 'Integration' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/integration/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/Metadata'
-end
-
-s.subspec 'KalturaInternalTools' do |ssp|
- ssp.source_files = 'KalturaClient/Plugins/KalturaInternalTools/**/*'
- ssp.dependency 'KalturaClient/Core'
 end
 
 s.subspec 'Kontiki' do |ssp|

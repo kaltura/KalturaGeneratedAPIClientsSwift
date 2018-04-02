@@ -103,9 +103,9 @@ open class AuditTrail: ObjectBase {
 			}
 		}
 		
-		public var requestId: BaseTokenizedObject {
+		public var requestId_: BaseTokenizedObject {
 			get {
-				return self.append("requestId") 
+				return self.append("requestId_") 
 			}
 		}
 		
@@ -192,7 +192,7 @@ open class AuditTrail: ObjectBase {
 	public var entryId: String? = nil
 	public var masterPartnerId: Int? = nil
 	public var partnerId: Int? = nil
-	public var requestId: String? = nil
+	public var requestId_: String? = nil
 	public var userId: String? = nil
 	public var action: AuditTrailAction? = nil
 	public var data: AuditTrailInfo? = nil
@@ -252,8 +252,8 @@ open class AuditTrail: ObjectBase {
 		self.dict["partnerId"] = partnerId
 	}
 	
-	public func setMultiRequestToken(requestId: String) {
-		self.dict["requestId"] = requestId
+	public func setMultiRequestToken(requestId_: String) {
+		self.dict["requestId"] = requestId_
 	}
 	
 	public func setMultiRequestToken(userId: String) {
@@ -337,7 +337,7 @@ open class AuditTrail: ObjectBase {
 			partnerId = dict["partnerId"] as? Int
 		}
 		if dict["requestId"] != nil {
-			requestId = dict["requestId"] as? String
+			requestId_ = dict["requestId"] as? String
 		}
 		if dict["userId"] != nil {
 			userId = dict["userId"] as? String

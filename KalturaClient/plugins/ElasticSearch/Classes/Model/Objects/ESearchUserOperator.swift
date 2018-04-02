@@ -37,9 +37,9 @@ open class ESearchUserOperator: ESearchUserBaseItem {
 
 	public class ESearchUserOperatorTokenizer: ESearchUserBaseItem.ESearchUserBaseItemTokenizer {
 		
-		public var operator: BaseTokenizedObject {
+		public var operator_: BaseTokenizedObject {
 			get {
-				return self.append("operator") 
+				return self.append("operator_") 
 			}
 		}
 		
@@ -50,19 +50,19 @@ open class ESearchUserOperator: ESearchUserBaseItem {
 		}
 	}
 
-	public var operator: ESearchOperatorType? = nil
+	public var operator_: ESearchOperatorType? = nil
 	public var searchItems: Array<ESearchUserBaseItem>? = nil
 
 
-	public func setMultiRequestToken(operator: String) {
-		self.dict["operator"] = operator
+	public func setMultiRequestToken(operator_: String) {
+		self.dict["operator"] = operator_
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["operator"] != nil {
-			operator = ESearchOperatorType(rawValue: (dict["operator"] as? Int)!)
+			operator_ = ESearchOperatorType(rawValue: (dict["operator"] as? Int)!)
 		}
 		if dict["searchItems"] != nil {
 			searchItems = try JSONParser.parse(array: dict["searchItems"] as! [Any])
@@ -72,8 +72,8 @@ open class ESearchUserOperator: ESearchUserBaseItem {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(operator != nil) {
-			dict["operator"] = operator!.rawValue
+		if(operator_ != nil) {
+			dict["operator"] = operator_!.rawValue
 		}
 		if(searchItems != nil) {
 			dict["searchItems"] = searchItems!.map { value in value.toDictionary() }
