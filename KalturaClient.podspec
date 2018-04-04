@@ -86,7 +86,7 @@ end
 s.subspec 'ScheduleBulkUpload' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/scheduleBulkUpload/**/*'
  ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/BulkUploadCsv'
+ ssp.dependency 'KalturaClient/BulkUpload'
  ssp.dependency 'KalturaClient/Schedule'
 end
 
