@@ -33,69 +33,88 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class CopyCaptionsJobData: JobData {
+open class ClipDescription: ObjectBase {
 
-	public class CopyCaptionsJobDataTokenizer: JobData.JobDataTokenizer {
+	public class ClipDescriptionTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var entryId: BaseTokenizedObject {
+		public var sourceEntryId: BaseTokenizedObject {
 			get {
-				return self.append("entryId") 
+				return self.append("sourceEntryId") 
 			}
 		}
 		
-		public var clipsDescriptionArray: ArrayTokenizedObject<ClipDescription.ClipDescriptionTokenizer> {
+		public var startTime: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ClipDescription.ClipDescriptionTokenizer>(self.append("clipsDescriptionArray"))
-			} 
+				return self.append("startTime") 
+			}
 		}
 		
-		public var fullCopy: BaseTokenizedObject {
+		public var duration: BaseTokenizedObject {
 			get {
-				return self.append("fullCopy") 
+				return self.append("duration") 
+			}
+		}
+		
+		public var offsetInDestination: BaseTokenizedObject {
+			get {
+				return self.append("offsetInDestination") 
 			}
 		}
 	}
 
-	/**  entry Id  */
-	public var entryId: String? = nil
-	/**  an array of source start time and duration  */
-	public var clipsDescriptionArray: Array<ClipDescription>? = nil
-	public var fullCopy: Bool? = nil
+	public var sourceEntryId: String? = nil
+	public var startTime: Int? = nil
+	public var duration: Int? = nil
+	public var offsetInDestination: Int? = nil
 
 
-	public func setMultiRequestToken(entryId: String) {
-		self.dict["entryId"] = entryId
+	public func setMultiRequestToken(sourceEntryId: String) {
+		self.dict["sourceEntryId"] = sourceEntryId
 	}
 	
-	public func setMultiRequestToken(fullCopy: String) {
-		self.dict["fullCopy"] = fullCopy
+	public func setMultiRequestToken(startTime: String) {
+		self.dict["startTime"] = startTime
+	}
+	
+	public func setMultiRequestToken(duration: String) {
+		self.dict["duration"] = duration
+	}
+	
+	public func setMultiRequestToken(offsetInDestination: String) {
+		self.dict["offsetInDestination"] = offsetInDestination
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["entryId"] != nil {
-			entryId = dict["entryId"] as? String
+		if dict["sourceEntryId"] != nil {
+			sourceEntryId = dict["sourceEntryId"] as? String
 		}
-		if dict["clipsDescriptionArray"] != nil {
-			clipsDescriptionArray = try JSONParser.parse(array: dict["clipsDescriptionArray"] as! [Any])
+		if dict["startTime"] != nil {
+			startTime = dict["startTime"] as? Int
 		}
-		if dict["fullCopy"] != nil {
-			fullCopy = dict["fullCopy"] as? Bool
+		if dict["duration"] != nil {
+			duration = dict["duration"] as? Int
+		}
+		if dict["offsetInDestination"] != nil {
+			offsetInDestination = dict["offsetInDestination"] as? Int
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(entryId != nil) {
-			dict["entryId"] = entryId!
+		if(sourceEntryId != nil) {
+			dict["sourceEntryId"] = sourceEntryId!
 		}
-		if(clipsDescriptionArray != nil) {
-			dict["clipsDescriptionArray"] = clipsDescriptionArray!.map { value in value.toDictionary() }
+		if(startTime != nil) {
+			dict["startTime"] = startTime!
 		}
-		if(fullCopy != nil) {
-			dict["fullCopy"] = fullCopy!
+		if(duration != nil) {
+			dict["duration"] = duration!
+		}
+		if(offsetInDestination != nil) {
+			dict["offsetInDestination"] = offsetInDestination!
 		}
 		return dict
 	}
