@@ -356,8 +356,8 @@ public final class LiveStreamService{
 	}
 
 	/**  Regenerate new secure token for liveStream  */
-	public static func regenerateStreamToken(entryId: String) -> NullRequestBuilder<RegenerateStreamTokenTokenizer> {
-		let request: NullRequestBuilder<RegenerateStreamTokenTokenizer> = NullRequestBuilder<RegenerateStreamTokenTokenizer>(service: "livestream", action: "regenerateStreamToken")
+	public static func regenerateStreamToken(entryId: String) -> RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegenerateStreamTokenTokenizer> {
+		let request: RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegenerateStreamTokenTokenizer> = RequestBuilder<LiveEntry, LiveEntry.LiveEntryTokenizer, RegenerateStreamTokenTokenizer>(service: "livestream", action: "regenerateStreamToken")
 			.setParam(key: "entryId", value: entryId)
 
 		return request
