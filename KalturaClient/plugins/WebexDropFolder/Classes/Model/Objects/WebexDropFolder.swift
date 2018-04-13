@@ -85,6 +85,12 @@ open class WebexDropFolder: DropFolder {
 			}
 		}
 		
+		public var webexSiteName: BaseTokenizedObject {
+			get {
+				return self.append("webexSiteName") 
+			}
+		}
+		
 		public var deleteFromTimestamp: BaseTokenizedObject {
 			get {
 				return self.append("deleteFromTimestamp") 
@@ -100,6 +106,7 @@ open class WebexDropFolder: DropFolder {
 	public var webexHostIdMetadataFieldName: String? = nil
 	public var deleteFromRecycleBin: Bool? = nil
 	public var webexServiceType: String? = nil
+	public var webexSiteName: String? = nil
 	public var deleteFromTimestamp: Int? = nil
 
 
@@ -135,6 +142,10 @@ open class WebexDropFolder: DropFolder {
 		self.dict["webexServiceType"] = webexServiceType
 	}
 	
+	public func setMultiRequestToken(webexSiteName: String) {
+		self.dict["webexSiteName"] = webexSiteName
+	}
+	
 	public func setMultiRequestToken(deleteFromTimestamp: String) {
 		self.dict["deleteFromTimestamp"] = deleteFromTimestamp
 	}
@@ -165,6 +176,9 @@ open class WebexDropFolder: DropFolder {
 		}
 		if dict["webexServiceType"] != nil {
 			webexServiceType = dict["webexServiceType"] as? String
+		}
+		if dict["webexSiteName"] != nil {
+			webexSiteName = dict["webexSiteName"] as? String
 		}
 		if dict["deleteFromTimestamp"] != nil {
 			deleteFromTimestamp = dict["deleteFromTimestamp"] as? Int
@@ -197,6 +211,9 @@ open class WebexDropFolder: DropFolder {
 		}
 		if(webexServiceType != nil) {
 			dict["webexServiceType"] = webexServiceType!
+		}
+		if(webexSiteName != nil) {
+			dict["webexSiteName"] = webexSiteName!
 		}
 		if(deleteFromTimestamp != nil) {
 			dict["deleteFromTimestamp"] = deleteFromTimestamp!
