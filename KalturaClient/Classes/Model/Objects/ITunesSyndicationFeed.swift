@@ -91,6 +91,12 @@ open class ITunesSyndicationFeed: BaseSyndicationFeed {
 			}
 		}
 		
+		public var enforceFeedAuthor: BaseTokenizedObject {
+			get {
+				return self.append("enforceFeedAuthor") 
+			}
+		}
+		
 		public var enforceOrder: BaseTokenizedObject {
 			get {
 				return self.append("enforceOrder") 
@@ -113,6 +119,7 @@ open class ITunesSyndicationFeed: BaseSyndicationFeed {
 	public var category: ITunesSyndicationFeedCategories? = nil
 	public var adultContent: ITunesSyndicationFeedAdultValues? = nil
 	public var feedAuthor: String? = nil
+	public var enforceFeedAuthor: Bool? = nil
 	/**  true in case you want to enfore the palylist order on the  */
 	public var enforceOrder: Bool? = nil
 
@@ -153,6 +160,10 @@ open class ITunesSyndicationFeed: BaseSyndicationFeed {
 		self.dict["feedAuthor"] = feedAuthor
 	}
 	
+	public func setMultiRequestToken(enforceFeedAuthor: String) {
+		self.dict["enforceFeedAuthor"] = enforceFeedAuthor
+	}
+	
 	public func setMultiRequestToken(enforceOrder: String) {
 		self.dict["enforceOrder"] = enforceOrder
 	}
@@ -187,6 +198,9 @@ open class ITunesSyndicationFeed: BaseSyndicationFeed {
 		if dict["feedAuthor"] != nil {
 			feedAuthor = dict["feedAuthor"] as? String
 		}
+		if dict["enforceFeedAuthor"] != nil {
+			enforceFeedAuthor = dict["enforceFeedAuthor"] as? Bool
+		}
 		if dict["enforceOrder"] != nil {
 			enforceOrder = dict["enforceOrder"] as? Bool
 		}
@@ -218,6 +232,9 @@ open class ITunesSyndicationFeed: BaseSyndicationFeed {
 		}
 		if(feedAuthor != nil) {
 			dict["feedAuthor"] = feedAuthor!
+		}
+		if(enforceFeedAuthor != nil) {
+			dict["enforceFeedAuthor"] = enforceFeedAuthor!
 		}
 		if(enforceOrder != nil) {
 			dict["enforceOrder"] = enforceOrder!
