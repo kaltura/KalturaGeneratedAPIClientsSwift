@@ -55,6 +55,12 @@ open class ClipAttributes: OperationAttributes {
 				return self.append("globalOffsetInDestination") 
 			}
 		}
+		
+		public var effectArray: ArrayTokenizedObject<Effect.EffectTokenizer> {
+			get {
+				return ArrayTokenizedObject<Effect.EffectTokenizer>(self.append("effectArray"))
+			} 
+		}
 	}
 
 	/**  Offset in milliseconds  */
@@ -63,6 +69,8 @@ open class ClipAttributes: OperationAttributes {
 	public var duration: Int? = nil
 	/**  global Offset In Destination in milliseconds  */
 	public var globalOffsetInDestination: Int? = nil
+	/**  global Offset In Destination in milliseconds  */
+	public var effectArray: Array<Effect>? = nil
 
 
 	public func setMultiRequestToken(offset: String) {
@@ -89,6 +97,9 @@ open class ClipAttributes: OperationAttributes {
 		if dict["globalOffsetInDestination"] != nil {
 			globalOffsetInDestination = dict["globalOffsetInDestination"] as? Int
 		}
+		if dict["effectArray"] != nil {
+			effectArray = try JSONParser.parse(array: dict["effectArray"] as! [Any])
+		}
 
 	}
 
@@ -102,6 +113,9 @@ open class ClipAttributes: OperationAttributes {
 		}
 		if(globalOffsetInDestination != nil) {
 			dict["globalOffsetInDestination"] = globalOffsetInDestination!
+		}
+		if(effectArray != nil) {
+			dict["effectArray"] = effectArray!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

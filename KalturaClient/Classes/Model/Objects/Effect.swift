@@ -33,70 +33,56 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ClipConcatJobData: JobData {
+/**  Effects attributes  */
+open class Effect: ObjectBase {
 
-	public class ClipConcatJobDataTokenizer: JobData.JobDataTokenizer {
+	public class EffectTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var partnerId: BaseTokenizedObject {
+		public var effectType: BaseTokenizedObject {
 			get {
-				return self.append("partnerId") 
+				return self.append("effectType") 
 			}
 		}
 		
-		public var priority: BaseTokenizedObject {
+		public var value: BaseTokenizedObject {
 			get {
-				return self.append("priority") 
+				return self.append("value") 
 			}
-		}
-		
-		public var operationAttributes: ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer> {
-			get {
-				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("operationAttributes"))
-			} 
 		}
 	}
 
-	/**  $partnerId  */
-	public var partnerId: Int? = nil
-	/**  $priority  */
-	public var priority: Int? = nil
-	/**  clip operations  */
-	public var operationAttributes: Array<ObjectBase>? = nil
+	public var effectType: EffectType? = nil
+	/**  value  */
+	public var value: String? = nil
 
 
-	public func setMultiRequestToken(partnerId: String) {
-		self.dict["partnerId"] = partnerId
+	public func setMultiRequestToken(effectType: String) {
+		self.dict["effectType"] = effectType
 	}
 	
-	public func setMultiRequestToken(priority: String) {
-		self.dict["priority"] = priority
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["partnerId"] != nil {
-			partnerId = dict["partnerId"] as? Int
+		if dict["effectType"] != nil {
+			effectType = EffectType(rawValue: (dict["effectType"] as? Int)!)
 		}
-		if dict["priority"] != nil {
-			priority = dict["priority"] as? Int
-		}
-		if dict["operationAttributes"] != nil {
-			operationAttributes = try JSONParser.parse(array: dict["operationAttributes"] as! [Any])
+		if dict["value"] != nil {
+			value = dict["value"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(partnerId != nil) {
-			dict["partnerId"] = partnerId!
+		if(effectType != nil) {
+			dict["effectType"] = effectType!.rawValue
 		}
-		if(priority != nil) {
-			dict["priority"] = priority!
-		}
-		if(operationAttributes != nil) {
-			dict["operationAttributes"] = operationAttributes!.map { value in value.toDictionary() }
+		if(value != nil) {
+			dict["value"] = value!
 		}
 		return dict
 	}
