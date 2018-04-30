@@ -100,6 +100,29 @@ public final class EntryServerNodeService{
 		return request
 	}
 
+	public class UpdateStatusTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
+	public static func updateStatus(id: String, status: EntryServerNodeStatus) -> RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateStatusTokenizer> {
+		let request: RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateStatusTokenizer> = RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateStatusTokenizer>(service: "entryservernode", action: "updateStatus")
+			.setParam(key: "id", value: id)
+			.setParam(key: "status", value: status.rawValue)
+
+		return request
+	}
+
 	public class ValidateRegisteredEntryServerNodeTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

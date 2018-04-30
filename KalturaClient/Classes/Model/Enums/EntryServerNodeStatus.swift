@@ -32,9 +32,15 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryServerNodeStatus: Int {
+	case ERROR = -1
 	case STOPPED = 0
 	case PLAYABLE = 1
 	case BROADCASTING = 2
 	case AUTHENTICATED = 3
 	case MARKED_FOR_DELETION = 4
+	case TASK_PENDING = 5
+	case TASK_QUEUED = 6
+	case TASK_PROCESSING = 7
+	case TASK_UPLOADING = 8
+	case TASK_FINISHED = 9
 }
