@@ -46,12 +46,12 @@ public final class ESearchService{
 		}
 	}
 
-	public static func searchCategory(searchParams: ESearchCategoryParams) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchCategoryTokenizer> {
+	public static func searchCategory(searchParams: ESearchCategoryParams) -> RequestBuilder<ESearchCategoryResponse, ESearchCategoryResponse.ESearchCategoryResponseTokenizer, SearchCategoryTokenizer> {
 		return searchCategory(searchParams: searchParams, pager: nil)
 	}
 
-	public static func searchCategory(searchParams: ESearchCategoryParams, pager: Pager?) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchCategoryTokenizer> {
-		let request: RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchCategoryTokenizer> = RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchCategoryTokenizer>(service: "elasticsearch_esearch", action: "searchCategory")
+	public static func searchCategory(searchParams: ESearchCategoryParams, pager: Pager?) -> RequestBuilder<ESearchCategoryResponse, ESearchCategoryResponse.ESearchCategoryResponseTokenizer, SearchCategoryTokenizer> {
+		let request: RequestBuilder<ESearchCategoryResponse, ESearchCategoryResponse.ESearchCategoryResponseTokenizer, SearchCategoryTokenizer> = RequestBuilder<ESearchCategoryResponse, ESearchCategoryResponse.ESearchCategoryResponseTokenizer, SearchCategoryTokenizer>(service: "elasticsearch_esearch", action: "searchCategory")
 			.setParam(key: "searchParams", value: searchParams)
 			.setParam(key: "pager", value: pager)
 
@@ -69,12 +69,12 @@ public final class ESearchService{
 		}
 	}
 
-	public static func searchEntry(searchParams: ESearchEntryParams) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchEntryTokenizer> {
+	public static func searchEntry(searchParams: ESearchEntryParams) -> RequestBuilder<ESearchEntryResponse, ESearchEntryResponse.ESearchEntryResponseTokenizer, SearchEntryTokenizer> {
 		return searchEntry(searchParams: searchParams, pager: nil)
 	}
 
-	public static func searchEntry(searchParams: ESearchEntryParams, pager: Pager?) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchEntryTokenizer> {
-		let request: RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchEntryTokenizer> = RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchEntryTokenizer>(service: "elasticsearch_esearch", action: "searchEntry")
+	public static func searchEntry(searchParams: ESearchEntryParams, pager: Pager?) -> RequestBuilder<ESearchEntryResponse, ESearchEntryResponse.ESearchEntryResponseTokenizer, SearchEntryTokenizer> {
+		let request: RequestBuilder<ESearchEntryResponse, ESearchEntryResponse.ESearchEntryResponseTokenizer, SearchEntryTokenizer> = RequestBuilder<ESearchEntryResponse, ESearchEntryResponse.ESearchEntryResponseTokenizer, SearchEntryTokenizer>(service: "elasticsearch_esearch", action: "searchEntry")
 			.setParam(key: "searchParams", value: searchParams)
 			.setParam(key: "pager", value: pager)
 
@@ -92,12 +92,12 @@ public final class ESearchService{
 		}
 	}
 
-	public static func searchUser(searchParams: ESearchUserParams) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchUserTokenizer> {
+	public static func searchUser(searchParams: ESearchUserParams) -> RequestBuilder<ESearchUserResponse, ESearchUserResponse.ESearchUserResponseTokenizer, SearchUserTokenizer> {
 		return searchUser(searchParams: searchParams, pager: nil)
 	}
 
-	public static func searchUser(searchParams: ESearchUserParams, pager: Pager?) -> RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchUserTokenizer> {
-		let request: RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchUserTokenizer> = RequestBuilder<ESearchResponse, ESearchResponse.ESearchResponseTokenizer, SearchUserTokenizer>(service: "elasticsearch_esearch", action: "searchUser")
+	public static func searchUser(searchParams: ESearchUserParams, pager: Pager?) -> RequestBuilder<ESearchUserResponse, ESearchUserResponse.ESearchUserResponseTokenizer, SearchUserTokenizer> {
+		let request: RequestBuilder<ESearchUserResponse, ESearchUserResponse.ESearchUserResponseTokenizer, SearchUserTokenizer> = RequestBuilder<ESearchUserResponse, ESearchUserResponse.ESearchUserResponseTokenizer, SearchUserTokenizer>(service: "elasticsearch_esearch", action: "searchUser")
 			.setParam(key: "searchParams", value: searchParams)
 			.setParam(key: "pager", value: pager)
 

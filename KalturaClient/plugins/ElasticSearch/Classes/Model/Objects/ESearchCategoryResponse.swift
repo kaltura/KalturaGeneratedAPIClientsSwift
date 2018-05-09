@@ -33,29 +33,25 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchResponse: ObjectBase {
+open class ESearchCategoryResponse: ESearchResponse {
 
-	public class ESearchResponseTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class ESearchCategoryResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
 		
-		public var totalCount: BaseTokenizedObject {
+		public var objects: ArrayTokenizedObject<ESearchCategoryResult.ESearchCategoryResultTokenizer> {
 			get {
-				return self.append("totalCount") 
-			}
+				return ArrayTokenizedObject<ESearchCategoryResult.ESearchCategoryResultTokenizer>(self.append("objects"))
+			} 
 		}
 	}
 
-	public var totalCount: Int? = nil
+	public var objects: Array<ESearchCategoryResult>? = nil
 
 
-	public func setMultiRequestToken(totalCount: String) {
-		self.dict["totalCount"] = totalCount
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["totalCount"] != nil {
-			totalCount = dict["totalCount"] as? Int
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
 		}
 
 	}
