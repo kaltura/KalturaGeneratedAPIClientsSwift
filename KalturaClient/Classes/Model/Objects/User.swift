@@ -258,6 +258,12 @@ open class User: ObjectBase {
 				return self.append("allowedPartnerPackages") 
 			}
 		}
+		
+		public var userMode: BaseTokenizedObject {
+			get {
+				return self.append("userMode") 
+			}
+		}
 	}
 
 	public var id: String? = nil
@@ -301,6 +307,7 @@ open class User: ObjectBase {
 	public var isAccountOwner: Bool? = nil
 	public var allowedPartnerIds: String? = nil
 	public var allowedPartnerPackages: String? = nil
+	public var userMode: UserMode? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -451,6 +458,10 @@ open class User: ObjectBase {
 		self.dict["allowedPartnerPackages"] = allowedPartnerPackages
 	}
 	
+	public func setMultiRequestToken(userMode: String) {
+		self.dict["userMode"] = userMode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -565,6 +576,9 @@ open class User: ObjectBase {
 		if dict["allowedPartnerPackages"] != nil {
 			allowedPartnerPackages = dict["allowedPartnerPackages"] as? String
 		}
+		if dict["userMode"] != nil {
+			userMode = UserMode(rawValue: (dict["userMode"] as? Int)!)
+		}
 
 	}
 
@@ -656,6 +670,9 @@ open class User: ObjectBase {
 		}
 		if(allowedPartnerPackages != nil) {
 			dict["allowedPartnerPackages"] = allowedPartnerPackages!
+		}
+		if(userMode != nil) {
+			dict["userMode"] = userMode!.rawValue
 		}
 		return dict
 	}

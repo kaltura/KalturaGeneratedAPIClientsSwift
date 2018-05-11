@@ -72,6 +72,12 @@ open class GroupUser: ObjectBase {
 				return self.append("updatedAt") 
 			}
 		}
+		
+		public var creationMode: BaseTokenizedObject {
+			get {
+				return self.append("creationMode") 
+			}
+		}
 	}
 
 	public var userId: String? = nil
@@ -82,6 +88,7 @@ open class GroupUser: ObjectBase {
 	public var createdAt: Int? = nil
 	/**  Last update date as Unix timestamp (In seconds)  */
 	public var updatedAt: Int? = nil
+	public var creationMode: GroupUserCreationMode? = nil
 
 
 	public func setMultiRequestToken(userId: String) {
@@ -108,6 +115,10 @@ open class GroupUser: ObjectBase {
 		self.dict["updatedAt"] = updatedAt
 	}
 	
+	public func setMultiRequestToken(creationMode: String) {
+		self.dict["creationMode"] = creationMode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -129,6 +140,9 @@ open class GroupUser: ObjectBase {
 		if dict["updatedAt"] != nil {
 			updatedAt = dict["updatedAt"] as? Int
 		}
+		if dict["creationMode"] != nil {
+			creationMode = GroupUserCreationMode(rawValue: (dict["creationMode"] as? Int)!)
+		}
 
 	}
 
@@ -139,6 +153,9 @@ open class GroupUser: ObjectBase {
 		}
 		if(groupId != nil) {
 			dict["groupId"] = groupId!
+		}
+		if(creationMode != nil) {
+			dict["creationMode"] = creationMode!.rawValue
 		}
 		return dict
 	}
