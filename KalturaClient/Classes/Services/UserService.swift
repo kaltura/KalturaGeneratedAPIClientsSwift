@@ -33,7 +33,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
+/**  Manage partner users on Kaltura's side  The userId in kaltura is the unique ID
   in the partner's system, and the [partnerId,Id] couple are unique key in
   kaltura's DB  */
 public final class UserService{
@@ -172,8 +172,8 @@ public final class UserService{
 		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: nil)
 	}
 
-	/**  add batch job that sends an email with a link to download an updated CSV that
-	  contains list of users  */
+	/**  Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of users  */
 	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "user", action: "exportToCsv")
 			.setParam(key: "filter", value: filter)
@@ -343,8 +343,8 @@ public final class UserService{
 		}
 	}
 
-	/**  Loges a user to the destination account as long the ks user id exists in the
-	  desc acount and the loginData id match for both accounts  */
+	/**  Logs a user to the destination account provided the KS' user ID is associated
+	  with the destination account and the loginData ID matches  */
 	public static func loginByKs(requestedPartnerId: Int) -> RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer> {
 		let request: RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer> = RequestBuilder<SessionResponse, SessionResponse.SessionResponseTokenizer, LoginByKsTokenizer>(service: "user", action: "loginByKs")
 			.setParam(key: "requestedPartnerId", value: requestedPartnerId)
@@ -463,7 +463,7 @@ public final class UserService{
 		}
 	}
 
-	/**  Will serve a requested csv  */
+	/**  Will serve a requested CSV  */
 	public static func serveCsv(id: String) -> RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ServeCsvTokenizer>(service: "user", action: "serveCsv")
 			.setParam(key: "id", value: id)
@@ -486,7 +486,7 @@ public final class UserService{
 		}
 	}
 
-	/**  Set initial users password  */
+	/**  Set initial user password  */
 	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
 		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "user", action: "setInitialPassword")
 			.setParam(key: "hashKey", value: hashKey)

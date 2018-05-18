@@ -33,7 +33,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Manage partner users on Kaltura's side  The userId in kaltura is the unique Id
+/**  Manage partner users on Kaltura's side  The userId in kaltura is the unique ID
   in the partner's system, and the [partnerId,Id] couple are unique key in
   kaltura's DB  */
 extension UserService{
