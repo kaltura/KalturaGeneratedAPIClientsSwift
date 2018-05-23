@@ -33,4 +33,5 @@
  */
 public enum ObjectFilterEngineType: String {
 	case ENTRY = "1"
+	case ENTRY_VENDOR_TASK = "2"
 }

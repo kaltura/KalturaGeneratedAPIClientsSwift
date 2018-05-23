@@ -25,15 +25,36 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EmailNotificationRecipientProviderType: String {
-	case STATIC_LIST = "1"
-	case CATEGORY = "2"
-	case USER = "3"
-	case GROUP = "4"
+
+open class EntryVendorTaskListResponse: ListResponse {
+
+	public class EntryVendorTaskListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<EntryVendorTask.EntryVendorTaskTokenizer> {
+			get {
+				return ArrayTokenizedObject<EntryVendorTask.EntryVendorTaskTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
+	public var objects: Array<EntryVendorTask>? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		}
+
+	}
+
 }
+

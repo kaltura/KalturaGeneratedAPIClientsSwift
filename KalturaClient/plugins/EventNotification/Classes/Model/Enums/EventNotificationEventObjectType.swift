@@ -80,4 +80,6 @@ public enum EventNotificationEventObjectType: String {
 	case LIVE_STREAM = "38"
 	case SERVER_NODE = "39"
 	case ENTRY_SERVER_NODE = "40"
+	case REACH_PROFILE = "41"
+	case ENTRY_VENDOR_TASK = "42"
 }

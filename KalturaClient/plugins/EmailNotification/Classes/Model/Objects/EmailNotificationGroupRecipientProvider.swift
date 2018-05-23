@@ -25,15 +25,49 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EmailNotificationRecipientProviderType: String {
-	case STATIC_LIST = "1"
-	case CATEGORY = "2"
-	case USER = "3"
-	case GROUP = "4"
+
+/**  API class for recipient provider which constructs a dynamic list of recipients
+  according to a user filter  */
+open class EmailNotificationGroupRecipientProvider: EmailNotificationRecipientProvider {
+
+	public class EmailNotificationGroupRecipientProviderTokenizer: EmailNotificationRecipientProvider.EmailNotificationRecipientProviderTokenizer {
+		
+		public var groupId: BaseTokenizedObject {
+			get {
+				return self.append("groupId") 
+			}
+		}
+	}
+
+	public var groupId: String? = nil
+
+
+	public func setMultiRequestToken(groupId: String) {
+		self.dict["groupId"] = groupId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["groupId"] != nil {
+			groupId = dict["groupId"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(groupId != nil) {
+			dict["groupId"] = groupId!
+		}
+		return dict
+	}
 }
+

@@ -355,18 +355,6 @@ open class Partner: ObjectBase {
 			}
 		}
 		
-		public var eSearchLanguages: ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer>(self.append("eSearchLanguages"))
-			} 
-		}
-		
-		public var publisherEnvironmentType: BaseTokenizedObject {
-			get {
-				return self.append("publisherEnvironmentType") 
-			}
-		}
-		
 		public var ovpEnvironmentUrl: BaseTokenizedObject {
 			get {
 				return self.append("ovpEnvironmentUrl") 
@@ -377,6 +365,12 @@ open class Partner: ObjectBase {
 			get {
 				return self.append("ottEnvironmentUrl") 
 			}
+		}
+		
+		public var eSearchLanguages: ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer>(self.append("eSearchLanguages"))
+			} 
 		}
 	}
 
@@ -438,10 +432,9 @@ open class Partner: ObjectBase {
 	public var crmId: String? = nil
 	public var referenceId: String? = nil
 	public var timeAlignedRenditions: Bool? = nil
-	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
-	public var publisherEnvironmentType: Int? = nil
 	public var ovpEnvironmentUrl: String? = nil
 	public var ottEnvironmentUrl: String? = nil
+	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -644,10 +637,6 @@ open class Partner: ObjectBase {
 		self.dict["timeAlignedRenditions"] = timeAlignedRenditions
 	}
 	
-	public func setMultiRequestToken(publisherEnvironmentType: String) {
-		self.dict["publisherEnvironmentType"] = publisherEnvironmentType
-	}
-	
 	public func setMultiRequestToken(ovpEnvironmentUrl: String) {
 		self.dict["ovpEnvironmentUrl"] = ovpEnvironmentUrl
 	}
@@ -818,17 +807,14 @@ open class Partner: ObjectBase {
 		if dict["timeAlignedRenditions"] != nil {
 			timeAlignedRenditions = dict["timeAlignedRenditions"] as? Bool
 		}
-		if dict["eSearchLanguages"] != nil {
-			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
-		}
-		if dict["publisherEnvironmentType"] != nil {
-			publisherEnvironmentType = dict["publisherEnvironmentType"] as? Int
-		}
 		if dict["ovpEnvironmentUrl"] != nil {
 			ovpEnvironmentUrl = dict["ovpEnvironmentUrl"] as? String
 		}
 		if dict["ottEnvironmentUrl"] != nil {
 			ottEnvironmentUrl = dict["ottEnvironmentUrl"] as? String
+		}
+		if dict["eSearchLanguages"] != nil {
+			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
 		}
 
 	}

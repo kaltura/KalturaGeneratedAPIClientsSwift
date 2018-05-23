@@ -90,6 +90,12 @@ open class CaptionAsset: Asset {
 				return self.append("accuracy") 
 			}
 		}
+		
+		public var displayOnPlayer: BaseTokenizedObject {
+			get {
+				return self.append("displayOnPlayer") 
+			}
+		}
 	}
 
 	/**  The Caption Params used to create this Caption Asset  */
@@ -110,6 +116,8 @@ open class CaptionAsset: Asset {
 	public var parentId: String? = nil
 	/**  The Accuracy of the caption content  */
 	public var accuracy: Int? = nil
+	/**  The Accuracy of the caption content  */
+	public var displayOnPlayer: Bool? = nil
 
 
 	public func setMultiRequestToken(captionParamsId: String) {
@@ -148,6 +156,10 @@ open class CaptionAsset: Asset {
 		self.dict["accuracy"] = accuracy
 	}
 	
+	public func setMultiRequestToken(displayOnPlayer: String) {
+		self.dict["displayOnPlayer"] = displayOnPlayer
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -178,6 +190,9 @@ open class CaptionAsset: Asset {
 		if dict["accuracy"] != nil {
 			accuracy = dict["accuracy"] as? Int
 		}
+		if dict["displayOnPlayer"] != nil {
+			displayOnPlayer = dict["displayOnPlayer"] as? Bool
+		}
 
 	}
 
@@ -203,6 +218,9 @@ open class CaptionAsset: Asset {
 		}
 		if(accuracy != nil) {
 			dict["accuracy"] = accuracy!
+		}
+		if(displayOnPlayer != nil) {
+			dict["displayOnPlayer"] = displayOnPlayer!
 		}
 		return dict
 	}
