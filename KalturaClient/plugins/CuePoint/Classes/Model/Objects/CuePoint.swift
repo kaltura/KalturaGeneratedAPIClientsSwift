@@ -132,6 +132,12 @@ open class CuePoint: ObjectBase {
 				return self.append("systemName") 
 			}
 		}
+		
+		public var isMomentary: BaseTokenizedObject {
+			get {
+				return self.append("isMomentary") 
+			}
+		}
 	}
 
 	public var id: String? = nil
@@ -151,6 +157,7 @@ open class CuePoint: ObjectBase {
 	public var forceStop: Bool? = nil
 	public var thumbOffset: Int? = nil
 	public var systemName: String? = nil
+	public var isMomentary: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -217,6 +224,10 @@ open class CuePoint: ObjectBase {
 		self.dict["systemName"] = systemName
 	}
 	
+	public func setMultiRequestToken(isMomentary: String) {
+		self.dict["isMomentary"] = isMomentary
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -268,6 +279,9 @@ open class CuePoint: ObjectBase {
 		if dict["systemName"] != nil {
 			systemName = dict["systemName"] as? String
 		}
+		if dict["isMomentary"] != nil {
+			isMomentary = dict["isMomentary"] as? Bool
+		}
 
 	}
 
@@ -299,6 +313,9 @@ open class CuePoint: ObjectBase {
 		}
 		if(systemName != nil) {
 			dict["systemName"] = systemName!
+		}
+		if(isMomentary != nil) {
+			dict["isMomentary"] = isMomentary!
 		}
 		return dict
 	}
