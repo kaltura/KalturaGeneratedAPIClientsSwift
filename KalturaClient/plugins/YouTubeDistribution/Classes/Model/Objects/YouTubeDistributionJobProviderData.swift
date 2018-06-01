@@ -114,6 +114,30 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 				return self.append("googleTokenData") 
 			}
 		}
+		
+		public var captionsCsvMap: BaseTokenizedObject {
+			get {
+				return self.append("captionsCsvMap") 
+			}
+		}
+		
+		public var submitCsvMap: BaseTokenizedObject {
+			get {
+				return self.append("submitCsvMap") 
+			}
+		}
+		
+		public var updateCsvMap: BaseTokenizedObject {
+			get {
+				return self.append("updateCsvMap") 
+			}
+		}
+		
+		public var deleteVideoIds: BaseTokenizedObject {
+			get {
+				return self.append("deleteVideoIds") 
+			}
+		}
 	}
 
 	public var videoAssetFilePath: String? = nil
@@ -129,6 +153,10 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 	public var googleClientId: String? = nil
 	public var googleClientSecret: String? = nil
 	public var googleTokenData: String? = nil
+	public var captionsCsvMap: String? = nil
+	public var submitCsvMap: String? = nil
+	public var updateCsvMap: String? = nil
+	public var deleteVideoIds: String? = nil
 
 
 	public func setMultiRequestToken(videoAssetFilePath: String) {
@@ -183,6 +211,22 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 		self.dict["googleTokenData"] = googleTokenData
 	}
 	
+	public func setMultiRequestToken(captionsCsvMap: String) {
+		self.dict["captionsCsvMap"] = captionsCsvMap
+	}
+	
+	public func setMultiRequestToken(submitCsvMap: String) {
+		self.dict["submitCsvMap"] = submitCsvMap
+	}
+	
+	public func setMultiRequestToken(updateCsvMap: String) {
+		self.dict["updateCsvMap"] = updateCsvMap
+	}
+	
+	public func setMultiRequestToken(deleteVideoIds: String) {
+		self.dict["deleteVideoIds"] = deleteVideoIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -224,6 +268,18 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 		}
 		if dict["googleTokenData"] != nil {
 			googleTokenData = dict["googleTokenData"] as? String
+		}
+		if dict["captionsCsvMap"] != nil {
+			captionsCsvMap = dict["captionsCsvMap"] as? String
+		}
+		if dict["submitCsvMap"] != nil {
+			submitCsvMap = dict["submitCsvMap"] as? String
+		}
+		if dict["updateCsvMap"] != nil {
+			updateCsvMap = dict["updateCsvMap"] as? String
+		}
+		if dict["deleteVideoIds"] != nil {
+			deleteVideoIds = dict["deleteVideoIds"] as? String
 		}
 
 	}
@@ -268,6 +324,18 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 		}
 		if(googleTokenData != nil) {
 			dict["googleTokenData"] = googleTokenData!
+		}
+		if(captionsCsvMap != nil) {
+			dict["captionsCsvMap"] = captionsCsvMap!
+		}
+		if(submitCsvMap != nil) {
+			dict["submitCsvMap"] = submitCsvMap!
+		}
+		if(updateCsvMap != nil) {
+			dict["updateCsvMap"] = updateCsvMap!
+		}
+		if(deleteVideoIds != nil) {
+			dict["deleteVideoIds"] = deleteVideoIds!
 		}
 		return dict
 	}

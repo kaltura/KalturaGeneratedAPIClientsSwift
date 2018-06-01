@@ -34,4 +34,5 @@
 public enum YouTubeDistributionFeedSpecVersion: String {
 	case VERSION_1 = "1"
 	case VERSION_2 = "2"
+	case VERSION_3 = "3"
 }

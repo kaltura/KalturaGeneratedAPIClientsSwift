@@ -314,9 +314,6 @@ open class CuePoint: ObjectBase {
 		if(systemName != nil) {
 			dict["systemName"] = systemName!
 		}
-		if(isMomentary != nil) {
-			dict["isMomentary"] = isMomentary!
-		}
 		return dict
 	}
 }

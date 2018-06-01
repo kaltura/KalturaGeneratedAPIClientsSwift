@@ -264,6 +264,42 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 				return self.append("apiAuthorizeUrl") 
 			}
 		}
+		
+		public var privacyStatus: BaseTokenizedObject {
+			get {
+				return self.append("privacyStatus") 
+			}
+		}
+		
+		public var enableContentId: BaseTokenizedObject {
+			get {
+				return self.append("enableContentId") 
+			}
+		}
+		
+		public var thirdPartyAds: BaseTokenizedObject {
+			get {
+				return self.append("thirdPartyAds") 
+			}
+		}
+		
+		public var productListingAds: BaseTokenizedObject {
+			get {
+				return self.append("productListingAds") 
+			}
+		}
+		
+		public var domainWhitelist: BaseTokenizedObject {
+			get {
+				return self.append("domainWhitelist") 
+			}
+		}
+		
+		public var notifySubscribers: BaseTokenizedObject {
+			get {
+				return self.append("notifySubscribers") 
+			}
+		}
 	}
 
 	public var feedSpecVersion: YouTubeDistributionFeedSpecVersion? = nil
@@ -304,6 +340,12 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 	public var deleteReference: Bool? = nil
 	public var releaseClaims: Bool? = nil
 	public var apiAuthorizeUrl: String? = nil
+	public var privacyStatus: String? = nil
+	public var enableContentId: String? = nil
+	public var thirdPartyAds: String? = nil
+	public var productListingAds: String? = nil
+	public var domainWhitelist: String? = nil
+	public var notifySubscribers: String? = nil
 
 
 	public func setMultiRequestToken(feedSpecVersion: String) {
@@ -458,6 +500,30 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 		self.dict["apiAuthorizeUrl"] = apiAuthorizeUrl
 	}
 	
+	public func setMultiRequestToken(privacyStatus: String) {
+		self.dict["privacyStatus"] = privacyStatus
+	}
+	
+	public func setMultiRequestToken(enableContentId: String) {
+		self.dict["enableContentId"] = enableContentId
+	}
+	
+	public func setMultiRequestToken(thirdPartyAds: String) {
+		self.dict["thirdPartyAds"] = thirdPartyAds
+	}
+	
+	public func setMultiRequestToken(productListingAds: String) {
+		self.dict["productListingAds"] = productListingAds
+	}
+	
+	public func setMultiRequestToken(domainWhitelist: String) {
+		self.dict["domainWhitelist"] = domainWhitelist
+	}
+	
+	public func setMultiRequestToken(notifySubscribers: String) {
+		self.dict["notifySubscribers"] = notifySubscribers
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -574,6 +640,24 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 		}
 		if dict["apiAuthorizeUrl"] != nil {
 			apiAuthorizeUrl = dict["apiAuthorizeUrl"] as? String
+		}
+		if dict["privacyStatus"] != nil {
+			privacyStatus = dict["privacyStatus"] as? String
+		}
+		if dict["enableContentId"] != nil {
+			enableContentId = dict["enableContentId"] as? String
+		}
+		if dict["thirdPartyAds"] != nil {
+			thirdPartyAds = dict["thirdPartyAds"] as? String
+		}
+		if dict["productListingAds"] != nil {
+			productListingAds = dict["productListingAds"] as? String
+		}
+		if dict["domainWhitelist"] != nil {
+			domainWhitelist = dict["domainWhitelist"] as? String
+		}
+		if dict["notifySubscribers"] != nil {
+			notifySubscribers = dict["notifySubscribers"] as? String
 		}
 
 	}
@@ -693,6 +777,24 @@ open class YouTubeDistributionProfile: ConfigurableDistributionProfile {
 		}
 		if(apiAuthorizeUrl != nil) {
 			dict["apiAuthorizeUrl"] = apiAuthorizeUrl!
+		}
+		if(privacyStatus != nil) {
+			dict["privacyStatus"] = privacyStatus!
+		}
+		if(enableContentId != nil) {
+			dict["enableContentId"] = enableContentId!
+		}
+		if(thirdPartyAds != nil) {
+			dict["thirdPartyAds"] = thirdPartyAds!
+		}
+		if(productListingAds != nil) {
+			dict["productListingAds"] = productListingAds!
+		}
+		if(domainWhitelist != nil) {
+			dict["domainWhitelist"] = domainWhitelist!
+		}
+		if(notifySubscribers != nil) {
+			dict["notifySubscribers"] = notifySubscribers!
 		}
 		return dict
 	}
