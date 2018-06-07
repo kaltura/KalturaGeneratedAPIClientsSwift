@@ -49,6 +49,12 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 			}
 		}
 		
+		public var thumbAssetId: BaseTokenizedObject {
+			get {
+				return self.append("thumbAssetId") 
+			}
+		}
+		
 		public var captionAssetIds: BaseTokenizedObject {
 			get {
 				return self.append("captionAssetIds") 
@@ -142,6 +148,7 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 
 	public var videoAssetFilePath: String? = nil
 	public var thumbAssetFilePath: String? = nil
+	public var thumbAssetId: String? = nil
 	public var captionAssetIds: String? = nil
 	public var sftpDirectory: String? = nil
 	public var sftpMetadataFilename: String? = nil
@@ -165,6 +172,10 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 	
 	public func setMultiRequestToken(thumbAssetFilePath: String) {
 		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	}
+	
+	public func setMultiRequestToken(thumbAssetId: String) {
+		self.dict["thumbAssetId"] = thumbAssetId
 	}
 	
 	public func setMultiRequestToken(captionAssetIds: String) {
@@ -236,6 +247,9 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 		if dict["thumbAssetFilePath"] != nil {
 			thumbAssetFilePath = dict["thumbAssetFilePath"] as? String
 		}
+		if dict["thumbAssetId"] != nil {
+			thumbAssetId = dict["thumbAssetId"] as? String
+		}
 		if dict["captionAssetIds"] != nil {
 			captionAssetIds = dict["captionAssetIds"] as? String
 		}
@@ -291,6 +305,9 @@ open class YouTubeDistributionJobProviderData: ConfigurableDistributionJobProvid
 		}
 		if(thumbAssetFilePath != nil) {
 			dict["thumbAssetFilePath"] = thumbAssetFilePath!
+		}
+		if(thumbAssetId != nil) {
+			dict["thumbAssetId"] = thumbAssetId!
 		}
 		if(captionAssetIds != nil) {
 			dict["captionAssetIds"] = captionAssetIds!
