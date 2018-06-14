@@ -25,26 +25,36 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BatchJobStatus: Int {
-	case PENDING = 0
-	case QUEUED = 1
-	case PROCESSING = 2
-	case PROCESSED = 3
-	case MOVEFILE = 4
-	case FINISHED = 5
-	case FAILED = 6
-	case ABORTED = 7
-	case ALMOST_DONE = 8
-	case RETRY = 9
-	case FATAL = 10
-	case DONT_PROCESS = 11
-	case FINISHED_PARTIALLY = 12
-	case SUSPEND = 13
-	case SUSPEND_ALMOST_DONE = 14
+
+open class ReachProfileListResponse: ListResponse {
+
+	public class ReachProfileListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ReachProfile.ReachProfileTokenizer> {
+			get {
+				return ArrayTokenizedObject<ReachProfile.ReachProfileTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
+	public var objects: Array<ReachProfile>? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		}
+
+	}
+
 }
+

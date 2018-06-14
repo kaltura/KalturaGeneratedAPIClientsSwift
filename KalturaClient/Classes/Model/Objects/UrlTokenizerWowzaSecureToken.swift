@@ -25,26 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BatchJobStatus: Int {
-	case PENDING = 0
-	case QUEUED = 1
-	case PROCESSING = 2
-	case PROCESSED = 3
-	case MOVEFILE = 4
-	case FINISHED = 5
-	case FAILED = 6
-	case ABORTED = 7
-	case ALMOST_DONE = 8
-	case RETRY = 9
-	case FATAL = 10
-	case DONT_PROCESS = 11
-	case FINISHED_PARTIALLY = 12
-	case SUSPEND = 13
-	case SUSPEND_ALMOST_DONE = 14
+
+open class UrlTokenizerWowzaSecureToken: UrlTokenizer {
+
+	public class UrlTokenizerWowzaSecureTokenTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+		
+		public var paramPrefix: BaseTokenizedObject {
+			get {
+				return self.append("paramPrefix") 
+			}
+		}
+		
+		public var hashAlgorithm: BaseTokenizedObject {
+			get {
+				return self.append("hashAlgorithm") 
+			}
+		}
+	}
+
+	public var paramPrefix: String? = nil
+	public var hashAlgorithm: String? = nil
+
+
+	public func setMultiRequestToken(paramPrefix: String) {
+		self.dict["paramPrefix"] = paramPrefix
+	}
+	
+	public func setMultiRequestToken(hashAlgorithm: String) {
+		self.dict["hashAlgorithm"] = hashAlgorithm
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["paramPrefix"] != nil {
+			paramPrefix = dict["paramPrefix"] as? String
+		}
+		if dict["hashAlgorithm"] != nil {
+			hashAlgorithm = dict["hashAlgorithm"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(paramPrefix != nil) {
+			dict["paramPrefix"] = paramPrefix!
+		}
+		if(hashAlgorithm != nil) {
+			dict["hashAlgorithm"] = hashAlgorithm!
+		}
+		return dict
+	}
 }
+
