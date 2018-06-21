@@ -60,7 +60,7 @@ public final class AppTokenService{
 		}
 	}
 
-	/**  Delete application authentication token by id  */
+	/**  Delete application authentication token by ID  */
 	public static func delete(id: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "apptoken", action: "delete")
 			.setParam(key: "id", value: id)
@@ -77,7 +77,7 @@ public final class AppTokenService{
 		}
 	}
 
-	/**  Get application authentication token by id  */
+	/**  Get application authentication token by ID  */
 	public static func get(id: String) -> RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer> = RequestBuilder<AppToken, AppToken.AppTokenTokenizer, GetTokenizer>(service: "apptoken", action: "get")
 			.setParam(key: "id", value: id)
@@ -158,7 +158,8 @@ public final class AppTokenService{
 		return startSession(id: id, tokenHash: tokenHash, userId: userId, type: type, expiry: nil)
 	}
 
-	/**  Starts a new KS (kaltura Session) based on application authentication token id  */
+	/**  Starts a new KS (kaltura Session) based on an application authentication token
+	  ID  */
 	public static func startSession(id: String, tokenHash: String, userId: String?, type: SessionType?, expiry: Int?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
 		let request: RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> = RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer>(service: "apptoken", action: "startSession")
 			.setParam(key: "id", value: id)
@@ -183,7 +184,7 @@ public final class AppTokenService{
 		}
 	}
 
-	/**  Update application authentication token by id  */
+	/**  Update application authentication token by ID  */
 	public static func update(id: String, appToken: AppToken) -> RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer> = RequestBuilder<AppToken, AppToken.AppTokenTokenizer, UpdateTokenizer>(service: "apptoken", action: "update")
 			.setParam(key: "id", value: id)
