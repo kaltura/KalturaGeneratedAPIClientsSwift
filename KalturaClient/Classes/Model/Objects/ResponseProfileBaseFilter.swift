@@ -98,7 +98,7 @@ open class ResponseProfileBaseFilter: Filter {
 		}
 	}
 
-	public var idEqual: Int? = nil
+	public var idEqual: Int64? = nil
 	public var idIn: String? = nil
 	public var systemNameEqual: String? = nil
 	public var systemNameIn: String? = nil
@@ -154,7 +154,7 @@ open class ResponseProfileBaseFilter: Filter {
 		try super.populate(dict);
 		// set members values:
 		if dict["idEqual"] != nil {
-			idEqual = dict["idEqual"] as? Int
+			idEqual = Int64("\(dict["idEqual"]!)")
 		}
 		if dict["idIn"] != nil {
 			idIn = dict["idIn"] as? String

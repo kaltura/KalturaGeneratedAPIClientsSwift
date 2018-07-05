@@ -110,7 +110,7 @@ open class FileAssetBaseFilter: RelatedFilter {
 		}
 	}
 
-	public var idEqual: Int? = nil
+	public var idEqual: Int64? = nil
 	public var idIn: String? = nil
 	public var partnerIdEqual: Int? = nil
 	public var fileAssetObjectTypeEqual: FileAssetObjectType? = nil
@@ -176,7 +176,7 @@ open class FileAssetBaseFilter: RelatedFilter {
 		try super.populate(dict);
 		// set members values:
 		if dict["idEqual"] != nil {
-			idEqual = dict["idEqual"] as? Int
+			idEqual = Int64("\(dict["idEqual"]!)")
 		}
 		if dict["idIn"] != nil {
 			idIn = dict["idIn"] as? String
