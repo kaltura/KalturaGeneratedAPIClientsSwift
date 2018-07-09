@@ -42,26 +42,14 @@ open class EdgeServerNode: DeliveryServerNode {
 				return self.append("playbackDomain") 
 			}
 		}
-		
-		public var config: BaseTokenizedObject {
-			get {
-				return self.append("config") 
-			}
-		}
 	}
 
 	/**  Delivery server playback Domain  */
 	public var playbackDomain: String? = nil
-	/**  Overdie edge server default configuration - json format  */
-	public var config: String? = nil
 
 
 	public func setMultiRequestToken(playbackDomain: String) {
 		self.dict["playbackDomain"] = playbackDomain
-	}
-	
-	public func setMultiRequestToken(config: String) {
-		self.dict["config"] = config
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -70,9 +58,6 @@ open class EdgeServerNode: DeliveryServerNode {
 		if dict["playbackDomain"] != nil {
 			playbackDomain = dict["playbackDomain"] as? String
 		}
-		if dict["config"] != nil {
-			config = dict["config"] as? String
-		}
 
 	}
 
@@ -80,9 +65,6 @@ open class EdgeServerNode: DeliveryServerNode {
 		var dict: [String: Any] = super.toDictionary()
 		if(playbackDomain != nil) {
 			dict["playbackDomain"] = playbackDomain!
-		}
-		if(config != nil) {
-			dict["config"] = config!
 		}
 		return dict
 	}

@@ -42,17 +42,32 @@ open class DeliveryServerNode: ServerNode {
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("deliveryProfileIds"))
 			} 
 		}
+		
+		public var config: BaseTokenizedObject {
+			get {
+				return self.append("config") 
+			}
+		}
 	}
 
 	/**  Delivery profile ids  */
 	public var deliveryProfileIds: Array<KeyValue>? = nil
+	/**  Override server node default configuration - json format  */
+	public var config: String? = nil
 
 
+	public func setMultiRequestToken(config: String) {
+		self.dict["config"] = config
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["deliveryProfileIds"] != nil {
 			deliveryProfileIds = try JSONParser.parse(array: dict["deliveryProfileIds"] as! [Any])
+		}
+		if dict["config"] != nil {
+			config = dict["config"] as? String
 		}
 
 	}
@@ -61,6 +76,9 @@ open class DeliveryServerNode: ServerNode {
 		var dict: [String: Any] = super.toDictionary()
 		if(deliveryProfileIds != nil) {
 			dict["deliveryProfileIds"] = deliveryProfileIds!.map { value in value.toDictionary() }
+		}
+		if(config != nil) {
+			dict["config"] = config!
 		}
 		return dict
 	}
