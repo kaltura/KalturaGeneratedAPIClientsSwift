@@ -120,6 +120,12 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 				return self.append("lastExecutionStartedAtLessThanOrEqual") 
 			}
 		}
+		
+		public var lastExecutionStartedAtLessThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("lastExecutionStartedAtLessThanOrEqualOrNull") 
+			}
+		}
 	}
 
 	public var idEqual: Int? = nil
@@ -136,6 +142,7 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 	public var lastExecutionStartedAtGreaterThanOrEqual: Int? = nil
 	public var lastExecutionStartedAtLessThanOrEqual: Int? = nil
+	public var lastExecutionStartedAtLessThanOrEqualOrNull: Int? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -194,6 +201,10 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		self.dict["lastExecutionStartedAtLessThanOrEqual"] = lastExecutionStartedAtLessThanOrEqual
 	}
 	
+	public func setMultiRequestToken(lastExecutionStartedAtLessThanOrEqualOrNull: String) {
+		self.dict["lastExecutionStartedAtLessThanOrEqualOrNull"] = lastExecutionStartedAtLessThanOrEqualOrNull
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -238,6 +249,9 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		}
 		if dict["lastExecutionStartedAtLessThanOrEqual"] != nil {
 			lastExecutionStartedAtLessThanOrEqual = dict["lastExecutionStartedAtLessThanOrEqual"] as? Int
+		}
+		if dict["lastExecutionStartedAtLessThanOrEqualOrNull"] != nil {
+			lastExecutionStartedAtLessThanOrEqualOrNull = dict["lastExecutionStartedAtLessThanOrEqualOrNull"] as? Int
 		}
 
 	}
@@ -285,6 +299,9 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		}
 		if(lastExecutionStartedAtLessThanOrEqual != nil) {
 			dict["lastExecutionStartedAtLessThanOrEqual"] = lastExecutionStartedAtLessThanOrEqual!
+		}
+		if(lastExecutionStartedAtLessThanOrEqualOrNull != nil) {
+			dict["lastExecutionStartedAtLessThanOrEqualOrNull"] = lastExecutionStartedAtLessThanOrEqualOrNull!
 		}
 		return dict
 	}
