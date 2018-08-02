@@ -34,5 +34,7 @@
 public enum ESearchCaptionFieldName: String {
 	case CONTENT = "content"
 	case END_TIME = "end_time"
+	case LABEL = "label"
+	case LANGUAGE = "language"
 	case START_TIME = "start_time"
 }
