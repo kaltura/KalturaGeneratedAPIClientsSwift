@@ -60,5 +60,6 @@ public enum ReportType: String {
 	case TOP_PLAYBACK_CONTEXT = "25"
 	case VPAAS_USAGE = "26"
 	case ENTRY_USAGE = "27"
+	case REACH_USAGE = "28"
 	case PARTNER_USAGE = "201"
 }
