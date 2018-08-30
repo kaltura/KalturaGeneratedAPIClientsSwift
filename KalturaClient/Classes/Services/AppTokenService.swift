@@ -144,6 +144,12 @@ public final class AppTokenService{
 				return self.append("expiry") 
 			}
 		}
+		
+		public var sessionPrivileges: BaseTokenizedObject {
+			get {
+				return self.append("sessionPrivileges") 
+			}
+		}
 	}
 
 	public static func startSession(id: String, tokenHash: String) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
@@ -158,15 +164,20 @@ public final class AppTokenService{
 		return startSession(id: id, tokenHash: tokenHash, userId: userId, type: type, expiry: nil)
 	}
 
+	public static func startSession(id: String, tokenHash: String, userId: String?, type: SessionType?, expiry: Int?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
+		return startSession(id: id, tokenHash: tokenHash, userId: userId, type: type, expiry: expiry, sessionPrivileges: nil)
+	}
+
 	/**  Starts a new KS (kaltura Session) based on an application authentication token
 	  ID  */
-	public static func startSession(id: String, tokenHash: String, userId: String?, type: SessionType?, expiry: Int?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
+	public static func startSession(id: String, tokenHash: String, userId: String?, type: SessionType?, expiry: Int?, sessionPrivileges: String?) -> RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> {
 		let request: RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer> = RequestBuilder<SessionInfo, SessionInfo.SessionInfoTokenizer, StartSessionTokenizer>(service: "apptoken", action: "startSession")
 			.setParam(key: "id", value: id)
 			.setParam(key: "tokenHash", value: tokenHash)
 			.setParam(key: "userId", value: userId)
 			.setParam(key: "type", value: type?.rawValue)
 			.setParam(key: "expiry", value: expiry)
+			.setParam(key: "sessionPrivileges", value: sessionPrivileges)
 
 		return request
 	}
