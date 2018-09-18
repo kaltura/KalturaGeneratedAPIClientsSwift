@@ -119,6 +119,56 @@ public final class ServerNodeService{
 		return request
 	}
 
+	public class GetFullPathTokenizer: ClientTokenizer  {
+		
+		public var hostName: BaseTokenizedObject {
+			get {
+				return self.append("hostName") 
+			}
+		}
+		
+		public var protocol_: BaseTokenizedObject {
+			get {
+				return self.append("protocol_") 
+			}
+		}
+		
+		public var deliveryFormat: BaseTokenizedObject {
+			get {
+				return self.append("deliveryFormat") 
+			}
+		}
+		
+		public var deliveryType: BaseTokenizedObject {
+			get {
+				return self.append("deliveryType") 
+			}
+		}
+	}
+
+	public static func getFullPath(hostName: String) -> RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer> {
+		return getFullPath(hostName: hostName, protocol_: "http")
+	}
+
+	public static func getFullPath(hostName: String, protocol_: String?) -> RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer> {
+		return getFullPath(hostName: hostName, protocol_: protocol_, deliveryFormat: nil)
+	}
+
+	public static func getFullPath(hostName: String, protocol_: String?, deliveryFormat: String?) -> RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer> {
+		return getFullPath(hostName: hostName, protocol_: protocol_, deliveryFormat: deliveryFormat, deliveryType: nil)
+	}
+
+	/**  Get the edge server node full path  */
+	public static func getFullPath(hostName: String, protocol_: String?, deliveryFormat: String?, deliveryType: String?) -> RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetFullPathTokenizer>(service: "servernode", action: "getFullPath")
+			.setParam(key: "hostName", value: hostName)
+			.setParam(key: "protocol", value: protocol_)
+			.setParam(key: "deliveryFormat", value: deliveryFormat)
+			.setParam(key: "deliveryType", value: deliveryType)
+
+		return request
+	}
+
 	public class ListTokenizer: ClientTokenizer  {
 		
 		public func filter<T: ServerNodeFilter.ServerNodeFilterTokenizer>() -> T {
@@ -174,17 +224,28 @@ public final class ServerNodeService{
 		public func serverNode<T: ServerNode.ServerNodeTokenizer>() -> T {
 			return T(self.append("serverNode"))
 		}
+		
+		public var serverNodeStatus: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeStatus") 
+			}
+		}
 	}
 
 	public static func reportStatus(hostName: String) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
 		return reportStatus(hostName: hostName, serverNode: nil)
 	}
 
-	/**  Update server node status  */
 	public static func reportStatus(hostName: String, serverNode: ServerNode?) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
+		return reportStatus(hostName: hostName, serverNode: serverNode, serverNodeStatus: ServerNodeStatus(rawValue: 1))
+	}
+
+	/**  Update server node status  */
+	public static func reportStatus(hostName: String, serverNode: ServerNode?, serverNodeStatus: ServerNodeStatus?) -> RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> {
 		let request: RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer> = RequestBuilder<ServerNode, ServerNode.ServerNodeTokenizer, ReportStatusTokenizer>(service: "servernode", action: "reportStatus")
 			.setParam(key: "hostName", value: hostName)
 			.setParam(key: "serverNode", value: serverNode)
+			.setParam(key: "serverNodeStatus", value: serverNodeStatus?.rawValue)
 
 		return request
 	}

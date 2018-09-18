@@ -42,14 +42,25 @@ open class AccessControlServeRemoteEdgeServerAction: RuleAction {
 				return self.append("edgeServerIds") 
 			}
 		}
+		
+		public var seamlessFallbackEnabled: BaseTokenizedObject {
+			get {
+				return self.append("seamlessFallbackEnabled") 
+			}
+		}
 	}
 
 	/**  Comma separated list of edge servers playBack should be done from  */
 	public var edgeServerIds: String? = nil
+	public var seamlessFallbackEnabled: Bool? = nil
 
 
 	public func setMultiRequestToken(edgeServerIds: String) {
 		self.dict["edgeServerIds"] = edgeServerIds
+	}
+	
+	public func setMultiRequestToken(seamlessFallbackEnabled: String) {
+		self.dict["seamlessFallbackEnabled"] = seamlessFallbackEnabled
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -58,6 +69,9 @@ open class AccessControlServeRemoteEdgeServerAction: RuleAction {
 		if dict["edgeServerIds"] != nil {
 			edgeServerIds = dict["edgeServerIds"] as? String
 		}
+		if dict["seamlessFallbackEnabled"] != nil {
+			seamlessFallbackEnabled = dict["seamlessFallbackEnabled"] as? Bool
+		}
 
 	}
 
@@ -65,6 +79,9 @@ open class AccessControlServeRemoteEdgeServerAction: RuleAction {
 		var dict: [String: Any] = super.toDictionary()
 		if(edgeServerIds != nil) {
 			dict["edgeServerIds"] = edgeServerIds!
+		}
+		if(seamlessFallbackEnabled != nil) {
+			dict["seamlessFallbackEnabled"] = seamlessFallbackEnabled!
 		}
 		return dict
 	}
