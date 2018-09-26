@@ -36,5 +36,5 @@ public enum ServerNodeStatus: Int {
 	case DISABLED = 2
 	case DELETED = 3
 	case NOT_REGISTERED = 4
-	case NOT_HEALTHY = 5
+	case NOT_OPERATIONAL = 5
 }
