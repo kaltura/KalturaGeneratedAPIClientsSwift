@@ -71,6 +71,12 @@ open class CaptureThumbJobData: JobData {
 			}
 		}
 		
+		public var srcAssetEncryptionKey: BaseTokenizedObject {
+			get {
+				return self.append("srcAssetEncryptionKey") 
+			}
+		}
+		
 		public var srcAssetType: BaseTokenizedObject {
 			get {
 				return self.append("srcAssetType") 
@@ -91,6 +97,7 @@ open class CaptureThumbJobData: JobData {
 	public var thumbParamsOutputId: Int? = nil
 	public var thumbAssetId: String? = nil
 	public var srcAssetId: String? = nil
+	public var srcAssetEncryptionKey: String? = nil
 	public var srcAssetType: AssetType? = nil
 	public var thumbPath: String? = nil
 
@@ -113,6 +120,10 @@ open class CaptureThumbJobData: JobData {
 	
 	public func setMultiRequestToken(srcAssetId: String) {
 		self.dict["srcAssetId"] = srcAssetId
+	}
+	
+	public func setMultiRequestToken(srcAssetEncryptionKey: String) {
+		self.dict["srcAssetEncryptionKey"] = srcAssetEncryptionKey
 	}
 	
 	public func setMultiRequestToken(srcAssetType: String) {
@@ -143,6 +154,9 @@ open class CaptureThumbJobData: JobData {
 		if dict["srcAssetId"] != nil {
 			srcAssetId = dict["srcAssetId"] as? String
 		}
+		if dict["srcAssetEncryptionKey"] != nil {
+			srcAssetEncryptionKey = dict["srcAssetEncryptionKey"] as? String
+		}
 		if dict["srcAssetType"] != nil {
 			srcAssetType = AssetType(rawValue: "\(dict["srcAssetType"]!)")
 		}
@@ -171,6 +185,9 @@ open class CaptureThumbJobData: JobData {
 		}
 		if(srcAssetId != nil) {
 			dict["srcAssetId"] = srcAssetId!
+		}
+		if(srcAssetEncryptionKey != nil) {
+			dict["srcAssetEncryptionKey"] = srcAssetEncryptionKey!
 		}
 		if(srcAssetType != nil) {
 			dict["srcAssetType"] = srcAssetType!.rawValue

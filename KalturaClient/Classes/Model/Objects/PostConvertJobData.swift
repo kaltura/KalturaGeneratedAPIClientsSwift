@@ -43,6 +43,12 @@ open class PostConvertJobData: ConvartableJobData {
 			}
 		}
 		
+		public var flavorAssetEncryptionKey: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetEncryptionKey") 
+			}
+		}
+		
 		public var createThumb: BaseTokenizedObject {
 			get {
 				return self.append("createThumb") 
@@ -81,6 +87,7 @@ open class PostConvertJobData: ConvartableJobData {
 	}
 
 	public var flavorAssetId: String? = nil
+	public var flavorAssetEncryptionKey: String? = nil
 	/**  Indicates if a thumbnail should be created  */
 	public var createThumb: Bool? = nil
 	/**  The path of the created thumbnail  */
@@ -98,6 +105,10 @@ open class PostConvertJobData: ConvartableJobData {
 
 	public func setMultiRequestToken(flavorAssetId: String) {
 		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(flavorAssetEncryptionKey: String) {
+		self.dict["flavorAssetEncryptionKey"] = flavorAssetEncryptionKey
 	}
 	
 	public func setMultiRequestToken(createThumb: String) {
@@ -130,6 +141,9 @@ open class PostConvertJobData: ConvartableJobData {
 		if dict["flavorAssetId"] != nil {
 			flavorAssetId = dict["flavorAssetId"] as? String
 		}
+		if dict["flavorAssetEncryptionKey"] != nil {
+			flavorAssetEncryptionKey = dict["flavorAssetEncryptionKey"] as? String
+		}
 		if dict["createThumb"] != nil {
 			createThumb = dict["createThumb"] as? Bool
 		}
@@ -155,6 +169,9 @@ open class PostConvertJobData: ConvartableJobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(flavorAssetId != nil) {
 			dict["flavorAssetId"] = flavorAssetId!
+		}
+		if(flavorAssetEncryptionKey != nil) {
+			dict["flavorAssetEncryptionKey"] = flavorAssetEncryptionKey!
 		}
 		if(createThumb != nil) {
 			dict["createThumb"] = createThumb!
