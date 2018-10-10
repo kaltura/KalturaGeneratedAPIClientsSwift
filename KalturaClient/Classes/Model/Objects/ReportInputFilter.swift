@@ -61,6 +61,24 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var customVar1In: BaseTokenizedObject {
+			get {
+				return self.append("customVar1In") 
+			}
+		}
+		
+		public var customVar2In: BaseTokenizedObject {
+			get {
+				return self.append("customVar2In") 
+			}
+		}
+		
+		public var customVar3In: BaseTokenizedObject {
+			get {
+				return self.append("customVar3In") 
+			}
+		}
+		
 		public var timeZoneOffset: BaseTokenizedObject {
 			get {
 				return self.append("timeZoneOffset") 
@@ -82,6 +100,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var searchInAdminTags: Bool? = nil
 	/**  Search onjects in specified categories  */
 	public var categories: String? = nil
+	/**  Filter by customVar1  */
+	public var customVar1In: String? = nil
+	/**  Filter by customVar2  */
+	public var customVar2In: String? = nil
+	/**  Filter by customVar3  */
+	public var customVar3In: String? = nil
 	/**  Time zone offset in minutes  */
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
@@ -102,6 +126,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	
 	public func setMultiRequestToken(categories: String) {
 		self.dict["categories"] = categories
+	}
+	
+	public func setMultiRequestToken(customVar1In: String) {
+		self.dict["customVar1In"] = customVar1In
+	}
+	
+	public func setMultiRequestToken(customVar2In: String) {
+		self.dict["customVar2In"] = customVar2In
+	}
+	
+	public func setMultiRequestToken(customVar3In: String) {
+		self.dict["customVar3In"] = customVar3In
 	}
 	
 	public func setMultiRequestToken(timeZoneOffset: String) {
@@ -127,6 +163,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["categories"] != nil {
 			categories = dict["categories"] as? String
 		}
+		if dict["customVar1In"] != nil {
+			customVar1In = dict["customVar1In"] as? String
+		}
+		if dict["customVar2In"] != nil {
+			customVar2In = dict["customVar2In"] as? String
+		}
+		if dict["customVar3In"] != nil {
+			customVar3In = dict["customVar3In"] as? String
+		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
 		}
@@ -149,6 +194,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(categories != nil) {
 			dict["categories"] = categories!
+		}
+		if(customVar1In != nil) {
+			dict["customVar1In"] = customVar1In!
+		}
+		if(customVar2In != nil) {
+			dict["customVar2In"] = customVar2In!
+		}
+		if(customVar3In != nil) {
+			dict["customVar3In"] = customVar3In!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
