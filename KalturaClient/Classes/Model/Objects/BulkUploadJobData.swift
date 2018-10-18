@@ -118,6 +118,12 @@ open class BulkUploadJobData: JobData {
 				return self.append("numOfErrorObjects") 
 			}
 		}
+		
+		public var privileges: BaseTokenizedObject {
+			get {
+				return self.append("privileges") 
+			}
+		}
 	}
 
 	public var userId: String? = nil
@@ -147,6 +153,8 @@ open class BulkUploadJobData: JobData {
 	public var emailRecipients: String? = nil
 	/**  Number of objects that finished on error status  */
 	public var numOfErrorObjects: Int? = nil
+	/**  privileges for the job  */
+	public var privileges: String? = nil
 
 
 	public func setMultiRequestToken(userId: String) {
@@ -201,6 +209,10 @@ open class BulkUploadJobData: JobData {
 		self.dict["numOfErrorObjects"] = numOfErrorObjects
 	}
 	
+	public func setMultiRequestToken(privileges: String) {
+		self.dict["privileges"] = privileges
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -245,6 +257,9 @@ open class BulkUploadJobData: JobData {
 		if dict["numOfErrorObjects"] != nil {
 			numOfErrorObjects = dict["numOfErrorObjects"] as? Int
 		}
+		if dict["privileges"] != nil {
+			privileges = dict["privileges"] as? String
+		}
 
 	}
 
@@ -258,6 +273,9 @@ open class BulkUploadJobData: JobData {
 		}
 		if(numOfErrorObjects != nil) {
 			dict["numOfErrorObjects"] = numOfErrorObjects!
+		}
+		if(privileges != nil) {
+			dict["privileges"] = privileges!
 		}
 		return dict
 	}
