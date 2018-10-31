@@ -108,6 +108,12 @@ open class ConversionProfileAssetParams: ObjectBase {
 				return self.append("tags") 
 			}
 		}
+		
+		public var overloadParams: BaseTokenizedObject {
+			get {
+				return self.append("overloadParams") 
+			}
+		}
 	}
 
 	/**  The id of the conversion profile  */
@@ -130,6 +136,8 @@ open class ConversionProfileAssetParams: ObjectBase {
 	public var chunkedEncodeMode: Int? = nil
 	public var twoPass: Bool? = nil
 	public var tags: String? = nil
+	/**  JSON string containing an array of flavotParams field-value pairs.  */
+	public var overloadParams: String? = nil
 
 
 	public func setMultiRequestToken(conversionProfileId: String) {
@@ -180,6 +188,10 @@ open class ConversionProfileAssetParams: ObjectBase {
 		self.dict["tags"] = tags
 	}
 	
+	public func setMultiRequestToken(overloadParams: String) {
+		self.dict["overloadParams"] = overloadParams
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -219,6 +231,9 @@ open class ConversionProfileAssetParams: ObjectBase {
 		if dict["tags"] != nil {
 			tags = dict["tags"] as? String
 		}
+		if dict["overloadParams"] != nil {
+			overloadParams = dict["overloadParams"] as? String
+		}
 
 	}
 
@@ -253,6 +268,9 @@ open class ConversionProfileAssetParams: ObjectBase {
 		}
 		if(tags != nil) {
 			dict["tags"] = tags!
+		}
+		if(overloadParams != nil) {
+			dict["overloadParams"] = overloadParams!
 		}
 		return dict
 	}
