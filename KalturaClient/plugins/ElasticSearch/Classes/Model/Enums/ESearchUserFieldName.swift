@@ -42,5 +42,6 @@ public enum ESearchUserFieldName: String {
 	case SCREEN_NAME = "screen_name"
 	case TAGS = "tags"
 	case UPDATED_AT = "updated_at"
+	case USER_ID = "user_id"
 	case TYPE = "user_type"
 }
