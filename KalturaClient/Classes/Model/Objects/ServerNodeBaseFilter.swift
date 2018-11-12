@@ -198,6 +198,18 @@ open class ServerNodeBaseFilter: Filter {
 				return self.append("parentIdMultiLikeAnd") 
 			}
 		}
+		
+		public var environmentEqual: BaseTokenizedObject {
+			get {
+				return self.append("environmentEqual") 
+			}
+		}
+		
+		public var environmentIn: BaseTokenizedObject {
+			get {
+				return self.append("environmentIn") 
+			}
+		}
 	}
 
 	public var idEqual: Int? = nil
@@ -227,6 +239,8 @@ open class ServerNodeBaseFilter: Filter {
 	public var parentIdLike: String? = nil
 	public var parentIdMultiLikeOr: String? = nil
 	public var parentIdMultiLikeAnd: String? = nil
+	public var environmentEqual: String? = nil
+	public var environmentIn: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -337,6 +351,14 @@ open class ServerNodeBaseFilter: Filter {
 		self.dict["parentIdMultiLikeAnd"] = parentIdMultiLikeAnd
 	}
 	
+	public func setMultiRequestToken(environmentEqual: String) {
+		self.dict["environmentEqual"] = environmentEqual
+	}
+	
+	public func setMultiRequestToken(environmentIn: String) {
+		self.dict["environmentIn"] = environmentIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -420,6 +442,12 @@ open class ServerNodeBaseFilter: Filter {
 		}
 		if dict["parentIdMultiLikeAnd"] != nil {
 			parentIdMultiLikeAnd = dict["parentIdMultiLikeAnd"] as? String
+		}
+		if dict["environmentEqual"] != nil {
+			environmentEqual = dict["environmentEqual"] as? String
+		}
+		if dict["environmentIn"] != nil {
+			environmentIn = dict["environmentIn"] as? String
 		}
 
 	}
@@ -506,6 +534,12 @@ open class ServerNodeBaseFilter: Filter {
 		}
 		if(parentIdMultiLikeAnd != nil) {
 			dict["parentIdMultiLikeAnd"] = parentIdMultiLikeAnd!
+		}
+		if(environmentEqual != nil) {
+			dict["environmentEqual"] = environmentEqual!
+		}
+		if(environmentIn != nil) {
+			dict["environmentIn"] = environmentIn!
 		}
 		return dict
 	}

@@ -120,6 +120,12 @@ open class ServerNode: ObjectBase {
 				return self.append("parentId") 
 			}
 		}
+		
+		public var environment: BaseTokenizedObject {
+			get {
+				return self.append("environment") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -142,6 +148,8 @@ open class ServerNode: ObjectBase {
 	public var dc: Int? = nil
 	/**  Id of the parent serverNode  */
 	public var parentId: String? = nil
+	/**  Environment  */
+	public var environment: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -200,6 +208,10 @@ open class ServerNode: ObjectBase {
 		self.dict["parentId"] = parentId
 	}
 	
+	public func setMultiRequestToken(environment: String) {
+		self.dict["environment"] = environment
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -245,6 +257,9 @@ open class ServerNode: ObjectBase {
 		if dict["parentId"] != nil {
 			parentId = dict["parentId"] as? String
 		}
+		if dict["environment"] != nil {
+			environment = dict["environment"] as? String
+		}
 
 	}
 
@@ -267,6 +282,9 @@ open class ServerNode: ObjectBase {
 		}
 		if(parentId != nil) {
 			dict["parentId"] = parentId!
+		}
+		if(environment != nil) {
+			dict["environment"] = environment!
 		}
 		return dict
 	}
