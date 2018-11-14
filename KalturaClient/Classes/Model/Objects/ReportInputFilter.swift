@@ -79,6 +79,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var devicesIn: BaseTokenizedObject {
+			get {
+				return self.append("devicesIn") 
+			}
+		}
+		
 		public var timeZoneOffset: BaseTokenizedObject {
 			get {
 				return self.append("timeZoneOffset") 
@@ -106,6 +112,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var customVar2In: String? = nil
 	/**  Filter by customVar3  */
 	public var customVar3In: String? = nil
+	/**  Filter by device  */
+	public var devicesIn: String? = nil
 	/**  Time zone offset in minutes  */
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
@@ -140,6 +148,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["customVar3In"] = customVar3In
 	}
 	
+	public func setMultiRequestToken(devicesIn: String) {
+		self.dict["devicesIn"] = devicesIn
+	}
+	
 	public func setMultiRequestToken(timeZoneOffset: String) {
 		self.dict["timeZoneOffset"] = timeZoneOffset
 	}
@@ -172,6 +184,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["customVar3In"] != nil {
 			customVar3In = dict["customVar3In"] as? String
 		}
+		if dict["devicesIn"] != nil {
+			devicesIn = dict["devicesIn"] as? String
+		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
 		}
@@ -203,6 +218,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(customVar3In != nil) {
 			dict["customVar3In"] = customVar3In!
+		}
+		if(devicesIn != nil) {
+			dict["devicesIn"] = devicesIn!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
