@@ -62,5 +62,6 @@ public enum ReportType: String {
 	case ENTRY_USAGE = "27"
 	case REACH_USAGE = "28"
 	case TOP_CUSTOM_VAR1 = "29"
+	case CITIES = "30"
 	case PARTNER_USAGE = "201"
 }

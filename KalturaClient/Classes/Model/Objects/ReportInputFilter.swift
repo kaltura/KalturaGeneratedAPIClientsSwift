@@ -85,6 +85,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var countriesIn: BaseTokenizedObject {
+			get {
+				return self.append("countriesIn") 
+			}
+		}
+		
+		public var regionsIn: BaseTokenizedObject {
+			get {
+				return self.append("regionsIn") 
+			}
+		}
+		
 		public var timeZoneOffset: BaseTokenizedObject {
 			get {
 				return self.append("timeZoneOffset") 
@@ -114,6 +126,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var customVar3In: String? = nil
 	/**  Filter by device  */
 	public var devicesIn: String? = nil
+	/**  Filter by country  */
+	public var countriesIn: String? = nil
+	/**  Filter by region  */
+	public var regionsIn: String? = nil
 	/**  Time zone offset in minutes  */
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
@@ -152,6 +168,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["devicesIn"] = devicesIn
 	}
 	
+	public func setMultiRequestToken(countriesIn: String) {
+		self.dict["countriesIn"] = countriesIn
+	}
+	
+	public func setMultiRequestToken(regionsIn: String) {
+		self.dict["regionsIn"] = regionsIn
+	}
+	
 	public func setMultiRequestToken(timeZoneOffset: String) {
 		self.dict["timeZoneOffset"] = timeZoneOffset
 	}
@@ -187,6 +211,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["devicesIn"] != nil {
 			devicesIn = dict["devicesIn"] as? String
 		}
+		if dict["countriesIn"] != nil {
+			countriesIn = dict["countriesIn"] as? String
+		}
+		if dict["regionsIn"] != nil {
+			regionsIn = dict["regionsIn"] as? String
+		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
 		}
@@ -221,6 +251,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(devicesIn != nil) {
 			dict["devicesIn"] = devicesIn!
+		}
+		if(countriesIn != nil) {
+			dict["countriesIn"] = countriesIn!
+		}
+		if(regionsIn != nil) {
+			dict["regionsIn"] = regionsIn!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
