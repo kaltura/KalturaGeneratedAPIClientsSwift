@@ -39,4 +39,6 @@ public enum BulkUploadAction: String {
 	case REPLACE = "4"
 	case TRANSFORM_XSLT = "5"
 	case ADD_OR_UPDATE = "6"
+	case ACTIVATE = "7"
+	case REJECT = "8"
 }

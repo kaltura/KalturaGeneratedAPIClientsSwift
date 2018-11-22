@@ -58,4 +58,32 @@ extension CategoryEntryService{
 
 		return request
 	}
+
+	public class UpdateStatusfrombulkTokenizer: ClientTokenizer  {
+		
+		public func bulkUploadData<T: BulkUploadJobData.BulkUploadJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
+		}
+		
+		public func bulkUploadCategoryEntryData<T: BulkUploadCategoryEntryData.BulkUploadCategoryEntryDataTokenizer>() -> T {
+			return T(self.append("bulkUploadCategoryEntryData"))
+		}
+	}
+
+	public static func updateStatusfrombulk(fileData: RequestFile) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, UpdateStatusfrombulkTokenizer> {
+		return updateStatusfrombulk(fileData: fileData, bulkUploadData: nil)
+	}
+
+	public static func updateStatusfrombulk(fileData: RequestFile, bulkUploadData: BulkUploadJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, UpdateStatusfrombulkTokenizer> {
+		return updateStatusfrombulk(fileData: fileData, bulkUploadData: bulkUploadData, bulkUploadCategoryEntryData: nil)
+	}
+
+	public static func updateStatusfrombulk(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadCategoryEntryData: BulkUploadCategoryEntryData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, UpdateStatusfrombulkTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, UpdateStatusfrombulkTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, UpdateStatusfrombulkTokenizer>(service: "categoryentry", action: "updateStatusfrombulk")
+			.setFile(key: "fileData", value: fileData)
+			.setParam(key: "bulkUploadData", value: bulkUploadData)
+			.setParam(key: "bulkUploadCategoryEntryData", value: bulkUploadCategoryEntryData)
+
+		return request
+	}
 }
