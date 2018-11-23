@@ -79,21 +79,33 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
-		public var devicesIn: BaseTokenizedObject {
+		public var deviceIn: BaseTokenizedObject {
 			get {
-				return self.append("devicesIn") 
+				return self.append("deviceIn") 
 			}
 		}
 		
-		public var countriesIn: BaseTokenizedObject {
+		public var countryIn: BaseTokenizedObject {
 			get {
-				return self.append("countriesIn") 
+				return self.append("countryIn") 
 			}
 		}
 		
-		public var regionsIn: BaseTokenizedObject {
+		public var regionIn: BaseTokenizedObject {
 			get {
-				return self.append("regionsIn") 
+				return self.append("regionIn") 
+			}
+		}
+		
+		public var operatingSystemFamilyIn: BaseTokenizedObject {
+			get {
+				return self.append("operatingSystemFamilyIn") 
+			}
+		}
+		
+		public var browserFamilyIn: BaseTokenizedObject {
+			get {
+				return self.append("browserFamilyIn") 
 			}
 		}
 		
@@ -125,11 +137,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	/**  Filter by customVar3  */
 	public var customVar3In: String? = nil
 	/**  Filter by device  */
-	public var devicesIn: String? = nil
+	public var deviceIn: String? = nil
 	/**  Filter by country  */
-	public var countriesIn: String? = nil
+	public var countryIn: String? = nil
 	/**  Filter by region  */
-	public var regionsIn: String? = nil
+	public var regionIn: String? = nil
+	/**  Filter by operating system family  */
+	public var operatingSystemFamilyIn: String? = nil
+	/**  Filter by browser family  */
+	public var browserFamilyIn: String? = nil
 	/**  Time zone offset in minutes  */
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
@@ -164,16 +180,24 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["customVar3In"] = customVar3In
 	}
 	
-	public func setMultiRequestToken(devicesIn: String) {
-		self.dict["devicesIn"] = devicesIn
+	public func setMultiRequestToken(deviceIn: String) {
+		self.dict["deviceIn"] = deviceIn
 	}
 	
-	public func setMultiRequestToken(countriesIn: String) {
-		self.dict["countriesIn"] = countriesIn
+	public func setMultiRequestToken(countryIn: String) {
+		self.dict["countryIn"] = countryIn
 	}
 	
-	public func setMultiRequestToken(regionsIn: String) {
-		self.dict["regionsIn"] = regionsIn
+	public func setMultiRequestToken(regionIn: String) {
+		self.dict["regionIn"] = regionIn
+	}
+	
+	public func setMultiRequestToken(operatingSystemFamilyIn: String) {
+		self.dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn
+	}
+	
+	public func setMultiRequestToken(browserFamilyIn: String) {
+		self.dict["browserFamilyIn"] = browserFamilyIn
 	}
 	
 	public func setMultiRequestToken(timeZoneOffset: String) {
@@ -208,14 +232,20 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["customVar3In"] != nil {
 			customVar3In = dict["customVar3In"] as? String
 		}
-		if dict["devicesIn"] != nil {
-			devicesIn = dict["devicesIn"] as? String
+		if dict["deviceIn"] != nil {
+			deviceIn = dict["deviceIn"] as? String
 		}
-		if dict["countriesIn"] != nil {
-			countriesIn = dict["countriesIn"] as? String
+		if dict["countryIn"] != nil {
+			countryIn = dict["countryIn"] as? String
 		}
-		if dict["regionsIn"] != nil {
-			regionsIn = dict["regionsIn"] as? String
+		if dict["regionIn"] != nil {
+			regionIn = dict["regionIn"] as? String
+		}
+		if dict["operatingSystemFamilyIn"] != nil {
+			operatingSystemFamilyIn = dict["operatingSystemFamilyIn"] as? String
+		}
+		if dict["browserFamilyIn"] != nil {
+			browserFamilyIn = dict["browserFamilyIn"] as? String
 		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
@@ -249,14 +279,20 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if(customVar3In != nil) {
 			dict["customVar3In"] = customVar3In!
 		}
-		if(devicesIn != nil) {
-			dict["devicesIn"] = devicesIn!
+		if(deviceIn != nil) {
+			dict["deviceIn"] = deviceIn!
 		}
-		if(countriesIn != nil) {
-			dict["countriesIn"] = countriesIn!
+		if(countryIn != nil) {
+			dict["countryIn"] = countryIn!
 		}
-		if(regionsIn != nil) {
-			dict["regionsIn"] = regionsIn!
+		if(regionIn != nil) {
+			dict["regionIn"] = regionIn!
+		}
+		if(operatingSystemFamilyIn != nil) {
+			dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn!
+		}
+		if(browserFamilyIn != nil) {
+			dict["browserFamilyIn"] = browserFamilyIn!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
