@@ -64,6 +64,6 @@ public enum ReportType: String {
 	case TOP_CUSTOM_VAR1 = "29"
 	case CITIES = "30"
 	case OPERATING_SYSTEM_FAMILIES = "32"
-	case BROWSERS_FAMIILES = "33"
+	case BROWSERS_FAMILIES = "33"
 	case PARTNER_USAGE = "201"
 }
