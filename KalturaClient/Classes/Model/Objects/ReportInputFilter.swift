@@ -61,6 +61,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var categoriesIdsIn: BaseTokenizedObject {
+			get {
+				return self.append("categoriesIdsIn") 
+			}
+		}
+		
 		public var customVar1In: BaseTokenizedObject {
 			get {
 				return self.append("customVar1In") 
@@ -97,6 +103,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var citiesIn: BaseTokenizedObject {
+			get {
+				return self.append("citiesIn") 
+			}
+		}
+		
 		public var operatingSystemFamilyIn: BaseTokenizedObject {
 			get {
 				return self.append("operatingSystemFamilyIn") 
@@ -120,16 +132,30 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("interval") 
 			}
 		}
+		
+		public var mediaTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("mediaTypeIn") 
+			}
+		}
+		
+		public var sourceTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("sourceTypeIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
 	public var keywords: String? = nil
-	/**  Search keywords in onjects tags  */
+	/**  Search keywords in objects tags  */
 	public var searchInTags: Bool? = nil
-	/**  Search keywords in onjects admin tags  */
+	/**  Search keywords in objects admin tags  */
 	public var searchInAdminTags: Bool? = nil
-	/**  Search onjects in specified categories  */
+	/**  Search objects in specified categories  */
 	public var categories: String? = nil
+	/**  Search objects in specified category ids  */
+	public var categoriesIdsIn: String? = nil
 	/**  Filter by customVar1  */
 	public var customVar1In: String? = nil
 	/**  Filter by customVar2  */
@@ -142,6 +168,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var countryIn: String? = nil
 	/**  Filter by region  */
 	public var regionIn: String? = nil
+	/**  Filter by city  */
+	public var citiesIn: String? = nil
 	/**  Filter by operating system family  */
 	public var operatingSystemFamilyIn: String? = nil
 	/**  Filter by browser family  */
@@ -150,6 +178,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
 	public var interval: ReportInterval? = nil
+	/**  Filter by media types  */
+	public var mediaTypeIn: String? = nil
+	/**  Filter by source types  */
+	public var sourceTypeIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -166,6 +198,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	
 	public func setMultiRequestToken(categories: String) {
 		self.dict["categories"] = categories
+	}
+	
+	public func setMultiRequestToken(categoriesIdsIn: String) {
+		self.dict["categoriesIdsIn"] = categoriesIdsIn
 	}
 	
 	public func setMultiRequestToken(customVar1In: String) {
@@ -192,6 +228,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["regionIn"] = regionIn
 	}
 	
+	public func setMultiRequestToken(citiesIn: String) {
+		self.dict["citiesIn"] = citiesIn
+	}
+	
 	public func setMultiRequestToken(operatingSystemFamilyIn: String) {
 		self.dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn
 	}
@@ -208,6 +248,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["interval"] = interval
 	}
 	
+	public func setMultiRequestToken(mediaTypeIn: String) {
+		self.dict["mediaTypeIn"] = mediaTypeIn
+	}
+	
+	public func setMultiRequestToken(sourceTypeIn: String) {
+		self.dict["sourceTypeIn"] = sourceTypeIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -222,6 +270,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["categories"] != nil {
 			categories = dict["categories"] as? String
+		}
+		if dict["categoriesIdsIn"] != nil {
+			categoriesIdsIn = dict["categoriesIdsIn"] as? String
 		}
 		if dict["customVar1In"] != nil {
 			customVar1In = dict["customVar1In"] as? String
@@ -241,6 +292,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["regionIn"] != nil {
 			regionIn = dict["regionIn"] as? String
 		}
+		if dict["citiesIn"] != nil {
+			citiesIn = dict["citiesIn"] as? String
+		}
 		if dict["operatingSystemFamilyIn"] != nil {
 			operatingSystemFamilyIn = dict["operatingSystemFamilyIn"] as? String
 		}
@@ -252,6 +306,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["interval"] != nil {
 			interval = ReportInterval(rawValue: "\(dict["interval"]!)")
+		}
+		if dict["mediaTypeIn"] != nil {
+			mediaTypeIn = dict["mediaTypeIn"] as? String
+		}
+		if dict["sourceTypeIn"] != nil {
+			sourceTypeIn = dict["sourceTypeIn"] as? String
 		}
 
 	}
@@ -269,6 +329,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(categories != nil) {
 			dict["categories"] = categories!
+		}
+		if(categoriesIdsIn != nil) {
+			dict["categoriesIdsIn"] = categoriesIdsIn!
 		}
 		if(customVar1In != nil) {
 			dict["customVar1In"] = customVar1In!
@@ -288,6 +351,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if(regionIn != nil) {
 			dict["regionIn"] = regionIn!
 		}
+		if(citiesIn != nil) {
+			dict["citiesIn"] = citiesIn!
+		}
 		if(operatingSystemFamilyIn != nil) {
 			dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn!
 		}
@@ -299,6 +365,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(interval != nil) {
 			dict["interval"] = interval!.rawValue
+		}
+		if(mediaTypeIn != nil) {
+			dict["mediaTypeIn"] = mediaTypeIn!
+		}
+		if(sourceTypeIn != nil) {
+			dict["sourceTypeIn"] = sourceTypeIn!
 		}
 		return dict
 	}
