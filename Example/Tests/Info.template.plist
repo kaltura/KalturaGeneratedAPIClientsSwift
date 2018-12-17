@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>secret</key>
-	<string>83c3d4449a3abbe92ca5966f5f010eb4</string>
+	<string>@YOUR_ADMIN_SECRET@</string>
 	<key>partnerId</key>
-	<integer>1931861</integer>
+	<integer>@YOUR_PARTNER_ID@</integer>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
