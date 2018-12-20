@@ -139,7 +139,7 @@ public final class SyndicationFeedService{
 		}
 	}
 
-	/**  request conversion for all entries that doesnt have the required flavor param  
+	/**  request conversion for all entries that doesn't have the required flavor param  
 	  returns a comma-separated ids of conversion jobs  */
 	public static func requestConversion(feedId: String) -> RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer> = RequestBuilder<String, BaseTokenizedObject, RequestConversionTokenizer>(service: "syndicationfeed", action: "requestConversion")

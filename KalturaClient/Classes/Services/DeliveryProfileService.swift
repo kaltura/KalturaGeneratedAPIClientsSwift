@@ -126,7 +126,7 @@ public final class DeliveryProfileService{
 		}
 	}
 
-	/**  Update exisiting delivery  */
+	/**  Update existing delivery profile  */
 	public static func update(id: String, delivery: DeliveryProfile) -> RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer> = RequestBuilder<DeliveryProfile, DeliveryProfile.DeliveryProfileTokenizer, UpdateTokenizer>(service: "deliveryprofile", action: "update")
 			.setParam(key: "id", value: id)

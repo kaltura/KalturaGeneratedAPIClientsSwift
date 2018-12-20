@@ -34,7 +34,7 @@
  */
 
 /**  Playlist service lets you create,manage and play your playlists  Playlists could
-  be static (containing a fixed list of entries) or dynamic (baseed on a filter)  */
+  be static (containing a fixed list of entries) or dynamic (based on a filter)  */
 public final class PlaylistService{
 
 	public class AddTokenizer: ClientTokenizer  {
@@ -239,7 +239,7 @@ public final class PlaylistService{
 		return executeFromFilters(filters: filters, totalResults: totalResults, detailed: detailed, pager: nil)
 	}
 
-	/**  Revrieve playlist for playing purpose, based on media entry filters  */
+	/**  Retrieve playlist for playing purpose, based on media entry filters  */
 	public static func executeFromFilters(filters: Array<MediaEntryFilterForPlaylist>, totalResults: Int, detailed: String?, pager: FilterPager?) -> ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer> {
 		let request: ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer> = ArrayRequestBuilder<BaseEntry, ArrayTokenizedObject<BaseEntry.BaseEntryTokenizer>, ExecuteFromFiltersTokenizer>(service: "playlist", action: "executeFromFilters")
 			.setParam(key: "filters", value: filters)
@@ -353,7 +353,7 @@ public final class PlaylistService{
 		return update(id: id, playlist: playlist, updateStats: false)
 	}
 
-	/**  Update existing playlist   Note - you cannot change playlist type. updated
+	/**  Update existing playlist   Note - you cannot change playlist type. Updated
 	  playlist must be of the same type.  */
 	public static func update(id: String, playlist: Playlist, updateStats: Bool?) -> RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer> = RequestBuilder<Playlist, Playlist.PlaylistTokenizer, UpdateTokenizer>(service: "playlist", action: "update")

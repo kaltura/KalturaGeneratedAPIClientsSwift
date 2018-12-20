@@ -94,7 +94,7 @@ public final class MixingService{
 		}
 	}
 
-	/**  Appends a media entry to a the end of the mix timeline, this will save the mix
+	/**  Appends a media entry to the end of the mix timeline, this will save the mix
 	  timeline as a new version.  */
 	public static func appendMediaEntry(mixEntryId: String, mediaEntryId: String) -> RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> {
 		let request: RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer> = RequestBuilder<MixEntry, MixEntry.MixEntryTokenizer, AppendMediaEntryTokenizer>(service: "mixing", action: "appendMediaEntry")

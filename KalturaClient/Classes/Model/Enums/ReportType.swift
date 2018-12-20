@@ -62,10 +62,12 @@ public enum ReportType: String {
 	case ENTRY_USAGE = "27"
 	case REACH_USAGE = "28"
 	case TOP_CUSTOM_VAR1 = "29"
-	case CITIES = "30"
+	case MAP_OVERLAY_CITY = "30"
 	case OPERATING_SYSTEM_FAMILIES = "32"
 	case BROWSERS_FAMILIES = "33"
 	case USER_ENGAGEMENT_TIMELINE = "34"
 	case UNIQUE_USERS_PLAY = "35"
+	case MAP_OVERLAY_COUNTRY = "36"
+	case MAP_OVERLAY_REGION = "37"
 	case PARTNER_USAGE = "201"
 }

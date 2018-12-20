@@ -187,7 +187,7 @@ public final class MediaService{
 		}
 	}
 
-	/**  Add new entry after the file was recored on the server and the token id exists  */
+	/**  Add new entry after the file was recorded on the server and the token id exists  */
 	public static func addFromRecordedWebcam(mediaEntry: MediaEntry, webcamTokenId: String) -> RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> {
 		let request: RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer> = RequestBuilder<MediaEntry, MediaEntry.MediaEntryTokenizer, AddFromRecordedWebcamTokenizer>(service: "media", action: "addFromRecordedWebcam")
 			.setParam(key: "mediaEntry", value: mediaEntry)
@@ -760,7 +760,7 @@ public final class MediaService{
 		}
 	}
 
-	/**  Update entry thumbnail using url  */
+	/**  Update entry thumbnail using URL  */
 	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer>(service: "media", action: "updateThumbnailFromUrl")
 			.setParam(key: "entryId", value: entryId)

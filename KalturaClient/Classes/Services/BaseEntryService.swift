@@ -606,7 +606,7 @@ public final class BaseEntryService{
 		}
 	}
 
-	/**  Update entry thumbnail using url.  */
+	/**  Update entry thumbnail using URL.  */
 	public static func updateThumbnailFromUrl(entryId: String, url: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> {
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, UpdateThumbnailFromUrlTokenizer>(service: "baseentry", action: "updateThumbnailFromUrl")
 			.setParam(key: "entryId", value: entryId)

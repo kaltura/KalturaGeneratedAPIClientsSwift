@@ -124,7 +124,7 @@ public final class WidgetService{
 		}
 	}
 
-	/**  Update exisiting widget  */
+	/**  Update existing widget  */
 	public static func update(id: String, widget: Widget) -> RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer> = RequestBuilder<Widget, Widget.WidgetTokenizer, UpdateTokenizer>(service: "widget", action: "update")
 			.setParam(key: "id", value: id)

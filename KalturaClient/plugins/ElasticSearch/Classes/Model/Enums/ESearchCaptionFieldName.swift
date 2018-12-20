@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchCaptionFieldName: String {
+	case CAPTION_ASSET_ID = "caption_asset_id"
 	case CONTENT = "content"
 	case END_TIME = "end_time"
 	case LABEL = "label"

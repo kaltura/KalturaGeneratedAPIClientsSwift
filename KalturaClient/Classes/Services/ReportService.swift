@@ -86,7 +86,7 @@ public final class ReportService{
 		return getBaseTotal(reportType: reportType, reportInputFilter: reportInputFilter, objectIds: nil)
 	}
 
-	/**  report getBaseTotal action allows to get a the total base for storage reports  */
+	/**  report getBaseTotal action allows to get the total base for storage reports  */
 	public static func getBaseTotal(reportType: ReportType, reportInputFilter: ReportInputFilter, objectIds: String?) -> ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer> {
 		let request: ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer> = ArrayRequestBuilder<ReportBaseTotal, ArrayTokenizedObject<ReportBaseTotal.ReportBaseTotalTokenizer>, GetBaseTotalTokenizer>(service: "report", action: "getBaseTotal")
 			.setParam(key: "reportType", value: reportType.rawValue)
@@ -291,7 +291,7 @@ public final class ReportService{
 		return getUrlForReportAsCsv(reportTitle: reportTitle, reportText: reportText, headers: headers, reportType: reportType, reportInputFilter: reportInputFilter, dimension: dimension, pager: pager, order: order, objectIds: nil)
 	}
 
-	/**  will create a Csv file for the given report and return the URL to access it  */
+	/**  will create a CSV file for the given report and return the URL to access it  */
 	public static func getUrlForReportAsCsv(reportTitle: String, reportText: String, headers: String, reportType: ReportType, reportInputFilter: ReportInputFilter, dimension: String?, pager: FilterPager?, order: String?, objectIds: String?) -> RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetUrlForReportAsCsvTokenizer>(service: "report", action: "getUrlForReportAsCsv")
 			.setParam(key: "reportTitle", value: reportTitle)

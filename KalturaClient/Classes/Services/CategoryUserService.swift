@@ -84,7 +84,7 @@ public final class CategoryUserService{
 		}
 	}
 
-	/**  Copy all memeber from parent category  */
+	/**  Copy all member from parent category  */
 	public static func copyFromCategory(categoryId: Int) -> NullRequestBuilder<CopyFromCategoryTokenizer> {
 		let request: NullRequestBuilder<CopyFromCategoryTokenizer> = NullRequestBuilder<CopyFromCategoryTokenizer>(service: "categoryuser", action: "copyFromCategory")
 			.setParam(key: "categoryId", value: categoryId)
