@@ -69,5 +69,6 @@ public enum ReportType: String {
 	case UNIQUE_USERS_PLAY = "35"
 	case MAP_OVERLAY_COUNTRY = "36"
 	case MAP_OVERLAY_REGION = "37"
+	case TOP_CONTENT_CREATOR = "38"
 	case PARTNER_USAGE = "201"
 }
