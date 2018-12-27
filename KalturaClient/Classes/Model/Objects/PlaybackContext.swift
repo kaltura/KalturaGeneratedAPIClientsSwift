@@ -43,6 +43,12 @@ open class PlaybackContext: ObjectBase {
 			} 
 		}
 		
+		public var playbackCaptions: ArrayTokenizedObject<CaptionPlaybackPluginData.CaptionPlaybackPluginDataTokenizer> {
+			get {
+				return ArrayTokenizedObject<CaptionPlaybackPluginData.CaptionPlaybackPluginDataTokenizer>(self.append("playbackCaptions"))
+			} 
+		}
+		
 		public var flavorAssets: ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer> {
 			get {
 				return ArrayTokenizedObject<FlavorAsset.FlavorAssetTokenizer>(self.append("flavorAssets"))
@@ -63,6 +69,7 @@ open class PlaybackContext: ObjectBase {
 	}
 
 	public var sources: Array<PlaybackSource>? = nil
+	public var playbackCaptions: Array<CaptionPlaybackPluginData>? = nil
 	public var flavorAssets: Array<FlavorAsset>? = nil
 	/**  Array of actions as received from the rules that invalidated  */
 	public var actions: Array<RuleAction>? = nil
@@ -75,6 +82,9 @@ open class PlaybackContext: ObjectBase {
 		// set members values:
 		if dict["sources"] != nil {
 			sources = try JSONParser.parse(array: dict["sources"] as! [Any])
+		}
+		if dict["playbackCaptions"] != nil {
+			playbackCaptions = try JSONParser.parse(array: dict["playbackCaptions"] as! [Any])
 		}
 		if dict["flavorAssets"] != nil {
 			flavorAssets = try JSONParser.parse(array: dict["flavorAssets"] as! [Any])
@@ -92,6 +102,9 @@ open class PlaybackContext: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(sources != nil) {
 			dict["sources"] = sources!.map { value in value.toDictionary() }
+		}
+		if(playbackCaptions != nil) {
+			dict["playbackCaptions"] = playbackCaptions!.map { value in value.toDictionary() }
 		}
 		if(flavorAssets != nil) {
 			dict["flavorAssets"] = flavorAssets!.map { value in value.toDictionary() }
