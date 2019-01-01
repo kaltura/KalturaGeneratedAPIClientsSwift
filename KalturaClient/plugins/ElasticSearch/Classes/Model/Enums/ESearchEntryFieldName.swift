@@ -42,6 +42,7 @@ public enum ESearchEntryFieldName: String {
 	case END_DATE = "end_date"
 	case ENTITLED_USER_EDIT = "entitled_kusers_edit"
 	case ENTITLED_USER_PUBLISH = "entitled_kusers_publish"
+	case ENTITLED_USER_VIEW = "entitled_kusers_view"
 	case ENTRY_TYPE = "entry_type"
 	case EXTERNAL_SOURCE_TYPE = "external_source_type"
 	case ID = "id"
