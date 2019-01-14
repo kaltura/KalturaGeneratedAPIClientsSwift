@@ -25,19 +25,48 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadObjectType: String {
-	case JOB = "bulkUploadFilter.JOB"
-	case SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT"
-	case SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE"
-	case ENTRY = "1"
-	case CATEGORY = "2"
-	case USER = "3"
-	case CATEGORY_USER = "4"
-	case CATEGORY_ENTRY = "5"
+
+open class BulkUploadResultJob: BulkUploadResult {
+
+	public class BulkUploadResultJobTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var jobObjectId: BaseTokenizedObject {
+			get {
+				return self.append("jobObjectId") 
+			}
+		}
+	}
+
+	/**  ID of object being processed by the job  */
+	public var jobObjectId: Int? = nil
+
+
+	public func setMultiRequestToken(jobObjectId: String) {
+		self.dict["jobObjectId"] = jobObjectId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["jobObjectId"] != nil {
+			jobObjectId = dict["jobObjectId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(jobObjectId != nil) {
+			dict["jobObjectId"] = jobObjectId!
+		}
+		return dict
+	}
 }
+

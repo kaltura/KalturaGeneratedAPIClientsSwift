@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'KalturaClient'
-s.version          = '14.11.0'
+s.version          = '14.12.0'
 s.summary          = 'KalturaClient.'
 s.homepage         = 'https://github.com/kaltura/clients-generator/tree/master/sources/swift'
 s.license          = { :type => 'AGPLv3', :text => 'AGPLv3' }
@@ -81,6 +81,7 @@ s.subspec 'BulkUploadFilter' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bulkUploadFilter/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/BulkUpload'
+ ssp.dependency 'KalturaClient/BulkUploadXml'
 end
 
 s.subspec 'ScheduleBulkUpload' do |ssp|
