@@ -110,6 +110,12 @@ public final class ScheduleEventResourceService{
 		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
 			return T(self.append("pager"))
 		}
+		
+		public var filterBlackoutConflicts: BaseTokenizedObject {
+			get {
+				return self.append("filterBlackoutConflicts") 
+			}
+		}
 	}
 
 	public static func list() -> RequestBuilder<ScheduleEventResourceListResponse, ScheduleEventResourceListResponse.ScheduleEventResourceListResponseTokenizer, ListTokenizer> {
@@ -120,11 +126,16 @@ public final class ScheduleEventResourceService{
 		return list(filter: filter, pager: nil)
 	}
 
-	/**  List KalturaScheduleEventResource objects  */
 	public static func list(filter: ScheduleEventResourceFilter?, pager: FilterPager?) -> RequestBuilder<ScheduleEventResourceListResponse, ScheduleEventResourceListResponse.ScheduleEventResourceListResponseTokenizer, ListTokenizer> {
+		return list(filter: filter, pager: pager, filterBlackoutConflicts: true)
+	}
+
+	/**  List KalturaScheduleEventResource objects  */
+	public static func list(filter: ScheduleEventResourceFilter?, pager: FilterPager?, filterBlackoutConflicts: Bool?) -> RequestBuilder<ScheduleEventResourceListResponse, ScheduleEventResourceListResponse.ScheduleEventResourceListResponseTokenizer, ListTokenizer> {
 		let request: RequestBuilder<ScheduleEventResourceListResponse, ScheduleEventResourceListResponse.ScheduleEventResourceListResponseTokenizer, ListTokenizer> = RequestBuilder<ScheduleEventResourceListResponse, ScheduleEventResourceListResponse.ScheduleEventResourceListResponseTokenizer, ListTokenizer>(service: "schedule_scheduleeventresource", action: "list")
 			.setParam(key: "filter", value: filter)
 			.setParam(key: "pager", value: pager)
+			.setParam(key: "filterBlackoutConflicts", value: filterBlackoutConflicts)
 
 		return request
 	}

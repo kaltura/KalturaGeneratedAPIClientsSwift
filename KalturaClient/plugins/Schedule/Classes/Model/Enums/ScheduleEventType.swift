@@ -34,4 +34,5 @@
 public enum ScheduleEventType: Int {
 	case RECORD = 1
 	case LIVE_STREAM = 2
+	case BLACKOUT = 3
 }

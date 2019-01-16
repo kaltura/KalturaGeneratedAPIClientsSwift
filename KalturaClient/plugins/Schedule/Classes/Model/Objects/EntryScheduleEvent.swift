@@ -54,6 +54,12 @@ open class EntryScheduleEvent: ScheduleEvent {
 				return self.append("categoryIds") 
 			}
 		}
+		
+		public var blackoutConflicts: ArrayTokenizedObject<ScheduleEvent.ScheduleEventTokenizer> {
+			get {
+				return ArrayTokenizedObject<ScheduleEvent.ScheduleEventTokenizer>(self.append("blackoutConflicts"))
+			} 
+		}
 	}
 
 	/**  Entry to be used as template during content ingestion  */
@@ -62,6 +68,8 @@ open class EntryScheduleEvent: ScheduleEvent {
 	public var entryIds: String? = nil
 	/**  Categories that associated with this event  */
 	public var categoryIds: String? = nil
+	/**  Blackout schedule events the conflict with this event  */
+	public var blackoutConflicts: Array<ScheduleEvent>? = nil
 
 
 	public func setMultiRequestToken(templateEntryId: String) {
@@ -87,6 +95,9 @@ open class EntryScheduleEvent: ScheduleEvent {
 		}
 		if dict["categoryIds"] != nil {
 			categoryIds = dict["categoryIds"] as? String
+		}
+		if dict["blackoutConflicts"] != nil {
+			blackoutConflicts = try JSONParser.parse(array: dict["blackoutConflicts"] as! [Any])
 		}
 
 	}

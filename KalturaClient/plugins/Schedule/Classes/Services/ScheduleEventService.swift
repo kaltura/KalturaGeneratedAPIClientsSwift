@@ -120,18 +120,29 @@ public final class ScheduleEventService{
 				return self.append("scheduleEventIdToIgnore") 
 			}
 		}
+		
+		public var scheduleEventConflictType: BaseTokenizedObject {
+			get {
+				return self.append("scheduleEventConflictType") 
+			}
+		}
 	}
 
 	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> {
 		return getConflicts(resourceIds: resourceIds, scheduleEvent: scheduleEvent, scheduleEventIdToIgnore: nil)
 	}
 
-	/**  List conflicting events for resourcesIds by event's dates  */
 	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent, scheduleEventIdToIgnore: String?) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> {
+		return getConflicts(resourceIds: resourceIds, scheduleEvent: scheduleEvent, scheduleEventIdToIgnore: scheduleEventIdToIgnore, scheduleEventConflictType: ScheduleEventConflictType(rawValue: 1))
+	}
+
+	/**  List conflicting events for resourcesIds by event's dates  */
+	public static func getConflicts(resourceIds: String, scheduleEvent: ScheduleEvent, scheduleEventIdToIgnore: String?, scheduleEventConflictType: ScheduleEventConflictType?) -> RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> {
 		let request: RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer> = RequestBuilder<ScheduleEventListResponse, ScheduleEventListResponse.ScheduleEventListResponseTokenizer, GetConflictsTokenizer>(service: "schedule_scheduleevent", action: "getConflicts")
 			.setParam(key: "resourceIds", value: resourceIds)
 			.setParam(key: "scheduleEvent", value: scheduleEvent)
 			.setParam(key: "scheduleEventIdToIgnore", value: scheduleEventIdToIgnore)
+			.setParam(key: "scheduleEventConflictType", value: scheduleEventConflictType?.rawValue)
 
 		return request
 	}
