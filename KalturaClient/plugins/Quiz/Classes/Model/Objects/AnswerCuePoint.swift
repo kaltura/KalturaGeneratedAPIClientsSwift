@@ -55,6 +55,12 @@ open class AnswerCuePoint: CuePoint {
 			}
 		}
 		
+		public var openAnswer: BaseTokenizedObject {
+			get {
+				return self.append("openAnswer") 
+			}
+		}
+		
 		public var isCorrect: BaseTokenizedObject {
 			get {
 				return self.append("isCorrect") 
@@ -77,6 +83,7 @@ open class AnswerCuePoint: CuePoint {
 	public var parentId: String? = nil
 	public var quizUserEntryId: String? = nil
 	public var answerKey: String? = nil
+	public var openAnswer: String? = nil
 	public var isCorrect: Bool? = nil
 	/**  Array of string  */
 	public var correctAnswerKeys: Array<StringHolder>? = nil
@@ -93,6 +100,10 @@ open class AnswerCuePoint: CuePoint {
 	
 	public func setMultiRequestToken(answerKey: String) {
 		self.dict["answerKey"] = answerKey
+	}
+	
+	public func setMultiRequestToken(openAnswer: String) {
+		self.dict["openAnswer"] = openAnswer
 	}
 	
 	public func setMultiRequestToken(isCorrect: String) {
@@ -114,6 +125,9 @@ open class AnswerCuePoint: CuePoint {
 		}
 		if dict["answerKey"] != nil {
 			answerKey = dict["answerKey"] as? String
+		}
+		if dict["openAnswer"] != nil {
+			openAnswer = dict["openAnswer"] as? String
 		}
 		if dict["isCorrect"] != nil {
 			isCorrect = dict["isCorrect"] as? Bool
@@ -137,6 +151,9 @@ open class AnswerCuePoint: CuePoint {
 		}
 		if(answerKey != nil) {
 			dict["answerKey"] = answerKey!
+		}
+		if(openAnswer != nil) {
+			dict["openAnswer"] = openAnswer!
 		}
 		return dict
 	}

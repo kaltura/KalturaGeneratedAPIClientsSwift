@@ -39,4 +39,5 @@ public enum QuestionType: Int {
 	case FILL_IN_BLANK = 5
 	case HOT_SPOT = 6
 	case GO_TO = 7
+	case OPEN_QUESTION = 8
 }

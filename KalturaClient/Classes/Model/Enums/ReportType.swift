@@ -72,5 +72,6 @@ public enum ReportType: String {
 	case TOP_CONTENT_CREATOR = "38"
 	case TOP_CONTENT_CONTRIBUTORS = "39"
 	case APP_DOMAIN_UNIQUE_ACTIVE_USERS = "40"
+	case TOP_SOURCES = "41"
 	case PARTNER_USAGE = "201"
 }
