@@ -78,6 +78,12 @@ open class AnswerCuePoint: CuePoint {
 				return self.append("explanation") 
 			}
 		}
+		
+		public var feedback: BaseTokenizedObject {
+			get {
+				return self.append("feedback") 
+			}
+		}
 	}
 
 	public var parentId: String? = nil
@@ -88,6 +94,7 @@ open class AnswerCuePoint: CuePoint {
 	/**  Array of string  */
 	public var correctAnswerKeys: Array<StringHolder>? = nil
 	public var explanation: String? = nil
+	public var feedback: String? = nil
 
 
 	public func setMultiRequestToken(parentId: String) {
@@ -114,6 +121,10 @@ open class AnswerCuePoint: CuePoint {
 		self.dict["explanation"] = explanation
 	}
 	
+	public func setMultiRequestToken(feedback: String) {
+		self.dict["feedback"] = feedback
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -138,6 +149,9 @@ open class AnswerCuePoint: CuePoint {
 		if dict["explanation"] != nil {
 			explanation = dict["explanation"] as? String
 		}
+		if dict["feedback"] != nil {
+			feedback = dict["feedback"] as? String
+		}
 
 	}
 
@@ -154,6 +168,9 @@ open class AnswerCuePoint: CuePoint {
 		}
 		if(openAnswer != nil) {
 			dict["openAnswer"] = openAnswer!
+		}
+		if(feedback != nil) {
+			dict["feedback"] = feedback!
 		}
 		return dict
 	}

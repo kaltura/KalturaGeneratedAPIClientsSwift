@@ -155,7 +155,7 @@ public final class VirusScanProfileService{
 		}
 	}
 
-	/**  Update exisitng virus scan profile, it is possible to update the virus scan
+	/**  Update existing virus scan profile, it is possible to update the virus scan
 	  profile id too  */
 	public static func update(virusScanProfileId: Int, virusScanProfile: VirusScanProfile) -> RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer> = RequestBuilder<VirusScanProfile, VirusScanProfile.VirusScanProfileTokenizer, UpdateTokenizer>(service: "virusscan_virusscanprofile", action: "update")

@@ -126,7 +126,7 @@ public final class ShortLinkService{
 		}
 	}
 
-	/**  Update exisitng short link  */
+	/**  Update existing short link  */
 	public static func update(id: String, shortLink: ShortLink) -> RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer> = RequestBuilder<ShortLink, ShortLink.ShortLinkTokenizer, UpdateTokenizer>(service: "shortlink_shortlink", action: "update")
 			.setParam(key: "id", value: id)

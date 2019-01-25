@@ -102,7 +102,7 @@ public final class MetadataService{
 		}
 	}
 
-	/**  Allows you to add a metadata xml data from remote URL.   Enables different
+	/**  Allows you to add a metadata XML data from remote URL.   Enables different
 	  permissions than addFromUrl action.  */
 	public static func addFromBulk(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromBulkTokenizer>(service: "metadata_metadata", action: "addFromBulk")
@@ -174,7 +174,7 @@ public final class MetadataService{
 		}
 	}
 
-	/**  Allows you to add a metadata xml data from remote URL  */
+	/**  Allows you to add a metadata XML data from remote URL  */
 	public static func addFromUrl(metadataProfileId: Int, objectType: MetadataObjectType, objectId: String, url: String) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, AddFromUrlTokenizer>(service: "metadata_metadata", action: "addFromUrl")
 			.setParam(key: "metadataProfileId", value: metadataProfileId)

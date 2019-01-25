@@ -266,7 +266,7 @@ public final class MetadataProfileService{
 		}
 	}
 
-	/**  Update an existing metadata object xslt file  */
+	/**  Update an existing metadata object XSLT file  */
 	public static func updateTransformationFromFile(id: Int, xsltFile: RequestFile) -> RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> {
 		let request: RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer> = RequestBuilder<MetadataProfile, MetadataProfile.MetadataProfileTokenizer, UpdateTransformationFromFileTokenizer>(service: "metadata_metadataprofile", action: "updateTransformationFromFile")
 			.setParam(key: "id", value: id)

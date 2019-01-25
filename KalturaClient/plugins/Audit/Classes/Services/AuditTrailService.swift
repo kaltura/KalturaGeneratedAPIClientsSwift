@@ -33,7 +33,8 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Audit Trail service  */
+/**  The Audit Trail service allows you to keep track of changes made to various
+  Kaltura objects.   This service is disabled by default.  */
 public final class AuditTrailService{
 
 	public class AddTokenizer: ClientTokenizer  {

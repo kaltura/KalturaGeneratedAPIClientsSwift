@@ -57,7 +57,7 @@ extension LiveStreamService{
 		}
 	}
 
-	/**  Creates perioding metadata sync-point events on a live stream  */
+	/**  Creates periodic metadata sync-point events on a live stream  */
 	public static func createPeriodicSyncPoints(entryId: String, interval: Int, duration: Int) -> NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> {
 		let request: NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> = NullRequestBuilder<CreatePeriodicSyncPointsTokenizer>(service: "livestream", action: "createPeriodicSyncPoints")
 			.setParam(key: "entryId", value: entryId)
