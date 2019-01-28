@@ -72,6 +72,12 @@ open class CaptionPlaybackPluginData: ObjectBase {
 				return self.append("isDefault") 
 			}
 		}
+		
+		public var languageCode: BaseTokenizedObject {
+			get {
+				return self.append("languageCode") 
+			}
+		}
 	}
 
 	public var label: String? = nil
@@ -80,6 +86,7 @@ open class CaptionPlaybackPluginData: ObjectBase {
 	public var webVttUrl: String? = nil
 	public var url: String? = nil
 	public var isDefault: Bool? = nil
+	public var languageCode: String? = nil
 
 
 	public func setMultiRequestToken(label: String) {
@@ -106,6 +113,10 @@ open class CaptionPlaybackPluginData: ObjectBase {
 		self.dict["isDefault"] = isDefault
 	}
 	
+	public func setMultiRequestToken(languageCode: String) {
+		self.dict["languageCode"] = languageCode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -126,6 +137,9 @@ open class CaptionPlaybackPluginData: ObjectBase {
 		}
 		if dict["isDefault"] != nil {
 			isDefault = dict["isDefault"] as? Bool
+		}
+		if dict["languageCode"] != nil {
+			languageCode = dict["languageCode"] as? String
 		}
 
 	}
@@ -149,6 +163,9 @@ open class CaptionPlaybackPluginData: ObjectBase {
 		}
 		if(isDefault != nil) {
 			dict["isDefault"] = isDefault!
+		}
+		if(languageCode != nil) {
+			dict["languageCode"] = languageCode!
 		}
 		return dict
 	}
