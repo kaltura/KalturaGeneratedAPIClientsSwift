@@ -144,6 +144,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("sourceTypeIn") 
 			}
 		}
+		
+		public var ownerIdsIn: BaseTokenizedObject {
+			get {
+				return self.append("ownerIdsIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -182,6 +188,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var mediaTypeIn: String? = nil
 	/**  Filter by source types  */
 	public var sourceTypeIn: String? = nil
+	/**  Filter by entry owner  */
+	public var ownerIdsIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -256,6 +264,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["sourceTypeIn"] = sourceTypeIn
 	}
 	
+	public func setMultiRequestToken(ownerIdsIn: String) {
+		self.dict["ownerIdsIn"] = ownerIdsIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -312,6 +324,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["sourceTypeIn"] != nil {
 			sourceTypeIn = dict["sourceTypeIn"] as? String
+		}
+		if dict["ownerIdsIn"] != nil {
+			ownerIdsIn = dict["ownerIdsIn"] as? String
 		}
 
 	}
@@ -371,6 +386,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(sourceTypeIn != nil) {
 			dict["sourceTypeIn"] = sourceTypeIn!
+		}
+		if(ownerIdsIn != nil) {
+			dict["ownerIdsIn"] = ownerIdsIn!
 		}
 		return dict
 	}
