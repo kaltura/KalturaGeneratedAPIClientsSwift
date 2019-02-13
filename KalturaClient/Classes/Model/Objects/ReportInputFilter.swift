@@ -150,6 +150,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("ownerIdsIn") 
 			}
 		}
+		
+		public func entryOperator<T: ESearchEntryOperator.ESearchEntryOperatorTokenizer>() -> T {
+			return T(self.append("entryOperator"))
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -190,6 +194,7 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var sourceTypeIn: String? = nil
 	/**  Filter by entry owner  */
 	public var ownerIdsIn: String? = nil
+	public var entryOperator: ESearchEntryOperator? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -328,6 +333,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["ownerIdsIn"] != nil {
 			ownerIdsIn = dict["ownerIdsIn"] as? String
 		}
+		if dict["entryOperator"] != nil {
+		entryOperator = try JSONParser.parse(object: dict["entryOperator"] as! [String: Any])		}
 
 	}
 
@@ -389,6 +396,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(ownerIdsIn != nil) {
 			dict["ownerIdsIn"] = ownerIdsIn!
+		}
+		if(entryOperator != nil) {
+			dict["entryOperator"] = entryOperator!.toDictionary()
 		}
 		return dict
 	}
