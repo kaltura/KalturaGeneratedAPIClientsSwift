@@ -42,13 +42,24 @@ open class ReportResponseOptions: ObjectBase {
 				return self.append("delimiter") 
 			}
 		}
+		
+		public var skipEmptyDates: BaseTokenizedObject {
+			get {
+				return self.append("skipEmptyDates") 
+			}
+		}
 	}
 
 	public var delimiter: String? = nil
+	public var skipEmptyDates: Bool? = nil
 
 
 	public func setMultiRequestToken(delimiter: String) {
 		self.dict["delimiter"] = delimiter
+	}
+	
+	public func setMultiRequestToken(skipEmptyDates: String) {
+		self.dict["skipEmptyDates"] = skipEmptyDates
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class ReportResponseOptions: ObjectBase {
 		if dict["delimiter"] != nil {
 			delimiter = dict["delimiter"] as? String
 		}
+		if dict["skipEmptyDates"] != nil {
+			skipEmptyDates = dict["skipEmptyDates"] as? Bool
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class ReportResponseOptions: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(delimiter != nil) {
 			dict["delimiter"] = delimiter!
+		}
+		if(skipEmptyDates != nil) {
+			dict["skipEmptyDates"] = skipEmptyDates!
 		}
 		return dict
 	}
