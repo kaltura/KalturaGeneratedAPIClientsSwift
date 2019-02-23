@@ -154,6 +154,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		public func entryOperator<T: ESearchEntryOperator.ESearchEntryOperatorTokenizer>() -> T {
 			return T(self.append("entryOperator"))
 		}
+		
+		public var entryCreatedAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryCreatedAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var entryCreatedAtLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryCreatedAtLessThanOrEqual") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -195,6 +207,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	/**  Filter by entry owner  */
 	public var ownerIdsIn: String? = nil
 	public var entryOperator: ESearchEntryOperator? = nil
+	/**  Entry created at greater than or equal as Unix timestamp  */
+	public var entryCreatedAtGreaterThanOrEqual: Int? = nil
+	/**  Entry created at less than or equal as Unix timestamp  */
+	public var entryCreatedAtLessThanOrEqual: Int? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -273,6 +289,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["ownerIdsIn"] = ownerIdsIn
 	}
 	
+	public func setMultiRequestToken(entryCreatedAtGreaterThanOrEqual: String) {
+		self.dict["entryCreatedAtGreaterThanOrEqual"] = entryCreatedAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(entryCreatedAtLessThanOrEqual: String) {
+		self.dict["entryCreatedAtLessThanOrEqual"] = entryCreatedAtLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -335,6 +359,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["entryOperator"] != nil {
 		entryOperator = try JSONParser.parse(object: dict["entryOperator"] as! [String: Any])		}
+		if dict["entryCreatedAtGreaterThanOrEqual"] != nil {
+			entryCreatedAtGreaterThanOrEqual = dict["entryCreatedAtGreaterThanOrEqual"] as? Int
+		}
+		if dict["entryCreatedAtLessThanOrEqual"] != nil {
+			entryCreatedAtLessThanOrEqual = dict["entryCreatedAtLessThanOrEqual"] as? Int
+		}
 
 	}
 
@@ -399,6 +429,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(entryOperator != nil) {
 			dict["entryOperator"] = entryOperator!.toDictionary()
+		}
+		if(entryCreatedAtGreaterThanOrEqual != nil) {
+			dict["entryCreatedAtGreaterThanOrEqual"] = entryCreatedAtGreaterThanOrEqual!
+		}
+		if(entryCreatedAtLessThanOrEqual != nil) {
+			dict["entryCreatedAtLessThanOrEqual"] = entryCreatedAtLessThanOrEqual!
 		}
 		return dict
 	}

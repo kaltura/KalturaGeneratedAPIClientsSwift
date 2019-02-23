@@ -49,9 +49,9 @@ open class ClipConcatJobData: JobData {
 			}
 		}
 		
-		public var operationAttributes: ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer> {
+		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {
 			get {
-				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("operationAttributes"))
+				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
 			} 
 		}
 	}
@@ -61,7 +61,7 @@ open class ClipConcatJobData: JobData {
 	/**  $priority  */
 	public var priority: Int? = nil
 	/**  clip operations  */
-	public var operationAttributes: Array<ObjectBase>? = nil
+	public var operationAttributes: Array<OperationAttributes>? = nil
 
 
 	public func setMultiRequestToken(partnerId: String) {
