@@ -166,6 +166,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("entryCreatedAtLessThanOrEqual") 
 			}
 		}
+		
+		public var entryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("entryIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -211,6 +217,7 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var entryCreatedAtGreaterThanOrEqual: Int? = nil
 	/**  Entry created at less than or equal as Unix timestamp  */
 	public var entryCreatedAtLessThanOrEqual: Int? = nil
+	public var entryIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -297,6 +304,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["entryCreatedAtLessThanOrEqual"] = entryCreatedAtLessThanOrEqual
 	}
 	
+	public func setMultiRequestToken(entryIdIn: String) {
+		self.dict["entryIdIn"] = entryIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -364,6 +375,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["entryCreatedAtLessThanOrEqual"] != nil {
 			entryCreatedAtLessThanOrEqual = dict["entryCreatedAtLessThanOrEqual"] as? Int
+		}
+		if dict["entryIdIn"] != nil {
+			entryIdIn = dict["entryIdIn"] as? String
 		}
 
 	}
@@ -435,6 +449,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(entryCreatedAtLessThanOrEqual != nil) {
 			dict["entryCreatedAtLessThanOrEqual"] = entryCreatedAtLessThanOrEqual!
+		}
+		if(entryIdIn != nil) {
+			dict["entryIdIn"] = entryIdIn!
 		}
 		return dict
 	}

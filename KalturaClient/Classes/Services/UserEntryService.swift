@@ -136,8 +136,8 @@ public final class UserEntryService{
 		}
 	}
 
-	public static func update(id: Int, userEntry: UserEntry) -> NullRequestBuilder<UpdateTokenizer> {
-		let request: NullRequestBuilder<UpdateTokenizer> = NullRequestBuilder<UpdateTokenizer>(service: "userentry", action: "update")
+	public static func update(id: Int, userEntry: UserEntry) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer>(service: "userentry", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "userEntry", value: userEntry)
 
