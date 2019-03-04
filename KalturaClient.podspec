@@ -59,6 +59,12 @@ s.subspec 'AvnDistribution' do |ssp|
  ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
+s.subspec 'Beacon' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/beacon/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/ElasticSearch'
+end
+
 s.subspec 'BpmEventNotificationIntegration' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/bpmEventNotificationIntegration/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -133,6 +139,11 @@ s.subspec 'ComcastMrssDistribution' do |ssp|
  ssp.dependency 'KalturaClient/ContentDistribution'
  ssp.dependency 'KalturaClient/Caption'
  ssp.dependency 'KalturaClient/CuePoint'
+end
+
+s.subspec 'ConfMaps' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/confMaps/**/*'
+ ssp.dependency 'KalturaClient/Core'
 end
 
 s.subspec 'ContentDistribution' do |ssp|
@@ -374,6 +385,12 @@ s.subspec 'ScheduledTaskMetadata' do |ssp|
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/ScheduledTask'
  ssp.dependency 'KalturaClient/Metadata'
+end
+
+s.subspec 'SearchHistory' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/searchHistory/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/ElasticSearch'
 end
 
 s.subspec 'ShortLink' do |ssp|
