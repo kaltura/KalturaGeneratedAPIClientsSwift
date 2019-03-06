@@ -37,6 +37,12 @@ open class GroupUser: ObjectBase {
 
 	public class GroupUserTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
 		public var userId: BaseTokenizedObject {
 			get {
 				return self.append("userId") 
@@ -78,8 +84,15 @@ open class GroupUser: ObjectBase {
 				return self.append("creationMode") 
 			}
 		}
+		
+		public var userRole: BaseTokenizedObject {
+			get {
+				return self.append("userRole") 
+			}
+		}
 	}
 
+	public var id: String? = nil
 	public var userId: String? = nil
 	public var groupId: String? = nil
 	public var status: GroupUserStatus? = nil
@@ -89,8 +102,13 @@ open class GroupUser: ObjectBase {
 	/**  Last update date as Unix timestamp (In seconds)  */
 	public var updatedAt: Int? = nil
 	public var creationMode: GroupUserCreationMode? = nil
+	public var userRole: GroupUserRole? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
 	public func setMultiRequestToken(userId: String) {
 		self.dict["userId"] = userId
 	}
@@ -119,9 +137,16 @@ open class GroupUser: ObjectBase {
 		self.dict["creationMode"] = creationMode
 	}
 	
+	public func setMultiRequestToken(userRole: String) {
+		self.dict["userRole"] = userRole
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
+		if dict["id"] != nil {
+			id = dict["id"] as? String
+		}
 		if dict["userId"] != nil {
 			userId = dict["userId"] as? String
 		}
@@ -143,6 +168,9 @@ open class GroupUser: ObjectBase {
 		if dict["creationMode"] != nil {
 			creationMode = GroupUserCreationMode(rawValue: (dict["creationMode"] as? Int)!)
 		}
+		if dict["userRole"] != nil {
+			userRole = GroupUserRole(rawValue: (dict["userRole"] as? Int)!)
+		}
 
 	}
 
@@ -156,6 +184,9 @@ open class GroupUser: ObjectBase {
 		}
 		if(creationMode != nil) {
 			dict["creationMode"] = creationMode!.rawValue
+		}
+		if(userRole != nil) {
+			dict["userRole"] = userRole!.rawValue
 		}
 		return dict
 	}

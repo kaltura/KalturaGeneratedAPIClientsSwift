@@ -148,4 +148,26 @@ public final class GroupUserService{
 
 		return request
 	}
+
+	public class UpdateTokenizer: ClientTokenizer  {
+		
+		public var groupUserId: BaseTokenizedObject {
+			get {
+				return self.append("groupUserId") 
+			}
+		}
+		
+		public func groupUser<T: GroupUser.GroupUserTokenizer>() -> T {
+			return T(self.append("groupUser"))
+		}
+	}
+
+	/**  update GroupUser  */
+	public static func update(groupUserId: String, groupUser: GroupUser) -> RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, UpdateTokenizer> {
+		let request: RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, UpdateTokenizer> = RequestBuilder<GroupUser, GroupUser.GroupUserTokenizer, UpdateTokenizer>(service: "groupuser", action: "update")
+			.setParam(key: "groupUserId", value: groupUserId)
+			.setParam(key: "groupUser", value: groupUser)
+
+		return request
+	}
 }

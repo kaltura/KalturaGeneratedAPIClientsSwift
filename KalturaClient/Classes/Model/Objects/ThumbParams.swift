@@ -138,6 +138,12 @@ open class ThumbParams: AssetParams {
 				return self.append("videoOffsetInPercentage") 
 			}
 		}
+		
+		public var interval: BaseTokenizedObject {
+			get {
+				return self.append("interval") 
+			}
+		}
 	}
 
 	public var cropType: ThumbCropType? = nil
@@ -164,6 +170,8 @@ open class ThumbParams: AssetParams {
 	public var stripProfiles: Bool? = nil
 	/**  Create thumbnail from the videoLengthpercentage second  */
 	public var videoOffsetInPercentage: Int? = nil
+	/**  interval in seconds for creating thumbnail  */
+	public var interval: Int? = nil
 
 
 	public func setMultiRequestToken(cropType: String) {
@@ -234,6 +242,10 @@ open class ThumbParams: AssetParams {
 		self.dict["videoOffsetInPercentage"] = videoOffsetInPercentage
 	}
 	
+	public func setMultiRequestToken(interval: String) {
+		self.dict["interval"] = interval
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -287,6 +299,9 @@ open class ThumbParams: AssetParams {
 		}
 		if dict["videoOffsetInPercentage"] != nil {
 			videoOffsetInPercentage = dict["videoOffsetInPercentage"] as? Int
+		}
+		if dict["interval"] != nil {
+			interval = dict["interval"] as? Int
 		}
 
 	}
@@ -343,6 +358,9 @@ open class ThumbParams: AssetParams {
 		}
 		if(videoOffsetInPercentage != nil) {
 			dict["videoOffsetInPercentage"] = videoOffsetInPercentage!
+		}
+		if(interval != nil) {
+			dict["interval"] = interval!
 		}
 		return dict
 	}

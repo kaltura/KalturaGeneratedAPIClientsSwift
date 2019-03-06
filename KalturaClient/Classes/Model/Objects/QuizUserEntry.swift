@@ -48,10 +48,17 @@ open class QuizUserEntry: UserEntry {
 				return self.append("feedback") 
 			}
 		}
+		
+		public var version: BaseTokenizedObject {
+			get {
+				return self.append("version") 
+			}
+		}
 	}
 
 	public var score: Double? = nil
 	public var feedback: String? = nil
+	public var version: Int? = nil
 
 
 	public func setMultiRequestToken(score: String) {
@@ -62,6 +69,10 @@ open class QuizUserEntry: UserEntry {
 		self.dict["feedback"] = feedback
 	}
 	
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -70,6 +81,9 @@ open class QuizUserEntry: UserEntry {
 		}
 		if dict["feedback"] != nil {
 			feedback = dict["feedback"] as? String
+		}
+		if dict["version"] != nil {
+			version = dict["version"] as? Int
 		}
 
 	}

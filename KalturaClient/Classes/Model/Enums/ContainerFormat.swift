@@ -35,6 +35,7 @@ public enum ContainerFormat: String {
 	case _3GP = "3gp"
 	case APPLEHTTP = "applehttp"
 	case AVI = "avi"
+	case BIF = "bif"
 	case BMP = "bmp"
 	case COPY = "copy"
 	case FLV = "flv"
