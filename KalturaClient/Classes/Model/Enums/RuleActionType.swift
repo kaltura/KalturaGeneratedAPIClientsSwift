@@ -33,6 +33,7 @@
  */
 public enum RuleActionType: String {
 	case DRM_POLICY = "drm.DRM_POLICY"
+	case ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK"
 	case BLOCK = "1"
 	case PREVIEW = "2"
 	case LIMIT_FLAVORS = "3"

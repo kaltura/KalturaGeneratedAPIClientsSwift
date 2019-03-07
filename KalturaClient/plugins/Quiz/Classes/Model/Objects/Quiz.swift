@@ -90,6 +90,12 @@ open class Quiz: ObjectBase {
 				return self.append("maxRetakesAllowed") 
 			}
 		}
+		
+		public var scoreType: BaseTokenizedObject {
+			get {
+				return self.append("scoreType") 
+			}
+		}
 	}
 
 	public var version: Int? = nil
@@ -102,6 +108,7 @@ open class Quiz: ObjectBase {
 	public var allowDownload: Bool? = nil
 	public var showGradeAfterSubmission: Bool? = nil
 	public var maxRetakesAllowed: Int? = nil
+	public var scoreType: ScoreType? = nil
 
 
 	public func setMultiRequestToken(version: String) {
@@ -136,6 +143,10 @@ open class Quiz: ObjectBase {
 		self.dict["maxRetakesAllowed"] = maxRetakesAllowed
 	}
 	
+	public func setMultiRequestToken(scoreType: String) {
+		self.dict["scoreType"] = scoreType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -166,6 +177,9 @@ open class Quiz: ObjectBase {
 		if dict["maxRetakesAllowed"] != nil {
 			maxRetakesAllowed = dict["maxRetakesAllowed"] as? Int
 		}
+		if dict["scoreType"] != nil {
+			scoreType = ScoreType(rawValue: (dict["scoreType"] as? Int)!)
+		}
 
 	}
 
@@ -194,6 +208,9 @@ open class Quiz: ObjectBase {
 		}
 		if(maxRetakesAllowed != nil) {
 			dict["maxRetakesAllowed"] = maxRetakesAllowed!
+		}
+		if(scoreType != nil) {
+			dict["scoreType"] = scoreType!.rawValue
 		}
 		return dict
 	}

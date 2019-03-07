@@ -33,79 +33,85 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class QuizUserEntry: UserEntry {
+open class EntryVendorTaskCsvJobData: JobData {
 
-	public class QuizUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+	public class EntryVendorTaskCsvJobDataTokenizer: JobData.JobDataTokenizer {
 		
-		public var score: BaseTokenizedObject {
+		public func filter<T: EntryVendorTaskFilter.EntryVendorTaskFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public var userName: BaseTokenizedObject {
 			get {
-				return self.append("score") 
+				return self.append("userName") 
 			}
 		}
 		
-		public var calculatedScore: BaseTokenizedObject {
+		public var userMail: BaseTokenizedObject {
 			get {
-				return self.append("calculatedScore") 
+				return self.append("userMail") 
 			}
 		}
 		
-		public var feedback: BaseTokenizedObject {
+		public var outputPath: BaseTokenizedObject {
 			get {
-				return self.append("feedback") 
-			}
-		}
-		
-		public var version: BaseTokenizedObject {
-			get {
-				return self.append("version") 
+				return self.append("outputPath") 
 			}
 		}
 	}
 
-	public var score: Double? = nil
-	public var calculatedScore: Double? = nil
-	public var feedback: String? = nil
-	public var version: Int? = nil
+	/**  The filter should return the list of users that need to be specified in the csv.  */
+	public var filter: EntryVendorTaskFilter? = nil
+	/**  The users name  */
+	public var userName: String? = nil
+	/**  The users email  */
+	public var userMail: String? = nil
+	/**  The file location  */
+	public var outputPath: String? = nil
 
 
-	public func setMultiRequestToken(score: String) {
-		self.dict["score"] = score
-	}
-	
-	public func setMultiRequestToken(calculatedScore: String) {
-		self.dict["calculatedScore"] = calculatedScore
+	public func setMultiRequestToken(userName: String) {
+		self.dict["userName"] = userName
 	}
 	
-	public func setMultiRequestToken(feedback: String) {
-		self.dict["feedback"] = feedback
+	public func setMultiRequestToken(userMail: String) {
+		self.dict["userMail"] = userMail
 	}
 	
-	public func setMultiRequestToken(version: String) {
-		self.dict["version"] = version
+	public func setMultiRequestToken(outputPath: String) {
+		self.dict["outputPath"] = outputPath
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["score"] != nil {
-			score = dict["score"] as? Double
+		if dict["filter"] != nil {
+		filter = try JSONParser.parse(object: dict["filter"] as! [String: Any])		}
+		if dict["userName"] != nil {
+			userName = dict["userName"] as? String
 		}
-		if dict["calculatedScore"] != nil {
-			calculatedScore = dict["calculatedScore"] as? Double
+		if dict["userMail"] != nil {
+			userMail = dict["userMail"] as? String
 		}
-		if dict["feedback"] != nil {
-			feedback = dict["feedback"] as? String
-		}
-		if dict["version"] != nil {
-			version = dict["version"] as? Int
+		if dict["outputPath"] != nil {
+			outputPath = dict["outputPath"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(feedback != nil) {
-			dict["feedback"] = feedback!
+		if(filter != nil) {
+			dict["filter"] = filter!.toDictionary()
+		}
+		if(userName != nil) {
+			dict["userName"] = userName!
+		}
+		if(userMail != nil) {
+			dict["userMail"] = userMail!
+		}
+		if(outputPath != nil) {
+			dict["outputPath"] = outputPath!
 		}
 		return dict
 	}

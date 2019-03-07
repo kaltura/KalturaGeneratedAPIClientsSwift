@@ -34,6 +34,8 @@
 public enum QuizUserEntryOrderBy: String {
 	case CREATED_AT_ASC = "+createdAt"
 	case UPDATED_AT_ASC = "+updatedAt"
+	case VERSION_ASC = "+version"
 	case CREATED_AT_DESC = "-createdAt"
 	case UPDATED_AT_DESC = "-updatedAt"
+	case VERSION_DESC = "-version"
 }

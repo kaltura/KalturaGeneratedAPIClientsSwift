@@ -25,33 +25,78 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ConditionType: String {
-	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
-	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
-	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"
-	case METADATA_FIELD_COMPARE = "metadata.FieldCompare"
-	case METADATA_FIELD_MATCH = "metadata.FieldMatch"
-	case EVENT_CATEGORY_ENTRY = "reach.CategoryEntry"
-	case AUTHENTICATED = "1"
-	case COUNTRY = "2"
-	case IP_ADDRESS = "3"
-	case SITE = "4"
-	case USER_AGENT = "5"
-	case FIELD_MATCH = "6"
-	case FIELD_COMPARE = "7"
-	case ASSET_PROPERTIES_COMPARE = "8"
-	case USER_ROLE = "9"
-	case GEO_DISTANCE = "10"
-	case OR_OPERATOR = "11"
-	case HASH = "12"
-	case DELIVERY_PROFILE = "13"
-	case ACTIVE_EDGE_VALIDATE = "14"
-	case ANONYMOUS_IP = "15"
-	case ASSET_TYPE = "16"
+
+open class UnlimitedVendorCredit: BaseVendorCredit {
+
+	public class UnlimitedVendorCreditTokenizer: BaseVendorCredit.BaseVendorCreditTokenizer {
+		
+		public var credit: BaseTokenizedObject {
+			get {
+				return self.append("credit") 
+			}
+		}
+		
+		public var fromDate: BaseTokenizedObject {
+			get {
+				return self.append("fromDate") 
+			}
+		}
+		
+		public var toDate: BaseTokenizedObject {
+			get {
+				return self.append("toDate") 
+			}
+		}
+	}
+
+	public var credit: Int? = nil
+	public var fromDate: Int? = nil
+	public var toDate: Int? = nil
+
+
+	public func setMultiRequestToken(credit: String) {
+		self.dict["credit"] = credit
+	}
+	
+	public func setMultiRequestToken(fromDate: String) {
+		self.dict["fromDate"] = fromDate
+	}
+	
+	public func setMultiRequestToken(toDate: String) {
+		self.dict["toDate"] = toDate
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["credit"] != nil {
+			credit = dict["credit"] as? Int
+		}
+		if dict["fromDate"] != nil {
+			fromDate = dict["fromDate"] as? Int
+		}
+		if dict["toDate"] != nil {
+			toDate = dict["toDate"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(fromDate != nil) {
+			dict["fromDate"] = fromDate!
+		}
+		if(toDate != nil) {
+			dict["toDate"] = toDate!
+		}
+		return dict
+	}
 }
+

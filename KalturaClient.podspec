@@ -356,6 +356,12 @@ s.subspec 'Quiz' do |ssp|
  ssp.dependency 'KalturaClient/CuePoint'
 end
 
+s.subspec 'Reach' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/reach/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/EventNotification'
+end
+
 s.subspec 'Schedule' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/schedule/**/*'
  ssp.dependency 'KalturaClient/Core'

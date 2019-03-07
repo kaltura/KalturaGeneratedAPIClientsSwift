@@ -33,79 +33,88 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class QuizUserEntry: UserEntry {
+open class VendorCredit: BaseVendorCredit {
 
-	public class QuizUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+	public class VendorCreditTokenizer: BaseVendorCredit.BaseVendorCreditTokenizer {
 		
-		public var score: BaseTokenizedObject {
+		public var credit: BaseTokenizedObject {
 			get {
-				return self.append("score") 
+				return self.append("credit") 
 			}
 		}
 		
-		public var calculatedScore: BaseTokenizedObject {
+		public var fromDate: BaseTokenizedObject {
 			get {
-				return self.append("calculatedScore") 
+				return self.append("fromDate") 
 			}
 		}
 		
-		public var feedback: BaseTokenizedObject {
+		public var overageCredit: BaseTokenizedObject {
 			get {
-				return self.append("feedback") 
+				return self.append("overageCredit") 
 			}
 		}
 		
-		public var version: BaseTokenizedObject {
+		public var addOn: BaseTokenizedObject {
 			get {
-				return self.append("version") 
+				return self.append("addOn") 
 			}
 		}
 	}
 
-	public var score: Double? = nil
-	public var calculatedScore: Double? = nil
-	public var feedback: String? = nil
-	public var version: Int? = nil
+	public var credit: Int? = nil
+	public var fromDate: Int? = nil
+	public var overageCredit: Int? = nil
+	public var addOn: Int? = nil
 
 
-	public func setMultiRequestToken(score: String) {
-		self.dict["score"] = score
-	}
-	
-	public func setMultiRequestToken(calculatedScore: String) {
-		self.dict["calculatedScore"] = calculatedScore
+	public func setMultiRequestToken(credit: String) {
+		self.dict["credit"] = credit
 	}
 	
-	public func setMultiRequestToken(feedback: String) {
-		self.dict["feedback"] = feedback
+	public func setMultiRequestToken(fromDate: String) {
+		self.dict["fromDate"] = fromDate
 	}
 	
-	public func setMultiRequestToken(version: String) {
-		self.dict["version"] = version
+	public func setMultiRequestToken(overageCredit: String) {
+		self.dict["overageCredit"] = overageCredit
+	}
+	
+	public func setMultiRequestToken(addOn: String) {
+		self.dict["addOn"] = addOn
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["score"] != nil {
-			score = dict["score"] as? Double
+		if dict["credit"] != nil {
+			credit = dict["credit"] as? Int
 		}
-		if dict["calculatedScore"] != nil {
-			calculatedScore = dict["calculatedScore"] as? Double
+		if dict["fromDate"] != nil {
+			fromDate = dict["fromDate"] as? Int
 		}
-		if dict["feedback"] != nil {
-			feedback = dict["feedback"] as? String
+		if dict["overageCredit"] != nil {
+			overageCredit = dict["overageCredit"] as? Int
 		}
-		if dict["version"] != nil {
-			version = dict["version"] as? Int
+		if dict["addOn"] != nil {
+			addOn = dict["addOn"] as? Int
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(feedback != nil) {
-			dict["feedback"] = feedback!
+		if(credit != nil) {
+			dict["credit"] = credit!
+		}
+		if(fromDate != nil) {
+			dict["fromDate"] = fromDate!
+		}
+		if(overageCredit != nil) {
+			dict["overageCredit"] = overageCredit!
+		}
+		if(addOn != nil) {
+			dict["addOn"] = addOn!
 		}
 		return dict
 	}

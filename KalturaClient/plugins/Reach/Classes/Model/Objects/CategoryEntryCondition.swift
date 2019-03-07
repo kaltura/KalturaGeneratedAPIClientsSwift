@@ -33,79 +33,74 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class QuizUserEntry: UserEntry {
+open class CategoryEntryCondition: Condition {
 
-	public class QuizUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+	public class CategoryEntryConditionTokenizer: Condition.ConditionTokenizer {
 		
-		public var score: BaseTokenizedObject {
+		public var categoryId: BaseTokenizedObject {
 			get {
-				return self.append("score") 
+				return self.append("categoryId") 
 			}
 		}
 		
-		public var calculatedScore: BaseTokenizedObject {
+		public var categoryUserPermission: BaseTokenizedObject {
 			get {
-				return self.append("calculatedScore") 
+				return self.append("categoryUserPermission") 
 			}
 		}
 		
-		public var feedback: BaseTokenizedObject {
+		public var comparison: BaseTokenizedObject {
 			get {
-				return self.append("feedback") 
-			}
-		}
-		
-		public var version: BaseTokenizedObject {
-			get {
-				return self.append("version") 
+				return self.append("comparison") 
 			}
 		}
 	}
 
-	public var score: Double? = nil
-	public var calculatedScore: Double? = nil
-	public var feedback: String? = nil
-	public var version: Int? = nil
+	/**  Category id to check condition for  */
+	public var categoryId: Int? = nil
+	/**  Minimum category user level permission to validate  */
+	public var categoryUserPermission: CategoryUserPermissionLevel? = nil
+	/**  Comparing operator  */
+	public var comparison: SearchConditionComparison? = nil
 
 
-	public func setMultiRequestToken(score: String) {
-		self.dict["score"] = score
+	public func setMultiRequestToken(categoryId: String) {
+		self.dict["categoryId"] = categoryId
 	}
 	
-	public func setMultiRequestToken(calculatedScore: String) {
-		self.dict["calculatedScore"] = calculatedScore
+	public func setMultiRequestToken(categoryUserPermission: String) {
+		self.dict["categoryUserPermission"] = categoryUserPermission
 	}
 	
-	public func setMultiRequestToken(feedback: String) {
-		self.dict["feedback"] = feedback
-	}
-	
-	public func setMultiRequestToken(version: String) {
-		self.dict["version"] = version
+	public func setMultiRequestToken(comparison: String) {
+		self.dict["comparison"] = comparison
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["score"] != nil {
-			score = dict["score"] as? Double
+		if dict["categoryId"] != nil {
+			categoryId = dict["categoryId"] as? Int
 		}
-		if dict["calculatedScore"] != nil {
-			calculatedScore = dict["calculatedScore"] as? Double
+		if dict["categoryUserPermission"] != nil {
+			categoryUserPermission = CategoryUserPermissionLevel(rawValue: (dict["categoryUserPermission"] as? Int)!)
 		}
-		if dict["feedback"] != nil {
-			feedback = dict["feedback"] as? String
-		}
-		if dict["version"] != nil {
-			version = dict["version"] as? Int
+		if dict["comparison"] != nil {
+			comparison = SearchConditionComparison(rawValue: "\(dict["comparison"]!)")
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(feedback != nil) {
-			dict["feedback"] = feedback!
+		if(categoryId != nil) {
+			dict["categoryId"] = categoryId!
+		}
+		if(categoryUserPermission != nil) {
+			dict["categoryUserPermission"] = categoryUserPermission!.rawValue
+		}
+		if(comparison != nil) {
+			dict["comparison"] = comparison!.rawValue
 		}
 		return dict
 	}
