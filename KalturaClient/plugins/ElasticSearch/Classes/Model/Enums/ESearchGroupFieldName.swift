@@ -31,9 +31,16 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchUserOrderByFieldName: String {
+public enum ESearchGroupFieldName: String {
 	case CREATED_AT = "created_at"
-	case USER_ID = "puser_id"
+	case EMAIL = "email"
+	case FIRST_NAME = "first_name"
+	case GROUP_IDS = "group_ids"
+	case LAST_NAME = "last_name"
+	case PERMISSION_NAMES = "permission_names"
+	case ROLE_IDS = "role_ids"
 	case SCREEN_NAME = "screen_name"
+	case TAGS = "tags"
 	case UPDATED_AT = "updated_at"
+	case USER_ID = "user_id"
 }

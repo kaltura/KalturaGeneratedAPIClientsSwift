@@ -25,15 +25,36 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchUserOrderByFieldName: String {
-	case CREATED_AT = "created_at"
-	case USER_ID = "puser_id"
-	case SCREEN_NAME = "screen_name"
-	case UPDATED_AT = "updated_at"
+
+open class ESearchGroupResponse: ESearchResponse {
+
+	public class ESearchGroupResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<ESearchGroupResult.ESearchGroupResultTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchGroupResult.ESearchGroupResultTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
+	public var objects: Array<ESearchGroupResult>? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		}
+
+	}
+
 }
+

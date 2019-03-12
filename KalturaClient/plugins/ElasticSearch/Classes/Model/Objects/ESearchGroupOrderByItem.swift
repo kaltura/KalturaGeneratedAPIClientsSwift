@@ -25,15 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchUserOrderByFieldName: String {
-	case CREATED_AT = "created_at"
-	case USER_ID = "puser_id"
-	case SCREEN_NAME = "screen_name"
-	case UPDATED_AT = "updated_at"
+
+open class ESearchGroupOrderByItem: ESearchOrderByItem {
+
+	public class ESearchGroupOrderByItemTokenizer: ESearchOrderByItem.ESearchOrderByItemTokenizer {
+		
+		public var sortField: BaseTokenizedObject {
+			get {
+				return self.append("sortField") 
+			}
+		}
+	}
+
+	public var sortField: ESearchGroupOrderByFieldName? = nil
+
+
+	public func setMultiRequestToken(sortField: String) {
+		self.dict["sortField"] = sortField
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["sortField"] != nil {
+			sortField = ESearchGroupOrderByFieldName(rawValue: "\(dict["sortField"]!)")
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(sortField != nil) {
+			dict["sortField"] = sortField!.rawValue
+		}
+		return dict
+	}
 }
+

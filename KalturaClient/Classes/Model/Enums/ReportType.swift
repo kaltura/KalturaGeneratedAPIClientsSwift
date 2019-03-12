@@ -74,6 +74,8 @@ public enum ReportType: String {
 	case APP_DOMAIN_UNIQUE_ACTIVE_USERS = "40"
 	case TOP_SOURCES = "41"
 	case VPAAS_USAGE_MULTI = "42"
+	case PERCENTILES = "43"
 	case CONTENT_REPORT_REASONS = "44"
+	case PLAYER_RELATED_INTERACTIONS = "45"
 	case PARTNER_USAGE = "201"
 }
