@@ -25,15 +25,40 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum QuizUserEntryOrderBy: String {
-	case CREATED_AT_ASC = "+createdAt"
-	case UPDATED_AT_ASC = "+updatedAt"
-	case CREATED_AT_DESC = "-createdAt"
-	case UPDATED_AT_DESC = "-updatedAt"
+
+open class Group: BaseUser {
+
+	public class GroupTokenizer: BaseUser.BaseUserTokenizer {
+		
+		public var membersCount: BaseTokenizedObject {
+			get {
+				return self.append("membersCount") 
+			}
+		}
+	}
+
+	public var membersCount: Int? = nil
+
+
+	public func setMultiRequestToken(membersCount: String) {
+		self.dict["membersCount"] = membersCount
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["membersCount"] != nil {
+			membersCount = dict["membersCount"] as? Int
+		}
+
+	}
+
 }
+

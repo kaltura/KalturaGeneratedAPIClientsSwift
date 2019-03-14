@@ -275,6 +275,11 @@ s.subspec 'FtpDistribution' do |ssp|
  ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
+s.subspec 'Group' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/group/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'HttpNotification' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/httpNotification/**/*'
  ssp.dependency 'KalturaClient/Core'

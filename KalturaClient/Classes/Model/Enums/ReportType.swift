@@ -77,5 +77,6 @@ public enum ReportType: String {
 	case PERCENTILES = "43"
 	case CONTENT_REPORT_REASONS = "44"
 	case PLAYER_RELATED_INTERACTIONS = "45"
+	case PLAYBACK_RATE = "46"
 	case PARTNER_USAGE = "201"
 }

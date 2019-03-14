@@ -25,15 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum QuizUserEntryOrderBy: String {
-	case CREATED_AT_ASC = "+createdAt"
-	case UPDATED_AT_ASC = "+updatedAt"
-	case CREATED_AT_DESC = "-createdAt"
-	case UPDATED_AT_DESC = "-updatedAt"
+
+open class GroupFilter: UserFilter {
+
+	public class GroupFilterTokenizer: UserFilter.UserFilterTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

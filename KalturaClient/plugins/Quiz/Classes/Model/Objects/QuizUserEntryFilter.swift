@@ -36,36 +36,13 @@
 open class QuizUserEntryFilter: QuizUserEntryBaseFilter {
 
 	public class QuizUserEntryFilterTokenizer: QuizUserEntryBaseFilter.QuizUserEntryBaseFilterTokenizer {
-		
-		public var versionEqual: BaseTokenizedObject {
-			get {
-				return self.append("versionEqual") 
-			}
-		}
 	}
 
-	public var versionEqual: Int? = nil
 
 
-	public func setMultiRequestToken(versionEqual: String) {
-		self.dict["versionEqual"] = versionEqual
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["versionEqual"] != nil {
-			versionEqual = dict["versionEqual"] as? Int
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(versionEqual != nil) {
-			dict["versionEqual"] = versionEqual!
-		}
-		return dict
-	}
 }
 

@@ -25,15 +25,36 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum QuizUserEntryOrderBy: String {
-	case CREATED_AT_ASC = "+createdAt"
-	case UPDATED_AT_ASC = "+updatedAt"
-	case CREATED_AT_DESC = "-createdAt"
-	case UPDATED_AT_DESC = "-updatedAt"
+
+open class GroupListResponse: ListResponse {
+
+	public class GroupListResponseTokenizer: ListResponse.ListResponseTokenizer {
+		
+		public var objects: ArrayTokenizedObject<Group.GroupTokenizer> {
+			get {
+				return ArrayTokenizedObject<Group.GroupTokenizer>(self.append("objects"))
+			} 
+		}
+	}
+
+	public var objects: Array<Group>? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		}
+
+	}
+
 }
+
