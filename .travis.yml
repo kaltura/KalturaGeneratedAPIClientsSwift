@@ -6,7 +6,7 @@ xcode_scheme: KalturaClient_Tests
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 before_script:
-  - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#https://www.kaltura.com#@SERVICE_URL@#g" Example/Tests/Info.template.plist > Example/Tests/Info.plist
+  - sed -e "s#@YOUR_PARTNER_ID@#$PARTNER_ID#g" -e "s#@YOUR_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@SERVICE_URL@#https://www.kaltura.com#g" Example/Tests/Info.template.plist > Example/Tests/Info.plist
   - pod --project-directory=Example install --repo-update
   - gem install xcpretty
 script:
