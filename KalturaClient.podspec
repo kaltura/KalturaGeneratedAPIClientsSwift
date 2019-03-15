@@ -278,6 +278,7 @@ end
 s.subspec 'Group' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/group/**/*'
  ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/ElasticSearch'
 end
 
 s.subspec 'HttpNotification' do |ssp|

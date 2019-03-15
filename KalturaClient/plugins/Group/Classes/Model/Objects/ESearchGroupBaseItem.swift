@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchGroupOperator: ESearchUserOperator {
+open class ESearchGroupBaseItem: ESearchBaseItem {
 
-	public class ESearchGroupOperatorTokenizer: ESearchUserOperator.ESearchUserOperatorTokenizer {
+	public class ESearchGroupBaseItemTokenizer: ESearchBaseItem.ESearchBaseItemTokenizer {
 	}
 
 

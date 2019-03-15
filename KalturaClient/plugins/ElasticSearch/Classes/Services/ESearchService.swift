@@ -81,29 +81,6 @@ public final class ESearchService{
 		return request
 	}
 
-	public class SearchGroupTokenizer: ClientTokenizer  {
-		
-		public func searchParams<T: ESearchGroupParams.ESearchGroupParamsTokenizer>() -> T {
-			return T(self.append("searchParams"))
-		}
-		
-		public func pager<T: Pager.PagerTokenizer>() -> T {
-			return T(self.append("pager"))
-		}
-	}
-
-	public static func searchGroup(searchParams: ESearchGroupParams) -> RequestBuilder<ESearchGroupResponse, ESearchGroupResponse.ESearchGroupResponseTokenizer, SearchGroupTokenizer> {
-		return searchGroup(searchParams: searchParams, pager: nil)
-	}
-
-	public static func searchGroup(searchParams: ESearchGroupParams, pager: Pager?) -> RequestBuilder<ESearchGroupResponse, ESearchGroupResponse.ESearchGroupResponseTokenizer, SearchGroupTokenizer> {
-		let request: RequestBuilder<ESearchGroupResponse, ESearchGroupResponse.ESearchGroupResponseTokenizer, SearchGroupTokenizer> = RequestBuilder<ESearchGroupResponse, ESearchGroupResponse.ESearchGroupResponseTokenizer, SearchGroupTokenizer>(service: "elasticsearch_esearch", action: "searchGroup")
-			.setParam(key: "searchParams", value: searchParams)
-			.setParam(key: "pager", value: pager)
-
-		return request
-	}
-
 	public class SearchUserTokenizer: ClientTokenizer  {
 		
 		public func searchParams<T: ESearchUserParams.ESearchUserParamsTokenizer>() -> T {

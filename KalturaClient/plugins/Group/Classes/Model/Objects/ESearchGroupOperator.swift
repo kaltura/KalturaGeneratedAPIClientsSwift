@@ -33,16 +33,52 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchGroupMetadataItem: ESearchUserMetadataItem {
+open class ESearchGroupOperator: ESearchGroupBaseItem {
 
-	public class ESearchGroupMetadataItemTokenizer: ESearchUserMetadataItem.ESearchUserMetadataItemTokenizer {
+	public class ESearchGroupOperatorTokenizer: ESearchGroupBaseItem.ESearchGroupBaseItemTokenizer {
+		
+		public var operator_: BaseTokenizedObject {
+			get {
+				return self.append("operator_") 
+			}
+		}
+		
+		public var searchItems: ArrayTokenizedObject<ESearchGroupBaseItem.ESearchGroupBaseItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchGroupBaseItem.ESearchGroupBaseItemTokenizer>(self.append("searchItems"))
+			} 
+		}
 	}
 
+	public var operator_: ESearchOperatorType? = nil
+	public var searchItems: Array<ESearchGroupBaseItem>? = nil
 
 
+	public func setMultiRequestToken(operator_: String) {
+		self.dict["operator"] = operator_
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["operator"] != nil {
+			operator_ = ESearchOperatorType(rawValue: (dict["operator"] as? Int)!)
+		}
+		if dict["searchItems"] != nil {
+			searchItems = try JSONParser.parse(array: dict["searchItems"] as! [Any])
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(operator_ != nil) {
+			dict["operator"] = operator_!.rawValue
+		}
+		if(searchItems != nil) {
+			dict["searchItems"] = searchItems!.map { value in value.toDictionary() }
+		}
+		return dict
+	}
 }
 
