@@ -33,69 +33,24 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class EntryVendorTaskCsvJobData: JobData {
+open class EntryVendorTaskCsvJobData: ExportCsvJobData {
 
-	public class EntryVendorTaskCsvJobDataTokenizer: JobData.JobDataTokenizer {
+	public class EntryVendorTaskCsvJobDataTokenizer: ExportCsvJobData.ExportCsvJobDataTokenizer {
 		
 		public func filter<T: EntryVendorTaskFilter.EntryVendorTaskFilterTokenizer>() -> T {
 			return T(self.append("filter"))
-		}
-		
-		public var userName: BaseTokenizedObject {
-			get {
-				return self.append("userName") 
-			}
-		}
-		
-		public var userMail: BaseTokenizedObject {
-			get {
-				return self.append("userMail") 
-			}
-		}
-		
-		public var outputPath: BaseTokenizedObject {
-			get {
-				return self.append("outputPath") 
-			}
 		}
 	}
 
 	/**  The filter should return the list of users that need to be specified in the csv.  */
 	public var filter: EntryVendorTaskFilter? = nil
-	/**  The users name  */
-	public var userName: String? = nil
-	/**  The users email  */
-	public var userMail: String? = nil
-	/**  The file location  */
-	public var outputPath: String? = nil
 
 
-	public func setMultiRequestToken(userName: String) {
-		self.dict["userName"] = userName
-	}
-	
-	public func setMultiRequestToken(userMail: String) {
-		self.dict["userMail"] = userMail
-	}
-	
-	public func setMultiRequestToken(outputPath: String) {
-		self.dict["outputPath"] = outputPath
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["filter"] != nil {
 		filter = try JSONParser.parse(object: dict["filter"] as! [String: Any])		}
-		if dict["userName"] != nil {
-			userName = dict["userName"] as? String
-		}
-		if dict["userMail"] != nil {
-			userMail = dict["userMail"] as? String
-		}
-		if dict["outputPath"] != nil {
-			outputPath = dict["outputPath"] as? String
-		}
 
 	}
 
@@ -103,15 +58,6 @@ open class EntryVendorTaskCsvJobData: JobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(filter != nil) {
 			dict["filter"] = filter!.toDictionary()
-		}
-		if(userName != nil) {
-			dict["userName"] = userName!
-		}
-		if(userMail != nil) {
-			dict["userMail"] = userMail!
-		}
-		if(outputPath != nil) {
-			dict["outputPath"] = outputPath!
 		}
 		return dict
 	}

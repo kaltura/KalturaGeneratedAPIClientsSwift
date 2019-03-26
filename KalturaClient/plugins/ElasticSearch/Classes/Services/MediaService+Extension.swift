@@ -25,23 +25,31 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceTurnAroundTime: Int {
-	case BEST_EFFORT = -1
-	case IMMEDIATE = 0
-	case THIRTY_MINUTES = 1800
-	case TWO_HOURS = 7200
-	case THREE_HOURS = 10800
-	case SIX_HOURS = 21600
-	case EIGHT_HOURS = 28800
-	case TWELVE_HOURS = 43200
-	case TWENTY_FOUR_HOURS = 86400
-	case FORTY_EIGHT_HOURS = 172800
-	case FOUR_DAYS = 345600
-	case TEN_DAYS = 864000
+
+/**  Media service lets you upload and manage media files (images / videos &amp;
+  audio)  */
+extension MediaService{
+
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func data<T: MediaEsearchExportToCsvJobData.MediaEsearchExportToCsvJobDataTokenizer>() -> T {
+			return T(self.append("data"))
+		}
+	}
+
+	/**  Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of entries  */
+	public static func exportToCsv(data: MediaEsearchExportToCsvJobData) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "media", action: "exportToCsv")
+			.setParam(key: "data", value: data)
+
+		return request
+	}
 }

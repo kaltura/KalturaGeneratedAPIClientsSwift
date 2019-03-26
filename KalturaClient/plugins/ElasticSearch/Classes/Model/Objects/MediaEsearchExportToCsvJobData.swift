@@ -25,23 +25,41 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceTurnAroundTime: Int {
-	case BEST_EFFORT = -1
-	case IMMEDIATE = 0
-	case THIRTY_MINUTES = 1800
-	case TWO_HOURS = 7200
-	case THREE_HOURS = 10800
-	case SIX_HOURS = 21600
-	case EIGHT_HOURS = 28800
-	case TWELVE_HOURS = 43200
-	case TWENTY_FOUR_HOURS = 86400
-	case FORTY_EIGHT_HOURS = 172800
-	case FOUR_DAYS = 345600
-	case TEN_DAYS = 864000
+
+open class MediaEsearchExportToCsvJobData: ExportCsvJobData {
+
+	public class MediaEsearchExportToCsvJobDataTokenizer: ExportCsvJobData.ExportCsvJobDataTokenizer {
+		
+		public func searchParams<T: ESearchEntryParams.ESearchEntryParamsTokenizer>() -> T {
+			return T(self.append("searchParams"))
+		}
+	}
+
+	/**  Esearch parameters for the entry search  */
+	public var searchParams: ESearchEntryParams? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["searchParams"] != nil {
+		searchParams = try JSONParser.parse(object: dict["searchParams"] as! [String: Any])		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(searchParams != nil) {
+			dict["searchParams"] = searchParams!.toDictionary()
+		}
+		return dict
+	}
 }
+

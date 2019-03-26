@@ -172,6 +172,12 @@ open class ReachProfile: ObjectBase {
 				return self.append("flavorParamsIds") 
 			}
 		}
+		
+		public var vendorTaskProcessingRegion: BaseTokenizedObject {
+			get {
+				return self.append("vendorTaskProcessingRegion") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -200,6 +206,8 @@ open class ReachProfile: ObjectBase {
 	/**  Comma separated flavorParamsIds that the vendor should look for it matching
 	  asset when trying to download the asset  */
 	public var flavorParamsIds: String? = nil
+	/**  Indicates in which region the task processing should task place  */
+	public var vendorTaskProcessingRegion: VendorTaskProcessingRegion? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -282,6 +290,10 @@ open class ReachProfile: ObjectBase {
 		self.dict["flavorParamsIds"] = flavorParamsIds
 	}
 	
+	public func setMultiRequestToken(vendorTaskProcessingRegion: String) {
+		self.dict["vendorTaskProcessingRegion"] = vendorTaskProcessingRegion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -353,6 +365,9 @@ open class ReachProfile: ObjectBase {
 		if dict["flavorParamsIds"] != nil {
 			flavorParamsIds = dict["flavorParamsIds"] as? String
 		}
+		if dict["vendorTaskProcessingRegion"] != nil {
+			vendorTaskProcessingRegion = VendorTaskProcessingRegion(rawValue: (dict["vendorTaskProcessingRegion"] as? Int)!)
+		}
 
 	}
 
@@ -408,6 +423,9 @@ open class ReachProfile: ObjectBase {
 		}
 		if(flavorParamsIds != nil) {
 			dict["flavorParamsIds"] = flavorParamsIds!
+		}
+		if(vendorTaskProcessingRegion != nil) {
+			dict["vendorTaskProcessingRegion"] = vendorTaskProcessingRegion!.rawValue
 		}
 		return dict
 	}
