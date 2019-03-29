@@ -35,10 +35,10 @@ public enum BatchJobType: String {
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
 	case DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete"
-	case CONVERT = "0"
 	case DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable"
 	case DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable"
 	case DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport"
+	case CONVERT = "0"
 	case DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit"
 	case DISTRIBUTION_SYNC = "contentDistribution.DistributionSync"
 	case DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate"
@@ -98,4 +98,5 @@ public enum BatchJobType: String {
 	case CLIP_CONCAT = "47"
 	case COPY_CUE_POINTS = "48"
 	case EXPORT_CSV = "49"
+	case REPORT_EXPORT = "50"
 }

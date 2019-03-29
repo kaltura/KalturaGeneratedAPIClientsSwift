@@ -63,6 +63,20 @@ public final class ReportService{
 		return request
 	}
 
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func params<T: ReportExportParams.ReportExportParamsTokenizer>() -> T {
+			return T(self.append("params"))
+		}
+	}
+
+	public static func exportToCsv(params: ReportExportParams) -> RequestBuilder<ReportExportResponse, ReportExportResponse.ReportExportResponseTokenizer, ExportToCsvTokenizer> {
+		let request: RequestBuilder<ReportExportResponse, ReportExportResponse.ReportExportResponseTokenizer, ExportToCsvTokenizer> = RequestBuilder<ReportExportResponse, ReportExportResponse.ReportExportResponseTokenizer, ExportToCsvTokenizer>(service: "report", action: "exportToCsv")
+			.setParam(key: "params", value: params)
+
+		return request
+	}
+
 	public class GetBaseTotalTokenizer: ClientTokenizer  {
 		
 		public var reportType: BaseTokenizedObject {
