@@ -34,21 +34,15 @@
  */
 
 /**  Represents the Bulk service input for filter bulk upload  */
-open class BulkServiceFilterData: BulkServiceData {
+open class BulkServiceFilterData: BulkServiceFilterDataBase {
 
-	public class BulkServiceFilterDataTokenizer: BulkServiceData.BulkServiceDataTokenizer {
-		
-		public func filter<T: Filter.FilterTokenizer>() -> T {
-			return T(self.append("filter"))
-		}
+	public class BulkServiceFilterDataTokenizer: BulkServiceFilterDataBase.BulkServiceFilterDataBaseTokenizer {
 		
 		public func templateObject<T: ObjectBase.ObjectBaseTokenizer>() -> T {
 			return T(self.append("templateObject"))
 		}
 	}
 
-	/**  Filter for extracting the objects list to upload  */
-	public var filter: Filter? = nil
 	/**  Template object for new object creation  */
 	public var templateObject: ObjectBase? = nil
 
@@ -56,8 +50,6 @@ open class BulkServiceFilterData: BulkServiceData {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["filter"] != nil {
-		filter = try JSONParser.parse(object: dict["filter"] as! [String: Any])		}
 		if dict["templateObject"] != nil {
 		templateObject = try JSONParser.parse(object: dict["templateObject"] as! [String: Any])		}
 
@@ -65,9 +57,6 @@ open class BulkServiceFilterData: BulkServiceData {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(filter != nil) {
-			dict["filter"] = filter!.toDictionary()
-		}
 		if(templateObject != nil) {
 			dict["templateObject"] = templateObject!.toDictionary()
 		}

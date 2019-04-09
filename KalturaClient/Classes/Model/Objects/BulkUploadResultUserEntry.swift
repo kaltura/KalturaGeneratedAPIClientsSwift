@@ -25,15 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
+
+open class BulkUploadResultUserEntry: BulkUploadResult {
+
+	public class BulkUploadResultUserEntryTokenizer: BulkUploadResult.BulkUploadResultTokenizer {
+		
+		public var userEntryId: BaseTokenizedObject {
+			get {
+				return self.append("userEntryId") 
+			}
+		}
+	}
+
+	public var userEntryId: Int? = nil
+
+
+	public func setMultiRequestToken(userEntryId: String) {
+		self.dict["userEntryId"] = userEntryId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["userEntryId"] != nil {
+			userEntryId = dict["userEntryId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(userEntryId != nil) {
+			dict["userEntryId"] = userEntryId!
+		}
+		return dict
+	}
 }
+

@@ -25,15 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
+
+open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
+
+	public class VendorAudioDescriptionCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+		
+		public var sourceLanguage: BaseTokenizedObject {
+			get {
+				return self.append("sourceLanguage") 
+			}
+		}
+		
+		public var flavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("flavorParamsId") 
+			}
+		}
+	}
+
+	public var sourceLanguage: CatalogItemLanguage? = nil
+	public var flavorParamsId: Int? = nil
+
+
+	public func setMultiRequestToken(sourceLanguage: String) {
+		self.dict["sourceLanguage"] = sourceLanguage
+	}
+	
+	public func setMultiRequestToken(flavorParamsId: String) {
+		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["sourceLanguage"] != nil {
+			sourceLanguage = CatalogItemLanguage(rawValue: "\(dict["sourceLanguage"]!)")
+		}
+		if dict["flavorParamsId"] != nil {
+			flavorParamsId = dict["flavorParamsId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(sourceLanguage != nil) {
+			dict["sourceLanguage"] = sourceLanguage!.rawValue
+		}
+		if(flavorParamsId != nil) {
+			dict["flavorParamsId"] = flavorParamsId!
+		}
+		return dict
+	}
 }
+

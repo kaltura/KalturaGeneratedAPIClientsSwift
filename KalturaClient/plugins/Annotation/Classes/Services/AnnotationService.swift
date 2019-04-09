@@ -76,13 +76,24 @@ public final class AnnotationService{
 				return self.append("entryId") 
 			}
 		}
+		
+		public var parentId: BaseTokenizedObject {
+			get {
+				return self.append("parentId") 
+			}
+		}
+	}
+
+	public static func clone(id: String, entryId: String) -> RequestBuilder<Annotation, Annotation.AnnotationTokenizer, CloneTokenizer> {
+		return clone(id: id, entryId: entryId, parentId: nil)
 	}
 
 	/**  Clone cuePoint with id to given entry  */
-	public static func clone(id: String, entryId: String) -> RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> {
-		let request: RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer> = RequestBuilder<CuePoint, CuePoint.CuePointTokenizer, CloneTokenizer>(service: "annotation_annotation", action: "clone")
+	public static func clone(id: String, entryId: String, parentId: String?) -> RequestBuilder<Annotation, Annotation.AnnotationTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<Annotation, Annotation.AnnotationTokenizer, CloneTokenizer> = RequestBuilder<Annotation, Annotation.AnnotationTokenizer, CloneTokenizer>(service: "annotation_annotation", action: "clone")
 			.setParam(key: "id", value: id)
 			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "parentId", value: parentId)
 
 		return request
 	}

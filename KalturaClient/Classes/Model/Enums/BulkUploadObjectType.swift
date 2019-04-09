@@ -40,4 +40,5 @@ public enum BulkUploadObjectType: String {
 	case USER = "3"
 	case CATEGORY_USER = "4"
 	case CATEGORY_ENTRY = "5"
+	case USER_ENTRY = "6"
 }

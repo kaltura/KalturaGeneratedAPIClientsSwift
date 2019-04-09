@@ -25,15 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
+
+open class VendorAudioDescriptionCatalogItemFilter: VendorCaptionsCatalogItemBaseFilter {
+
+	public class VendorAudioDescriptionCatalogItemFilterTokenizer: VendorCaptionsCatalogItemBaseFilter.VendorCaptionsCatalogItemBaseFilterTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

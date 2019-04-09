@@ -25,15 +25,42 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
+
+/**  Represents the Bulk service input for filter bulk upload  */
+open class BulkServiceFilterDataBase: BulkServiceData {
+
+	public class BulkServiceFilterDataBaseTokenizer: BulkServiceData.BulkServiceDataTokenizer {
+		
+		public func filter<T: Filter.FilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+	}
+
+	/**  Filter for extracting the objects list to upload  */
+	public var filter: Filter? = nil
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["filter"] != nil {
+		filter = try JSONParser.parse(object: dict["filter"] as! [String: Any])		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(filter != nil) {
+			dict["filter"] = filter!.toDictionary()
+		}
+		return dict
+	}
 }
+

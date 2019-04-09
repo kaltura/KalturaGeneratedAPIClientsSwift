@@ -50,20 +50,6 @@ public final class UserEntryService{
 		return request
 	}
 
-	public class BulkDeleteTokenizer: ClientTokenizer  {
-		
-		public func filter<T: UserEntryFilter.UserEntryFilterTokenizer>() -> T {
-			return T(self.append("filter"))
-		}
-	}
-
-	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> {
-		let request: RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> = RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
-			.setParam(key: "filter", value: filter)
-
-		return request
-	}
-
 	public class DeleteTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

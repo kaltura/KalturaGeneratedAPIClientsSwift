@@ -60,12 +60,19 @@ open class UserEntryFilter: UserEntryBaseFilter {
 				return self.append("privacyContextIn") 
 			}
 		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
 	}
 
 	public var userIdEqualCurrent: Bool? = nil
 	public var isAnonymous: Bool? = nil
 	public var privacyContextEqual: String? = nil
 	public var privacyContextIn: String? = nil
+	public var partnerId: Int? = nil
 
 
 	public func setMultiRequestToken(userIdEqualCurrent: String) {
@@ -84,6 +91,10 @@ open class UserEntryFilter: UserEntryBaseFilter {
 		self.dict["privacyContextIn"] = privacyContextIn
 	}
 	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +109,9 @@ open class UserEntryFilter: UserEntryBaseFilter {
 		}
 		if dict["privacyContextIn"] != nil {
 			privacyContextIn = dict["privacyContextIn"] as? String
+		}
+		if dict["partnerId"] != nil {
+			partnerId = dict["partnerId"] as? Int
 		}
 
 	}
@@ -115,6 +129,9 @@ open class UserEntryFilter: UserEntryBaseFilter {
 		}
 		if(privacyContextIn != nil) {
 			dict["privacyContextIn"] = privacyContextIn!
+		}
+		if(partnerId != nil) {
+			dict["partnerId"] = partnerId!
 		}
 		return dict
 	}

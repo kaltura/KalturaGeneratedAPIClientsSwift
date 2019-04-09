@@ -126,6 +126,18 @@ open class PartnerBaseFilter: Filter {
 				return self.append("partnerNameDescriptionWebsiteAdminNameAdminEmailLike") 
 			}
 		}
+		
+		public var createdAtGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("createdAtGreaterThanOrEqual") 
+			}
+		}
+		
+		public var idGreaterThan: BaseTokenizedObject {
+			get {
+				return self.append("idGreaterThan") 
+			}
+		}
 	}
 
 	public var idEqual: Int? = nil
@@ -143,6 +155,8 @@ open class PartnerBaseFilter: Filter {
 	public var partnerPackageIn: String? = nil
 	public var partnerGroupTypeEqual: PartnerGroupType? = nil
 	public var partnerNameDescriptionWebsiteAdminNameAdminEmailLike: String? = nil
+	public var createdAtGreaterThanOrEqual: Int? = nil
+	public var idGreaterThan: Int? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -205,6 +219,14 @@ open class PartnerBaseFilter: Filter {
 		self.dict["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] = partnerNameDescriptionWebsiteAdminNameAdminEmailLike
 	}
 	
+	public func setMultiRequestToken(createdAtGreaterThanOrEqual: String) {
+		self.dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(idGreaterThan: String) {
+		self.dict["idGreaterThan"] = idGreaterThan
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -252,6 +274,12 @@ open class PartnerBaseFilter: Filter {
 		}
 		if dict["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] != nil {
 			partnerNameDescriptionWebsiteAdminNameAdminEmailLike = dict["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] as? String
+		}
+		if dict["createdAtGreaterThanOrEqual"] != nil {
+			createdAtGreaterThanOrEqual = dict["createdAtGreaterThanOrEqual"] as? Int
+		}
+		if dict["idGreaterThan"] != nil {
+			idGreaterThan = dict["idGreaterThan"] as? Int
 		}
 
 	}
@@ -302,6 +330,12 @@ open class PartnerBaseFilter: Filter {
 		}
 		if(partnerNameDescriptionWebsiteAdminNameAdminEmailLike != nil) {
 			dict["partnerNameDescriptionWebsiteAdminNameAdminEmailLike"] = partnerNameDescriptionWebsiteAdminNameAdminEmailLike!
+		}
+		if(createdAtGreaterThanOrEqual != nil) {
+			dict["createdAtGreaterThanOrEqual"] = createdAtGreaterThanOrEqual!
+		}
+		if(idGreaterThan != nil) {
+			dict["idGreaterThan"] = idGreaterThan!
 		}
 		return dict
 	}

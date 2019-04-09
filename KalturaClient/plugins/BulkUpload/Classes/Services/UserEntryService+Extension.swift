@@ -25,15 +25,27 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
+
+extension UserEntryService{
+
+	public class BulkDeleteTokenizer: ClientTokenizer  {
+		
+		public func filter<T: UserEntryFilter.UserEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+	}
+
+	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
+			.setParam(key: "filter", value: filter)
+
+		return request
+	}
 }
