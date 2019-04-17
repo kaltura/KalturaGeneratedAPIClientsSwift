@@ -42,8 +42,8 @@ extension UserEntryService{
 		}
 	}
 
-	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer> {
-		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
+	public static func bulkDelete(filter: UserEntryFilter) -> RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> {
+		let request: RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer> = RequestBuilder<Int, BaseTokenizedObject, BulkDeleteTokenizer>(service: "userentry", action: "bulkDelete")
 			.setParam(key: "filter", value: filter)
 
 		return request
