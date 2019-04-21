@@ -43,6 +43,12 @@ open class CuePoint: ObjectBase {
 			}
 		}
 		
+		public var intId: BaseTokenizedObject {
+			get {
+				return self.append("intId") 
+			}
+		}
+		
 		public var cuePointType: BaseTokenizedObject {
 			get {
 				return self.append("cuePointType") 
@@ -147,6 +153,7 @@ open class CuePoint: ObjectBase {
 	}
 
 	public var id: String? = nil
+	public var intId: Int? = nil
 	public var cuePointType: CuePointType? = nil
 	public var status: CuePointStatus? = nil
 	public var entryId: String? = nil
@@ -169,6 +176,10 @@ open class CuePoint: ObjectBase {
 
 	public func setMultiRequestToken(id: String) {
 		self.dict["id"] = id
+	}
+	
+	public func setMultiRequestToken(intId: String) {
+		self.dict["intId"] = intId
 	}
 	
 	public func setMultiRequestToken(cuePointType: String) {
@@ -244,6 +255,9 @@ open class CuePoint: ObjectBase {
 		// set members values:
 		if dict["id"] != nil {
 			id = dict["id"] as? String
+		}
+		if dict["intId"] != nil {
+			intId = dict["intId"] as? Int
 		}
 		if dict["cuePointType"] != nil {
 			cuePointType = CuePointType(rawValue: "\(dict["cuePointType"]!)")

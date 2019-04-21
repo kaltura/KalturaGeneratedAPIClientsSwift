@@ -33,11 +33,13 @@
  */
 public enum QuestionCuePointOrderBy: String {
 	case CREATED_AT_ASC = "+createdAt"
+	case INT_ID_ASC = "+intId"
 	case PARTNER_SORT_VALUE_ASC = "+partnerSortValue"
 	case START_TIME_ASC = "+startTime"
 	case TRIGGERED_AT_ASC = "+triggeredAt"
 	case UPDATED_AT_ASC = "+updatedAt"
 	case CREATED_AT_DESC = "-createdAt"
+	case INT_ID_DESC = "-intId"
 	case PARTNER_SORT_VALUE_DESC = "-partnerSortValue"
 	case START_TIME_DESC = "-startTime"
 	case TRIGGERED_AT_DESC = "-triggeredAt"
