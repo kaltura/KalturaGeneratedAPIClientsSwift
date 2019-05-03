@@ -138,6 +138,12 @@ open class TrackEntry: ObjectBase {
 				return self.append("userIp") 
 			}
 		}
+		
+		public var sessionId: BaseTokenizedObject {
+			get {
+				return self.append("sessionId") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -157,6 +163,7 @@ open class TrackEntry: ObjectBase {
 	public var createdAt: Int? = nil
 	public var updatedAt: Int? = nil
 	public var userIp: String? = nil
+	public var sessionId: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -227,6 +234,10 @@ open class TrackEntry: ObjectBase {
 		self.dict["userIp"] = userIp
 	}
 	
+	public func setMultiRequestToken(sessionId: String) {
+		self.dict["sessionId"] = sessionId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -280,6 +291,9 @@ open class TrackEntry: ObjectBase {
 		}
 		if dict["userIp"] != nil {
 			userIp = dict["userIp"] as? String
+		}
+		if dict["sessionId"] != nil {
+			sessionId = dict["sessionId"] as? Int
 		}
 
 	}
@@ -336,6 +350,9 @@ open class TrackEntry: ObjectBase {
 		}
 		if(userIp != nil) {
 			dict["userIp"] = userIp!
+		}
+		if(sessionId != nil) {
+			dict["sessionId"] = sessionId!
 		}
 		return dict
 	}

@@ -90,6 +90,12 @@ open class BatchHistoryData: ObjectBase {
 				return self.append("sessionId") 
 			}
 		}
+		
+		public var schedulerName: BaseTokenizedObject {
+			get {
+				return self.append("schedulerName") 
+			}
+		}
 	}
 
 	public var schedulerId: Int? = nil
@@ -101,6 +107,7 @@ open class BatchHistoryData: ObjectBase {
 	public var errNumber: Int? = nil
 	public var hostName: String? = nil
 	public var sessionId: String? = nil
+	public var schedulerName: String? = nil
 
 
 	public func setMultiRequestToken(schedulerId: String) {
@@ -139,6 +146,10 @@ open class BatchHistoryData: ObjectBase {
 		self.dict["sessionId"] = sessionId
 	}
 	
+	public func setMultiRequestToken(schedulerName: String) {
+		self.dict["schedulerName"] = schedulerName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -168,6 +179,9 @@ open class BatchHistoryData: ObjectBase {
 		}
 		if dict["sessionId"] != nil {
 			sessionId = dict["sessionId"] as? String
+		}
+		if dict["schedulerName"] != nil {
+			schedulerName = dict["schedulerName"] as? String
 		}
 
 	}
@@ -200,6 +214,9 @@ open class BatchHistoryData: ObjectBase {
 		}
 		if(sessionId != nil) {
 			dict["sessionId"] = sessionId!
+		}
+		if(schedulerName != nil) {
+			dict["schedulerName"] = schedulerName!
 		}
 		return dict
 	}
