@@ -58,6 +58,12 @@ public final class GroupService{
 			}
 		}
 		
+		public var newGroupId: BaseTokenizedObject {
+			get {
+				return self.append("newGroupId") 
+			}
+		}
+		
 		public var newGroupName: BaseTokenizedObject {
 			get {
 				return self.append("newGroupName") 
@@ -65,10 +71,15 @@ public final class GroupService{
 		}
 	}
 
+	public static func clone(originalGroupId: String, newGroupId: String) -> RequestBuilder<Group, Group.GroupTokenizer, CloneTokenizer> {
+		return clone(originalGroupId: originalGroupId, newGroupId: newGroupId, newGroupName: nil)
+	}
+
 	/**  clone the group (groupId), and set group id with the neeGroupName.  */
-	public static func clone(originalGroupId: String, newGroupName: String) -> RequestBuilder<Group, Group.GroupTokenizer, CloneTokenizer> {
+	public static func clone(originalGroupId: String, newGroupId: String, newGroupName: String?) -> RequestBuilder<Group, Group.GroupTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<Group, Group.GroupTokenizer, CloneTokenizer> = RequestBuilder<Group, Group.GroupTokenizer, CloneTokenizer>(service: "group_group", action: "clone")
 			.setParam(key: "originalGroupId", value: originalGroupId)
+			.setParam(key: "newGroupId", value: newGroupId)
 			.setParam(key: "newGroupName", value: newGroupName)
 
 		return request
