@@ -132,6 +132,12 @@ open class LiveStreamEntry: LiveEntry {
 				return self.append("primaryServerNodeId") 
 			}
 		}
+		
+		public var sipToken: BaseTokenizedObject {
+			get {
+				return self.append("sipToken") 
+			}
+		}
 	}
 
 	/**  The stream id as provided by the provider  */
@@ -161,6 +167,7 @@ open class LiveStreamEntry: LiveEntry {
 	public var streamUsername: String? = nil
 	/**  The Streams primary server node id  */
 	public var primaryServerNodeId: Int? = nil
+	public var sipToken: String? = nil
 
 
 	public func setMultiRequestToken(streamRemoteId: String) {
@@ -223,6 +230,10 @@ open class LiveStreamEntry: LiveEntry {
 		self.dict["primaryServerNodeId"] = primaryServerNodeId
 	}
 	
+	public func setMultiRequestToken(sipToken: String) {
+		self.dict["sipToken"] = sipToken
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -273,6 +284,9 @@ open class LiveStreamEntry: LiveEntry {
 		}
 		if dict["primaryServerNodeId"] != nil {
 			primaryServerNodeId = dict["primaryServerNodeId"] as? Int
+		}
+		if dict["sipToken"] != nil {
+			sipToken = dict["sipToken"] as? String
 		}
 
 	}

@@ -103,6 +103,7 @@ public enum LanguageCode: String {
 	case KU = "ku"
 	case KY = "ky"
 	case LA = "la"
+	case LB = "lb"
 	case LI = "li"
 	case LN = "ln"
 	case LO = "lo"
