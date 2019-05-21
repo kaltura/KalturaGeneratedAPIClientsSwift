@@ -88,6 +88,27 @@ public final class PartnerService{
 		return request
 	}
 
+	public class GetPublicInfoTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	public static func getPublicInfo() -> RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> {
+		return getPublicInfo(id: nil)
+	}
+
+	/**  Returns partner public info by Id  */
+	public static func getPublicInfo(id: Int?) -> RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> {
+		let request: RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> = RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer>(service: "partner", action: "getPublicInfo")
+			.setParam(key: "id", value: id)
+
+		return request
+	}
+
 	public class GetSecretsTokenizer: ClientTokenizer  {
 		
 		public override var partnerId: BaseTokenizedObject {
