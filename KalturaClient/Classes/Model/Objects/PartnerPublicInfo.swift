@@ -48,10 +48,17 @@ open class PartnerPublicInfo: ObjectBase {
 				return self.append("ottEnvironmentUrl") 
 			}
 		}
+		
+		public var analyticsPersistentSessionId: BaseTokenizedObject {
+			get {
+				return self.append("analyticsPersistentSessionId") 
+			}
+		}
 	}
 
 	public var analyticsUrl: String? = nil
 	public var ottEnvironmentUrl: String? = nil
+	public var analyticsPersistentSessionId: Bool? = nil
 
 
 	public func setMultiRequestToken(analyticsUrl: String) {
@@ -60,6 +67,10 @@ open class PartnerPublicInfo: ObjectBase {
 	
 	public func setMultiRequestToken(ottEnvironmentUrl: String) {
 		self.dict["ottEnvironmentUrl"] = ottEnvironmentUrl
+	}
+	
+	public func setMultiRequestToken(analyticsPersistentSessionId: String) {
+		self.dict["analyticsPersistentSessionId"] = analyticsPersistentSessionId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +82,9 @@ open class PartnerPublicInfo: ObjectBase {
 		if dict["ottEnvironmentUrl"] != nil {
 			ottEnvironmentUrl = dict["ottEnvironmentUrl"] as? String
 		}
+		if dict["analyticsPersistentSessionId"] != nil {
+			analyticsPersistentSessionId = dict["analyticsPersistentSessionId"] as? Bool
+		}
 
 	}
 
@@ -81,6 +95,9 @@ open class PartnerPublicInfo: ObjectBase {
 		}
 		if(ottEnvironmentUrl != nil) {
 			dict["ottEnvironmentUrl"] = ottEnvironmentUrl!
+		}
+		if(analyticsPersistentSessionId != nil) {
+			dict["analyticsPersistentSessionId"] = analyticsPersistentSessionId!
 		}
 		return dict
 	}
