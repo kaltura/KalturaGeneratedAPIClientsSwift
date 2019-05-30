@@ -33,39 +33,50 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for iCal bulk upload  */
-open class BulkUploadICalJobData: BulkUploadScheduleEventJobData {
+/**  Represents the Bulk upload job data for CSV bulk upload  */
+open class BulkUploadScheduleEventCsvJobData: BulkUploadScheduleEventJobData {
 
-	public class BulkUploadICalJobDataTokenizer: BulkUploadScheduleEventJobData.BulkUploadScheduleEventJobDataTokenizer {
+	public class BulkUploadScheduleEventCsvJobDataTokenizer: BulkUploadScheduleEventJobData.BulkUploadScheduleEventJobDataTokenizer {
 		
-		public var eventsType: BaseTokenizedObject {
+		public var csvVersion: BaseTokenizedObject {
 			get {
-				return self.append("eventsType") 
+				return self.append("csvVersion") 
 			}
+		}
+		
+		public var columns: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("columns"))
+			} 
 		}
 	}
 
-	/**  The type of the events that ill be created by this upload  */
-	public var eventsType: ScheduleEventType? = nil
+	/**  The version of the csv file  */
+	public var csvVersion: BulkUploadCsvVersion? = nil
+	/**  Array containing CSV headers  */
+	public var columns: Array<StringHolder>? = nil
 
 
-	public func setMultiRequestToken(eventsType: String) {
-		self.dict["eventsType"] = eventsType
+	public func setMultiRequestToken(csvVersion: String) {
+		self.dict["csvVersion"] = csvVersion
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["eventsType"] != nil {
-			eventsType = ScheduleEventType(rawValue: (dict["eventsType"] as? Int)!)
+		if dict["csvVersion"] != nil {
+			csvVersion = BulkUploadCsvVersion(rawValue: (dict["csvVersion"] as? Int)!)
+		}
+		if dict["columns"] != nil {
+			columns = try JSONParser.parse(array: dict["columns"] as! [Any])
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(eventsType != nil) {
-			dict["eventsType"] = eventsType!.rawValue
+		if(columns != nil) {
+			dict["columns"] = columns!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

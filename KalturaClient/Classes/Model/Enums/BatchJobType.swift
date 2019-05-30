@@ -32,13 +32,13 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType: String {
+	case CONVERT = "0"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
 	case DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete"
 	case DISTRIBUTION_DISABLE = "contentDistribution.DistributionDisable"
 	case DISTRIBUTION_ENABLE = "contentDistribution.DistributionEnable"
 	case DISTRIBUTION_FETCH_REPORT = "contentDistribution.DistributionFetchReport"
-	case CONVERT = "0"
 	case DISTRIBUTION_SUBMIT = "contentDistribution.DistributionSubmit"
 	case DISTRIBUTION_SYNC = "contentDistribution.DistributionSync"
 	case DISTRIBUTION_UPDATE = "contentDistribution.DistributionUpdate"

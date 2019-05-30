@@ -39,7 +39,7 @@ extension ScheduleEventService{
 
 	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
 		
-		public func bulkUploadData<T: BulkUploadICalJobData.BulkUploadICalJobDataTokenizer>() -> T {
+		public func bulkUploadData<T: BulkUploadScheduleEventJobData.BulkUploadScheduleEventJobDataTokenizer>() -> T {
 			return T(self.append("bulkUploadData"))
 		}
 	}
@@ -49,7 +49,7 @@ extension ScheduleEventService{
 	}
 
 	/**  Add new bulk upload batch job  */
-	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadICalJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadScheduleEventJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
 		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "schedule_scheduleevent", action: "addFromBulkUpload")
 			.setFile(key: "fileData", value: fileData)
 			.setParam(key: "bulkUploadData", value: bulkUploadData)

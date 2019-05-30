@@ -223,7 +223,7 @@ public enum Language: String {
 	case HNI = "Hani"
 	case HA = "Hausa"
 	case HAW = "Hawaiian"
-	case IW = "Hebrew"
+	case HE = "Hebrew"
 	case HEI = "Heiltsuk"
 	case HID = "Hidatsa"
 	case HIL = "Hiligaynon"

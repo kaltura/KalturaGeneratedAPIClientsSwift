@@ -33,41 +33,17 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Represents the Bulk upload job data for iCal bulk upload  */
-open class BulkUploadICalJobData: BulkUploadScheduleEventJobData {
+/**  Represents the abstract Bulk upload job data for general bulk upload  */
+open class BulkUploadScheduleEventJobData: BulkUploadJobData {
 
-	public class BulkUploadICalJobDataTokenizer: BulkUploadScheduleEventJobData.BulkUploadScheduleEventJobDataTokenizer {
-		
-		public var eventsType: BaseTokenizedObject {
-			get {
-				return self.append("eventsType") 
-			}
-		}
+	public class BulkUploadScheduleEventJobDataTokenizer: BulkUploadJobData.BulkUploadJobDataTokenizer {
 	}
 
-	/**  The type of the events that ill be created by this upload  */
-	public var eventsType: ScheduleEventType? = nil
 
 
-	public func setMultiRequestToken(eventsType: String) {
-		self.dict["eventsType"] = eventsType
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["eventsType"] != nil {
-			eventsType = ScheduleEventType(rawValue: (dict["eventsType"] as? Int)!)
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(eventsType != nil) {
-			dict["eventsType"] = eventsType!.rawValue
-		}
-		return dict
-	}
 }
 
