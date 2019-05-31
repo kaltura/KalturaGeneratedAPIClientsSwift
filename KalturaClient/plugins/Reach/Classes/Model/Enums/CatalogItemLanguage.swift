@@ -51,6 +51,7 @@ public enum CatalogItemLanguage: String {
 	case KO = "Korean"
 	case CMN = "Mandarin Chinese"
 	case NO = "Norwegian"
+	case PL = "Polish"
 	case PT = "Portuguese"
 	case RU = "Russian"
 	case ES = "Spanish"
