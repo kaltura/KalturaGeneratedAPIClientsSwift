@@ -49,16 +49,40 @@ open class BulkUploadCsvJobData: BulkUploadJobData {
 				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("columns"))
 			} 
 		}
+		
+		public var processObjectId: BaseTokenizedObject {
+			get {
+				return self.append("processObjectId") 
+			}
+		}
+		
+		public var processObjectType: BaseTokenizedObject {
+			get {
+				return self.append("processObjectType") 
+			}
+		}
 	}
 
 	/**  The version of the csv file  */
 	public var csvVersion: BulkUploadCsvVersion? = nil
 	/**  Array containing CSV headers  */
 	public var columns: Array<StringHolder>? = nil
+	/**  The object in process  */
+	public var processObjectId: String? = nil
+	/**  The type of the object in process  */
+	public var processObjectType: String? = nil
 
 
 	public func setMultiRequestToken(csvVersion: String) {
 		self.dict["csvVersion"] = csvVersion
+	}
+	
+	public func setMultiRequestToken(processObjectId: String) {
+		self.dict["processObjectId"] = processObjectId
+	}
+	
+	public func setMultiRequestToken(processObjectType: String) {
+		self.dict["processObjectType"] = processObjectType
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -70,6 +94,12 @@ open class BulkUploadCsvJobData: BulkUploadJobData {
 		if dict["columns"] != nil {
 			columns = try JSONParser.parse(array: dict["columns"] as! [Any])
 		}
+		if dict["processObjectId"] != nil {
+			processObjectId = dict["processObjectId"] as? String
+		}
+		if dict["processObjectType"] != nil {
+			processObjectType = dict["processObjectType"] as? String
+		}
 
 	}
 
@@ -77,6 +107,12 @@ open class BulkUploadCsvJobData: BulkUploadJobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(columns != nil) {
 			dict["columns"] = columns!.map { value in value.toDictionary() }
+		}
+		if(processObjectId != nil) {
+			dict["processObjectId"] = processObjectId!
+		}
+		if(processObjectType != nil) {
+			dict["processObjectType"] = processObjectType!
 		}
 		return dict
 	}

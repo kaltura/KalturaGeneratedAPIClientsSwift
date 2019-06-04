@@ -25,61 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class Group: BaseUser {
-
-	public class GroupTokenizer: BaseUser.BaseUserTokenizer {
-		
-		public var membersCount: BaseTokenizedObject {
-			get {
-				return self.append("membersCount") 
-			}
-		}
-		
-		public var processStatus: BaseTokenizedObject {
-			get {
-				return self.append("processStatus") 
-			}
-		}
-	}
-
-	public var membersCount: Int? = nil
-	public var processStatus: GroupProcessStatus? = nil
-
-
-	public func setMultiRequestToken(membersCount: String) {
-		self.dict["membersCount"] = membersCount
-	}
-	
-	public func setMultiRequestToken(processStatus: String) {
-		self.dict["processStatus"] = processStatus
-	}
-	
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["membersCount"] != nil {
-			membersCount = dict["membersCount"] as? Int
-		}
-		if dict["processStatus"] != nil {
-			processStatus = GroupProcessStatus(rawValue: (dict["processStatus"] as? Int)!)
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(processStatus != nil) {
-			dict["processStatus"] = processStatus!.rawValue
-		}
-		return dict
-	}
+public enum GroupProcessStatus: Int {
+	case NONE = 0
+	case PROCESSING = 1
 }
-
