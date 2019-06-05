@@ -183,6 +183,23 @@ public final class UserService{
 		return request
 	}
 
+	public class GenerateQrCodeTokenizer: ClientTokenizer  {
+		
+		public var hashKey: BaseTokenizedObject {
+			get {
+				return self.append("hashKey") 
+			}
+		}
+	}
+
+	/**  get QR image content  */
+	public static func generateQrCode(hashKey: String) -> RequestBuilder<String, BaseTokenizedObject, GenerateQrCodeTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GenerateQrCodeTokenizer> = RequestBuilder<String, BaseTokenizedObject, GenerateQrCodeTokenizer>(service: "user", action: "generateQrCode")
+			.setParam(key: "hashKey", value: hashKey)
+
+		return request
+	}
+
 	public class GetTokenizer: ClientTokenizer  {
 		
 		public var userId: BaseTokenizedObject {

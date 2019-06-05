@@ -378,6 +378,12 @@ open class Partner: ObjectBase {
 				return ArrayTokenizedObject<ESearchLanguageItem.ESearchLanguageItemTokenizer>(self.append("eSearchLanguages"))
 			} 
 		}
+		
+		public var authenticationType: BaseTokenizedObject {
+			get {
+				return self.append("authenticationType") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -442,6 +448,7 @@ open class Partner: ObjectBase {
 	public var ovpEnvironmentUrl: String? = nil
 	public var ottEnvironmentUrl: String? = nil
 	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
+	public var authenticationType: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -656,6 +663,10 @@ open class Partner: ObjectBase {
 		self.dict["ottEnvironmentUrl"] = ottEnvironmentUrl
 	}
 	
+	public func setMultiRequestToken(authenticationType: String) {
+		self.dict["authenticationType"] = authenticationType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -829,6 +840,9 @@ open class Partner: ObjectBase {
 		}
 		if dict["eSearchLanguages"] != nil {
 			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
+		}
+		if dict["authenticationType"] != nil {
+			authenticationType = dict["authenticationType"] as? Bool
 		}
 
 	}
