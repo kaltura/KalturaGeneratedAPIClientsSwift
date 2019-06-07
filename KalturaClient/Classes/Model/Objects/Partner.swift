@@ -448,7 +448,7 @@ open class Partner: ObjectBase {
 	public var ovpEnvironmentUrl: String? = nil
 	public var ottEnvironmentUrl: String? = nil
 	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
-	public var authenticationType: Bool? = nil
+	public var authenticationType: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -842,7 +842,7 @@ open class Partner: ObjectBase {
 			eSearchLanguages = try JSONParser.parse(array: dict["eSearchLanguages"] as! [Any])
 		}
 		if dict["authenticationType"] != nil {
-			authenticationType = dict["authenticationType"] as? Bool
+			authenticationType = dict["authenticationType"] as? Int
 		}
 
 	}

@@ -25,16 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
+
+open class VendorChapteringCatalogItem: VendorCatalogItem {
+
+	public class VendorChapteringCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+		
+		public var sourceLanguage: BaseTokenizedObject {
+			get {
+				return self.append("sourceLanguage") 
+			}
+		}
+	}
+
+	public var sourceLanguage: CatalogItemLanguage? = nil
+
+
+	public func setMultiRequestToken(sourceLanguage: String) {
+		self.dict["sourceLanguage"] = sourceLanguage
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["sourceLanguage"] != nil {
+			sourceLanguage = CatalogItemLanguage(rawValue: "\(dict["sourceLanguage"]!)")
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(sourceLanguage != nil) {
+			dict["sourceLanguage"] = sourceLanguage!.rawValue
+		}
+		return dict
+	}
 }
+

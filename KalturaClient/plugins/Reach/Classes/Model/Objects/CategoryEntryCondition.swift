@@ -43,6 +43,12 @@ open class CategoryEntryCondition: Condition {
 			}
 		}
 		
+		public var categoryIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryIds") 
+			}
+		}
+		
 		public var categoryUserPermission: BaseTokenizedObject {
 			get {
 				return self.append("categoryUserPermission") 
@@ -58,6 +64,8 @@ open class CategoryEntryCondition: Condition {
 
 	/**  Category id to check condition for  */
 	public var categoryId: Int? = nil
+	/**  Category id's to check condition for  */
+	public var categoryIds: String? = nil
 	/**  Minimum category user level permission to validate  */
 	public var categoryUserPermission: CategoryUserPermissionLevel? = nil
 	/**  Comparing operator  */
@@ -66,6 +74,10 @@ open class CategoryEntryCondition: Condition {
 
 	public func setMultiRequestToken(categoryId: String) {
 		self.dict["categoryId"] = categoryId
+	}
+	
+	public func setMultiRequestToken(categoryIds: String) {
+		self.dict["categoryIds"] = categoryIds
 	}
 	
 	public func setMultiRequestToken(categoryUserPermission: String) {
@@ -82,6 +94,9 @@ open class CategoryEntryCondition: Condition {
 		if dict["categoryId"] != nil {
 			categoryId = dict["categoryId"] as? Int
 		}
+		if dict["categoryIds"] != nil {
+			categoryIds = dict["categoryIds"] as? String
+		}
 		if dict["categoryUserPermission"] != nil {
 			categoryUserPermission = CategoryUserPermissionLevel(rawValue: (dict["categoryUserPermission"] as? Int)!)
 		}
@@ -95,6 +110,9 @@ open class CategoryEntryCondition: Condition {
 		var dict: [String: Any] = super.toDictionary()
 		if(categoryId != nil) {
 			dict["categoryId"] = categoryId!
+		}
+		if(categoryIds != nil) {
+			dict["categoryIds"] = categoryIds!
 		}
 		if(categoryUserPermission != nil) {
 			dict["categoryUserPermission"] = categoryUserPermission!.rawValue

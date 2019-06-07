@@ -142,7 +142,7 @@ open class BulkUploadResultScheduleEvent: BulkUploadResult {
 
 	public var referenceId: String? = nil
 	public var templateEntryId: String? = nil
-	public var eventType: ScheduleEventType? = nil
+	public var eventType: Int? = nil
 	public var title: String? = nil
 	public var description: String? = nil
 	public var tags: String? = nil
@@ -238,7 +238,7 @@ open class BulkUploadResultScheduleEvent: BulkUploadResult {
 			templateEntryId = dict["templateEntryId"] as? String
 		}
 		if dict["eventType"] != nil {
-			eventType = ScheduleEventType(rawValue: (dict["eventType"] as? Int)!)
+			eventType = dict["eventType"] as? Int
 		}
 		if dict["title"] != nil {
 			title = dict["title"] as? String
@@ -294,7 +294,7 @@ open class BulkUploadResultScheduleEvent: BulkUploadResult {
 			dict["templateEntryId"] = templateEntryId!
 		}
 		if(eventType != nil) {
-			dict["eventType"] = eventType!.rawValue
+			dict["eventType"] = eventType!
 		}
 		if(title != nil) {
 			dict["title"] = title!
