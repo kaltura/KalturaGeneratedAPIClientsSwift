@@ -105,8 +105,8 @@ public final class AdminUserService{
 	}
 
 	/**  Set initial users password  */
-	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
-		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "adminuser", action: "setInitialPassword")
+	public static func setInitialPassword(hashKey: String, newPassword: String) -> RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer> {
+		let request: RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer> = RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer>(service: "adminuser", action: "setInitialPassword")
 			.setParam(key: "hashKey", value: hashKey)
 			.setParam(key: "newPassword", value: newPassword)
 

@@ -504,8 +504,8 @@ public final class UserService{
 	}
 
 	/**  Set initial user password  */
-	public static func setInitialPassword(hashKey: String, newPassword: String) -> NullRequestBuilder<SetInitialPasswordTokenizer> {
-		let request: NullRequestBuilder<SetInitialPasswordTokenizer> = NullRequestBuilder<SetInitialPasswordTokenizer>(service: "user", action: "setInitialPassword")
+	public static func setInitialPassword(hashKey: String, newPassword: String) -> RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer> {
+		let request: RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer> = RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, SetInitialPasswordTokenizer>(service: "user", action: "setInitialPassword")
 			.setParam(key: "hashKey", value: hashKey)
 			.setParam(key: "newPassword", value: newPassword)
 
