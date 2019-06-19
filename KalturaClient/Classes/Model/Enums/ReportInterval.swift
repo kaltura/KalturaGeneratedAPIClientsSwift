@@ -33,5 +33,8 @@
  */
 public enum ReportInterval: String {
 	case DAYS = "days"
+	case HOURS = "hours"
+	case MINUTES = "minutes"
 	case MONTHS = "months"
+	case TEN_SECONDS = "ten_seconds"
 }
