@@ -102,6 +102,12 @@ open class UploadToken: ObjectBase {
 				return self.append("autoFinalize") 
 			}
 		}
+		
+		public var minimumChunkSize: BaseTokenizedObject {
+			get {
+				return self.append("minimumChunkSize") 
+			}
+		}
 	}
 
 	/**  Upload token unique ID  */
@@ -131,6 +137,8 @@ open class UploadToken: ObjectBase {
 	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
 	  the file size reproted when adding the upload token.  */
 	public var autoFinalize: Bool? = nil
+	/**  set the minimum size in bytes for each uploaded part of the file  */
+	public var minimumChunkSize: Double? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -177,6 +185,10 @@ open class UploadToken: ObjectBase {
 		self.dict["autoFinalize"] = autoFinalize
 	}
 	
+	public func setMultiRequestToken(minimumChunkSize: String) {
+		self.dict["minimumChunkSize"] = minimumChunkSize
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -213,6 +225,9 @@ open class UploadToken: ObjectBase {
 		if dict["autoFinalize"] != nil {
 			autoFinalize = dict["autoFinalize"] as? Bool
 		}
+		if dict["minimumChunkSize"] != nil {
+			minimumChunkSize = dict["minimumChunkSize"] as? Double
+		}
 
 	}
 
@@ -226,6 +241,9 @@ open class UploadToken: ObjectBase {
 		}
 		if(autoFinalize != nil) {
 			dict["autoFinalize"] = autoFinalize!
+		}
+		if(minimumChunkSize != nil) {
+			dict["minimumChunkSize"] = minimumChunkSize!
 		}
 		return dict
 	}
