@@ -175,6 +175,12 @@ open class Partner: ObjectBase {
 			}
 		}
 		
+		public var allowedFromEmailWhiteList: BaseTokenizedObject {
+			get {
+				return self.append("allowedFromEmailWhiteList") 
+			}
+		}
+		
 		public var maxUploadSize: BaseTokenizedObject {
 			get {
 				return self.append("maxUploadSize") 
@@ -410,6 +416,7 @@ open class Partner: ObjectBase {
 	public var allowQuickEdit: Int? = nil
 	public var mergeEntryLists: Int? = nil
 	public var notificationsConfig: String? = nil
+	public var allowedFromEmailWhiteList: String? = nil
 	public var maxUploadSize: Int? = nil
 	public var partnerPackage: Int? = nil
 	public var secret: String? = nil
@@ -541,6 +548,10 @@ open class Partner: ObjectBase {
 	
 	public func setMultiRequestToken(notificationsConfig: String) {
 		self.dict["notificationsConfig"] = notificationsConfig
+	}
+	
+	public func setMultiRequestToken(allowedFromEmailWhiteList: String) {
+		self.dict["allowedFromEmailWhiteList"] = allowedFromEmailWhiteList
 	}
 	
 	public func setMultiRequestToken(maxUploadSize: String) {
@@ -739,6 +750,9 @@ open class Partner: ObjectBase {
 		if dict["notificationsConfig"] != nil {
 			notificationsConfig = dict["notificationsConfig"] as? String
 		}
+		if dict["allowedFromEmailWhiteList"] != nil {
+			allowedFromEmailWhiteList = dict["allowedFromEmailWhiteList"] as? String
+		}
 		if dict["maxUploadSize"] != nil {
 			maxUploadSize = dict["maxUploadSize"] as? Int
 		}
@@ -908,6 +922,9 @@ open class Partner: ObjectBase {
 		}
 		if(notificationsConfig != nil) {
 			dict["notificationsConfig"] = notificationsConfig!
+		}
+		if(allowedFromEmailWhiteList != nil) {
+			dict["allowedFromEmailWhiteList"] = allowedFromEmailWhiteList!
 		}
 		if(maxUploadSize != nil) {
 			dict["maxUploadSize"] = maxUploadSize!

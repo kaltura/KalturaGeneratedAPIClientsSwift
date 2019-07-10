@@ -54,6 +54,7 @@ public enum ESearchEntryFieldName: String {
 	case MODERATION_STATUS = "moderation_status"
 	case NAME = "name"
 	case PARENT_ENTRY_ID = "parent_id"
+	case PARTNER_SORT_VALUE = "partner_sort_value"
 	case PUSH_PUBLISH = "push_publish"
 	case RECORDED_ENTRY_ID = "recorded_entry_id"
 	case REDIRECT_ENTRY_ID = "redirect_entry_id"

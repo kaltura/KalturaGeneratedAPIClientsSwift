@@ -128,14 +128,25 @@ public final class PartnerService{
 				return self.append("cmsPassword") 
 			}
 		}
+		
+		public var otp: BaseTokenizedObject {
+			get {
+				return self.append("otp") 
+			}
+		}
+	}
+
+	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> {
+		return getSecrets(partnerId: partnerId, adminEmail: adminEmail, cmsPassword: cmsPassword, otp: nil)
 	}
 
 	/**  Retrieve partner secret and admin secret  */
-	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> {
+	public static func getSecrets(partnerId: Int, adminEmail: String, cmsPassword: String, otp: String?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetSecretsTokenizer>(service: "partner", action: "getSecrets")
 			.setParam(key: "partnerId", value: partnerId)
 			.setParam(key: "adminEmail", value: adminEmail)
 			.setParam(key: "cmsPassword", value: cmsPassword)
+			.setParam(key: "otp", value: otp)
 
 		return request
 	}
