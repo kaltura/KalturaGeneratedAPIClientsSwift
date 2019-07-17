@@ -180,6 +180,12 @@ open class DistributionProfile: ObjectBase {
 				return self.append("recommendedDcForExecute") 
 			}
 		}
+		
+		public var distributeTrigger: BaseTokenizedObject {
+			get {
+				return self.append("distributeTrigger") 
+			}
+		}
 	}
 
 	/**  Auto generated unique id  */
@@ -225,6 +231,8 @@ open class DistributionProfile: ObjectBase {
 	public var recommendedDcForDownload: Int? = nil
 	/**  The best Kaltura data center to be used to execute the distribution job  */
 	public var recommendedDcForExecute: Int? = nil
+	/**  The event that trigger the automatic distribute  */
+	public var distributeTrigger: DistributeTrigger? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -307,6 +315,10 @@ open class DistributionProfile: ObjectBase {
 		self.dict["recommendedDcForExecute"] = recommendedDcForExecute
 	}
 	
+	public func setMultiRequestToken(distributeTrigger: String) {
+		self.dict["distributeTrigger"] = distributeTrigger
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -382,6 +394,9 @@ open class DistributionProfile: ObjectBase {
 		if dict["recommendedDcForExecute"] != nil {
 			recommendedDcForExecute = dict["recommendedDcForExecute"] as? Int
 		}
+		if dict["distributeTrigger"] != nil {
+			distributeTrigger = DistributeTrigger(rawValue: (dict["distributeTrigger"] as? Int)!)
+		}
 
 	}
 
@@ -446,6 +461,9 @@ open class DistributionProfile: ObjectBase {
 		}
 		if(recommendedDcForExecute != nil) {
 			dict["recommendedDcForExecute"] = recommendedDcForExecute!
+		}
+		if(distributeTrigger != nil) {
+			dict["distributeTrigger"] = distributeTrigger!.rawValue
 		}
 		return dict
 	}

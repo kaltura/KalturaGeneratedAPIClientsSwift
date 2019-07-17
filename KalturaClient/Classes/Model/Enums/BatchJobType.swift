@@ -33,6 +33,7 @@
  */
 public enum BatchJobType: String {
 	case CONVERT = "0"
+	case CONVERT_CAPTION_ASSET = "caption.convertcaptionasset"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
 	case DISTRIBUTION_DELETE = "contentDistribution.DistributionDelete"

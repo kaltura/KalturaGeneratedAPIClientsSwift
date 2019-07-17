@@ -33,38 +33,56 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryResponse: ESearchResponse {
+open class ESearchAggregationBucket: ObjectBase {
 
-	public class ESearchEntryResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
+	public class ESearchAggregationBucketTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var objects: ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer> {
+		public var value: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer>(self.append("objects"))
-			} 
+				return self.append("value") 
+			}
 		}
 		
-		public var aggregations: ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer> {
+		public var count: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer>(self.append("aggregations"))
-			} 
+				return self.append("count") 
+			}
 		}
 	}
 
-	public var objects: Array<ESearchEntryResult>? = nil
-	public var aggregations: Array<ESearchAggregationResponseItem>? = nil
+	public var value: String? = nil
+	public var count: Int? = nil
 
 
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
+	}
+	
+	public func setMultiRequestToken(count: String) {
+		self.dict["count"] = count
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["objects"] != nil {
-			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		if dict["value"] != nil {
+			value = dict["value"] as? String
 		}
-		if dict["aggregations"] != nil {
-			aggregations = try JSONParser.parse(array: dict["aggregations"] as! [Any])
+		if dict["count"] != nil {
+			count = dict["count"] as? Int
 		}
 
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(value != nil) {
+			dict["value"] = value!
+		}
+		if(count != nil) {
+			dict["count"] = count!
+		}
+		return dict
+	}
 }
 

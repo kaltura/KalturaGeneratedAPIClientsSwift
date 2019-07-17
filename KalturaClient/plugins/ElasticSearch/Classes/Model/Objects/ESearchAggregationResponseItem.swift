@@ -33,38 +33,69 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryResponse: ESearchResponse {
+open class ESearchAggregationResponseItem: ObjectBase {
 
-	public class ESearchEntryResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
+	public class ESearchAggregationResponseItemTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var objects: ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer> {
+		public var name: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer>(self.append("objects"))
-			} 
+				return self.append("name") 
+			}
 		}
 		
-		public var aggregations: ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer> {
+		public var fieldName: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer>(self.append("aggregations"))
+				return self.append("fieldName") 
+			}
+		}
+		
+		public var buckets: ArrayTokenizedObject<ESearchAggregationBucket.ESearchAggregationBucketTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchAggregationBucket.ESearchAggregationBucketTokenizer>(self.append("buckets"))
 			} 
 		}
 	}
 
-	public var objects: Array<ESearchEntryResult>? = nil
-	public var aggregations: Array<ESearchAggregationResponseItem>? = nil
+	public var name: String? = nil
+	public var fieldName: String? = nil
+	public var buckets: Array<ESearchAggregationBucket>? = nil
 
 
+	public func setMultiRequestToken(name: String) {
+		self.dict["name"] = name
+	}
+	
+	public func setMultiRequestToken(fieldName: String) {
+		self.dict["fieldName"] = fieldName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["objects"] != nil {
-			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		if dict["name"] != nil {
+			name = dict["name"] as? String
 		}
-		if dict["aggregations"] != nil {
-			aggregations = try JSONParser.parse(array: dict["aggregations"] as! [Any])
+		if dict["fieldName"] != nil {
+			fieldName = dict["fieldName"] as? String
+		}
+		if dict["buckets"] != nil {
+			buckets = try JSONParser.parse(array: dict["buckets"] as! [Any])
 		}
 
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(name != nil) {
+			dict["name"] = name!
+		}
+		if(fieldName != nil) {
+			dict["fieldName"] = fieldName!
+		}
+		if(buckets != nil) {
+			dict["buckets"] = buckets!.map { value in value.toDictionary() }
+		}
+		return dict
+	}
 }
 

@@ -36,4 +36,5 @@ public enum CaptionType: String {
 	case DFXP = "2"
 	case WEBVTT = "3"
 	case CAP = "4"
+	case SCC = "5"
 }

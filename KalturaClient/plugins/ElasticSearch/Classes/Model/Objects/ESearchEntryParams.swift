@@ -40,9 +40,14 @@ open class ESearchEntryParams: ESearchParams {
 		public func searchOperator<T: ESearchEntryOperator.ESearchEntryOperatorTokenizer>() -> T {
 			return T(self.append("searchOperator"))
 		}
+		
+		public func aggregations<T: ESearchAggregation.ESearchAggregationTokenizer>() -> T {
+			return T(self.append("aggregations"))
+		}
 	}
 
 	public var searchOperator: ESearchEntryOperator? = nil
+	public var aggregations: ESearchAggregation? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -50,6 +55,8 @@ open class ESearchEntryParams: ESearchParams {
 		// set members values:
 		if dict["searchOperator"] != nil {
 		searchOperator = try JSONParser.parse(object: dict["searchOperator"] as! [String: Any])		}
+		if dict["aggregations"] != nil {
+		aggregations = try JSONParser.parse(object: dict["aggregations"] as! [String: Any])		}
 
 	}
 
@@ -57,6 +64,9 @@ open class ESearchEntryParams: ESearchParams {
 		var dict: [String: Any] = super.toDictionary()
 		if(searchOperator != nil) {
 			dict["searchOperator"] = searchOperator!.toDictionary()
+		}
+		if(aggregations != nil) {
+			dict["aggregations"] = aggregations!.toDictionary()
 		}
 		return dict
 	}

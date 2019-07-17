@@ -25,46 +25,15 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class ESearchEntryResponse: ESearchResponse {
-
-	public class ESearchEntryResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
-		
-		public var objects: ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer>(self.append("objects"))
-			} 
-		}
-		
-		public var aggregations: ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer>(self.append("aggregations"))
-			} 
-		}
-	}
-
-	public var objects: Array<ESearchEntryResult>? = nil
-	public var aggregations: Array<ESearchAggregationResponseItem>? = nil
-
-
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["objects"] != nil {
-			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
-		}
-		if dict["aggregations"] != nil {
-			aggregations = try JSONParser.parse(array: dict["aggregations"] as! [Any])
-		}
-
-	}
-
+public enum ESearchEntryAggregateByFieldName: String {
+	case ACCESS_CONTROL_PROFILE = "access_control_profile_id"
+	case ENTRY_TYPE = "entry_type"
+	case MEDIA_TYPE = "media_type"
+	case TAGS = "tags"
 }
-

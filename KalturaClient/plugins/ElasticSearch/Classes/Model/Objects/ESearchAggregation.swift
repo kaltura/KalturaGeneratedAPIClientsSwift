@@ -33,38 +33,35 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ESearchEntryResponse: ESearchResponse {
+open class ESearchAggregation: ObjectBase {
 
-	public class ESearchEntryResponseTokenizer: ESearchResponse.ESearchResponseTokenizer {
+	public class ESearchAggregationTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var objects: ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer> {
+		public var aggregations: ArrayTokenizedObject<ESearchAggregationItem.ESearchAggregationItemTokenizer> {
 			get {
-				return ArrayTokenizedObject<ESearchEntryResult.ESearchEntryResultTokenizer>(self.append("objects"))
-			} 
-		}
-		
-		public var aggregations: ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer> {
-			get {
-				return ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer>(self.append("aggregations"))
+				return ArrayTokenizedObject<ESearchAggregationItem.ESearchAggregationItemTokenizer>(self.append("aggregations"))
 			} 
 		}
 	}
 
-	public var objects: Array<ESearchEntryResult>? = nil
-	public var aggregations: Array<ESearchAggregationResponseItem>? = nil
+	public var aggregations: Array<ESearchAggregationItem>? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["objects"] != nil {
-			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
-		}
 		if dict["aggregations"] != nil {
 			aggregations = try JSONParser.parse(array: dict["aggregations"] as! [Any])
 		}
 
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(aggregations != nil) {
+			dict["aggregations"] = aggregations!.map { value in value.toDictionary() }
+		}
+		return dict
+	}
 }
 

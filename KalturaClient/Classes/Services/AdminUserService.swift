@@ -138,6 +138,12 @@ public final class AdminUserService{
 				return self.append("newPassword") 
 			}
 		}
+		
+		public var otp: BaseTokenizedObject {
+			get {
+				return self.append("otp") 
+			}
+		}
 	}
 
 	public static func updatePassword(email: String, password: String) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
@@ -148,13 +154,18 @@ public final class AdminUserService{
 		return updatePassword(email: email, password: password, newEmail: newEmail, newPassword: "")
 	}
 
-	/**  Update admin user password and email  */
 	public static func updatePassword(email: String, password: String, newEmail: String?, newPassword: String?) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
+		return updatePassword(email: email, password: password, newEmail: newEmail, newPassword: newPassword, otp: nil)
+	}
+
+	/**  Update admin user password and email  */
+	public static func updatePassword(email: String, password: String, newEmail: String?, newPassword: String?, otp: String?) -> RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> {
 		let request: RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer> = RequestBuilder<AdminUser, AdminUser.AdminUserTokenizer, UpdatePasswordTokenizer>(service: "adminuser", action: "updatePassword")
 			.setParam(key: "email", value: email)
 			.setParam(key: "password", value: password)
 			.setParam(key: "newEmail", value: newEmail)
 			.setParam(key: "newPassword", value: newPassword)
+			.setParam(key: "otp", value: otp)
 
 		return request
 	}

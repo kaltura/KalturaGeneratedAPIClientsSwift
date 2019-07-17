@@ -572,6 +572,12 @@ public final class UserService{
 				return self.append("newLastName") 
 			}
 		}
+		
+		public var otp: BaseTokenizedObject {
+			get {
+				return self.append("otp") 
+			}
+		}
 	}
 
 	public static func updateLoginData(oldLoginId: String, password: String) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
@@ -590,8 +596,12 @@ public final class UserService{
 		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: newLoginId, newPassword: newPassword, newFirstName: newFirstName, newLastName: nil)
 	}
 
-	/**  Updates a user's login data: email, password, name.  */
 	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?, newLastName: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
+		return updateLoginData(oldLoginId: oldLoginId, password: password, newLoginId: newLoginId, newPassword: newPassword, newFirstName: newFirstName, newLastName: newLastName, otp: nil)
+	}
+
+	/**  Updates a user's login data: email, password, name.  */
+	public static func updateLoginData(oldLoginId: String, password: String, newLoginId: String?, newPassword: String?, newFirstName: String?, newLastName: String?, otp: String?) -> NullRequestBuilder<UpdateLoginDataTokenizer> {
 		let request: NullRequestBuilder<UpdateLoginDataTokenizer> = NullRequestBuilder<UpdateLoginDataTokenizer>(service: "user", action: "updateLoginData")
 			.setParam(key: "oldLoginId", value: oldLoginId)
 			.setParam(key: "password", value: password)
@@ -599,6 +609,7 @@ public final class UserService{
 			.setParam(key: "newPassword", value: newPassword)
 			.setParam(key: "newFirstName", value: newFirstName)
 			.setParam(key: "newLastName", value: newLastName)
+			.setParam(key: "otp", value: otp)
 
 		return request
 	}
