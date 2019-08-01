@@ -43,5 +43,6 @@ public enum VendorServiceTurnAroundTime: Int {
 	case TWENTY_FOUR_HOURS = 86400
 	case FORTY_EIGHT_HOURS = 172800
 	case FOUR_DAYS = 345600
+	case FIVE_DAYS = 432000
 	case TEN_DAYS = 864000
 }
