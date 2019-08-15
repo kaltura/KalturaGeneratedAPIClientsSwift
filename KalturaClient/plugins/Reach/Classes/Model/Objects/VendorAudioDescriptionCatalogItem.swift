@@ -48,10 +48,17 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 				return self.append("flavorParamsId") 
 			}
 		}
+		
+		public var clearAudioFlavorParamsId: BaseTokenizedObject {
+			get {
+				return self.append("clearAudioFlavorParamsId") 
+			}
+		}
 	}
 
 	public var sourceLanguage: CatalogItemLanguage? = nil
 	public var flavorParamsId: Int? = nil
+	public var clearAudioFlavorParamsId: Int? = nil
 
 
 	public func setMultiRequestToken(sourceLanguage: String) {
@@ -60,6 +67,10 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 	
 	public func setMultiRequestToken(flavorParamsId: String) {
 		self.dict["flavorParamsId"] = flavorParamsId
+	}
+	
+	public func setMultiRequestToken(clearAudioFlavorParamsId: String) {
+		self.dict["clearAudioFlavorParamsId"] = clearAudioFlavorParamsId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +82,9 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 		if dict["flavorParamsId"] != nil {
 			flavorParamsId = dict["flavorParamsId"] as? Int
 		}
+		if dict["clearAudioFlavorParamsId"] != nil {
+			clearAudioFlavorParamsId = dict["clearAudioFlavorParamsId"] as? Int
+		}
 
 	}
 
@@ -81,6 +95,9 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 		}
 		if(flavorParamsId != nil) {
 			dict["flavorParamsId"] = flavorParamsId!
+		}
+		if(clearAudioFlavorParamsId != nil) {
+			dict["clearAudioFlavorParamsId"] = clearAudioFlavorParamsId!
 		}
 		return dict
 	}
