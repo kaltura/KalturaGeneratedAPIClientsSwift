@@ -46,6 +46,7 @@ public enum CatalogItemLanguage: String {
 	case EL = "Greek"
 	case HE = "Hebrew"
 	case HI = "Hindi"
+	case HU = "Hungarian"
 	case IS = "Icelandic"
 	case IN = "Indonesian"
 	case IT = "Italian"
