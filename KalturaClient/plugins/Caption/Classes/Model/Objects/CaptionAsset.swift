@@ -96,6 +96,12 @@ open class CaptionAsset: Asset {
 				return self.append("displayOnPlayer") 
 			}
 		}
+		
+		public var associatedTranscriptIds: BaseTokenizedObject {
+			get {
+				return self.append("associatedTranscriptIds") 
+			}
+		}
 	}
 
 	/**  The Caption Params used to create this Caption Asset  */
@@ -118,6 +124,8 @@ open class CaptionAsset: Asset {
 	public var accuracy: Int? = nil
 	/**  The Accuracy of the caption content  */
 	public var displayOnPlayer: Bool? = nil
+	/**  List of associated transcript asset id's, comma separated  */
+	public var associatedTranscriptIds: String? = nil
 
 
 	public func setMultiRequestToken(captionParamsId: String) {
@@ -160,6 +168,10 @@ open class CaptionAsset: Asset {
 		self.dict["displayOnPlayer"] = displayOnPlayer
 	}
 	
+	public func setMultiRequestToken(associatedTranscriptIds: String) {
+		self.dict["associatedTranscriptIds"] = associatedTranscriptIds
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -193,6 +205,9 @@ open class CaptionAsset: Asset {
 		if dict["displayOnPlayer"] != nil {
 			displayOnPlayer = dict["displayOnPlayer"] as? Bool
 		}
+		if dict["associatedTranscriptIds"] != nil {
+			associatedTranscriptIds = dict["associatedTranscriptIds"] as? String
+		}
 
 	}
 
@@ -221,6 +236,9 @@ open class CaptionAsset: Asset {
 		}
 		if(displayOnPlayer != nil) {
 			dict["displayOnPlayer"] = displayOnPlayer!
+		}
+		if(associatedTranscriptIds != nil) {
+			dict["associatedTranscriptIds"] = associatedTranscriptIds!
 		}
 		return dict
 	}
