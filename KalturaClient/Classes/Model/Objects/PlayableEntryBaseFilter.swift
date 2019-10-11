@@ -49,6 +49,12 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 			}
 		}
 		
+		public var lastPlayedAtLessThanOrEqualOrNull: BaseTokenizedObject {
+			get {
+				return self.append("lastPlayedAtLessThanOrEqualOrNull") 
+			}
+		}
+		
 		public var durationLessThan: BaseTokenizedObject {
 			get {
 				return self.append("durationLessThan") 
@@ -82,6 +88,7 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 
 	public var lastPlayedAtGreaterThanOrEqual: Int? = nil
 	public var lastPlayedAtLessThanOrEqual: Int? = nil
+	public var lastPlayedAtLessThanOrEqualOrNull: Int? = nil
 	public var durationLessThan: Int? = nil
 	public var durationGreaterThan: Int? = nil
 	public var durationLessThanOrEqual: Int? = nil
@@ -95,6 +102,10 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 	
 	public func setMultiRequestToken(lastPlayedAtLessThanOrEqual: String) {
 		self.dict["lastPlayedAtLessThanOrEqual"] = lastPlayedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(lastPlayedAtLessThanOrEqualOrNull: String) {
+		self.dict["lastPlayedAtLessThanOrEqualOrNull"] = lastPlayedAtLessThanOrEqualOrNull
 	}
 	
 	public func setMultiRequestToken(durationLessThan: String) {
@@ -126,6 +137,9 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 		if dict["lastPlayedAtLessThanOrEqual"] != nil {
 			lastPlayedAtLessThanOrEqual = dict["lastPlayedAtLessThanOrEqual"] as? Int
 		}
+		if dict["lastPlayedAtLessThanOrEqualOrNull"] != nil {
+			lastPlayedAtLessThanOrEqualOrNull = dict["lastPlayedAtLessThanOrEqualOrNull"] as? Int
+		}
 		if dict["durationLessThan"] != nil {
 			durationLessThan = dict["durationLessThan"] as? Int
 		}
@@ -151,6 +165,9 @@ open class PlayableEntryBaseFilter: BaseEntryFilter {
 		}
 		if(lastPlayedAtLessThanOrEqual != nil) {
 			dict["lastPlayedAtLessThanOrEqual"] = lastPlayedAtLessThanOrEqual!
+		}
+		if(lastPlayedAtLessThanOrEqualOrNull != nil) {
+			dict["lastPlayedAtLessThanOrEqualOrNull"] = lastPlayedAtLessThanOrEqualOrNull!
 		}
 		if(durationLessThan != nil) {
 			dict["durationLessThan"] = durationLessThan!
