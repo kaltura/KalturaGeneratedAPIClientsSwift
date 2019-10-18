@@ -184,6 +184,24 @@ open class EntryVendorTask: ObjectBase {
 		public func taskJobData<T: VendorTaskData.VendorTaskDataTokenizer>() -> T {
 			return T(self.append("taskJobData"))
 		}
+		
+		public var expectedFinishTime: BaseTokenizedObject {
+			get {
+				return self.append("expectedFinishTime") 
+			}
+		}
+		
+		public var serviceType: BaseTokenizedObject {
+			get {
+				return self.append("serviceType") 
+			}
+		}
+		
+		public var serviceFeature: BaseTokenizedObject {
+			get {
+				return self.append("serviceFeature") 
+			}
+		}
 	}
 
 	public var id: Int64? = nil
@@ -229,6 +247,9 @@ open class EntryVendorTask: ObjectBase {
 	/**  Task creation mode  */
 	public var creationMode: EntryVendorTaskCreationMode? = nil
 	public var taskJobData: VendorTaskData? = nil
+	public var expectedFinishTime: Int? = nil
+	public var serviceType: VendorServiceType? = nil
+	public var serviceFeature: VendorServiceFeature? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -327,6 +348,18 @@ open class EntryVendorTask: ObjectBase {
 		self.dict["creationMode"] = creationMode
 	}
 	
+	public func setMultiRequestToken(expectedFinishTime: String) {
+		self.dict["expectedFinishTime"] = expectedFinishTime
+	}
+	
+	public func setMultiRequestToken(serviceType: String) {
+		self.dict["serviceType"] = serviceType
+	}
+	
+	public func setMultiRequestToken(serviceFeature: String) {
+		self.dict["serviceFeature"] = serviceFeature
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -404,6 +437,15 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if dict["taskJobData"] != nil {
 		taskJobData = try JSONParser.parse(object: dict["taskJobData"] as! [String: Any])		}
+		if dict["expectedFinishTime"] != nil {
+			expectedFinishTime = dict["expectedFinishTime"] as? Int
+		}
+		if dict["serviceType"] != nil {
+			serviceType = VendorServiceType(rawValue: (dict["serviceType"] as? Int)!)
+		}
+		if dict["serviceFeature"] != nil {
+			serviceFeature = VendorServiceFeature(rawValue: (dict["serviceFeature"] as? Int)!)
+		}
 
 	}
 
