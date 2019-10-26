@@ -34,6 +34,7 @@
 public enum ESearchEntryFieldName: String {
 	case ACCESS_CONTROL_ID = "access_control_id"
 	case ADMIN_TAGS = "admin_tags"
+	case CAPTIONS_CONTENT = "captions_content"
 	case CONVERSION_PROFILE_ID = "conversion_profile_id"
 	case CREATED_AT = "created_at"
 	case CREATOR_ID = "creator_kuser_id"
