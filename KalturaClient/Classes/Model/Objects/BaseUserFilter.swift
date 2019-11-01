@@ -25,17 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AdminUserOrderBy: String {
-	case CREATED_AT_ASC = "+createdAt"
-	case ID_ASC = "+id"
-	case UPDATED_AT_ASC = "+updatedAt"
-	case CREATED_AT_DESC = "-createdAt"
-	case ID_DESC = "-id"
-	case UPDATED_AT_DESC = "-updatedAt"
+
+open class BaseUserFilter: BaseUserBaseFilter {
+
+	public class BaseUserFilterTokenizer: BaseUserBaseFilter.BaseUserBaseFilterTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

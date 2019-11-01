@@ -31,7 +31,7 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AdminUserOrderBy: String {
+public enum BaseUserOrderBy: String {
 	case CREATED_AT_ASC = "+createdAt"
 	case ID_ASC = "+id"
 	case UPDATED_AT_ASC = "+updatedAt"
