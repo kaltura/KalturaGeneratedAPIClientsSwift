@@ -25,19 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DropFolderType: String {
-	case AP_FEED = "ApFeedDropFolder.AP_FEED"
-	case FEED = "FeedDropFolder.FEED"
-	case WEBEX = "WebexDropFolder.WEBEX"
-	case LOCAL = "1"
-	case FTP = "2"
-	case SCP = "3"
-	case SFTP = "4"
-	case S3 = "6"
+
+open class ApFeedDropFolder: FeedDropFolder {
+
+	public class ApFeedDropFolderTokenizer: FeedDropFolder.FeedDropFolderTokenizer {
+		
+		public var apApiKey: BaseTokenizedObject {
+			get {
+				return self.append("apApiKey") 
+			}
+		}
+	}
+
+	public var apApiKey: String? = nil
+
+
+	public func setMultiRequestToken(apApiKey: String) {
+		self.dict["apApiKey"] = apApiKey
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["apApiKey"] != nil {
+			apApiKey = dict["apApiKey"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(apApiKey != nil) {
+			dict["apApiKey"] = apApiKey!
+		}
+		return dict
+	}
 }
+
