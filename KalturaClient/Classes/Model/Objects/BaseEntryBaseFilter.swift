@@ -277,6 +277,18 @@ open class BaseEntryBaseFilter: RelatedFilter {
 			}
 		}
 		
+		public var rankLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("rankLessThanOrEqual") 
+			}
+		}
+		
+		public var rankGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("rankGreaterThanOrEqual") 
+			}
+		}
+		
 		public var totalRankLessThanOrEqual: BaseTokenizedObject {
 			get {
 				return self.append("totalRankLessThanOrEqual") 
@@ -617,6 +629,8 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	public var createdAtLessThanOrEqual: Int? = nil
 	public var updatedAtGreaterThanOrEqual: Int? = nil
 	public var updatedAtLessThanOrEqual: Int? = nil
+	public var rankLessThanOrEqual: Double? = nil
+	public var rankGreaterThanOrEqual: Double? = nil
 	public var totalRankLessThanOrEqual: Int? = nil
 	public var totalRankGreaterThanOrEqual: Int? = nil
 	public var groupIdEqual: Int? = nil
@@ -823,6 +837,14 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	
 	public func setMultiRequestToken(updatedAtLessThanOrEqual: String) {
 		self.dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(rankLessThanOrEqual: String) {
+		self.dict["rankLessThanOrEqual"] = rankLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(rankGreaterThanOrEqual: String) {
+		self.dict["rankGreaterThanOrEqual"] = rankGreaterThanOrEqual
 	}
 	
 	public func setMultiRequestToken(totalRankLessThanOrEqual: String) {
@@ -1108,6 +1130,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		if dict["updatedAtLessThanOrEqual"] != nil {
 			updatedAtLessThanOrEqual = dict["updatedAtLessThanOrEqual"] as? Int
 		}
+		if dict["rankLessThanOrEqual"] != nil {
+			rankLessThanOrEqual = dict["rankLessThanOrEqual"] as? Double
+		}
+		if dict["rankGreaterThanOrEqual"] != nil {
+			rankGreaterThanOrEqual = dict["rankGreaterThanOrEqual"] as? Double
+		}
 		if dict["totalRankLessThanOrEqual"] != nil {
 			totalRankLessThanOrEqual = dict["totalRankLessThanOrEqual"] as? Int
 		}
@@ -1352,6 +1380,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if(updatedAtLessThanOrEqual != nil) {
 			dict["updatedAtLessThanOrEqual"] = updatedAtLessThanOrEqual!
+		}
+		if(rankLessThanOrEqual != nil) {
+			dict["rankLessThanOrEqual"] = rankLessThanOrEqual!
+		}
+		if(rankGreaterThanOrEqual != nil) {
+			dict["rankGreaterThanOrEqual"] = rankGreaterThanOrEqual!
 		}
 		if(totalRankLessThanOrEqual != nil) {
 			dict["totalRankLessThanOrEqual"] = totalRankLessThanOrEqual!

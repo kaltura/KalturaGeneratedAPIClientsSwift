@@ -246,6 +246,42 @@ open class MediaInfo: ObjectBase {
 				return self.append("maxGOP") 
 			}
 		}
+		
+		public var matrixCoefficients: BaseTokenizedObject {
+			get {
+				return self.append("matrixCoefficients") 
+			}
+		}
+		
+		public var colorTransfer: BaseTokenizedObject {
+			get {
+				return self.append("colorTransfer") 
+			}
+		}
+		
+		public var colorPrimaries: BaseTokenizedObject {
+			get {
+				return self.append("colorPrimaries") 
+			}
+		}
+		
+		public var pixelFormat: BaseTokenizedObject {
+			get {
+				return self.append("pixelFormat") 
+			}
+		}
+		
+		public var chromaSubsampling: BaseTokenizedObject {
+			get {
+				return self.append("chromaSubsampling") 
+			}
+		}
+		
+		public var bitsDepth: BaseTokenizedObject {
+			get {
+				return self.append("bitsDepth") 
+			}
+		}
 	}
 
 	/**  The id of the media info  */
@@ -310,6 +346,12 @@ open class MediaInfo: ObjectBase {
 	public var contentStreams: String? = nil
 	public var complexityValue: Int? = nil
 	public var maxGOP: Double? = nil
+	public var matrixCoefficients: String? = nil
+	public var colorTransfer: String? = nil
+	public var colorPrimaries: String? = nil
+	public var pixelFormat: String? = nil
+	public var chromaSubsampling: String? = nil
+	public var bitsDepth: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -452,6 +494,30 @@ open class MediaInfo: ObjectBase {
 		self.dict["maxGOP"] = maxGOP
 	}
 	
+	public func setMultiRequestToken(matrixCoefficients: String) {
+		self.dict["matrixCoefficients"] = matrixCoefficients
+	}
+	
+	public func setMultiRequestToken(colorTransfer: String) {
+		self.dict["colorTransfer"] = colorTransfer
+	}
+	
+	public func setMultiRequestToken(colorPrimaries: String) {
+		self.dict["colorPrimaries"] = colorPrimaries
+	}
+	
+	public func setMultiRequestToken(pixelFormat: String) {
+		self.dict["pixelFormat"] = pixelFormat
+	}
+	
+	public func setMultiRequestToken(chromaSubsampling: String) {
+		self.dict["chromaSubsampling"] = chromaSubsampling
+	}
+	
+	public func setMultiRequestToken(bitsDepth: String) {
+		self.dict["bitsDepth"] = bitsDepth
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -560,6 +626,24 @@ open class MediaInfo: ObjectBase {
 		if dict["maxGOP"] != nil {
 			maxGOP = dict["maxGOP"] as? Double
 		}
+		if dict["matrixCoefficients"] != nil {
+			matrixCoefficients = dict["matrixCoefficients"] as? String
+		}
+		if dict["colorTransfer"] != nil {
+			colorTransfer = dict["colorTransfer"] as? String
+		}
+		if dict["colorPrimaries"] != nil {
+			colorPrimaries = dict["colorPrimaries"] as? String
+		}
+		if dict["pixelFormat"] != nil {
+			pixelFormat = dict["pixelFormat"] as? String
+		}
+		if dict["chromaSubsampling"] != nil {
+			chromaSubsampling = dict["chromaSubsampling"] as? String
+		}
+		if dict["bitsDepth"] != nil {
+			bitsDepth = dict["bitsDepth"] as? Int
+		}
 
 	}
 
@@ -666,6 +750,24 @@ open class MediaInfo: ObjectBase {
 		}
 		if(maxGOP != nil) {
 			dict["maxGOP"] = maxGOP!
+		}
+		if(matrixCoefficients != nil) {
+			dict["matrixCoefficients"] = matrixCoefficients!
+		}
+		if(colorTransfer != nil) {
+			dict["colorTransfer"] = colorTransfer!
+		}
+		if(colorPrimaries != nil) {
+			dict["colorPrimaries"] = colorPrimaries!
+		}
+		if(pixelFormat != nil) {
+			dict["pixelFormat"] = pixelFormat!
+		}
+		if(chromaSubsampling != nil) {
+			dict["chromaSubsampling"] = chromaSubsampling!
+		}
+		if(bitsDepth != nil) {
+			dict["bitsDepth"] = bitsDepth!
 		}
 		return dict
 	}

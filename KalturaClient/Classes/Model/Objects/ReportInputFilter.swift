@@ -172,6 +172,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("entryIdIn") 
 			}
 		}
+		
+		public var playbackTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("playbackTypeIn") 
+			}
+		}
+		
+		public var playbackContextIdsIn: BaseTokenizedObject {
+			get {
+				return self.append("playbackContextIdsIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -218,6 +230,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	/**  Entry created at less than or equal as Unix timestamp  */
 	public var entryCreatedAtLessThanOrEqual: Int? = nil
 	public var entryIdIn: String? = nil
+	public var playbackTypeIn: String? = nil
+	/**  filter by playback context ids  */
+	public var playbackContextIdsIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -308,6 +323,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["entryIdIn"] = entryIdIn
 	}
 	
+	public func setMultiRequestToken(playbackTypeIn: String) {
+		self.dict["playbackTypeIn"] = playbackTypeIn
+	}
+	
+	public func setMultiRequestToken(playbackContextIdsIn: String) {
+		self.dict["playbackContextIdsIn"] = playbackContextIdsIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -378,6 +401,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["entryIdIn"] != nil {
 			entryIdIn = dict["entryIdIn"] as? String
+		}
+		if dict["playbackTypeIn"] != nil {
+			playbackTypeIn = dict["playbackTypeIn"] as? String
+		}
+		if dict["playbackContextIdsIn"] != nil {
+			playbackContextIdsIn = dict["playbackContextIdsIn"] as? String
 		}
 
 	}
@@ -452,6 +481,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(entryIdIn != nil) {
 			dict["entryIdIn"] = entryIdIn!
+		}
+		if(playbackTypeIn != nil) {
+			dict["playbackTypeIn"] = playbackTypeIn!
+		}
+		if(playbackContextIdsIn != nil) {
+			dict["playbackContextIdsIn"] = playbackContextIdsIn!
 		}
 		return dict
 	}
