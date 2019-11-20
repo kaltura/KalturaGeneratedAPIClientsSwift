@@ -40,6 +40,7 @@ public enum ESearchEntryOrderByFieldName: String {
 	case PLAYS_LAST_1_DAY = "plays_last_1_day"
 	case PLAYS_LAST_30_DAYS = "plays_last_30_days"
 	case PLAYS_LAST_7_DAYS = "plays_last_7_days"
+	case RANK = "rank"
 	case START_DATE = "start_date"
 	case UPDATED_AT = "updated_at"
 	case VIEWS = "views"

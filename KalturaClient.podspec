@@ -38,13 +38,6 @@ s.subspec 'Annotation' do |ssp|
  ssp.dependency 'KalturaClient/CuePoint'
 end
 
-s.subspec 'ApFeedDropFolder' do |ssp|
- ssp.source_files = 'KalturaClient/Plugins/ApFeedDropFolder/**/*'
- ssp.dependency 'KalturaClient/Core'
- ssp.dependency 'KalturaClient/DropFolder'
- ssp.dependency 'KalturaClient/FeedDropFolder'
-end
-
 s.subspec 'Aspera' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/aspera/**/*'
  ssp.dependency 'KalturaClient/Core'

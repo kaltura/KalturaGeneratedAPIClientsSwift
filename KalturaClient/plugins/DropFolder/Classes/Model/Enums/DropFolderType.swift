@@ -32,7 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType: String {
-	case AP_FEED = "ApFeedDropFolder.AP_FEED"
 	case FEED = "FeedDropFolder.FEED"
 	case WEBEX = "WebexDropFolder.WEBEX"
 	case LOCAL = "1"

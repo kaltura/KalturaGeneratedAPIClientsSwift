@@ -59,6 +59,7 @@ public enum ESearchEntryFieldName: String {
 	case PARTNER_SORT_VALUE = "partner_sort_value"
 	case PLAYS = "plays"
 	case PUSH_PUBLISH = "push_publish"
+	case RANK = "rank"
 	case RECORDED_ENTRY_ID = "recorded_entry_id"
 	case REDIRECT_ENTRY_ID = "redirect_entry_id"
 	case REFERENCE_ID = "reference_id"
