@@ -49,15 +49,21 @@ open class ConfMaps: ObjectBase {
 			}
 		}
 		
+		public var rawData: BaseTokenizedObject {
+			get {
+				return self.append("rawData") 
+			}
+		}
+		
 		public var isEditable: BaseTokenizedObject {
 			get {
 				return self.append("isEditable") 
 			}
 		}
 		
-		public var lastUpdate: BaseTokenizedObject {
+		public var createdAt: BaseTokenizedObject {
 			get {
-				return self.append("lastUpdate") 
+				return self.append("createdAt") 
 			}
 		}
 		
@@ -96,10 +102,11 @@ open class ConfMaps: ObjectBase {
 	public var name: String? = nil
 	/**  Ini file content  */
 	public var content: String? = nil
+	public var rawData: String? = nil
 	/**  IsEditable - true / false  */
 	public var isEditable: Bool? = nil
 	/**  Time of the last update  */
-	public var lastUpdate: Int? = nil
+	public var createdAt: Int? = nil
 	/**  Regex that represent the host/s that this map affect  */
 	public var relatedHost: String? = nil
 	public var version: Int? = nil
@@ -117,12 +124,16 @@ open class ConfMaps: ObjectBase {
 		self.dict["content"] = content
 	}
 	
+	public func setMultiRequestToken(rawData: String) {
+		self.dict["rawData"] = rawData
+	}
+	
 	public func setMultiRequestToken(isEditable: String) {
 		self.dict["isEditable"] = isEditable
 	}
 	
-	public func setMultiRequestToken(lastUpdate: String) {
-		self.dict["lastUpdate"] = lastUpdate
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
 	}
 	
 	public func setMultiRequestToken(relatedHost: String) {
@@ -154,11 +165,14 @@ open class ConfMaps: ObjectBase {
 		if dict["content"] != nil {
 			content = dict["content"] as? String
 		}
+		if dict["rawData"] != nil {
+			rawData = dict["rawData"] as? String
+		}
 		if dict["isEditable"] != nil {
 			isEditable = dict["isEditable"] as? Bool
 		}
-		if dict["lastUpdate"] != nil {
-			lastUpdate = dict["lastUpdate"] as? Int
+		if dict["createdAt"] != nil {
+			createdAt = dict["createdAt"] as? Int
 		}
 		if dict["relatedHost"] != nil {
 			relatedHost = dict["relatedHost"] as? String
@@ -185,6 +199,9 @@ open class ConfMaps: ObjectBase {
 		}
 		if(content != nil) {
 			dict["content"] = content!
+		}
+		if(rawData != nil) {
+			dict["rawData"] = rawData!
 		}
 		if(relatedHost != nil) {
 			dict["relatedHost"] = relatedHost!

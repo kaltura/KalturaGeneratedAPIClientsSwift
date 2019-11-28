@@ -43,4 +43,5 @@ public enum MetadataObjectType: String {
 	case USER = "3"
 	case PARTNER = "4"
 	case DYNAMIC_OBJECT = "5"
+	case USER_ENTRY = "6"
 }
