@@ -228,6 +228,18 @@ open class StorageProfile: ObjectBase {
 				return self.append("shouldExportThumbs") 
 			}
 		}
+		
+		public var mappedPackagerUrl: BaseTokenizedObject {
+			get {
+				return self.append("mappedPackagerUrl") 
+			}
+		}
+		
+		public var regularPackagerUrl: BaseTokenizedObject {
+			get {
+				return self.append("regularPackagerUrl") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -270,6 +282,8 @@ open class StorageProfile: ObjectBase {
 	public var publicKey: String? = nil
 	public var passPhrase: String? = nil
 	public var shouldExportThumbs: Bool? = nil
+	public var mappedPackagerUrl: String? = nil
+	public var regularPackagerUrl: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -388,6 +402,14 @@ open class StorageProfile: ObjectBase {
 		self.dict["shouldExportThumbs"] = shouldExportThumbs
 	}
 	
+	public func setMultiRequestToken(mappedPackagerUrl: String) {
+		self.dict["mappedPackagerUrl"] = mappedPackagerUrl
+	}
+	
+	public func setMultiRequestToken(regularPackagerUrl: String) {
+		self.dict["regularPackagerUrl"] = regularPackagerUrl
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -487,6 +509,12 @@ open class StorageProfile: ObjectBase {
 		if dict["shouldExportThumbs"] != nil {
 			shouldExportThumbs = dict["shouldExportThumbs"] as? Bool
 		}
+		if dict["mappedPackagerUrl"] != nil {
+			mappedPackagerUrl = dict["mappedPackagerUrl"] as? String
+		}
+		if dict["regularPackagerUrl"] != nil {
+			regularPackagerUrl = dict["regularPackagerUrl"] as? String
+		}
 
 	}
 
@@ -575,6 +603,12 @@ open class StorageProfile: ObjectBase {
 		}
 		if(shouldExportThumbs != nil) {
 			dict["shouldExportThumbs"] = shouldExportThumbs!
+		}
+		if(mappedPackagerUrl != nil) {
+			dict["mappedPackagerUrl"] = mappedPackagerUrl!
+		}
+		if(regularPackagerUrl != nil) {
+			dict["regularPackagerUrl"] = regularPackagerUrl!
 		}
 		return dict
 	}
