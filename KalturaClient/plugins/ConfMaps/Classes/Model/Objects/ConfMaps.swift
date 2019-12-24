@@ -55,6 +55,12 @@ open class ConfMaps: ObjectBase {
 			}
 		}
 		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
 		public var isEditable: BaseTokenizedObject {
 			get {
 				return self.append("isEditable") 
@@ -103,6 +109,7 @@ open class ConfMaps: ObjectBase {
 	/**  Ini file content  */
 	public var content: String? = nil
 	public var rawData: String? = nil
+	public var userId: String? = nil
 	/**  IsEditable - true / false  */
 	public var isEditable: Bool? = nil
 	/**  Time of the last update  */
@@ -126,6 +133,10 @@ open class ConfMaps: ObjectBase {
 	
 	public func setMultiRequestToken(rawData: String) {
 		self.dict["rawData"] = rawData
+	}
+	
+	public func setMultiRequestToken(userId: String) {
+		self.dict["userId"] = userId
 	}
 	
 	public func setMultiRequestToken(isEditable: String) {
@@ -168,6 +179,9 @@ open class ConfMaps: ObjectBase {
 		if dict["rawData"] != nil {
 			rawData = dict["rawData"] as? String
 		}
+		if dict["userId"] != nil {
+			userId = dict["userId"] as? String
+		}
 		if dict["isEditable"] != nil {
 			isEditable = dict["isEditable"] as? Bool
 		}
@@ -202,6 +216,9 @@ open class ConfMaps: ObjectBase {
 		}
 		if(rawData != nil) {
 			dict["rawData"] = rawData!
+		}
+		if(userId != nil) {
+			dict["userId"] = userId!
 		}
 		if(relatedHost != nil) {
 			dict["relatedHost"] = relatedHost!

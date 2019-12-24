@@ -184,6 +184,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("playbackContextIdsIn") 
 			}
 		}
+		
+		public var rootEntryIdIn: BaseTokenizedObject {
+			get {
+				return self.append("rootEntryIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -233,6 +239,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var playbackTypeIn: String? = nil
 	/**  filter by playback context ids  */
 	public var playbackContextIdsIn: String? = nil
+	/**  filter by root entry ids  */
+	public var rootEntryIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -331,6 +339,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["playbackContextIdsIn"] = playbackContextIdsIn
 	}
 	
+	public func setMultiRequestToken(rootEntryIdIn: String) {
+		self.dict["rootEntryIdIn"] = rootEntryIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -407,6 +419,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["playbackContextIdsIn"] != nil {
 			playbackContextIdsIn = dict["playbackContextIdsIn"] as? String
+		}
+		if dict["rootEntryIdIn"] != nil {
+			rootEntryIdIn = dict["rootEntryIdIn"] as? String
 		}
 
 	}
@@ -487,6 +502,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(playbackContextIdsIn != nil) {
 			dict["playbackContextIdsIn"] = playbackContextIdsIn!
+		}
+		if(rootEntryIdIn != nil) {
+			dict["rootEntryIdIn"] = rootEntryIdIn!
 		}
 		return dict
 	}
