@@ -33,45 +33,40 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class MediaEsearchExportToCsvJobData: ExportCsvJobData {
+open class ExportToCsvOptions: ObjectBase {
 
-	public class MediaEsearchExportToCsvJobDataTokenizer: ExportCsvJobData.ExportCsvJobDataTokenizer {
+	public class ExportToCsvOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public func searchParams<T: ESearchEntryParams.ESearchEntryParamsTokenizer>() -> T {
-			return T(self.append("searchParams"))
-		}
-		
-		public var options: ArrayTokenizedObject<ExportToCsvOptions.ExportToCsvOptionsTokenizer> {
+		public var format: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<ExportToCsvOptions.ExportToCsvOptionsTokenizer>(self.append("options"))
-			} 
+				return self.append("format") 
+			}
 		}
 	}
 
-	/**  Esearch parameters for the entry search  */
-	public var searchParams: ESearchEntryParams? = nil
-	/**  options  */
-	public var options: Array<ExportToCsvOptions>? = nil
+	/**  The format of the outputted date string. There are also several predefined date
+	  constants that may be used instead, so for example DATE_RSS contains the format
+	  string 'D, d M Y H:i:s'.   https://www.php.net/manual/en/function.date.php  */
+	public var format: String? = nil
 
 
+	public func setMultiRequestToken(format: String) {
+		self.dict["format"] = format
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["searchParams"] != nil {
-		searchParams = try JSONParser.parse(object: dict["searchParams"] as! [String: Any])		}
-		if dict["options"] != nil {
-			options = try JSONParser.parse(array: dict["options"] as! [Any])
+		if dict["format"] != nil {
+			format = dict["format"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(searchParams != nil) {
-			dict["searchParams"] = searchParams!.toDictionary()
-		}
-		if(options != nil) {
-			dict["options"] = options!.map { value in value.toDictionary() }
+		if(format != nil) {
+			dict["format"] = format!
 		}
 		return dict
 	}
