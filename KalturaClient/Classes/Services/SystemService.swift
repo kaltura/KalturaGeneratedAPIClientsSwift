@@ -37,6 +37,15 @@
   level information  */
 public final class SystemService{
 
+	public class GetHealthCheckTokenizer: ClientTokenizer  {
+	}
+
+	public static func getHealthCheck() -> RequestBuilder<String, BaseTokenizedObject, GetHealthCheckTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetHealthCheckTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetHealthCheckTokenizer>(service: "system", action: "getHealthCheck")
+
+		return request
+	}
+
 	public class GetTimeTokenizer: ClientTokenizer  {
 	}
 
