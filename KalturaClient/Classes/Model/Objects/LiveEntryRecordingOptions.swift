@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -61,12 +61,26 @@ open class LiveEntryRecordingOptions: ObjectBase {
 				return self.append("shouldMakeHidden") 
 			}
 		}
+		
+		public var shouldAutoArchive: BaseTokenizedObject {
+			get {
+				return self.append("shouldAutoArchive") 
+			}
+		}
+		
+		public var nonDeletedCuePointsTags: BaseTokenizedObject {
+			get {
+				return self.append("nonDeletedCuePointsTags") 
+			}
+		}
 	}
 
 	public var shouldCopyEntitlement: Bool? = nil
 	public var shouldCopyScheduling: Bool? = nil
 	public var shouldCopyThumbnail: Bool? = nil
 	public var shouldMakeHidden: Bool? = nil
+	public var shouldAutoArchive: Bool? = nil
+	public var nonDeletedCuePointsTags: String? = nil
 
 
 	public func setMultiRequestToken(shouldCopyEntitlement: String) {
@@ -85,6 +99,14 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		self.dict["shouldMakeHidden"] = shouldMakeHidden
 	}
 	
+	public func setMultiRequestToken(shouldAutoArchive: String) {
+		self.dict["shouldAutoArchive"] = shouldAutoArchive
+	}
+	
+	public func setMultiRequestToken(nonDeletedCuePointsTags: String) {
+		self.dict["nonDeletedCuePointsTags"] = nonDeletedCuePointsTags
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -99,6 +121,12 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		}
 		if dict["shouldMakeHidden"] != nil {
 			shouldMakeHidden = dict["shouldMakeHidden"] as? Bool
+		}
+		if dict["shouldAutoArchive"] != nil {
+			shouldAutoArchive = dict["shouldAutoArchive"] as? Bool
+		}
+		if dict["nonDeletedCuePointsTags"] != nil {
+			nonDeletedCuePointsTags = dict["nonDeletedCuePointsTags"] as? String
 		}
 
 	}
@@ -116,6 +144,12 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		}
 		if(shouldMakeHidden != nil) {
 			dict["shouldMakeHidden"] = shouldMakeHidden!
+		}
+		if(shouldAutoArchive != nil) {
+			dict["shouldAutoArchive"] = shouldAutoArchive!
+		}
+		if(nonDeletedCuePointsTags != nil) {
+			dict["nonDeletedCuePointsTags"] = nonDeletedCuePointsTags!
 		}
 		return dict
 	}

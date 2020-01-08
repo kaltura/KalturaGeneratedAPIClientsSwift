@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2019  Kaltura Inc.
+// Copyright (C) 2006-2020  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -156,6 +156,23 @@ public final class LiveStreamService{
 			.setParam(key: "resource", value: resource)
 			.setParam(key: "duration", value: duration)
 			.setParam(key: "isLastChunk", value: isLastChunk)
+
+		return request
+	}
+
+	public class ArchiveTokenizer: ClientTokenizer  {
+		
+		public var liveEntryId: BaseTokenizedObject {
+			get {
+				return self.append("liveEntryId") 
+			}
+		}
+	}
+
+	/**  Archive a live entry which was recorded  */
+	public static func archive(liveEntryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer>(service: "livestream", action: "archive")
+			.setParam(key: "liveEntryId", value: liveEntryId)
 
 		return request
 	}
