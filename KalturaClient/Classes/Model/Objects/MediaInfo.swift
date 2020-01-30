@@ -271,6 +271,12 @@ open class MediaInfo: ObjectBase {
 			}
 		}
 		
+		public var colorSpace: BaseTokenizedObject {
+			get {
+				return self.append("colorSpace") 
+			}
+		}
+		
 		public var chromaSubsampling: BaseTokenizedObject {
 			get {
 				return self.append("chromaSubsampling") 
@@ -350,6 +356,7 @@ open class MediaInfo: ObjectBase {
 	public var colorTransfer: String? = nil
 	public var colorPrimaries: String? = nil
 	public var pixelFormat: String? = nil
+	public var colorSpace: String? = nil
 	public var chromaSubsampling: String? = nil
 	public var bitsDepth: Int? = nil
 
@@ -510,6 +517,10 @@ open class MediaInfo: ObjectBase {
 		self.dict["pixelFormat"] = pixelFormat
 	}
 	
+	public func setMultiRequestToken(colorSpace: String) {
+		self.dict["colorSpace"] = colorSpace
+	}
+	
 	public func setMultiRequestToken(chromaSubsampling: String) {
 		self.dict["chromaSubsampling"] = chromaSubsampling
 	}
@@ -638,6 +649,9 @@ open class MediaInfo: ObjectBase {
 		if dict["pixelFormat"] != nil {
 			pixelFormat = dict["pixelFormat"] as? String
 		}
+		if dict["colorSpace"] != nil {
+			colorSpace = dict["colorSpace"] as? String
+		}
 		if dict["chromaSubsampling"] != nil {
 			chromaSubsampling = dict["chromaSubsampling"] as? String
 		}
@@ -762,6 +776,9 @@ open class MediaInfo: ObjectBase {
 		}
 		if(pixelFormat != nil) {
 			dict["pixelFormat"] = pixelFormat!
+		}
+		if(colorSpace != nil) {
+			dict["colorSpace"] = colorSpace!
 		}
 		if(chromaSubsampling != nil) {
 			dict["chromaSubsampling"] = chromaSubsampling!

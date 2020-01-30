@@ -25,61 +25,14 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class UnlimitedVendorCredit: BaseVendorCredit {
-
-	public class UnlimitedVendorCreditTokenizer: BaseVendorCredit.BaseVendorCreditTokenizer {
-		
-		public var credit: BaseTokenizedObject {
-			get {
-				return self.append("credit") 
-			}
-		}
-		
-		public var fromDate: BaseTokenizedObject {
-			get {
-				return self.append("fromDate") 
-			}
-		}
-	}
-
-	public var credit: Int? = nil
-	public var fromDate: Int? = nil
-
-
-	public func setMultiRequestToken(credit: String) {
-		self.dict["credit"] = credit
-	}
-	
-	public func setMultiRequestToken(fromDate: String) {
-		self.dict["fromDate"] = fromDate
-	}
-	
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["credit"] != nil {
-			credit = dict["credit"] as? Int
-		}
-		if dict["fromDate"] != nil {
-			fromDate = dict["fromDate"] as? Int
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(fromDate != nil) {
-			dict["fromDate"] = fromDate!
-		}
-		return dict
-	}
+public enum LiveStreamBroadcastStatus: Int {
+	case OFFLINE = 1
+	case PREVIEW = 2
+	case LIVE = 3
 }
-

@@ -67,6 +67,18 @@ open class LiveStreamEntry: LiveEntry {
 			}
 		}
 		
+		public var primarySecuredBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("primarySecuredBroadcastingUrl") 
+			}
+		}
+		
+		public var secondarySecuredBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("secondarySecuredBroadcastingUrl") 
+			}
+		}
+		
 		public var primaryRtspBroadcastingUrl: BaseTokenizedObject {
 			get {
 				return self.append("primaryRtspBroadcastingUrl") 
@@ -148,6 +160,8 @@ open class LiveStreamEntry: LiveEntry {
 	public var bitrates: Array<LiveStreamBitrate>? = nil
 	public var primaryBroadcastingUrl: String? = nil
 	public var secondaryBroadcastingUrl: String? = nil
+	public var primarySecuredBroadcastingUrl: String? = nil
+	public var secondarySecuredBroadcastingUrl: String? = nil
 	public var primaryRtspBroadcastingUrl: String? = nil
 	public var secondaryRtspBroadcastingUrl: String? = nil
 	public var streamName: String? = nil
@@ -184,6 +198,14 @@ open class LiveStreamEntry: LiveEntry {
 	
 	public func setMultiRequestToken(secondaryBroadcastingUrl: String) {
 		self.dict["secondaryBroadcastingUrl"] = secondaryBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(primarySecuredBroadcastingUrl: String) {
+		self.dict["primarySecuredBroadcastingUrl"] = primarySecuredBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(secondarySecuredBroadcastingUrl: String) {
+		self.dict["secondarySecuredBroadcastingUrl"] = secondarySecuredBroadcastingUrl
 	}
 	
 	public func setMultiRequestToken(primaryRtspBroadcastingUrl: String) {
@@ -252,6 +274,12 @@ open class LiveStreamEntry: LiveEntry {
 		if dict["secondaryBroadcastingUrl"] != nil {
 			secondaryBroadcastingUrl = dict["secondaryBroadcastingUrl"] as? String
 		}
+		if dict["primarySecuredBroadcastingUrl"] != nil {
+			primarySecuredBroadcastingUrl = dict["primarySecuredBroadcastingUrl"] as? String
+		}
+		if dict["secondarySecuredBroadcastingUrl"] != nil {
+			secondarySecuredBroadcastingUrl = dict["secondarySecuredBroadcastingUrl"] as? String
+		}
 		if dict["primaryRtspBroadcastingUrl"] != nil {
 			primaryRtspBroadcastingUrl = dict["primaryRtspBroadcastingUrl"] as? String
 		}
@@ -301,6 +329,12 @@ open class LiveStreamEntry: LiveEntry {
 		}
 		if(secondaryBroadcastingUrl != nil) {
 			dict["secondaryBroadcastingUrl"] = secondaryBroadcastingUrl!
+		}
+		if(primarySecuredBroadcastingUrl != nil) {
+			dict["primarySecuredBroadcastingUrl"] = primarySecuredBroadcastingUrl!
+		}
+		if(secondarySecuredBroadcastingUrl != nil) {
+			dict["secondarySecuredBroadcastingUrl"] = secondarySecuredBroadcastingUrl!
 		}
 		if(primaryRtspBroadcastingUrl != nil) {
 			dict["primaryRtspBroadcastingUrl"] = primaryRtspBroadcastingUrl!

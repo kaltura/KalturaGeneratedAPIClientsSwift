@@ -311,6 +311,23 @@ public final class LiveStreamService{
 		return request
 	}
 
+	public class GetDetailsTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+	}
+
+	/**  Delivering the status of a live stream (on-air/offline) if it is possible  */
+	public static func getDetails(id: String) -> RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer> {
+		let request: RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer> = RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer>(service: "livestream", action: "getDetails")
+			.setParam(key: "id", value: id)
+
+		return request
+	}
+
 	public class IsLiveTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

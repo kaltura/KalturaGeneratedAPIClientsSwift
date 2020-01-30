@@ -115,9 +115,21 @@ open class ReportInputFilter: ReportInputBaseFilter {
 			}
 		}
 		
+		public var operatingSystemIn: BaseTokenizedObject {
+			get {
+				return self.append("operatingSystemIn") 
+			}
+		}
+		
 		public var browserFamilyIn: BaseTokenizedObject {
 			get {
 				return self.append("browserFamilyIn") 
+			}
+		}
+		
+		public var browserIn: BaseTokenizedObject {
+			get {
+				return self.append("browserIn") 
 			}
 		}
 		
@@ -190,6 +202,24 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("rootEntryIdIn") 
 			}
 		}
+		
+		public var errorCodeIn: BaseTokenizedObject {
+			get {
+				return self.append("errorCodeIn") 
+			}
+		}
+		
+		public var playerVersionIn: BaseTokenizedObject {
+			get {
+				return self.append("playerVersionIn") 
+			}
+		}
+		
+		public var ispIn: BaseTokenizedObject {
+			get {
+				return self.append("ispIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -218,8 +248,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var citiesIn: String? = nil
 	/**  Filter by operating system family  */
 	public var operatingSystemFamilyIn: String? = nil
+	/**  Filter by operating system  */
+	public var operatingSystemIn: String? = nil
 	/**  Filter by browser family  */
 	public var browserFamilyIn: String? = nil
+	/**  Filter by browser  */
+	public var browserIn: String? = nil
 	/**  Time zone offset in minutes  */
 	public var timeZoneOffset: Int? = nil
 	/**  Aggregated results according to interval  */
@@ -241,6 +275,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var playbackContextIdsIn: String? = nil
 	/**  filter by root entry ids  */
 	public var rootEntryIdIn: String? = nil
+	/**  filter by error code  */
+	public var errorCodeIn: String? = nil
+	/**  filter by player version  */
+	public var playerVersionIn: String? = nil
+	/**  filter by isp  */
+	public var ispIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -295,8 +335,16 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn
 	}
 	
+	public func setMultiRequestToken(operatingSystemIn: String) {
+		self.dict["operatingSystemIn"] = operatingSystemIn
+	}
+	
 	public func setMultiRequestToken(browserFamilyIn: String) {
 		self.dict["browserFamilyIn"] = browserFamilyIn
+	}
+	
+	public func setMultiRequestToken(browserIn: String) {
+		self.dict["browserIn"] = browserIn
 	}
 	
 	public func setMultiRequestToken(timeZoneOffset: String) {
@@ -343,6 +391,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["rootEntryIdIn"] = rootEntryIdIn
 	}
 	
+	public func setMultiRequestToken(errorCodeIn: String) {
+		self.dict["errorCodeIn"] = errorCodeIn
+	}
+	
+	public func setMultiRequestToken(playerVersionIn: String) {
+		self.dict["playerVersionIn"] = playerVersionIn
+	}
+	
+	public func setMultiRequestToken(ispIn: String) {
+		self.dict["ispIn"] = ispIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -385,8 +445,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if dict["operatingSystemFamilyIn"] != nil {
 			operatingSystemFamilyIn = dict["operatingSystemFamilyIn"] as? String
 		}
+		if dict["operatingSystemIn"] != nil {
+			operatingSystemIn = dict["operatingSystemIn"] as? String
+		}
 		if dict["browserFamilyIn"] != nil {
 			browserFamilyIn = dict["browserFamilyIn"] as? String
+		}
+		if dict["browserIn"] != nil {
+			browserIn = dict["browserIn"] as? String
 		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
@@ -422,6 +488,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["rootEntryIdIn"] != nil {
 			rootEntryIdIn = dict["rootEntryIdIn"] as? String
+		}
+		if dict["errorCodeIn"] != nil {
+			errorCodeIn = dict["errorCodeIn"] as? String
+		}
+		if dict["playerVersionIn"] != nil {
+			playerVersionIn = dict["playerVersionIn"] as? String
+		}
+		if dict["ispIn"] != nil {
+			ispIn = dict["ispIn"] as? String
 		}
 
 	}
@@ -467,8 +542,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		if(operatingSystemFamilyIn != nil) {
 			dict["operatingSystemFamilyIn"] = operatingSystemFamilyIn!
 		}
+		if(operatingSystemIn != nil) {
+			dict["operatingSystemIn"] = operatingSystemIn!
+		}
 		if(browserFamilyIn != nil) {
 			dict["browserFamilyIn"] = browserFamilyIn!
+		}
+		if(browserIn != nil) {
+			dict["browserIn"] = browserIn!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
@@ -505,6 +586,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(rootEntryIdIn != nil) {
 			dict["rootEntryIdIn"] = rootEntryIdIn!
+		}
+		if(errorCodeIn != nil) {
+			dict["errorCodeIn"] = errorCodeIn!
+		}
+		if(playerVersionIn != nil) {
+			dict["playerVersionIn"] = playerVersionIn!
+		}
+		if(ispIn != nil) {
+			dict["ispIn"] = ispIn!
 		}
 		return dict
 	}
