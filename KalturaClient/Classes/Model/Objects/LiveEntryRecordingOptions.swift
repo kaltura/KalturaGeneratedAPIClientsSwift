@@ -73,6 +73,12 @@ open class LiveEntryRecordingOptions: ObjectBase {
 				return self.append("nonDeletedCuePointsTags") 
 			}
 		}
+		
+		public var archiveVodSuffixTimezone: BaseTokenizedObject {
+			get {
+				return self.append("archiveVodSuffixTimezone") 
+			}
+		}
 	}
 
 	public var shouldCopyEntitlement: Bool? = nil
@@ -81,6 +87,7 @@ open class LiveEntryRecordingOptions: ObjectBase {
 	public var shouldMakeHidden: Bool? = nil
 	public var shouldAutoArchive: Bool? = nil
 	public var nonDeletedCuePointsTags: String? = nil
+	public var archiveVodSuffixTimezone: String? = nil
 
 
 	public func setMultiRequestToken(shouldCopyEntitlement: String) {
@@ -107,6 +114,10 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		self.dict["nonDeletedCuePointsTags"] = nonDeletedCuePointsTags
 	}
 	
+	public func setMultiRequestToken(archiveVodSuffixTimezone: String) {
+		self.dict["archiveVodSuffixTimezone"] = archiveVodSuffixTimezone
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -127,6 +138,9 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		}
 		if dict["nonDeletedCuePointsTags"] != nil {
 			nonDeletedCuePointsTags = dict["nonDeletedCuePointsTags"] as? String
+		}
+		if dict["archiveVodSuffixTimezone"] != nil {
+			archiveVodSuffixTimezone = dict["archiveVodSuffixTimezone"] as? String
 		}
 
 	}
@@ -150,6 +164,9 @@ open class LiveEntryRecordingOptions: ObjectBase {
 		}
 		if(nonDeletedCuePointsTags != nil) {
 			dict["nonDeletedCuePointsTags"] = nonDeletedCuePointsTags!
+		}
+		if(archiveVodSuffixTimezone != nil) {
+			dict["archiveVodSuffixTimezone"] = archiveVodSuffixTimezone!
 		}
 		return dict
 	}

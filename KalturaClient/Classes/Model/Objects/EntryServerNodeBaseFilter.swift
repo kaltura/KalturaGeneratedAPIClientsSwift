@@ -108,6 +108,12 @@ open class EntryServerNodeBaseFilter: Filter {
 				return self.append("serverTypeIn") 
 			}
 		}
+		
+		public var serverTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("serverTypeNotIn") 
+			}
+		}
 	}
 
 	public var entryIdEqual: String? = nil
@@ -122,6 +128,7 @@ open class EntryServerNodeBaseFilter: Filter {
 	public var statusIn: String? = nil
 	public var serverTypeEqual: EntryServerNodeType? = nil
 	public var serverTypeIn: String? = nil
+	public var serverTypeNotIn: String? = nil
 
 
 	public func setMultiRequestToken(entryIdEqual: String) {
@@ -172,6 +179,10 @@ open class EntryServerNodeBaseFilter: Filter {
 		self.dict["serverTypeIn"] = serverTypeIn
 	}
 	
+	public func setMultiRequestToken(serverTypeNotIn: String) {
+		self.dict["serverTypeNotIn"] = serverTypeNotIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -210,6 +221,9 @@ open class EntryServerNodeBaseFilter: Filter {
 		}
 		if dict["serverTypeIn"] != nil {
 			serverTypeIn = dict["serverTypeIn"] as? String
+		}
+		if dict["serverTypeNotIn"] != nil {
+			serverTypeNotIn = dict["serverTypeNotIn"] as? String
 		}
 
 	}
@@ -251,6 +265,9 @@ open class EntryServerNodeBaseFilter: Filter {
 		}
 		if(serverTypeIn != nil) {
 			dict["serverTypeIn"] = serverTypeIn!
+		}
+		if(serverTypeNotIn != nil) {
+			dict["serverTypeNotIn"] = serverTypeNotIn!
 		}
 		return dict
 	}
