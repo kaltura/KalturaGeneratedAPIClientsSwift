@@ -220,6 +220,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("ispIn") 
 			}
 		}
+		
+		public var applicationVersionIn: BaseTokenizedObject {
+			get {
+				return self.append("applicationVersionIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -281,6 +287,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var playerVersionIn: String? = nil
 	/**  filter by isp  */
 	public var ispIn: String? = nil
+	/**  filter by application version  */
+	public var applicationVersionIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -403,6 +411,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["ispIn"] = ispIn
 	}
 	
+	public func setMultiRequestToken(applicationVersionIn: String) {
+		self.dict["applicationVersionIn"] = applicationVersionIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -497,6 +509,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["ispIn"] != nil {
 			ispIn = dict["ispIn"] as? String
+		}
+		if dict["applicationVersionIn"] != nil {
+			applicationVersionIn = dict["applicationVersionIn"] as? String
 		}
 
 	}
@@ -595,6 +610,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(ispIn != nil) {
 			dict["ispIn"] = ispIn!
+		}
+		if(applicationVersionIn != nil) {
+			dict["applicationVersionIn"] = applicationVersionIn!
 		}
 		return dict
 	}
