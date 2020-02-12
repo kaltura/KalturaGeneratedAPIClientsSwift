@@ -167,12 +167,19 @@ public final class LiveStreamService{
 				return self.append("liveEntryId") 
 			}
 		}
+		
+		public var vodEntryId: BaseTokenizedObject {
+			get {
+				return self.append("vodEntryId") 
+			}
+		}
 	}
 
 	/**  Archive a live entry which was recorded  */
-	public static func archive(liveEntryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer> {
+	public static func archive(liveEntryId: String, vodEntryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, ArchiveTokenizer>(service: "livestream", action: "archive")
 			.setParam(key: "liveEntryId", value: liveEntryId)
+			.setParam(key: "vodEntryId", value: vodEntryId)
 
 		return request
 	}

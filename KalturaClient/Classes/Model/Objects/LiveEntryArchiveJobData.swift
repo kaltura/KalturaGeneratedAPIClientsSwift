@@ -42,13 +42,24 @@ open class LiveEntryArchiveJobData: JobData {
 				return self.append("liveEntryId") 
 			}
 		}
+		
+		public var vodEntryId: BaseTokenizedObject {
+			get {
+				return self.append("vodEntryId") 
+			}
+		}
 	}
 
 	public var liveEntryId: String? = nil
+	public var vodEntryId: String? = nil
 
 
 	public func setMultiRequestToken(liveEntryId: String) {
 		self.dict["liveEntryId"] = liveEntryId
+	}
+	
+	public func setMultiRequestToken(vodEntryId: String) {
+		self.dict["vodEntryId"] = vodEntryId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class LiveEntryArchiveJobData: JobData {
 		if dict["liveEntryId"] != nil {
 			liveEntryId = dict["liveEntryId"] as? String
 		}
+		if dict["vodEntryId"] != nil {
+			vodEntryId = dict["vodEntryId"] as? String
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class LiveEntryArchiveJobData: JobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(liveEntryId != nil) {
 			dict["liveEntryId"] = liveEntryId!
+		}
+		if(vodEntryId != nil) {
+			dict["vodEntryId"] = vodEntryId!
 		}
 		return dict
 	}
