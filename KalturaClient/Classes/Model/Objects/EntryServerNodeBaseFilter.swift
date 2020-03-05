@@ -61,6 +61,12 @@ open class EntryServerNodeBaseFilter: Filter {
 			}
 		}
 		
+		public var serverNodeIdNotIn: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeIdNotIn") 
+			}
+		}
+		
 		public var createdAtLessThanOrEqual: BaseTokenizedObject {
 			get {
 				return self.append("createdAtLessThanOrEqual") 
@@ -120,6 +126,7 @@ open class EntryServerNodeBaseFilter: Filter {
 	public var entryIdIn: String? = nil
 	public var serverNodeIdEqual: Int? = nil
 	public var serverNodeIdIn: String? = nil
+	public var serverNodeIdNotIn: String? = nil
 	public var createdAtLessThanOrEqual: Int? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
 	public var updatedAtGreaterThanOrEqual: Int? = nil
@@ -145,6 +152,10 @@ open class EntryServerNodeBaseFilter: Filter {
 	
 	public func setMultiRequestToken(serverNodeIdIn: String) {
 		self.dict["serverNodeIdIn"] = serverNodeIdIn
+	}
+	
+	public func setMultiRequestToken(serverNodeIdNotIn: String) {
+		self.dict["serverNodeIdNotIn"] = serverNodeIdNotIn
 	}
 	
 	public func setMultiRequestToken(createdAtLessThanOrEqual: String) {
@@ -198,6 +209,9 @@ open class EntryServerNodeBaseFilter: Filter {
 		if dict["serverNodeIdIn"] != nil {
 			serverNodeIdIn = dict["serverNodeIdIn"] as? String
 		}
+		if dict["serverNodeIdNotIn"] != nil {
+			serverNodeIdNotIn = dict["serverNodeIdNotIn"] as? String
+		}
 		if dict["createdAtLessThanOrEqual"] != nil {
 			createdAtLessThanOrEqual = dict["createdAtLessThanOrEqual"] as? Int
 		}
@@ -241,6 +255,9 @@ open class EntryServerNodeBaseFilter: Filter {
 		}
 		if(serverNodeIdIn != nil) {
 			dict["serverNodeIdIn"] = serverNodeIdIn!
+		}
+		if(serverNodeIdNotIn != nil) {
+			dict["serverNodeIdNotIn"] = serverNodeIdNotIn!
 		}
 		if(createdAtLessThanOrEqual != nil) {
 			dict["createdAtLessThanOrEqual"] = createdAtLessThanOrEqual!
