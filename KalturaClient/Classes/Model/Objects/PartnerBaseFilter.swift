@@ -138,6 +138,12 @@ open class PartnerBaseFilter: Filter {
 				return self.append("idGreaterThan") 
 			}
 		}
+		
+		public var monitorUsageEqual: BaseTokenizedObject {
+			get {
+				return self.append("monitorUsageEqual") 
+			}
+		}
 	}
 
 	public var idEqual: Int? = nil
@@ -157,6 +163,7 @@ open class PartnerBaseFilter: Filter {
 	public var partnerNameDescriptionWebsiteAdminNameAdminEmailLike: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
 	public var idGreaterThan: Int? = nil
+	public var monitorUsageEqual: Int? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -227,6 +234,10 @@ open class PartnerBaseFilter: Filter {
 		self.dict["idGreaterThan"] = idGreaterThan
 	}
 	
+	public func setMultiRequestToken(monitorUsageEqual: String) {
+		self.dict["monitorUsageEqual"] = monitorUsageEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -280,6 +291,9 @@ open class PartnerBaseFilter: Filter {
 		}
 		if dict["idGreaterThan"] != nil {
 			idGreaterThan = dict["idGreaterThan"] as? Int
+		}
+		if dict["monitorUsageEqual"] != nil {
+			monitorUsageEqual = dict["monitorUsageEqual"] as? Int
 		}
 
 	}
@@ -336,6 +350,9 @@ open class PartnerBaseFilter: Filter {
 		}
 		if(idGreaterThan != nil) {
 			dict["idGreaterThan"] = idGreaterThan!
+		}
+		if(monitorUsageEqual != nil) {
+			dict["monitorUsageEqual"] = monitorUsageEqual!
 		}
 		return dict
 	}

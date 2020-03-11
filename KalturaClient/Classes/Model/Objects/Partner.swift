@@ -390,6 +390,54 @@ open class Partner: ObjectBase {
 				return self.append("authenticationType") 
 			}
 		}
+		
+		public var extendedFreeTrailExpiryReason: BaseTokenizedObject {
+			get {
+				return self.append("extendedFreeTrailExpiryReason") 
+			}
+		}
+		
+		public var extendedFreeTrailExpiryDate: BaseTokenizedObject {
+			get {
+				return self.append("extendedFreeTrailExpiryDate") 
+			}
+		}
+		
+		public var extendedFreeTrail: BaseTokenizedObject {
+			get {
+				return self.append("extendedFreeTrail") 
+			}
+		}
+		
+		public var extendedFreeTrailEndsWarning: BaseTokenizedObject {
+			get {
+				return self.append("extendedFreeTrailEndsWarning") 
+			}
+		}
+		
+		public var eightyPercentWarning: BaseTokenizedObject {
+			get {
+				return self.append("eightyPercentWarning") 
+			}
+		}
+		
+		public var usageLimitWarning: BaseTokenizedObject {
+			get {
+				return self.append("usageLimitWarning") 
+			}
+		}
+		
+		public var lastFreeTrialNotificationDay: BaseTokenizedObject {
+			get {
+				return self.append("lastFreeTrialNotificationDay") 
+			}
+		}
+		
+		public var monitorUsage: BaseTokenizedObject {
+			get {
+				return self.append("monitorUsage") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -456,6 +504,15 @@ open class Partner: ObjectBase {
 	public var ottEnvironmentUrl: String? = nil
 	public var eSearchLanguages: Array<ESearchLanguageItem>? = nil
 	public var authenticationType: PartnerAuthenticationType? = nil
+	public var extendedFreeTrailExpiryReason: String? = nil
+	/**  Unix timestamp (In seconds)  */
+	public var extendedFreeTrailExpiryDate: Int? = nil
+	public var extendedFreeTrail: Int? = nil
+	public var extendedFreeTrailEndsWarning: Bool? = nil
+	public var eightyPercentWarning: Int? = nil
+	public var usageLimitWarning: Int? = nil
+	public var lastFreeTrialNotificationDay: Int? = nil
+	public var monitorUsage: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -678,6 +735,38 @@ open class Partner: ObjectBase {
 		self.dict["authenticationType"] = authenticationType
 	}
 	
+	public func setMultiRequestToken(extendedFreeTrailExpiryReason: String) {
+		self.dict["extendedFreeTrailExpiryReason"] = extendedFreeTrailExpiryReason
+	}
+	
+	public func setMultiRequestToken(extendedFreeTrailExpiryDate: String) {
+		self.dict["extendedFreeTrailExpiryDate"] = extendedFreeTrailExpiryDate
+	}
+	
+	public func setMultiRequestToken(extendedFreeTrail: String) {
+		self.dict["extendedFreeTrail"] = extendedFreeTrail
+	}
+	
+	public func setMultiRequestToken(extendedFreeTrailEndsWarning: String) {
+		self.dict["extendedFreeTrailEndsWarning"] = extendedFreeTrailEndsWarning
+	}
+	
+	public func setMultiRequestToken(eightyPercentWarning: String) {
+		self.dict["eightyPercentWarning"] = eightyPercentWarning
+	}
+	
+	public func setMultiRequestToken(usageLimitWarning: String) {
+		self.dict["usageLimitWarning"] = usageLimitWarning
+	}
+	
+	public func setMultiRequestToken(lastFreeTrialNotificationDay: String) {
+		self.dict["lastFreeTrialNotificationDay"] = lastFreeTrialNotificationDay
+	}
+	
+	public func setMultiRequestToken(monitorUsage: String) {
+		self.dict["monitorUsage"] = monitorUsage
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -857,6 +946,30 @@ open class Partner: ObjectBase {
 		}
 		if dict["authenticationType"] != nil {
 			authenticationType = PartnerAuthenticationType(rawValue: (dict["authenticationType"] as? Int)!)
+		}
+		if dict["extendedFreeTrailExpiryReason"] != nil {
+			extendedFreeTrailExpiryReason = dict["extendedFreeTrailExpiryReason"] as? String
+		}
+		if dict["extendedFreeTrailExpiryDate"] != nil {
+			extendedFreeTrailExpiryDate = dict["extendedFreeTrailExpiryDate"] as? Int
+		}
+		if dict["extendedFreeTrail"] != nil {
+			extendedFreeTrail = dict["extendedFreeTrail"] as? Int
+		}
+		if dict["extendedFreeTrailEndsWarning"] != nil {
+			extendedFreeTrailEndsWarning = dict["extendedFreeTrailEndsWarning"] as? Bool
+		}
+		if dict["eightyPercentWarning"] != nil {
+			eightyPercentWarning = dict["eightyPercentWarning"] as? Int
+		}
+		if dict["usageLimitWarning"] != nil {
+			usageLimitWarning = dict["usageLimitWarning"] as? Int
+		}
+		if dict["lastFreeTrialNotificationDay"] != nil {
+			lastFreeTrialNotificationDay = dict["lastFreeTrialNotificationDay"] as? Int
+		}
+		if dict["monitorUsage"] != nil {
+			monitorUsage = dict["monitorUsage"] as? Int
 		}
 
 	}
