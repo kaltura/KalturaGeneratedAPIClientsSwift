@@ -25,14 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UserEntryType: String {
-	case QUIZ = "quiz.QUIZ"
-	case VIEW_HISTORY = "viewHistory.VIEW_HISTORY"
-	case WATCH_LATER = "watchLater.WATCH_LATER"
+
+open class WatchLaterUserEntry: UserEntry {
+
+	public class WatchLaterUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

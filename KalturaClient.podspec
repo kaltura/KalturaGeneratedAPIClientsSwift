@@ -465,6 +465,11 @@ s.subspec 'Voicebase' do |ssp|
  ssp.dependency 'KalturaClient/Transcript'
 end
 
+s.subspec 'WatchLater' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/watchLater/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'WebexDropFolder' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/WebexDropFolder/**/*'
  ssp.dependency 'KalturaClient/Core'
