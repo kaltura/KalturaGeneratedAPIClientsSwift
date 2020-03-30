@@ -226,6 +226,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("applicationVersionIn") 
 			}
 		}
+		
+		public var nodeIdsIn: BaseTokenizedObject {
+			get {
+				return self.append("nodeIdsIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -289,6 +295,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var ispIn: String? = nil
 	/**  filter by application version  */
 	public var applicationVersionIn: String? = nil
+	/**  filter by node id  */
+	public var nodeIdsIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -415,6 +423,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["applicationVersionIn"] = applicationVersionIn
 	}
 	
+	public func setMultiRequestToken(nodeIdsIn: String) {
+		self.dict["nodeIdsIn"] = nodeIdsIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -512,6 +524,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["applicationVersionIn"] != nil {
 			applicationVersionIn = dict["applicationVersionIn"] as? String
+		}
+		if dict["nodeIdsIn"] != nil {
+			nodeIdsIn = dict["nodeIdsIn"] as? String
 		}
 
 	}
@@ -613,6 +628,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(applicationVersionIn != nil) {
 			dict["applicationVersionIn"] = applicationVersionIn!
+		}
+		if(nodeIdsIn != nil) {
+			dict["nodeIdsIn"] = nodeIdsIn!
 		}
 		return dict
 	}

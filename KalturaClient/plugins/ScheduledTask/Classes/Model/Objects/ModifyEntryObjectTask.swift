@@ -78,6 +78,12 @@ open class ModifyEntryObjectTask: ObjectTask {
 				return self.append("inputEntitledUsersPublish") 
 			}
 		}
+		
+		public var resetMediaRepurposingProcess: BaseTokenizedObject {
+			get {
+				return self.append("resetMediaRepurposingProcess") 
+			}
+		}
 	}
 
 	/**  The input metadata profile id  */
@@ -94,6 +100,8 @@ open class ModifyEntryObjectTask: ObjectTask {
 	public var inputEntitledUsersEdit: String? = nil
 	/**  The input entitled users publish to set on the entry  */
 	public var inputEntitledUsersPublish: String? = nil
+	/**  Should clear the media repurposing data and therefore reset the process  */
+	public var resetMediaRepurposingProcess: Bool? = nil
 
 
 	public func setMultiRequestToken(inputMetadataProfileId: String) {
@@ -114,6 +122,10 @@ open class ModifyEntryObjectTask: ObjectTask {
 	
 	public func setMultiRequestToken(inputEntitledUsersPublish: String) {
 		self.dict["inputEntitledUsersPublish"] = inputEntitledUsersPublish
+	}
+	
+	public func setMultiRequestToken(resetMediaRepurposingProcess: String) {
+		self.dict["resetMediaRepurposingProcess"] = resetMediaRepurposingProcess
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -140,6 +152,9 @@ open class ModifyEntryObjectTask: ObjectTask {
 		if dict["inputEntitledUsersPublish"] != nil {
 			inputEntitledUsersPublish = dict["inputEntitledUsersPublish"] as? String
 		}
+		if dict["resetMediaRepurposingProcess"] != nil {
+			resetMediaRepurposingProcess = dict["resetMediaRepurposingProcess"] as? Bool
+		}
 
 	}
 
@@ -165,6 +180,9 @@ open class ModifyEntryObjectTask: ObjectTask {
 		}
 		if(inputEntitledUsersPublish != nil) {
 			dict["inputEntitledUsersPublish"] = inputEntitledUsersPublish!
+		}
+		if(resetMediaRepurposingProcess != nil) {
+			dict["resetMediaRepurposingProcess"] = resetMediaRepurposingProcess!
 		}
 		return dict
 	}

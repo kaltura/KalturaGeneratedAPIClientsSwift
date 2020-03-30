@@ -148,6 +148,12 @@ open class LiveEntry: MediaEntry {
 				return self.append("lastBroadcastEndTime") 
 			}
 		}
+		
+		public var broadcastTime: BaseTokenizedObject {
+			get {
+				return self.append("broadcastTime") 
+			}
+		}
 	}
 
 	/**  The message to be presented when the stream is offline  */
@@ -186,6 +192,8 @@ open class LiveEntry: MediaEntry {
 	public var recordingStatus: RecordingStatus? = nil
 	/**  The time the last broadcast finished.  */
 	public var lastBroadcastEndTime: Int? = nil
+	/**  The time when the entry was first live with view_all  */
+	public var broadcastTime: Int? = nil
 
 
 	public func setMultiRequestToken(offlineMessage: String) {
@@ -252,6 +260,10 @@ open class LiveEntry: MediaEntry {
 		self.dict["lastBroadcastEndTime"] = lastBroadcastEndTime
 	}
 	
+	public func setMultiRequestToken(broadcastTime: String) {
+		self.dict["broadcastTime"] = broadcastTime
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -311,6 +323,9 @@ open class LiveEntry: MediaEntry {
 		if dict["lastBroadcastEndTime"] != nil {
 			lastBroadcastEndTime = dict["lastBroadcastEndTime"] as? Int
 		}
+		if dict["broadcastTime"] != nil {
+			broadcastTime = dict["broadcastTime"] as? Int
+		}
 
 	}
 
@@ -360,6 +375,9 @@ open class LiveEntry: MediaEntry {
 		}
 		if(recordingStatus != nil) {
 			dict["recordingStatus"] = recordingStatus!.rawValue
+		}
+		if(broadcastTime != nil) {
+			dict["broadcastTime"] = broadcastTime!
 		}
 		return dict
 	}
