@@ -46,6 +46,7 @@ public enum DistributionProviderType: String {
 	case IDETIC = "ideticDistribution.IDETIC"
 	case METRO_PCS = "metroPcsDistribution.METRO_PCS"
 	case MSN = "msnDistribution.MSN"
+	case PODCAST = "podcastDistribution.PODCAST"
 	case QUICKPLAY = "quickPlayDistribution.QUICKPLAY"
 	case UNICORN = "unicornDistribution.UNICORN"
 	case YAHOO = "yahooDistribution.YAHOO"

@@ -25,16 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class RatingCountBaseFilter: RelatedFilter {
+
+	public class RatingCountBaseFilterTokenizer: RelatedFilter.RelatedFilterTokenizer {
+		
+		public var entryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryIdEqual") 
+			}
+		}
+		
+		public var rankIn: BaseTokenizedObject {
+			get {
+				return self.append("rankIn") 
+			}
+		}
+	}
+
+	public var entryIdEqual: String? = nil
+	public var rankIn: String? = nil
+
+
+	public func setMultiRequestToken(entryIdEqual: String) {
+		self.dict["entryIdEqual"] = entryIdEqual
+	}
+	
+	public func setMultiRequestToken(rankIn: String) {
+		self.dict["rankIn"] = rankIn
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["entryIdEqual"] != nil {
+			entryIdEqual = dict["entryIdEqual"] as? String
+		}
+		if dict["rankIn"] != nil {
+			rankIn = dict["rankIn"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(entryIdEqual != nil) {
+			dict["entryIdEqual"] = entryIdEqual!
+		}
+		if(rankIn != nil) {
+			dict["rankIn"] = rankIn!
+		}
+		return dict
+	}
 }
+

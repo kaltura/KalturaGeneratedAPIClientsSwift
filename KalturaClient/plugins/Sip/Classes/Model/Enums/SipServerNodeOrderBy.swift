@@ -31,10 +31,11 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+public enum SipServerNodeOrderBy: String {
+	case CREATED_AT_ASC = "+createdAt"
+	case HEARTBEAT_TIME_ASC = "+heartbeatTime"
+	case UPDATED_AT_ASC = "+updatedAt"
+	case CREATED_AT_DESC = "-createdAt"
+	case HEARTBEAT_TIME_DESC = "-heartbeatTime"
+	case UPDATED_AT_DESC = "-updatedAt"
 }

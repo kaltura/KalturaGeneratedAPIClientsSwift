@@ -25,16 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class RatingCountFilter: RatingCountBaseFilter {
+
+	public class RatingCountFilterTokenizer: RatingCountBaseFilter.RatingCountBaseFilterTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

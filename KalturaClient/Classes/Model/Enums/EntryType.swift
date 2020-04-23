@@ -33,7 +33,9 @@
  */
 public enum EntryType: String {
 	case AUTOMATIC = "-1"
+	case CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER"
 	case EXTERNAL_MEDIA = "externalMedia.externalMedia"
+	case SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER"
 	case MEDIA_CLIP = "1"
 	case MIX = "2"
 	case PLAYLIST = "5"

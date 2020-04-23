@@ -141,6 +141,11 @@ s.subspec 'ComcastMrssDistribution' do |ssp|
  ssp.dependency 'KalturaClient/CuePoint'
 end
 
+s.subspec 'Conference' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/conference/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'ConfMaps' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/confMaps/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -316,6 +321,11 @@ s.subspec 'Like' do |ssp|
  ssp.dependency 'KalturaClient/Core'
 end
 
+s.subspec 'LiveCluster' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/liveCluster/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'Metadata' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/metadata/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -337,6 +347,12 @@ s.subspec 'PlayReady' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/playReady/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/Drm'
+end
+
+s.subspec 'PodcastDistribution' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/podcastDistribution/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/ContentDistribution'
 end
 
 s.subspec 'Poll' do |ssp|
@@ -362,10 +378,20 @@ s.subspec 'Quiz' do |ssp|
  ssp.dependency 'KalturaClient/CuePoint'
 end
 
+s.subspec 'Rating' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/rating/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'Reach' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/reach/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/EventNotification'
+end
+
+s.subspec 'Registration' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/registration/**/*'
+ ssp.dependency 'KalturaClient/Core'
 end
 
 s.subspec 'Schedule' do |ssp|
@@ -410,6 +436,16 @@ s.subspec 'ShortLink' do |ssp|
  ssp.dependency 'KalturaClient/Core'
 end
 
+s.subspec 'Sip' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/sip/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
+s.subspec 'Sso' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/sso/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'SystemPartner' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/systemPartner/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -424,6 +460,12 @@ s.subspec 'ThumbCuePoint' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/thumbCuePoint/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/CuePoint'
+end
+
+s.subspec 'Thumbnail' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/thumbnail/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/FileSync'
 end
 
 s.subspec 'Transcript' do |ssp|
@@ -445,6 +487,11 @@ end
 
 s.subspec 'Velocix' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/velocix/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
+s.subspec 'Vendor' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/vendor/**/*'
  ssp.dependency 'KalturaClient/Core'
 end
 

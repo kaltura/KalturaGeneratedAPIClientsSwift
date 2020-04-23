@@ -25,16 +25,68 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class SipEntryServerNode: EntryServerNode {
+
+	public class SipEntryServerNodeTokenizer: EntryServerNode.EntryServerNodeTokenizer {
+		
+		public var sipRoomId: BaseTokenizedObject {
+			get {
+				return self.append("sipRoomId") 
+			}
+		}
+		
+		public var sipPrimaryAdpId: BaseTokenizedObject {
+			get {
+				return self.append("sipPrimaryAdpId") 
+			}
+		}
+		
+		public var sipSecondaryAdpId: BaseTokenizedObject {
+			get {
+				return self.append("sipSecondaryAdpId") 
+			}
+		}
+	}
+
+	public var sipRoomId: String? = nil
+	public var sipPrimaryAdpId: String? = nil
+	public var sipSecondaryAdpId: String? = nil
+
+
+	public func setMultiRequestToken(sipRoomId: String) {
+		self.dict["sipRoomId"] = sipRoomId
+	}
+	
+	public func setMultiRequestToken(sipPrimaryAdpId: String) {
+		self.dict["sipPrimaryAdpId"] = sipPrimaryAdpId
+	}
+	
+	public func setMultiRequestToken(sipSecondaryAdpId: String) {
+		self.dict["sipSecondaryAdpId"] = sipSecondaryAdpId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["sipRoomId"] != nil {
+			sipRoomId = dict["sipRoomId"] as? String
+		}
+		if dict["sipPrimaryAdpId"] != nil {
+			sipPrimaryAdpId = dict["sipPrimaryAdpId"] as? String
+		}
+		if dict["sipSecondaryAdpId"] != nil {
+			sipSecondaryAdpId = dict["sipSecondaryAdpId"] as? String
+		}
+
+	}
+
 }
+

@@ -25,16 +25,54 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class ConferenceEntryServerNode: EntryServerNode {
+
+	public class ConferenceEntryServerNodeTokenizer: EntryServerNode.EntryServerNodeTokenizer {
+		
+		public var confRoomStatus: BaseTokenizedObject {
+			get {
+				return self.append("confRoomStatus") 
+			}
+		}
+		
+		public var registered: BaseTokenizedObject {
+			get {
+				return self.append("registered") 
+			}
+		}
+	}
+
+	public var confRoomStatus: ConferenceRoomStatus? = nil
+	public var registered: Int? = nil
+
+
+	public func setMultiRequestToken(confRoomStatus: String) {
+		self.dict["confRoomStatus"] = confRoomStatus
+	}
+	
+	public func setMultiRequestToken(registered: String) {
+		self.dict["registered"] = registered
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["confRoomStatus"] != nil {
+			confRoomStatus = ConferenceRoomStatus(rawValue: (dict["confRoomStatus"] as? Int)!)
+		}
+		if dict["registered"] != nil {
+			registered = dict["registered"] as? Int
+		}
+
+	}
+
 }
+

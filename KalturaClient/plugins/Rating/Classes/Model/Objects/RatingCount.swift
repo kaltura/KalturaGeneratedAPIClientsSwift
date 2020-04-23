@@ -25,16 +25,81 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class RatingCount: ObjectBase {
+
+	public class RatingCountTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var rank: BaseTokenizedObject {
+			get {
+				return self.append("rank") 
+			}
+		}
+		
+		public var count: BaseTokenizedObject {
+			get {
+				return self.append("count") 
+			}
+		}
+	}
+
+	public var entryId: String? = nil
+	public var rank: Int? = nil
+	public var count: Int? = nil
+
+
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(rank: String) {
+		self.dict["rank"] = rank
+	}
+	
+	public func setMultiRequestToken(count: String) {
+		self.dict["count"] = count
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["entryId"] != nil {
+			entryId = dict["entryId"] as? String
+		}
+		if dict["rank"] != nil {
+			rank = dict["rank"] as? Int
+		}
+		if dict["count"] != nil {
+			count = dict["count"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(entryId != nil) {
+			dict["entryId"] = entryId!
+		}
+		if(rank != nil) {
+			dict["rank"] = rank!
+		}
+		if(count != nil) {
+			dict["count"] = count!
+		}
+		return dict
+	}
 }
+

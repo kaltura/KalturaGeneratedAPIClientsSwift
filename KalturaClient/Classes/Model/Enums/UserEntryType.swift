@@ -33,6 +33,7 @@
  */
 public enum UserEntryType: String {
 	case QUIZ = "quiz.QUIZ"
+	case REGISTRATION = "registration.REGISTRATION"
 	case VIEW_HISTORY = "viewHistory.VIEW_HISTORY"
 	case WATCH_LATER = "watchLater.WATCH_LATER"
 }

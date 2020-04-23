@@ -25,16 +25,78 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+open class PodcastDistributionProfile: DistributionProfile {
+
+	public class PodcastDistributionProfileTokenizer: DistributionProfile.DistributionProfileTokenizer {
+		
+		public var xsl: BaseTokenizedObject {
+			get {
+				return self.append("xsl") 
+			}
+		}
+		
+		public var feedId: BaseTokenizedObject {
+			get {
+				return self.append("feedId") 
+			}
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+	}
+
+	public var xsl: String? = nil
+	public var feedId: String? = nil
+	public var metadataProfileId: Int? = nil
+
+
+	public func setMultiRequestToken(xsl: String) {
+		self.dict["xsl"] = xsl
+	}
+	
+	public func setMultiRequestToken(feedId: String) {
+		self.dict["feedId"] = feedId
+	}
+	
+	public func setMultiRequestToken(metadataProfileId: String) {
+		self.dict["metadataProfileId"] = metadataProfileId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["xsl"] != nil {
+			xsl = dict["xsl"] as? String
+		}
+		if dict["feedId"] != nil {
+			feedId = dict["feedId"] as? String
+		}
+		if dict["metadataProfileId"] != nil {
+			metadataProfileId = dict["metadataProfileId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(xsl != nil) {
+			dict["xsl"] = xsl!
+		}
+		if(metadataProfileId != nil) {
+			dict["metadataProfileId"] = metadataProfileId!
+		}
+		return dict
+	}
 }
+

@@ -25,16 +25,30 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ServerNodeType: String {
-	case CONFERENCE_SERVER = "conference.CONFERENCE_SERVER"
-	case LIVE_CLUSTER_MEDIA_SERVER = "liveCluster.LIVE_CLUSTER_MEDIA_SERVER"
-	case SIP_SERVER = "sip.SIP_SERVER"
-	case WOWZA_MEDIA_SERVER = "wowza.WOWZA_MEDIA_SERVER"
-	case EDGE = "1"
+
+public final class ThumbnailService{
+
+	public class TransformTokenizer: ClientTokenizer  {
+		
+		public var transformString: BaseTokenizedObject {
+			get {
+				return self.append("transformString") 
+			}
+		}
+	}
+
+	/**  Retrieves a thumbnail according to the required transformation  */
+	public static func transform(transformString: String) -> NullRequestBuilder<TransformTokenizer> {
+		let request: NullRequestBuilder<TransformTokenizer> = NullRequestBuilder<TransformTokenizer>(service: "thumbnail_thumbnail", action: "transform")
+			.setParam(key: "transformString", value: transformString)
+
+		return request
+	}
 }
