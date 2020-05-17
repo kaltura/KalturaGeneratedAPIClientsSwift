@@ -33,54 +33,80 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class PlaylistFilter: PlaylistBaseFilter {
+open class BaseInteractivity: ObjectBase {
 
-	public class PlaylistFilterTokenizer: PlaylistBaseFilter.PlaylistBaseFilterTokenizer {
+	public class BaseInteractivityTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public var playListTypeEqual: BaseTokenizedObject {
+		public var data: BaseTokenizedObject {
 			get {
-				return self.append("playListTypeEqual") 
+				return self.append("data") 
 			}
 		}
 		
-		public var playListTypeIn: BaseTokenizedObject {
+		public var version: BaseTokenizedObject {
 			get {
-				return self.append("playListTypeIn") 
+				return self.append("version") 
+			}
+		}
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
 			}
 		}
 	}
 
-	public var playListTypeEqual: PlaylistType? = nil
-	public var playListTypeIn: String? = nil
+	public var data: String? = nil
+	public var version: Int? = nil
+	public var entryId: String? = nil
+	/**  Interactivity update date as Unix timestamp (In seconds)  */
+	public var updatedAt: Int? = nil
 
 
-	public func setMultiRequestToken(playListTypeEqual: String) {
-		self.dict["playListTypeEqual"] = playListTypeEqual
+	public func setMultiRequestToken(data: String) {
+		self.dict["data"] = data
 	}
 	
-	public func setMultiRequestToken(playListTypeIn: String) {
-		self.dict["playListTypeIn"] = playListTypeIn
+	public func setMultiRequestToken(version: String) {
+		self.dict["version"] = version
+	}
+	
+	public func setMultiRequestToken(entryId: String) {
+		self.dict["entryId"] = entryId
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["playListTypeEqual"] != nil {
-			playListTypeEqual = PlaylistType(rawValue: (dict["playListTypeEqual"] as? Int)!)
+		if dict["data"] != nil {
+			data = dict["data"] as? String
 		}
-		if dict["playListTypeIn"] != nil {
-			playListTypeIn = dict["playListTypeIn"] as? String
+		if dict["version"] != nil {
+			version = dict["version"] as? Int
+		}
+		if dict["entryId"] != nil {
+			entryId = dict["entryId"] as? String
+		}
+		if dict["updatedAt"] != nil {
+			updatedAt = dict["updatedAt"] as? Int
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(playListTypeEqual != nil) {
-			dict["playListTypeEqual"] = playListTypeEqual!.rawValue
-		}
-		if(playListTypeIn != nil) {
-			dict["playListTypeIn"] = playListTypeIn!
+		if(data != nil) {
+			dict["data"] = data!
 		}
 		return dict
 	}

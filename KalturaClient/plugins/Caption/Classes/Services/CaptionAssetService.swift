@@ -74,6 +74,30 @@ public final class CaptionAssetService{
 		return request
 	}
 
+	public class ExportTokenizer: ClientTokenizer  {
+		
+		public var assetId: BaseTokenizedObject {
+			get {
+				return self.append("assetId") 
+			}
+		}
+		
+		public var storageProfileId: BaseTokenizedObject {
+			get {
+				return self.append("storageProfileId") 
+			}
+		}
+	}
+
+	/**  manually export an asset  */
+	public static func export(assetId: String, storageProfileId: Int) -> RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> {
+		let request: RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer> = RequestBuilder<FlavorAsset, FlavorAsset.FlavorAssetTokenizer, ExportTokenizer>(service: "caption_captionasset", action: "export")
+			.setParam(key: "assetId", value: assetId)
+			.setParam(key: "storageProfileId", value: storageProfileId)
+
+		return request
+	}
+
 	public class GetTokenizer: ClientTokenizer  {
 		
 		public var captionAssetId: BaseTokenizedObject {

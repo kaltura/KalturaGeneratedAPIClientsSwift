@@ -41,4 +41,5 @@ public enum BulkUploadAction: String {
 	case ADD_OR_UPDATE = "6"
 	case ACTIVATE = "7"
 	case REJECT = "8"
+	case UPDATE_STATUS = "9"
 }

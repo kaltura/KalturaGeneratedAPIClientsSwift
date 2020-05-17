@@ -51,6 +51,34 @@ public final class VendorCatalogItemService{
 		return request
 	}
 
+	public class AddFromBulkUploadTokenizer: ClientTokenizer  {
+		
+		public func bulkUploadData<T: BulkUploadJobData.BulkUploadJobDataTokenizer>() -> T {
+			return T(self.append("bulkUploadData"))
+		}
+		
+		public func bulkUploadVendorCatalogItemData<T: BulkUploadVendorCatalogItemData.BulkUploadVendorCatalogItemDataTokenizer>() -> T {
+			return T(self.append("bulkUploadVendorCatalogItemData"))
+		}
+	}
+
+	public static func addFromBulkUpload(fileData: RequestFile) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		return addFromBulkUpload(fileData: fileData, bulkUploadData: nil)
+	}
+
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		return addFromBulkUpload(fileData: fileData, bulkUploadData: bulkUploadData, bulkUploadVendorCatalogItemData: nil)
+	}
+
+	public static func addFromBulkUpload(fileData: RequestFile, bulkUploadData: BulkUploadJobData?, bulkUploadVendorCatalogItemData: BulkUploadVendorCatalogItemData?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> {
+		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, AddFromBulkUploadTokenizer>(service: "reach_vendorcatalogitem", action: "addFromBulkUpload")
+			.setFile(key: "fileData", value: fileData)
+			.setParam(key: "bulkUploadData", value: bulkUploadData)
+			.setParam(key: "bulkUploadVendorCatalogItemData", value: bulkUploadVendorCatalogItemData)
+
+		return request
+	}
+
 	public class DeleteTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {
@@ -81,6 +109,26 @@ public final class VendorCatalogItemService{
 	public static func get(id: Int) -> RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, GetTokenizer> {
 		let request: RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, GetTokenizer> = RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, GetTokenizer>(service: "reach_vendorcatalogitem", action: "get")
 			.setParam(key: "id", value: id)
+
+		return request
+	}
+
+	public class GetServeUrlTokenizer: ClientTokenizer  {
+		
+		public var vendorPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("vendorPartnerId") 
+			}
+		}
+	}
+
+	public static func getServeUrl() -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		return getServeUrl(vendorPartnerId: nil)
+	}
+
+	public static func getServeUrl(vendorPartnerId: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer>(service: "reach_vendorcatalogitem", action: "getServeUrl")
+			.setParam(key: "vendorPartnerId", value: vendorPartnerId)
 
 		return request
 	}

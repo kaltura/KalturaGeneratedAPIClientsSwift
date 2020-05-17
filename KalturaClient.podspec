@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'KalturaClient'
-s.version          = '16.0.0'
+s.version          = '16.2.0'
 s.summary          = 'KalturaClient.'
 s.homepage         = 'https://github.com/kaltura/clients-generator/tree/master/sources/swift'
 s.license          = { :type => 'AGPLv3', :text => 'AGPLv3' }
@@ -311,6 +311,12 @@ s.subspec 'Integration' do |ssp|
  ssp.dependency 'KalturaClient/Metadata'
 end
 
+s.subspec 'Interactivity' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/interactivity/**/*'
+ ssp.dependency 'KalturaClient/Core'
+ ssp.dependency 'KalturaClient/FileSync'
+end
+
 s.subspec 'Kontiki' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/kontiki/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -387,6 +393,7 @@ s.subspec 'Reach' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/reach/**/*'
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/EventNotification'
+ ssp.dependency 'KalturaClient/BulkUpload'
 end
 
 s.subspec 'Registration' do |ssp|

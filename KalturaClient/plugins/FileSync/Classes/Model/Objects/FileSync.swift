@@ -186,6 +186,18 @@ open class FileSync: ObjectBase {
 				return self.append("originalId") 
 			}
 		}
+		
+		public var srcPath: BaseTokenizedObject {
+			get {
+				return self.append("srcPath") 
+			}
+		}
+		
+		public var srcEncKey: BaseTokenizedObject {
+			get {
+				return self.append("srcEncKey") 
+			}
+		}
 	}
 
 	public var id: Int64? = nil
@@ -213,6 +225,8 @@ open class FileSync: ObjectBase {
 	public var isCurrentDc: Bool? = nil
 	public var isDir: Bool? = nil
 	public var originalId: Int? = nil
+	public var srcPath: String? = nil
+	public var srcEncKey: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -315,6 +329,14 @@ open class FileSync: ObjectBase {
 		self.dict["originalId"] = originalId
 	}
 	
+	public func setMultiRequestToken(srcPath: String) {
+		self.dict["srcPath"] = srcPath
+	}
+	
+	public func setMultiRequestToken(srcEncKey: String) {
+		self.dict["srcEncKey"] = srcEncKey
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -393,6 +415,12 @@ open class FileSync: ObjectBase {
 		if dict["originalId"] != nil {
 			originalId = dict["originalId"] as? Int
 		}
+		if dict["srcPath"] != nil {
+			srcPath = dict["srcPath"] as? String
+		}
+		if dict["srcEncKey"] != nil {
+			srcEncKey = dict["srcEncKey"] as? String
+		}
 
 	}
 
@@ -406,6 +434,12 @@ open class FileSync: ObjectBase {
 		}
 		if(filePath != nil) {
 			dict["filePath"] = filePath!
+		}
+		if(srcPath != nil) {
+			dict["srcPath"] = srcPath!
+		}
+		if(srcEncKey != nil) {
+			dict["srcEncKey"] = srcEncKey!
 		}
 		return dict
 	}

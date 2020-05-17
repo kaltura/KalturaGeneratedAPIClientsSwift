@@ -229,15 +229,27 @@ open class StorageProfile: ObjectBase {
 			}
 		}
 		
-		public var mappedPackagerUrl: BaseTokenizedObject {
+		public var packagerUrl: BaseTokenizedObject {
 			get {
-				return self.append("mappedPackagerUrl") 
+				return self.append("packagerUrl") 
 			}
 		}
 		
-		public var regularPackagerUrl: BaseTokenizedObject {
+		public var exportPeriodically: BaseTokenizedObject {
 			get {
-				return self.append("regularPackagerUrl") 
+				return self.append("exportPeriodically") 
+			}
+		}
+		
+		public var excludedFlavorParamsIds: BaseTokenizedObject {
+			get {
+				return self.append("excludedFlavorParamsIds") 
+			}
+		}
+		
+		public var shouldExportCaptions: BaseTokenizedObject {
+			get {
+				return self.append("shouldExportCaptions") 
 			}
 		}
 	}
@@ -282,8 +294,10 @@ open class StorageProfile: ObjectBase {
 	public var publicKey: String? = nil
 	public var passPhrase: String? = nil
 	public var shouldExportThumbs: Bool? = nil
-	public var mappedPackagerUrl: String? = nil
-	public var regularPackagerUrl: String? = nil
+	public var packagerUrl: String? = nil
+	public var exportPeriodically: Bool? = nil
+	public var excludedFlavorParamsIds: String? = nil
+	public var shouldExportCaptions: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -402,12 +416,20 @@ open class StorageProfile: ObjectBase {
 		self.dict["shouldExportThumbs"] = shouldExportThumbs
 	}
 	
-	public func setMultiRequestToken(mappedPackagerUrl: String) {
-		self.dict["mappedPackagerUrl"] = mappedPackagerUrl
+	public func setMultiRequestToken(packagerUrl: String) {
+		self.dict["packagerUrl"] = packagerUrl
 	}
 	
-	public func setMultiRequestToken(regularPackagerUrl: String) {
-		self.dict["regularPackagerUrl"] = regularPackagerUrl
+	public func setMultiRequestToken(exportPeriodically: String) {
+		self.dict["exportPeriodically"] = exportPeriodically
+	}
+	
+	public func setMultiRequestToken(excludedFlavorParamsIds: String) {
+		self.dict["excludedFlavorParamsIds"] = excludedFlavorParamsIds
+	}
+	
+	public func setMultiRequestToken(shouldExportCaptions: String) {
+		self.dict["shouldExportCaptions"] = shouldExportCaptions
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -509,11 +531,17 @@ open class StorageProfile: ObjectBase {
 		if dict["shouldExportThumbs"] != nil {
 			shouldExportThumbs = dict["shouldExportThumbs"] as? Bool
 		}
-		if dict["mappedPackagerUrl"] != nil {
-			mappedPackagerUrl = dict["mappedPackagerUrl"] as? String
+		if dict["packagerUrl"] != nil {
+			packagerUrl = dict["packagerUrl"] as? String
 		}
-		if dict["regularPackagerUrl"] != nil {
-			regularPackagerUrl = dict["regularPackagerUrl"] as? String
+		if dict["exportPeriodically"] != nil {
+			exportPeriodically = dict["exportPeriodically"] as? Bool
+		}
+		if dict["excludedFlavorParamsIds"] != nil {
+			excludedFlavorParamsIds = dict["excludedFlavorParamsIds"] as? String
+		}
+		if dict["shouldExportCaptions"] != nil {
+			shouldExportCaptions = dict["shouldExportCaptions"] as? Bool
 		}
 
 	}
@@ -604,11 +632,17 @@ open class StorageProfile: ObjectBase {
 		if(shouldExportThumbs != nil) {
 			dict["shouldExportThumbs"] = shouldExportThumbs!
 		}
-		if(mappedPackagerUrl != nil) {
-			dict["mappedPackagerUrl"] = mappedPackagerUrl!
+		if(packagerUrl != nil) {
+			dict["packagerUrl"] = packagerUrl!
 		}
-		if(regularPackagerUrl != nil) {
-			dict["regularPackagerUrl"] = regularPackagerUrl!
+		if(exportPeriodically != nil) {
+			dict["exportPeriodically"] = exportPeriodically!
+		}
+		if(excludedFlavorParamsIds != nil) {
+			dict["excludedFlavorParamsIds"] = excludedFlavorParamsIds!
+		}
+		if(shouldExportCaptions != nil) {
+			dict["shouldExportCaptions"] = shouldExportCaptions!
 		}
 		return dict
 	}

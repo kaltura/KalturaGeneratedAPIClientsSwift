@@ -34,6 +34,13 @@
 public enum VendorServiceTurnAroundTime: Int {
 	case BEST_EFFORT = -1
 	case IMMEDIATE = 0
+	case ONE_BUSINESS_DAY = 1
+	case TWO_BUSINESS_DAYS = 2
+	case THREE_BUSINESS_DAYS = 3
+	case FOUR_BUSINESS_DAYS = 4
+	case FIVE_BUSINESS_DAYS = 5
+	case SIX_BUSINESS_DAYS = 6
+	case SEVEN_BUSINESS_DAYS = 7
 	case THIRTY_MINUTES = 1800
 	case TWO_HOURS = 7200
 	case THREE_HOURS = 10800
@@ -41,9 +48,7 @@ public enum VendorServiceTurnAroundTime: Int {
 	case EIGHT_HOURS = 28800
 	case TWELVE_HOURS = 43200
 	case TWENTY_FOUR_HOURS = 86400
-	case ONE_BUSINESS_DAY = 129600
 	case FORTY_EIGHT_HOURS = 172800
-	case TWO_BUSINESS_DAYS = 216000
 	case FOUR_DAYS = 345600
 	case FIVE_DAYS = 432000
 	case TEN_DAYS = 864000

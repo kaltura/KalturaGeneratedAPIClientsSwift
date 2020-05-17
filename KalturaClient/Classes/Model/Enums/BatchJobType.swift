@@ -102,4 +102,5 @@ public enum BatchJobType: String {
 	case REPORT_EXPORT = "50"
 	case LIVE_ENTRY_ARCHIVE = "51"
 	case STORAGE_UPDATE = "52"
+	case STORAGE_PERIODIC_EXPORT = "53"
 }

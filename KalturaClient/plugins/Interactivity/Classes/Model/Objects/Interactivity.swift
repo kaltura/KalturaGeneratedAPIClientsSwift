@@ -25,21 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadObjectType: String {
-	case JOB = "bulkUploadFilter.JOB"
-	case SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT"
-	case SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE"
-	case ENTRY = "1"
-	case CATEGORY = "2"
-	case USER = "3"
-	case CATEGORY_USER = "4"
-	case CATEGORY_ENTRY = "5"
-	case USER_ENTRY = "6"
-	case VENDOR_CATALOG_ITEM = "7"
+
+open class Interactivity: BaseInteractivity {
+
+	public class InteractivityTokenizer: BaseInteractivity.BaseInteractivityTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

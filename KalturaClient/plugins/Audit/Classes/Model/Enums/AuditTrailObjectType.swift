@@ -40,6 +40,7 @@ public enum AuditTrailObjectType: String {
 	case METADATA_PROFILE = "MetadataProfile"
 	case PARTNER = "Partner"
 	case PERMISSION = "Permission"
+	case REACH_PROFILE = "ReachProfile"
 	case UPLOAD_TOKEN = "UploadToken"
 	case USER_LOGIN_DATA = "UserLoginData"
 	case USER_ROLE = "UserRole"

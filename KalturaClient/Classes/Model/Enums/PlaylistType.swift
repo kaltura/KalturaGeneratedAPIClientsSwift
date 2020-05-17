@@ -35,4 +35,5 @@ public enum PlaylistType: Int {
 	case STATIC_LIST = 3
 	case DYNAMIC = 10
 	case EXTERNAL = 101
+	case PATH = 102
 }

@@ -232,6 +232,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("nodeIdsIn") 
 			}
 		}
+		
+		public var categoriesAncestorIdIn: BaseTokenizedObject {
+			get {
+				return self.append("categoriesAncestorIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -297,6 +303,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var applicationVersionIn: String? = nil
 	/**  filter by node id  */
 	public var nodeIdsIn: String? = nil
+	/**  filter by categories ancestor  */
+	public var categoriesAncestorIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -427,6 +435,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["nodeIdsIn"] = nodeIdsIn
 	}
 	
+	public func setMultiRequestToken(categoriesAncestorIdIn: String) {
+		self.dict["categoriesAncestorIdIn"] = categoriesAncestorIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -527,6 +539,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["nodeIdsIn"] != nil {
 			nodeIdsIn = dict["nodeIdsIn"] as? String
+		}
+		if dict["categoriesAncestorIdIn"] != nil {
+			categoriesAncestorIdIn = dict["categoriesAncestorIdIn"] as? String
 		}
 
 	}
@@ -631,6 +646,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(nodeIdsIn != nil) {
 			dict["nodeIdsIn"] = nodeIdsIn!
+		}
+		if(categoriesAncestorIdIn != nil) {
+			dict["categoriesAncestorIdIn"] = categoriesAncestorIdIn!
 		}
 		return dict
 	}

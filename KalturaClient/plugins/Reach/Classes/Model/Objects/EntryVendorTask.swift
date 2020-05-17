@@ -202,6 +202,12 @@ open class EntryVendorTask: ObjectBase {
 				return self.append("serviceFeature") 
 			}
 		}
+		
+		public var turnAroundTime: BaseTokenizedObject {
+			get {
+				return self.append("turnAroundTime") 
+			}
+		}
 	}
 
 	public var id: Int64? = nil
@@ -250,6 +256,7 @@ open class EntryVendorTask: ObjectBase {
 	public var expectedFinishTime: Int? = nil
 	public var serviceType: VendorServiceType? = nil
 	public var serviceFeature: VendorServiceFeature? = nil
+	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -360,6 +367,10 @@ open class EntryVendorTask: ObjectBase {
 		self.dict["serviceFeature"] = serviceFeature
 	}
 	
+	public func setMultiRequestToken(turnAroundTime: String) {
+		self.dict["turnAroundTime"] = turnAroundTime
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -445,6 +456,9 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if dict["serviceFeature"] != nil {
 			serviceFeature = VendorServiceFeature(rawValue: (dict["serviceFeature"] as? Int)!)
+		}
+		if dict["turnAroundTime"] != nil {
+			turnAroundTime = VendorServiceTurnAroundTime(rawValue: (dict["turnAroundTime"] as? Int)!)
 		}
 
 	}
