@@ -72,6 +72,12 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 				return self.append("endPoint") 
 			}
 		}
+		
+		public var storageClass: BaseTokenizedObject {
+			get {
+				return self.append("storageClass") 
+			}
+		}
 	}
 
 	public var filesPermissionInS3: AmazonS3StorageProfileFilesPermissionLevel? = nil
@@ -80,6 +86,7 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 	public var sseKmsKeyId: String? = nil
 	public var signatureType: String? = nil
 	public var endPoint: String? = nil
+	public var storageClass: String? = nil
 
 
 	public func setMultiRequestToken(filesPermissionInS3: String) {
@@ -106,6 +113,10 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 		self.dict["endPoint"] = endPoint
 	}
 	
+	public func setMultiRequestToken(storageClass: String) {
+		self.dict["storageClass"] = storageClass
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -126,6 +137,9 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 		}
 		if dict["endPoint"] != nil {
 			endPoint = dict["endPoint"] as? String
+		}
+		if dict["storageClass"] != nil {
+			storageClass = dict["storageClass"] as? String
 		}
 
 	}
@@ -149,6 +163,9 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 		}
 		if(endPoint != nil) {
 			dict["endPoint"] = endPoint!
+		}
+		if(storageClass != nil) {
+			dict["storageClass"] = storageClass!
 		}
 		return dict
 	}

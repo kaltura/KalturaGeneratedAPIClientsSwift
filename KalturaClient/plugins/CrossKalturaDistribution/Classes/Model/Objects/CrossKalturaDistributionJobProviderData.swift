@@ -61,6 +61,12 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 			}
 		}
 		
+		public var distributedFileAssets: BaseTokenizedObject {
+			get {
+				return self.append("distributedFileAssets") 
+			}
+		}
+		
 		public var distributedAttachmentAssets: BaseTokenizedObject {
 			get {
 				return self.append("distributedAttachmentAssets") 
@@ -98,6 +104,9 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 	/**  Key-value array where the keys are IDs of distributed caption assets in the
 	  source account and the values are the matching IDs in the target account  */
 	public var distributedCaptionAssets: String? = nil
+	/**  Key-value array where the keys are IDs of distributed fileassets in the source
+	  account and the values are the matching IDs in the target account  */
+	public var distributedFileAssets: String? = nil
 	/**  Key-value array where the keys are IDs of distributed caption assets in the
 	  source account and the values are the matching IDs in the target account  */
 	public var distributedAttachmentAssets: String? = nil
@@ -126,6 +135,10 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 	
 	public func setMultiRequestToken(distributedCaptionAssets: String) {
 		self.dict["distributedCaptionAssets"] = distributedCaptionAssets
+	}
+	
+	public func setMultiRequestToken(distributedFileAssets: String) {
+		self.dict["distributedFileAssets"] = distributedFileAssets
 	}
 	
 	public func setMultiRequestToken(distributedAttachmentAssets: String) {
@@ -159,6 +172,9 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 		if dict["distributedCaptionAssets"] != nil {
 			distributedCaptionAssets = dict["distributedCaptionAssets"] as? String
 		}
+		if dict["distributedFileAssets"] != nil {
+			distributedFileAssets = dict["distributedFileAssets"] as? String
+		}
 		if dict["distributedAttachmentAssets"] != nil {
 			distributedAttachmentAssets = dict["distributedAttachmentAssets"] as? String
 		}
@@ -187,6 +203,9 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 		}
 		if(distributedCaptionAssets != nil) {
 			dict["distributedCaptionAssets"] = distributedCaptionAssets!
+		}
+		if(distributedFileAssets != nil) {
+			dict["distributedFileAssets"] = distributedFileAssets!
 		}
 		if(distributedAttachmentAssets != nil) {
 			dict["distributedAttachmentAssets"] = distributedAttachmentAssets!
