@@ -613,4 +613,21 @@ public final class UserService{
 
 		return request
 	}
+
+	public class ValidateHashKeyTokenizer: ClientTokenizer  {
+		
+		public var hashKey: BaseTokenizedObject {
+			get {
+				return self.append("hashKey") 
+			}
+		}
+	}
+
+	/**  Validate hash key  */
+	public static func validateHashKey(hashKey: String) -> RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, ValidateHashKeyTokenizer> {
+		let request: RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, ValidateHashKeyTokenizer> = RequestBuilder<Authentication, Authentication.AuthenticationTokenizer, ValidateHashKeyTokenizer>(service: "user", action: "validateHashKey")
+			.setParam(key: "hashKey", value: hashKey)
+
+		return request
+	}
 }

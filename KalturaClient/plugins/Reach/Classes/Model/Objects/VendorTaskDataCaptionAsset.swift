@@ -33,58 +33,38 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class AlignmentVendorTaskData: VendorTaskDataCaptionAsset {
+open class VendorTaskDataCaptionAsset: VendorTaskData {
 
-	public class AlignmentVendorTaskDataTokenizer: VendorTaskDataCaptionAsset.VendorTaskDataCaptionAssetTokenizer {
+	public class VendorTaskDataCaptionAssetTokenizer: VendorTaskData.VendorTaskDataTokenizer {
 		
-		public var textTranscriptAssetId: BaseTokenizedObject {
+		public var captionAssetId: BaseTokenizedObject {
 			get {
-				return self.append("textTranscriptAssetId") 
-			}
-		}
-		
-		public var jsonTranscriptAssetId: BaseTokenizedObject {
-			get {
-				return self.append("jsonTranscriptAssetId") 
+				return self.append("captionAssetId") 
 			}
 		}
 	}
 
-	/**  The id of the text transcript object the vendor should use while runing the
-	  alignment task  */
-	public var textTranscriptAssetId: String? = nil
-	/**  Optional - The id of the json transcript object the vendor should update once
-	  alignment task processing is done  */
-	public var jsonTranscriptAssetId: String? = nil
+	/**  Optional - The id of the caption asset object  */
+	public var captionAssetId: String? = nil
 
 
-	public func setMultiRequestToken(textTranscriptAssetId: String) {
-		self.dict["textTranscriptAssetId"] = textTranscriptAssetId
-	}
-	
-	public func setMultiRequestToken(jsonTranscriptAssetId: String) {
-		self.dict["jsonTranscriptAssetId"] = jsonTranscriptAssetId
+	public func setMultiRequestToken(captionAssetId: String) {
+		self.dict["captionAssetId"] = captionAssetId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["textTranscriptAssetId"] != nil {
-			textTranscriptAssetId = dict["textTranscriptAssetId"] as? String
-		}
-		if dict["jsonTranscriptAssetId"] != nil {
-			jsonTranscriptAssetId = dict["jsonTranscriptAssetId"] as? String
+		if dict["captionAssetId"] != nil {
+			captionAssetId = dict["captionAssetId"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(textTranscriptAssetId != nil) {
-			dict["textTranscriptAssetId"] = textTranscriptAssetId!
-		}
-		if(jsonTranscriptAssetId != nil) {
-			dict["jsonTranscriptAssetId"] = jsonTranscriptAssetId!
+		if(captionAssetId != nil) {
+			dict["captionAssetId"] = captionAssetId!
 		}
 		return dict
 	}

@@ -43,6 +43,12 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 			}
 		}
 		
+		public var excludedFreeTextGroups: BaseTokenizedObject {
+			get {
+				return self.append("excludedFreeTextGroups") 
+			}
+		}
+		
 		public var isRoot: BaseTokenizedObject {
 			get {
 				return self.append("isRoot") 
@@ -69,6 +75,7 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 	}
 
 	public var freeText: String? = nil
+	public var excludedFreeTextGroups: String? = nil
 	public var isRoot: Bool? = nil
 	public var categoriesFullNameIn: String? = nil
 	/**  All entries within this categoy or in child categories  */
@@ -79,6 +86,10 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 
 	public func setMultiRequestToken(freeText: String) {
 		self.dict["freeText"] = freeText
+	}
+	
+	public func setMultiRequestToken(excludedFreeTextGroups: String) {
+		self.dict["excludedFreeTextGroups"] = excludedFreeTextGroups
 	}
 	
 	public func setMultiRequestToken(isRoot: String) {
@@ -103,6 +114,9 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		if dict["freeText"] != nil {
 			freeText = dict["freeText"] as? String
 		}
+		if dict["excludedFreeTextGroups"] != nil {
+			excludedFreeTextGroups = dict["excludedFreeTextGroups"] as? String
+		}
 		if dict["isRoot"] != nil {
 			isRoot = dict["isRoot"] as? Bool
 		}
@@ -122,6 +136,9 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		var dict: [String: Any] = super.toDictionary()
 		if(freeText != nil) {
 			dict["freeText"] = freeText!
+		}
+		if(excludedFreeTextGroups != nil) {
+			dict["excludedFreeTextGroups"] = excludedFreeTextGroups!
 		}
 		if(isRoot != nil) {
 			dict["isRoot"] = isRoot!

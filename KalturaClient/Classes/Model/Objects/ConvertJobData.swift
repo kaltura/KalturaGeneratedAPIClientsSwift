@@ -90,6 +90,12 @@ open class ConvertJobData: ConvartableJobData {
 				return self.append("engineMessage") 
 			}
 		}
+		
+		public var userCpu: BaseTokenizedObject {
+			get {
+				return self.append("userCpu") 
+			}
+		}
 	}
 
 	public var destFileSyncLocalPath: String? = nil
@@ -101,6 +107,7 @@ open class ConvertJobData: ConvartableJobData {
 	public var customData: String? = nil
 	public var extraDestFileSyncs: Array<DestFileSyncDescriptor>? = nil
 	public var engineMessage: String? = nil
+	public var userCpu: Int? = nil
 
 
 	public func setMultiRequestToken(destFileSyncLocalPath: String) {
@@ -135,6 +142,10 @@ open class ConvertJobData: ConvartableJobData {
 		self.dict["engineMessage"] = engineMessage
 	}
 	
+	public func setMultiRequestToken(userCpu: String) {
+		self.dict["userCpu"] = userCpu
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -164,6 +175,9 @@ open class ConvertJobData: ConvartableJobData {
 		}
 		if dict["engineMessage"] != nil {
 			engineMessage = dict["engineMessage"] as? String
+		}
+		if dict["userCpu"] != nil {
+			userCpu = dict["userCpu"] as? Int
 		}
 
 	}
@@ -196,6 +210,9 @@ open class ConvertJobData: ConvartableJobData {
 		}
 		if(engineMessage != nil) {
 			dict["engineMessage"] = engineMessage!
+		}
+		if(userCpu != nil) {
+			dict["userCpu"] = userCpu!
 		}
 		return dict
 	}
