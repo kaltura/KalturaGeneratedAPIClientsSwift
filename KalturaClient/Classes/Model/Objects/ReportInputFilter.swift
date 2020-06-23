@@ -238,6 +238,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("categoriesAncestorIdIn") 
 			}
 		}
+		
+		public var hotspotIdIn: BaseTokenizedObject {
+			get {
+				return self.append("hotspotIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -305,6 +311,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var nodeIdsIn: String? = nil
 	/**  filter by categories ancestor  */
 	public var categoriesAncestorIdIn: String? = nil
+	/**  filter by hotspot id  */
+	public var hotspotIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -439,6 +447,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["categoriesAncestorIdIn"] = categoriesAncestorIdIn
 	}
 	
+	public func setMultiRequestToken(hotspotIdIn: String) {
+		self.dict["hotspotIdIn"] = hotspotIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -542,6 +554,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["categoriesAncestorIdIn"] != nil {
 			categoriesAncestorIdIn = dict["categoriesAncestorIdIn"] as? String
+		}
+		if dict["hotspotIdIn"] != nil {
+			hotspotIdIn = dict["hotspotIdIn"] as? String
 		}
 
 	}
@@ -649,6 +664,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(categoriesAncestorIdIn != nil) {
 			dict["categoriesAncestorIdIn"] = categoriesAncestorIdIn!
+		}
+		if(hotspotIdIn != nil) {
+			dict["hotspotIdIn"] = hotspotIdIn!
 		}
 		return dict
 	}

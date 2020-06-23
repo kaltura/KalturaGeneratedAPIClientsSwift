@@ -81,12 +81,21 @@ public final class InteractivityService{
 				return self.append("entryId") 
 			}
 		}
+		
+		public func dataFilter<T: InteractivityDataFilter.InteractivityDataFilterTokenizer>() -> T {
+			return T(self.append("dataFilter"))
+		}
+	}
+
+	public static func get(entryId: String) -> RequestBuilder<Interactivity, Interactivity.InteractivityTokenizer, GetTokenizer> {
+		return get(entryId: entryId, dataFilter: nil)
 	}
 
 	/**  Retrieve a interactivity object by entry id  */
-	public static func get(entryId: String) -> RequestBuilder<Interactivity, Interactivity.InteractivityTokenizer, GetTokenizer> {
+	public static func get(entryId: String, dataFilter: InteractivityDataFilter?) -> RequestBuilder<Interactivity, Interactivity.InteractivityTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Interactivity, Interactivity.InteractivityTokenizer, GetTokenizer> = RequestBuilder<Interactivity, Interactivity.InteractivityTokenizer, GetTokenizer>(service: "interactivity_interactivity", action: "get")
 			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "dataFilter", value: dataFilter)
 
 		return request
 	}
