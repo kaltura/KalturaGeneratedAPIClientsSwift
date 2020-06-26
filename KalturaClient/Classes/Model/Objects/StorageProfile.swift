@@ -252,6 +252,12 @@ open class StorageProfile: ObjectBase {
 				return self.append("shouldExportCaptions") 
 			}
 		}
+		
+		public var excludedEntryTypes: BaseTokenizedObject {
+			get {
+				return self.append("excludedEntryTypes") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -298,6 +304,7 @@ open class StorageProfile: ObjectBase {
 	public var exportPeriodically: Bool? = nil
 	public var excludedFlavorParamsIds: String? = nil
 	public var shouldExportCaptions: Bool? = nil
+	public var excludedEntryTypes: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -432,6 +439,10 @@ open class StorageProfile: ObjectBase {
 		self.dict["shouldExportCaptions"] = shouldExportCaptions
 	}
 	
+	public func setMultiRequestToken(excludedEntryTypes: String) {
+		self.dict["excludedEntryTypes"] = excludedEntryTypes
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -543,6 +554,9 @@ open class StorageProfile: ObjectBase {
 		if dict["shouldExportCaptions"] != nil {
 			shouldExportCaptions = dict["shouldExportCaptions"] as? Bool
 		}
+		if dict["excludedEntryTypes"] != nil {
+			excludedEntryTypes = dict["excludedEntryTypes"] as? String
+		}
 
 	}
 
@@ -643,6 +657,9 @@ open class StorageProfile: ObjectBase {
 		}
 		if(shouldExportCaptions != nil) {
 			dict["shouldExportCaptions"] = shouldExportCaptions!
+		}
+		if(excludedEntryTypes != nil) {
+			dict["excludedEntryTypes"] = excludedEntryTypes!
 		}
 		return dict
 	}
