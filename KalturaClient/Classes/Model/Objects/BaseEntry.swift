@@ -306,6 +306,18 @@ open class BaseEntry: ObjectBase {
 				return self.append("displayInSearch") 
 			}
 		}
+		
+		public var application: BaseTokenizedObject {
+			get {
+				return self.append("application") 
+			}
+		}
+		
+		public var applicationVersion: BaseTokenizedObject {
+			get {
+				return self.append("applicationVersion") 
+			}
+		}
 	}
 
 	/**  Auto generated 10 characters alphanumeric string  */
@@ -410,6 +422,10 @@ open class BaseEntry: ObjectBase {
 	public var templateEntryId: String? = nil
 	/**  should we display this entry in search  */
 	public var displayInSearch: EntryDisplayInSearchType? = nil
+	/**  Entry application  */
+	public var application: EntryApplication? = nil
+	/**  Entry application version  */
+	public var applicationVersion: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -588,6 +604,14 @@ open class BaseEntry: ObjectBase {
 		self.dict["displayInSearch"] = displayInSearch
 	}
 	
+	public func setMultiRequestToken(application: String) {
+		self.dict["application"] = application
+	}
+	
+	public func setMultiRequestToken(applicationVersion: String) {
+		self.dict["applicationVersion"] = applicationVersion
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -726,6 +750,12 @@ open class BaseEntry: ObjectBase {
 		if dict["displayInSearch"] != nil {
 			displayInSearch = EntryDisplayInSearchType(rawValue: (dict["displayInSearch"] as? Int)!)
 		}
+		if dict["application"] != nil {
+			application = EntryApplication(rawValue: "\(dict["application"]!)")
+		}
+		if dict["applicationVersion"] != nil {
+			applicationVersion = dict["applicationVersion"] as? String
+		}
 
 	}
 
@@ -808,6 +838,12 @@ open class BaseEntry: ObjectBase {
 		}
 		if(displayInSearch != nil) {
 			dict["displayInSearch"] = displayInSearch!.rawValue
+		}
+		if(application != nil) {
+			dict["application"] = application!.rawValue
+		}
+		if(applicationVersion != nil) {
+			dict["applicationVersion"] = applicationVersion!
 		}
 		return dict
 	}

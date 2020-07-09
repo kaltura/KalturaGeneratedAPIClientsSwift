@@ -55,6 +55,12 @@ open class MediaEntry: PlayableEntry {
 			}
 		}
 		
+		public var sourceVersion: BaseTokenizedObject {
+			get {
+				return self.append("sourceVersion") 
+			}
+		}
+		
 		public var searchProviderType: BaseTokenizedObject {
 			get {
 				return self.append("searchProviderType") 
@@ -116,6 +122,8 @@ open class MediaEntry: PlayableEntry {
 	public var conversionQuality: String? = nil
 	/**  The source type of the entry  */
 	public var sourceType: SourceType? = nil
+	/**  The source version of the entry  */
+	public var sourceVersion: String? = nil
 	/**  The search provider type used to import this entry  */
 	public var searchProviderType: SearchProviderType? = nil
 	/**  The ID of the media in the importing site  */
@@ -147,6 +155,10 @@ open class MediaEntry: PlayableEntry {
 	
 	public func setMultiRequestToken(sourceType: String) {
 		self.dict["sourceType"] = sourceType
+	}
+	
+	public func setMultiRequestToken(sourceVersion: String) {
+		self.dict["sourceVersion"] = sourceVersion
 	}
 	
 	public func setMultiRequestToken(searchProviderType: String) {
@@ -193,6 +205,9 @@ open class MediaEntry: PlayableEntry {
 		if dict["sourceType"] != nil {
 			sourceType = SourceType(rawValue: "\(dict["sourceType"]!)")
 		}
+		if dict["sourceVersion"] != nil {
+			sourceVersion = dict["sourceVersion"] as? String
+		}
 		if dict["searchProviderType"] != nil {
 			searchProviderType = SearchProviderType(rawValue: (dict["searchProviderType"] as? Int)!)
 		}
@@ -233,6 +248,9 @@ open class MediaEntry: PlayableEntry {
 		}
 		if(sourceType != nil) {
 			dict["sourceType"] = sourceType!.rawValue
+		}
+		if(sourceVersion != nil) {
+			dict["sourceVersion"] = sourceVersion!
 		}
 		if(searchProviderType != nil) {
 			dict["searchProviderType"] = searchProviderType!.rawValue

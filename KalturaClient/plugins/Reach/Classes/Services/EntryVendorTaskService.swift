@@ -175,6 +175,59 @@ public final class EntryVendorTaskService{
 		return request
 	}
 
+	public class GetServeUrlTokenizer: ClientTokenizer  {
+		
+		public var filterType: BaseTokenizedObject {
+			get {
+				return self.append("filterType") 
+			}
+		}
+		
+		public var filterInput: BaseTokenizedObject {
+			get {
+				return self.append("filterInput") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+		
+		public var dueDate: BaseTokenizedObject {
+			get {
+				return self.append("dueDate") 
+			}
+		}
+	}
+
+	public static func getServeUrl() -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		return getServeUrl(filterType: nil)
+	}
+
+	public static func getServeUrl(filterType: String?) -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		return getServeUrl(filterType: filterType, filterInput: nil)
+	}
+
+	public static func getServeUrl(filterType: String?, filterInput: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		return getServeUrl(filterType: filterType, filterInput: filterInput, status: nil)
+	}
+
+	public static func getServeUrl(filterType: String?, filterInput: Int?, status: Int?) -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		return getServeUrl(filterType: filterType, filterInput: filterInput, status: status, dueDate: nil)
+	}
+
+	public static func getServeUrl(filterType: String?, filterInput: Int?, status: Int?, dueDate: String?) -> RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GetServeUrlTokenizer>(service: "reach_entryvendortask", action: "getServeUrl")
+			.setParam(key: "filterType", value: filterType)
+			.setParam(key: "filterInput", value: filterInput)
+			.setParam(key: "status", value: status)
+			.setParam(key: "dueDate", value: dueDate)
+
+		return request
+	}
+
 	public class ListTokenizer: ClientTokenizer  {
 		
 		public func filter<T: EntryVendorTaskFilter.EntryVendorTaskFilterTokenizer>() -> T {
