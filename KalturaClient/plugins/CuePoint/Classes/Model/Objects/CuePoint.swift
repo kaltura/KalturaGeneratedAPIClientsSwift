@@ -327,6 +327,9 @@ open class CuePoint: ObjectBase {
 		if(startTime != nil) {
 			dict["startTime"] = startTime!
 		}
+		if(userId != nil) {
+			dict["userId"] = userId!
+		}
 		if(partnerData != nil) {
 			dict["partnerData"] = partnerData!
 		}

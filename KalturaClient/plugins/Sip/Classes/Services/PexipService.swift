@@ -48,6 +48,12 @@ public final class PexipService{
 				return self.append("regenerate") 
 			}
 		}
+		
+		public var sourceType: BaseTokenizedObject {
+			get {
+				return self.append("sourceType") 
+			}
+		}
 	}
 
 	public static func generateSipUrl(entryId: String) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
@@ -55,9 +61,14 @@ public final class PexipService{
 	}
 
 	public static func generateSipUrl(entryId: String, regenerate: Bool?) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
+		return generateSipUrl(entryId: entryId, regenerate: regenerate, sourceType: 1)
+	}
+
+	public static func generateSipUrl(entryId: String, regenerate: Bool?, sourceType: Int?) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer>(service: "sip_pexip", action: "generateSipUrl")
 			.setParam(key: "entryId", value: entryId)
 			.setParam(key: "regenerate", value: regenerate)
+			.setParam(key: "sourceType", value: sourceType)
 
 		return request
 	}
@@ -65,8 +76,8 @@ public final class PexipService{
 	public class HandleIncomingCallTokenizer: ClientTokenizer  {
 	}
 
-	public static func handleIncomingCall() -> RequestBuilder<Bool, BaseTokenizedObject, HandleIncomingCallTokenizer> {
-		let request: RequestBuilder<Bool, BaseTokenizedObject, HandleIncomingCallTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, HandleIncomingCallTokenizer>(service: "sip_pexip", action: "handleIncomingCall")
+	public static func handleIncomingCall() -> NullRequestBuilder<HandleIncomingCallTokenizer> {
+		let request: NullRequestBuilder<HandleIncomingCallTokenizer> = NullRequestBuilder<HandleIncomingCallTokenizer>(service: "sip_pexip", action: "handleIncomingCall")
 
 		return request
 	}

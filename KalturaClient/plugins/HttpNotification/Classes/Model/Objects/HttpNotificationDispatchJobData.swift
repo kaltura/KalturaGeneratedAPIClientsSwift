@@ -49,6 +49,12 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 			}
 		}
 		
+		public var contentType: BaseTokenizedObject {
+			get {
+				return self.append("contentType") 
+			}
+		}
+		
 		public var data: BaseTokenizedObject {
 			get {
 				return self.append("data") 
@@ -156,6 +162,8 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 	public var url: String? = nil
 	/**  Request method.  */
 	public var method: HttpNotificationMethod? = nil
+	/**  The type of the data to send.  */
+	public var contentType: String? = nil
 	/**  Data to send.  */
 	public var data: String? = nil
 	/**  The maximum number of seconds to allow cURL functions to execute.  */
@@ -201,6 +209,10 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 	
 	public func setMultiRequestToken(method: String) {
 		self.dict["method"] = method
+	}
+	
+	public func setMultiRequestToken(contentType: String) {
+		self.dict["contentType"] = contentType
 	}
 	
 	public func setMultiRequestToken(data: String) {
@@ -276,6 +288,9 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 		if dict["method"] != nil {
 			method = HttpNotificationMethod(rawValue: (dict["method"] as? Int)!)
 		}
+		if dict["contentType"] != nil {
+			contentType = dict["contentType"] as? String
+		}
 		if dict["data"] != nil {
 			data = dict["data"] as? String
 		}
@@ -337,6 +352,9 @@ open class HttpNotificationDispatchJobData: EventNotificationDispatchJobData {
 		}
 		if(method != nil) {
 			dict["method"] = method!.rawValue
+		}
+		if(contentType != nil) {
+			dict["contentType"] = contentType!
 		}
 		if(data != nil) {
 			dict["data"] = data!
