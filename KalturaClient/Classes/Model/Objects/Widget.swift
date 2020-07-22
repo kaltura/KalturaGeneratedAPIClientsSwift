@@ -132,6 +132,12 @@ open class Widget: ObjectBase {
 				return self.append("roles") 
 			}
 		}
+		
+		public var privileges: BaseTokenizedObject {
+			get {
+				return self.append("privileges") 
+			}
+		}
 	}
 
 	public var id: String? = nil
@@ -155,6 +161,7 @@ open class Widget: ObjectBase {
 	/**  Addes the HTML5 script line to the widget's embed code  */
 	public var addEmbedHtml5Support: Bool? = nil
 	public var roles: String? = nil
+	public var privileges: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -221,6 +228,10 @@ open class Widget: ObjectBase {
 		self.dict["roles"] = roles
 	}
 	
+	public func setMultiRequestToken(privileges: String) {
+		self.dict["privileges"] = privileges
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -272,6 +283,9 @@ open class Widget: ObjectBase {
 		if dict["roles"] != nil {
 			roles = dict["roles"] as? String
 		}
+		if dict["privileges"] != nil {
+			privileges = dict["privileges"] as? String
+		}
 
 	}
 
@@ -306,6 +320,9 @@ open class Widget: ObjectBase {
 		}
 		if(roles != nil) {
 			dict["roles"] = roles!
+		}
+		if(privileges != nil) {
+			dict["privileges"] = privileges!
 		}
 		return dict
 	}
