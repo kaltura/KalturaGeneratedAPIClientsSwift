@@ -61,14 +61,14 @@ public final class PexipService{
 	}
 
 	public static func generateSipUrl(entryId: String, regenerate: Bool?) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
-		return generateSipUrl(entryId: entryId, regenerate: regenerate, sourceType: 1)
+		return generateSipUrl(entryId: entryId, regenerate: regenerate, sourceType: SipSourceType(rawValue: 1))
 	}
 
-	public static func generateSipUrl(entryId: String, regenerate: Bool?, sourceType: Int?) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
+	public static func generateSipUrl(entryId: String, regenerate: Bool?, sourceType: SipSourceType?) -> RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer> = RequestBuilder<String, BaseTokenizedObject, GenerateSipUrlTokenizer>(service: "sip_pexip", action: "generateSipUrl")
 			.setParam(key: "entryId", value: entryId)
 			.setParam(key: "regenerate", value: regenerate)
-			.setParam(key: "sourceType", value: sourceType)
+			.setParam(key: "sourceType", value: sourceType?.rawValue)
 
 		return request
 	}

@@ -105,4 +105,5 @@ public enum BatchJobType: String {
 	case STORAGE_PERIODIC_EXPORT = "53"
 	case STORAGE_PERIODIC_PURGE = "54"
 	case STORAGE_PERIODIC_DELETE_LOCAL = "55"
+	case REACH_JOB_CLEANER = "56"
 }

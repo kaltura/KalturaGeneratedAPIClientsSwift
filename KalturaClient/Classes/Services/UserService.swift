@@ -461,12 +461,23 @@ public final class UserService{
 				return self.append("email") 
 			}
 		}
+		
+		public var linkType: BaseTokenizedObject {
+			get {
+				return self.append("linkType") 
+			}
+		}
+	}
+
+	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
+		return resetPassword(email: email, linkType: nil)
 	}
 
 	/**  Reset user's password and send the user an email to generate a new one.  */
-	public static func resetPassword(email: String) -> NullRequestBuilder<ResetPasswordTokenizer> {
+	public static func resetPassword(email: String, linkType: ResetPassLinkType?) -> NullRequestBuilder<ResetPasswordTokenizer> {
 		let request: NullRequestBuilder<ResetPasswordTokenizer> = NullRequestBuilder<ResetPasswordTokenizer>(service: "user", action: "resetPassword")
 			.setParam(key: "email", value: email)
+			.setParam(key: "linkType", value: linkType?.rawValue)
 
 		return request
 	}

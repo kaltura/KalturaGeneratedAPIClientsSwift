@@ -197,4 +197,27 @@ public final class DropFolderService{
 
 		return request
 	}
+
+	public class UpdateStatusTokenizer: ClientTokenizer  {
+		
+		public var dropFolderId: BaseTokenizedObject {
+			get {
+				return self.append("dropFolderId") 
+			}
+		}
+		
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
+		}
+	}
+
+	public static func updateStatus(dropFolderId: Int, status: DropFolderStatus) -> NullRequestBuilder<UpdateStatusTokenizer> {
+		let request: NullRequestBuilder<UpdateStatusTokenizer> = NullRequestBuilder<UpdateStatusTokenizer>(service: "dropfolder_dropfolder", action: "updateStatus")
+			.setParam(key: "dropFolderId", value: dropFolderId)
+			.setParam(key: "status", value: status.rawValue)
+
+		return request
+	}
 }
