@@ -102,6 +102,18 @@ open class User: BaseUser {
 				return self.append("loginEnabled") 
 			}
 		}
+		
+		public var registrationInfo: BaseTokenizedObject {
+			get {
+				return self.append("registrationInfo") 
+			}
+		}
+		
+		public var attendanceInfo: BaseTokenizedObject {
+			get {
+				return self.append("attendanceInfo") 
+			}
+		}
 	}
 
 	public var type: UserType? = nil
@@ -115,6 +127,8 @@ open class User: BaseUser {
 	public var firstName: String? = nil
 	public var lastName: String? = nil
 	public var loginEnabled: Bool? = nil
+	public var registrationInfo: String? = nil
+	public var attendanceInfo: String? = nil
 
 
 	public func setMultiRequestToken(type: String) {
@@ -161,6 +175,14 @@ open class User: BaseUser {
 		self.dict["loginEnabled"] = loginEnabled
 	}
 	
+	public func setMultiRequestToken(registrationInfo: String) {
+		self.dict["registrationInfo"] = registrationInfo
+	}
+	
+	public func setMultiRequestToken(attendanceInfo: String) {
+		self.dict["attendanceInfo"] = attendanceInfo
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -197,6 +219,12 @@ open class User: BaseUser {
 		if dict["loginEnabled"] != nil {
 			loginEnabled = dict["loginEnabled"] as? Bool
 		}
+		if dict["registrationInfo"] != nil {
+			registrationInfo = dict["registrationInfo"] as? String
+		}
+		if dict["attendanceInfo"] != nil {
+			attendanceInfo = dict["attendanceInfo"] as? String
+		}
 
 	}
 
@@ -231,6 +259,12 @@ open class User: BaseUser {
 		}
 		if(loginEnabled != nil) {
 			dict["loginEnabled"] = loginEnabled!
+		}
+		if(registrationInfo != nil) {
+			dict["registrationInfo"] = registrationInfo!
+		}
+		if(attendanceInfo != nil) {
+			dict["attendanceInfo"] = attendanceInfo!
 		}
 		return dict
 	}
