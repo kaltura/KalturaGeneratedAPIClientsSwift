@@ -103,6 +103,12 @@ open class StorageProfile: ObjectBase {
 			}
 		}
 		
+		public var pathPrefix: BaseTokenizedObject {
+			get {
+				return self.append("pathPrefix") 
+			}
+		}
+		
 		public var storageUsername: BaseTokenizedObject {
 			get {
 				return self.append("storageUsername") 
@@ -271,6 +277,7 @@ open class StorageProfile: ObjectBase {
 	public var protocol_: StorageProfileProtocol? = nil
 	public var storageUrl: String? = nil
 	public var storageBaseDir: String? = nil
+	public var pathPrefix: String? = nil
 	public var storageUsername: String? = nil
 	public var storagePassword: String? = nil
 	public var storageFtpPassiveMode: Bool? = nil
@@ -349,6 +356,10 @@ open class StorageProfile: ObjectBase {
 	
 	public func setMultiRequestToken(storageBaseDir: String) {
 		self.dict["storageBaseDir"] = storageBaseDir
+	}
+	
+	public func setMultiRequestToken(pathPrefix: String) {
+		self.dict["pathPrefix"] = pathPrefix
 	}
 	
 	public func setMultiRequestToken(storageUsername: String) {
@@ -479,6 +490,9 @@ open class StorageProfile: ObjectBase {
 		if dict["storageBaseDir"] != nil {
 			storageBaseDir = dict["storageBaseDir"] as? String
 		}
+		if dict["pathPrefix"] != nil {
+			pathPrefix = dict["pathPrefix"] as? String
+		}
 		if dict["storageUsername"] != nil {
 			storageUsername = dict["storageUsername"] as? String
 		}
@@ -582,6 +596,9 @@ open class StorageProfile: ObjectBase {
 		}
 		if(storageBaseDir != nil) {
 			dict["storageBaseDir"] = storageBaseDir!
+		}
+		if(pathPrefix != nil) {
+			dict["pathPrefix"] = pathPrefix!
 		}
 		if(storageUsername != nil) {
 			dict["storageUsername"] = storageUsername!

@@ -313,6 +313,12 @@ open class Partner: ObjectBase {
 			}
 		}
 		
+		public var blockDirectLogin: BaseTokenizedObject {
+			get {
+				return self.append("blockDirectLogin") 
+			}
+		}
+		
 		public var host: BaseTokenizedObject {
 			get {
 				return self.append("host") 
@@ -491,6 +497,7 @@ open class Partner: ObjectBase {
 	public var embedCodeTypes: Array<PlayerEmbedCodeType>? = nil
 	public var templatePartnerId: Int? = nil
 	public var ignoreSeoLinks: Bool? = nil
+	public var blockDirectLogin: Bool? = nil
 	public var host: String? = nil
 	public var cdnHost: String? = nil
 	public var isFirstLogin: Bool? = nil
@@ -685,6 +692,10 @@ open class Partner: ObjectBase {
 	
 	public func setMultiRequestToken(ignoreSeoLinks: String) {
 		self.dict["ignoreSeoLinks"] = ignoreSeoLinks
+	}
+	
+	public func setMultiRequestToken(blockDirectLogin: String) {
+		self.dict["blockDirectLogin"] = blockDirectLogin
 	}
 	
 	public func setMultiRequestToken(host: String) {
@@ -907,6 +918,9 @@ open class Partner: ObjectBase {
 		}
 		if dict["ignoreSeoLinks"] != nil {
 			ignoreSeoLinks = dict["ignoreSeoLinks"] as? Bool
+		}
+		if dict["blockDirectLogin"] != nil {
+			blockDirectLogin = dict["blockDirectLogin"] as? Bool
 		}
 		if dict["host"] != nil {
 			host = dict["host"] as? String

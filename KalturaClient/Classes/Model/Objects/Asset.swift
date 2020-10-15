@@ -120,6 +120,12 @@ open class Asset: ObjectBase {
 				return self.append("actualSourceAssetParamsIds") 
 			}
 		}
+		
+		public var sizeInBytes: BaseTokenizedObject {
+			get {
+				return self.append("sizeInBytes") 
+			}
+		}
 	}
 
 	/**  The ID of the Flavor Asset  */
@@ -146,6 +152,8 @@ open class Asset: ObjectBase {
 	public var partnerDescription: String? = nil
 	/**  Comma separated list of source flavor params ids  */
 	public var actualSourceAssetParamsIds: String? = nil
+	/**  The size (in Bytes) of the asset  */
+	public var sizeInBytes: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -204,6 +212,10 @@ open class Asset: ObjectBase {
 		self.dict["actualSourceAssetParamsIds"] = actualSourceAssetParamsIds
 	}
 	
+	public func setMultiRequestToken(sizeInBytes: String) {
+		self.dict["sizeInBytes"] = sizeInBytes
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -248,6 +260,9 @@ open class Asset: ObjectBase {
 		}
 		if dict["actualSourceAssetParamsIds"] != nil {
 			actualSourceAssetParamsIds = dict["actualSourceAssetParamsIds"] as? String
+		}
+		if dict["sizeInBytes"] != nil {
+			sizeInBytes = dict["sizeInBytes"] as? Int
 		}
 
 	}

@@ -54,11 +54,25 @@ open class ReportExportJobData: JobData {
 				return self.append("filePaths") 
 			}
 		}
+		
+		public var reportsGroup: BaseTokenizedObject {
+			get {
+				return self.append("reportsGroup") 
+			}
+		}
+		
+		public var files: ArrayTokenizedObject<ReportExportFile.ReportExportFileTokenizer> {
+			get {
+				return ArrayTokenizedObject<ReportExportFile.ReportExportFileTokenizer>(self.append("files"))
+			} 
+		}
 	}
 
 	public var recipientEmail: String? = nil
 	public var reportItems: Array<ReportExportItem>? = nil
 	public var filePaths: String? = nil
+	public var reportsGroup: String? = nil
+	public var files: Array<ReportExportFile>? = nil
 
 
 	public func setMultiRequestToken(recipientEmail: String) {
@@ -67,6 +81,10 @@ open class ReportExportJobData: JobData {
 	
 	public func setMultiRequestToken(filePaths: String) {
 		self.dict["filePaths"] = filePaths
+	}
+	
+	public func setMultiRequestToken(reportsGroup: String) {
+		self.dict["reportsGroup"] = reportsGroup
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -81,6 +99,12 @@ open class ReportExportJobData: JobData {
 		if dict["filePaths"] != nil {
 			filePaths = dict["filePaths"] as? String
 		}
+		if dict["reportsGroup"] != nil {
+			reportsGroup = dict["reportsGroup"] as? String
+		}
+		if dict["files"] != nil {
+			files = try JSONParser.parse(array: dict["files"] as! [Any])
+		}
 
 	}
 
@@ -94,6 +118,12 @@ open class ReportExportJobData: JobData {
 		}
 		if(filePaths != nil) {
 			dict["filePaths"] = filePaths!
+		}
+		if(reportsGroup != nil) {
+			dict["reportsGroup"] = reportsGroup!
+		}
+		if(files != nil) {
+			dict["files"] = files!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

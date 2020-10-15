@@ -25,51 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum CatalogItemLanguage: String {
-	case AR = "Arabic"
-	case YUE = "Cantonese"
-	case ZH = "Chinese"
-	case DA = "Danish"
-	case NL = "Dutch"
-	case EN = "English"
-	case EN_US = "English (American)"
-	case EN_GB = "English (British)"
-	case FI = "Finnish"
-	case FR = "French"
-	case FR_CA = "French (Canada)"
-	case DE = "German"
-	case EL = "Greek"
-	case HE = "Hebrew"
-	case HI = "Hindi"
-	case HU = "Hungarian"
-	case IS = "Icelandic"
-	case IN = "Indonesian"
-	case GA = "Irish"
-	case IT = "Italian"
-	case JA = "Japanese"
-	case KO = "Korean"
-	case ML = "Malayalam"
-	case CMN = "Mandarin Chinese"
-	case NO = "Norwegian"
-	case PL = "Polish"
-	case PT = "Portuguese"
-	case RO = "Romanian"
-	case RU = "Russian"
-	case ES = "Spanish"
-	case SV = "Swedish"
-	case ZH_TW = "Taiwanese Mandarin"
-	case TA = "Tamil"
-	case TH = "Thai"
-	case TR = "Turkish"
-	case UK = "Ukrainian"
-	case UR = "Urdu"
-	case VI = "Vietnamese"
-	case CY = "Welsh"
-	case ZU = "Zulu"
+
+open class ReportExportFile: ObjectBase {
+
+	public class ReportExportFileTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var fileId: BaseTokenizedObject {
+			get {
+				return self.append("fileId") 
+			}
+		}
+		
+		public var fileName: BaseTokenizedObject {
+			get {
+				return self.append("fileName") 
+			}
+		}
+	}
+
+	public var fileId: String? = nil
+	public var fileName: String? = nil
+
+
+	public func setMultiRequestToken(fileId: String) {
+		self.dict["fileId"] = fileId
+	}
+	
+	public func setMultiRequestToken(fileName: String) {
+		self.dict["fileName"] = fileName
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["fileId"] != nil {
+			fileId = dict["fileId"] as? String
+		}
+		if dict["fileName"] != nil {
+			fileName = dict["fileName"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(fileId != nil) {
+			dict["fileId"] = fileId!
+		}
+		if(fileName != nil) {
+			dict["fileName"] = fileName!
+		}
+		return dict
+	}
 }
+

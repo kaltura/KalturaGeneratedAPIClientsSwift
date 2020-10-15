@@ -42,14 +42,38 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 				return self.append("projectedAudience") 
 			}
 		}
+		
+		public var sourceEntryId: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryId") 
+			}
+		}
+		
+		public var preStartTime: BaseTokenizedObject {
+			get {
+				return self.append("preStartTime") 
+			}
+		}
 	}
 
 	/**  Defines the expected audience.  */
 	public var projectedAudience: Int? = nil
+	/**  The entry ID of the source entry (for simulive)  */
+	public var sourceEntryId: String? = nil
+	/**  The time relative time before the startTime considered as preStart time  */
+	public var preStartTime: Int? = nil
 
 
 	public func setMultiRequestToken(projectedAudience: String) {
 		self.dict["projectedAudience"] = projectedAudience
+	}
+	
+	public func setMultiRequestToken(sourceEntryId: String) {
+		self.dict["sourceEntryId"] = sourceEntryId
+	}
+	
+	public func setMultiRequestToken(preStartTime: String) {
+		self.dict["preStartTime"] = preStartTime
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -58,6 +82,12 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		if dict["projectedAudience"] != nil {
 			projectedAudience = dict["projectedAudience"] as? Int
 		}
+		if dict["sourceEntryId"] != nil {
+			sourceEntryId = dict["sourceEntryId"] as? String
+		}
+		if dict["preStartTime"] != nil {
+			preStartTime = dict["preStartTime"] as? Int
+		}
 
 	}
 
@@ -65,6 +95,12 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		var dict: [String: Any] = super.toDictionary()
 		if(projectedAudience != nil) {
 			dict["projectedAudience"] = projectedAudience!
+		}
+		if(sourceEntryId != nil) {
+			dict["sourceEntryId"] = sourceEntryId!
+		}
+		if(preStartTime != nil) {
+			dict["preStartTime"] = preStartTime!
 		}
 		return dict
 	}

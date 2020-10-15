@@ -350,11 +350,15 @@ public final class LiveStreamService{
 		}
 	}
 
+	public static func isLive(id: String) -> RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> {
+		return isLive(id: id, protocol_: nil)
+	}
+
 	/**  Delivering the status of a live stream (on-air/offline) if it is possible  */
-	public static func isLive(id: String, protocol_: PlaybackProtocol) -> RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> {
+	public static func isLive(id: String, protocol_: PlaybackProtocol?) -> RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, IsLiveTokenizer>(service: "livestream", action: "isLive")
 			.setParam(key: "id", value: id)
-			.setParam(key: "protocol", value: protocol_.rawValue)
+			.setParam(key: "protocol", value: protocol_?.rawValue)
 
 		return request
 	}

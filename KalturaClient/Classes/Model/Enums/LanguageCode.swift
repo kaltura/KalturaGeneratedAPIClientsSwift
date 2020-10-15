@@ -73,6 +73,7 @@ public enum LanguageCode: String {
 	case FJ = "fj"
 	case FO = "fo"
 	case FR = "fr"
+	case FR_CA = "fr_ca"
 	case FY = "fy"
 	case GA = "ga"
 	case GD = "gd"
@@ -195,6 +196,7 @@ public enum LanguageCode: String {
 	case YI = "yi"
 	case YO = "yo"
 	case ZH = "zh"
+	case ZH_TW = "zh_tw"
 	case ZU = "zu"
 	case ZXX = "zxx"
 }

@@ -54,12 +54,19 @@ open class ReportExportParams: ObjectBase {
 				return ArrayTokenizedObject<ReportExportItem.ReportExportItemTokenizer>(self.append("reportItems"))
 			} 
 		}
+		
+		public var reportsItemsGroup: BaseTokenizedObject {
+			get {
+				return self.append("reportsItemsGroup") 
+			}
+		}
 	}
 
 	public var recipientEmail: String? = nil
 	/**  Time zone offset in minutes (between client to UTC)  */
 	public var timeZoneOffset: Int? = nil
 	public var reportItems: Array<ReportExportItem>? = nil
+	public var reportsItemsGroup: String? = nil
 
 
 	public func setMultiRequestToken(recipientEmail: String) {
@@ -68,6 +75,10 @@ open class ReportExportParams: ObjectBase {
 	
 	public func setMultiRequestToken(timeZoneOffset: String) {
 		self.dict["timeZoneOffset"] = timeZoneOffset
+	}
+	
+	public func setMultiRequestToken(reportsItemsGroup: String) {
+		self.dict["reportsItemsGroup"] = reportsItemsGroup
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -82,6 +93,9 @@ open class ReportExportParams: ObjectBase {
 		if dict["reportItems"] != nil {
 			reportItems = try JSONParser.parse(array: dict["reportItems"] as! [Any])
 		}
+		if dict["reportsItemsGroup"] != nil {
+			reportsItemsGroup = dict["reportsItemsGroup"] as? String
+		}
 
 	}
 
@@ -95,6 +109,9 @@ open class ReportExportParams: ObjectBase {
 		}
 		if(reportItems != nil) {
 			dict["reportItems"] = reportItems!.map { value in value.toDictionary() }
+		}
+		if(reportsItemsGroup != nil) {
+			dict["reportsItemsGroup"] = reportsItemsGroup!
 		}
 		return dict
 	}

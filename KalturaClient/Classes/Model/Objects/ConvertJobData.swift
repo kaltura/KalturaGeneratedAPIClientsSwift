@@ -91,6 +91,12 @@ open class ConvertJobData: ConvartableJobData {
 			}
 		}
 		
+		public var destFileSyncSharedPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileSyncSharedPath") 
+			}
+		}
+		
 		public var userCpu: BaseTokenizedObject {
 			get {
 				return self.append("userCpu") 
@@ -107,6 +113,7 @@ open class ConvertJobData: ConvartableJobData {
 	public var customData: String? = nil
 	public var extraDestFileSyncs: Array<DestFileSyncDescriptor>? = nil
 	public var engineMessage: String? = nil
+	public var destFileSyncSharedPath: String? = nil
 	public var userCpu: Int? = nil
 
 
@@ -140,6 +147,10 @@ open class ConvertJobData: ConvartableJobData {
 	
 	public func setMultiRequestToken(engineMessage: String) {
 		self.dict["engineMessage"] = engineMessage
+	}
+	
+	public func setMultiRequestToken(destFileSyncSharedPath: String) {
+		self.dict["destFileSyncSharedPath"] = destFileSyncSharedPath
 	}
 	
 	public func setMultiRequestToken(userCpu: String) {
@@ -176,6 +187,9 @@ open class ConvertJobData: ConvartableJobData {
 		if dict["engineMessage"] != nil {
 			engineMessage = dict["engineMessage"] as? String
 		}
+		if dict["destFileSyncSharedPath"] != nil {
+			destFileSyncSharedPath = dict["destFileSyncSharedPath"] as? String
+		}
 		if dict["userCpu"] != nil {
 			userCpu = dict["userCpu"] as? Int
 		}
@@ -210,6 +224,9 @@ open class ConvertJobData: ConvartableJobData {
 		}
 		if(engineMessage != nil) {
 			dict["engineMessage"] = engineMessage!
+		}
+		if(destFileSyncSharedPath != nil) {
+			dict["destFileSyncSharedPath"] = destFileSyncSharedPath!
 		}
 		if(userCpu != nil) {
 			dict["userCpu"] = userCpu!
