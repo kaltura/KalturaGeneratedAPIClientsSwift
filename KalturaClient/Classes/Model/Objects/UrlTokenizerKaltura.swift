@@ -25,26 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PlaybackProtocol: String {
-	case APPLE_HTTP = "applehttp"
-	case APPLE_HTTP_TO_MC = "applehttp_to_mc"
-	case AUTO = "auto"
-	case DOWNLOAD = "download"
-	case AKAMAI_HD = "hdnetwork"
-	case AKAMAI_HDS = "hdnetworkmanifest"
-	case HDS = "hds"
-	case HLS = "hls"
-	case HTTP = "http"
-	case MPEG_DASH = "mpegdash"
-	case MULTICAST_SL = "multicast_silverlight"
-	case RTMP = "rtmp"
-	case RTSP = "rtsp"
-	case SILVER_LIGHT = "sl"
-	case URL = "url"
+
+open class UrlTokenizerKaltura: UrlTokenizer {
+
+	public class UrlTokenizerKalturaTokenizer: UrlTokenizer.UrlTokenizerTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

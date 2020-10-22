@@ -25,26 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PlaybackProtocol: String {
-	case APPLE_HTTP = "applehttp"
-	case APPLE_HTTP_TO_MC = "applehttp_to_mc"
-	case AUTO = "auto"
-	case DOWNLOAD = "download"
-	case AKAMAI_HD = "hdnetwork"
-	case AKAMAI_HDS = "hdnetworkmanifest"
-	case HDS = "hds"
-	case HLS = "hls"
-	case HTTP = "http"
-	case MPEG_DASH = "mpegdash"
-	case MULTICAST_SL = "multicast_silverlight"
-	case RTMP = "rtmp"
-	case RTSP = "rtsp"
-	case SILVER_LIGHT = "sl"
-	case URL = "url"
+
+open class DeliveryProfileHttp: DeliveryProfile {
+
+	public class DeliveryProfileHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var maxSize: BaseTokenizedObject {
+			get {
+				return self.append("maxSize") 
+			}
+		}
+	}
+
+	public var maxSize: Int? = nil
+
+
+	public func setMultiRequestToken(maxSize: String) {
+		self.dict["maxSize"] = maxSize
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["maxSize"] != nil {
+			maxSize = dict["maxSize"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(maxSize != nil) {
+			dict["maxSize"] = maxSize!
+		}
+		return dict
+	}
 }
+

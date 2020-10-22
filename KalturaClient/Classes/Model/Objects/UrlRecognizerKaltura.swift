@@ -25,26 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PlaybackProtocol: String {
-	case APPLE_HTTP = "applehttp"
-	case APPLE_HTTP_TO_MC = "applehttp_to_mc"
-	case AUTO = "auto"
-	case DOWNLOAD = "download"
-	case AKAMAI_HD = "hdnetwork"
-	case AKAMAI_HDS = "hdnetworkmanifest"
-	case HDS = "hds"
-	case HLS = "hls"
-	case HTTP = "http"
-	case MPEG_DASH = "mpegdash"
-	case MULTICAST_SL = "multicast_silverlight"
-	case RTMP = "rtmp"
-	case RTSP = "rtsp"
-	case SILVER_LIGHT = "sl"
-	case URL = "url"
+
+open class UrlRecognizerKaltura: UrlRecognizer {
+
+	public class UrlRecognizerKalturaTokenizer: UrlRecognizer.UrlRecognizerTokenizer {
+		
+		public var key: BaseTokenizedObject {
+			get {
+				return self.append("key") 
+			}
+		}
+	}
+
+	public var key: String? = nil
+
+
+	public func setMultiRequestToken(key: String) {
+		self.dict["key"] = key
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["key"] != nil {
+			key = dict["key"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(key != nil) {
+			dict["key"] = key!
+		}
+		return dict
+	}
 }
+

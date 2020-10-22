@@ -54,6 +54,12 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 				return self.append("preStartTime") 
 			}
 		}
+		
+		public var postEndTime: BaseTokenizedObject {
+			get {
+				return self.append("postEndTime") 
+			}
+		}
 	}
 
 	/**  Defines the expected audience.  */
@@ -62,6 +68,8 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 	public var sourceEntryId: String? = nil
 	/**  The time relative time before the startTime considered as preStart time  */
 	public var preStartTime: Int? = nil
+	/**  The time relative time before the endTime considered as postEnd time  */
+	public var postEndTime: Int? = nil
 
 
 	public func setMultiRequestToken(projectedAudience: String) {
@@ -76,6 +84,10 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		self.dict["preStartTime"] = preStartTime
 	}
 	
+	public func setMultiRequestToken(postEndTime: String) {
+		self.dict["postEndTime"] = postEndTime
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -87,6 +99,9 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		}
 		if dict["preStartTime"] != nil {
 			preStartTime = dict["preStartTime"] as? Int
+		}
+		if dict["postEndTime"] != nil {
+			postEndTime = dict["postEndTime"] as? Int
 		}
 
 	}
@@ -101,6 +116,9 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		}
 		if(preStartTime != nil) {
 			dict["preStartTime"] = preStartTime!
+		}
+		if(postEndTime != nil) {
+			dict["postEndTime"] = postEndTime!
 		}
 		return dict
 	}

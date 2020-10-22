@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class DeliveryProfileAkamaiHttp: DeliveryProfile {
+open class DeliveryProfileAkamaiHttp: DeliveryProfileHttp {
 
-	public class DeliveryProfileAkamaiHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+	public class DeliveryProfileAkamaiHttpTokenizer: DeliveryProfileHttp.DeliveryProfileHttpTokenizer {
 		
 		public var useIntelliseek: BaseTokenizedObject {
 			get {

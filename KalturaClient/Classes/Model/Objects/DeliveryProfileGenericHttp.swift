@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class DeliveryProfileGenericHttp: DeliveryProfile {
+open class DeliveryProfileGenericHttp: DeliveryProfileHttp {
 
-	public class DeliveryProfileGenericHttpTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+	public class DeliveryProfileGenericHttpTokenizer: DeliveryProfileHttp.DeliveryProfileHttpTokenizer {
 		
 		public var pattern: BaseTokenizedObject {
 			get {
