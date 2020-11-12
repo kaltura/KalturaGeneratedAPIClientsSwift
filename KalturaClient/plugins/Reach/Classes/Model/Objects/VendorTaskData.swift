@@ -36,12 +36,29 @@
 open class VendorTaskData: ObjectBase {
 
 	public class VendorTaskDataTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var entryDuration: BaseTokenizedObject {
+			get {
+				return self.append("entryDuration") 
+			}
+		}
 	}
 
+	/**  The duration of the entry for which the task was created for in milliseconds  */
+	public var entryDuration: Int? = nil
 
 
+	public func setMultiRequestToken(entryDuration: String) {
+		self.dict["entryDuration"] = entryDuration
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["entryDuration"] != nil {
+			entryDuration = dict["entryDuration"] as? Int
+		}
+
 	}
 
 }
