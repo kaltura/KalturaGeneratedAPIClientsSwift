@@ -100,6 +100,12 @@ open class VendorCatalogItem: ObjectBase {
 		public func pricing<T: VendorCatalogItemPricing.VendorCatalogItemPricingTokenizer>() -> T {
 			return T(self.append("pricing"))
 		}
+		
+		public var allowResubmission: BaseTokenizedObject {
+			get {
+				return self.append("allowResubmission") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -113,6 +119,7 @@ open class VendorCatalogItem: ObjectBase {
 	public var serviceFeature: VendorServiceFeature? = nil
 	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
 	public var pricing: VendorCatalogItemPricing? = nil
+	public var allowResubmission: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -155,6 +162,10 @@ open class VendorCatalogItem: ObjectBase {
 		self.dict["turnAroundTime"] = turnAroundTime
 	}
 	
+	public func setMultiRequestToken(allowResubmission: String) {
+		self.dict["allowResubmission"] = allowResubmission
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -190,6 +201,9 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if dict["pricing"] != nil {
 		pricing = try JSONParser.parse(object: dict["pricing"] as! [String: Any])		}
+		if dict["allowResubmission"] != nil {
+			allowResubmission = dict["allowResubmission"] as? Bool
+		}
 
 	}
 
@@ -212,6 +226,9 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if(pricing != nil) {
 			dict["pricing"] = pricing!.toDictionary()
+		}
+		if(allowResubmission != nil) {
+			dict["allowResubmission"] = allowResubmission!
 		}
 		return dict
 	}

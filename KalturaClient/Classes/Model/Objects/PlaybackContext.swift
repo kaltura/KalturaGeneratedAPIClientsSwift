@@ -66,6 +66,10 @@ open class PlaybackContext: ObjectBase {
 				return ArrayTokenizedObject<AccessControlMessage.AccessControlMessageTokenizer>(self.append("messages"))
 			} 
 		}
+		
+		public func bumperData<T: TypedArray.TypedArrayTokenizer>() -> T {
+			return T(self.append("bumperData"))
+		}
 	}
 
 	public var sources: Array<PlaybackSource>? = nil
@@ -75,6 +79,7 @@ open class PlaybackContext: ObjectBase {
 	public var actions: Array<RuleAction>? = nil
 	/**  Array of actions as received from the rules that invalidated  */
 	public var messages: Array<AccessControlMessage>? = nil
+	public var bumperData: TypedArray? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -95,6 +100,8 @@ open class PlaybackContext: ObjectBase {
 		if dict["messages"] != nil {
 			messages = try JSONParser.parse(array: dict["messages"] as! [Any])
 		}
+		if dict["bumperData"] != nil {
+		bumperData = try JSONParser.parse(object: dict["bumperData"] as! [String: Any])		}
 
 	}
 
@@ -114,6 +121,9 @@ open class PlaybackContext: ObjectBase {
 		}
 		if(messages != nil) {
 			dict["messages"] = messages!.map { value in value.toDictionary() }
+		}
+		if(bumperData != nil) {
+			dict["bumperData"] = bumperData!.toDictionary()
 		}
 		return dict
 	}
