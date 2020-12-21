@@ -67,6 +67,23 @@ public final class ZoomVendorService{
 		return request
 	}
 
+	public class GetTokenizer: ClientTokenizer  {
+		
+		public override var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+	}
+
+	/**  Retrieve zoom integration setting object by partner id  */
+	public static func get(partnerId: Int) -> RequestBuilder<ZoomIntegrationSetting, ZoomIntegrationSetting.ZoomIntegrationSettingTokenizer, GetTokenizer> {
+		let request: RequestBuilder<ZoomIntegrationSetting, ZoomIntegrationSetting.ZoomIntegrationSettingTokenizer, GetTokenizer> = RequestBuilder<ZoomIntegrationSetting, ZoomIntegrationSetting.ZoomIntegrationSettingTokenizer, GetTokenizer>(service: "vendor_zoomvendor", action: "get")
+			.setParam(key: "partnerId", value: partnerId)
+
+		return request
+	}
+
 	public class OauthValidationTokenizer: ClientTokenizer  {
 	}
 

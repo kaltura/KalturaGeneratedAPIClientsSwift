@@ -67,9 +67,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 			}
 		}
 		
-		public var handleParticipantMode: BaseTokenizedObject {
+		public var handleParticipantsMode: BaseTokenizedObject {
 			get {
-				return self.append("handleParticipantMode") 
+				return self.append("handleParticipantsMode") 
 			}
 		}
 		
@@ -96,6 +96,12 @@ open class ZoomIntegrationSetting: ObjectBase {
 				return self.append("enableWebinarUploads") 
 			}
 		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
 	}
 
 	public var defaultUserId: String? = nil
@@ -103,11 +109,12 @@ open class ZoomIntegrationSetting: ObjectBase {
 	public var accountId: String? = nil
 	public var enableRecordingUpload: Bool? = nil
 	public var createUserIfNotExist: Bool? = nil
-	public var handleParticipantMode: HandleParticipantsMode? = nil
+	public var handleParticipantsMode: HandleParticipantsMode? = nil
 	public var zoomUserMatchingMode: ZoomUsersMatching? = nil
 	public var zoomUserPostfix: String? = nil
 	public var zoomWebinarCategory: String? = nil
 	public var enableWebinarUploads: Bool? = nil
+	public var conversionProfileId: Int? = nil
 
 
 	public func setMultiRequestToken(defaultUserId: String) {
@@ -130,8 +137,8 @@ open class ZoomIntegrationSetting: ObjectBase {
 		self.dict["createUserIfNotExist"] = createUserIfNotExist
 	}
 	
-	public func setMultiRequestToken(handleParticipantMode: String) {
-		self.dict["handleParticipantMode"] = handleParticipantMode
+	public func setMultiRequestToken(handleParticipantsMode: String) {
+		self.dict["handleParticipantsMode"] = handleParticipantsMode
 	}
 	
 	public func setMultiRequestToken(zoomUserMatchingMode: String) {
@@ -148,6 +155,10 @@ open class ZoomIntegrationSetting: ObjectBase {
 	
 	public func setMultiRequestToken(enableWebinarUploads: String) {
 		self.dict["enableWebinarUploads"] = enableWebinarUploads
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -168,8 +179,8 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if dict["createUserIfNotExist"] != nil {
 			createUserIfNotExist = dict["createUserIfNotExist"] as? Bool
 		}
-		if dict["handleParticipantMode"] != nil {
-			handleParticipantMode = HandleParticipantsMode(rawValue: (dict["handleParticipantMode"] as? Int)!)
+		if dict["handleParticipantsMode"] != nil {
+			handleParticipantsMode = HandleParticipantsMode(rawValue: (dict["handleParticipantsMode"] as? Int)!)
 		}
 		if dict["zoomUserMatchingMode"] != nil {
 			zoomUserMatchingMode = ZoomUsersMatching(rawValue: (dict["zoomUserMatchingMode"] as? Int)!)
@@ -183,6 +194,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if dict["enableWebinarUploads"] != nil {
 			enableWebinarUploads = dict["enableWebinarUploads"] as? Bool
 		}
+		if dict["conversionProfileId"] != nil {
+			conversionProfileId = dict["conversionProfileId"] as? Int
+		}
 
 	}
 
@@ -194,17 +208,14 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if(zoomCategory != nil) {
 			dict["zoomCategory"] = zoomCategory!
 		}
-		if(accountId != nil) {
-			dict["accountId"] = accountId!
-		}
 		if(enableRecordingUpload != nil) {
 			dict["enableRecordingUpload"] = enableRecordingUpload!
 		}
 		if(createUserIfNotExist != nil) {
 			dict["createUserIfNotExist"] = createUserIfNotExist!
 		}
-		if(handleParticipantMode != nil) {
-			dict["handleParticipantMode"] = handleParticipantMode!.rawValue
+		if(handleParticipantsMode != nil) {
+			dict["handleParticipantsMode"] = handleParticipantsMode!.rawValue
 		}
 		if(zoomUserMatchingMode != nil) {
 			dict["zoomUserMatchingMode"] = zoomUserMatchingMode!.rawValue
@@ -217,6 +228,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 		}
 		if(enableWebinarUploads != nil) {
 			dict["enableWebinarUploads"] = enableWebinarUploads!
+		}
+		if(conversionProfileId != nil) {
+			dict["conversionProfileId"] = conversionProfileId!
 		}
 		return dict
 	}
