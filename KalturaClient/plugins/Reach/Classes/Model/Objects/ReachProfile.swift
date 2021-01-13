@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -139,6 +139,18 @@ open class ReachProfile: ObjectBase {
 			}
 		}
 		
+		public var labelAdditionForMachineServiceType: BaseTokenizedObject {
+			get {
+				return self.append("labelAdditionForMachineServiceType") 
+			}
+		}
+		
+		public var labelAdditionForHumanServiceType: BaseTokenizedObject {
+			get {
+				return self.append("labelAdditionForHumanServiceType") 
+			}
+		}
+		
 		public var contentDeletionPolicy: BaseTokenizedObject {
 			get {
 				return self.append("contentDeletionPolicy") 
@@ -198,6 +210,8 @@ open class ReachProfile: ObjectBase {
 	public var enableAudioTags: Bool? = nil
 	public var enableProfanityRemoval: Bool? = nil
 	public var maxCharactersPerCaptionLine: Int? = nil
+	public var labelAdditionForMachineServiceType: String? = nil
+	public var labelAdditionForHumanServiceType: String? = nil
 	public var contentDeletionPolicy: ReachProfileContentDeletionPolicy? = nil
 	public var rules: Array<Rule>? = nil
 	public var credit: BaseVendorCredit? = nil
@@ -278,6 +292,14 @@ open class ReachProfile: ObjectBase {
 		self.dict["maxCharactersPerCaptionLine"] = maxCharactersPerCaptionLine
 	}
 	
+	public func setMultiRequestToken(labelAdditionForMachineServiceType: String) {
+		self.dict["labelAdditionForMachineServiceType"] = labelAdditionForMachineServiceType
+	}
+	
+	public func setMultiRequestToken(labelAdditionForHumanServiceType: String) {
+		self.dict["labelAdditionForHumanServiceType"] = labelAdditionForHumanServiceType
+	}
+	
 	public func setMultiRequestToken(contentDeletionPolicy: String) {
 		self.dict["contentDeletionPolicy"] = contentDeletionPolicy
 	}
@@ -348,6 +370,12 @@ open class ReachProfile: ObjectBase {
 		if dict["maxCharactersPerCaptionLine"] != nil {
 			maxCharactersPerCaptionLine = dict["maxCharactersPerCaptionLine"] as? Int
 		}
+		if dict["labelAdditionForMachineServiceType"] != nil {
+			labelAdditionForMachineServiceType = dict["labelAdditionForMachineServiceType"] as? String
+		}
+		if dict["labelAdditionForHumanServiceType"] != nil {
+			labelAdditionForHumanServiceType = dict["labelAdditionForHumanServiceType"] as? String
+		}
 		if dict["contentDeletionPolicy"] != nil {
 			contentDeletionPolicy = ReachProfileContentDeletionPolicy(rawValue: (dict["contentDeletionPolicy"] as? Int)!)
 		}
@@ -408,6 +436,12 @@ open class ReachProfile: ObjectBase {
 		}
 		if(maxCharactersPerCaptionLine != nil) {
 			dict["maxCharactersPerCaptionLine"] = maxCharactersPerCaptionLine!
+		}
+		if(labelAdditionForMachineServiceType != nil) {
+			dict["labelAdditionForMachineServiceType"] = labelAdditionForMachineServiceType!
+		}
+		if(labelAdditionForHumanServiceType != nil) {
+			dict["labelAdditionForHumanServiceType"] = labelAdditionForHumanServiceType!
 		}
 		if(contentDeletionPolicy != nil) {
 			dict["contentDeletionPolicy"] = contentDeletionPolicy!.rawValue

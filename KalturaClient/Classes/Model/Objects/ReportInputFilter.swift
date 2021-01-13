@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -244,6 +244,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("hotspotIdIn") 
 			}
 		}
+		
+		public var crmIdIn: BaseTokenizedObject {
+			get {
+				return self.append("crmIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -313,6 +319,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var categoriesAncestorIdIn: String? = nil
 	/**  filter by hotspot id  */
 	public var hotspotIdIn: String? = nil
+	/**  filter by crm id  */
+	public var crmIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -451,6 +459,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["hotspotIdIn"] = hotspotIdIn
 	}
 	
+	public func setMultiRequestToken(crmIdIn: String) {
+		self.dict["crmIdIn"] = crmIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -557,6 +569,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["hotspotIdIn"] != nil {
 			hotspotIdIn = dict["hotspotIdIn"] as? String
+		}
+		if dict["crmIdIn"] != nil {
+			crmIdIn = dict["crmIdIn"] as? String
 		}
 
 	}
@@ -667,6 +682,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(hotspotIdIn != nil) {
 			dict["hotspotIdIn"] = hotspotIdIn!
+		}
+		if(crmIdIn != nil) {
+			dict["crmIdIn"] = crmIdIn!
 		}
 		return dict
 	}

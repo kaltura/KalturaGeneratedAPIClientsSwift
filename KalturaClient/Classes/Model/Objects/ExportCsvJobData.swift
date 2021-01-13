@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platfroms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2020  Kaltura Inc.
+// Copyright (C) 2006-2021  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -54,6 +54,12 @@ open class ExportCsvJobData: JobData {
 				return self.append("outputPath") 
 			}
 		}
+		
+		public var sharedOutputPath: BaseTokenizedObject {
+			get {
+				return self.append("sharedOutputPath") 
+			}
+		}
 	}
 
 	/**  The users name  */
@@ -62,6 +68,7 @@ open class ExportCsvJobData: JobData {
 	public var userMail: String? = nil
 	/**  The file location  */
 	public var outputPath: String? = nil
+	public var sharedOutputPath: String? = nil
 
 
 	public func setMultiRequestToken(userName: String) {
@@ -76,6 +83,10 @@ open class ExportCsvJobData: JobData {
 		self.dict["outputPath"] = outputPath
 	}
 	
+	public func setMultiRequestToken(sharedOutputPath: String) {
+		self.dict["sharedOutputPath"] = sharedOutputPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -87,6 +98,9 @@ open class ExportCsvJobData: JobData {
 		}
 		if dict["outputPath"] != nil {
 			outputPath = dict["outputPath"] as? String
+		}
+		if dict["sharedOutputPath"] != nil {
+			sharedOutputPath = dict["sharedOutputPath"] as? String
 		}
 
 	}
@@ -101,6 +115,9 @@ open class ExportCsvJobData: JobData {
 		}
 		if(outputPath != nil) {
 			dict["outputPath"] = outputPath!
+		}
+		if(sharedOutputPath != nil) {
+			dict["sharedOutputPath"] = sharedOutputPath!
 		}
 		return dict
 	}
