@@ -250,6 +250,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("crmIdIn") 
 			}
 		}
+		
+		public var playlistIdIn: BaseTokenizedObject {
+			get {
+				return self.append("playlistIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -321,6 +327,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var hotspotIdIn: String? = nil
 	/**  filter by crm id  */
 	public var crmIdIn: String? = nil
+	/**  filter by playlist id  */
+	public var playlistIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -463,6 +471,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["crmIdIn"] = crmIdIn
 	}
 	
+	public func setMultiRequestToken(playlistIdIn: String) {
+		self.dict["playlistIdIn"] = playlistIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -572,6 +584,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["crmIdIn"] != nil {
 			crmIdIn = dict["crmIdIn"] as? String
+		}
+		if dict["playlistIdIn"] != nil {
+			playlistIdIn = dict["playlistIdIn"] as? String
 		}
 
 	}
@@ -685,6 +700,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(crmIdIn != nil) {
 			dict["crmIdIn"] = crmIdIn!
+		}
+		if(playlistIdIn != nil) {
+			dict["playlistIdIn"] = playlistIdIn!
 		}
 		return dict
 	}

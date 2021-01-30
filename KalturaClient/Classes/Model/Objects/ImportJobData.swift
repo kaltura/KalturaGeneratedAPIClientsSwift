@@ -60,12 +60,19 @@ open class ImportJobData: JobData {
 				return self.append("fileSize") 
 			}
 		}
+		
+		public var destFileSharedPath: BaseTokenizedObject {
+			get {
+				return self.append("destFileSharedPath") 
+			}
+		}
 	}
 
 	public var srcFileUrl: String? = nil
 	public var destFileLocalPath: String? = nil
 	public var flavorAssetId: String? = nil
 	public var fileSize: Int? = nil
+	public var destFileSharedPath: String? = nil
 
 
 	public func setMultiRequestToken(srcFileUrl: String) {
@@ -84,6 +91,10 @@ open class ImportJobData: JobData {
 		self.dict["fileSize"] = fileSize
 	}
 	
+	public func setMultiRequestToken(destFileSharedPath: String) {
+		self.dict["destFileSharedPath"] = destFileSharedPath
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +109,9 @@ open class ImportJobData: JobData {
 		}
 		if dict["fileSize"] != nil {
 			fileSize = dict["fileSize"] as? Int
+		}
+		if dict["destFileSharedPath"] != nil {
+			destFileSharedPath = dict["destFileSharedPath"] as? String
 		}
 
 	}
@@ -115,6 +129,9 @@ open class ImportJobData: JobData {
 		}
 		if(fileSize != nil) {
 			dict["fileSize"] = fileSize!
+		}
+		if(destFileSharedPath != nil) {
+			dict["destFileSharedPath"] = destFileSharedPath!
 		}
 		return dict
 	}
