@@ -54,16 +54,27 @@ open class LiveEntryServerNode: EntryServerNode {
 				return self.append("isPlayableUser") 
 			}
 		}
+		
+		public var viewMode: BaseTokenizedObject {
+			get {
+				return self.append("viewMode") 
+			}
+		}
 	}
 
 	/**  parameters of the stream we got  */
 	public var streams: Array<LiveStreamParams>? = nil
 	public var recordingInfo: Array<LiveEntryServerNodeRecordingInfo>? = nil
 	public var isPlayableUser: Bool? = nil
+	public var viewMode: ViewMode? = nil
 
 
 	public func setMultiRequestToken(isPlayableUser: String) {
 		self.dict["isPlayableUser"] = isPlayableUser
+	}
+	
+	public func setMultiRequestToken(viewMode: String) {
+		self.dict["viewMode"] = viewMode
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -78,6 +89,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		if dict["isPlayableUser"] != nil {
 			isPlayableUser = dict["isPlayableUser"] as? Bool
 		}
+		if dict["viewMode"] != nil {
+			viewMode = ViewMode(rawValue: (dict["viewMode"] as? Int)!)
+		}
 
 	}
 
@@ -91,6 +105,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		}
 		if(isPlayableUser != nil) {
 			dict["isPlayableUser"] = isPlayableUser!
+		}
+		if(viewMode != nil) {
+			dict["viewMode"] = viewMode!.rawValue
 		}
 		return dict
 	}

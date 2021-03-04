@@ -256,6 +256,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("playlistIdIn") 
 			}
 		}
+		
+		public var domainIn: BaseTokenizedObject {
+			get {
+				return self.append("domainIn") 
+			}
+		}
+		
+		public var canonicalUrlIn: BaseTokenizedObject {
+			get {
+				return self.append("canonicalUrlIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -329,6 +341,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var crmIdIn: String? = nil
 	/**  filter by playlist id  */
 	public var playlistIdIn: String? = nil
+	/**  filter by domain  */
+	public var domainIn: String? = nil
+	/**  filter by canonical url  */
+	public var canonicalUrlIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -475,6 +491,14 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["playlistIdIn"] = playlistIdIn
 	}
 	
+	public func setMultiRequestToken(domainIn: String) {
+		self.dict["domainIn"] = domainIn
+	}
+	
+	public func setMultiRequestToken(canonicalUrlIn: String) {
+		self.dict["canonicalUrlIn"] = canonicalUrlIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -587,6 +611,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["playlistIdIn"] != nil {
 			playlistIdIn = dict["playlistIdIn"] as? String
+		}
+		if dict["domainIn"] != nil {
+			domainIn = dict["domainIn"] as? String
+		}
+		if dict["canonicalUrlIn"] != nil {
+			canonicalUrlIn = dict["canonicalUrlIn"] as? String
 		}
 
 	}
@@ -703,6 +733,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(playlistIdIn != nil) {
 			dict["playlistIdIn"] = playlistIdIn!
+		}
+		if(domainIn != nil) {
+			dict["domainIn"] = domainIn!
+		}
+		if(canonicalUrlIn != nil) {
+			dict["canonicalUrlIn"] = canonicalUrlIn!
 		}
 		return dict
 	}

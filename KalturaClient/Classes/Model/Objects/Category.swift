@@ -246,6 +246,12 @@ open class Category: ObjectBase {
 				return self.append("aggregationCategories") 
 			}
 		}
+		
+		public var adminTags: BaseTokenizedObject {
+			get {
+				return self.append("adminTags") 
+			}
+		}
 	}
 
 	/**  The id of the Category  */
@@ -321,6 +327,7 @@ open class Category: ObjectBase {
 	public var isAggregationCategory: Bool? = nil
 	/**  List of aggregation channels the category belongs to  */
 	public var aggregationCategories: String? = nil
+	public var adminTags: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -463,6 +470,10 @@ open class Category: ObjectBase {
 		self.dict["aggregationCategories"] = aggregationCategories
 	}
 	
+	public func setMultiRequestToken(adminTags: String) {
+		self.dict["adminTags"] = adminTags
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -571,6 +582,9 @@ open class Category: ObjectBase {
 		if dict["aggregationCategories"] != nil {
 			aggregationCategories = dict["aggregationCategories"] as? String
 		}
+		if dict["adminTags"] != nil {
+			adminTags = dict["adminTags"] as? String
+		}
 
 	}
 
@@ -629,6 +643,9 @@ open class Category: ObjectBase {
 		}
 		if(aggregationCategories != nil) {
 			dict["aggregationCategories"] = aggregationCategories!
+		}
+		if(adminTags != nil) {
+			dict["adminTags"] = adminTags!
 		}
 		return dict
 	}

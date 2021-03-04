@@ -130,16 +130,20 @@ public final class GroupUserService{
 		}
 	}
 
-	public static func sync(userId: String, groupIds: String) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
+	public static func sync(userId: String) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
+		return sync(userId: userId, groupIds: nil)
+	}
+
+	public static func sync(userId: String, groupIds: String?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
 		return sync(userId: userId, groupIds: groupIds, removeFromExistingGroups: true)
 	}
 
-	public static func sync(userId: String, groupIds: String, removeFromExistingGroups: Bool?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
+	public static func sync(userId: String, groupIds: String?, removeFromExistingGroups: Bool?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
 		return sync(userId: userId, groupIds: groupIds, removeFromExistingGroups: removeFromExistingGroups, createNewGroups: true)
 	}
 
 	/**  sync by userId and groupIds  */
-	public static func sync(userId: String, groupIds: String, removeFromExistingGroups: Bool?, createNewGroups: Bool?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
+	public static func sync(userId: String, groupIds: String?, removeFromExistingGroups: Bool?, createNewGroups: Bool?) -> RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> {
 		let request: RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer> = RequestBuilder<BulkUpload, BulkUpload.BulkUploadTokenizer, SyncTokenizer>(service: "groupuser", action: "sync")
 			.setParam(key: "userId", value: userId)
 			.setParam(key: "groupIds", value: groupIds)

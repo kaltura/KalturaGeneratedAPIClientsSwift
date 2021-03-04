@@ -102,6 +102,12 @@ open class ConfMaps: ObjectBase {
 				return self.append("status") 
 			}
 		}
+		
+		public var changeDescription: BaseTokenizedObject {
+			get {
+				return self.append("changeDescription") 
+			}
+		}
 	}
 
 	/**  Name of the map  */
@@ -121,6 +127,7 @@ open class ConfMaps: ObjectBase {
 	public var remarks: String? = nil
 	/**  map status  */
 	public var status: ConfMapsStatus? = nil
+	public var changeDescription: String? = nil
 
 
 	public func setMultiRequestToken(name: String) {
@@ -167,6 +174,10 @@ open class ConfMaps: ObjectBase {
 		self.dict["status"] = status
 	}
 	
+	public func setMultiRequestToken(changeDescription: String) {
+		self.dict["changeDescription"] = changeDescription
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -203,6 +214,9 @@ open class ConfMaps: ObjectBase {
 		if dict["status"] != nil {
 			status = ConfMapsStatus(rawValue: (dict["status"] as? Int)!)
 		}
+		if dict["changeDescription"] != nil {
+			changeDescription = dict["changeDescription"] as? String
+		}
 
 	}
 
@@ -231,6 +245,9 @@ open class ConfMaps: ObjectBase {
 		}
 		if(status != nil) {
 			dict["status"] = status!.rawValue
+		}
+		if(changeDescription != nil) {
+			dict["changeDescription"] = changeDescription!
 		}
 		return dict
 	}

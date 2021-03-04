@@ -114,6 +114,24 @@ open class User: BaseUser {
 				return self.append("attendanceInfo") 
 			}
 		}
+		
+		public var title: BaseTokenizedObject {
+			get {
+				return self.append("title") 
+			}
+		}
+		
+		public var company: BaseTokenizedObject {
+			get {
+				return self.append("company") 
+			}
+		}
+		
+		public var ksPrivileges: BaseTokenizedObject {
+			get {
+				return self.append("ksPrivileges") 
+			}
+		}
 	}
 
 	public var type: UserType? = nil
@@ -129,6 +147,9 @@ open class User: BaseUser {
 	public var loginEnabled: Bool? = nil
 	public var registrationInfo: String? = nil
 	public var attendanceInfo: String? = nil
+	public var title: String? = nil
+	public var company: String? = nil
+	public var ksPrivileges: String? = nil
 
 
 	public func setMultiRequestToken(type: String) {
@@ -183,6 +204,18 @@ open class User: BaseUser {
 		self.dict["attendanceInfo"] = attendanceInfo
 	}
 	
+	public func setMultiRequestToken(title: String) {
+		self.dict["title"] = title
+	}
+	
+	public func setMultiRequestToken(company: String) {
+		self.dict["company"] = company
+	}
+	
+	public func setMultiRequestToken(ksPrivileges: String) {
+		self.dict["ksPrivileges"] = ksPrivileges
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -225,6 +258,15 @@ open class User: BaseUser {
 		if dict["attendanceInfo"] != nil {
 			attendanceInfo = dict["attendanceInfo"] as? String
 		}
+		if dict["title"] != nil {
+			title = dict["title"] as? String
+		}
+		if dict["company"] != nil {
+			company = dict["company"] as? String
+		}
+		if dict["ksPrivileges"] != nil {
+			ksPrivileges = dict["ksPrivileges"] as? String
+		}
 
 	}
 
@@ -265,6 +307,15 @@ open class User: BaseUser {
 		}
 		if(attendanceInfo != nil) {
 			dict["attendanceInfo"] = attendanceInfo!
+		}
+		if(title != nil) {
+			dict["title"] = title!
+		}
+		if(company != nil) {
+			dict["company"] = company!
+		}
+		if(ksPrivileges != nil) {
+			dict["ksPrivileges"] = ksPrivileges!
 		}
 		return dict
 	}
