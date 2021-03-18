@@ -25,15 +25,48 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ScheduleEventType: Int {
-	case RECORD = 1
-	case LIVE_STREAM = 2
-	case BLACKOUT = 3
-	case MEETING = 4
+
+open class MeetingScheduleEvent: EntryScheduleEvent {
+
+	public class MeetingScheduleEventTokenizer: EntryScheduleEvent.EntryScheduleEventTokenizer {
+		
+		public var preStartTime: BaseTokenizedObject {
+			get {
+				return self.append("preStartTime") 
+			}
+		}
+	}
+
+	/**  The time relative time before the startTime considered as preStart time  */
+	public var preStartTime: Int? = nil
+
+
+	public func setMultiRequestToken(preStartTime: String) {
+		self.dict["preStartTime"] = preStartTime
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["preStartTime"] != nil {
+			preStartTime = dict["preStartTime"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(preStartTime != nil) {
+			dict["preStartTime"] = preStartTime!
+		}
+		return dict
+	}
 }
+

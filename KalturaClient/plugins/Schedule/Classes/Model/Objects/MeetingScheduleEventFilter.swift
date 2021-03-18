@@ -25,15 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ScheduleEventType: Int {
-	case RECORD = 1
-	case LIVE_STREAM = 2
-	case BLACKOUT = 3
-	case MEETING = 4
+
+open class MeetingScheduleEventFilter: MeetingScheduleEventBaseFilter {
+
+	public class MeetingScheduleEventFilterTokenizer: MeetingScheduleEventBaseFilter.MeetingScheduleEventBaseFilterTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

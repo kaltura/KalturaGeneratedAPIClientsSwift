@@ -52,6 +52,12 @@ open class UsersCsvJobData: ExportCsvJobData {
 				return ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer>(self.append("additionalFields"))
 			} 
 		}
+		
+		public var mappedFields: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
+			} 
+		}
 	}
 
 	/**  The filter should return the list of users that need to be specified in the csv.  */
@@ -60,6 +66,8 @@ open class UsersCsvJobData: ExportCsvJobData {
 	public var metadataProfileId: Int? = nil
 	/**  The xpath to look in the metadataProfileId  and the wanted csv field name  */
 	public var additionalFields: Array<CsvAdditionalFieldInfo>? = nil
+	/**  Array of header names and their mapped user fields  */
+	public var mappedFields: Array<KeyValue>? = nil
 
 
 	public func setMultiRequestToken(metadataProfileId: String) {
@@ -77,6 +85,9 @@ open class UsersCsvJobData: ExportCsvJobData {
 		if dict["additionalFields"] != nil {
 			additionalFields = try JSONParser.parse(array: dict["additionalFields"] as! [Any])
 		}
+		if dict["mappedFields"] != nil {
+			mappedFields = try JSONParser.parse(array: dict["mappedFields"] as! [Any])
+		}
 
 	}
 
@@ -90,6 +101,9 @@ open class UsersCsvJobData: ExportCsvJobData {
 		}
 		if(additionalFields != nil) {
 			dict["additionalFields"] = additionalFields!.map { value in value.toDictionary() }
+		}
+		if(mappedFields != nil) {
+			dict["mappedFields"] = mappedFields!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

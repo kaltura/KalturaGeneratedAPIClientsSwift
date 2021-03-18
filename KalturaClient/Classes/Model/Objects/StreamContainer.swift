@@ -37,6 +37,12 @@ open class StreamContainer: ObjectBase {
 
 	public class StreamContainerTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
 		public var type: BaseTokenizedObject {
 			get {
 				return self.append("type") 
@@ -74,6 +80,7 @@ open class StreamContainer: ObjectBase {
 		}
 	}
 
+	public var id: String? = nil
 	public var type: String? = nil
 	public var trackIndex: Int? = nil
 	public var language: String? = nil
@@ -82,6 +89,10 @@ open class StreamContainer: ObjectBase {
 	public var channelLayout: String? = nil
 
 
+	public func setMultiRequestToken(id: String) {
+		self.dict["id"] = id
+	}
+	
 	public func setMultiRequestToken(type: String) {
 		self.dict["type"] = type
 	}
@@ -109,6 +120,9 @@ open class StreamContainer: ObjectBase {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
+		if dict["id"] != nil {
+			id = dict["id"] as? String
+		}
 		if dict["type"] != nil {
 			type = dict["type"] as? String
 		}
@@ -132,6 +146,9 @@ open class StreamContainer: ObjectBase {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
+		if(id != nil) {
+			dict["id"] = id!
+		}
 		if(type != nil) {
 			dict["type"] = type!
 		}
