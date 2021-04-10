@@ -38,6 +38,11 @@ s.subspec 'Annotation' do |ssp|
  ssp.dependency 'KalturaClient/CuePoint'
 end
 
+s.subspec 'Aspera' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/aspera/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
 s.subspec 'Attachment' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/attachment/**/*'
  ssp.dependency 'KalturaClient/Core'
@@ -489,6 +494,11 @@ end
 
 s.subspec 'Velocix' do |ssp|
  ssp.source_files = 'KalturaClient/Plugins/velocix/**/*'
+ ssp.dependency 'KalturaClient/Core'
+end
+
+s.subspec 'Vendor' do |ssp|
+ ssp.source_files = 'KalturaClient/Plugins/vendor/**/*'
  ssp.dependency 'KalturaClient/Core'
 end
 
