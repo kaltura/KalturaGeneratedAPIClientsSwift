@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -33,61 +33,24 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class UsersCsvJobData: ExportCsvJobData {
+open class UsersCsvJobData: MappedObjectsCsvJobData {
 
-	public class UsersCsvJobDataTokenizer: ExportCsvJobData.ExportCsvJobDataTokenizer {
+	public class UsersCsvJobDataTokenizer: MappedObjectsCsvJobData.MappedObjectsCsvJobDataTokenizer {
 		
 		public func filter<T: UserFilter.UserFilterTokenizer>() -> T {
 			return T(self.append("filter"))
-		}
-		
-		public var metadataProfileId: BaseTokenizedObject {
-			get {
-				return self.append("metadataProfileId") 
-			}
-		}
-		
-		public var additionalFields: ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer> {
-			get {
-				return ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer>(self.append("additionalFields"))
-			} 
-		}
-		
-		public var mappedFields: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
-			get {
-				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
-			} 
 		}
 	}
 
 	/**  The filter should return the list of users that need to be specified in the csv.  */
 	public var filter: UserFilter? = nil
-	/**  The metadata profile we should look the xpath in  */
-	public var metadataProfileId: Int? = nil
-	/**  The xpath to look in the metadataProfileId  and the wanted csv field name  */
-	public var additionalFields: Array<CsvAdditionalFieldInfo>? = nil
-	/**  Array of header names and their mapped user fields  */
-	public var mappedFields: Array<KeyValue>? = nil
 
 
-	public func setMultiRequestToken(metadataProfileId: String) {
-		self.dict["metadataProfileId"] = metadataProfileId
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["filter"] != nil {
 		filter = try JSONParser.parse(object: dict["filter"] as! [String: Any])		}
-		if dict["metadataProfileId"] != nil {
-			metadataProfileId = dict["metadataProfileId"] as? Int
-		}
-		if dict["additionalFields"] != nil {
-			additionalFields = try JSONParser.parse(array: dict["additionalFields"] as! [Any])
-		}
-		if dict["mappedFields"] != nil {
-			mappedFields = try JSONParser.parse(array: dict["mappedFields"] as! [Any])
-		}
 
 	}
 
@@ -95,15 +58,6 @@ open class UsersCsvJobData: ExportCsvJobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(filter != nil) {
 			dict["filter"] = filter!.toDictionary()
-		}
-		if(metadataProfileId != nil) {
-			dict["metadataProfileId"] = metadataProfileId!
-		}
-		if(additionalFields != nil) {
-			dict["additionalFields"] = additionalFields!.map { value in value.toDictionary() }
-		}
-		if(mappedFields != nil) {
-			dict["mappedFields"] = mappedFields!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

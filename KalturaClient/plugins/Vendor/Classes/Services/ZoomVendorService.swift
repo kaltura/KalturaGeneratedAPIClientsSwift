@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -84,11 +84,58 @@ public final class ZoomVendorService{
 		return request
 	}
 
+	public class ListTokenizer: ClientTokenizer  {
+		
+		public func pager<T: FilterPager.FilterPagerTokenizer>() -> T {
+			return T(self.append("pager"))
+		}
+	}
+
+	public static func list() -> RequestBuilder<ZoomIntegrationSettingResponse, ZoomIntegrationSettingResponse.ZoomIntegrationSettingResponseTokenizer, ListTokenizer> {
+		return list(pager: nil)
+	}
+
+	/**  List KalturaZoomIntegrationSetting objects  */
+	public static func list(pager: FilterPager?) -> RequestBuilder<ZoomIntegrationSettingResponse, ZoomIntegrationSettingResponse.ZoomIntegrationSettingResponseTokenizer, ListTokenizer> {
+		let request: RequestBuilder<ZoomIntegrationSettingResponse, ZoomIntegrationSettingResponse.ZoomIntegrationSettingResponseTokenizer, ListTokenizer> = RequestBuilder<ZoomIntegrationSettingResponse, ZoomIntegrationSettingResponse.ZoomIntegrationSettingResponseTokenizer, ListTokenizer>(service: "vendor_zoomvendor", action: "list")
+			.setParam(key: "pager", value: pager)
+
+		return request
+	}
+
+	public class LocalRegistrationPageTokenizer: ClientTokenizer  {
+		
+		public var jwt: BaseTokenizedObject {
+			get {
+				return self.append("jwt") 
+			}
+		}
+	}
+
+	public static func localRegistrationPage(jwt: String) -> NullRequestBuilder<LocalRegistrationPageTokenizer> {
+		let request: NullRequestBuilder<LocalRegistrationPageTokenizer> = NullRequestBuilder<LocalRegistrationPageTokenizer>(service: "vendor_zoomvendor", action: "localRegistrationPage")
+			.setParam(key: "jwt", value: jwt)
+
+		return request
+	}
+
 	public class OauthValidationTokenizer: ClientTokenizer  {
 	}
 
 	public static func oauthValidation() -> RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer> = RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer>(service: "vendor_zoomvendor", action: "oauthValidation")
+
+		return request
+	}
+
+	public class PreOauthValidationTokenizer: ClientTokenizer  {
+	}
+
+	/**  load html page the that will ask the user for its KMC URL, derive the region of
+	  the user from it,   and redirect to the registration page in the correct region,
+	  while forwarding the necessary code for registration  */
+	public static func preOauthValidation() -> NullRequestBuilder<PreOauthValidationTokenizer> {
+		let request: NullRequestBuilder<PreOauthValidationTokenizer> = NullRequestBuilder<PreOauthValidationTokenizer>(service: "vendor_zoomvendor", action: "preOauthValidation")
 
 		return request
 	}

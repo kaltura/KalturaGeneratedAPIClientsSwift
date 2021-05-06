@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -318,6 +318,12 @@ open class BaseEntry: ObjectBase {
 				return self.append("applicationVersion") 
 			}
 		}
+		
+		public var blockAutoTranscript: BaseTokenizedObject {
+			get {
+				return self.append("blockAutoTranscript") 
+			}
+		}
 	}
 
 	/**  Auto generated 10 characters alphanumeric string  */
@@ -426,6 +432,8 @@ open class BaseEntry: ObjectBase {
 	public var application: EntryApplication? = nil
 	/**  Entry application version  */
 	public var applicationVersion: String? = nil
+	/**  Block auto transcript on Entry  */
+	public var blockAutoTranscript: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -612,6 +620,10 @@ open class BaseEntry: ObjectBase {
 		self.dict["applicationVersion"] = applicationVersion
 	}
 	
+	public func setMultiRequestToken(blockAutoTranscript: String) {
+		self.dict["blockAutoTranscript"] = blockAutoTranscript
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -756,6 +768,9 @@ open class BaseEntry: ObjectBase {
 		if dict["applicationVersion"] != nil {
 			applicationVersion = dict["applicationVersion"] as? String
 		}
+		if dict["blockAutoTranscript"] != nil {
+			blockAutoTranscript = dict["blockAutoTranscript"] as? Bool
+		}
 
 	}
 
@@ -844,6 +859,9 @@ open class BaseEntry: ObjectBase {
 		}
 		if(applicationVersion != nil) {
 			dict["applicationVersion"] = applicationVersion!
+		}
+		if(blockAutoTranscript != nil) {
+			dict["blockAutoTranscript"] = blockAutoTranscript!
 		}
 		return dict
 	}

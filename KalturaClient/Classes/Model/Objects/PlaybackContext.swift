@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -67,8 +67,10 @@ open class PlaybackContext: ObjectBase {
 			} 
 		}
 		
-		public func bumperData<T: TypedArray.TypedArrayTokenizer>() -> T {
-			return T(self.append("bumperData"))
+		public var bumperData: ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer> {
+			get {
+				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("bumperData"))
+			} 
 		}
 	}
 
@@ -79,7 +81,7 @@ open class PlaybackContext: ObjectBase {
 	public var actions: Array<RuleAction>? = nil
 	/**  Array of actions as received from the rules that invalidated  */
 	public var messages: Array<AccessControlMessage>? = nil
-	public var bumperData: TypedArray? = nil
+	public var bumperData: Array<ObjectBase>? = nil
 
 
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -101,7 +103,8 @@ open class PlaybackContext: ObjectBase {
 			messages = try JSONParser.parse(array: dict["messages"] as! [Any])
 		}
 		if dict["bumperData"] != nil {
-		bumperData = try JSONParser.parse(object: dict["bumperData"] as! [String: Any])		}
+			bumperData = try JSONParser.parse(array: dict["bumperData"] as! [Any])
+		}
 
 	}
 
@@ -123,7 +126,7 @@ open class PlaybackContext: ObjectBase {
 			dict["messages"] = messages!.map { value in value.toDictionary() }
 		}
 		if(bumperData != nil) {
-			dict["bumperData"] = bumperData!.toDictionary()
+			dict["bumperData"] = bumperData!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

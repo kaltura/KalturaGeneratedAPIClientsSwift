@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -33,19 +33,19 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class LiveStreamScheduleEvent: EntryScheduleEvent {
+open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 
-	public class LiveStreamScheduleEventTokenizer: EntryScheduleEvent.EntryScheduleEventTokenizer {
-		
-		public var projectedAudience: BaseTokenizedObject {
-			get {
-				return self.append("projectedAudience") 
-			}
-		}
+	public class LiveStreamScheduleEventTokenizer: BaseLiveScheduleEvent.BaseLiveScheduleEventTokenizer {
 		
 		public var sourceEntryId: BaseTokenizedObject {
 			get {
 				return self.append("sourceEntryId") 
+			}
+		}
+		
+		public var projectedAudience: BaseTokenizedObject {
+			get {
+				return self.append("projectedAudience") 
 			}
 		}
 		
@@ -62,22 +62,22 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 		}
 	}
 
-	/**  Defines the expected audience.  */
-	public var projectedAudience: Int? = nil
 	/**  The entry ID of the source entry (for simulive)  */
 	public var sourceEntryId: String? = nil
+	/**  Defines the expected audience.  */
+	public var projectedAudience: Int? = nil
 	/**  The time relative time before the startTime considered as preStart time  */
 	public var preStartTime: Int? = nil
 	/**  The time relative time before the endTime considered as postEnd time  */
 	public var postEndTime: Int? = nil
 
 
-	public func setMultiRequestToken(projectedAudience: String) {
-		self.dict["projectedAudience"] = projectedAudience
-	}
-	
 	public func setMultiRequestToken(sourceEntryId: String) {
 		self.dict["sourceEntryId"] = sourceEntryId
+	}
+	
+	public func setMultiRequestToken(projectedAudience: String) {
+		self.dict["projectedAudience"] = projectedAudience
 	}
 	
 	public func setMultiRequestToken(preStartTime: String) {
@@ -91,11 +91,11 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["projectedAudience"] != nil {
-			projectedAudience = dict["projectedAudience"] as? Int
-		}
 		if dict["sourceEntryId"] != nil {
 			sourceEntryId = dict["sourceEntryId"] as? String
+		}
+		if dict["projectedAudience"] != nil {
+			projectedAudience = dict["projectedAudience"] as? Int
 		}
 		if dict["preStartTime"] != nil {
 			preStartTime = dict["preStartTime"] as? Int
@@ -108,11 +108,11 @@ open class LiveStreamScheduleEvent: EntryScheduleEvent {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(projectedAudience != nil) {
-			dict["projectedAudience"] = projectedAudience!
-		}
 		if(sourceEntryId != nil) {
 			dict["sourceEntryId"] = sourceEntryId!
+		}
+		if(projectedAudience != nil) {
+			dict["projectedAudience"] = projectedAudience!
 		}
 		if(preStartTime != nil) {
 			dict["preStartTime"] = preStartTime!

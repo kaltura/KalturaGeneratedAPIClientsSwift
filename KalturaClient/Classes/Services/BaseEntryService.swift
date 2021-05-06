@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -243,6 +243,59 @@ public final class BaseEntryService{
 		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, ExportTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, ExportTokenizer>(service: "baseentry", action: "export")
 			.setParam(key: "entryId", value: entryId)
 			.setParam(key: "storageProfileId", value: storageProfileId)
+
+		return request
+	}
+
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func filter<T: BaseEntryFilter.BaseEntryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var additionalFields: ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer>(self.append("additionalFields"))
+			} 
+		}
+		
+		public var mappedFields: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
+			} 
+		}
+	}
+
+	public static func exportToCsv() -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: nil)
+	}
+
+	public static func exportToCsv(filter: BaseEntryFilter?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: nil)
+	}
+
+	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: nil)
+	}
+
+	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: nil)
+	}
+
+	/**  add batch job that sends an email with a link to download an updated CSV that
+	  contains list of entries  */
+	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "baseentry", action: "exportToCsv")
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "metadataProfileId", value: metadataProfileId)
+			.setParam(key: "additionalFields", value: additionalFields)
+			.setParam(key: "mappedFields", value: mappedFields)
 
 		return request
 	}

@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -102,6 +102,30 @@ open class ZoomIntegrationSetting: ObjectBase {
 				return self.append("conversionProfileId") 
 			}
 		}
+		
+		public var jwtToken: BaseTokenizedObject {
+			get {
+				return self.append("jwtToken") 
+			}
+		}
+		
+		public var deletionPolicy: BaseTokenizedObject {
+			get {
+				return self.append("deletionPolicy") 
+			}
+		}
+		
+		public var enableZoomTranscription: BaseTokenizedObject {
+			get {
+				return self.append("enableZoomTranscription") 
+			}
+		}
+		
+		public var zoomAccountDescription: BaseTokenizedObject {
+			get {
+				return self.append("zoomAccountDescription") 
+			}
+		}
 	}
 
 	public var defaultUserId: String? = nil
@@ -115,6 +139,10 @@ open class ZoomIntegrationSetting: ObjectBase {
 	public var zoomWebinarCategory: String? = nil
 	public var enableWebinarUploads: Bool? = nil
 	public var conversionProfileId: Int? = nil
+	public var jwtToken: String? = nil
+	public var deletionPolicy: Bool? = nil
+	public var enableZoomTranscription: Bool? = nil
+	public var zoomAccountDescription: String? = nil
 
 
 	public func setMultiRequestToken(defaultUserId: String) {
@@ -161,6 +189,22 @@ open class ZoomIntegrationSetting: ObjectBase {
 		self.dict["conversionProfileId"] = conversionProfileId
 	}
 	
+	public func setMultiRequestToken(jwtToken: String) {
+		self.dict["jwtToken"] = jwtToken
+	}
+	
+	public func setMultiRequestToken(deletionPolicy: String) {
+		self.dict["deletionPolicy"] = deletionPolicy
+	}
+	
+	public func setMultiRequestToken(enableZoomTranscription: String) {
+		self.dict["enableZoomTranscription"] = enableZoomTranscription
+	}
+	
+	public func setMultiRequestToken(zoomAccountDescription: String) {
+		self.dict["zoomAccountDescription"] = zoomAccountDescription
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -197,6 +241,18 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if dict["conversionProfileId"] != nil {
 			conversionProfileId = dict["conversionProfileId"] as? Int
 		}
+		if dict["jwtToken"] != nil {
+			jwtToken = dict["jwtToken"] as? String
+		}
+		if dict["deletionPolicy"] != nil {
+			deletionPolicy = dict["deletionPolicy"] as? Bool
+		}
+		if dict["enableZoomTranscription"] != nil {
+			enableZoomTranscription = dict["enableZoomTranscription"] as? Bool
+		}
+		if dict["zoomAccountDescription"] != nil {
+			zoomAccountDescription = dict["zoomAccountDescription"] as? String
+		}
 
 	}
 
@@ -231,6 +287,18 @@ open class ZoomIntegrationSetting: ObjectBase {
 		}
 		if(conversionProfileId != nil) {
 			dict["conversionProfileId"] = conversionProfileId!
+		}
+		if(jwtToken != nil) {
+			dict["jwtToken"] = jwtToken!
+		}
+		if(deletionPolicy != nil) {
+			dict["deletionPolicy"] = deletionPolicy!
+		}
+		if(enableZoomTranscription != nil) {
+			dict["enableZoomTranscription"] = enableZoomTranscription!
+		}
+		if(zoomAccountDescription != nil) {
+			dict["zoomAccountDescription"] = zoomAccountDescription!
 		}
 		return dict
 	}

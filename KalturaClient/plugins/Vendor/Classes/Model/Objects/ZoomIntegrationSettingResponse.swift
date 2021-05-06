@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -33,39 +33,28 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class TypedArray: ObjectBase {
+open class ZoomIntegrationSettingResponse: ListResponse {
 
-	public class TypedArrayTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class ZoomIntegrationSettingResponseTokenizer: ListResponse.ListResponseTokenizer {
 		
-		public var count: BaseTokenizedObject {
+		public var objects: ArrayTokenizedObject<ZoomIntegrationSetting.ZoomIntegrationSettingTokenizer> {
 			get {
-				return self.append("count") 
-			}
+				return ArrayTokenizedObject<ZoomIntegrationSetting.ZoomIntegrationSettingTokenizer>(self.append("objects"))
+			} 
 		}
 	}
 
-	public var count: Int? = nil
+	public var objects: Array<ZoomIntegrationSetting>? = nil
 
 
-	public func setMultiRequestToken(count: String) {
-		self.dict["count"] = count
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["count"] != nil {
-			count = dict["count"] as? Int
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
 		}
 
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(count != nil) {
-			dict["count"] = count!
-		}
-		return dict
-	}
 }
 

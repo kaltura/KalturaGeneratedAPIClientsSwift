@@ -5,7 +5,7 @@
 //                          |_|\_\__,_|_|\__|\_,_|_| \__,_|
 //
 // This file is part of the Kaltura Collaborative Media Suite which allows users
-// to do with audio, video, and animation what Wiki platfroms allow them to do with
+// to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
 // Copyright (C) 2006-2021  Kaltura Inc.
@@ -73,6 +73,12 @@ open class CaptionAsset: Asset {
 			}
 		}
 		
+		public var source: BaseTokenizedObject {
+			get {
+				return self.append("source") 
+			}
+		}
+		
 		public var status: BaseTokenizedObject {
 			get {
 				return self.append("status") 
@@ -116,6 +122,8 @@ open class CaptionAsset: Asset {
 	public var label: String? = nil
 	/**  The caption format  */
 	public var format: CaptionType? = nil
+	/**  The source of the asset  */
+	public var source: CaptionSource? = nil
 	/**  The status of the asset  */
 	public var status: CaptionAssetStatus? = nil
 	/**  The parent id of the asset  */
@@ -150,6 +158,10 @@ open class CaptionAsset: Asset {
 	
 	public func setMultiRequestToken(format: String) {
 		self.dict["format"] = format
+	}
+	
+	public func setMultiRequestToken(source: String) {
+		self.dict["source"] = source
 	}
 	
 	public func setMultiRequestToken(status: String) {
@@ -193,6 +205,9 @@ open class CaptionAsset: Asset {
 		if dict["format"] != nil {
 			format = CaptionType(rawValue: "\(dict["format"]!)")
 		}
+		if dict["source"] != nil {
+			source = CaptionSource(rawValue: "\(dict["source"]!)")
+		}
 		if dict["status"] != nil {
 			status = CaptionAssetStatus(rawValue: (dict["status"] as? Int)!)
 		}
@@ -227,6 +242,9 @@ open class CaptionAsset: Asset {
 		}
 		if(format != nil) {
 			dict["format"] = format!.rawValue
+		}
+		if(source != nil) {
+			dict["source"] = source!.rawValue
 		}
 		if(parentId != nil) {
 			dict["parentId"] = parentId!
