@@ -126,6 +126,24 @@ open class ZoomIntegrationSetting: ObjectBase {
 				return self.append("zoomAccountDescription") 
 			}
 		}
+		
+		public var createdAt: BaseTokenizedObject {
+			get {
+				return self.append("createdAt") 
+			}
+		}
+		
+		public var updatedAt: BaseTokenizedObject {
+			get {
+				return self.append("updatedAt") 
+			}
+		}
+		
+		public var enableMeetingUpload: BaseTokenizedObject {
+			get {
+				return self.append("enableMeetingUpload") 
+			}
+		}
 	}
 
 	public var defaultUserId: String? = nil
@@ -143,6 +161,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 	public var deletionPolicy: Bool? = nil
 	public var enableZoomTranscription: Bool? = nil
 	public var zoomAccountDescription: String? = nil
+	public var createdAt: String? = nil
+	public var updatedAt: String? = nil
+	public var enableMeetingUpload: Bool? = nil
 
 
 	public func setMultiRequestToken(defaultUserId: String) {
@@ -205,6 +226,18 @@ open class ZoomIntegrationSetting: ObjectBase {
 		self.dict["zoomAccountDescription"] = zoomAccountDescription
 	}
 	
+	public func setMultiRequestToken(createdAt: String) {
+		self.dict["createdAt"] = createdAt
+	}
+	
+	public func setMultiRequestToken(updatedAt: String) {
+		self.dict["updatedAt"] = updatedAt
+	}
+	
+	public func setMultiRequestToken(enableMeetingUpload: String) {
+		self.dict["enableMeetingUpload"] = enableMeetingUpload
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -253,6 +286,15 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if dict["zoomAccountDescription"] != nil {
 			zoomAccountDescription = dict["zoomAccountDescription"] as? String
 		}
+		if dict["createdAt"] != nil {
+			createdAt = dict["createdAt"] as? String
+		}
+		if dict["updatedAt"] != nil {
+			updatedAt = dict["updatedAt"] as? String
+		}
+		if dict["enableMeetingUpload"] != nil {
+			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
+		}
 
 	}
 
@@ -299,6 +341,15 @@ open class ZoomIntegrationSetting: ObjectBase {
 		}
 		if(zoomAccountDescription != nil) {
 			dict["zoomAccountDescription"] = zoomAccountDescription!
+		}
+		if(createdAt != nil) {
+			dict["createdAt"] = createdAt!
+		}
+		if(updatedAt != nil) {
+			dict["updatedAt"] = updatedAt!
+		}
+		if(enableMeetingUpload != nil) {
+			dict["enableMeetingUpload"] = enableMeetingUpload!
 		}
 		return dict
 	}

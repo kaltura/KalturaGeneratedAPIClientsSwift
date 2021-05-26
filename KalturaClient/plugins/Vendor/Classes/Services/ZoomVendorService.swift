@@ -122,8 +122,11 @@ public final class ZoomVendorService{
 	public class OauthValidationTokenizer: ClientTokenizer  {
 	}
 
-	public static func oauthValidation() -> RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer> {
-		let request: RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer> = RequestBuilder<String, BaseTokenizedObject, OauthValidationTokenizer>(service: "vendor_zoomvendor", action: "oauthValidation")
+	/**  load html page the that will ask the user for its KMC URL, derive the region of
+	  the user from it,   and redirect to the registration page in the correct region,
+	  while forwarding the necessary code for registration  */
+	public static func oauthValidation() -> NullRequestBuilder<OauthValidationTokenizer> {
+		let request: NullRequestBuilder<OauthValidationTokenizer> = NullRequestBuilder<OauthValidationTokenizer>(service: "vendor_zoomvendor", action: "oauthValidation")
 
 		return request
 	}
@@ -131,11 +134,8 @@ public final class ZoomVendorService{
 	public class PreOauthValidationTokenizer: ClientTokenizer  {
 	}
 
-	/**  load html page the that will ask the user for its KMC URL, derive the region of
-	  the user from it,   and redirect to the registration page in the correct region,
-	  while forwarding the necessary code for registration  */
-	public static func preOauthValidation() -> NullRequestBuilder<PreOauthValidationTokenizer> {
-		let request: NullRequestBuilder<PreOauthValidationTokenizer> = NullRequestBuilder<PreOauthValidationTokenizer>(service: "vendor_zoomvendor", action: "preOauthValidation")
+	public static func preOauthValidation() -> RequestBuilder<String, BaseTokenizedObject, PreOauthValidationTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, PreOauthValidationTokenizer> = RequestBuilder<String, BaseTokenizedObject, PreOauthValidationTokenizer>(service: "vendor_zoomvendor", action: "preOauthValidation")
 
 		return request
 	}

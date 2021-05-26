@@ -79,6 +79,12 @@ open class ModifyEntryObjectTask: ObjectTask {
 			}
 		}
 		
+		public var inputEntitledUsersView: BaseTokenizedObject {
+			get {
+				return self.append("inputEntitledUsersView") 
+			}
+		}
+		
 		public var resetMediaRepurposingProcess: BaseTokenizedObject {
 			get {
 				return self.append("resetMediaRepurposingProcess") 
@@ -100,6 +106,8 @@ open class ModifyEntryObjectTask: ObjectTask {
 	public var inputEntitledUsersEdit: String? = nil
 	/**  The input entitled users publish to set on the entry  */
 	public var inputEntitledUsersPublish: String? = nil
+	/**  The input entitled users view to set on the entry  */
+	public var inputEntitledUsersView: String? = nil
 	/**  Should clear the media repurposing data and therefore reset the process  */
 	public var resetMediaRepurposingProcess: Bool? = nil
 
@@ -122,6 +130,10 @@ open class ModifyEntryObjectTask: ObjectTask {
 	
 	public func setMultiRequestToken(inputEntitledUsersPublish: String) {
 		self.dict["inputEntitledUsersPublish"] = inputEntitledUsersPublish
+	}
+	
+	public func setMultiRequestToken(inputEntitledUsersView: String) {
+		self.dict["inputEntitledUsersView"] = inputEntitledUsersView
 	}
 	
 	public func setMultiRequestToken(resetMediaRepurposingProcess: String) {
@@ -152,6 +164,9 @@ open class ModifyEntryObjectTask: ObjectTask {
 		if dict["inputEntitledUsersPublish"] != nil {
 			inputEntitledUsersPublish = dict["inputEntitledUsersPublish"] as? String
 		}
+		if dict["inputEntitledUsersView"] != nil {
+			inputEntitledUsersView = dict["inputEntitledUsersView"] as? String
+		}
 		if dict["resetMediaRepurposingProcess"] != nil {
 			resetMediaRepurposingProcess = dict["resetMediaRepurposingProcess"] as? Bool
 		}
@@ -180,6 +195,9 @@ open class ModifyEntryObjectTask: ObjectTask {
 		}
 		if(inputEntitledUsersPublish != nil) {
 			dict["inputEntitledUsersPublish"] = inputEntitledUsersPublish!
+		}
+		if(inputEntitledUsersView != nil) {
+			dict["inputEntitledUsersView"] = inputEntitledUsersView!
 		}
 		if(resetMediaRepurposingProcess != nil) {
 			dict["resetMediaRepurposingProcess"] = resetMediaRepurposingProcess!
