@@ -49,6 +49,12 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 			}
 		}
 		
+		public var idNotIn: BaseTokenizedObject {
+			get {
+				return self.append("idNotIn") 
+			}
+		}
+		
 		public var vendorPartnerIdEqual: BaseTokenizedObject {
 			get {
 				return self.append("vendorPartnerIdEqual") 
@@ -162,10 +168,23 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 				return self.append("contextEqual") 
 			}
 		}
+		
+		public var expectedFinishTimeGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("expectedFinishTimeGreaterThanOrEqual") 
+			}
+		}
+		
+		public var expectedFinishTimeLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("expectedFinishTimeLessThanOrEqual") 
+			}
+		}
 	}
 
 	public var idEqual: Int64? = nil
 	public var idIn: String? = nil
+	public var idNotIn: String? = nil
 	public var vendorPartnerIdEqual: Int? = nil
 	public var vendorPartnerIdIn: String? = nil
 	public var createdAtGreaterThanOrEqual: Int? = nil
@@ -185,6 +204,8 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 	public var catalogItemIdIn: String? = nil
 	public var userIdEqual: String? = nil
 	public var contextEqual: String? = nil
+	public var expectedFinishTimeGreaterThanOrEqual: Int? = nil
+	public var expectedFinishTimeLessThanOrEqual: Int? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -193,6 +214,10 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 	
 	public func setMultiRequestToken(idIn: String) {
 		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idNotIn: String) {
+		self.dict["idNotIn"] = idNotIn
 	}
 	
 	public func setMultiRequestToken(vendorPartnerIdEqual: String) {
@@ -271,6 +296,14 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		self.dict["contextEqual"] = contextEqual
 	}
 	
+	public func setMultiRequestToken(expectedFinishTimeGreaterThanOrEqual: String) {
+		self.dict["expectedFinishTimeGreaterThanOrEqual"] = expectedFinishTimeGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(expectedFinishTimeLessThanOrEqual: String) {
+		self.dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -279,6 +312,9 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		}
 		if dict["idIn"] != nil {
 			idIn = dict["idIn"] as? String
+		}
+		if dict["idNotIn"] != nil {
+			idNotIn = dict["idNotIn"] as? String
 		}
 		if dict["vendorPartnerIdEqual"] != nil {
 			vendorPartnerIdEqual = dict["vendorPartnerIdEqual"] as? Int
@@ -337,6 +373,12 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		if dict["contextEqual"] != nil {
 			contextEqual = dict["contextEqual"] as? String
 		}
+		if dict["expectedFinishTimeGreaterThanOrEqual"] != nil {
+			expectedFinishTimeGreaterThanOrEqual = dict["expectedFinishTimeGreaterThanOrEqual"] as? Int
+		}
+		if dict["expectedFinishTimeLessThanOrEqual"] != nil {
+			expectedFinishTimeLessThanOrEqual = dict["expectedFinishTimeLessThanOrEqual"] as? Int
+		}
 
 	}
 
@@ -347,6 +389,9 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		}
 		if(idIn != nil) {
 			dict["idIn"] = idIn!
+		}
+		if(idNotIn != nil) {
+			dict["idNotIn"] = idNotIn!
 		}
 		if(vendorPartnerIdEqual != nil) {
 			dict["vendorPartnerIdEqual"] = vendorPartnerIdEqual!
@@ -404,6 +449,12 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		}
 		if(contextEqual != nil) {
 			dict["contextEqual"] = contextEqual!
+		}
+		if(expectedFinishTimeGreaterThanOrEqual != nil) {
+			dict["expectedFinishTimeGreaterThanOrEqual"] = expectedFinishTimeGreaterThanOrEqual!
+		}
+		if(expectedFinishTimeLessThanOrEqual != nil) {
+			dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual!
 		}
 		return dict
 	}

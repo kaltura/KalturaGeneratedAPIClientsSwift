@@ -37,4 +37,5 @@ public enum VendorServiceFeature: Int {
 	case ALIGNMENT = 3
 	case AUDIO_DESCRIPTION = 4
 	case CHAPTERING = 5
+	case INTELLIGENT_TAGGING = 6
 }

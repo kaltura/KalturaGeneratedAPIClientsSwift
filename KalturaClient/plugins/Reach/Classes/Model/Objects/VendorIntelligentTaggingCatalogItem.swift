@@ -33,39 +33,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorAlignmentCatalogItem: VendorCatalogItem {
+open class VendorIntelligentTaggingCatalogItem: VendorCatalogItem {
 
-	public class VendorAlignmentCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
-		
-		public var outputFormat: BaseTokenizedObject {
-			get {
-				return self.append("outputFormat") 
-			}
-		}
+	public class VendorIntelligentTaggingCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
 	}
 
-	public var outputFormat: VendorCatalogItemOutputFormat? = nil
 
 
-	public func setMultiRequestToken(outputFormat: String) {
-		self.dict["outputFormat"] = outputFormat
-	}
-	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["outputFormat"] != nil {
-			outputFormat = VendorCatalogItemOutputFormat(rawValue: (dict["outputFormat"] as? Int)!)
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(outputFormat != nil) {
-			dict["outputFormat"] = outputFormat!.rawValue
-		}
-		return dict
-	}
 }
 

@@ -33,6 +33,7 @@
  */
 public enum EntryVendorTaskOrderBy: String {
 	case CREATED_AT_ASC = "+createdAt"
+	case EXPECTED_FINISH_TIME_ASC = "+expectedFinishTime"
 	case FINISH_TIME_ASC = "+finishTime"
 	case ID_ASC = "+id"
 	case PRICE_ASC = "+price"
@@ -40,6 +41,7 @@ public enum EntryVendorTaskOrderBy: String {
 	case STATUS_ASC = "+status"
 	case UPDATED_AT_ASC = "+updatedAt"
 	case CREATED_AT_DESC = "-createdAt"
+	case EXPECTED_FINISH_TIME_DESC = "-expectedFinishTime"
 	case FINISH_TIME_DESC = "-finishTime"
 	case ID_DESC = "-id"
 	case PRICE_DESC = "-price"

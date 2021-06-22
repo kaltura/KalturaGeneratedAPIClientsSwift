@@ -25,47 +25,12 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class VendorAlignmentCatalogItem: VendorCatalogItem {
-
-	public class VendorAlignmentCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
-		
-		public var outputFormat: BaseTokenizedObject {
-			get {
-				return self.append("outputFormat") 
-			}
-		}
-	}
-
-	public var outputFormat: VendorCatalogItemOutputFormat? = nil
-
-
-	public func setMultiRequestToken(outputFormat: String) {
-		self.dict["outputFormat"] = outputFormat
-	}
-	
-	internal override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["outputFormat"] != nil {
-			outputFormat = VendorCatalogItemOutputFormat(rawValue: (dict["outputFormat"] as? Int)!)
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(outputFormat != nil) {
-			dict["outputFormat"] = outputFormat!.rawValue
-		}
-		return dict
-	}
+public enum ReachVendorEngineType {
+	/** Place holder for future values */
 }
-

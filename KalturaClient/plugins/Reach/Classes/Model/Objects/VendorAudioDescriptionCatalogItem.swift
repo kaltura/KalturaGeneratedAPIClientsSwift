@@ -37,12 +37,6 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 
 	public class VendorAudioDescriptionCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
 		
-		public var sourceLanguage: BaseTokenizedObject {
-			get {
-				return self.append("sourceLanguage") 
-			}
-		}
-		
 		public var flavorParamsId: BaseTokenizedObject {
 			get {
 				return self.append("flavorParamsId") 
@@ -56,15 +50,10 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 		}
 	}
 
-	public var sourceLanguage: CatalogItemLanguage? = nil
 	public var flavorParamsId: Int? = nil
 	public var clearAudioFlavorParamsId: Int? = nil
 
 
-	public func setMultiRequestToken(sourceLanguage: String) {
-		self.dict["sourceLanguage"] = sourceLanguage
-	}
-	
 	public func setMultiRequestToken(flavorParamsId: String) {
 		self.dict["flavorParamsId"] = flavorParamsId
 	}
@@ -76,9 +65,6 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["sourceLanguage"] != nil {
-			sourceLanguage = CatalogItemLanguage(rawValue: "\(dict["sourceLanguage"]!)")
-		}
 		if dict["flavorParamsId"] != nil {
 			flavorParamsId = dict["flavorParamsId"] as? Int
 		}
@@ -90,9 +76,6 @@ open class VendorAudioDescriptionCatalogItem: VendorCatalogItem {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(sourceLanguage != nil) {
-			dict["sourceLanguage"] = sourceLanguage!.rawValue
-		}
 		if(flavorParamsId != nil) {
 			dict["flavorParamsId"] = flavorParamsId!
 		}

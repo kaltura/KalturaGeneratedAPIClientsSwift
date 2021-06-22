@@ -101,6 +101,18 @@ open class VendorCatalogItem: ObjectBase {
 			return T(self.append("pricing"))
 		}
 		
+		public var engineType: BaseTokenizedObject {
+			get {
+				return self.append("engineType") 
+			}
+		}
+		
+		public var sourceLanguage: BaseTokenizedObject {
+			get {
+				return self.append("sourceLanguage") 
+			}
+		}
+		
 		public var allowResubmission: BaseTokenizedObject {
 			get {
 				return self.append("allowResubmission") 
@@ -119,6 +131,10 @@ open class VendorCatalogItem: ObjectBase {
 	public var serviceFeature: VendorServiceFeature? = nil
 	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
 	public var pricing: VendorCatalogItemPricing? = nil
+	/**  Property showing the catalog item's engine type, in case a vendor can offer the
+	  same service via different engines.  */
+	public var engineType: ReachVendorEngineType? = nil
+	public var sourceLanguage: CatalogItemLanguage? = nil
 	public var allowResubmission: Bool? = nil
 
 
@@ -162,6 +178,14 @@ open class VendorCatalogItem: ObjectBase {
 		self.dict["turnAroundTime"] = turnAroundTime
 	}
 	
+	public func setMultiRequestToken(engineType: String) {
+		self.dict["engineType"] = engineType
+	}
+	
+	public func setMultiRequestToken(sourceLanguage: String) {
+		self.dict["sourceLanguage"] = sourceLanguage
+	}
+	
 	public func setMultiRequestToken(allowResubmission: String) {
 		self.dict["allowResubmission"] = allowResubmission
 	}
@@ -201,6 +225,12 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if dict["pricing"] != nil {
 		pricing = try JSONParser.parse(object: dict["pricing"] as! [String: Any])		}
+		if dict["engineType"] != nil {
+			engineType = ReachVendorEngineType(rawValue: "\(dict["engineType"]!)")
+		}
+		if dict["sourceLanguage"] != nil {
+			sourceLanguage = CatalogItemLanguage(rawValue: "\(dict["sourceLanguage"]!)")
+		}
 		if dict["allowResubmission"] != nil {
 			allowResubmission = dict["allowResubmission"] as? Bool
 		}
@@ -226,6 +256,12 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if(pricing != nil) {
 			dict["pricing"] = pricing!.toDictionary()
+		}
+		if(engineType != nil) {
+			dict["engineType"] = engineType!.rawValue
+		}
+		if(sourceLanguage != nil) {
+			dict["sourceLanguage"] = sourceLanguage!.rawValue
 		}
 		if(allowResubmission != nil) {
 			dict["allowResubmission"] = allowResubmission!

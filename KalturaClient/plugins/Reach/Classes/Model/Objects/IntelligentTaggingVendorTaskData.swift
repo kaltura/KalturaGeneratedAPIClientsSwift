@@ -33,71 +33,38 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorCaptionsCatalogItem: VendorCatalogItem {
+open class IntelligentTaggingVendorTaskData: VendorTaskData {
 
-	public class VendorCaptionsCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+	public class IntelligentTaggingVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
 		
-		public var outputFormat: BaseTokenizedObject {
+		public var assetId: BaseTokenizedObject {
 			get {
-				return self.append("outputFormat") 
-			}
-		}
-		
-		public var enableSpeakerId: BaseTokenizedObject {
-			get {
-				return self.append("enableSpeakerId") 
-			}
-		}
-		
-		public var fixedPriceAddons: BaseTokenizedObject {
-			get {
-				return self.append("fixedPriceAddons") 
+				return self.append("assetId") 
 			}
 		}
 	}
 
-	public var outputFormat: VendorCatalogItemOutputFormat? = nil
-	public var enableSpeakerId: Bool? = nil
-	public var fixedPriceAddons: Int? = nil
+	/**  Optional - The id of the caption asset object  */
+	public var assetId: String? = nil
 
 
-	public func setMultiRequestToken(outputFormat: String) {
-		self.dict["outputFormat"] = outputFormat
-	}
-	
-	public func setMultiRequestToken(enableSpeakerId: String) {
-		self.dict["enableSpeakerId"] = enableSpeakerId
-	}
-	
-	public func setMultiRequestToken(fixedPriceAddons: String) {
-		self.dict["fixedPriceAddons"] = fixedPriceAddons
+	public func setMultiRequestToken(assetId: String) {
+		self.dict["assetId"] = assetId
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["outputFormat"] != nil {
-			outputFormat = VendorCatalogItemOutputFormat(rawValue: (dict["outputFormat"] as? Int)!)
-		}
-		if dict["enableSpeakerId"] != nil {
-			enableSpeakerId = dict["enableSpeakerId"] as? Bool
-		}
-		if dict["fixedPriceAddons"] != nil {
-			fixedPriceAddons = dict["fixedPriceAddons"] as? Int
+		if dict["assetId"] != nil {
+			assetId = dict["assetId"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(outputFormat != nil) {
-			dict["outputFormat"] = outputFormat!.rawValue
-		}
-		if(enableSpeakerId != nil) {
-			dict["enableSpeakerId"] = enableSpeakerId!
-		}
-		if(fixedPriceAddons != nil) {
-			dict["fixedPriceAddons"] = fixedPriceAddons!
+		if(assetId != nil) {
+			dict["assetId"] = assetId!
 		}
 		return dict
 	}

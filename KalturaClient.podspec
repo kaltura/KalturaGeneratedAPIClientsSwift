@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'KalturaClient'
-s.version          = '17.2.0'
+s.version          = '17.3.0'
 s.summary          = 'KalturaClient.'
 s.homepage         = 'https://github.com/kaltura/clients-generator/tree/master/sources/swift'
 s.license          = { :type => 'AGPLv3', :text => 'AGPLv3' }
@@ -394,6 +394,7 @@ s.subspec 'Reach' do |ssp|
  ssp.dependency 'KalturaClient/Core'
  ssp.dependency 'KalturaClient/EventNotification'
  ssp.dependency 'KalturaClient/BulkUpload'
+ ssp.dependency 'KalturaClient/Caption'
 end
 
 s.subspec 'Registration' do |ssp|

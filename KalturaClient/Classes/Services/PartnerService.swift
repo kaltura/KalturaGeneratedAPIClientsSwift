@@ -324,6 +324,54 @@ public final class PartnerService{
 		return request
 	}
 
+	public class RegistrationValidationTokenizer: ClientTokenizer  {
+		
+		public func partner<T: Partner.PartnerTokenizer>() -> T {
+			return T(self.append("partner"))
+		}
+		
+		public var cmsPassword: BaseTokenizedObject {
+			get {
+				return self.append("cmsPassword") 
+			}
+		}
+		
+		public var templatePartnerId: BaseTokenizedObject {
+			get {
+				return self.append("templatePartnerId") 
+			}
+		}
+		
+		public var silent: BaseTokenizedObject {
+			get {
+				return self.append("silent") 
+			}
+		}
+	}
+
+	public static func registrationValidation(partner: Partner) -> RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer> {
+		return registrationValidation(partner: partner, cmsPassword: "")
+	}
+
+	public static func registrationValidation(partner: Partner, cmsPassword: String?) -> RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer> {
+		return registrationValidation(partner: partner, cmsPassword: cmsPassword, templatePartnerId: nil)
+	}
+
+	public static func registrationValidation(partner: Partner, cmsPassword: String?, templatePartnerId: Int?) -> RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer> {
+		return registrationValidation(partner: partner, cmsPassword: cmsPassword, templatePartnerId: templatePartnerId, silent: false)
+	}
+
+	/**  Create a new Partner object  */
+	public static func registrationValidation(partner: Partner, cmsPassword: String?, templatePartnerId: Int?, silent: Bool?) -> RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, RegistrationValidationTokenizer>(service: "partner", action: "registrationValidation")
+			.setParam(key: "partner", value: partner)
+			.setParam(key: "cmsPassword", value: cmsPassword)
+			.setParam(key: "templatePartnerId", value: templatePartnerId)
+			.setParam(key: "silent", value: silent)
+
+		return request
+	}
+
 	public class UpdateTokenizer: ClientTokenizer  {
 		
 		public func partner<T: Partner.PartnerTokenizer>() -> T {
