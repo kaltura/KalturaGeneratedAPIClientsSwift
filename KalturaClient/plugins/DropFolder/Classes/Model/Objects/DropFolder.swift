@@ -103,6 +103,12 @@ open class DropFolder: ObjectBase {
 			}
 		}
 		
+		public var fileDeleteRegex: BaseTokenizedObject {
+			get {
+				return self.append("fileDeleteRegex") 
+			}
+		}
+		
 		public var autoFileDeleteDays: BaseTokenizedObject {
 			get {
 				return self.append("autoFileDeleteDays") 
@@ -217,6 +223,7 @@ open class DropFolder: ObjectBase {
 	  in size we'll be treated as "finished uploading to folder"  */
 	public var fileSizeCheckInterval: Int? = nil
 	public var fileDeletePolicy: DropFolderFileDeletePolicy? = nil
+	public var fileDeleteRegex: String? = nil
 	public var autoFileDeleteDays: Int? = nil
 	public var fileHandlerType: DropFolderFileHandlerType? = nil
 	public var fileNamePatterns: String? = nil
@@ -278,6 +285,10 @@ open class DropFolder: ObjectBase {
 	
 	public func setMultiRequestToken(fileDeletePolicy: String) {
 		self.dict["fileDeletePolicy"] = fileDeletePolicy
+	}
+	
+	public func setMultiRequestToken(fileDeleteRegex: String) {
+		self.dict["fileDeleteRegex"] = fileDeleteRegex
 	}
 	
 	public func setMultiRequestToken(autoFileDeleteDays: String) {
@@ -380,6 +391,9 @@ open class DropFolder: ObjectBase {
 		if dict["fileDeletePolicy"] != nil {
 			fileDeletePolicy = DropFolderFileDeletePolicy(rawValue: (dict["fileDeletePolicy"] as? Int)!)
 		}
+		if dict["fileDeleteRegex"] != nil {
+			fileDeleteRegex = dict["fileDeleteRegex"] as? String
+		}
 		if dict["autoFileDeleteDays"] != nil {
 			autoFileDeleteDays = dict["autoFileDeleteDays"] as? Int
 		}
@@ -464,6 +478,9 @@ open class DropFolder: ObjectBase {
 		}
 		if(fileDeletePolicy != nil) {
 			dict["fileDeletePolicy"] = fileDeletePolicy!.rawValue
+		}
+		if(fileDeleteRegex != nil) {
+			dict["fileDeleteRegex"] = fileDeleteRegex!
 		}
 		if(autoFileDeleteDays != nil) {
 			dict["autoFileDeleteDays"] = autoFileDeleteDays!

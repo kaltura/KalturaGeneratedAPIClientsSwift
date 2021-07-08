@@ -444,6 +444,42 @@ open class Partner: ObjectBase {
 				return self.append("monitorUsage") 
 			}
 		}
+		
+		public var passwordStructureValidations: BaseTokenizedObject {
+			get {
+				return self.append("passwordStructureValidations") 
+			}
+		}
+		
+		public var passwordStructureValidationsDescription: BaseTokenizedObject {
+			get {
+				return self.append("passwordStructureValidationsDescription") 
+			}
+		}
+		
+		public var passReplaceFreq: BaseTokenizedObject {
+			get {
+				return self.append("passReplaceFreq") 
+			}
+		}
+		
+		public var maxLoginAttempts: BaseTokenizedObject {
+			get {
+				return self.append("maxLoginAttempts") 
+			}
+		}
+		
+		public var loginBlockPeriod: BaseTokenizedObject {
+			get {
+				return self.append("loginBlockPeriod") 
+			}
+		}
+		
+		public var numPrevPassToKeep: BaseTokenizedObject {
+			get {
+				return self.append("numPrevPassToKeep") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -520,6 +556,12 @@ open class Partner: ObjectBase {
 	public var usageLimitWarning: Int? = nil
 	public var lastFreeTrialNotificationDay: Int? = nil
 	public var monitorUsage: Int? = nil
+	public var passwordStructureValidations: String? = nil
+	public var passwordStructureValidationsDescription: String? = nil
+	public var passReplaceFreq: Int? = nil
+	public var maxLoginAttempts: Int? = nil
+	public var loginBlockPeriod: Int? = nil
+	public var numPrevPassToKeep: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -778,6 +820,30 @@ open class Partner: ObjectBase {
 		self.dict["monitorUsage"] = monitorUsage
 	}
 	
+	public func setMultiRequestToken(passwordStructureValidations: String) {
+		self.dict["passwordStructureValidations"] = passwordStructureValidations
+	}
+	
+	public func setMultiRequestToken(passwordStructureValidationsDescription: String) {
+		self.dict["passwordStructureValidationsDescription"] = passwordStructureValidationsDescription
+	}
+	
+	public func setMultiRequestToken(passReplaceFreq: String) {
+		self.dict["passReplaceFreq"] = passReplaceFreq
+	}
+	
+	public func setMultiRequestToken(maxLoginAttempts: String) {
+		self.dict["maxLoginAttempts"] = maxLoginAttempts
+	}
+	
+	public func setMultiRequestToken(loginBlockPeriod: String) {
+		self.dict["loginBlockPeriod"] = loginBlockPeriod
+	}
+	
+	public func setMultiRequestToken(numPrevPassToKeep: String) {
+		self.dict["numPrevPassToKeep"] = numPrevPassToKeep
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -985,6 +1051,24 @@ open class Partner: ObjectBase {
 		if dict["monitorUsage"] != nil {
 			monitorUsage = dict["monitorUsage"] as? Int
 		}
+		if dict["passwordStructureValidations"] != nil {
+			passwordStructureValidations = dict["passwordStructureValidations"] as? String
+		}
+		if dict["passwordStructureValidationsDescription"] != nil {
+			passwordStructureValidationsDescription = dict["passwordStructureValidationsDescription"] as? String
+		}
+		if dict["passReplaceFreq"] != nil {
+			passReplaceFreq = dict["passReplaceFreq"] as? Int
+		}
+		if dict["maxLoginAttempts"] != nil {
+			maxLoginAttempts = dict["maxLoginAttempts"] as? Int
+		}
+		if dict["loginBlockPeriod"] != nil {
+			loginBlockPeriod = dict["loginBlockPeriod"] as? Int
+		}
+		if dict["numPrevPassToKeep"] != nil {
+			numPrevPassToKeep = dict["numPrevPassToKeep"] as? Int
+		}
 
 	}
 
@@ -1088,6 +1172,24 @@ open class Partner: ObjectBase {
 		}
 		if(eSearchLanguages != nil) {
 			dict["eSearchLanguages"] = eSearchLanguages!.map { value in value.toDictionary() }
+		}
+		if(passwordStructureValidations != nil) {
+			dict["passwordStructureValidations"] = passwordStructureValidations!
+		}
+		if(passwordStructureValidationsDescription != nil) {
+			dict["passwordStructureValidationsDescription"] = passwordStructureValidationsDescription!
+		}
+		if(passReplaceFreq != nil) {
+			dict["passReplaceFreq"] = passReplaceFreq!
+		}
+		if(maxLoginAttempts != nil) {
+			dict["maxLoginAttempts"] = maxLoginAttempts!
+		}
+		if(loginBlockPeriod != nil) {
+			dict["loginBlockPeriod"] = loginBlockPeriod!
+		}
+		if(numPrevPassToKeep != nil) {
+			dict["numPrevPassToKeep"] = numPrevPassToKeep!
 		}
 		return dict
 	}
