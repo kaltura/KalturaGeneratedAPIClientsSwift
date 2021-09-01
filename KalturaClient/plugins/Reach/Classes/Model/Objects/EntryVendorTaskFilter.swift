@@ -42,35 +42,13 @@ open class EntryVendorTaskFilter: EntryVendorTaskBaseFilter {
 				return self.append("freeText") 
 			}
 		}
-		
-		public var expectedFinishTimeGreaterThanOrEqual: BaseTokenizedObject {
-			get {
-				return self.append("expectedFinishTimeGreaterThanOrEqual") 
-			}
-		}
-		
-		public var expectedFinishTimeLessThanOrEqual: BaseTokenizedObject {
-			get {
-				return self.append("expectedFinishTimeLessThanOrEqual") 
-			}
-		}
 	}
 
 	public var freeText: String? = nil
-	public var expectedFinishTimeGreaterThanOrEqual: Int? = nil
-	public var expectedFinishTimeLessThanOrEqual: Int? = nil
 
 
 	public func setMultiRequestToken(freeText: String) {
 		self.dict["freeText"] = freeText
-	}
-	
-	public func setMultiRequestToken(expectedFinishTimeGreaterThanOrEqual: String) {
-		self.dict["expectedFinishTimeGreaterThanOrEqual"] = expectedFinishTimeGreaterThanOrEqual
-	}
-	
-	public func setMultiRequestToken(expectedFinishTimeLessThanOrEqual: String) {
-		self.dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -79,12 +57,6 @@ open class EntryVendorTaskFilter: EntryVendorTaskBaseFilter {
 		if dict["freeText"] != nil {
 			freeText = dict["freeText"] as? String
 		}
-		if dict["expectedFinishTimeGreaterThanOrEqual"] != nil {
-			expectedFinishTimeGreaterThanOrEqual = dict["expectedFinishTimeGreaterThanOrEqual"] as? Int
-		}
-		if dict["expectedFinishTimeLessThanOrEqual"] != nil {
-			expectedFinishTimeLessThanOrEqual = dict["expectedFinishTimeLessThanOrEqual"] as? Int
-		}
 
 	}
 
@@ -92,12 +64,6 @@ open class EntryVendorTaskFilter: EntryVendorTaskBaseFilter {
 		var dict: [String: Any] = super.toDictionary()
 		if(freeText != nil) {
 			dict["freeText"] = freeText!
-		}
-		if(expectedFinishTimeGreaterThanOrEqual != nil) {
-			dict["expectedFinishTimeGreaterThanOrEqual"] = expectedFinishTimeGreaterThanOrEqual!
-		}
-		if(expectedFinishTimeLessThanOrEqual != nil) {
-			dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual!
 		}
 		return dict
 	}
