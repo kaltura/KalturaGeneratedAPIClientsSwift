@@ -186,6 +186,12 @@ open class DistributionProfile: ObjectBase {
 				return self.append("distributeTrigger") 
 			}
 		}
+		
+		public var supportImageEntry: BaseTokenizedObject {
+			get {
+				return self.append("supportImageEntry") 
+			}
+		}
 	}
 
 	/**  Auto generated unique id  */
@@ -233,6 +239,7 @@ open class DistributionProfile: ObjectBase {
 	public var recommendedDcForExecute: Int? = nil
 	/**  The event that trigger the automatic distribute  */
 	public var distributeTrigger: DistributeTrigger? = nil
+	public var supportImageEntry: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -319,6 +326,10 @@ open class DistributionProfile: ObjectBase {
 		self.dict["distributeTrigger"] = distributeTrigger
 	}
 	
+	public func setMultiRequestToken(supportImageEntry: String) {
+		self.dict["supportImageEntry"] = supportImageEntry
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -396,6 +407,9 @@ open class DistributionProfile: ObjectBase {
 		}
 		if dict["distributeTrigger"] != nil {
 			distributeTrigger = DistributeTrigger(rawValue: (dict["distributeTrigger"] as? Int)!)
+		}
+		if dict["supportImageEntry"] != nil {
+			supportImageEntry = dict["supportImageEntry"] as? Bool
 		}
 
 	}

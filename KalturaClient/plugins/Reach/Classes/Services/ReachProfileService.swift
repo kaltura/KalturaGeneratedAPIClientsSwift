@@ -122,7 +122,7 @@ public final class ReachProfileService{
 		}
 	}
 
-	/**  sync vednor profile credit  */
+	/**  sync vendor profile credit  */
 	public static func syncCredit(reachProfileId: Int) -> RequestBuilder<ReachProfile, ReachProfile.ReachProfileTokenizer, SyncCreditTokenizer> {
 		let request: RequestBuilder<ReachProfile, ReachProfile.ReachProfileTokenizer, SyncCreditTokenizer> = RequestBuilder<ReachProfile, ReachProfile.ReachProfileTokenizer, SyncCreditTokenizer>(service: "reach_reachprofile", action: "syncCredit")
 			.setParam(key: "reachProfileId", value: reachProfileId)

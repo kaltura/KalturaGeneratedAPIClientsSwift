@@ -480,6 +480,12 @@ open class Partner: ObjectBase {
 				return self.append("numPrevPassToKeep") 
 			}
 		}
+		
+		public var twoFactorAuthenticationMode: BaseTokenizedObject {
+			get {
+				return self.append("twoFactorAuthenticationMode") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -562,6 +568,7 @@ open class Partner: ObjectBase {
 	public var maxLoginAttempts: Int? = nil
 	public var loginBlockPeriod: Int? = nil
 	public var numPrevPassToKeep: Int? = nil
+	public var twoFactorAuthenticationMode: TwoFactorAuthenticationMode? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -844,6 +851,10 @@ open class Partner: ObjectBase {
 		self.dict["numPrevPassToKeep"] = numPrevPassToKeep
 	}
 	
+	public func setMultiRequestToken(twoFactorAuthenticationMode: String) {
+		self.dict["twoFactorAuthenticationMode"] = twoFactorAuthenticationMode
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1068,6 +1079,9 @@ open class Partner: ObjectBase {
 		}
 		if dict["numPrevPassToKeep"] != nil {
 			numPrevPassToKeep = dict["numPrevPassToKeep"] as? Int
+		}
+		if dict["twoFactorAuthenticationMode"] != nil {
+			twoFactorAuthenticationMode = TwoFactorAuthenticationMode(rawValue: (dict["twoFactorAuthenticationMode"] as? Int)!)
 		}
 
 	}

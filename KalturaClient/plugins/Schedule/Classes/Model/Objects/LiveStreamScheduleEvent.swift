@@ -60,6 +60,18 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 				return self.append("postEndTime") 
 			}
 		}
+		
+		public var preStartEntryId: BaseTokenizedObject {
+			get {
+				return self.append("preStartEntryId") 
+			}
+		}
+		
+		public var postEndEntryId: BaseTokenizedObject {
+			get {
+				return self.append("postEndEntryId") 
+			}
+		}
 	}
 
 	/**  The entry ID of the source entry (for simulive)  */
@@ -70,6 +82,10 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 	public var preStartTime: Int? = nil
 	/**  The time relative time before the endTime considered as postEnd time  */
 	public var postEndTime: Int? = nil
+	/**  The entry id of the pre start entry  */
+	public var preStartEntryId: String? = nil
+	/**  The entry id of the post end entry  */
+	public var postEndEntryId: String? = nil
 
 
 	public func setMultiRequestToken(sourceEntryId: String) {
@@ -88,6 +104,14 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		self.dict["postEndTime"] = postEndTime
 	}
 	
+	public func setMultiRequestToken(preStartEntryId: String) {
+		self.dict["preStartEntryId"] = preStartEntryId
+	}
+	
+	public func setMultiRequestToken(postEndEntryId: String) {
+		self.dict["postEndEntryId"] = postEndEntryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -102,6 +126,12 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		}
 		if dict["postEndTime"] != nil {
 			postEndTime = dict["postEndTime"] as? Int
+		}
+		if dict["preStartEntryId"] != nil {
+			preStartEntryId = dict["preStartEntryId"] as? String
+		}
+		if dict["postEndEntryId"] != nil {
+			postEndEntryId = dict["postEndEntryId"] as? String
 		}
 
 	}
@@ -119,6 +149,12 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		}
 		if(postEndTime != nil) {
 			dict["postEndTime"] = postEndTime!
+		}
+		if(preStartEntryId != nil) {
+			dict["preStartEntryId"] = preStartEntryId!
+		}
+		if(postEndEntryId != nil) {
+			dict["postEndEntryId"] = postEndEntryId!
 		}
 		return dict
 	}

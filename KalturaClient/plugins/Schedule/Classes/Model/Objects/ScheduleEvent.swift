@@ -91,6 +91,16 @@ open class ScheduleEvent: ObjectBase {
 			}
 		}
 		
+		public func linkedTo<T: LinkedScheduleEvent.LinkedScheduleEventTokenizer>() -> T {
+			return T(self.append("linkedTo"))
+		}
+		
+		public var linkedBy: BaseTokenizedObject {
+			get {
+				return self.append("linkedBy") 
+			}
+		}
+		
 		public var classificationType: BaseTokenizedObject {
 			get {
 				return self.append("classificationType") 
@@ -197,6 +207,12 @@ open class ScheduleEvent: ObjectBase {
 	public var startDate: Int? = nil
 	public var endDate: Int? = nil
 	public var referenceId: String? = nil
+	/**  Contains the Id of the event that influences the timing of this event and the
+	  offset of time.  */
+	public var linkedTo: LinkedScheduleEvent? = nil
+	/**  An array of Schedule Event Ids that their start time depends on the end of the
+	  current.  */
+	public var linkedBy: String? = nil
 	public var classificationType: ScheduleEventClassificationType? = nil
 	/**  Specifies the global position for the activity  */
 	public var geoLatitude: Double? = nil
@@ -261,6 +277,10 @@ open class ScheduleEvent: ObjectBase {
 	
 	public func setMultiRequestToken(referenceId: String) {
 		self.dict["referenceId"] = referenceId
+	}
+	
+	public func setMultiRequestToken(linkedBy: String) {
+		self.dict["linkedBy"] = linkedBy
 	}
 	
 	public func setMultiRequestToken(classificationType: String) {
@@ -353,6 +373,11 @@ open class ScheduleEvent: ObjectBase {
 		if dict["referenceId"] != nil {
 			referenceId = dict["referenceId"] as? String
 		}
+		if dict["linkedTo"] != nil {
+		linkedTo = try JSONParser.parse(object: dict["linkedTo"] as! [String: Any])		}
+		if dict["linkedBy"] != nil {
+			linkedBy = dict["linkedBy"] as? String
+		}
 		if dict["classificationType"] != nil {
 			classificationType = ScheduleEventClassificationType(rawValue: (dict["classificationType"] as? Int)!)
 		}
@@ -419,6 +444,12 @@ open class ScheduleEvent: ObjectBase {
 		}
 		if(referenceId != nil) {
 			dict["referenceId"] = referenceId!
+		}
+		if(linkedTo != nil) {
+			dict["linkedTo"] = linkedTo!.toDictionary()
+		}
+		if(linkedBy != nil) {
+			dict["linkedBy"] = linkedBy!
 		}
 		if(classificationType != nil) {
 			dict["classificationType"] = classificationType!.rawValue

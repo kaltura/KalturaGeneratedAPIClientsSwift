@@ -51,6 +51,41 @@ public final class CategoryService{
 		return request
 	}
 
+	public class CloneTokenizer: ClientTokenizer  {
+		
+		public var categoryId: BaseTokenizedObject {
+			get {
+				return self.append("categoryId") 
+			}
+		}
+		
+		public var fromPartnerId: BaseTokenizedObject {
+			get {
+				return self.append("fromPartnerId") 
+			}
+		}
+		
+		public var parentCategoryId: BaseTokenizedObject {
+			get {
+				return self.append("parentCategoryId") 
+			}
+		}
+	}
+
+	public static func clone(categoryId: Int, fromPartnerId: Int) -> RequestBuilder<Category, Category.CategoryTokenizer, CloneTokenizer> {
+		return clone(categoryId: categoryId, fromPartnerId: fromPartnerId, parentCategoryId: nil)
+	}
+
+	/**  Clone Category  */
+	public static func clone(categoryId: Int, fromPartnerId: Int, parentCategoryId: Int?) -> RequestBuilder<Category, Category.CategoryTokenizer, CloneTokenizer> {
+		let request: RequestBuilder<Category, Category.CategoryTokenizer, CloneTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, CloneTokenizer>(service: "category", action: "clone")
+			.setParam(key: "categoryId", value: categoryId)
+			.setParam(key: "fromPartnerId", value: fromPartnerId)
+			.setParam(key: "parentCategoryId", value: parentCategoryId)
+
+		return request
+	}
+
 	public class DeleteTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

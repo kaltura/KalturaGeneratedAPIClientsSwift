@@ -56,4 +56,5 @@ public enum ConditionType: String {
 	case ASSET_TYPE = "16"
 	case BOOLEAN = "17"
 	case HTTP_HEADER = "18"
+	case ENTRY_SCHEDULED = "19"
 }

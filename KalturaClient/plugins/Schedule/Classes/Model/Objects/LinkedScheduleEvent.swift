@@ -25,16 +25,67 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario: String {
-	case NONE = "0"
-	case PROTECTION = "playReady.PROTECTION"
-	case PURCHASE = "playReady.PURCHASE"
-	case RENTAL = "playReady.RENTAL"
-	case SUBSCRIPTION = "playReady.SUBSCRIPTION"
+
+open class LinkedScheduleEvent: ObjectBase {
+
+	public class LinkedScheduleEventTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var offset: BaseTokenizedObject {
+			get {
+				return self.append("offset") 
+			}
+		}
+		
+		public var eventId: BaseTokenizedObject {
+			get {
+				return self.append("eventId") 
+			}
+		}
+	}
+
+	/**  The time between the end of the event which it's id is in $eventId and the start
+	  of the event holding this object  */
+	public var offset: Int? = nil
+	/**  The id of the event influencing the start of the event holding this object  */
+	public var eventId: Int? = nil
+
+
+	public func setMultiRequestToken(offset: String) {
+		self.dict["offset"] = offset
+	}
+	
+	public func setMultiRequestToken(eventId: String) {
+		self.dict["eventId"] = eventId
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["offset"] != nil {
+			offset = dict["offset"] as? Int
+		}
+		if dict["eventId"] != nil {
+			eventId = dict["eventId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(offset != nil) {
+			dict["offset"] = offset!
+		}
+		if(eventId != nil) {
+			dict["eventId"] = eventId!
+		}
+		return dict
+	}
 }
+

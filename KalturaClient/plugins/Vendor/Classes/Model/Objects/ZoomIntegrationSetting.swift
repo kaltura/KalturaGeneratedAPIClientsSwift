@@ -33,15 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ZoomIntegrationSetting: ObjectBase {
+open class ZoomIntegrationSetting: IntegrationSetting {
 
-	public class ZoomIntegrationSettingTokenizer: ObjectBase.ObjectBaseTokenizer {
-		
-		public var defaultUserId: BaseTokenizedObject {
-			get {
-				return self.append("defaultUserId") 
-			}
-		}
+	public class ZoomIntegrationSettingTokenizer: IntegrationSetting.IntegrationSettingTokenizer {
 		
 		public var zoomCategory: BaseTokenizedObject {
 			get {
@@ -49,27 +43,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 			}
 		}
 		
-		public var accountId: BaseTokenizedObject {
-			get {
-				return self.append("accountId") 
-			}
-		}
-		
 		public var enableRecordingUpload: BaseTokenizedObject {
 			get {
 				return self.append("enableRecordingUpload") 
-			}
-		}
-		
-		public var createUserIfNotExist: BaseTokenizedObject {
-			get {
-				return self.append("createUserIfNotExist") 
-			}
-		}
-		
-		public var handleParticipantsMode: BaseTokenizedObject {
-			get {
-				return self.append("handleParticipantsMode") 
 			}
 		}
 		
@@ -97,21 +73,9 @@ open class ZoomIntegrationSetting: ObjectBase {
 			}
 		}
 		
-		public var conversionProfileId: BaseTokenizedObject {
-			get {
-				return self.append("conversionProfileId") 
-			}
-		}
-		
 		public var jwtToken: BaseTokenizedObject {
 			get {
 				return self.append("jwtToken") 
-			}
-		}
-		
-		public var deletionPolicy: BaseTokenizedObject {
-			get {
-				return self.append("deletionPolicy") 
 			}
 		}
 		
@@ -127,18 +91,6 @@ open class ZoomIntegrationSetting: ObjectBase {
 			}
 		}
 		
-		public var createdAt: BaseTokenizedObject {
-			get {
-				return self.append("createdAt") 
-			}
-		}
-		
-		public var updatedAt: BaseTokenizedObject {
-			get {
-				return self.append("updatedAt") 
-			}
-		}
-		
 		public var enableMeetingUpload: BaseTokenizedObject {
 			get {
 				return self.append("enableMeetingUpload") 
@@ -146,48 +98,24 @@ open class ZoomIntegrationSetting: ObjectBase {
 		}
 	}
 
-	public var defaultUserId: String? = nil
 	public var zoomCategory: String? = nil
-	public var accountId: String? = nil
 	public var enableRecordingUpload: Bool? = nil
-	public var createUserIfNotExist: Bool? = nil
-	public var handleParticipantsMode: HandleParticipantsMode? = nil
 	public var zoomUserMatchingMode: ZoomUsersMatching? = nil
 	public var zoomUserPostfix: String? = nil
 	public var zoomWebinarCategory: String? = nil
 	public var enableWebinarUploads: Bool? = nil
-	public var conversionProfileId: Int? = nil
 	public var jwtToken: String? = nil
-	public var deletionPolicy: Bool? = nil
 	public var enableZoomTranscription: Bool? = nil
 	public var zoomAccountDescription: String? = nil
-	public var createdAt: String? = nil
-	public var updatedAt: String? = nil
 	public var enableMeetingUpload: Bool? = nil
 
 
-	public func setMultiRequestToken(defaultUserId: String) {
-		self.dict["defaultUserId"] = defaultUserId
-	}
-	
 	public func setMultiRequestToken(zoomCategory: String) {
 		self.dict["zoomCategory"] = zoomCategory
 	}
 	
-	public func setMultiRequestToken(accountId: String) {
-		self.dict["accountId"] = accountId
-	}
-	
 	public func setMultiRequestToken(enableRecordingUpload: String) {
 		self.dict["enableRecordingUpload"] = enableRecordingUpload
-	}
-	
-	public func setMultiRequestToken(createUserIfNotExist: String) {
-		self.dict["createUserIfNotExist"] = createUserIfNotExist
-	}
-	
-	public func setMultiRequestToken(handleParticipantsMode: String) {
-		self.dict["handleParticipantsMode"] = handleParticipantsMode
 	}
 	
 	public func setMultiRequestToken(zoomUserMatchingMode: String) {
@@ -206,16 +134,8 @@ open class ZoomIntegrationSetting: ObjectBase {
 		self.dict["enableWebinarUploads"] = enableWebinarUploads
 	}
 	
-	public func setMultiRequestToken(conversionProfileId: String) {
-		self.dict["conversionProfileId"] = conversionProfileId
-	}
-	
 	public func setMultiRequestToken(jwtToken: String) {
 		self.dict["jwtToken"] = jwtToken
-	}
-	
-	public func setMultiRequestToken(deletionPolicy: String) {
-		self.dict["deletionPolicy"] = deletionPolicy
 	}
 	
 	public func setMultiRequestToken(enableZoomTranscription: String) {
@@ -226,14 +146,6 @@ open class ZoomIntegrationSetting: ObjectBase {
 		self.dict["zoomAccountDescription"] = zoomAccountDescription
 	}
 	
-	public func setMultiRequestToken(createdAt: String) {
-		self.dict["createdAt"] = createdAt
-	}
-	
-	public func setMultiRequestToken(updatedAt: String) {
-		self.dict["updatedAt"] = updatedAt
-	}
-	
 	public func setMultiRequestToken(enableMeetingUpload: String) {
 		self.dict["enableMeetingUpload"] = enableMeetingUpload
 	}
@@ -241,23 +153,11 @@ open class ZoomIntegrationSetting: ObjectBase {
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["defaultUserId"] != nil {
-			defaultUserId = dict["defaultUserId"] as? String
-		}
 		if dict["zoomCategory"] != nil {
 			zoomCategory = dict["zoomCategory"] as? String
 		}
-		if dict["accountId"] != nil {
-			accountId = dict["accountId"] as? String
-		}
 		if dict["enableRecordingUpload"] != nil {
 			enableRecordingUpload = dict["enableRecordingUpload"] as? Bool
-		}
-		if dict["createUserIfNotExist"] != nil {
-			createUserIfNotExist = dict["createUserIfNotExist"] as? Bool
-		}
-		if dict["handleParticipantsMode"] != nil {
-			handleParticipantsMode = HandleParticipantsMode(rawValue: (dict["handleParticipantsMode"] as? Int)!)
 		}
 		if dict["zoomUserMatchingMode"] != nil {
 			zoomUserMatchingMode = ZoomUsersMatching(rawValue: (dict["zoomUserMatchingMode"] as? Int)!)
@@ -271,26 +171,14 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if dict["enableWebinarUploads"] != nil {
 			enableWebinarUploads = dict["enableWebinarUploads"] as? Bool
 		}
-		if dict["conversionProfileId"] != nil {
-			conversionProfileId = dict["conversionProfileId"] as? Int
-		}
 		if dict["jwtToken"] != nil {
 			jwtToken = dict["jwtToken"] as? String
-		}
-		if dict["deletionPolicy"] != nil {
-			deletionPolicy = dict["deletionPolicy"] as? Bool
 		}
 		if dict["enableZoomTranscription"] != nil {
 			enableZoomTranscription = dict["enableZoomTranscription"] as? Bool
 		}
 		if dict["zoomAccountDescription"] != nil {
 			zoomAccountDescription = dict["zoomAccountDescription"] as? String
-		}
-		if dict["createdAt"] != nil {
-			createdAt = dict["createdAt"] as? String
-		}
-		if dict["updatedAt"] != nil {
-			updatedAt = dict["updatedAt"] as? String
 		}
 		if dict["enableMeetingUpload"] != nil {
 			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
@@ -300,20 +188,11 @@ open class ZoomIntegrationSetting: ObjectBase {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(defaultUserId != nil) {
-			dict["defaultUserId"] = defaultUserId!
-		}
 		if(zoomCategory != nil) {
 			dict["zoomCategory"] = zoomCategory!
 		}
 		if(enableRecordingUpload != nil) {
 			dict["enableRecordingUpload"] = enableRecordingUpload!
-		}
-		if(createUserIfNotExist != nil) {
-			dict["createUserIfNotExist"] = createUserIfNotExist!
-		}
-		if(handleParticipantsMode != nil) {
-			dict["handleParticipantsMode"] = handleParticipantsMode!.rawValue
 		}
 		if(zoomUserMatchingMode != nil) {
 			dict["zoomUserMatchingMode"] = zoomUserMatchingMode!.rawValue
@@ -327,26 +206,14 @@ open class ZoomIntegrationSetting: ObjectBase {
 		if(enableWebinarUploads != nil) {
 			dict["enableWebinarUploads"] = enableWebinarUploads!
 		}
-		if(conversionProfileId != nil) {
-			dict["conversionProfileId"] = conversionProfileId!
-		}
 		if(jwtToken != nil) {
 			dict["jwtToken"] = jwtToken!
-		}
-		if(deletionPolicy != nil) {
-			dict["deletionPolicy"] = deletionPolicy!
 		}
 		if(enableZoomTranscription != nil) {
 			dict["enableZoomTranscription"] = enableZoomTranscription!
 		}
 		if(zoomAccountDescription != nil) {
 			dict["zoomAccountDescription"] = zoomAccountDescription!
-		}
-		if(createdAt != nil) {
-			dict["createdAt"] = createdAt!
-		}
-		if(updatedAt != nil) {
-			dict["updatedAt"] = updatedAt!
 		}
 		if(enableMeetingUpload != nil) {
 			dict["enableMeetingUpload"] = enableMeetingUpload!

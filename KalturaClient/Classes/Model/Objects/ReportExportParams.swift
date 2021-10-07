@@ -60,6 +60,12 @@ open class ReportExportParams: ObjectBase {
 				return self.append("reportsItemsGroup") 
 			}
 		}
+		
+		public var baseUrl: BaseTokenizedObject {
+			get {
+				return self.append("baseUrl") 
+			}
+		}
 	}
 
 	public var recipientEmail: String? = nil
@@ -67,6 +73,7 @@ open class ReportExportParams: ObjectBase {
 	public var timeZoneOffset: Int? = nil
 	public var reportItems: Array<ReportExportItem>? = nil
 	public var reportsItemsGroup: String? = nil
+	public var baseUrl: String? = nil
 
 
 	public func setMultiRequestToken(recipientEmail: String) {
@@ -79,6 +86,10 @@ open class ReportExportParams: ObjectBase {
 	
 	public func setMultiRequestToken(reportsItemsGroup: String) {
 		self.dict["reportsItemsGroup"] = reportsItemsGroup
+	}
+	
+	public func setMultiRequestToken(baseUrl: String) {
+		self.dict["baseUrl"] = baseUrl
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -96,6 +107,9 @@ open class ReportExportParams: ObjectBase {
 		if dict["reportsItemsGroup"] != nil {
 			reportsItemsGroup = dict["reportsItemsGroup"] as? String
 		}
+		if dict["baseUrl"] != nil {
+			baseUrl = dict["baseUrl"] as? String
+		}
 
 	}
 
@@ -112,6 +126,9 @@ open class ReportExportParams: ObjectBase {
 		}
 		if(reportsItemsGroup != nil) {
 			dict["reportsItemsGroup"] = reportsItemsGroup!
+		}
+		if(baseUrl != nil) {
+			dict["baseUrl"] = baseUrl!
 		}
 		return dict
 	}

@@ -37,4 +37,5 @@ public enum ScheduleEventType: Int {
 	case BLACKOUT = 3
 	case MEETING = 4
 	case LIVE_REDIRECT = 5
+	case VOD = 6
 }

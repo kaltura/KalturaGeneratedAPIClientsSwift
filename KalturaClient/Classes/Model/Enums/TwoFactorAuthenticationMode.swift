@@ -31,10 +31,8 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario: String {
-	case NONE = "0"
-	case PROTECTION = "playReady.PROTECTION"
-	case PURCHASE = "playReady.PURCHASE"
-	case RENTAL = "playReady.RENTAL"
-	case SUBSCRIPTION = "playReady.SUBSCRIPTION"
+public enum TwoFactorAuthenticationMode: Int {
+	case ALL = 0
+	case ADMIN_USERS_ONLY = 1
+	case NON_ADMIN_USERS_ONLY = 2
 }

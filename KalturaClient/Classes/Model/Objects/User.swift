@@ -132,6 +132,12 @@ open class User: BaseUser {
 				return self.append("ksPrivileges") 
 			}
 		}
+		
+		public var encryptedSeed: BaseTokenizedObject {
+			get {
+				return self.append("encryptedSeed") 
+			}
+		}
 	}
 
 	public var type: UserType? = nil
@@ -150,6 +156,7 @@ open class User: BaseUser {
 	public var title: String? = nil
 	public var company: String? = nil
 	public var ksPrivileges: String? = nil
+	public var encryptedSeed: String? = nil
 
 
 	public func setMultiRequestToken(type: String) {
@@ -216,6 +223,10 @@ open class User: BaseUser {
 		self.dict["ksPrivileges"] = ksPrivileges
 	}
 	
+	public func setMultiRequestToken(encryptedSeed: String) {
+		self.dict["encryptedSeed"] = encryptedSeed
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -266,6 +277,9 @@ open class User: BaseUser {
 		}
 		if dict["ksPrivileges"] != nil {
 			ksPrivileges = dict["ksPrivileges"] as? String
+		}
+		if dict["encryptedSeed"] != nil {
+			encryptedSeed = dict["encryptedSeed"] as? String
 		}
 
 	}

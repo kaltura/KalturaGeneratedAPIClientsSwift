@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class DeliveryProfileVodPackagerPlayServer: DeliveryProfile {
+open class DeliveryProfileVodPackagerPlayServer: DeliveryProfileVod {
 
-	public class DeliveryProfileVodPackagerPlayServerTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+	public class DeliveryProfileVodPackagerPlayServerTokenizer: DeliveryProfileVod.DeliveryProfileVodTokenizer {
 		
 		public var adStitchingEnabled: BaseTokenizedObject {
 			get {

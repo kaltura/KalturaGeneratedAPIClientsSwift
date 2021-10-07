@@ -34,6 +34,7 @@
 public enum CatalogItemLanguage: String {
 	case AR = "Arabic"
 	case YUE = "Cantonese"
+	case CA = "Catalan"
 	case ZH = "Chinese"
 	case DA = "Danish"
 	case NL = "Dutch"

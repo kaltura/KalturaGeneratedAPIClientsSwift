@@ -78,6 +78,12 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 				return self.append("redirectFromEntryId") 
 			}
 		}
+		
+		public var conversionProfileIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileIdEqual") 
+			}
+		}
 	}
 
 	public var freeText: String? = nil
@@ -89,6 +95,7 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 	public var categoryAncestorIdIn: String? = nil
 	/**  The id of the original entry  */
 	public var redirectFromEntryId: String? = nil
+	public var conversionProfileIdEqual: Int? = nil
 
 
 	public func setMultiRequestToken(freeText: String) {
@@ -119,6 +126,10 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		self.dict["redirectFromEntryId"] = redirectFromEntryId
 	}
 	
+	public func setMultiRequestToken(conversionProfileIdEqual: String) {
+		self.dict["conversionProfileIdEqual"] = conversionProfileIdEqual
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -142,6 +153,9 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		}
 		if dict["redirectFromEntryId"] != nil {
 			redirectFromEntryId = dict["redirectFromEntryId"] as? String
+		}
+		if dict["conversionProfileIdEqual"] != nil {
+			conversionProfileIdEqual = dict["conversionProfileIdEqual"] as? Int
 		}
 
 	}
@@ -168,6 +182,9 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		}
 		if(redirectFromEntryId != nil) {
 			dict["redirectFromEntryId"] = redirectFromEntryId!
+		}
+		if(conversionProfileIdEqual != nil) {
+			dict["conversionProfileIdEqual"] = conversionProfileIdEqual!
 		}
 		return dict
 	}

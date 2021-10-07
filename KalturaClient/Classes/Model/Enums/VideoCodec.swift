@@ -33,11 +33,11 @@
  */
 public enum VideoCodec: String {
 	case NONE = ""
-	case AV1 = "AV1"
 	case APCH = "apch"
 	case APCN = "apcn"
 	case APCO = "apco"
 	case APCS = "apcs"
+	case AV1 = "av1"
 	case COPY = "copy"
 	case DNXHD = "dnxhd"
 	case DV = "dv"

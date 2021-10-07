@@ -66,6 +66,12 @@ open class ReportExportJobData: JobData {
 				return ArrayTokenizedObject<ReportExportFile.ReportExportFileTokenizer>(self.append("files"))
 			} 
 		}
+		
+		public var baseUrl: BaseTokenizedObject {
+			get {
+				return self.append("baseUrl") 
+			}
+		}
 	}
 
 	public var recipientEmail: String? = nil
@@ -73,6 +79,7 @@ open class ReportExportJobData: JobData {
 	public var filePaths: String? = nil
 	public var reportsGroup: String? = nil
 	public var files: Array<ReportExportFile>? = nil
+	public var baseUrl: String? = nil
 
 
 	public func setMultiRequestToken(recipientEmail: String) {
@@ -85,6 +92,10 @@ open class ReportExportJobData: JobData {
 	
 	public func setMultiRequestToken(reportsGroup: String) {
 		self.dict["reportsGroup"] = reportsGroup
+	}
+	
+	public func setMultiRequestToken(baseUrl: String) {
+		self.dict["baseUrl"] = baseUrl
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -105,6 +116,9 @@ open class ReportExportJobData: JobData {
 		if dict["files"] != nil {
 			files = try JSONParser.parse(array: dict["files"] as! [Any])
 		}
+		if dict["baseUrl"] != nil {
+			baseUrl = dict["baseUrl"] as? String
+		}
 
 	}
 
@@ -124,6 +138,9 @@ open class ReportExportJobData: JobData {
 		}
 		if(files != nil) {
 			dict["files"] = files!.map { value in value.toDictionary() }
+		}
+		if(baseUrl != nil) {
+			dict["baseUrl"] = baseUrl!
 		}
 		return dict
 	}

@@ -153,7 +153,7 @@ open class Asset: ObjectBase {
 	/**  Comma separated list of source flavor params ids  */
 	public var actualSourceAssetParamsIds: String? = nil
 	/**  The size (in Bytes) of the asset  */
-	public var sizeInBytes: Int? = nil
+	public var sizeInBytes: Int64? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -262,7 +262,7 @@ open class Asset: ObjectBase {
 			actualSourceAssetParamsIds = dict["actualSourceAssetParamsIds"] as? String
 		}
 		if dict["sizeInBytes"] != nil {
-			sizeInBytes = dict["sizeInBytes"] as? Int
+			sizeInBytes = Int64("\(dict["sizeInBytes"]!)")
 		}
 
 	}

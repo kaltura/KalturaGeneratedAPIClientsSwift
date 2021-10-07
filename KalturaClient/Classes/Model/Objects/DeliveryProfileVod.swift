@@ -25,16 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmLicenseScenario: String {
-	case NONE = "0"
-	case PROTECTION = "playReady.PROTECTION"
-	case PURCHASE = "playReady.PURCHASE"
-	case RENTAL = "playReady.RENTAL"
-	case SUBSCRIPTION = "playReady.SUBSCRIPTION"
+
+open class DeliveryProfileVod: DeliveryProfile {
+
+	public class DeliveryProfileVodTokenizer: DeliveryProfile.DeliveryProfileTokenizer {
+		
+		public var simuliveSupport: BaseTokenizedObject {
+			get {
+				return self.append("simuliveSupport") 
+			}
+		}
+	}
+
+	public var simuliveSupport: Bool? = nil
+
+
+	public func setMultiRequestToken(simuliveSupport: String) {
+		self.dict["simuliveSupport"] = simuliveSupport
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["simuliveSupport"] != nil {
+			simuliveSupport = dict["simuliveSupport"] as? Bool
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(simuliveSupport != nil) {
+			dict["simuliveSupport"] = simuliveSupport!
+		}
+		return dict
+	}
 }
+
