@@ -36,4 +36,5 @@ public enum PartnerStatus: Int {
 	case ACTIVE = 1
 	case BLOCKED = 2
 	case FULL_BLOCK = 3
+	case READ_ONLY = 4
 }

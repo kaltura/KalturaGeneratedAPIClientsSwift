@@ -54,6 +54,12 @@ open class ViewHistoryUserEntry: UserEntry {
 				return self.append("lastUpdateTime") 
 			}
 		}
+		
+		public var playlistLastEntryId: BaseTokenizedObject {
+			get {
+				return self.append("playlistLastEntryId") 
+			}
+		}
 	}
 
 	/**  Playback context  */
@@ -61,6 +67,8 @@ open class ViewHistoryUserEntry: UserEntry {
 	/**  Last playback time reached by user  */
 	public var lastTimeReached: Int? = nil
 	public var lastUpdateTime: Int? = nil
+	/**  Property to save last entry ID played in a playlist.  */
+	public var playlistLastEntryId: String? = nil
 
 
 	public func setMultiRequestToken(playbackContext: String) {
@@ -75,6 +83,10 @@ open class ViewHistoryUserEntry: UserEntry {
 		self.dict["lastUpdateTime"] = lastUpdateTime
 	}
 	
+	public func setMultiRequestToken(playlistLastEntryId: String) {
+		self.dict["playlistLastEntryId"] = playlistLastEntryId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -86,6 +98,9 @@ open class ViewHistoryUserEntry: UserEntry {
 		}
 		if dict["lastUpdateTime"] != nil {
 			lastUpdateTime = dict["lastUpdateTime"] as? Int
+		}
+		if dict["playlistLastEntryId"] != nil {
+			playlistLastEntryId = dict["playlistLastEntryId"] as? String
 		}
 
 	}
@@ -100,6 +115,9 @@ open class ViewHistoryUserEntry: UserEntry {
 		}
 		if(lastUpdateTime != nil) {
 			dict["lastUpdateTime"] = lastUpdateTime!
+		}
+		if(playlistLastEntryId != nil) {
+			dict["playlistLastEntryId"] = playlistLastEntryId!
 		}
 		return dict
 	}
