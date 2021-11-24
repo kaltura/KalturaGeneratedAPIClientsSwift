@@ -25,18 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DropFolderErrorCode: String {
-	case ERROR_CONNECT = "1"
-	case ERROR_AUTENTICATE = "2"
-	case ERROR_GET_PHISICAL_FILE_LIST = "3"
-	case ERROR_GET_DB_FILE_LIST = "4"
-	case DROP_FOLDER_APP_ERROR = "5"
-	case CONTENT_MATCH_POLICY_UNDEFINED = "6"
-	case MISSING_CONFIG = "7"
+
+open class UrlAuthenticationParamsCondition: Condition {
+
+	public class UrlAuthenticationParamsConditionTokenizer: Condition.ConditionTokenizer {
+	}
+
+
+
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

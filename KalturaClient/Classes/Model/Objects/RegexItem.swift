@@ -25,18 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DropFolderErrorCode: String {
-	case ERROR_CONNECT = "1"
-	case ERROR_AUTENTICATE = "2"
-	case ERROR_GET_PHISICAL_FILE_LIST = "3"
-	case ERROR_GET_DB_FILE_LIST = "4"
-	case DROP_FOLDER_APP_ERROR = "5"
-	case CONTENT_MATCH_POLICY_UNDEFINED = "6"
-	case MISSING_CONFIG = "7"
+
+open class RegexItem: ObjectBase {
+
+	public class RegexItemTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var regex: BaseTokenizedObject {
+			get {
+				return self.append("regex") 
+			}
+		}
+	}
+
+	public var regex: String? = nil
+
+
+	public func setMultiRequestToken(regex: String) {
+		self.dict["regex"] = regex
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["regex"] != nil {
+			regex = dict["regex"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(regex != nil) {
+			dict["regex"] = regex!
+		}
+		return dict
+	}
 }
+

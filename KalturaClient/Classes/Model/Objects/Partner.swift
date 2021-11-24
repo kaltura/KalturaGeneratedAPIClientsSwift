@@ -445,10 +445,10 @@ open class Partner: ObjectBase {
 			}
 		}
 		
-		public var passwordStructureValidations: BaseTokenizedObject {
+		public var passwordStructureValidations: ArrayTokenizedObject<RegexItem.RegexItemTokenizer> {
 			get {
-				return self.append("passwordStructureValidations") 
-			}
+				return ArrayTokenizedObject<RegexItem.RegexItemTokenizer>(self.append("passwordStructureValidations"))
+			} 
 		}
 		
 		public var passwordStructureValidationsDescription: BaseTokenizedObject {
@@ -484,6 +484,12 @@ open class Partner: ObjectBase {
 		public var twoFactorAuthenticationMode: BaseTokenizedObject {
 			get {
 				return self.append("twoFactorAuthenticationMode") 
+			}
+		}
+		
+		public var isSelfServe: BaseTokenizedObject {
+			get {
+				return self.append("isSelfServe") 
 			}
 		}
 	}
@@ -562,13 +568,14 @@ open class Partner: ObjectBase {
 	public var usageLimitWarning: Int? = nil
 	public var lastFreeTrialNotificationDay: Int? = nil
 	public var monitorUsage: Int? = nil
-	public var passwordStructureValidations: String? = nil
+	public var passwordStructureValidations: Array<RegexItem>? = nil
 	public var passwordStructureValidationsDescription: String? = nil
 	public var passReplaceFreq: Int? = nil
 	public var maxLoginAttempts: Int? = nil
 	public var loginBlockPeriod: Int? = nil
 	public var numPrevPassToKeep: Int? = nil
 	public var twoFactorAuthenticationMode: TwoFactorAuthenticationMode? = nil
+	public var isSelfServe: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -827,10 +834,6 @@ open class Partner: ObjectBase {
 		self.dict["monitorUsage"] = monitorUsage
 	}
 	
-	public func setMultiRequestToken(passwordStructureValidations: String) {
-		self.dict["passwordStructureValidations"] = passwordStructureValidations
-	}
-	
 	public func setMultiRequestToken(passwordStructureValidationsDescription: String) {
 		self.dict["passwordStructureValidationsDescription"] = passwordStructureValidationsDescription
 	}
@@ -853,6 +856,10 @@ open class Partner: ObjectBase {
 	
 	public func setMultiRequestToken(twoFactorAuthenticationMode: String) {
 		self.dict["twoFactorAuthenticationMode"] = twoFactorAuthenticationMode
+	}
+	
+	public func setMultiRequestToken(isSelfServe: String) {
+		self.dict["isSelfServe"] = isSelfServe
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -1063,7 +1070,7 @@ open class Partner: ObjectBase {
 			monitorUsage = dict["monitorUsage"] as? Int
 		}
 		if dict["passwordStructureValidations"] != nil {
-			passwordStructureValidations = dict["passwordStructureValidations"] as? String
+			passwordStructureValidations = try JSONParser.parse(array: dict["passwordStructureValidations"] as! [Any])
 		}
 		if dict["passwordStructureValidationsDescription"] != nil {
 			passwordStructureValidationsDescription = dict["passwordStructureValidationsDescription"] as? String
@@ -1082,6 +1089,9 @@ open class Partner: ObjectBase {
 		}
 		if dict["twoFactorAuthenticationMode"] != nil {
 			twoFactorAuthenticationMode = TwoFactorAuthenticationMode(rawValue: (dict["twoFactorAuthenticationMode"] as? Int)!)
+		}
+		if dict["isSelfServe"] != nil {
+			isSelfServe = dict["isSelfServe"] as? Bool
 		}
 
 	}
@@ -1188,7 +1198,7 @@ open class Partner: ObjectBase {
 			dict["eSearchLanguages"] = eSearchLanguages!.map { value in value.toDictionary() }
 		}
 		if(passwordStructureValidations != nil) {
-			dict["passwordStructureValidations"] = passwordStructureValidations!
+			dict["passwordStructureValidations"] = passwordStructureValidations!.map { value in value.toDictionary() }
 		}
 		if(passwordStructureValidationsDescription != nil) {
 			dict["passwordStructureValidationsDescription"] = passwordStructureValidationsDescription!
@@ -1204,6 +1214,9 @@ open class Partner: ObjectBase {
 		}
 		if(numPrevPassToKeep != nil) {
 			dict["numPrevPassToKeep"] = numPrevPassToKeep!
+		}
+		if(isSelfServe != nil) {
+			dict["isSelfServe"] = isSelfServe!
 		}
 		return dict
 	}

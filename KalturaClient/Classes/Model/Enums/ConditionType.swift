@@ -57,4 +57,6 @@ public enum ConditionType: String {
 	case BOOLEAN = "17"
 	case HTTP_HEADER = "18"
 	case ENTRY_SCHEDULED = "19"
+	case ACTION_NAME = "20"
+	case URL_AUTH_PARAMS = "21"
 }
