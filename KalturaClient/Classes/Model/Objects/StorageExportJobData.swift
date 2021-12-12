@@ -60,12 +60,19 @@ open class StorageExportJobData: StorageJobData {
 				return self.append("externalUrl") 
 			}
 		}
+		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
 	}
 
 	public var force: Bool? = nil
 	public var createLink: Bool? = nil
 	public var assetId: String? = nil
 	public var externalUrl: String? = nil
+	public var port: Int? = nil
 
 
 	public func setMultiRequestToken(force: String) {
@@ -84,6 +91,10 @@ open class StorageExportJobData: StorageJobData {
 		self.dict["externalUrl"] = externalUrl
 	}
 	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +109,9 @@ open class StorageExportJobData: StorageJobData {
 		}
 		if dict["externalUrl"] != nil {
 			externalUrl = dict["externalUrl"] as? String
+		}
+		if dict["port"] != nil {
+			port = dict["port"] as? Int
 		}
 
 	}
@@ -115,6 +129,9 @@ open class StorageExportJobData: StorageJobData {
 		}
 		if(externalUrl != nil) {
 			dict["externalUrl"] = externalUrl!
+		}
+		if(port != nil) {
+			dict["port"] = port!
 		}
 		return dict
 	}

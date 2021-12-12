@@ -229,6 +229,12 @@ open class StorageProfile: ObjectBase {
 			}
 		}
 		
+		public var port: BaseTokenizedObject {
+			get {
+				return self.append("port") 
+			}
+		}
+		
 		public var shouldExportThumbs: BaseTokenizedObject {
 			get {
 				return self.append("shouldExportThumbs") 
@@ -306,6 +312,7 @@ open class StorageProfile: ObjectBase {
 	public var privateKey: String? = nil
 	public var publicKey: String? = nil
 	public var passPhrase: String? = nil
+	public var port: Int? = nil
 	public var shouldExportThumbs: Bool? = nil
 	public var packagerUrl: String? = nil
 	public var exportPeriodically: Bool? = nil
@@ -428,6 +435,10 @@ open class StorageProfile: ObjectBase {
 	
 	public func setMultiRequestToken(passPhrase: String) {
 		self.dict["passPhrase"] = passPhrase
+	}
+	
+	public func setMultiRequestToken(port: String) {
+		self.dict["port"] = port
 	}
 	
 	public func setMultiRequestToken(shouldExportThumbs: String) {
@@ -553,6 +564,9 @@ open class StorageProfile: ObjectBase {
 		if dict["passPhrase"] != nil {
 			passPhrase = dict["passPhrase"] as? String
 		}
+		if dict["port"] != nil {
+			port = dict["port"] as? Int
+		}
 		if dict["shouldExportThumbs"] != nil {
 			shouldExportThumbs = dict["shouldExportThumbs"] as? Bool
 		}
@@ -659,6 +673,9 @@ open class StorageProfile: ObjectBase {
 		}
 		if(passPhrase != nil) {
 			dict["passPhrase"] = passPhrase!
+		}
+		if(port != nil) {
+			dict["port"] = port!
 		}
 		if(shouldExportThumbs != nil) {
 			dict["shouldExportThumbs"] = shouldExportThumbs!

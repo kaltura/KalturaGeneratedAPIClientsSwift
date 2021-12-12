@@ -97,6 +97,10 @@ open class MailJobData: JobData {
 			}
 		}
 		
+		public func dynamicEmailContents<T: DynamicEmailContents.DynamicEmailContentsTokenizer>() -> T {
+			return T(self.append("dynamicEmailContents"))
+		}
+		
 		public var templatePath: BaseTokenizedObject {
 			get {
 				return self.append("templatePath") 
@@ -145,6 +149,7 @@ open class MailJobData: JobData {
 	public var fromEmail: String? = nil
 	public var bodyParams: String? = nil
 	public var subjectParams: String? = nil
+	public var dynamicEmailContents: DynamicEmailContents? = nil
 	public var templatePath: String? = nil
 	public var language: LanguageCode? = nil
 	public var campaignId: Int? = nil
@@ -250,6 +255,8 @@ open class MailJobData: JobData {
 		if dict["subjectParams"] != nil {
 			subjectParams = dict["subjectParams"] as? String
 		}
+		if dict["dynamicEmailContents"] != nil {
+		dynamicEmailContents = try JSONParser.parse(object: dict["dynamicEmailContents"] as! [String: Any])		}
 		if dict["templatePath"] != nil {
 			templatePath = dict["templatePath"] as? String
 		}
@@ -302,6 +309,9 @@ open class MailJobData: JobData {
 		}
 		if(subjectParams != nil) {
 			dict["subjectParams"] = subjectParams!
+		}
+		if(dynamicEmailContents != nil) {
+			dict["dynamicEmailContents"] = dynamicEmailContents!.toDictionary()
 		}
 		if(templatePath != nil) {
 			dict["templatePath"] = templatePath!

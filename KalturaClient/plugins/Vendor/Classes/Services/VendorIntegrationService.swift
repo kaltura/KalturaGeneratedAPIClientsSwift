@@ -121,16 +121,18 @@ public final class VendorIntegrationService{
 			}
 		}
 		
-		public func status<T: IntegrationSetting.IntegrationSettingTokenizer>() -> T {
-			return T(self.append("status"))
+		public var status: BaseTokenizedObject {
+			get {
+				return self.append("status") 
+			}
 		}
 	}
 
 	/**  Update vendor catalog item status by id  */
-	public static func updateStatus(id: Int, status: IntegrationSetting) -> RequestBuilder<IntegrationSetting, IntegrationSetting.IntegrationSettingTokenizer, UpdateStatusTokenizer> {
+	public static func updateStatus(id: Int, status: VendorIntegrationStatus) -> RequestBuilder<IntegrationSetting, IntegrationSetting.IntegrationSettingTokenizer, UpdateStatusTokenizer> {
 		let request: RequestBuilder<IntegrationSetting, IntegrationSetting.IntegrationSettingTokenizer, UpdateStatusTokenizer> = RequestBuilder<IntegrationSetting, IntegrationSetting.IntegrationSettingTokenizer, UpdateStatusTokenizer>(service: "vendor_vendorintegration", action: "updateStatus")
 			.setParam(key: "id", value: id)
-			.setParam(key: "status", value: status)
+			.setParam(key: "status", value: status.rawValue)
 
 		return request
 	}
