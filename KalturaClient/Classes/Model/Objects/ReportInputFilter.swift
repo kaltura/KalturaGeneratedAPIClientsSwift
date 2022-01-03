@@ -268,6 +268,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("canonicalUrlIn") 
 			}
 		}
+		
+		public var virtualEventIdIn: BaseTokenizedObject {
+			get {
+				return self.append("virtualEventIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -345,6 +351,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var domainIn: String? = nil
 	/**  filter by canonical url  */
 	public var canonicalUrlIn: String? = nil
+	/**  filter by virtual event id  */
+	public var virtualEventIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -499,6 +507,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["canonicalUrlIn"] = canonicalUrlIn
 	}
 	
+	public func setMultiRequestToken(virtualEventIdIn: String) {
+		self.dict["virtualEventIdIn"] = virtualEventIdIn
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -617,6 +629,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["canonicalUrlIn"] != nil {
 			canonicalUrlIn = dict["canonicalUrlIn"] as? String
+		}
+		if dict["virtualEventIdIn"] != nil {
+			virtualEventIdIn = dict["virtualEventIdIn"] as? String
 		}
 
 	}
@@ -739,6 +754,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(canonicalUrlIn != nil) {
 			dict["canonicalUrlIn"] = canonicalUrlIn!
+		}
+		if(virtualEventIdIn != nil) {
+			dict["virtualEventIdIn"] = virtualEventIdIn!
 		}
 		return dict
 	}

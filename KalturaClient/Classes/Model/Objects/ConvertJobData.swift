@@ -102,6 +102,12 @@ open class ConvertJobData: ConvartableJobData {
 				return self.append("userCpu") 
 			}
 		}
+		
+		public var estimatedEffort: BaseTokenizedObject {
+			get {
+				return self.append("estimatedEffort") 
+			}
+		}
 	}
 
 	public var destFileSyncLocalPath: String? = nil
@@ -115,6 +121,7 @@ open class ConvertJobData: ConvartableJobData {
 	public var engineMessage: String? = nil
 	public var destFileSyncSharedPath: String? = nil
 	public var userCpu: Int? = nil
+	public var estimatedEffort: Int? = nil
 
 
 	public func setMultiRequestToken(destFileSyncLocalPath: String) {
@@ -157,6 +164,10 @@ open class ConvertJobData: ConvartableJobData {
 		self.dict["userCpu"] = userCpu
 	}
 	
+	public func setMultiRequestToken(estimatedEffort: String) {
+		self.dict["estimatedEffort"] = estimatedEffort
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -192,6 +203,9 @@ open class ConvertJobData: ConvartableJobData {
 		}
 		if dict["userCpu"] != nil {
 			userCpu = dict["userCpu"] as? Int
+		}
+		if dict["estimatedEffort"] != nil {
+			estimatedEffort = dict["estimatedEffort"] as? Int
 		}
 
 	}
@@ -230,6 +244,9 @@ open class ConvertJobData: ConvartableJobData {
 		}
 		if(userCpu != nil) {
 			dict["userCpu"] = userCpu!
+		}
+		if(estimatedEffort != nil) {
+			dict["estimatedEffort"] = estimatedEffort!
 		}
 		return dict
 	}
