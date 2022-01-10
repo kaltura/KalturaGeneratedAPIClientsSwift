@@ -448,6 +448,30 @@ public final class UserService{
 		return request
 	}
 
+	public class LoginDataResetPasswordTokenizer: ClientTokenizer  {
+		
+		public var loginDataId: BaseTokenizedObject {
+			get {
+				return self.append("loginDataId") 
+			}
+		}
+		
+		public var newPassword: BaseTokenizedObject {
+			get {
+				return self.append("newPassword") 
+			}
+		}
+	}
+
+	/**  Resets user login password  */
+	public static func loginDataResetPassword(loginDataId: String, newPassword: String) -> NullRequestBuilder<LoginDataResetPasswordTokenizer> {
+		let request: NullRequestBuilder<LoginDataResetPasswordTokenizer> = NullRequestBuilder<LoginDataResetPasswordTokenizer>(service: "user", action: "loginDataResetPassword")
+			.setParam(key: "loginDataId", value: loginDataId)
+			.setParam(key: "newPassword", value: newPassword)
+
+		return request
+	}
+
 	public class NotifyBanTokenizer: ClientTokenizer  {
 		
 		public var userId: BaseTokenizedObject {

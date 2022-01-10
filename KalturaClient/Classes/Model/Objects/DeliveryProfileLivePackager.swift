@@ -42,14 +42,25 @@ open class DeliveryProfileLivePackager: DeliveryProfile {
 				return self.append("livePackagerSigningDomain") 
 			}
 		}
+		
+		public var shouldRedirect: BaseTokenizedObject {
+			get {
+				return self.append("shouldRedirect") 
+			}
+		}
 	}
 
 	/**  Domain used to sign the live url  */
 	public var livePackagerSigningDomain: String? = nil
+	public var shouldRedirect: Bool? = nil
 
 
 	public func setMultiRequestToken(livePackagerSigningDomain: String) {
 		self.dict["livePackagerSigningDomain"] = livePackagerSigningDomain
+	}
+	
+	public func setMultiRequestToken(shouldRedirect: String) {
+		self.dict["shouldRedirect"] = shouldRedirect
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
@@ -58,6 +69,9 @@ open class DeliveryProfileLivePackager: DeliveryProfile {
 		if dict["livePackagerSigningDomain"] != nil {
 			livePackagerSigningDomain = dict["livePackagerSigningDomain"] as? String
 		}
+		if dict["shouldRedirect"] != nil {
+			shouldRedirect = dict["shouldRedirect"] as? Bool
+		}
 
 	}
 
@@ -65,6 +79,9 @@ open class DeliveryProfileLivePackager: DeliveryProfile {
 		var dict: [String: Any] = super.toDictionary()
 		if(livePackagerSigningDomain != nil) {
 			dict["livePackagerSigningDomain"] = livePackagerSigningDomain!
+		}
+		if(shouldRedirect != nil) {
+			dict["shouldRedirect"] = shouldRedirect!
 		}
 		return dict
 	}
