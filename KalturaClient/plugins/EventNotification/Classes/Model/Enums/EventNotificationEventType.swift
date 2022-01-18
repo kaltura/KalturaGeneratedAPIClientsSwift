@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationEventType: String {
+	case INTEGRATION_JOB_CLOSED = "integrationEventNotifications.INTEGRATION_JOB_CLOSED"
 	case BATCH_JOB_STATUS = "1"
 	case OBJECT_ADDED = "2"
 	case OBJECT_CHANGED = "3"
