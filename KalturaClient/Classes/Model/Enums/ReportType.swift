@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2021  Kaltura Inc.
+// Copyright (C) 2006-2022  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -208,4 +208,9 @@ public enum ReportType: String {
 	case ENGAGMENT_TIMELINE_WEBCAST = "40011"
 	case ENGAGEMENT_TOOLS_WEBCAST = "40012"
 	case REACTIONS_BREAKDOWN_WEBCAST = "40013"
+	case VE_HIGHLIGHTS = "50000"
+	case VE_REGISTERED_PLATFORMS = "50001"
+	case VE_REGISTERED_INDUSTRY = "50002"
+	case VE_REGISTERED_ROLES = "50003"
+	case VE_REGISTERED_COUNTRIES = "50004"
 }
