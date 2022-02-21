@@ -153,7 +153,7 @@ open class CuePoint: ObjectBase {
 	}
 
 	public var id: String? = nil
-	public var intId: Int? = nil
+	public var intId: Int64? = nil
 	public var cuePointType: CuePointType? = nil
 	public var status: CuePointStatus? = nil
 	public var entryId: String? = nil
@@ -257,7 +257,7 @@ open class CuePoint: ObjectBase {
 			id = dict["id"] as? String
 		}
 		if dict["intId"] != nil {
-			intId = dict["intId"] as? Int
+			intId = Int64("\(dict["intId"]!)")
 		}
 		if dict["cuePointType"] != nil {
 			cuePointType = CuePointType(rawValue: "\(dict["cuePointType"]!)")

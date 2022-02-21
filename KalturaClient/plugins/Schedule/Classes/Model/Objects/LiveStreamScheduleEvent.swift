@@ -72,6 +72,12 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 				return self.append("postEndEntryId") 
 			}
 		}
+		
+		public var isContentInterruptible: BaseTokenizedObject {
+			get {
+				return self.append("isContentInterruptible") 
+			}
+		}
 	}
 
 	/**  The entry ID of the source entry (for simulive)  */
@@ -86,6 +92,8 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 	public var preStartEntryId: String? = nil
 	/**  The entry id of the post end entry  */
 	public var postEndEntryId: String? = nil
+	/**  Detect whether "real" live can interrupt to the "main" content  */
+	public var isContentInterruptible: Bool? = nil
 
 
 	public func setMultiRequestToken(sourceEntryId: String) {
@@ -112,6 +120,10 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		self.dict["postEndEntryId"] = postEndEntryId
 	}
 	
+	public func setMultiRequestToken(isContentInterruptible: String) {
+		self.dict["isContentInterruptible"] = isContentInterruptible
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -132,6 +144,9 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		}
 		if dict["postEndEntryId"] != nil {
 			postEndEntryId = dict["postEndEntryId"] as? String
+		}
+		if dict["isContentInterruptible"] != nil {
+			isContentInterruptible = dict["isContentInterruptible"] as? Bool
 		}
 
 	}
@@ -155,6 +170,9 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		}
 		if(postEndEntryId != nil) {
 			dict["postEndEntryId"] = postEndEntryId!
+		}
+		if(isContentInterruptible != nil) {
+			dict["isContentInterruptible"] = isContentInterruptible!
 		}
 		return dict
 	}

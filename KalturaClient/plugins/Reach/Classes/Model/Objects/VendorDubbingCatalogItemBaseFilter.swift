@@ -25,18 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
+
+open class VendorDubbingCatalogItemBaseFilter: VendorCatalogItemFilter {
+
+	public class VendorDubbingCatalogItemBaseFilterTokenizer: VendorCatalogItemFilter.VendorCatalogItemFilterTokenizer {
+		
+		public var targetLanguageEqual: BaseTokenizedObject {
+			get {
+				return self.append("targetLanguageEqual") 
+			}
+		}
+		
+		public var targetLanguageIn: BaseTokenizedObject {
+			get {
+				return self.append("targetLanguageIn") 
+			}
+		}
+	}
+
+	public var targetLanguageEqual: CatalogItemLanguage? = nil
+	public var targetLanguageIn: String? = nil
+
+
+	public func setMultiRequestToken(targetLanguageEqual: String) {
+		self.dict["targetLanguageEqual"] = targetLanguageEqual
+	}
+	
+	public func setMultiRequestToken(targetLanguageIn: String) {
+		self.dict["targetLanguageIn"] = targetLanguageIn
+	}
+	
+	internal override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["targetLanguageEqual"] != nil {
+			targetLanguageEqual = CatalogItemLanguage(rawValue: "\(dict["targetLanguageEqual"]!)")
+		}
+		if dict["targetLanguageIn"] != nil {
+			targetLanguageIn = dict["targetLanguageIn"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(targetLanguageEqual != nil) {
+			dict["targetLanguageEqual"] = targetLanguageEqual!.rawValue
+		}
+		if(targetLanguageIn != nil) {
+			dict["targetLanguageIn"] = targetLanguageIn!
+		}
+		return dict
+	}
 }
+

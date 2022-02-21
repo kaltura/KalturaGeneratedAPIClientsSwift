@@ -93,7 +93,7 @@ open class UserEntry: ObjectBase {
 	}
 
 	/**  unique auto-generated identifier  */
-	public var id: Int? = nil
+	public var id: Int64? = nil
 	public var entryId: String? = nil
 	public var userId: String? = nil
 	public var partnerId: Int? = nil
@@ -144,7 +144,7 @@ open class UserEntry: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? Int
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["entryId"] != nil {
 			entryId = dict["entryId"] as? String
