@@ -492,6 +492,18 @@ open class Partner: ObjectBase {
 				return self.append("isSelfServe") 
 			}
 		}
+		
+		public var allowedDomains: BaseTokenizedObject {
+			get {
+				return self.append("allowedDomains") 
+			}
+		}
+		
+		public var excludedAdminRoleName: BaseTokenizedObject {
+			get {
+				return self.append("excludedAdminRoleName") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -576,6 +588,8 @@ open class Partner: ObjectBase {
 	public var numPrevPassToKeep: Int? = nil
 	public var twoFactorAuthenticationMode: TwoFactorAuthenticationMode? = nil
 	public var isSelfServe: Bool? = nil
+	public var allowedDomains: String? = nil
+	public var excludedAdminRoleName: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -862,6 +876,14 @@ open class Partner: ObjectBase {
 		self.dict["isSelfServe"] = isSelfServe
 	}
 	
+	public func setMultiRequestToken(allowedDomains: String) {
+		self.dict["allowedDomains"] = allowedDomains
+	}
+	
+	public func setMultiRequestToken(excludedAdminRoleName: String) {
+		self.dict["excludedAdminRoleName"] = excludedAdminRoleName
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1092,6 +1114,12 @@ open class Partner: ObjectBase {
 		}
 		if dict["isSelfServe"] != nil {
 			isSelfServe = dict["isSelfServe"] as? Bool
+		}
+		if dict["allowedDomains"] != nil {
+			allowedDomains = dict["allowedDomains"] as? String
+		}
+		if dict["excludedAdminRoleName"] != nil {
+			excludedAdminRoleName = dict["excludedAdminRoleName"] as? String
 		}
 
 	}

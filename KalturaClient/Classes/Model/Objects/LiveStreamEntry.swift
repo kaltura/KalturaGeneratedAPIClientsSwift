@@ -91,6 +91,30 @@ open class LiveStreamEntry: LiveEntry {
 			}
 		}
 		
+		public var primarySrtBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("primarySrtBroadcastingUrl") 
+			}
+		}
+		
+		public var primarySrtStreamId: BaseTokenizedObject {
+			get {
+				return self.append("primarySrtStreamId") 
+			}
+		}
+		
+		public var secondarySrtBroadcastingUrl: BaseTokenizedObject {
+			get {
+				return self.append("secondarySrtBroadcastingUrl") 
+			}
+		}
+		
+		public var secondarySrtStreamId: BaseTokenizedObject {
+			get {
+				return self.append("secondarySrtStreamId") 
+			}
+		}
+		
 		public var streamName: BaseTokenizedObject {
 			get {
 				return self.append("streamName") 
@@ -139,6 +163,12 @@ open class LiveStreamEntry: LiveEntry {
 			}
 		}
 		
+		public var srtPass: BaseTokenizedObject {
+			get {
+				return self.append("srtPass") 
+			}
+		}
+		
 		public var primaryServerNodeId: BaseTokenizedObject {
 			get {
 				return self.append("primaryServerNodeId") 
@@ -170,6 +200,10 @@ open class LiveStreamEntry: LiveEntry {
 	public var secondarySecuredBroadcastingUrl: String? = nil
 	public var primaryRtspBroadcastingUrl: String? = nil
 	public var secondaryRtspBroadcastingUrl: String? = nil
+	public var primarySrtBroadcastingUrl: String? = nil
+	public var primarySrtStreamId: String? = nil
+	public var secondarySrtBroadcastingUrl: String? = nil
+	public var secondarySrtStreamId: String? = nil
 	public var streamName: String? = nil
 	/**  The stream url  */
 	public var streamUrl: String? = nil
@@ -185,6 +219,7 @@ open class LiveStreamEntry: LiveEntry {
 	public var streamPassword: String? = nil
 	/**  The broadcast username  */
 	public var streamUsername: String? = nil
+	public var srtPass: String? = nil
 	/**  The Streams primary server node id  */
 	public var primaryServerNodeId: Int? = nil
 	public var sipToken: String? = nil
@@ -223,6 +258,22 @@ open class LiveStreamEntry: LiveEntry {
 		self.dict["secondaryRtspBroadcastingUrl"] = secondaryRtspBroadcastingUrl
 	}
 	
+	public func setMultiRequestToken(primarySrtBroadcastingUrl: String) {
+		self.dict["primarySrtBroadcastingUrl"] = primarySrtBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(primarySrtStreamId: String) {
+		self.dict["primarySrtStreamId"] = primarySrtStreamId
+	}
+	
+	public func setMultiRequestToken(secondarySrtBroadcastingUrl: String) {
+		self.dict["secondarySrtBroadcastingUrl"] = secondarySrtBroadcastingUrl
+	}
+	
+	public func setMultiRequestToken(secondarySrtStreamId: String) {
+		self.dict["secondarySrtStreamId"] = secondarySrtStreamId
+	}
+	
 	public func setMultiRequestToken(streamName: String) {
 		self.dict["streamName"] = streamName
 	}
@@ -253,6 +304,10 @@ open class LiveStreamEntry: LiveEntry {
 	
 	public func setMultiRequestToken(streamUsername: String) {
 		self.dict["streamUsername"] = streamUsername
+	}
+	
+	public func setMultiRequestToken(srtPass: String) {
+		self.dict["srtPass"] = srtPass
 	}
 	
 	public func setMultiRequestToken(primaryServerNodeId: String) {
@@ -297,6 +352,18 @@ open class LiveStreamEntry: LiveEntry {
 		if dict["secondaryRtspBroadcastingUrl"] != nil {
 			secondaryRtspBroadcastingUrl = dict["secondaryRtspBroadcastingUrl"] as? String
 		}
+		if dict["primarySrtBroadcastingUrl"] != nil {
+			primarySrtBroadcastingUrl = dict["primarySrtBroadcastingUrl"] as? String
+		}
+		if dict["primarySrtStreamId"] != nil {
+			primarySrtStreamId = dict["primarySrtStreamId"] as? String
+		}
+		if dict["secondarySrtBroadcastingUrl"] != nil {
+			secondarySrtBroadcastingUrl = dict["secondarySrtBroadcastingUrl"] as? String
+		}
+		if dict["secondarySrtStreamId"] != nil {
+			secondarySrtStreamId = dict["secondarySrtStreamId"] as? String
+		}
 		if dict["streamName"] != nil {
 			streamName = dict["streamName"] as? String
 		}
@@ -320,6 +387,9 @@ open class LiveStreamEntry: LiveEntry {
 		}
 		if dict["streamUsername"] != nil {
 			streamUsername = dict["streamUsername"] as? String
+		}
+		if dict["srtPass"] != nil {
+			srtPass = dict["srtPass"] as? String
 		}
 		if dict["primaryServerNodeId"] != nil {
 			primaryServerNodeId = dict["primaryServerNodeId"] as? Int
@@ -356,6 +426,18 @@ open class LiveStreamEntry: LiveEntry {
 		if(secondaryRtspBroadcastingUrl != nil) {
 			dict["secondaryRtspBroadcastingUrl"] = secondaryRtspBroadcastingUrl!
 		}
+		if(primarySrtBroadcastingUrl != nil) {
+			dict["primarySrtBroadcastingUrl"] = primarySrtBroadcastingUrl!
+		}
+		if(primarySrtStreamId != nil) {
+			dict["primarySrtStreamId"] = primarySrtStreamId!
+		}
+		if(secondarySrtBroadcastingUrl != nil) {
+			dict["secondarySrtBroadcastingUrl"] = secondarySrtBroadcastingUrl!
+		}
+		if(secondarySrtStreamId != nil) {
+			dict["secondarySrtStreamId"] = secondarySrtStreamId!
+		}
 		if(streamName != nil) {
 			dict["streamName"] = streamName!
 		}
@@ -376,6 +458,9 @@ open class LiveStreamEntry: LiveEntry {
 		}
 		if(streamPassword != nil) {
 			dict["streamPassword"] = streamPassword!
+		}
+		if(srtPass != nil) {
+			dict["srtPass"] = srtPass!
 		}
 		return dict
 	}
