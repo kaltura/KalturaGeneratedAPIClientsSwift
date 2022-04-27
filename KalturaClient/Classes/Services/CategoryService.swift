@@ -202,7 +202,7 @@ public final class CategoryService{
 		}
 	}
 
-	/**  Move categories that belong to the same parent category to a target categroy -
+	/**  Move categories that belong to the same parent category to a target category -
 	  enabled only for ks with disable entitlement  */
 	public static func move(categoryIds: String, targetCategoryParentId: Int) -> RequestBuilder<Bool, BaseTokenizedObject, MoveTokenizer> {
 		let request: RequestBuilder<Bool, BaseTokenizedObject, MoveTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, MoveTokenizer>(service: "category", action: "move")
