@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserFieldName: String {
+	case COMPANY = "company"
 	case CREATED_AT = "created_at"
 	case EMAIL = "email"
 	case FIRST_NAME = "first_name"
@@ -41,6 +42,7 @@ public enum ESearchUserFieldName: String {
 	case ROLE_IDS = "role_ids"
 	case SCREEN_NAME = "screen_name"
 	case TAGS = "tags"
+	case TITLE = "title"
 	case UPDATED_AT = "updated_at"
 	case USER_ID = "user_id"
 	case TYPE = "user_type"
