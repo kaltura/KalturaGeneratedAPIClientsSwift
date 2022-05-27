@@ -62,7 +62,7 @@ public final class UiConfService{
 	}
 
 	/**  Clone an existing UIConf  */
-	public static func clone(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> {
+	public static func clone(id: Int64) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, CloneTokenizer>(service: "uiconf", action: "clone")
 			.setParam(key: "id", value: id)
 
@@ -79,7 +79,7 @@ public final class UiConfService{
 	}
 
 	/**  Delete an existing UIConf  */
-	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "uiconf", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -96,7 +96,7 @@ public final class UiConfService{
 	}
 
 	/**  Retrieve a UIConf by id  */
-	public static func get(id: Int) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, GetTokenizer>(service: "uiconf", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -183,7 +183,7 @@ public final class UiConfService{
 	}
 
 	/**  Update an existing UIConf  */
-	public static func update(id: Int, uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, uiConf: UiConf) -> RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer> = RequestBuilder<UiConf, UiConf.UiConfTokenizer, UpdateTokenizer>(service: "uiconf", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "uiConf", value: uiConf)

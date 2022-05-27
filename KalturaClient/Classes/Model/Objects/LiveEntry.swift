@@ -181,7 +181,7 @@ open class LiveEntry: MediaEntry {
 	public var lastBroadcast: Int? = nil
 	/**  The time (unix timestamp in milliseconds) in which the entry broadcast started
 	  or 0 when the entry is off the air  */
-	public var currentBroadcastStartTime: Double? = nil
+	public var currentBroadcastStartTime: Int? = nil
 	public var recordingOptions: LiveEntryRecordingOptions? = nil
 	/**  the status of the entry of type EntryServerNodeStatus  */
 	public var liveStatus: EntryServerNodeStatus? = nil
@@ -301,7 +301,7 @@ open class LiveEntry: MediaEntry {
 			lastBroadcast = dict["lastBroadcast"] as? Int
 		}
 		if dict["currentBroadcastStartTime"] != nil {
-			currentBroadcastStartTime = dict["currentBroadcastStartTime"] as? Double
+			currentBroadcastStartTime = dict["currentBroadcastStartTime"] as? Int
 		}
 		if dict["recordingOptions"] != nil {
 		recordingOptions = try JSONParser.parse(object: dict["recordingOptions"] as! [String: Any])		}

@@ -51,11 +51,11 @@ public final class ReportService{
 		}
 	}
 
-	public static func execute(id: Int) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
+	public static func execute(id: Int64) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
 		return execute(id: id, params: nil)
 	}
 
-	public static func execute(id: Int, params: Array<KeyValue>?) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
+	public static func execute(id: Int64, params: Array<KeyValue>?) -> RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> {
 		let request: RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer> = RequestBuilder<ReportResponse, ReportResponse.ReportResponseTokenizer, ExecuteTokenizer>(service: "report", action: "execute")
 			.setParam(key: "id", value: id)
 			.setParam(key: "params", value: params)

@@ -61,7 +61,7 @@ public final class AccessControlProfileService{
 	}
 
 	/**  Delete access control profile by id  */
-	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "accesscontrolprofile", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -78,7 +78,7 @@ public final class AccessControlProfileService{
 	}
 
 	/**  Get access control profile by id  */
-	public static func get(id: Int) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer> = RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, GetTokenizer>(service: "accesscontrolprofile", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -127,7 +127,7 @@ public final class AccessControlProfileService{
 	}
 
 	/**  Update access control profile by id  */
-	public static func update(id: Int, accessControlProfile: AccessControlProfile) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, accessControlProfile: AccessControlProfile) -> RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer> = RequestBuilder<AccessControlProfile, AccessControlProfile.AccessControlProfileTokenizer, UpdateTokenizer>(service: "accesscontrolprofile", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "accessControlProfile", value: accessControlProfile)

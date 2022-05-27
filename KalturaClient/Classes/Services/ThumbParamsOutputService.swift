@@ -46,7 +46,7 @@ public final class ThumbParamsOutputService{
 	}
 
 	/**  Get thumb params output object by ID  */
-	public static func get(id: Int) -> RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer> = RequestBuilder<ThumbParamsOutput, ThumbParamsOutput.ThumbParamsOutputTokenizer, GetTokenizer>(service: "thumbparamsoutput", action: "get")
 			.setParam(key: "id", value: id)
 

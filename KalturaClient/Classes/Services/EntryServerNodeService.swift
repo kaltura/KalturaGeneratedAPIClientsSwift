@@ -92,7 +92,7 @@ public final class EntryServerNodeService{
 		}
 	}
 
-	public static func update(id: Int, entryServerNode: EntryServerNode) -> RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, entryServerNode: EntryServerNode) -> RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer> = RequestBuilder<EntryServerNode, EntryServerNode.EntryServerNodeTokenizer, UpdateTokenizer>(service: "entryservernode", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "entryServerNode", value: entryServerNode)
@@ -133,7 +133,7 @@ public final class EntryServerNodeService{
 	}
 
 	/**  Validates server node still registered on entry  */
-	public static func validateRegisteredEntryServerNode(id: Int) -> NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> {
+	public static func validateRegisteredEntryServerNode(id: Int64) -> NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> {
 		let request: NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer> = NullRequestBuilder<ValidateRegisteredEntryServerNodeTokenizer>(service: "entryservernode", action: "validateRegisteredEntryServerNode")
 			.setParam(key: "id", value: id)
 
