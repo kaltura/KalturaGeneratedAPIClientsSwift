@@ -61,7 +61,7 @@ public final class ConversionProfileService{
 	}
 
 	/**  Delete Conversion Profile by ID  */
-	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "conversionprofile", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -78,7 +78,7 @@ public final class ConversionProfileService{
 	}
 
 	/**  Get Conversion Profile by ID  */
-	public static func get(id: Int64) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> {
+	public static func get(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, GetTokenizer>(service: "conversionprofile", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -144,7 +144,7 @@ public final class ConversionProfileService{
 	}
 
 	/**  Set Conversion Profile to be the partner default  */
-	public static func setAsDefault(id: Int64) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> {
+	public static func setAsDefault(id: Int) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, SetAsDefaultTokenizer>(service: "conversionprofile", action: "setAsDefault")
 			.setParam(key: "id", value: id)
 
@@ -165,7 +165,7 @@ public final class ConversionProfileService{
 	}
 
 	/**  Update Conversion Profile by ID  */
-	public static func update(id: Int64, conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, conversionProfile: ConversionProfile) -> RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer> = RequestBuilder<ConversionProfile, ConversionProfile.ConversionProfileTokenizer, UpdateTokenizer>(service: "conversionprofile", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "conversionProfile", value: conversionProfile)

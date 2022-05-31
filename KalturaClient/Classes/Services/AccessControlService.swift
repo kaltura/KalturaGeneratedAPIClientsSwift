@@ -61,7 +61,7 @@ public final class AccessControlService{
 	}
 
 	/**  Delete Access Control Profile by id  */
-	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "accesscontrol", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -78,7 +78,7 @@ public final class AccessControlService{
 	}
 
 	/**  Get Access Control Profile by id  */
-	public static func get(id: Int64) -> RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, GetTokenizer> {
+	public static func get(id: Int) -> RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, GetTokenizer> {
 		let request: RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, GetTokenizer> = RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, GetTokenizer>(service: "accesscontrol", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -127,7 +127,7 @@ public final class AccessControlService{
 	}
 
 	/**  Update Access Control Profile by id  */
-	public static func update(id: Int64, accessControl: AccessControl) -> RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, accessControl: AccessControl) -> RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, UpdateTokenizer> = RequestBuilder<AccessControl, AccessControl.AccessControlTokenizer, UpdateTokenizer>(service: "accesscontrol", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "accessControl", value: accessControl)

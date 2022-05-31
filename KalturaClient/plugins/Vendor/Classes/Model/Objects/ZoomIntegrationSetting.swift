@@ -96,6 +96,24 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 				return self.append("enableMeetingUpload") 
 			}
 		}
+		
+		public var optOutGroupNames: BaseTokenizedObject {
+			get {
+				return self.append("optOutGroupNames") 
+			}
+		}
+		
+		public var optInGroupNames: BaseTokenizedObject {
+			get {
+				return self.append("optInGroupNames") 
+			}
+		}
+		
+		public var groupParticipationType: BaseTokenizedObject {
+			get {
+				return self.append("groupParticipationType") 
+			}
+		}
 	}
 
 	public var zoomCategory: String? = nil
@@ -108,6 +126,9 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	public var enableZoomTranscription: Bool? = nil
 	public var zoomAccountDescription: String? = nil
 	public var enableMeetingUpload: Bool? = nil
+	public var optOutGroupNames: String? = nil
+	public var optInGroupNames: String? = nil
+	public var groupParticipationType: ZoomGroupParticipationType? = nil
 
 
 	public func setMultiRequestToken(zoomCategory: String) {
@@ -150,6 +171,18 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		self.dict["enableMeetingUpload"] = enableMeetingUpload
 	}
 	
+	public func setMultiRequestToken(optOutGroupNames: String) {
+		self.dict["optOutGroupNames"] = optOutGroupNames
+	}
+	
+	public func setMultiRequestToken(optInGroupNames: String) {
+		self.dict["optInGroupNames"] = optInGroupNames
+	}
+	
+	public func setMultiRequestToken(groupParticipationType: String) {
+		self.dict["groupParticipationType"] = groupParticipationType
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -182,6 +215,15 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if dict["enableMeetingUpload"] != nil {
 			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
+		}
+		if dict["optOutGroupNames"] != nil {
+			optOutGroupNames = dict["optOutGroupNames"] as? String
+		}
+		if dict["optInGroupNames"] != nil {
+			optInGroupNames = dict["optInGroupNames"] as? String
+		}
+		if dict["groupParticipationType"] != nil {
+			groupParticipationType = ZoomGroupParticipationType(rawValue: (dict["groupParticipationType"] as? Int)!)
 		}
 
 	}
@@ -217,6 +259,15 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if(enableMeetingUpload != nil) {
 			dict["enableMeetingUpload"] = enableMeetingUpload!
+		}
+		if(optOutGroupNames != nil) {
+			dict["optOutGroupNames"] = optOutGroupNames!
+		}
+		if(optInGroupNames != nil) {
+			dict["optInGroupNames"] = optInGroupNames!
+		}
+		if(groupParticipationType != nil) {
+			dict["groupParticipationType"] = groupParticipationType!.rawValue
 		}
 		return dict
 	}

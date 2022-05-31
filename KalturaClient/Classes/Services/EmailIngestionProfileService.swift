@@ -105,7 +105,7 @@ public final class EmailIngestionProfileService{
 	}
 
 	/**  Delete an existing EmailIngestionProfile  */
-	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "emailingestionprofile", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -122,7 +122,7 @@ public final class EmailIngestionProfileService{
 	}
 
 	/**  Retrieve a EmailIngestionProfile by id  */
-	public static func get(id: Int64) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> {
+	public static func get(id: Int) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, GetTokenizer>(service: "emailingestionprofile", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -160,7 +160,7 @@ public final class EmailIngestionProfileService{
 	}
 
 	/**  Update an existing EmailIngestionProfile  */
-	public static func update(id: Int64, EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, EmailIP: EmailIngestionProfile) -> RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer> = RequestBuilder<EmailIngestionProfile, EmailIngestionProfile.EmailIngestionProfileTokenizer, UpdateTokenizer>(service: "emailingestionprofile", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "EmailIP", value: EmailIP)

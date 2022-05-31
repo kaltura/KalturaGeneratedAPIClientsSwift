@@ -61,7 +61,7 @@ public final class FlavorParamsService{
 	}
 
 	/**  Delete Flavor Params by ID  */
-	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "flavorparams", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -78,7 +78,7 @@ public final class FlavorParamsService{
 	}
 
 	/**  Get Flavor Params by ID  */
-	public static func get(id: Int64) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer> {
+	public static func get(id: Int) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer> = RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, GetTokenizer>(service: "flavorparams", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -145,7 +145,7 @@ public final class FlavorParamsService{
 	}
 
 	/**  Update Flavor Params by ID  */
-	public static func update(id: Int64, flavorParams: FlavorParams) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, flavorParams: FlavorParams) -> RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer> = RequestBuilder<FlavorParams, FlavorParams.FlavorParamsTokenizer, UpdateTokenizer>(service: "flavorparams", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "flavorParams", value: flavorParams)

@@ -59,7 +59,7 @@ public final class UserEntryService{
 		}
 	}
 
-	public static func delete(id: Int64) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> {
+	public static func delete(id: Int) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> {
 		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, DeleteTokenizer>(service: "userentry", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -122,7 +122,7 @@ public final class UserEntryService{
 		}
 	}
 
-	public static func update(id: Int64, userEntry: UserEntry) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, userEntry: UserEntry) -> RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer> = RequestBuilder<UserEntry, UserEntry.UserEntryTokenizer, UpdateTokenizer>(service: "userentry", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "userEntry", value: userEntry)

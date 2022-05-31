@@ -70,7 +70,7 @@ public final class PartnerService{
 	}
 
 	/**  Retrieve partner object by Id  */
-	public static func get(id: Int64?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> {
+	public static func get(id: Int?) -> RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer> = RequestBuilder<Partner, Partner.PartnerTokenizer, GetTokenizer>(service: "partner", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -102,7 +102,7 @@ public final class PartnerService{
 	}
 
 	/**  Returns partner public info by Id  */
-	public static func getPublicInfo(id: Int64?) -> RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> {
+	public static func getPublicInfo(id: Int?) -> RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> {
 		let request: RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer> = RequestBuilder<PartnerPublicInfo, PartnerPublicInfo.PartnerPublicInfoTokenizer, GetPublicInfoTokenizer>(service: "partner", action: "getPublicInfo")
 			.setParam(key: "id", value: id)
 

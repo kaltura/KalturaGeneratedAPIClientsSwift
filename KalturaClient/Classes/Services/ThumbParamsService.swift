@@ -61,7 +61,7 @@ public final class ThumbParamsService{
 	}
 
 	/**  Delete Thumb Params by ID  */
-	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "thumbparams", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -78,7 +78,7 @@ public final class ThumbParamsService{
 	}
 
 	/**  Get Thumb Params by ID  */
-	public static func get(id: Int64) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer> {
+	public static func get(id: Int) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer> {
 		let request: RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer> = RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, GetTokenizer>(service: "thumbparams", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -145,7 +145,7 @@ public final class ThumbParamsService{
 	}
 
 	/**  Update Thumb Params by ID  */
-	public static func update(id: Int64, thumbParams: ThumbParams) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer> {
+	public static func update(id: Int, thumbParams: ThumbParams) -> RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer> = RequestBuilder<ThumbParams, ThumbParams.ThumbParamsTokenizer, UpdateTokenizer>(service: "thumbparams", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "thumbParams", value: thumbParams)
