@@ -101,12 +101,12 @@ public final class CategoryService{
 		}
 	}
 
-	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		return delete(id: id, moveEntriesToParentCategory: true)
 	}
 
 	/**  Delete a Category  */
-	public static func delete(id: Int, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int64, moveEntriesToParentCategory: Bool?) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "category", action: "delete")
 			.setParam(key: "id", value: id)
 			.setParam(key: "moveEntriesToParentCategory", value: moveEntriesToParentCategory)
@@ -124,7 +124,7 @@ public final class CategoryService{
 	}
 
 	/**  Get Category by id  */
-	public static func get(id: Int) -> RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, GetTokenizer>(service: "category", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -146,12 +146,12 @@ public final class CategoryService{
 		}
 	}
 
-	public static func index(id: Int) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+	public static func index(id: Int64) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		return index(id: id, shouldUpdate: true)
 	}
 
 	/**  Index Category by id  */
-	public static func index(id: Int, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
+	public static func index(id: Int64, shouldUpdate: Bool?) -> RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> {
 		let request: RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer> = RequestBuilder<Int, BaseTokenizedObject, IndexTokenizer>(service: "category", action: "index")
 			.setParam(key: "id", value: id)
 			.setParam(key: "shouldUpdate", value: shouldUpdate)
@@ -236,7 +236,7 @@ public final class CategoryService{
 	}
 
 	/**  Update Category  */
-	public static func update(id: Int, category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, category: Category) -> RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer> = RequestBuilder<Category, Category.CategoryTokenizer, UpdateTokenizer>(service: "category", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "category", value: category)

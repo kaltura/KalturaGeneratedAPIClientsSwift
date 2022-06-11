@@ -46,7 +46,7 @@ public final class FlavorParamsOutputService{
 	}
 
 	/**  Get flavor params output object by ID  */
-	public static func get(id: Int) -> RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> {
 		let request: RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer> = RequestBuilder<FlavorParamsOutput, FlavorParamsOutput.FlavorParamsOutputTokenizer, GetTokenizer>(service: "flavorparamsoutput", action: "get")
 			.setParam(key: "id", value: id)
 

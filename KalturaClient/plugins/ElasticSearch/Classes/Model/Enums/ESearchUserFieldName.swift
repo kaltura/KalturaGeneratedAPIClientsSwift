@@ -33,6 +33,7 @@
  */
 public enum ESearchUserFieldName: String {
 	case COMPANY = "company"
+	case COUNTRY = "country"
 	case CREATED_AT = "created_at"
 	case EMAIL = "email"
 	case FIRST_NAME = "first_name"
