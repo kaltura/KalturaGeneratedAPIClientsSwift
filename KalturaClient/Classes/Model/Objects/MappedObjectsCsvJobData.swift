@@ -54,6 +54,10 @@ open class MappedObjectsCsvJobData: ExportCsvJobData {
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
 			} 
 		}
+		
+		public func options<T: ExportToCsvOptions.ExportToCsvOptionsTokenizer>() -> T {
+			return T(self.append("options"))
+		}
 	}
 
 	/**  The metadata profile we should look the xpath in  */
@@ -62,6 +66,7 @@ open class MappedObjectsCsvJobData: ExportCsvJobData {
 	public var additionalFields: Array<CsvAdditionalFieldInfo>? = nil
 	/**  Array of header names and their mapped user fields  */
 	public var mappedFields: Array<KeyValue>? = nil
+	public var options: ExportToCsvOptions? = nil
 
 
 	public func setMultiRequestToken(metadataProfileId: String) {
@@ -80,6 +85,8 @@ open class MappedObjectsCsvJobData: ExportCsvJobData {
 		if dict["mappedFields"] != nil {
 			mappedFields = try JSONParser.parse(array: dict["mappedFields"] as! [Any])
 		}
+		if dict["options"] != nil {
+		options = try JSONParser.parse(object: dict["options"] as! [String: Any])		}
 
 	}
 
@@ -93,6 +100,9 @@ open class MappedObjectsCsvJobData: ExportCsvJobData {
 		}
 		if(mappedFields != nil) {
 			dict["mappedFields"] = mappedFields!.map { value in value.toDictionary() }
+		}
+		if(options != nil) {
+			dict["options"] = options!.toDictionary()
 		}
 		return dict
 	}

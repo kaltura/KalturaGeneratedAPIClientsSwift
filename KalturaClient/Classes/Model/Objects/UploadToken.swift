@@ -102,6 +102,18 @@ open class UploadToken: ObjectBase {
 				return self.append("autoFinalize") 
 			}
 		}
+		
+		public var attachedObjectType: BaseTokenizedObject {
+			get {
+				return self.append("attachedObjectType") 
+			}
+		}
+		
+		public var attachedObjectId: BaseTokenizedObject {
+			get {
+				return self.append("attachedObjectId") 
+			}
+		}
 	}
 
 	/**  Upload token unique ID  */
@@ -131,6 +143,10 @@ open class UploadToken: ObjectBase {
 	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
 	  the file size reproted when adding the upload token.  */
 	public var autoFinalize: Bool? = nil
+	/**  The value for the object_type field.  */
+	public var attachedObjectType: String? = nil
+	/**  The value for the object_id field.  */
+	public var attachedObjectId: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -177,6 +193,14 @@ open class UploadToken: ObjectBase {
 		self.dict["autoFinalize"] = autoFinalize
 	}
 	
+	public func setMultiRequestToken(attachedObjectType: String) {
+		self.dict["attachedObjectType"] = attachedObjectType
+	}
+	
+	public func setMultiRequestToken(attachedObjectId: String) {
+		self.dict["attachedObjectId"] = attachedObjectId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -212,6 +236,12 @@ open class UploadToken: ObjectBase {
 		}
 		if dict["autoFinalize"] != nil {
 			autoFinalize = dict["autoFinalize"] as? Bool
+		}
+		if dict["attachedObjectType"] != nil {
+			attachedObjectType = dict["attachedObjectType"] as? String
+		}
+		if dict["attachedObjectId"] != nil {
+			attachedObjectId = dict["attachedObjectId"] as? String
 		}
 
 	}

@@ -208,6 +208,12 @@ open class EntryVendorTask: ObjectBase {
 				return self.append("turnAroundTime") 
 			}
 		}
+		
+		public var externalTaskId: BaseTokenizedObject {
+			get {
+				return self.append("externalTaskId") 
+			}
+		}
 	}
 
 	public var id: Int64? = nil
@@ -257,6 +263,8 @@ open class EntryVendorTask: ObjectBase {
 	public var serviceType: VendorServiceType? = nil
 	public var serviceFeature: VendorServiceFeature? = nil
 	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
+	/**  The vendor's task internal Id  */
+	public var externalTaskId: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -371,6 +379,10 @@ open class EntryVendorTask: ObjectBase {
 		self.dict["turnAroundTime"] = turnAroundTime
 	}
 	
+	public func setMultiRequestToken(externalTaskId: String) {
+		self.dict["externalTaskId"] = externalTaskId
+	}
+	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -460,6 +472,9 @@ open class EntryVendorTask: ObjectBase {
 		if dict["turnAroundTime"] != nil {
 			turnAroundTime = VendorServiceTurnAroundTime(rawValue: (dict["turnAroundTime"] as? Int)!)
 		}
+		if dict["externalTaskId"] != nil {
+			externalTaskId = dict["externalTaskId"] as? String
+		}
 
 	}
 
@@ -497,6 +512,9 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if(taskJobData != nil) {
 			dict["taskJobData"] = taskJobData!.toDictionary()
+		}
+		if(externalTaskId != nil) {
+			dict["externalTaskId"] = externalTaskId!
 		}
 		return dict
 	}

@@ -270,6 +270,10 @@ public final class BaseEntryService{
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
 			} 
 		}
+		
+		public func options<T: ExportToCsvOptions.ExportToCsvOptionsTokenizer>() -> T {
+			return T(self.append("options"))
+		}
 	}
 
 	public static func exportToCsv() -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
@@ -288,14 +292,19 @@ public final class BaseEntryService{
 		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: nil)
 	}
 
+	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: mappedFields, options: nil)
+	}
+
 	/**  add batch job that sends an email with a link to download an updated CSV that
 	  contains list of entries  */
-	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+	public static func exportToCsv(filter: BaseEntryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?, options: ExportToCsvOptions?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "baseentry", action: "exportToCsv")
 			.setParam(key: "filter", value: filter)
 			.setParam(key: "metadataProfileId", value: metadataProfileId)
 			.setParam(key: "additionalFields", value: additionalFields)
 			.setParam(key: "mappedFields", value: mappedFields)
+			.setParam(key: "options", value: options)
 
 		return request
 	}

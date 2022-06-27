@@ -164,6 +164,10 @@ public final class UserService{
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
 			} 
 		}
+		
+		public func options<T: ExportToCsvOptions.ExportToCsvOptionsTokenizer>() -> T {
+			return T(self.append("options"))
+		}
 	}
 
 	public static func exportToCsv() -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
@@ -182,14 +186,19 @@ public final class UserService{
 		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: nil)
 	}
 
+	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: mappedFields, options: nil)
+	}
+
 	/**  Creates a batch job that sends an email with a link to download a CSV containing
 	  a list of users  */
-	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+	public static func exportToCsv(filter: UserFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?, options: ExportToCsvOptions?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
 		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "user", action: "exportToCsv")
 			.setParam(key: "filter", value: filter)
 			.setParam(key: "metadataProfileId", value: metadataProfileId)
 			.setParam(key: "additionalFields", value: additionalFields)
 			.setParam(key: "mappedFields", value: mappedFields)
+			.setParam(key: "options", value: options)
 
 		return request
 	}

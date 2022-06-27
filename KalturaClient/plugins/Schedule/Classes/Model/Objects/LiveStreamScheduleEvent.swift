@@ -78,6 +78,12 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 				return self.append("isContentInterruptible") 
 			}
 		}
+		
+		public var liveFeatures: ArrayTokenizedObject<LiveFeature.LiveFeatureTokenizer> {
+			get {
+				return ArrayTokenizedObject<LiveFeature.LiveFeatureTokenizer>(self.append("liveFeatures"))
+			} 
+		}
 	}
 
 	/**  The entry ID of the source entry (for simulive)  */
@@ -94,6 +100,8 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 	public var postEndEntryId: String? = nil
 	/**  Detect whether "real" live can interrupt to the "main" content  */
 	public var isContentInterruptible: Bool? = nil
+	/**  list of live features that apply to the event  */
+	public var liveFeatures: Array<LiveFeature>? = nil
 
 
 	public func setMultiRequestToken(sourceEntryId: String) {
@@ -148,6 +156,9 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		if dict["isContentInterruptible"] != nil {
 			isContentInterruptible = dict["isContentInterruptible"] as? Bool
 		}
+		if dict["liveFeatures"] != nil {
+			liveFeatures = try JSONParser.parse(array: dict["liveFeatures"] as! [Any])
+		}
 
 	}
 
@@ -173,6 +184,9 @@ open class LiveStreamScheduleEvent: BaseLiveScheduleEvent {
 		}
 		if(isContentInterruptible != nil) {
 			dict["isContentInterruptible"] = isContentInterruptible!
+		}
+		if(liveFeatures != nil) {
+			dict["liveFeatures"] = liveFeatures!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

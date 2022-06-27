@@ -33,79 +33,88 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ExportToCsvOptions: ObjectBase {
+open class LiveCaptionFeature: LiveFeature {
 
-	public class ExportToCsvOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class LiveCaptionFeatureTokenizer: LiveFeature.LiveFeatureTokenizer {
 		
-		public var format: BaseTokenizedObject {
+		public var mediaUrl: BaseTokenizedObject {
 			get {
-				return self.append("format") 
+				return self.append("mediaUrl") 
 			}
 		}
 		
-		public var typeEqual: BaseTokenizedObject {
+		public var mediaKey: BaseTokenizedObject {
 			get {
-				return self.append("typeEqual") 
+				return self.append("mediaKey") 
 			}
 		}
 		
-		public var defaultHeader: BaseTokenizedObject {
+		public var captionUrl: BaseTokenizedObject {
 			get {
-				return self.append("defaultHeader") 
+				return self.append("captionUrl") 
+			}
+		}
+		
+		public var captionToken: BaseTokenizedObject {
+			get {
+				return self.append("captionToken") 
 			}
 		}
 	}
 
-	/**  The format of the outputted date string. There are also several predefined date
-	  constants that may be used instead, so for example DATE_RSS contains the format
-	  string 'D, d M Y H:i:s'.   https://www.php.net/manual/en/function.date.php  */
-	public var format: String? = nil
-	/**  Setting this property will cause additional columns to be added to the final
-	  report. The columns will be related to the specific object type passed
-	  (currently only MEDIA_CLIP is supported).   Please note that this property will
-	  NOT change the result filter in any way (i.e passing MEDIA_CLIP here will not
-	  force the report to return only media items).  */
-	public var typeEqual: EntryType? = nil
-	public var defaultHeader: Bool? = nil
+	public var mediaUrl: String? = nil
+	public var mediaKey: String? = nil
+	public var captionUrl: String? = nil
+	public var captionToken: String? = nil
 
 
-	public func setMultiRequestToken(format: String) {
-		self.dict["format"] = format
-	}
-	
-	public func setMultiRequestToken(typeEqual: String) {
-		self.dict["typeEqual"] = typeEqual
+	public func setMultiRequestToken(mediaUrl: String) {
+		self.dict["mediaUrl"] = mediaUrl
 	}
 	
-	public func setMultiRequestToken(defaultHeader: String) {
-		self.dict["defaultHeader"] = defaultHeader
+	public func setMultiRequestToken(mediaKey: String) {
+		self.dict["mediaKey"] = mediaKey
+	}
+	
+	public func setMultiRequestToken(captionUrl: String) {
+		self.dict["captionUrl"] = captionUrl
+	}
+	
+	public func setMultiRequestToken(captionToken: String) {
+		self.dict["captionToken"] = captionToken
 	}
 	
 	internal override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["format"] != nil {
-			format = dict["format"] as? String
+		if dict["mediaUrl"] != nil {
+			mediaUrl = dict["mediaUrl"] as? String
 		}
-		if dict["typeEqual"] != nil {
-			typeEqual = EntryType(rawValue: "\(dict["typeEqual"]!)")
+		if dict["mediaKey"] != nil {
+			mediaKey = dict["mediaKey"] as? String
 		}
-		if dict["defaultHeader"] != nil {
-			defaultHeader = dict["defaultHeader"] as? Bool
+		if dict["captionUrl"] != nil {
+			captionUrl = dict["captionUrl"] as? String
+		}
+		if dict["captionToken"] != nil {
+			captionToken = dict["captionToken"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(format != nil) {
-			dict["format"] = format!
+		if(mediaUrl != nil) {
+			dict["mediaUrl"] = mediaUrl!
 		}
-		if(typeEqual != nil) {
-			dict["typeEqual"] = typeEqual!.rawValue
+		if(mediaKey != nil) {
+			dict["mediaKey"] = mediaKey!
 		}
-		if(defaultHeader != nil) {
-			dict["defaultHeader"] = defaultHeader!
+		if(captionUrl != nil) {
+			dict["captionUrl"] = captionUrl!
+		}
+		if(captionToken != nil) {
+			dict["captionToken"] = captionToken!
 		}
 		return dict
 	}
