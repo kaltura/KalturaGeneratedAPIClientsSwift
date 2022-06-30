@@ -61,7 +61,7 @@ open class EntryReplacementOptions: ObjectBase {
 		self.dict["keepManualThumbnails"] = keepManualThumbnails
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["keepManualThumbnails"] != nil {

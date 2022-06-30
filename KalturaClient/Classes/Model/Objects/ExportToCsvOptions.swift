@@ -81,7 +81,7 @@ open class ExportToCsvOptions: ObjectBase {
 		self.dict["defaultHeader"] = defaultHeader
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["format"] != nil {

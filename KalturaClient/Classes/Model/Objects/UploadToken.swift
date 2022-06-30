@@ -137,15 +137,15 @@ open class UploadToken: ObjectBase {
 	public var createdAt: Int? = nil
 	/**  Last update date as Unix timestamp (In seconds)  */
 	public var updatedAt: Int? = nil
-	/**  Upload url - to explicitly determine to which domain to adress the
+	/**  Upload url - to explicitly determine to which domain to address the
 	  uploadToken-&gt;upload call  */
 	public var uploadUrl: String? = nil
 	/**  autoFinalize - Should the upload be finalized once the file size on disk matches
-	  the file size reproted when adding the upload token.  */
+	  the file size reported when adding the upload token.  */
 	public var autoFinalize: Bool? = nil
-	/**  The value for the object_type field.  */
+	/**  The type of the object this token is attached to.  */
 	public var attachedObjectType: String? = nil
-	/**  The value for the object_id field.  */
+	/**  The id of the object this token is attached to.  */
 	public var attachedObjectId: String? = nil
 
 
@@ -201,7 +201,7 @@ open class UploadToken: ObjectBase {
 		self.dict["attachedObjectId"] = attachedObjectId
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {

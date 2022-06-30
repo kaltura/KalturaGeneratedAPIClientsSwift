@@ -67,7 +67,7 @@ open class Pager: ObjectBase {
 		self.dict["pageIndex"] = pageIndex
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["pageSize"] != nil {

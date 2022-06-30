@@ -117,7 +117,7 @@ open class AmazonS3StorageExportJobData: StorageExportJobData {
 		self.dict["storageClass"] = storageClass
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["filesPermissionInS3"] != nil {

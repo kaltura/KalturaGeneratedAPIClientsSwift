@@ -74,7 +74,7 @@ open class Condition: ObjectBase {
 		self.dict["not"] = not
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["type"] != nil {

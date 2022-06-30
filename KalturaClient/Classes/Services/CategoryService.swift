@@ -114,6 +114,68 @@ public final class CategoryService{
 		return request
 	}
 
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func filter<T: CategoryFilter.CategoryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+		
+		public var metadataProfileId: BaseTokenizedObject {
+			get {
+				return self.append("metadataProfileId") 
+			}
+		}
+		
+		public var additionalFields: ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer> {
+			get {
+				return ArrayTokenizedObject<CsvAdditionalFieldInfo.CsvAdditionalFieldInfoTokenizer>(self.append("additionalFields"))
+			} 
+		}
+		
+		public var mappedFields: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mappedFields"))
+			} 
+		}
+		
+		public func options<T: ExportToCsvOptions.ExportToCsvOptionsTokenizer>() -> T {
+			return T(self.append("options"))
+		}
+	}
+
+	public static func exportToCsv() -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: nil)
+	}
+
+	public static func exportToCsv(filter: CategoryFilter?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: nil)
+	}
+
+	public static func exportToCsv(filter: CategoryFilter?, metadataProfileId: Int?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: nil)
+	}
+
+	public static func exportToCsv(filter: CategoryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: nil)
+	}
+
+	public static func exportToCsv(filter: CategoryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		return exportToCsv(filter: filter, metadataProfileId: metadataProfileId, additionalFields: additionalFields, mappedFields: mappedFields, options: nil)
+	}
+
+	/**  Creates a batch job that sends an email with a link to download a CSV containing
+	  a list of categories  */
+	public static func exportToCsv(filter: CategoryFilter?, metadataProfileId: Int?, additionalFields: Array<CsvAdditionalFieldInfo>?, mappedFields: Array<KeyValue>?, options: ExportToCsvOptions?) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "category", action: "exportToCsv")
+			.setParam(key: "filter", value: filter)
+			.setParam(key: "metadataProfileId", value: metadataProfileId)
+			.setParam(key: "additionalFields", value: additionalFields)
+			.setParam(key: "mappedFields", value: mappedFields)
+			.setParam(key: "options", value: options)
+
+		return request
+	}
+
 	public class GetTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

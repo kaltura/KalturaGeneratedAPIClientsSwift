@@ -75,7 +75,7 @@ open class DeliveryProfileGenericAppleHttp: DeliveryProfile {
 		self.dict["manifestRedirect"] = manifestRedirect
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["pattern"] != nil {

@@ -51,7 +51,7 @@ open class DeleteFileJobData: JobData {
 		self.dict["localFileSyncPath"] = localFileSyncPath
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["localFileSyncPath"] != nil {
