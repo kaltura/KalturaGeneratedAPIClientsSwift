@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType: String {
+	case REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler"
 	case CONVERT = "0"
 	case CONVERT_CAPTION_ASSET = "caption.convertcaptionasset"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"

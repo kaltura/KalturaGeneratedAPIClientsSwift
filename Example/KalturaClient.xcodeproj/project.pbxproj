@@ -59,7 +59,7 @@
 		607FACEB1AFB9204008FA782 /* BaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTest.swift; sourceTree = "<group>"; };
 		9EEB332DC79B29F3773EBDAC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A828660A1AF9647D2ABD0F59 /* Pods_KalturaClient_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KalturaClient_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B33E0750ECAFC8D9419D0E2D /* KalturaClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KalturaClient.podspec; path = ../KalturaClient.podspec; sourceTree = "<group>"; };
+		B33E0750ECAFC8D9419D0E2D /* KalturaClient.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KalturaClient.podspec; path = ../KalturaClient.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B9C640C657C2B5A040083AF5 /* Pods-KalturaClient_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalturaClient_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KalturaClient_Tests/Pods-KalturaClient_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA7C1EFC72FAE951883B0985 /* Pods_KalturaClient_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KalturaClient_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4D209549F925E3CB611747F /* Pods-KalturaClient_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KalturaClient_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KalturaClient_Example/Pods-KalturaClient_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +254,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

@@ -58,7 +58,7 @@ open class AssetParamsResourceContainer: Resource {
 		self.dict["assetParamsId"] = assetParamsId
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["resource"] != nil {

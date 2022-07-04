@@ -48,7 +48,7 @@ open class AssetsParamsResourceContainers: Resource {
 	public var resources: Array<AssetParamsResourceContainer>? = nil
 
 
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["resources"] != nil {

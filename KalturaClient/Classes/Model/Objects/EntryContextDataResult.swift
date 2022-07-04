@@ -209,7 +209,7 @@ open class EntryContextDataResult: ContextDataResult {
 		self.dict["msDuration"] = msDuration
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["isSiteRestricted"] != nil {

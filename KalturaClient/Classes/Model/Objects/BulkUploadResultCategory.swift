@@ -194,7 +194,7 @@ open class BulkUploadResultCategory: BulkUploadResult {
 		self.dict["moderation"] = moderation
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["relativePath"] != nil {

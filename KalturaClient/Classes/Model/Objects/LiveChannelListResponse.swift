@@ -47,7 +47,7 @@ open class LiveChannelListResponse: ListResponse {
 	public var objects: Array<LiveChannel>? = nil
 
 
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["objects"] != nil {

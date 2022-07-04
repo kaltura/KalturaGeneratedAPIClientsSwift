@@ -303,7 +303,7 @@ open class StatsEvent: ObjectBase {
 		self.dict["featureType"] = featureType
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["clientVer"] != nil {

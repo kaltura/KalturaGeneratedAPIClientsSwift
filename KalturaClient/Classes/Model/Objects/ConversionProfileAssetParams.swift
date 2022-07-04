@@ -192,7 +192,7 @@ open class ConversionProfileAssetParams: ObjectBase {
 		self.dict["overloadParams"] = overloadParams
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["conversionProfileId"] != nil {

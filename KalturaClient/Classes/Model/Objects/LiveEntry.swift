@@ -264,7 +264,7 @@ open class LiveEntry: MediaEntry {
 		self.dict["broadcastTime"] = broadcastTime
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["offlineMessage"] != nil {

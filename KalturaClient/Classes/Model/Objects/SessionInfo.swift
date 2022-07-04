@@ -106,7 +106,7 @@ open class SessionInfo: ObjectBase {
 		self.dict["privileges"] = privileges
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["ks"] != nil {

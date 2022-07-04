@@ -238,7 +238,7 @@ open class PartnerBaseFilter: Filter {
 		self.dict["monitorUsageEqual"] = monitorUsageEqual
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["idEqual"] != nil {

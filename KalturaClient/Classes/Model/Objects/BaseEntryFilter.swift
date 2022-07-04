@@ -130,7 +130,7 @@ open class BaseEntryFilter: BaseEntryBaseFilter {
 		self.dict["conversionProfileIdEqual"] = conversionProfileIdEqual
 	}
 	
-	internal override func populate(_ dict: [String: Any]) throws {
+	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["freeText"] != nil {
