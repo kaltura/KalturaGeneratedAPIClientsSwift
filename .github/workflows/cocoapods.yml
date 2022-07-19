@@ -6,7 +6,7 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  PUSH:
+  pods_push:
 
     runs-on: macos-latest
 
