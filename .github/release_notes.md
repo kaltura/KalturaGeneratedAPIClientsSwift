@@ -1,0 +1,4 @@
+
+##
+# Cocoapods install
+`pod 'KalturaClient'`
