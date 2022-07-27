@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PodcastDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum PodcastDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

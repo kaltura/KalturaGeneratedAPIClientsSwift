@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DailymotionDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum DailymotionDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

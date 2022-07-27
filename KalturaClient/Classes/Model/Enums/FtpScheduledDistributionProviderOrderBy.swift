@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum FtpScheduledDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum FtpScheduledDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

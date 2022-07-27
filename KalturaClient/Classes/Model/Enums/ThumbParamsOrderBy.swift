@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ThumbParamsOrderBy {
-	/** Place holder for future values */
+public enum ThumbParamsOrderBy: String {
+	case NONE = "NONE"
 }

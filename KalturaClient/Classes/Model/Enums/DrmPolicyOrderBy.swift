@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DrmPolicyOrderBy {
-	/** Place holder for future values */
+public enum DrmPolicyOrderBy: String {
+	case NONE = "NONE"
 }

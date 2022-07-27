@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum FlavorParamsOrderBy {
-	/** Place holder for future values */
+public enum FlavorParamsOrderBy: String {
+	case NONE = "NONE"
 }

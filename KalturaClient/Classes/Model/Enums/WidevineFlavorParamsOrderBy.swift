@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum WidevineFlavorParamsOrderBy {
-	/** Place holder for future values */
+public enum WidevineFlavorParamsOrderBy: String {
+	case NONE = "NONE"
 }

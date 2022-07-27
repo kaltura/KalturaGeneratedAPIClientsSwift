@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum CrossKalturaDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum CrossKalturaDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

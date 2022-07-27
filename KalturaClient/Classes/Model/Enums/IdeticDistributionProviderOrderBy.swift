@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum IdeticDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum IdeticDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

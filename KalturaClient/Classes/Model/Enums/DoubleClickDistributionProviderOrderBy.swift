@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum DoubleClickDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum DoubleClickDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

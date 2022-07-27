@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ESearchMetadataAggregateByFieldName {
-	/** Place holder for future values */
+public enum ESearchMetadataAggregateByFieldName: String {
+	case NONE = "NONE"
 }

@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ConversionProfileAssetParamsOrderBy {
-	/** Place holder for future values */
+public enum ConversionProfileAssetParamsOrderBy: String {
+	case NONE = "NONE"
 }

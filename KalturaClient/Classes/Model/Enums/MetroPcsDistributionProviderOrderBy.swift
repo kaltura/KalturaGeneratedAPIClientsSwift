@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum MetroPcsDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum MetroPcsDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UnicornDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum UnicornDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

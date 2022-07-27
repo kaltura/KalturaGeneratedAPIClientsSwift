@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BulkUploadOrderBy {
-	/** Place holder for future values */
+public enum BulkUploadOrderBy: String {
+	case NONE = "NONE"
 }

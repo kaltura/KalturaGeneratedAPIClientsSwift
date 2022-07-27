@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum LiveParamsOrderBy {
-	/** Place holder for future values */
+public enum LiveParamsOrderBy: String {
+	case NONE = "NONE"
 }

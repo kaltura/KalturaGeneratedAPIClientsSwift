@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PlayReadyPolicyOrderBy {
-	/** Place holder for future values */
+public enum PlayReadyPolicyOrderBy: String {
+	case NONE = "NONE"
 }

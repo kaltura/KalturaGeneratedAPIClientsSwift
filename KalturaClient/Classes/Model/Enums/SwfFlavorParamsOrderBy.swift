@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum SwfFlavorParamsOrderBy {
-	/** Place holder for future values */
+public enum SwfFlavorParamsOrderBy: String {
+	case NONE = "NONE"
 }

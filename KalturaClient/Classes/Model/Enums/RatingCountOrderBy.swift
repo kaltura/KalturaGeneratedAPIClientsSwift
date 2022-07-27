@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum RatingCountOrderBy {
-	/** Place holder for future values */
+public enum RatingCountOrderBy: String {
+	case NONE = "NONE"
 }

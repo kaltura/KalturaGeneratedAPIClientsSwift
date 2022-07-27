@@ -280,6 +280,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("originIn") 
 			}
 		}
+		
+		public var uiConfIdIn: BaseTokenizedObject {
+			get {
+				return self.append("uiConfIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -361,6 +367,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var virtualEventIdIn: String? = nil
 	/**  filter by origin  */
 	public var originIn: String? = nil
+	/**  filter by ui conf id  */
+	public var uiConfIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -523,6 +531,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["originIn"] = originIn
 	}
 	
+	public func setMultiRequestToken(uiConfIdIn: String) {
+		self.dict["uiConfIdIn"] = uiConfIdIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -647,6 +659,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["originIn"] != nil {
 			originIn = dict["originIn"] as? String
+		}
+		if dict["uiConfIdIn"] != nil {
+			uiConfIdIn = dict["uiConfIdIn"] as? String
 		}
 
 	}
@@ -775,6 +790,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(originIn != nil) {
 			dict["originIn"] = originIn!
+		}
+		if(uiConfIdIn != nil) {
+			dict["uiConfIdIn"] = uiConfIdIn!
 		}
 		return dict
 	}

@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AssetParamsOrderBy {
-	/** Place holder for future values */
+public enum AssetParamsOrderBy: String {
+	case NONE = "NONE"
 }

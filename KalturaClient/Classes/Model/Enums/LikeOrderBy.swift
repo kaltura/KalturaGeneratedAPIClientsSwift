@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum LikeOrderBy {
-	/** Place holder for future values */
+public enum LikeOrderBy: String {
+	case NONE = "NONE"
 }

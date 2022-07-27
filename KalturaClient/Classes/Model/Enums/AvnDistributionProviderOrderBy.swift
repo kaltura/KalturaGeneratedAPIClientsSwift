@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum AvnDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum AvnDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

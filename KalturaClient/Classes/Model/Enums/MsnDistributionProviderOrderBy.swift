@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum MsnDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum MsnDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

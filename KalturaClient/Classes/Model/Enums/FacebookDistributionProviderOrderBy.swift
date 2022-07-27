@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum FacebookDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum FacebookDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

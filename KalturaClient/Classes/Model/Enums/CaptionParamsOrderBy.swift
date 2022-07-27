@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum CaptionParamsOrderBy {
-	/** Place holder for future values */
+public enum CaptionParamsOrderBy: String {
+	case NONE = "NONE"
 }

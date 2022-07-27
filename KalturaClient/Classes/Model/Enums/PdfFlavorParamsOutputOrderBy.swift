@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum PdfFlavorParamsOutputOrderBy {
-	/** Place holder for future values */
+public enum PdfFlavorParamsOutputOrderBy: String {
+	case NONE = "NONE"
 }

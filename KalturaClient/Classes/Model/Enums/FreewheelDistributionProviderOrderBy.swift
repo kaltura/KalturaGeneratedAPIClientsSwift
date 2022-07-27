@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum FreewheelDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum FreewheelDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum YoutubeApiDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum YoutubeApiDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }

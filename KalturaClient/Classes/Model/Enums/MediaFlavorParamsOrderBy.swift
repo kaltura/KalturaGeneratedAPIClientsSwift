@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum MediaFlavorParamsOrderBy {
-	/** Place holder for future values */
+public enum MediaFlavorParamsOrderBy: String {
+	case NONE = "NONE"
 }

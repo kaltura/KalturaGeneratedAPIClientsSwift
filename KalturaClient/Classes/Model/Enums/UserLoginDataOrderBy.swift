@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum UserLoginDataOrderBy {
-	/** Place holder for future values */
+public enum UserLoginDataOrderBy: String {
+	case NONE = "NONE"
 }

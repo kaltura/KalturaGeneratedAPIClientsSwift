@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum ImageFlavorParamsOutputOrderBy {
-	/** Place holder for future values */
+public enum ImageFlavorParamsOutputOrderBy: String {
+	case NONE = "NONE"
 }

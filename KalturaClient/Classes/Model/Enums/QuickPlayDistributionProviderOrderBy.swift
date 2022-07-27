@@ -31,6 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum QuickPlayDistributionProviderOrderBy {
-	/** Place holder for future values */
+public enum QuickPlayDistributionProviderOrderBy: String {
+	case NONE = "NONE"
 }
