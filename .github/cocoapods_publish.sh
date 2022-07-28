@@ -10,4 +10,4 @@ EOF
 
 chmod 0600 ~/.netrc
 
-pod trunk push --fail-fast --verbose
+pod trunk push --verbose
