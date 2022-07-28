@@ -25,20 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using generate.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryVendorTaskStatus: Int {
-	case PENDING = 1
-	case READY = 2
-	case PROCESSING = 3
-	case PENDING_MODERATION = 4
-	case REJECTED = 5
-	case ERROR = 6
-	case ABORTED = 7
-	case PENDING_ENTRY_READY = 8
-	case SCHEDULED = 9
+
+open class VendorLiveCaptionCatalogItemFilter: VendorCaptionsCatalogItemBaseFilter {
+
+	public class VendorLiveCaptionCatalogItemFilterTokenizer: VendorCaptionsCatalogItemBaseFilter.VendorCaptionsCatalogItemBaseFilterTokenizer {
+	}
+
+
+
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

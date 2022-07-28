@@ -39,4 +39,5 @@ public enum VendorServiceFeature: Int {
 	case CHAPTERING = 5
 	case INTELLIGENT_TAGGING = 6
 	case DUBBING = 7
+	case LIVE_CAPTION = 8
 }

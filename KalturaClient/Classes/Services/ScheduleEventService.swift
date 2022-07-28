@@ -196,4 +196,33 @@ public final class ScheduleEventService{
 
 		return request
 	}
+
+	public class UpdateLiveFeatureTokenizer: ClientTokenizer  {
+		
+		public var scheduledEventId: BaseTokenizedObject {
+			get {
+				return self.append("scheduledEventId") 
+			}
+		}
+		
+		public var featureName: BaseTokenizedObject {
+			get {
+				return self.append("featureName") 
+			}
+		}
+		
+		public func liveFeature<T: LiveFeature.LiveFeatureTokenizer>() -> T {
+			return T(self.append("liveFeature"))
+		}
+	}
+
+	/**  Add feature to live event  */
+	public static func updateLiveFeature(scheduledEventId: Int, featureName: String, liveFeature: LiveFeature) -> RequestBuilder<LiveStreamScheduleEvent, LiveStreamScheduleEvent.LiveStreamScheduleEventTokenizer, UpdateLiveFeatureTokenizer> {
+		let request: RequestBuilder<LiveStreamScheduleEvent, LiveStreamScheduleEvent.LiveStreamScheduleEventTokenizer, UpdateLiveFeatureTokenizer> = RequestBuilder<LiveStreamScheduleEvent, LiveStreamScheduleEvent.LiveStreamScheduleEventTokenizer, UpdateLiveFeatureTokenizer>(service: "schedule_scheduleevent", action: "updateLiveFeature")
+			.setParam(key: "scheduledEventId", value: scheduledEventId)
+			.setParam(key: "featureName", value: featureName)
+			.setParam(key: "liveFeature", value: liveFeature)
+
+		return request
+	}
 }
