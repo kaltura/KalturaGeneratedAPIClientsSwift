@@ -473,8 +473,8 @@ public final class UserService{
 	}
 
 	/**  Resets user login password  */
-	public static func loginDataResetPassword(loginDataId: String, newPassword: String) -> NullRequestBuilder<LoginDataResetPasswordTokenizer> {
-		let request: NullRequestBuilder<LoginDataResetPasswordTokenizer> = NullRequestBuilder<LoginDataResetPasswordTokenizer>(service: "user", action: "loginDataResetPassword")
+	public static func loginDataResetPassword(loginDataId: String, newPassword: String) -> RequestBuilder<User, User.UserTokenizer, LoginDataResetPasswordTokenizer> {
+		let request: RequestBuilder<User, User.UserTokenizer, LoginDataResetPasswordTokenizer> = RequestBuilder<User, User.UserTokenizer, LoginDataResetPasswordTokenizer>(service: "user", action: "loginDataResetPassword")
 			.setParam(key: "loginDataId", value: loginDataId)
 			.setParam(key: "newPassword", value: newPassword)
 
