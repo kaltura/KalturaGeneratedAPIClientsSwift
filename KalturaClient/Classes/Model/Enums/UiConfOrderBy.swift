@@ -33,7 +33,11 @@
  */
 public enum UiConfOrderBy: String {
 	case CREATED_AT_ASC = "+createdAt"
+	case ID_ASC = "+id"
+	case NAME_ASC = "+name"
 	case UPDATED_AT_ASC = "+updatedAt"
 	case CREATED_AT_DESC = "-createdAt"
+	case ID_DESC = "-id"
+	case NAME_DESC = "-name"
 	case UPDATED_AT_DESC = "-updatedAt"
 }
