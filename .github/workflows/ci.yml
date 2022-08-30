@@ -19,7 +19,7 @@ jobs:
       run: pod repo update
     - name: Setup Environment
       run: |
-       - sed -e "s#@YOUR_PARTNER_ID@#${{ secrets.PARTNER_ID }}#g" -e "s#@YOUR_ADMIN_SECRET@#${{ secrets.SECRET }}#g" -e "s#@SERVER_URL@#${{ secrets.SERVER_URL }}#g" Example/Tests/TestsConfig.template.plist > Example/Tests/TestsConfig.plist
+        sed -e "s#@YOUR_PARTNER_ID@#${{ secrets.PARTNER_ID }}#g" -e "s#@YOUR_ADMIN_SECRET@#${{ secrets.SECRET }}#g" -e "s#@SERVER_URL@#${{ secrets.SERVER_URL }}#g" Example/Tests/TestsConfig.template.plist > Example/Tests/TestsConfig.plist
     - name: Build
       working-directory: ./Example
       run: swift build
