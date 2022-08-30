@@ -1,0 +1,25 @@
+name: "CI"
+
+on:
+  workflow_dispatch:
+
+concurrency: 
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    environment: Kaltura_2222401
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Updating CocoaPods repo
+      run: pod repo update
+    - name: Setup Environment
+      run: |
+       - sed -e "s#@YOUR_PARTNER_ID@#${{ secrets.PARTNER_ID }}#g" -e "s#@YOUR_ADMIN_SECRET@#${{ secrets.SECRET }}#g" -e "s#@SERVER_URL@#${{ secrets.SERVER_URL }}#g" Example/Tests/TestsConfig.template.plist > Example/Tests/TestsConfig.plist
+    - name: Build
+      working-directory: ./Example
+      run: swift build
