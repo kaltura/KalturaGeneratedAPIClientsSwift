@@ -26,4 +26,4 @@ jobs:
       run: pod install
     - name: Build
       working-directory: ./Example
-      run: xcodebuild -project "KalturaClient.xcworkspace" -scheme "KalturaClient-Example" clean test | xcpretty
+      run: xcodebuild -workspace "KalturaClient.xcworkspace" -scheme "KalturaClient-Example" clean test | xcpretty
