@@ -101,6 +101,10 @@ class PrimitiveResponsesTest: BaseTest {
                     self.executor.send(request: requestBuilder.build(self.client!))
                 }
             }
+            
+            it ("FAIL") {
+                fail()
+            }
         }
     }
 }
