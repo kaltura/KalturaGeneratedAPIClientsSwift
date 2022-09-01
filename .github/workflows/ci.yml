@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        ios: [15.2, 14.5]
+        ios: [15.2]
 
     steps:
     - uses: actions/checkout@v3
