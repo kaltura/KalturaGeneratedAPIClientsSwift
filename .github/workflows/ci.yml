@@ -10,9 +10,14 @@ concurrency:
 
 jobs:
   build:
-
+    name: "Build and test iOS"
     runs-on: macos-latest
+    #timeout-minutes: 30
     environment: Kaltura_2222401
+
+    strategy:
+      matrix:
+        ios: [15.4, 14.5]
 
     steps:
     - uses: actions/checkout@v3
@@ -26,6 +31,6 @@ jobs:
       run: pod install
     - name: Build
       working-directory: ./Example
-      run: set -o pipefail xcodebuild -workspace "KalturaClient.xcworkspace" -scheme "KalturaClient-Example" -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max,OS=15.2' clean test | xcpretty
+      run: set -o pipefail && xcodebuild -workspace "KalturaClient.xcworkspace" -scheme "KalturaClient-Example" -destination 'platform=iOS Simulator,name=iPhone X,OS=${{ matrix.ios }}' clean test | xcpretty
 
 #xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' > $BUILD_OUTPUT 2>&1
