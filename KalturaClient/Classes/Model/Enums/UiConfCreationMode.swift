@@ -34,4 +34,5 @@
 public enum UiConfCreationMode: Int {
 	case WIZARD = 2
 	case ADVANCED = 3
+	case SYSTEM = 4
 }
