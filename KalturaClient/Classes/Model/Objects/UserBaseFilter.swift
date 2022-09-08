@@ -37,6 +37,18 @@ open class UserBaseFilter: BaseUserFilter {
 
 	public class UserBaseFilterTokenizer: BaseUserFilter.BaseUserFilterTokenizer {
 		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
+		
 		public var typeEqual: BaseTokenizedObject {
 			get {
 				return self.append("typeEqual") 
@@ -68,6 +80,8 @@ open class UserBaseFilter: BaseUserFilter {
 		}
 	}
 
+	public var idEqual: String? = nil
+	public var idIn: String? = nil
 	public var typeEqual: UserType? = nil
 	public var typeIn: String? = nil
 	public var isAdminEqual: Bool? = nil
@@ -75,6 +89,14 @@ open class UserBaseFilter: BaseUserFilter {
 	public var lastNameStartsWith: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
 	public func setMultiRequestToken(typeEqual: String) {
 		self.dict["typeEqual"] = typeEqual
 	}
@@ -98,6 +120,12 @@ open class UserBaseFilter: BaseUserFilter {
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
+		if dict["idEqual"] != nil {
+			idEqual = dict["idEqual"] as? String
+		}
+		if dict["idIn"] != nil {
+			idIn = dict["idIn"] as? String
+		}
 		if dict["typeEqual"] != nil {
 			typeEqual = UserType(rawValue: (dict["typeEqual"] as? Int)!)
 		}
@@ -118,6 +146,12 @@ open class UserBaseFilter: BaseUserFilter {
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
+		if(idEqual != nil) {
+			dict["idEqual"] = idEqual!
+		}
+		if(idIn != nil) {
+			dict["idIn"] = idIn!
+		}
 		if(typeEqual != nil) {
 			dict["typeEqual"] = typeEqual!.rawValue
 		}

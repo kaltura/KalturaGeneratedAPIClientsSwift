@@ -43,18 +43,6 @@ open class UserFilter: UserBaseFilter {
 			}
 		}
 		
-		public var idEqual: BaseTokenizedObject {
-			get {
-				return self.append("idEqual") 
-			}
-		}
-		
-		public var idIn: BaseTokenizedObject {
-			get {
-				return self.append("idIn") 
-			}
-		}
-		
 		public var loginEnabledEqual: BaseTokenizedObject {
 			get {
 				return self.append("loginEnabledEqual") 
@@ -99,8 +87,6 @@ open class UserFilter: UserBaseFilter {
 	}
 
 	public var idOrScreenNameStartsWith: String? = nil
-	public var idEqual: String? = nil
-	public var idIn: String? = nil
 	public var loginEnabledEqual: Bool? = nil
 	public var roleIdEqual: String? = nil
 	public var roleIdsEqual: String? = nil
@@ -114,14 +100,6 @@ open class UserFilter: UserBaseFilter {
 
 	public func setMultiRequestToken(idOrScreenNameStartsWith: String) {
 		self.dict["idOrScreenNameStartsWith"] = idOrScreenNameStartsWith
-	}
-	
-	public func setMultiRequestToken(idEqual: String) {
-		self.dict["idEqual"] = idEqual
-	}
-	
-	public func setMultiRequestToken(idIn: String) {
-		self.dict["idIn"] = idIn
 	}
 	
 	public func setMultiRequestToken(loginEnabledEqual: String) {
@@ -158,12 +136,6 @@ open class UserFilter: UserBaseFilter {
 		if dict["idOrScreenNameStartsWith"] != nil {
 			idOrScreenNameStartsWith = dict["idOrScreenNameStartsWith"] as? String
 		}
-		if dict["idEqual"] != nil {
-			idEqual = dict["idEqual"] as? String
-		}
-		if dict["idIn"] != nil {
-			idIn = dict["idIn"] as? String
-		}
 		if dict["loginEnabledEqual"] != nil {
 			loginEnabledEqual = dict["loginEnabledEqual"] as? Bool
 		}
@@ -192,12 +164,6 @@ open class UserFilter: UserBaseFilter {
 		var dict: [String: Any] = super.toDictionary()
 		if(idOrScreenNameStartsWith != nil) {
 			dict["idOrScreenNameStartsWith"] = idOrScreenNameStartsWith!
-		}
-		if(idEqual != nil) {
-			dict["idEqual"] = idEqual!
-		}
-		if(idIn != nil) {
-			dict["idIn"] = idIn!
 		}
 		if(loginEnabledEqual != nil) {
 			dict["loginEnabledEqual"] = loginEnabledEqual!
