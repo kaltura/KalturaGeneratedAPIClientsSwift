@@ -54,6 +54,12 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 				return self.append("replacmenServerNodeId") 
 			}
 		}
+		
+		public var checkAliveTimeoutMs: BaseTokenizedObject {
+			get {
+				return self.append("checkAliveTimeoutMs") 
+			}
+		}
 	}
 
 	/**  Request host regex pattern  */
@@ -62,6 +68,9 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 	public var replacement: String? = nil
 	/**  serverNodeId to generate replacment host from  */
 	public var replacmenServerNodeId: Int? = nil
+	/**  Set this value if you want to check if the server is accessible before
+	  redirecting traffic to it (this value is in milliseconds)  */
+	public var checkAliveTimeoutMs: Int? = nil
 
 
 	public func setMultiRequestToken(pattern: String) {
@@ -76,6 +85,10 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 		self.dict["replacmenServerNodeId"] = replacmenServerNodeId
 	}
 	
+	public func setMultiRequestToken(checkAliveTimeoutMs: String) {
+		self.dict["checkAliveTimeoutMs"] = checkAliveTimeoutMs
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -87,6 +100,9 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 		}
 		if dict["replacmenServerNodeId"] != nil {
 			replacmenServerNodeId = dict["replacmenServerNodeId"] as? Int
+		}
+		if dict["checkAliveTimeoutMs"] != nil {
+			checkAliveTimeoutMs = dict["checkAliveTimeoutMs"] as? Int
 		}
 
 	}
@@ -101,6 +117,9 @@ open class AccessControlModifyRequestHostRegexAction: RuleAction {
 		}
 		if(replacmenServerNodeId != nil) {
 			dict["replacmenServerNodeId"] = replacmenServerNodeId!
+		}
+		if(checkAliveTimeoutMs != nil) {
+			dict["checkAliveTimeoutMs"] = checkAliveTimeoutMs!
 		}
 		return dict
 	}

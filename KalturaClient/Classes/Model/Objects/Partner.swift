@@ -504,6 +504,12 @@ open class Partner: ObjectBase {
 				return self.append("excludedAdminRoleName") 
 			}
 		}
+		
+		public var eventPlatformAllowedTemplates: BaseTokenizedObject {
+			get {
+				return self.append("eventPlatformAllowedTemplates") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -590,6 +596,7 @@ open class Partner: ObjectBase {
 	public var isSelfServe: Bool? = nil
 	public var allowedDomains: String? = nil
 	public var excludedAdminRoleName: String? = nil
+	public var eventPlatformAllowedTemplates: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -884,6 +891,10 @@ open class Partner: ObjectBase {
 		self.dict["excludedAdminRoleName"] = excludedAdminRoleName
 	}
 	
+	public func setMultiRequestToken(eventPlatformAllowedTemplates: String) {
+		self.dict["eventPlatformAllowedTemplates"] = eventPlatformAllowedTemplates
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1121,6 +1132,9 @@ open class Partner: ObjectBase {
 		if dict["excludedAdminRoleName"] != nil {
 			excludedAdminRoleName = dict["excludedAdminRoleName"] as? String
 		}
+		if dict["eventPlatformAllowedTemplates"] != nil {
+			eventPlatformAllowedTemplates = dict["eventPlatformAllowedTemplates"] as? String
+		}
 
 	}
 
@@ -1245,6 +1259,9 @@ open class Partner: ObjectBase {
 		}
 		if(isSelfServe != nil) {
 			dict["isSelfServe"] = isSelfServe!
+		}
+		if(eventPlatformAllowedTemplates != nil) {
+			dict["eventPlatformAllowedTemplates"] = eventPlatformAllowedTemplates!
 		}
 		return dict
 	}
