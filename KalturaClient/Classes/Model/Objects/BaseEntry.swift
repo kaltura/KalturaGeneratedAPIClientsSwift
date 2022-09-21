@@ -49,10 +49,22 @@ open class BaseEntry: ObjectBase {
 			}
 		}
 		
+		public var multiLingual_name: ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer> {
+			get {
+				return ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer>(self.append("multiLingual_name"))
+			} 
+		}
+		
 		public var description: BaseTokenizedObject {
 			get {
 				return self.append("description") 
 			}
+		}
+		
+		public var multiLingual_description: ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer> {
+			get {
+				return ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer>(self.append("multiLingual_description"))
+			} 
 		}
 		
 		public var partnerId: BaseTokenizedObject {
@@ -77,6 +89,12 @@ open class BaseEntry: ObjectBase {
 			get {
 				return self.append("tags") 
 			}
+		}
+		
+		public var multiLingual_tags: ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer> {
+			get {
+				return ArrayTokenizedObject<MultiLingualString.MultiLingualStringTokenizer>(self.append("multiLingual_tags"))
+			} 
 		}
 		
 		public var adminTags: BaseTokenizedObject {
@@ -330,8 +348,12 @@ open class BaseEntry: ObjectBase {
 	public var id: String? = nil
 	/**  Entry name (Min 1 chars)  */
 	public var name: String? = nil
+	/**  Entry name (Min 1 chars)  */
+	public var multiLingual_name: Array<MultiLingualString>? = nil
 	/**  Entry description  */
 	public var description: String? = nil
+	/**  Entry description  */
+	public var multiLingual_description: Array<MultiLingualString>? = nil
 	public var partnerId: Int? = nil
 	/**  The ID of the user who is the owner of this entry  */
 	public var userId: String? = nil
@@ -339,6 +361,8 @@ open class BaseEntry: ObjectBase {
 	public var creatorId: String? = nil
 	/**  Entry tags  */
 	public var tags: String? = nil
+	/**  Entry tags  */
+	public var multiLingual_tags: Array<MultiLingualString>? = nil
 	/**  Entry admin tags can be updated only by administrators  */
 	public var adminTags: String? = nil
 	/**  Comma separated list of full names of categories to which this entry belongs.
@@ -633,8 +657,14 @@ open class BaseEntry: ObjectBase {
 		if dict["name"] != nil {
 			name = dict["name"] as? String
 		}
+		if dict["multiLingual_name"] != nil {
+			multiLingual_name = try JSONParser.parse(array: dict["multiLingual_name"] as! [Any])
+		}
 		if dict["description"] != nil {
 			description = dict["description"] as? String
+		}
+		if dict["multiLingual_description"] != nil {
+			multiLingual_description = try JSONParser.parse(array: dict["multiLingual_description"] as! [Any])
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
@@ -647,6 +677,9 @@ open class BaseEntry: ObjectBase {
 		}
 		if dict["tags"] != nil {
 			tags = dict["tags"] as? String
+		}
+		if dict["multiLingual_tags"] != nil {
+			multiLingual_tags = try JSONParser.parse(array: dict["multiLingual_tags"] as! [Any])
 		}
 		if dict["adminTags"] != nil {
 			adminTags = dict["adminTags"] as? String
@@ -779,8 +812,14 @@ open class BaseEntry: ObjectBase {
 		if(name != nil) {
 			dict["name"] = name!
 		}
+		if(multiLingual_name != nil) {
+			dict["multiLingual_name"] = multiLingual_name!.map { value in value.toDictionary() }
+		}
 		if(description != nil) {
 			dict["description"] = description!
+		}
+		if(multiLingual_description != nil) {
+			dict["multiLingual_description"] = multiLingual_description!.map { value in value.toDictionary() }
 		}
 		if(userId != nil) {
 			dict["userId"] = userId!
@@ -790,6 +829,9 @@ open class BaseEntry: ObjectBase {
 		}
 		if(tags != nil) {
 			dict["tags"] = tags!
+		}
+		if(multiLingual_tags != nil) {
+			dict["multiLingual_tags"] = multiLingual_tags!.map { value in value.toDictionary() }
 		}
 		if(adminTags != nil) {
 			dict["adminTags"] = adminTags!

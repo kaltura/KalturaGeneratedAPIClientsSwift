@@ -40,8 +40,8 @@
 		
 		super.init()
 		
-		clientTag = "swift:22-09-20"
-		apiVersion = "18.14.0"
+		clientTag = "swift:22-09-21"
+		apiVersion = "18.15.0"
 	}
 }
 
@@ -83,6 +83,15 @@ public class ClientTokenizer: BaseTokenizedObject {
 	public var sessionId: BaseTokenizedObject {
 		get {
 			return self.append("ks")
+		}
+	}
+	
+	/**
+	 * language
+	 */
+	public var language: BaseTokenizedObject {
+		get {
+			return self.append("language")
 		}
 	}
 	
@@ -152,6 +161,18 @@ extension RequestBuilderData{
 	}
 	
 	/**
+	 * language
+	 */
+	public var language: String?{
+		get{
+			return params["language"] as? String
+		}
+		set(value){
+			setParam(key: "language", value: value)
+		}
+	}
+	
+	/**
 	 * Response profile - this attribute will be automatically unset after every API call.
 	 */
 	public var responseProfile: BaseResponseProfile?{
@@ -175,6 +196,9 @@ extension RequestBuilderData{
 		}
 		if requestBuilder.ks == nil {
 			requestBuilder.ks = ks
+		}
+		if requestBuilder.language == nil {
+			requestBuilder.language = language
 		}
 	}
 }

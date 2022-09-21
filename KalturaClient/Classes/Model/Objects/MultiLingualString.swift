@@ -33,22 +33,10 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  Define client request optional configurations  /  */
-open class RequestConfiguration: ObjectBase {
+/**  A Multi Lingual String  */
+open class MultiLingualString: ObjectBase {
 
-	public class RequestConfigurationTokenizer: ObjectBase.ObjectBaseTokenizer {
-		
-		public var partnerId: BaseTokenizedObject {
-			get {
-				return self.append("partnerId") 
-			}
-		}
-		
-		public var ks: BaseTokenizedObject {
-			get {
-				return self.append("ks") 
-			}
-		}
+	public class MultiLingualStringTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
 		public var language: BaseTokenizedObject {
 			get {
@@ -56,64 +44,46 @@ open class RequestConfiguration: ObjectBase {
 			}
 		}
 		
-		public func responseProfile<T: BaseResponseProfile.BaseResponseProfileTokenizer>() -> T {
-			return T(self.append("responseProfile"))
+		public var value: BaseTokenizedObject {
+			get {
+				return self.append("value") 
+			}
 		}
 	}
 
-	/**  Impersonated partner id  */
-	public var partnerId: Int? = nil
-	/**  Kaltura API session  */
-	public var ks: String? = nil
-	/**  language  */
+	/**  The language of the value  */
 	public var language: String? = nil
-	/**  Response profile - this attribute will be automatically unset after every API
-	  call.  */
-	public var responseProfile: BaseResponseProfile? = nil
+	/**  Value  */
+	public var value: String? = nil
 
 
-	public func setMultiRequestToken(partnerId: String) {
-		self.dict["partnerId"] = partnerId
-	}
-	
-	public func setMultiRequestToken(ks: String) {
-		self.dict["ks"] = ks
-	}
-	
 	public func setMultiRequestToken(language: String) {
 		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(value: String) {
+		self.dict["value"] = value
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["partnerId"] != nil {
-			partnerId = dict["partnerId"] as? Int
-		}
-		if dict["ks"] != nil {
-			ks = dict["ks"] as? String
-		}
 		if dict["language"] != nil {
 			language = dict["language"] as? String
 		}
-		if dict["responseProfile"] != nil {
-		responseProfile = try JSONParser.parse(object: dict["responseProfile"] as! [String: Any])		}
+		if dict["value"] != nil {
+			value = dict["value"] as? String
+		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(partnerId != nil) {
-			dict["partnerId"] = partnerId!
-		}
-		if(ks != nil) {
-			dict["ks"] = ks!
-		}
 		if(language != nil) {
 			dict["language"] = language!
 		}
-		if(responseProfile != nil) {
-			dict["responseProfile"] = responseProfile!.toDictionary()
+		if(value != nil) {
+			dict["value"] = value!
 		}
 		return dict
 	}
