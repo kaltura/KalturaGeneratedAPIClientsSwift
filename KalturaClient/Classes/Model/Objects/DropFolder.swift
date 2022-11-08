@@ -219,8 +219,8 @@ open class DropFolder: ObjectBase {
 	public var conversionProfileId: Int? = nil
 	public var dc: Int? = nil
 	public var path: String? = nil
-	/**  The ammount of time, in seconds, that should pass so that a file with no change
-	  in size we'll be treated as "finished uploading to folder"  */
+	/**  The amount of time, in seconds, that should pass so that a file with no change
+	  in size will be treated as "finished uploading to folder"  */
 	public var fileSizeCheckInterval: Int? = nil
 	public var fileDeletePolicy: DropFolderFileDeletePolicy? = nil
 	public var fileDeleteRegex: String? = nil

@@ -60,6 +60,12 @@ open class LiveEntryServerNode: EntryServerNode {
 				return self.append("viewMode") 
 			}
 		}
+		
+		public var featuresUpdatedAt: BaseTokenizedObject {
+			get {
+				return self.append("featuresUpdatedAt") 
+			}
+		}
 	}
 
 	/**  parameters of the stream we got  */
@@ -67,6 +73,7 @@ open class LiveEntryServerNode: EntryServerNode {
 	public var recordingInfo: Array<LiveEntryServerNodeRecordingInfo>? = nil
 	public var isPlayableUser: Bool? = nil
 	public var viewMode: ViewMode? = nil
+	public var featuresUpdatedAt: Int? = nil
 
 
 	public func setMultiRequestToken(isPlayableUser: String) {
@@ -75,6 +82,10 @@ open class LiveEntryServerNode: EntryServerNode {
 	
 	public func setMultiRequestToken(viewMode: String) {
 		self.dict["viewMode"] = viewMode
+	}
+	
+	public func setMultiRequestToken(featuresUpdatedAt: String) {
+		self.dict["featuresUpdatedAt"] = featuresUpdatedAt
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -92,6 +103,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		if dict["viewMode"] != nil {
 			viewMode = ViewMode(rawValue: (dict["viewMode"] as? Int)!)
 		}
+		if dict["featuresUpdatedAt"] != nil {
+			featuresUpdatedAt = dict["featuresUpdatedAt"] as? Int
+		}
 
 	}
 
@@ -108,6 +122,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		}
 		if(viewMode != nil) {
 			dict["viewMode"] = viewMode!.rawValue
+		}
+		if(featuresUpdatedAt != nil) {
+			dict["featuresUpdatedAt"] = featuresUpdatedAt!
 		}
 		return dict
 	}

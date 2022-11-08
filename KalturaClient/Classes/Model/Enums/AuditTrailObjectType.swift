@@ -46,6 +46,7 @@ public enum AuditTrailObjectType: String {
 	case USER_ROLE = "UserRole"
 	case ACCESS_CONTROL = "accessControl"
 	case CATEGORY = "category"
+	case CATEGORY_ENTRY = "categoryEntry"
 	case CONVERSION_PROFILE_2 = "conversionProfile2"
 	case ENTRY = "entry"
 	case FLAVOR_ASSET = "flavorAsset"

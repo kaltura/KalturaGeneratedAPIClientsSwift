@@ -481,6 +481,12 @@ open class Partner: ObjectBase {
 			}
 		}
 		
+		public var allowDefaultPasswordRestrictions: BaseTokenizedObject {
+			get {
+				return self.append("allowDefaultPasswordRestrictions") 
+			}
+		}
+		
 		public var twoFactorAuthenticationMode: BaseTokenizedObject {
 			get {
 				return self.append("twoFactorAuthenticationMode") 
@@ -508,6 +514,12 @@ open class Partner: ObjectBase {
 		public var eventPlatformAllowedTemplates: BaseTokenizedObject {
 			get {
 				return self.append("eventPlatformAllowedTemplates") 
+			}
+		}
+		
+		public var verticalClassificationId: BaseTokenizedObject {
+			get {
+				return self.append("verticalClassificationId") 
 			}
 		}
 	}
@@ -592,11 +604,13 @@ open class Partner: ObjectBase {
 	public var maxLoginAttempts: Int? = nil
 	public var loginBlockPeriod: Int? = nil
 	public var numPrevPassToKeep: Int? = nil
+	public var allowDefaultPasswordRestrictions: Bool? = nil
 	public var twoFactorAuthenticationMode: TwoFactorAuthenticationMode? = nil
 	public var isSelfServe: Bool? = nil
 	public var allowedDomains: String? = nil
 	public var excludedAdminRoleName: String? = nil
 	public var eventPlatformAllowedTemplates: String? = nil
+	public var verticalClassificationId: Int? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -875,6 +889,10 @@ open class Partner: ObjectBase {
 		self.dict["numPrevPassToKeep"] = numPrevPassToKeep
 	}
 	
+	public func setMultiRequestToken(allowDefaultPasswordRestrictions: String) {
+		self.dict["allowDefaultPasswordRestrictions"] = allowDefaultPasswordRestrictions
+	}
+	
 	public func setMultiRequestToken(twoFactorAuthenticationMode: String) {
 		self.dict["twoFactorAuthenticationMode"] = twoFactorAuthenticationMode
 	}
@@ -893,6 +911,10 @@ open class Partner: ObjectBase {
 	
 	public func setMultiRequestToken(eventPlatformAllowedTemplates: String) {
 		self.dict["eventPlatformAllowedTemplates"] = eventPlatformAllowedTemplates
+	}
+	
+	public func setMultiRequestToken(verticalClassificationId: String) {
+		self.dict["verticalClassificationId"] = verticalClassificationId
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -1120,6 +1142,9 @@ open class Partner: ObjectBase {
 		if dict["numPrevPassToKeep"] != nil {
 			numPrevPassToKeep = dict["numPrevPassToKeep"] as? Int
 		}
+		if dict["allowDefaultPasswordRestrictions"] != nil {
+			allowDefaultPasswordRestrictions = dict["allowDefaultPasswordRestrictions"] as? Bool
+		}
 		if dict["twoFactorAuthenticationMode"] != nil {
 			twoFactorAuthenticationMode = TwoFactorAuthenticationMode(rawValue: (dict["twoFactorAuthenticationMode"] as? Int)!)
 		}
@@ -1134,6 +1159,9 @@ open class Partner: ObjectBase {
 		}
 		if dict["eventPlatformAllowedTemplates"] != nil {
 			eventPlatformAllowedTemplates = dict["eventPlatformAllowedTemplates"] as? String
+		}
+		if dict["verticalClassificationId"] != nil {
+			verticalClassificationId = dict["verticalClassificationId"] as? Int
 		}
 
 	}
