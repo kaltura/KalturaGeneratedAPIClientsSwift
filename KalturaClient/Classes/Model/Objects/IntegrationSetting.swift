@@ -102,6 +102,12 @@ open class IntegrationSetting: ObjectBase {
 				return self.append("partnerId") 
 			}
 		}
+		
+		public var enableMeetingUpload: BaseTokenizedObject {
+			get {
+				return self.append("enableMeetingUpload") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -115,6 +121,7 @@ open class IntegrationSetting: ObjectBase {
 	public var createdAt: String? = nil
 	public var updatedAt: String? = nil
 	public var partnerId: Int? = nil
+	public var enableMeetingUpload: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -161,6 +168,10 @@ open class IntegrationSetting: ObjectBase {
 		self.dict["partnerId"] = partnerId
 	}
 	
+	public func setMultiRequestToken(enableMeetingUpload: String) {
+		self.dict["enableMeetingUpload"] = enableMeetingUpload
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -197,6 +208,9 @@ open class IntegrationSetting: ObjectBase {
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
 		}
+		if dict["enableMeetingUpload"] != nil {
+			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
+		}
 
 	}
 
@@ -216,6 +230,9 @@ open class IntegrationSetting: ObjectBase {
 		}
 		if(deletionPolicy != nil) {
 			dict["deletionPolicy"] = deletionPolicy!
+		}
+		if(enableMeetingUpload != nil) {
+			dict["enableMeetingUpload"] = enableMeetingUpload!
 		}
 		return dict
 	}

@@ -120,6 +120,12 @@ open class BulkUploadResultUser: BulkUploadResult {
 				return self.append("group") 
 			}
 		}
+		
+		public var externalId: BaseTokenizedObject {
+			get {
+				return self.append("externalId") 
+			}
+		}
 	}
 
 	public var userId: String? = nil
@@ -136,6 +142,7 @@ open class BulkUploadResultUser: BulkUploadResult {
 	public var firstName: String? = nil
 	public var lastName: String? = nil
 	public var group: String? = nil
+	public var externalId: String? = nil
 
 
 	public func setMultiRequestToken(userId: String) {
@@ -194,6 +201,10 @@ open class BulkUploadResultUser: BulkUploadResult {
 		self.dict["group"] = group
 	}
 	
+	public func setMultiRequestToken(externalId: String) {
+		self.dict["externalId"] = externalId
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -238,6 +249,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if dict["group"] != nil {
 			group = dict["group"] as? String
+		}
+		if dict["externalId"] != nil {
+			externalId = dict["externalId"] as? String
 		}
 
 	}
@@ -285,6 +299,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if(group != nil) {
 			dict["group"] = group!
+		}
+		if(externalId != nil) {
+			dict["externalId"] = externalId!
 		}
 		return dict
 	}

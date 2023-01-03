@@ -61,6 +61,12 @@ open class User: BaseUser {
 			}
 		}
 		
+		public var isGuest: BaseTokenizedObject {
+			get {
+				return self.append("isGuest") 
+			}
+		}
+		
 		public var roleIds: BaseTokenizedObject {
 			get {
 				return self.append("roleIds") 
@@ -144,12 +150,19 @@ open class User: BaseUser {
 				return self.append("isSsoExcluded") 
 			}
 		}
+		
+		public var externalId: BaseTokenizedObject {
+			get {
+				return self.append("externalId") 
+			}
+		}
 	}
 
 	public var type: UserType? = nil
 	public var dateOfBirth: Int? = nil
 	public var gender: Gender? = nil
 	public var isAdmin: Bool? = nil
+	public var isGuest: Bool? = nil
 	public var roleIds: String? = nil
 	public var roleNames: String? = nil
 	public var isAccountOwner: Bool? = nil
@@ -164,6 +177,9 @@ open class User: BaseUser {
 	public var ksPrivileges: String? = nil
 	public var encryptedSeed: String? = nil
 	public var isSsoExcluded: Bool? = nil
+	/**  This field should be sent instead of the id field whenever you want to work with
+	  hashed user ids  */
+	public var externalId: String? = nil
 
 
 	public func setMultiRequestToken(type: String) {
@@ -180,6 +196,10 @@ open class User: BaseUser {
 	
 	public func setMultiRequestToken(isAdmin: String) {
 		self.dict["isAdmin"] = isAdmin
+	}
+	
+	public func setMultiRequestToken(isGuest: String) {
+		self.dict["isGuest"] = isGuest
 	}
 	
 	public func setMultiRequestToken(roleIds: String) {
@@ -238,6 +258,10 @@ open class User: BaseUser {
 		self.dict["isSsoExcluded"] = isSsoExcluded
 	}
 	
+	public func setMultiRequestToken(externalId: String) {
+		self.dict["externalId"] = externalId
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -252,6 +276,9 @@ open class User: BaseUser {
 		}
 		if dict["isAdmin"] != nil {
 			isAdmin = dict["isAdmin"] as? Bool
+		}
+		if dict["isGuest"] != nil {
+			isGuest = dict["isGuest"] as? Bool
 		}
 		if dict["roleIds"] != nil {
 			roleIds = dict["roleIds"] as? String
@@ -295,6 +322,9 @@ open class User: BaseUser {
 		if dict["isSsoExcluded"] != nil {
 			isSsoExcluded = dict["isSsoExcluded"] as? Bool
 		}
+		if dict["externalId"] != nil {
+			externalId = dict["externalId"] as? String
+		}
 
 	}
 
@@ -311,6 +341,9 @@ open class User: BaseUser {
 		}
 		if(isAdmin != nil) {
 			dict["isAdmin"] = isAdmin!
+		}
+		if(isGuest != nil) {
+			dict["isGuest"] = isGuest!
 		}
 		if(roleIds != nil) {
 			dict["roleIds"] = roleIds!
@@ -347,6 +380,9 @@ open class User: BaseUser {
 		}
 		if(isSsoExcluded != nil) {
 			dict["isSsoExcluded"] = isSsoExcluded!
+		}
+		if(externalId != nil) {
+			dict["externalId"] = externalId!
 		}
 		return dict
 	}

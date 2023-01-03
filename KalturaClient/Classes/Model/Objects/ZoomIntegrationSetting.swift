@@ -91,12 +91,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 			}
 		}
 		
-		public var enableMeetingUpload: BaseTokenizedObject {
-			get {
-				return self.append("enableMeetingUpload") 
-			}
-		}
-		
 		public var optOutGroupNames: BaseTokenizedObject {
 			get {
 				return self.append("optOutGroupNames") 
@@ -125,7 +119,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	public var jwtToken: String? = nil
 	public var enableZoomTranscription: Bool? = nil
 	public var zoomAccountDescription: String? = nil
-	public var enableMeetingUpload: Bool? = nil
 	public var optOutGroupNames: String? = nil
 	public var optInGroupNames: String? = nil
 	public var groupParticipationType: ZoomGroupParticipationType? = nil
@@ -165,10 +158,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	
 	public func setMultiRequestToken(zoomAccountDescription: String) {
 		self.dict["zoomAccountDescription"] = zoomAccountDescription
-	}
-	
-	public func setMultiRequestToken(enableMeetingUpload: String) {
-		self.dict["enableMeetingUpload"] = enableMeetingUpload
 	}
 	
 	public func setMultiRequestToken(optOutGroupNames: String) {
@@ -213,9 +202,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		if dict["zoomAccountDescription"] != nil {
 			zoomAccountDescription = dict["zoomAccountDescription"] as? String
 		}
-		if dict["enableMeetingUpload"] != nil {
-			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
-		}
 		if dict["optOutGroupNames"] != nil {
 			optOutGroupNames = dict["optOutGroupNames"] as? String
 		}
@@ -256,9 +242,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if(zoomAccountDescription != nil) {
 			dict["zoomAccountDescription"] = zoomAccountDescription!
-		}
-		if(enableMeetingUpload != nil) {
-			dict["enableMeetingUpload"] = enableMeetingUpload!
 		}
 		if(optOutGroupNames != nil) {
 			dict["optOutGroupNames"] = optOutGroupNames!

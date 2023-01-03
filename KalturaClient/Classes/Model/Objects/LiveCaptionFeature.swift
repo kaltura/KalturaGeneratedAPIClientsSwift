@@ -60,12 +60,19 @@ open class LiveCaptionFeature: LiveFeature {
 				return self.append("captionToken") 
 			}
 		}
+		
+		public var inputDelay: BaseTokenizedObject {
+			get {
+				return self.append("inputDelay") 
+			}
+		}
 	}
 
 	public var mediaUrl: String? = nil
 	public var mediaKey: String? = nil
 	public var captionUrl: String? = nil
 	public var captionToken: String? = nil
+	public var inputDelay: Int? = nil
 
 
 	public func setMultiRequestToken(mediaUrl: String) {
@@ -84,6 +91,10 @@ open class LiveCaptionFeature: LiveFeature {
 		self.dict["captionToken"] = captionToken
 	}
 	
+	public func setMultiRequestToken(inputDelay: String) {
+		self.dict["inputDelay"] = inputDelay
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +109,9 @@ open class LiveCaptionFeature: LiveFeature {
 		}
 		if dict["captionToken"] != nil {
 			captionToken = dict["captionToken"] as? String
+		}
+		if dict["inputDelay"] != nil {
+			inputDelay = dict["inputDelay"] as? Int
 		}
 
 	}
@@ -115,6 +129,9 @@ open class LiveCaptionFeature: LiveFeature {
 		}
 		if(captionToken != nil) {
 			dict["captionToken"] = captionToken!
+		}
+		if(inputDelay != nil) {
+			dict["inputDelay"] = inputDelay!
 		}
 		return dict
 	}

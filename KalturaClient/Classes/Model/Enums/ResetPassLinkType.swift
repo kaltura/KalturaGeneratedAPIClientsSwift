@@ -34,4 +34,5 @@
 public enum ResetPassLinkType: String {
 	case KMC = "1"
 	case KMS = "2"
+	case KME = "3"
 }
