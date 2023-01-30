@@ -8,7 +8,7 @@
 // to do with audio, video, and animation what Wiki platforms allow them to do with
 // text.
 //
-// Copyright (C) 2006-2022  Kaltura Inc.
+// Copyright (C) 2006-2023  Kaltura Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
@@ -108,6 +108,12 @@ open class IntegrationSetting: ObjectBase {
 				return self.append("enableMeetingUpload") 
 			}
 		}
+		
+		public var enableMeetingChat: BaseTokenizedObject {
+			get {
+				return self.append("enableMeetingChat") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -122,6 +128,7 @@ open class IntegrationSetting: ObjectBase {
 	public var updatedAt: String? = nil
 	public var partnerId: Int? = nil
 	public var enableMeetingUpload: Bool? = nil
+	public var enableMeetingChat: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -172,6 +179,10 @@ open class IntegrationSetting: ObjectBase {
 		self.dict["enableMeetingUpload"] = enableMeetingUpload
 	}
 	
+	public func setMultiRequestToken(enableMeetingChat: String) {
+		self.dict["enableMeetingChat"] = enableMeetingChat
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -211,6 +222,9 @@ open class IntegrationSetting: ObjectBase {
 		if dict["enableMeetingUpload"] != nil {
 			enableMeetingUpload = dict["enableMeetingUpload"] as? Bool
 		}
+		if dict["enableMeetingChat"] != nil {
+			enableMeetingChat = dict["enableMeetingChat"] as? Bool
+		}
 
 	}
 
@@ -233,6 +247,9 @@ open class IntegrationSetting: ObjectBase {
 		}
 		if(enableMeetingUpload != nil) {
 			dict["enableMeetingUpload"] = enableMeetingUpload!
+		}
+		if(enableMeetingChat != nil) {
+			dict["enableMeetingChat"] = enableMeetingChat!
 		}
 		return dict
 	}
