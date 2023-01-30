@@ -51,12 +51,19 @@ open class UrlResource: ContentResource {
 				return self.append("forceAsyncDownload") 
 			}
 		}
+		
+		public var urlHeaders: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("urlHeaders"))
+			} 
+		}
 	}
 
 	/**  Remote URL, FTP, HTTP or HTTPS  */
 	public var url: String? = nil
 	/**  Force Import Job  */
 	public var forceAsyncDownload: Bool? = nil
+	public var urlHeaders: Array<StringHolder>? = nil
 
 
 	public func setMultiRequestToken(url: String) {
@@ -76,6 +83,9 @@ open class UrlResource: ContentResource {
 		if dict["forceAsyncDownload"] != nil {
 			forceAsyncDownload = dict["forceAsyncDownload"] as? Bool
 		}
+		if dict["urlHeaders"] != nil {
+			urlHeaders = try JSONParser.parse(array: dict["urlHeaders"] as! [Any])
+		}
 
 	}
 
@@ -86,6 +96,9 @@ open class UrlResource: ContentResource {
 		}
 		if(forceAsyncDownload != nil) {
 			dict["forceAsyncDownload"] = forceAsyncDownload!
+		}
+		if(urlHeaders != nil) {
+			dict["urlHeaders"] = urlHeaders!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

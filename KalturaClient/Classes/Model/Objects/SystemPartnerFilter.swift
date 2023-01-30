@@ -48,10 +48,17 @@ open class SystemPartnerFilter: PartnerFilter {
 				return self.append("partnerParentIdIn") 
 			}
 		}
+		
+		public var adminEmailEqual: BaseTokenizedObject {
+			get {
+				return self.append("adminEmailEqual") 
+			}
+		}
 	}
 
 	public var partnerParentIdEqual: Int? = nil
 	public var partnerParentIdIn: String? = nil
+	public var adminEmailEqual: String? = nil
 
 
 	public func setMultiRequestToken(partnerParentIdEqual: String) {
@@ -60,6 +67,10 @@ open class SystemPartnerFilter: PartnerFilter {
 	
 	public func setMultiRequestToken(partnerParentIdIn: String) {
 		self.dict["partnerParentIdIn"] = partnerParentIdIn
+	}
+	
+	public func setMultiRequestToken(adminEmailEqual: String) {
+		self.dict["adminEmailEqual"] = adminEmailEqual
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +82,9 @@ open class SystemPartnerFilter: PartnerFilter {
 		if dict["partnerParentIdIn"] != nil {
 			partnerParentIdIn = dict["partnerParentIdIn"] as? String
 		}
+		if dict["adminEmailEqual"] != nil {
+			adminEmailEqual = dict["adminEmailEqual"] as? String
+		}
 
 	}
 
@@ -81,6 +95,9 @@ open class SystemPartnerFilter: PartnerFilter {
 		}
 		if(partnerParentIdIn != nil) {
 			dict["partnerParentIdIn"] = partnerParentIdIn!
+		}
+		if(adminEmailEqual != nil) {
+			dict["adminEmailEqual"] = adminEmailEqual!
 		}
 		return dict
 	}
