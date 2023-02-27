@@ -34,4 +34,5 @@
 public enum VendorCatalogItemOutputFormat: Int {
 	case SRT = 1
 	case DFXP = 2
+	case VTT = 3
 }
