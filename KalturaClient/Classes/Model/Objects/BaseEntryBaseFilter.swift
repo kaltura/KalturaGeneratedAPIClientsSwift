@@ -528,6 +528,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 				return self.append("tagsAdminTagsNameMultiLikeAnd") 
 			}
 		}
+		
+		public var displayInSearchEqual: BaseTokenizedObject {
+			get {
+				return self.append("displayInSearchEqual") 
+			}
+		}
 	}
 
 	/**  This filter should be in use for retrieving only a specific entry (identified by
@@ -677,6 +683,7 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	public var tagsNameMultiLikeAnd: String? = nil
 	public var tagsAdminTagsMultiLikeAnd: String? = nil
 	public var tagsAdminTagsNameMultiLikeAnd: String? = nil
+	public var displayInSearchEqual: EntryDisplayInSearchType? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -1007,6 +1014,10 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		self.dict["tagsAdminTagsNameMultiLikeAnd"] = tagsAdminTagsNameMultiLikeAnd
 	}
 	
+	public func setMultiRequestToken(displayInSearchEqual: String) {
+		self.dict["displayInSearchEqual"] = displayInSearchEqual
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1255,6 +1266,9 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if dict["tagsAdminTagsNameMultiLikeAnd"] != nil {
 			tagsAdminTagsNameMultiLikeAnd = dict["tagsAdminTagsNameMultiLikeAnd"] as? String
+		}
+		if dict["displayInSearchEqual"] != nil {
+			displayInSearchEqual = EntryDisplayInSearchType(rawValue: (dict["displayInSearchEqual"] as? Int)!)
 		}
 
 	}
@@ -1506,6 +1520,9 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if(tagsAdminTagsNameMultiLikeAnd != nil) {
 			dict["tagsAdminTagsNameMultiLikeAnd"] = tagsAdminTagsNameMultiLikeAnd!
+		}
+		if(displayInSearchEqual != nil) {
+			dict["displayInSearchEqual"] = displayInSearchEqual!.rawValue
 		}
 		return dict
 	}

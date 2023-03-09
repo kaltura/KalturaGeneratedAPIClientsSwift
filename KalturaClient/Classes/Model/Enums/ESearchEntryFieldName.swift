@@ -40,6 +40,7 @@ public enum ESearchEntryFieldName: String {
 	case CREATOR_ID = "creator_kuser_id"
 	case CREDIT = "credit"
 	case DESCRIPTION = "description"
+	case DISPLAY_IN_SEARCH = "display_in_search"
 	case END_DATE = "end_date"
 	case ENTITLED_USER_EDIT = "entitled_kusers_edit"
 	case ENTITLED_USER_PUBLISH = "entitled_kusers_publish"

@@ -40,4 +40,5 @@ public enum EntryApplication: String {
 	case WEBCAST_APP = "5"
 	case PERSONAL_CAPTURE = "6"
 	case KALTURA_MEETING = "7"
+	case EP = "8"
 }

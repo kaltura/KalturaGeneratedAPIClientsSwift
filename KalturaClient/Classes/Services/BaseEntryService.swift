@@ -539,6 +539,23 @@ public final class BaseEntryService{
 		return request
 	}
 
+	public class RecycleTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	/**  Move the entry to the recycle bin  */
+	public static func recycle(entryId: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RecycleTokenizer> {
+		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RecycleTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RecycleTokenizer>(service: "baseentry", action: "recycle")
+			.setParam(key: "entryId", value: entryId)
+
+		return request
+	}
+
 	public class RejectTokenizer: ClientTokenizer  {
 		
 		public var entryId: BaseTokenizedObject {
@@ -552,6 +569,23 @@ public final class BaseEntryService{
 	  make the entry non-playable).  */
 	public static func reject(entryId: String) -> NullRequestBuilder<RejectTokenizer> {
 		let request: NullRequestBuilder<RejectTokenizer> = NullRequestBuilder<RejectTokenizer>(service: "baseentry", action: "reject")
+			.setParam(key: "entryId", value: entryId)
+
+		return request
+	}
+
+	public class RestoreRecycledTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	/**  Restore the entry from the recycle bin  */
+	public static func restoreRecycled(entryId: String) -> RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RestoreRecycledTokenizer> {
+		let request: RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RestoreRecycledTokenizer> = RequestBuilder<BaseEntry, BaseEntry.BaseEntryTokenizer, RestoreRecycledTokenizer>(service: "baseentry", action: "restoreRecycled")
 			.setParam(key: "entryId", value: entryId)
 
 		return request

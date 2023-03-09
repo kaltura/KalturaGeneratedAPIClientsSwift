@@ -34,4 +34,5 @@
 public enum VendorTaskProcessingRegion: Int {
 	case US = 1
 	case EU = 2
+	case CA = 3
 }

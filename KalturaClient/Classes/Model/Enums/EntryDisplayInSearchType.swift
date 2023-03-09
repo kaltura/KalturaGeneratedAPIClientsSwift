@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EntryDisplayInSearchType: Int {
+	case RECYCLED = -2
 	case SYSTEM = -1
 	case NONE = 0
 	case PARTNER_ONLY = 1
