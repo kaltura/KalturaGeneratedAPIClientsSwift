@@ -1,6 +1,7 @@
 # KalturaClient
 
-[![CI Status](http://img.shields.io/travis/kaltura/KalturaGeneratedAPIClientsSwift.svg?style=flat)](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsSwift)
+[![CI Status](http://img.shields.io/travis/kaltura/KalturaGeneratedAPIClientsSwift.svg?style=flat)](https://travis-ci.org/kaltura/KalturaGeneratedAPIClientsSwift)[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkaltura%2FKalturaGeneratedAPIClientsSwift.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkaltura%2FKalturaGeneratedAPIClientsSwift?ref=badge_shield)
+
 [![Version](https://img.shields.io/cocoapods/v/KalturaClient.svg?style=flat)](http://cocoapods.org/pods/KalturaClient)
 [![License](https://img.shields.io/cocoapods/l/KalturaClient.svg?style=flat)](http://cocoapods.org/pods/KalturaClient)
 [![Platform](https://img.shields.io/cocoapods/p/KalturaClient.svg?style=flat)](http://cocoapods.org/pods/KalturaClient)
@@ -29,6 +30,9 @@ All code in this project is released under the [AGPLv3 license](http://www.gnu.o
 
 Copyright © Kaltura Inc. All rights reserved.   
 Authors and contributors: See [GitHub contributors list](https://github.com/kaltura/playkit-ios-samples/graphs/contributors).  
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkaltura%2FKalturaGeneratedAPIClientsSwift.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkaltura%2FKalturaGeneratedAPIClientsSwift?ref=badge_large)
 
 ## Publishing
 
