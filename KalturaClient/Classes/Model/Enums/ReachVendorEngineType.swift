@@ -26,11 +26,12 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ReachVendorEngineType: String {
-	case NONE = "NONE"
+	case OPEN_CALAIS = "OpenCalaisReachVendor.OPEN_CALAIS"
+	case HELLO_WORLD = "ReachInternal.HELLO_WORLD"
 }

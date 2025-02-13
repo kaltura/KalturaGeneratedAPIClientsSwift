@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,13 +42,24 @@ open class VendorTranslationCatalogItem: VendorCaptionsCatalogItem {
 				return self.append("targetLanguage") 
 			}
 		}
+		
+		public var requireSource: BaseTokenizedObject {
+			get {
+				return self.append("requireSource") 
+			}
+		}
 	}
 
 	public var targetLanguage: CatalogItemLanguage? = nil
+	public var requireSource: Bool? = nil
 
 
 	public func setMultiRequestToken(targetLanguage: String) {
 		self.dict["targetLanguage"] = targetLanguage
+	}
+	
+	public func setMultiRequestToken(requireSource: String) {
+		self.dict["requireSource"] = requireSource
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class VendorTranslationCatalogItem: VendorCaptionsCatalogItem {
 		if dict["targetLanguage"] != nil {
 			targetLanguage = CatalogItemLanguage(rawValue: "\(dict["targetLanguage"]!)")
 		}
+		if dict["requireSource"] != nil {
+			requireSource = dict["requireSource"] as? Bool
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class VendorTranslationCatalogItem: VendorCaptionsCatalogItem {
 		var dict: [String: Any] = super.toDictionary()
 		if(targetLanguage != nil) {
 			dict["targetLanguage"] = targetLanguage!.rawValue
+		}
+		if(requireSource != nil) {
+			dict["requireSource"] = requireSource!
 		}
 		return dict
 	}

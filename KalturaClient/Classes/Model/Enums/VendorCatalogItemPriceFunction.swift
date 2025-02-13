@@ -26,12 +26,13 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum VendorCatalogItemPriceFunction: String {
+	case PRICE_PER_HOUR = "kReachUtils::calcPricePerHour"
 	case PRICE_PER_MINUTE = "kReachUtils::calcPricePerMinute"
 	case PRICE_PER_SECOND = "kReachUtils::calcPricePerSecond"
 }

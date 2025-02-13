@@ -26,16 +26,18 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum EventNotificationTemplateType: String {
+	case BOOLEAN = "booleanNotification.Boolean"
 	case BPM_ABORT = "businessProcessNotification.BusinessProcessAbort"
 	case BPM_SIGNAL = "businessProcessNotification.BusinessProcessSignal"
 	case BPM_START = "businessProcessNotification.BusinessProcessStart"
 	case EMAIL = "emailNotification.Email"
 	case HTTP = "httpNotification.Http"
+	case KAFKA = "kafkaNotification.Kafka"
 	case PUSH = "pushNotification.Push"
 }

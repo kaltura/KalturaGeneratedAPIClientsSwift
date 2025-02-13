@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,6 +35,7 @@ public enum EntryType: String {
 	case AUTOMATIC = "-1"
 	case CONFERENCE_ENTRY_SERVER = "conference.CONFERENCE_ENTRY_SERVER"
 	case EXTERNAL_MEDIA = "externalMedia.externalMedia"
+	case ROOM = "room.room"
 	case SIP_ENTRY_SERVER = "sip.SIP_ENTRY_SERVER"
 	case MEDIA_CLIP = "1"
 	case MIX = "2"

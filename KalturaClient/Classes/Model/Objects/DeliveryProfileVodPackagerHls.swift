@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,13 +42,24 @@ open class DeliveryProfileVodPackagerHls: DeliveryProfileVodPackagerPlayServer {
 				return self.append("allowFairplayOffline") 
 			}
 		}
+		
+		public var supportFmp4: BaseTokenizedObject {
+			get {
+				return self.append("supportFmp4") 
+			}
+		}
 	}
 
 	public var allowFairplayOffline: Bool? = nil
+	public var supportFmp4: Bool? = nil
 
 
 	public func setMultiRequestToken(allowFairplayOffline: String) {
 		self.dict["allowFairplayOffline"] = allowFairplayOffline
+	}
+	
+	public func setMultiRequestToken(supportFmp4: String) {
+		self.dict["supportFmp4"] = supportFmp4
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class DeliveryProfileVodPackagerHls: DeliveryProfileVodPackagerPlayServer {
 		if dict["allowFairplayOffline"] != nil {
 			allowFairplayOffline = dict["allowFairplayOffline"] as? Bool
 		}
+		if dict["supportFmp4"] != nil {
+			supportFmp4 = dict["supportFmp4"] as? Bool
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class DeliveryProfileVodPackagerHls: DeliveryProfileVodPackagerPlayServer {
 		var dict: [String: Any] = super.toDictionary()
 		if(allowFairplayOffline != nil) {
 			dict["allowFairplayOffline"] = allowFairplayOffline!
+		}
+		if(supportFmp4 != nil) {
+			dict["supportFmp4"] = supportFmp4!
 		}
 		return dict
 	}

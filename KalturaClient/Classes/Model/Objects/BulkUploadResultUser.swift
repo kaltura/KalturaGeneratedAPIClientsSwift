@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -126,6 +126,12 @@ open class BulkUploadResultUser: BulkUploadResult {
 				return self.append("externalId") 
 			}
 		}
+		
+		public var capabilities: BaseTokenizedObject {
+			get {
+				return self.append("capabilities") 
+			}
+		}
 	}
 
 	public var userId: String? = nil
@@ -143,6 +149,7 @@ open class BulkUploadResultUser: BulkUploadResult {
 	public var lastName: String? = nil
 	public var group: String? = nil
 	public var externalId: String? = nil
+	public var capabilities: String? = nil
 
 
 	public func setMultiRequestToken(userId: String) {
@@ -205,6 +212,10 @@ open class BulkUploadResultUser: BulkUploadResult {
 		self.dict["externalId"] = externalId
 	}
 	
+	public func setMultiRequestToken(capabilities: String) {
+		self.dict["capabilities"] = capabilities
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -252,6 +263,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if dict["externalId"] != nil {
 			externalId = dict["externalId"] as? String
+		}
+		if dict["capabilities"] != nil {
+			capabilities = dict["capabilities"] as? String
 		}
 
 	}
@@ -302,6 +316,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if(externalId != nil) {
 			dict["externalId"] = externalId!
+		}
+		if(capabilities != nil) {
+			dict["capabilities"] = capabilities!
 		}
 		return dict
 	}

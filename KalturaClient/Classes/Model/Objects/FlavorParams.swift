@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -247,6 +247,12 @@ open class FlavorParams: AssetParams {
 			}
 		}
 		
+		public var cropData: BaseTokenizedObject {
+			get {
+				return self.append("cropData") 
+			}
+		}
+		
 		public var isEncrypted: BaseTokenizedObject {
 			get {
 				return self.append("isEncrypted") 
@@ -326,6 +332,7 @@ open class FlavorParams: AssetParams {
 	public var videoBitrateTolerance: Int? = nil
 	public var watermarkData: String? = nil
 	public var subtitlesData: String? = nil
+	public var cropData: String? = nil
 	public var isEncrypted: Int? = nil
 	public var contentAwareness: Double? = nil
 	public var chunkedEncodeMode: Int? = nil
@@ -473,6 +480,10 @@ open class FlavorParams: AssetParams {
 		self.dict["subtitlesData"] = subtitlesData
 	}
 	
+	public func setMultiRequestToken(cropData: String) {
+		self.dict["cropData"] = cropData
+	}
+	
 	public func setMultiRequestToken(isEncrypted: String) {
 		self.dict["isEncrypted"] = isEncrypted
 	}
@@ -601,6 +612,9 @@ open class FlavorParams: AssetParams {
 		if dict["subtitlesData"] != nil {
 			subtitlesData = dict["subtitlesData"] as? String
 		}
+		if dict["cropData"] != nil {
+			cropData = dict["cropData"] as? String
+		}
 		if dict["isEncrypted"] != nil {
 			isEncrypted = dict["isEncrypted"] as? Int
 		}
@@ -725,6 +739,9 @@ open class FlavorParams: AssetParams {
 		}
 		if(subtitlesData != nil) {
 			dict["subtitlesData"] = subtitlesData!
+		}
+		if(cropData != nil) {
+			dict["cropData"] = cropData!
 		}
 		if(isEncrypted != nil) {
 			dict["isEncrypted"] = isEncrypted!

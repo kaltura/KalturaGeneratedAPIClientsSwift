@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,4 +35,6 @@ public enum HandleParticipantsMode: Int {
 	case ADD_AS_CO_PUBLISHERS = 0
 	case ADD_AS_CO_VIEWERS = 1
 	case IGNORE = 2
+	case ADD_AS_CO_EDITORS = 3
+	case ADD_AS_CO_EDITORS_CO_PUBLISHERS = 4
 }

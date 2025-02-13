@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,6 +35,34 @@
 
 /**  Document service lets you upload and manage document files  */
 public final class DocumentsService{
+
+	public class AddContentTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public func resource<T: Resource.ResourceTokenizer>() -> T {
+			return T(self.append("resource"))
+		}
+	}
+
+	public static func addContent(entryId: String) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddContentTokenizer> {
+		return addContent(entryId: entryId, resource: nil)
+	}
+
+	/**  Add content to document entry which is not yet associated with content
+	  (therefore is in status NO_CONTENT).   If the requirement is to replace the
+	  entry's associated content, use action updateContent.  */
+	public static func addContent(entryId: String, resource: Resource?) -> RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddContentTokenizer> {
+		let request: RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddContentTokenizer> = RequestBuilder<DocumentEntry, DocumentEntry.DocumentEntryTokenizer, AddContentTokenizer>(service: "document_documents", action: "addContent")
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "resource", value: resource)
+
+		return request
+	}
 
 	public class AddFromEntryTokenizer: ClientTokenizer  {
 		

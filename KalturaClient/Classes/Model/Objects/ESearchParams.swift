@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -52,11 +52,18 @@ open class ESearchParams: ObjectBase {
 		public func orderBy<T: ESearchOrderBy.ESearchOrderByTokenizer>() -> T {
 			return T(self.append("orderBy"))
 		}
+		
+		public var ignoreSynonym: BaseTokenizedObject {
+			get {
+				return self.append("ignoreSynonym") 
+			}
+		}
 	}
 
 	public var objectStatuses: String? = nil
 	public var objectId: String? = nil
 	public var orderBy: ESearchOrderBy? = nil
+	public var ignoreSynonym: Bool? = nil
 
 
 	public func setMultiRequestToken(objectStatuses: String) {
@@ -65,6 +72,10 @@ open class ESearchParams: ObjectBase {
 	
 	public func setMultiRequestToken(objectId: String) {
 		self.dict["objectId"] = objectId
+	}
+	
+	public func setMultiRequestToken(ignoreSynonym: String) {
+		self.dict["ignoreSynonym"] = ignoreSynonym
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -78,6 +89,9 @@ open class ESearchParams: ObjectBase {
 		}
 		if dict["orderBy"] != nil {
 		orderBy = try JSONParser.parse(object: dict["orderBy"] as! [String: Any])		}
+		if dict["ignoreSynonym"] != nil {
+			ignoreSynonym = dict["ignoreSynonym"] as? Bool
+		}
 
 	}
 
@@ -91,6 +105,9 @@ open class ESearchParams: ObjectBase {
 		}
 		if(orderBy != nil) {
 			dict["orderBy"] = orderBy!.toDictionary()
+		}
+		if(ignoreSynonym != nil) {
+			dict["ignoreSynonym"] = ignoreSynonym!
 		}
 		return dict
 	}

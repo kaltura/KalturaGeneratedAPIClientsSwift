@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -61,6 +61,18 @@ open class ClipAttributes: OperationAttributes {
 				return ArrayTokenizedObject<Effect.EffectTokenizer>(self.append("effectArray"))
 			} 
 		}
+		
+		public var cropAlignment: BaseTokenizedObject {
+			get {
+				return self.append("cropAlignment") 
+			}
+		}
+		
+		public var captionAttributes: ArrayTokenizedObject<CaptionAttributes.CaptionAttributesTokenizer> {
+			get {
+				return ArrayTokenizedObject<CaptionAttributes.CaptionAttributesTokenizer>(self.append("captionAttributes"))
+			} 
+		}
 	}
 
 	/**  Offset in milliseconds  */
@@ -71,6 +83,8 @@ open class ClipAttributes: OperationAttributes {
 	public var globalOffsetInDestination: Int? = nil
 	/**  global Offset In Destination in milliseconds  */
 	public var effectArray: Array<Effect>? = nil
+	public var cropAlignment: Int? = nil
+	public var captionAttributes: Array<CaptionAttributes>? = nil
 
 
 	public func setMultiRequestToken(offset: String) {
@@ -83,6 +97,10 @@ open class ClipAttributes: OperationAttributes {
 	
 	public func setMultiRequestToken(globalOffsetInDestination: String) {
 		self.dict["globalOffsetInDestination"] = globalOffsetInDestination
+	}
+	
+	public func setMultiRequestToken(cropAlignment: String) {
+		self.dict["cropAlignment"] = cropAlignment
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -100,6 +118,12 @@ open class ClipAttributes: OperationAttributes {
 		if dict["effectArray"] != nil {
 			effectArray = try JSONParser.parse(array: dict["effectArray"] as! [Any])
 		}
+		if dict["cropAlignment"] != nil {
+			cropAlignment = dict["cropAlignment"] as? Int
+		}
+		if dict["captionAttributes"] != nil {
+			captionAttributes = try JSONParser.parse(array: dict["captionAttributes"] as! [Any])
+		}
 
 	}
 
@@ -116,6 +140,12 @@ open class ClipAttributes: OperationAttributes {
 		}
 		if(effectArray != nil) {
 			dict["effectArray"] = effectArray!.map { value in value.toDictionary() }
+		}
+		if(cropAlignment != nil) {
+			dict["cropAlignment"] = cropAlignment!
+		}
+		if(captionAttributes != nil) {
+			dict["captionAttributes"] = captionAttributes!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

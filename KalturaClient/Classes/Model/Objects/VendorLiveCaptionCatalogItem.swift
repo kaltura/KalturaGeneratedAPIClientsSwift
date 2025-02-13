@@ -27,79 +27,22 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorLiveCaptionCatalogItem: VendorCaptionsCatalogItem {
+open class VendorLiveCaptionCatalogItem: VendorLiveCatalogItem {
 
-	public class VendorLiveCaptionCatalogItemTokenizer: VendorCaptionsCatalogItem.VendorCaptionsCatalogItemTokenizer {
-		
-		public var minimalRefundTime: BaseTokenizedObject {
-			get {
-				return self.append("minimalRefundTime") 
-			}
-		}
-		
-		public var minimalOrderTime: BaseTokenizedObject {
-			get {
-				return self.append("minimalOrderTime") 
-			}
-		}
-		
-		public var durationLimit: BaseTokenizedObject {
-			get {
-				return self.append("durationLimit") 
-			}
-		}
+	public class VendorLiveCaptionCatalogItemTokenizer: VendorLiveCatalogItem.VendorLiveCatalogItemTokenizer {
 	}
 
-	public var minimalRefundTime: Int? = nil
-	public var minimalOrderTime: Int? = nil
-	public var durationLimit: Int? = nil
 
 
-	public func setMultiRequestToken(minimalRefundTime: String) {
-		self.dict["minimalRefundTime"] = minimalRefundTime
-	}
-	
-	public func setMultiRequestToken(minimalOrderTime: String) {
-		self.dict["minimalOrderTime"] = minimalOrderTime
-	}
-	
-	public func setMultiRequestToken(durationLimit: String) {
-		self.dict["durationLimit"] = durationLimit
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["minimalRefundTime"] != nil {
-			minimalRefundTime = dict["minimalRefundTime"] as? Int
-		}
-		if dict["minimalOrderTime"] != nil {
-			minimalOrderTime = dict["minimalOrderTime"] as? Int
-		}
-		if dict["durationLimit"] != nil {
-			durationLimit = dict["durationLimit"] as? Int
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(minimalRefundTime != nil) {
-			dict["minimalRefundTime"] = minimalRefundTime!
-		}
-		if(minimalOrderTime != nil) {
-			dict["minimalOrderTime"] = minimalOrderTime!
-		}
-		if(durationLimit != nil) {
-			dict["durationLimit"] = durationLimit!
-		}
-		return dict
-	}
 }
 

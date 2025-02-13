@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -198,6 +198,12 @@ open class BaseUser: ObjectBase {
 				return self.append("userMode") 
 			}
 		}
+		
+		public var capabilities: ArrayTokenizedObject<UserCapability.UserCapabilityTokenizer> {
+			get {
+				return ArrayTokenizedObject<UserCapability.UserCapabilityTokenizer>(self.append("capabilities"))
+			} 
+		}
 	}
 
 	public var id: String? = nil
@@ -231,6 +237,7 @@ open class BaseUser: ObjectBase {
 	public var allowedPartnerIds: String? = nil
 	public var allowedPartnerPackages: String? = nil
 	public var userMode: UserMode? = nil
+	public var capabilities: Array<UserCapability>? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -425,6 +432,9 @@ open class BaseUser: ObjectBase {
 		if dict["userMode"] != nil {
 			userMode = UserMode(rawValue: (dict["userMode"] as? Int)!)
 		}
+		if dict["capabilities"] != nil {
+			capabilities = try JSONParser.parse(array: dict["capabilities"] as! [Any])
+		}
 
 	}
 
@@ -489,6 +499,9 @@ open class BaseUser: ObjectBase {
 		}
 		if(userMode != nil) {
 			dict["userMode"] = userMode!.rawValue
+		}
+		if(capabilities != nil) {
+			dict["capabilities"] = capabilities!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

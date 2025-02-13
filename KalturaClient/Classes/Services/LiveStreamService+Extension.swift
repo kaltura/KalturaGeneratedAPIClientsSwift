@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,7 +36,7 @@
 /**  Live Stream service lets you manage live stream entries  */
 extension LiveStreamService{
 
-	public class CreatePeriodicSyncPointsTokenizer: ClientTokenizer  {
+	public class AllocateConferenceRoomTokenizer: ClientTokenizer  {
 		
 		public var entryId: BaseTokenizedObject {
 			get {
@@ -44,25 +44,67 @@ extension LiveStreamService{
 			}
 		}
 		
-		public var interval: BaseTokenizedObject {
+		public var env: BaseTokenizedObject {
 			get {
-				return self.append("interval") 
-			}
-		}
-		
-		public var duration: BaseTokenizedObject {
-			get {
-				return self.append("duration") 
+				return self.append("env") 
 			}
 		}
 	}
 
-	/**  Creates periodic metadata sync-point events on a live stream  */
-	public static func createPeriodicSyncPoints(entryId: String, interval: Int, duration: Int) -> NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> {
-		let request: NullRequestBuilder<CreatePeriodicSyncPointsTokenizer> = NullRequestBuilder<CreatePeriodicSyncPointsTokenizer>(service: "livestream", action: "createPeriodicSyncPoints")
+	public static func allocateConferenceRoom(entryId: String) -> RequestBuilder<RoomDetails, RoomDetails.RoomDetailsTokenizer, AllocateConferenceRoomTokenizer> {
+		return allocateConferenceRoom(entryId: entryId, env: "")
+	}
+
+	/**  Allocates a conference room or returns ones that has already been allocated  */
+	public static func allocateConferenceRoom(entryId: String, env: String?) -> RequestBuilder<RoomDetails, RoomDetails.RoomDetailsTokenizer, AllocateConferenceRoomTokenizer> {
+		let request: RequestBuilder<RoomDetails, RoomDetails.RoomDetailsTokenizer, AllocateConferenceRoomTokenizer> = RequestBuilder<RoomDetails, RoomDetails.RoomDetailsTokenizer, AllocateConferenceRoomTokenizer>(service: "livestream", action: "allocateConferenceRoom")
 			.setParam(key: "entryId", value: entryId)
-			.setParam(key: "interval", value: interval)
-			.setParam(key: "duration", value: duration)
+			.setParam(key: "env", value: env)
+
+		return request
+	}
+
+	public class FinishConfTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+		
+		public var serverNodeId: BaseTokenizedObject {
+			get {
+				return self.append("serverNodeId") 
+			}
+		}
+	}
+
+	public static func finishConf(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, FinishConfTokenizer> {
+		return finishConf(entryId: entryId, serverNodeId: nil)
+	}
+
+	/**  When the conf is finished this API should be called.  */
+	public static func finishConf(entryId: String, serverNodeId: Int?) -> RequestBuilder<Bool, BaseTokenizedObject, FinishConfTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, FinishConfTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, FinishConfTokenizer>(service: "livestream", action: "finishConf")
+			.setParam(key: "entryId", value: entryId)
+			.setParam(key: "serverNodeId", value: serverNodeId)
+
+		return request
+	}
+
+	public class RegisterConfTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	/**  Mark that the conference has actually started  */
+	public static func registerConf(entryId: String) -> RequestBuilder<Bool, BaseTokenizedObject, RegisterConfTokenizer> {
+		let request: RequestBuilder<Bool, BaseTokenizedObject, RegisterConfTokenizer> = RequestBuilder<Bool, BaseTokenizedObject, RegisterConfTokenizer>(service: "livestream", action: "registerConf")
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}

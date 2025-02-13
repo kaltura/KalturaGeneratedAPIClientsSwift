@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -150,6 +150,12 @@ open class DeliveryProfile: ObjectBase {
 		public func supplementaryAssetsFilter<T: AssetFilter.AssetFilterTokenizer>() -> T {
 			return T(self.append("supplementaryAssetsFilter"))
 		}
+		
+		public var enforceDeliveriesSupport: BaseTokenizedObject {
+			get {
+				return self.append("enforceDeliveriesSupport") 
+			}
+		}
 	}
 
 	/**  The id of the Delivery  */
@@ -187,6 +193,7 @@ open class DeliveryProfile: ObjectBase {
 	/**  A filter that can be used to include additional assets in the URL (e.g.
 	  captions)  */
 	public var supplementaryAssetsFilter: AssetFilter? = nil
+	public var enforceDeliveriesSupport: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -257,6 +264,10 @@ open class DeliveryProfile: ObjectBase {
 		self.dict["extraParams"] = extraParams
 	}
 	
+	public func setMultiRequestToken(enforceDeliveriesSupport: String) {
+		self.dict["enforceDeliveriesSupport"] = enforceDeliveriesSupport
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -317,6 +328,9 @@ open class DeliveryProfile: ObjectBase {
 		}
 		if dict["supplementaryAssetsFilter"] != nil {
 		supplementaryAssetsFilter = try JSONParser.parse(object: dict["supplementaryAssetsFilter"] as! [String: Any])		}
+		if dict["enforceDeliveriesSupport"] != nil {
+			enforceDeliveriesSupport = dict["enforceDeliveriesSupport"] as? String
+		}
 
 	}
 
@@ -360,6 +374,9 @@ open class DeliveryProfile: ObjectBase {
 		}
 		if(supplementaryAssetsFilter != nil) {
 			dict["supplementaryAssetsFilter"] = supplementaryAssetsFilter!.toDictionary()
+		}
+		if(enforceDeliveriesSupport != nil) {
+			dict["enforceDeliveriesSupport"] = enforceDeliveriesSupport!
 		}
 		return dict
 	}

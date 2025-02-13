@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,6 +35,7 @@ public enum BaseEntryCloneOptions: String {
 	case AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS"
 	case ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS"
 	case CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS"
+	case SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS"
 	case THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS"
 	case USERS = "1"
 	case CATEGORIES = "2"

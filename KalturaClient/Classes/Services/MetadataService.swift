@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -195,7 +195,7 @@ public final class MetadataService{
 	}
 
 	/**  Delete an existing metadata  */
-	public static func delete(id: Int) -> NullRequestBuilder<DeleteTokenizer> {
+	public static func delete(id: Int64) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "metadata_metadata", action: "delete")
 			.setParam(key: "id", value: id)
 
@@ -212,7 +212,7 @@ public final class MetadataService{
 	}
 
 	/**  Retrieve a metadata object by id  */
-	public static func get(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer> {
+	public static func get(id: Int64) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, GetTokenizer>(service: "metadata_metadata", action: "get")
 			.setParam(key: "id", value: id)
 
@@ -258,12 +258,12 @@ public final class MetadataService{
 		}
 	}
 
-	public static func invalidate(id: Int) -> NullRequestBuilder<InvalidateTokenizer> {
+	public static func invalidate(id: Int64) -> NullRequestBuilder<InvalidateTokenizer> {
 		return invalidate(id: id, version: nil)
 	}
 
 	/**  Mark existing metadata as invalid   Used by batch metadata transform  */
-	public static func invalidate(id: Int, version: Int?) -> NullRequestBuilder<InvalidateTokenizer> {
+	public static func invalidate(id: Int64, version: Int?) -> NullRequestBuilder<InvalidateTokenizer> {
 		let request: NullRequestBuilder<InvalidateTokenizer> = NullRequestBuilder<InvalidateTokenizer>(service: "metadata_metadata", action: "invalidate")
 			.setParam(key: "id", value: id)
 			.setParam(key: "version", value: version)
@@ -320,16 +320,16 @@ public final class MetadataService{
 		}
 	}
 
-	public static func update(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
 		return update(id: id, xmlData: nil)
 	}
 
-	public static func update(id: Int, xmlData: String?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, xmlData: String?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
 		return update(id: id, xmlData: xmlData, version: nil)
 	}
 
 	/**  Update an existing metadata object with new XML content  */
-	public static func update(id: Int, xmlData: String?, version: Int?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
+	public static func update(id: Int64, xmlData: String?, version: Int?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateTokenizer>(service: "metadata_metadata", action: "update")
 			.setParam(key: "id", value: id)
 			.setParam(key: "xmlData", value: xmlData)
@@ -347,12 +347,12 @@ public final class MetadataService{
 		}
 	}
 
-	public static func updateFromFile(id: Int) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
+	public static func updateFromFile(id: Int64) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
 		return updateFromFile(id: id, xmlFile: nil)
 	}
 
 	/**  Update an existing metadata object with new XML file  */
-	public static func updateFromFile(id: Int, xmlFile: RequestFile?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
+	public static func updateFromFile(id: Int64, xmlFile: RequestFile?) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromFileTokenizer>(service: "metadata_metadata", action: "updateFromFile")
 			.setParam(key: "id", value: id)
 			.setFile(key: "xmlFile", value: xmlFile)
@@ -370,7 +370,7 @@ public final class MetadataService{
 	}
 
 	/**  Action transforms current metadata object XML using a provided XSL.  */
-	public static func updateFromXSL(id: Int, xslFile: RequestFile) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer> {
+	public static func updateFromXSL(id: Int64, xslFile: RequestFile) -> RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer> {
 		let request: RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer> = RequestBuilder<Metadata, Metadata.MetadataTokenizer, UpdateFromXSLTokenizer>(service: "metadata_metadata", action: "updateFromXSL")
 			.setParam(key: "id", value: id)
 			.setFile(key: "xslFile", value: xslFile)

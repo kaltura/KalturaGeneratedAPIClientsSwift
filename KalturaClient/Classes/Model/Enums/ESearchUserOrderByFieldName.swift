@@ -26,13 +26,14 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserOrderByFieldName: String {
 	case CREATED_AT = "created_at"
+	case FULL_NAME = "full_name"
 	case USER_ID = "puser_id"
 	case SCREEN_NAME = "screen_name"
 	case UPDATED_AT = "updated_at"

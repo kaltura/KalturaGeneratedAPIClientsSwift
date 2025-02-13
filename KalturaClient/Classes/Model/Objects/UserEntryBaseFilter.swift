@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -126,24 +126,6 @@ open class UserEntryBaseFilter: RelatedFilter {
 				return self.append("typeEqual") 
 			}
 		}
-		
-		public var extendedStatusEqual: BaseTokenizedObject {
-			get {
-				return self.append("extendedStatusEqual") 
-			}
-		}
-		
-		public var extendedStatusIn: BaseTokenizedObject {
-			get {
-				return self.append("extendedStatusIn") 
-			}
-		}
-		
-		public var extendedStatusNotIn: BaseTokenizedObject {
-			get {
-				return self.append("extendedStatusNotIn") 
-			}
-		}
 	}
 
 	public var idEqual: Int? = nil
@@ -161,9 +143,6 @@ open class UserEntryBaseFilter: RelatedFilter {
 	public var updatedAtLessThanOrEqual: Int? = nil
 	public var updatedAtGreaterThanOrEqual: Int? = nil
 	public var typeEqual: UserEntryType? = nil
-	public var extendedStatusEqual: UserEntryExtendedStatus? = nil
-	public var extendedStatusIn: String? = nil
-	public var extendedStatusNotIn: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -226,18 +205,6 @@ open class UserEntryBaseFilter: RelatedFilter {
 		self.dict["typeEqual"] = typeEqual
 	}
 	
-	public func setMultiRequestToken(extendedStatusEqual: String) {
-		self.dict["extendedStatusEqual"] = extendedStatusEqual
-	}
-	
-	public func setMultiRequestToken(extendedStatusIn: String) {
-		self.dict["extendedStatusIn"] = extendedStatusIn
-	}
-	
-	public func setMultiRequestToken(extendedStatusNotIn: String) {
-		self.dict["extendedStatusNotIn"] = extendedStatusNotIn
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -285,15 +252,6 @@ open class UserEntryBaseFilter: RelatedFilter {
 		}
 		if dict["typeEqual"] != nil {
 			typeEqual = UserEntryType(rawValue: "\(dict["typeEqual"]!)")
-		}
-		if dict["extendedStatusEqual"] != nil {
-			extendedStatusEqual = UserEntryExtendedStatus(rawValue: "\(dict["extendedStatusEqual"]!)")
-		}
-		if dict["extendedStatusIn"] != nil {
-			extendedStatusIn = dict["extendedStatusIn"] as? String
-		}
-		if dict["extendedStatusNotIn"] != nil {
-			extendedStatusNotIn = dict["extendedStatusNotIn"] as? String
 		}
 
 	}
@@ -344,15 +302,6 @@ open class UserEntryBaseFilter: RelatedFilter {
 		}
 		if(typeEqual != nil) {
 			dict["typeEqual"] = typeEqual!.rawValue
-		}
-		if(extendedStatusEqual != nil) {
-			dict["extendedStatusEqual"] = extendedStatusEqual!.rawValue
-		}
-		if(extendedStatusIn != nil) {
-			dict["extendedStatusIn"] = extendedStatusIn!
-		}
-		if(extendedStatusNotIn != nil) {
-			dict["extendedStatusNotIn"] = extendedStatusNotIn!
 		}
 		return dict
 	}

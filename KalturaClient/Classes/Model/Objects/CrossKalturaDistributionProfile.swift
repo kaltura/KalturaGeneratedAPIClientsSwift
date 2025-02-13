@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -76,30 +76,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 		public var distributeCaptions: BaseTokenizedObject {
 			get {
 				return self.append("distributeCaptions") 
-			}
-		}
-		
-		public var designatedCategories: BaseTokenizedObject {
-			get {
-				return self.append("designatedCategories") 
-			}
-		}
-		
-		public var distributeCategories: BaseTokenizedObject {
-			get {
-				return self.append("distributeCategories") 
-			}
-		}
-		
-		public var collaboratorsCustomMetadataProfileId: BaseTokenizedObject {
-			get {
-				return self.append("collaboratorsCustomMetadataProfileId") 
-			}
-		}
-		
-		public var collaboratorsFromCustomMetadataProfile: BaseTokenizedObject {
-			get {
-				return self.append("collaboratorsFromCustomMetadataProfile") 
 			}
 		}
 		
@@ -168,12 +144,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapCaptionParamsIds"))
 			} 
 		}
-		
-		public var mapAttachmentParamsIds: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
-			get {
-				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("mapAttachmentParamsIds"))
-			} 
-		}
 	}
 
 	public var targetServiceUrl: String? = nil
@@ -183,10 +153,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 	public var metadataXslt: String? = nil
 	public var metadataXpathsTriggerUpdate: Array<StringValue>? = nil
 	public var distributeCaptions: Bool? = nil
-	public var designatedCategories: String? = nil
-	public var distributeCategories: Bool? = nil
-	public var collaboratorsCustomMetadataProfileId: String? = nil
-	public var collaboratorsFromCustomMetadataProfile: Bool? = nil
 	public var distributeCuePoints: Bool? = nil
 	public var distributeRemoteFlavorAssetContent: Bool? = nil
 	public var distributeRemoteThumbAssetContent: Bool? = nil
@@ -198,7 +164,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 	public var mapFlavorParamsIds: Array<KeyValue>? = nil
 	public var mapThumbParamsIds: Array<KeyValue>? = nil
 	public var mapCaptionParamsIds: Array<KeyValue>? = nil
-	public var mapAttachmentParamsIds: Array<KeyValue>? = nil
 
 
 	public func setMultiRequestToken(targetServiceUrl: String) {
@@ -223,22 +188,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 	
 	public func setMultiRequestToken(distributeCaptions: String) {
 		self.dict["distributeCaptions"] = distributeCaptions
-	}
-	
-	public func setMultiRequestToken(designatedCategories: String) {
-		self.dict["designatedCategories"] = designatedCategories
-	}
-	
-	public func setMultiRequestToken(distributeCategories: String) {
-		self.dict["distributeCategories"] = distributeCategories
-	}
-	
-	public func setMultiRequestToken(collaboratorsCustomMetadataProfileId: String) {
-		self.dict["collaboratorsCustomMetadataProfileId"] = collaboratorsCustomMetadataProfileId
-	}
-	
-	public func setMultiRequestToken(collaboratorsFromCustomMetadataProfile: String) {
-		self.dict["collaboratorsFromCustomMetadataProfile"] = collaboratorsFromCustomMetadataProfile
 	}
 	
 	public func setMultiRequestToken(distributeCuePoints: String) {
@@ -281,18 +230,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 		if dict["distributeCaptions"] != nil {
 			distributeCaptions = dict["distributeCaptions"] as? Bool
 		}
-		if dict["designatedCategories"] != nil {
-			designatedCategories = dict["designatedCategories"] as? String
-		}
-		if dict["distributeCategories"] != nil {
-			distributeCategories = dict["distributeCategories"] as? Bool
-		}
-		if dict["collaboratorsCustomMetadataProfileId"] != nil {
-			collaboratorsCustomMetadataProfileId = dict["collaboratorsCustomMetadataProfileId"] as? String
-		}
-		if dict["collaboratorsFromCustomMetadataProfile"] != nil {
-			collaboratorsFromCustomMetadataProfile = dict["collaboratorsFromCustomMetadataProfile"] as? Bool
-		}
 		if dict["distributeCuePoints"] != nil {
 			distributeCuePoints = dict["distributeCuePoints"] as? Bool
 		}
@@ -326,9 +263,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 		if dict["mapCaptionParamsIds"] != nil {
 			mapCaptionParamsIds = try JSONParser.parse(array: dict["mapCaptionParamsIds"] as! [Any])
 		}
-		if dict["mapAttachmentParamsIds"] != nil {
-			mapAttachmentParamsIds = try JSONParser.parse(array: dict["mapAttachmentParamsIds"] as! [Any])
-		}
 
 	}
 
@@ -354,18 +288,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 		}
 		if(distributeCaptions != nil) {
 			dict["distributeCaptions"] = distributeCaptions!
-		}
-		if(designatedCategories != nil) {
-			dict["designatedCategories"] = designatedCategories!
-		}
-		if(distributeCategories != nil) {
-			dict["distributeCategories"] = distributeCategories!
-		}
-		if(collaboratorsCustomMetadataProfileId != nil) {
-			dict["collaboratorsCustomMetadataProfileId"] = collaboratorsCustomMetadataProfileId!
-		}
-		if(collaboratorsFromCustomMetadataProfile != nil) {
-			dict["collaboratorsFromCustomMetadataProfile"] = collaboratorsFromCustomMetadataProfile!
 		}
 		if(distributeCuePoints != nil) {
 			dict["distributeCuePoints"] = distributeCuePoints!
@@ -399,9 +321,6 @@ open class CrossKalturaDistributionProfile: ConfigurableDistributionProfile {
 		}
 		if(mapCaptionParamsIds != nil) {
 			dict["mapCaptionParamsIds"] = mapCaptionParamsIds!.map { value in value.toDictionary() }
-		}
-		if(mapAttachmentParamsIds != nil) {
-			dict["mapAttachmentParamsIds"] = mapAttachmentParamsIds!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

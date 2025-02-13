@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -270,6 +270,12 @@ open class StorageProfile: ObjectBase {
 				return self.append("excludedEntryTypes") 
 			}
 		}
+		
+		public var additionalInfo: ArrayTokenizedObject<KeyValue.KeyValueTokenizer> {
+			get {
+				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("additionalInfo"))
+			} 
+		}
 	}
 
 	public var id: Int? = nil
@@ -319,6 +325,7 @@ open class StorageProfile: ObjectBase {
 	public var excludedFlavorParamsIds: String? = nil
 	public var shouldExportCaptions: Bool? = nil
 	public var excludedEntryTypes: String? = nil
+	public var additionalInfo: Array<KeyValue>? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -585,6 +592,9 @@ open class StorageProfile: ObjectBase {
 		if dict["excludedEntryTypes"] != nil {
 			excludedEntryTypes = dict["excludedEntryTypes"] as? String
 		}
+		if dict["additionalInfo"] != nil {
+			additionalInfo = try JSONParser.parse(array: dict["additionalInfo"] as! [Any])
+		}
 
 	}
 
@@ -694,6 +704,9 @@ open class StorageProfile: ObjectBase {
 		}
 		if(excludedEntryTypes != nil) {
 			dict["excludedEntryTypes"] = excludedEntryTypes!
+		}
+		if(additionalInfo != nil) {
+			dict["additionalInfo"] = additionalInfo!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

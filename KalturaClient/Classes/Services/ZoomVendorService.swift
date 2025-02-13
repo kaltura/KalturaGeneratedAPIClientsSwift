@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -105,16 +105,16 @@ public final class ZoomVendorService{
 
 	public class LocalRegistrationPageTokenizer: ClientTokenizer  {
 		
-		public var jwt: BaseTokenizedObject {
+		public var zoomAccountId: BaseTokenizedObject {
 			get {
-				return self.append("jwt") 
+				return self.append("zoomAccountId") 
 			}
 		}
 	}
 
-	public static func localRegistrationPage(jwt: String) -> NullRequestBuilder<LocalRegistrationPageTokenizer> {
+	public static func localRegistrationPage(zoomAccountId: String) -> NullRequestBuilder<LocalRegistrationPageTokenizer> {
 		let request: NullRequestBuilder<LocalRegistrationPageTokenizer> = NullRequestBuilder<LocalRegistrationPageTokenizer>(service: "vendor_zoomvendor", action: "localRegistrationPage")
-			.setParam(key: "jwt", value: jwt)
+			.setParam(key: "zoomAccountId", value: zoomAccountId)
 
 		return request
 	}
@@ -143,8 +143,8 @@ public final class ZoomVendorService{
 	public class RecordingCompleteTokenizer: ClientTokenizer  {
 	}
 
-	public static func recordingComplete() -> NullRequestBuilder<RecordingCompleteTokenizer> {
-		let request: NullRequestBuilder<RecordingCompleteTokenizer> = NullRequestBuilder<RecordingCompleteTokenizer>(service: "vendor_zoomvendor", action: "recordingComplete")
+	public static func recordingComplete() -> RequestBuilder<EndpointValidationResponse, EndpointValidationResponse.EndpointValidationResponseTokenizer, RecordingCompleteTokenizer> {
+		let request: RequestBuilder<EndpointValidationResponse, EndpointValidationResponse.EndpointValidationResponseTokenizer, RecordingCompleteTokenizer> = RequestBuilder<EndpointValidationResponse, EndpointValidationResponse.EndpointValidationResponseTokenizer, RecordingCompleteTokenizer>(service: "vendor_zoomvendor", action: "recordingComplete")
 
 		return request
 	}

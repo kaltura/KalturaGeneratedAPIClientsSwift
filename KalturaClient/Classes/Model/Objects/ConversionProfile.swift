@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -188,6 +188,12 @@ open class ConversionProfile: ObjectBase {
 				return self.append("defaultAudioLang") 
 			}
 		}
+		
+		public var deliveryTag: BaseTokenizedObject {
+			get {
+				return self.append("deliveryTag") 
+			}
+		}
 	}
 
 	/**  The id of the Conversion Profile  */
@@ -240,6 +246,7 @@ open class ConversionProfile: ObjectBase {
 	/**  Default replacement options to be applied to entries  */
 	public var defaultReplacementOptions: EntryReplacementOptions? = nil
 	public var defaultAudioLang: Language? = nil
+	public var deliveryTag: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -338,6 +345,10 @@ open class ConversionProfile: ObjectBase {
 		self.dict["defaultAudioLang"] = defaultAudioLang
 	}
 	
+	public func setMultiRequestToken(deliveryTag: String) {
+		self.dict["deliveryTag"] = deliveryTag
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -417,6 +428,9 @@ open class ConversionProfile: ObjectBase {
 		if dict["defaultAudioLang"] != nil {
 			defaultAudioLang = Language(rawValue: "\(dict["defaultAudioLang"]!)")
 		}
+		if dict["deliveryTag"] != nil {
+			deliveryTag = dict["deliveryTag"] as? String
+		}
 
 	}
 
@@ -487,6 +501,9 @@ open class ConversionProfile: ObjectBase {
 		}
 		if(defaultAudioLang != nil) {
 			dict["defaultAudioLang"] = defaultAudioLang!.rawValue
+		}
+		if(deliveryTag != nil) {
+			dict["deliveryTag"] = deliveryTag!
 		}
 		return dict
 	}

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -286,6 +286,48 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("uiConfIdIn") 
 			}
 		}
+		
+		public var cuePointIdIn: BaseTokenizedObject {
+			get {
+				return self.append("cuePointIdIn") 
+			}
+		}
+		
+		public var contextIdIn: BaseTokenizedObject {
+			get {
+				return self.append("contextIdIn") 
+			}
+		}
+		
+		public var roleIn: BaseTokenizedObject {
+			get {
+				return self.append("roleIn") 
+			}
+		}
+		
+		public var industryIn: BaseTokenizedObject {
+			get {
+				return self.append("industryIn") 
+			}
+		}
+		
+		public var playbackModeIn: BaseTokenizedObject {
+			get {
+				return self.append("playbackModeIn") 
+			}
+		}
+		
+		public var companyIn: BaseTokenizedObject {
+			get {
+				return self.append("companyIn") 
+			}
+		}
+		
+		public var eventSessionContextIdIn: BaseTokenizedObject {
+			get {
+				return self.append("eventSessionContextIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -369,6 +411,20 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var originIn: String? = nil
 	/**  filter by ui conf id  */
 	public var uiConfIdIn: String? = nil
+	/**  filter by cue point id  */
+	public var cuePointIdIn: String? = nil
+	/**  filter by context ids  */
+	public var contextIdIn: String? = nil
+	/**  filter by user role  */
+	public var roleIn: String? = nil
+	/**  filter by industry  */
+	public var industryIn: String? = nil
+	/**  filter by playback mode  */
+	public var playbackModeIn: String? = nil
+	/**  filter by company  */
+	public var companyIn: String? = nil
+	/**  filter by event session context id  */
+	public var eventSessionContextIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -535,6 +591,34 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["uiConfIdIn"] = uiConfIdIn
 	}
 	
+	public func setMultiRequestToken(cuePointIdIn: String) {
+		self.dict["cuePointIdIn"] = cuePointIdIn
+	}
+	
+	public func setMultiRequestToken(contextIdIn: String) {
+		self.dict["contextIdIn"] = contextIdIn
+	}
+	
+	public func setMultiRequestToken(roleIn: String) {
+		self.dict["roleIn"] = roleIn
+	}
+	
+	public func setMultiRequestToken(industryIn: String) {
+		self.dict["industryIn"] = industryIn
+	}
+	
+	public func setMultiRequestToken(playbackModeIn: String) {
+		self.dict["playbackModeIn"] = playbackModeIn
+	}
+	
+	public func setMultiRequestToken(companyIn: String) {
+		self.dict["companyIn"] = companyIn
+	}
+	
+	public func setMultiRequestToken(eventSessionContextIdIn: String) {
+		self.dict["eventSessionContextIdIn"] = eventSessionContextIdIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -662,6 +746,27 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["uiConfIdIn"] != nil {
 			uiConfIdIn = dict["uiConfIdIn"] as? String
+		}
+		if dict["cuePointIdIn"] != nil {
+			cuePointIdIn = dict["cuePointIdIn"] as? String
+		}
+		if dict["contextIdIn"] != nil {
+			contextIdIn = dict["contextIdIn"] as? String
+		}
+		if dict["roleIn"] != nil {
+			roleIn = dict["roleIn"] as? String
+		}
+		if dict["industryIn"] != nil {
+			industryIn = dict["industryIn"] as? String
+		}
+		if dict["playbackModeIn"] != nil {
+			playbackModeIn = dict["playbackModeIn"] as? String
+		}
+		if dict["companyIn"] != nil {
+			companyIn = dict["companyIn"] as? String
+		}
+		if dict["eventSessionContextIdIn"] != nil {
+			eventSessionContextIdIn = dict["eventSessionContextIdIn"] as? String
 		}
 
 	}
@@ -793,6 +898,27 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(uiConfIdIn != nil) {
 			dict["uiConfIdIn"] = uiConfIdIn!
+		}
+		if(cuePointIdIn != nil) {
+			dict["cuePointIdIn"] = cuePointIdIn!
+		}
+		if(contextIdIn != nil) {
+			dict["contextIdIn"] = contextIdIn!
+		}
+		if(roleIn != nil) {
+			dict["roleIn"] = roleIn!
+		}
+		if(industryIn != nil) {
+			dict["industryIn"] = industryIn!
+		}
+		if(playbackModeIn != nil) {
+			dict["playbackModeIn"] = playbackModeIn!
+		}
+		if(companyIn != nil) {
+			dict["companyIn"] = companyIn!
+		}
+		if(eventSessionContextIdIn != nil) {
+			dict["eventSessionContextIdIn"] = eventSessionContextIdIn!
 		}
 		return dict
 	}

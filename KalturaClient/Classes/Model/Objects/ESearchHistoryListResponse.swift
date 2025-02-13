@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,9 +42,16 @@ open class ESearchHistoryListResponse: ListResponse {
 				return ArrayTokenizedObject<ESearchHistory.ESearchHistoryTokenizer>(self.append("objects"))
 			} 
 		}
+		
+		public var aggregations: ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer> {
+			get {
+				return ArrayTokenizedObject<ESearchAggregationResponseItem.ESearchAggregationResponseItemTokenizer>(self.append("aggregations"))
+			} 
+		}
 	}
 
 	public var objects: Array<ESearchHistory>? = nil
+	public var aggregations: Array<ESearchAggregationResponseItem>? = nil
 
 
 	public override func populate(_ dict: [String: Any]) throws {
@@ -52,6 +59,9 @@ open class ESearchHistoryListResponse: ListResponse {
 		// set members values:
 		if dict["objects"] != nil {
 			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
+		}
+		if dict["aggregations"] != nil {
+			aggregations = try JSONParser.parse(array: dict["aggregations"] as! [Any])
 		}
 
 	}

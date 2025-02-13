@@ -27,64 +27,22 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ReportFilter: ObjectBase {
+open class ReportFilter: ReportBaseFilter {
 
-	public class ReportFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
-		
-		public var dimension: BaseTokenizedObject {
-			get {
-				return self.append("dimension") 
-			}
-		}
-		
-		public var values: BaseTokenizedObject {
-			get {
-				return self.append("values") 
-			}
-		}
+	public class ReportFilterTokenizer: ReportBaseFilter.ReportBaseFilterTokenizer {
 	}
 
-	/**  The dimension whose values should be filtered  */
-	public var dimension: String? = nil
-	/**  The (comma separated) values to include in the filter  */
-	public var values: String? = nil
 
 
-	public func setMultiRequestToken(dimension: String) {
-		self.dict["dimension"] = dimension
-	}
-	
-	public func setMultiRequestToken(values: String) {
-		self.dict["values"] = values
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["dimension"] != nil {
-			dimension = dict["dimension"] as? String
-		}
-		if dict["values"] != nil {
-			values = dict["values"] as? String
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(dimension != nil) {
-			dict["dimension"] = dimension!
-		}
-		if(values != nil) {
-			dict["values"] = values!
-		}
-		return dict
-	}
 }
 

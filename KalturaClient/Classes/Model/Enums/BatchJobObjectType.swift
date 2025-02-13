@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -41,4 +41,5 @@ public enum BatchJobObjectType: String {
 	case CATEGORY = "2"
 	case FILE_SYNC = "3"
 	case ASSET = "4"
+	case USER = "5"
 }

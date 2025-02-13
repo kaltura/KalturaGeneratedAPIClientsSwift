@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,13 +42,24 @@ open class RegexItem: ObjectBase {
 				return self.append("regex") 
 			}
 		}
+		
+		public var description: BaseTokenizedObject {
+			get {
+				return self.append("description") 
+			}
+		}
 	}
 
 	public var regex: String? = nil
+	public var description: String? = nil
 
 
 	public func setMultiRequestToken(regex: String) {
 		self.dict["regex"] = regex
+	}
+	
+	public func setMultiRequestToken(description: String) {
+		self.dict["description"] = description
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class RegexItem: ObjectBase {
 		if dict["regex"] != nil {
 			regex = dict["regex"] as? String
 		}
+		if dict["description"] != nil {
+			description = dict["description"] as? String
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class RegexItem: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(regex != nil) {
 			dict["regex"] = regex!
+		}
+		if(description != nil) {
+			dict["description"] = description!
 		}
 		return dict
 	}

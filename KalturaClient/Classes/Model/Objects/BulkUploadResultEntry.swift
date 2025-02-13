@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -157,6 +157,12 @@ open class BulkUploadResultEntry: BulkUploadResult {
 			}
 		}
 		
+		public var entitledUsersView: BaseTokenizedObject {
+			get {
+				return self.append("entitledUsersView") 
+			}
+		}
+		
 		public var ownerId: BaseTokenizedObject {
 			get {
 				return self.append("ownerId") 
@@ -196,6 +202,7 @@ open class BulkUploadResultEntry: BulkUploadResult {
 	public var creatorId: String? = nil
 	public var entitledUsersEdit: String? = nil
 	public var entitledUsersPublish: String? = nil
+	public var entitledUsersView: String? = nil
 	public var ownerId: String? = nil
 	public var referenceId: String? = nil
 	public var templateEntryId: String? = nil
@@ -281,6 +288,10 @@ open class BulkUploadResultEntry: BulkUploadResult {
 		self.dict["entitledUsersPublish"] = entitledUsersPublish
 	}
 	
+	public func setMultiRequestToken(entitledUsersView: String) {
+		self.dict["entitledUsersView"] = entitledUsersView
+	}
+	
 	public func setMultiRequestToken(ownerId: String) {
 		self.dict["ownerId"] = ownerId
 	}
@@ -356,6 +367,9 @@ open class BulkUploadResultEntry: BulkUploadResult {
 		if dict["entitledUsersPublish"] != nil {
 			entitledUsersPublish = dict["entitledUsersPublish"] as? String
 		}
+		if dict["entitledUsersView"] != nil {
+			entitledUsersView = dict["entitledUsersView"] as? String
+		}
 		if dict["ownerId"] != nil {
 			ownerId = dict["ownerId"] as? String
 		}
@@ -429,6 +443,9 @@ open class BulkUploadResultEntry: BulkUploadResult {
 		}
 		if(entitledUsersPublish != nil) {
 			dict["entitledUsersPublish"] = entitledUsersPublish!
+		}
+		if(entitledUsersView != nil) {
+			dict["entitledUsersView"] = entitledUsersView!
 		}
 		if(ownerId != nil) {
 			dict["ownerId"] = ownerId!

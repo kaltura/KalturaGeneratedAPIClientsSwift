@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -49,6 +49,12 @@ open class LiveRestreamFeature: LiveFeature {
 			}
 		}
 		
+		public var playbackUrl: BaseTokenizedObject {
+			get {
+				return self.append("playbackUrl") 
+			}
+		}
+		
 		public var streamKey: BaseTokenizedObject {
 			get {
 				return self.append("streamKey") 
@@ -58,6 +64,7 @@ open class LiveRestreamFeature: LiveFeature {
 
 	public var primaryUrl: String? = nil
 	public var secondaryUrl: String? = nil
+	public var playbackUrl: String? = nil
 	public var streamKey: String? = nil
 
 
@@ -67,6 +74,10 @@ open class LiveRestreamFeature: LiveFeature {
 	
 	public func setMultiRequestToken(secondaryUrl: String) {
 		self.dict["secondaryUrl"] = secondaryUrl
+	}
+	
+	public func setMultiRequestToken(playbackUrl: String) {
+		self.dict["playbackUrl"] = playbackUrl
 	}
 	
 	public func setMultiRequestToken(streamKey: String) {
@@ -82,6 +93,9 @@ open class LiveRestreamFeature: LiveFeature {
 		if dict["secondaryUrl"] != nil {
 			secondaryUrl = dict["secondaryUrl"] as? String
 		}
+		if dict["playbackUrl"] != nil {
+			playbackUrl = dict["playbackUrl"] as? String
+		}
 		if dict["streamKey"] != nil {
 			streamKey = dict["streamKey"] as? String
 		}
@@ -95,6 +109,9 @@ open class LiveRestreamFeature: LiveFeature {
 		}
 		if(secondaryUrl != nil) {
 			dict["secondaryUrl"] = secondaryUrl!
+		}
+		if(playbackUrl != nil) {
+			dict["playbackUrl"] = playbackUrl!
 		}
 		if(streamKey != nil) {
 			dict["streamKey"] = streamKey!

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -494,6 +494,42 @@ public final class UserService{
 	public static func notifyBan(userId: String) -> NullRequestBuilder<NotifyBanTokenizer> {
 		let request: NullRequestBuilder<NotifyBanTokenizer> = NullRequestBuilder<NotifyBanTokenizer>(service: "user", action: "notifyBan")
 			.setParam(key: "userId", value: userId)
+
+		return request
+	}
+
+	public class ReplaceUserLoginDataTokenizer: ClientTokenizer  {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+		
+		public var newLoginId: BaseTokenizedObject {
+			get {
+				return self.append("newLoginId") 
+			}
+		}
+		
+		public var existingLoginId: BaseTokenizedObject {
+			get {
+				return self.append("existingLoginId") 
+			}
+		}
+	}
+
+	public static func replaceUserLoginData(userId: String, newLoginId: String) -> RequestBuilder<User, User.UserTokenizer, ReplaceUserLoginDataTokenizer> {
+		return replaceUserLoginData(userId: userId, newLoginId: newLoginId, existingLoginId: nil)
+	}
+
+	/**  Replace a user's existing login data to a new or an existing login data   to
+	  only be used when admin impersonates a partner  */
+	public static func replaceUserLoginData(userId: String, newLoginId: String, existingLoginId: String?) -> RequestBuilder<User, User.UserTokenizer, ReplaceUserLoginDataTokenizer> {
+		let request: RequestBuilder<User, User.UserTokenizer, ReplaceUserLoginDataTokenizer> = RequestBuilder<User, User.UserTokenizer, ReplaceUserLoginDataTokenizer>(service: "user", action: "replaceUserLoginData")
+			.setParam(key: "userId", value: userId)
+			.setParam(key: "newLoginId", value: newLoginId)
+			.setParam(key: "existingLoginId", value: existingLoginId)
 
 		return request
 	}

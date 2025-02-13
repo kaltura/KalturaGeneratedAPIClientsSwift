@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -41,6 +41,7 @@ public enum ESearchEntryOrderByFieldName: String {
 	case PLAYS_LAST_30_DAYS = "plays_last_30_days"
 	case PLAYS_LAST_7_DAYS = "plays_last_7_days"
 	case RANK = "rank"
+	case RECYCLED_AT = "recycled_at"
 	case START_DATE = "start_date"
 	case UPDATED_AT = "updated_at"
 	case VIEWS = "views"

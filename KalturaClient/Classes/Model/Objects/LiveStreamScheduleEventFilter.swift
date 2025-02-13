@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,13 +36,36 @@
 open class LiveStreamScheduleEventFilter: LiveStreamScheduleEventBaseFilter {
 
 	public class LiveStreamScheduleEventFilterTokenizer: LiveStreamScheduleEventBaseFilter.LiveStreamScheduleEventBaseFilterTokenizer {
+		
+		public var sourceEntryIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryIdEqual") 
+			}
+		}
 	}
 
+	public var sourceEntryIdEqual: String? = nil
 
 
+	public func setMultiRequestToken(sourceEntryIdEqual: String) {
+		self.dict["sourceEntryIdEqual"] = sourceEntryIdEqual
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["sourceEntryIdEqual"] != nil {
+			sourceEntryIdEqual = dict["sourceEntryIdEqual"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(sourceEntryIdEqual != nil) {
+			dict["sourceEntryIdEqual"] = sourceEntryIdEqual!
+		}
+		return dict
+	}
 }
 

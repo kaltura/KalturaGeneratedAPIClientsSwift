@@ -26,12 +26,13 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileHandlerType: String {
+	case TR_RDS = "TrRdsSyncDropFolder.TR_RDS"
 	case XML = "dropFolderXmlBulkUpload.XML"
 	case ICAL = "scheduleDropFolder.ICAL"
 	case CONTENT = "1"

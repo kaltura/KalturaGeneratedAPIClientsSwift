@@ -1,6 +1,0 @@
-framework module KalturaClient {
-  umbrella header "KalturaClient.default-Metadata-umbrella.h"
-
-  export *
-  module * { export * }
-}

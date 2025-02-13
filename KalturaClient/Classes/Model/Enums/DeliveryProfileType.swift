@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,6 +35,8 @@ public enum DeliveryProfileType: String {
 	case EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP"
 	case EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP"
 	case KONTIKI_HTTP = "kontiki.KONTIKI_HTTP"
+	case UPLYNK_HTTP = "uplynk.UPLYNK_HTTP"
+	case UPLYNK_RTMP = "uplynk.UPLYNK_RTMP"
 	case VELOCIX_HDS = "velocix.VELOCIX_HDS"
 	case VELOCIX_HLS = "velocix.VELOCIX_HLS"
 	case APPLE_HTTP = "1"

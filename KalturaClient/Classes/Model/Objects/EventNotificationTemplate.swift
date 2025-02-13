@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -132,6 +132,12 @@ open class EventNotificationTemplate: ObjectBase {
 				return ArrayTokenizedObject<EventNotificationParameter.EventNotificationParameterTokenizer>(self.append("userParameters"))
 			} 
 		}
+		
+		public var eventDelayedCondition: BaseTokenizedObject {
+			get {
+				return self.append("eventDelayedCondition") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -149,7 +155,7 @@ open class EventNotificationTemplate: ObjectBase {
 	public var automaticDispatchEnabled: Bool? = nil
 	/**  Define the event that should trigger this notification  */
 	public var eventType: EventNotificationEventType? = nil
-	/**  Define the object that raied the event that should trigger this notification  */
+	/**  Define the object that raised the event that should trigger this notification  */
 	public var eventObjectType: EventNotificationEventObjectType? = nil
 	/**  Define the conditions that cause this notification to be triggered  */
 	public var eventConditions: Array<Condition>? = nil
@@ -157,6 +163,8 @@ open class EventNotificationTemplate: ObjectBase {
 	public var contentParameters: Array<EventNotificationParameter>? = nil
 	/**  Define the content dynamic parameters  */
 	public var userParameters: Array<EventNotificationParameter>? = nil
+	/**  Event batch job will be delayed until specific condition criteria is met  */
+	public var eventDelayedCondition: EventNotificationDelayedCondition? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -211,6 +219,10 @@ open class EventNotificationTemplate: ObjectBase {
 		self.dict["eventObjectType"] = eventObjectType
 	}
 	
+	public func setMultiRequestToken(eventDelayedCondition: String) {
+		self.dict["eventDelayedCondition"] = eventDelayedCondition
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -262,6 +274,9 @@ open class EventNotificationTemplate: ObjectBase {
 		if dict["userParameters"] != nil {
 			userParameters = try JSONParser.parse(array: dict["userParameters"] as! [Any])
 		}
+		if dict["eventDelayedCondition"] != nil {
+			eventDelayedCondition = EventNotificationDelayedCondition(rawValue: (dict["eventDelayedCondition"] as? Int)!)
+		}
 
 	}
 
@@ -299,6 +314,9 @@ open class EventNotificationTemplate: ObjectBase {
 		}
 		if(userParameters != nil) {
 			dict["userParameters"] = userParameters!.map { value in value.toDictionary() }
+		}
+		if(eventDelayedCondition != nil) {
+			dict["eventDelayedCondition"] = eventDelayedCondition!.rawValue
 		}
 		return dict
 	}

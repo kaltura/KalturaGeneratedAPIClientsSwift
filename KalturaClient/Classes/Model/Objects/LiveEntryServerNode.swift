@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -66,6 +66,12 @@ open class LiveEntryServerNode: EntryServerNode {
 				return self.append("featuresUpdatedAt") 
 			}
 		}
+		
+		public var viewModeUpdatedAt: BaseTokenizedObject {
+			get {
+				return self.append("viewModeUpdatedAt") 
+			}
+		}
 	}
 
 	/**  parameters of the stream we got  */
@@ -74,6 +80,7 @@ open class LiveEntryServerNode: EntryServerNode {
 	public var isPlayableUser: Bool? = nil
 	public var viewMode: ViewMode? = nil
 	public var featuresUpdatedAt: Int? = nil
+	public var viewModeUpdatedAt: Int? = nil
 
 
 	public func setMultiRequestToken(isPlayableUser: String) {
@@ -86,6 +93,10 @@ open class LiveEntryServerNode: EntryServerNode {
 	
 	public func setMultiRequestToken(featuresUpdatedAt: String) {
 		self.dict["featuresUpdatedAt"] = featuresUpdatedAt
+	}
+	
+	public func setMultiRequestToken(viewModeUpdatedAt: String) {
+		self.dict["viewModeUpdatedAt"] = viewModeUpdatedAt
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -106,6 +117,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		if dict["featuresUpdatedAt"] != nil {
 			featuresUpdatedAt = dict["featuresUpdatedAt"] as? Int
 		}
+		if dict["viewModeUpdatedAt"] != nil {
+			viewModeUpdatedAt = dict["viewModeUpdatedAt"] as? Int
+		}
 
 	}
 
@@ -125,6 +139,9 @@ open class LiveEntryServerNode: EntryServerNode {
 		}
 		if(featuresUpdatedAt != nil) {
 			dict["featuresUpdatedAt"] = featuresUpdatedAt!
+		}
+		if(viewModeUpdatedAt != nil) {
+			dict["viewModeUpdatedAt"] = viewModeUpdatedAt!
 		}
 		return dict
 	}

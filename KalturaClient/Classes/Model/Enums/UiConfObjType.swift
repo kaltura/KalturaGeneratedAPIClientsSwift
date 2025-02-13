@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -53,4 +53,6 @@ public enum UiConfObjType: Int {
 	case KSR = 19
 	case KUPLOAD = 20
 	case WEBCASTING = 21
+	case SAP = 22
+	case REELS = 23
 }

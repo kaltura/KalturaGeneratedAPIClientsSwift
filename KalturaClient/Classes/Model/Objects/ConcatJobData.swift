@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -78,6 +78,18 @@ open class ConcatJobData: JobData {
 				return self.append("shouldSort") 
 			}
 		}
+		
+		public var conversionCommands: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("conversionCommands"))
+			} 
+		}
+		
+		public var multiSource: BaseTokenizedObject {
+			get {
+				return self.append("multiSource") 
+			}
+		}
 	}
 
 	/**  Source files to be concatenated  */
@@ -94,6 +106,9 @@ open class ConcatJobData: JobData {
 	public var concatenatedDuration: Double? = nil
 	/**  Should Sort the clip parts  */
 	public var shouldSort: Bool? = nil
+	/**  conversion commands to be applied to source files  */
+	public var conversionCommands: Array<StringHolder>? = nil
+	public var multiSource: Bool? = nil
 
 
 	public func setMultiRequestToken(destFilePath: String) {
@@ -120,6 +135,10 @@ open class ConcatJobData: JobData {
 		self.dict["shouldSort"] = shouldSort
 	}
 	
+	public func setMultiRequestToken(multiSource: String) {
+		self.dict["multiSource"] = multiSource
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -143,6 +162,12 @@ open class ConcatJobData: JobData {
 		}
 		if dict["shouldSort"] != nil {
 			shouldSort = dict["shouldSort"] as? Bool
+		}
+		if dict["conversionCommands"] != nil {
+			conversionCommands = try JSONParser.parse(array: dict["conversionCommands"] as! [Any])
+		}
+		if dict["multiSource"] != nil {
+			multiSource = dict["multiSource"] as? Bool
 		}
 
 	}
@@ -169,6 +194,12 @@ open class ConcatJobData: JobData {
 		}
 		if(shouldSort != nil) {
 			dict["shouldSort"] = shouldSort!
+		}
+		if(conversionCommands != nil) {
+			dict["conversionCommands"] = conversionCommands!.map { value in value.toDictionary() }
+		}
+		if(multiSource != nil) {
+			dict["multiSource"] = multiSource!
 		}
 		return dict
 	}

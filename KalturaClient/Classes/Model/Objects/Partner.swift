@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -313,6 +313,18 @@ open class Partner: ObjectBase {
 			}
 		}
 		
+		public var useTwoFactorAuthentication: BaseTokenizedObject {
+			get {
+				return self.append("useTwoFactorAuthentication") 
+			}
+		}
+		
+		public var useSso: BaseTokenizedObject {
+			get {
+				return self.append("useSso") 
+			}
+		}
+		
 		public var blockDirectLogin: BaseTokenizedObject {
 			get {
 				return self.append("blockDirectLogin") 
@@ -522,6 +534,24 @@ open class Partner: ObjectBase {
 				return self.append("verticalClassificationId") 
 			}
 		}
+		
+		public var recycleBinRetentionPeriod: BaseTokenizedObject {
+			get {
+				return self.append("recycleBinRetentionPeriod") 
+			}
+		}
+		
+		public var customAnalyticsDomain: BaseTokenizedObject {
+			get {
+				return self.append("customAnalyticsDomain") 
+			}
+		}
+		
+		public var allowedEmailDomainsForAdmins: BaseTokenizedObject {
+			get {
+				return self.append("allowedEmailDomainsForAdmins") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -575,6 +605,8 @@ open class Partner: ObjectBase {
 	public var embedCodeTypes: Array<PlayerEmbedCodeType>? = nil
 	public var templatePartnerId: Int? = nil
 	public var ignoreSeoLinks: Bool? = nil
+	public var useTwoFactorAuthentication: Bool? = nil
+	public var useSso: Bool? = nil
 	public var blockDirectLogin: Bool? = nil
 	public var host: String? = nil
 	public var cdnHost: String? = nil
@@ -611,6 +643,9 @@ open class Partner: ObjectBase {
 	public var excludedAdminRoleName: String? = nil
 	public var eventPlatformAllowedTemplates: String? = nil
 	public var verticalClassificationId: Int? = nil
+	public var recycleBinRetentionPeriod: Int? = nil
+	public var customAnalyticsDomain: String? = nil
+	public var allowedEmailDomainsForAdmins: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -785,6 +820,14 @@ open class Partner: ObjectBase {
 		self.dict["ignoreSeoLinks"] = ignoreSeoLinks
 	}
 	
+	public func setMultiRequestToken(useTwoFactorAuthentication: String) {
+		self.dict["useTwoFactorAuthentication"] = useTwoFactorAuthentication
+	}
+	
+	public func setMultiRequestToken(useSso: String) {
+		self.dict["useSso"] = useSso
+	}
+	
 	public func setMultiRequestToken(blockDirectLogin: String) {
 		self.dict["blockDirectLogin"] = blockDirectLogin
 	}
@@ -915,6 +958,18 @@ open class Partner: ObjectBase {
 	
 	public func setMultiRequestToken(verticalClassificationId: String) {
 		self.dict["verticalClassificationId"] = verticalClassificationId
+	}
+	
+	public func setMultiRequestToken(recycleBinRetentionPeriod: String) {
+		self.dict["recycleBinRetentionPeriod"] = recycleBinRetentionPeriod
+	}
+	
+	public func setMultiRequestToken(customAnalyticsDomain: String) {
+		self.dict["customAnalyticsDomain"] = customAnalyticsDomain
+	}
+	
+	public func setMultiRequestToken(allowedEmailDomainsForAdmins: String) {
+		self.dict["allowedEmailDomainsForAdmins"] = allowedEmailDomainsForAdmins
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -1058,6 +1113,12 @@ open class Partner: ObjectBase {
 		if dict["ignoreSeoLinks"] != nil {
 			ignoreSeoLinks = dict["ignoreSeoLinks"] as? Bool
 		}
+		if dict["useTwoFactorAuthentication"] != nil {
+			useTwoFactorAuthentication = dict["useTwoFactorAuthentication"] as? Bool
+		}
+		if dict["useSso"] != nil {
+			useSso = dict["useSso"] as? Bool
+		}
 		if dict["blockDirectLogin"] != nil {
 			blockDirectLogin = dict["blockDirectLogin"] as? Bool
 		}
@@ -1163,6 +1224,15 @@ open class Partner: ObjectBase {
 		if dict["verticalClassificationId"] != nil {
 			verticalClassificationId = dict["verticalClassificationId"] as? Int
 		}
+		if dict["recycleBinRetentionPeriod"] != nil {
+			recycleBinRetentionPeriod = dict["recycleBinRetentionPeriod"] as? Int
+		}
+		if dict["customAnalyticsDomain"] != nil {
+			customAnalyticsDomain = dict["customAnalyticsDomain"] as? String
+		}
+		if dict["allowedEmailDomainsForAdmins"] != nil {
+			allowedEmailDomainsForAdmins = dict["allowedEmailDomainsForAdmins"] as? String
+		}
 
 	}
 
@@ -1258,6 +1328,12 @@ open class Partner: ObjectBase {
 		if(additionalParams != nil) {
 			dict["additionalParams"] = additionalParams!.map { value in value.toDictionary() }
 		}
+		if(useSso != nil) {
+			dict["useSso"] = useSso!
+		}
+		if(blockDirectLogin != nil) {
+			dict["blockDirectLogin"] = blockDirectLogin!
+		}
 		if(partnerParentId != nil) {
 			dict["partnerParentId"] = partnerParentId!
 		}
@@ -1290,6 +1366,12 @@ open class Partner: ObjectBase {
 		}
 		if(eventPlatformAllowedTemplates != nil) {
 			dict["eventPlatformAllowedTemplates"] = eventPlatformAllowedTemplates!
+		}
+		if(customAnalyticsDomain != nil) {
+			dict["customAnalyticsDomain"] = customAnalyticsDomain!
+		}
+		if(allowedEmailDomainsForAdmins != nil) {
+			dict["allowedEmailDomainsForAdmins"] = allowedEmailDomainsForAdmins!
 		}
 		return dict
 	}

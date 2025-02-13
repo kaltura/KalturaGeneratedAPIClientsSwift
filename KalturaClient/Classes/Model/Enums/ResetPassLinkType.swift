@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,4 +35,6 @@ public enum ResetPassLinkType: String {
 	case KMC = "1"
 	case KMS = "2"
 	case KME = "3"
+	case EP = "4"
+	case KME_NR = "5"
 }

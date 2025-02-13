@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -60,6 +60,12 @@ open class ViewHistoryUserEntry: UserEntry {
 				return self.append("playlistLastEntryId") 
 			}
 		}
+		
+		public var extendedStatus: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatus") 
+			}
+		}
 	}
 
 	/**  Playback context  */
@@ -69,6 +75,7 @@ open class ViewHistoryUserEntry: UserEntry {
 	public var lastUpdateTime: Int? = nil
 	/**  Property to save last entry ID played in a playlist.  */
 	public var playlistLastEntryId: String? = nil
+	public var extendedStatus: UserEntryExtendedStatus? = nil
 
 
 	public func setMultiRequestToken(playbackContext: String) {
@@ -87,6 +94,10 @@ open class ViewHistoryUserEntry: UserEntry {
 		self.dict["playlistLastEntryId"] = playlistLastEntryId
 	}
 	
+	public func setMultiRequestToken(extendedStatus: String) {
+		self.dict["extendedStatus"] = extendedStatus
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -101,6 +112,9 @@ open class ViewHistoryUserEntry: UserEntry {
 		}
 		if dict["playlistLastEntryId"] != nil {
 			playlistLastEntryId = dict["playlistLastEntryId"] as? String
+		}
+		if dict["extendedStatus"] != nil {
+			extendedStatus = UserEntryExtendedStatus(rawValue: "\(dict["extendedStatus"]!)")
 		}
 
 	}
@@ -118,6 +132,9 @@ open class ViewHistoryUserEntry: UserEntry {
 		}
 		if(playlistLastEntryId != nil) {
 			dict["playlistLastEntryId"] = playlistLastEntryId!
+		}
+		if(extendedStatus != nil) {
+			dict["extendedStatus"] = extendedStatus!.rawValue
 		}
 		return dict
 	}

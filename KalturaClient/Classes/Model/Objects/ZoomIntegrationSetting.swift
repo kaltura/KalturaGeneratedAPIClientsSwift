@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -73,12 +73,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 			}
 		}
 		
-		public var jwtToken: BaseTokenizedObject {
-			get {
-				return self.append("jwtToken") 
-			}
-		}
-		
 		public var enableZoomTranscription: BaseTokenizedObject {
 			get {
 				return self.append("enableZoomTranscription") 
@@ -108,6 +102,18 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 				return self.append("groupParticipationType") 
 			}
 		}
+		
+		public var handleCohostsMode: BaseTokenizedObject {
+			get {
+				return self.append("handleCohostsMode") 
+			}
+		}
+		
+		public var handleAlternativeHostsMode: BaseTokenizedObject {
+			get {
+				return self.append("handleAlternativeHostsMode") 
+			}
+		}
 	}
 
 	public var zoomCategory: String? = nil
@@ -116,12 +122,13 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	public var zoomUserPostfix: String? = nil
 	public var zoomWebinarCategory: String? = nil
 	public var enableWebinarUploads: Bool? = nil
-	public var jwtToken: String? = nil
 	public var enableZoomTranscription: Bool? = nil
 	public var zoomAccountDescription: String? = nil
 	public var optOutGroupNames: String? = nil
 	public var optInGroupNames: String? = nil
 	public var groupParticipationType: ZoomGroupParticipationType? = nil
+	public var handleCohostsMode: HandleParticipantsMode? = nil
+	public var handleAlternativeHostsMode: HandleParticipantsMode? = nil
 
 
 	public func setMultiRequestToken(zoomCategory: String) {
@@ -148,10 +155,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		self.dict["enableWebinarUploads"] = enableWebinarUploads
 	}
 	
-	public func setMultiRequestToken(jwtToken: String) {
-		self.dict["jwtToken"] = jwtToken
-	}
-	
 	public func setMultiRequestToken(enableZoomTranscription: String) {
 		self.dict["enableZoomTranscription"] = enableZoomTranscription
 	}
@@ -170,6 +173,14 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	
 	public func setMultiRequestToken(groupParticipationType: String) {
 		self.dict["groupParticipationType"] = groupParticipationType
+	}
+	
+	public func setMultiRequestToken(handleCohostsMode: String) {
+		self.dict["handleCohostsMode"] = handleCohostsMode
+	}
+	
+	public func setMultiRequestToken(handleAlternativeHostsMode: String) {
+		self.dict["handleAlternativeHostsMode"] = handleAlternativeHostsMode
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -193,9 +204,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		if dict["enableWebinarUploads"] != nil {
 			enableWebinarUploads = dict["enableWebinarUploads"] as? Bool
 		}
-		if dict["jwtToken"] != nil {
-			jwtToken = dict["jwtToken"] as? String
-		}
 		if dict["enableZoomTranscription"] != nil {
 			enableZoomTranscription = dict["enableZoomTranscription"] as? Bool
 		}
@@ -210,6 +218,12 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if dict["groupParticipationType"] != nil {
 			groupParticipationType = ZoomGroupParticipationType(rawValue: (dict["groupParticipationType"] as? Int)!)
+		}
+		if dict["handleCohostsMode"] != nil {
+			handleCohostsMode = HandleParticipantsMode(rawValue: (dict["handleCohostsMode"] as? Int)!)
+		}
+		if dict["handleAlternativeHostsMode"] != nil {
+			handleAlternativeHostsMode = HandleParticipantsMode(rawValue: (dict["handleAlternativeHostsMode"] as? Int)!)
 		}
 
 	}
@@ -234,9 +248,6 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		if(enableWebinarUploads != nil) {
 			dict["enableWebinarUploads"] = enableWebinarUploads!
 		}
-		if(jwtToken != nil) {
-			dict["jwtToken"] = jwtToken!
-		}
 		if(enableZoomTranscription != nil) {
 			dict["enableZoomTranscription"] = enableZoomTranscription!
 		}
@@ -251,6 +262,12 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if(groupParticipationType != nil) {
 			dict["groupParticipationType"] = groupParticipationType!.rawValue
+		}
+		if(handleCohostsMode != nil) {
+			dict["handleCohostsMode"] = handleCohostsMode!.rawValue
+		}
+		if(handleAlternativeHostsMode != nil) {
+			dict["handleAlternativeHostsMode"] = handleAlternativeHostsMode!.rawValue
 		}
 		return dict
 	}

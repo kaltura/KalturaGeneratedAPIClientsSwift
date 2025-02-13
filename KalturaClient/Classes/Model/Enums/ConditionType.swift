@@ -26,12 +26,13 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType: String {
+	case ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark"
 	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
 	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
 	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"

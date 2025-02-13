@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -35,4 +35,5 @@ public enum UserEntryStatus: String {
 	case QUIZ_SUBMITTED = "quiz.3"
 	case ACTIVE = "1"
 	case DELETED = "2"
+	case RECYCLED = "3"
 }

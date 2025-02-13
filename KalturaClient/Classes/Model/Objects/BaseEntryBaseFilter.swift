@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -534,6 +534,12 @@ open class BaseEntryBaseFilter: RelatedFilter {
 				return self.append("displayInSearchEqual") 
 			}
 		}
+		
+		public var displayInSearchIn: BaseTokenizedObject {
+			get {
+				return self.append("displayInSearchIn") 
+			}
+		}
 	}
 
 	/**  This filter should be in use for retrieving only a specific entry (identified by
@@ -684,6 +690,7 @@ open class BaseEntryBaseFilter: RelatedFilter {
 	public var tagsAdminTagsMultiLikeAnd: String? = nil
 	public var tagsAdminTagsNameMultiLikeAnd: String? = nil
 	public var displayInSearchEqual: EntryDisplayInSearchType? = nil
+	public var displayInSearchIn: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -1018,6 +1025,10 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		self.dict["displayInSearchEqual"] = displayInSearchEqual
 	}
 	
+	public func setMultiRequestToken(displayInSearchIn: String) {
+		self.dict["displayInSearchIn"] = displayInSearchIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1269,6 +1280,9 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if dict["displayInSearchEqual"] != nil {
 			displayInSearchEqual = EntryDisplayInSearchType(rawValue: (dict["displayInSearchEqual"] as? Int)!)
+		}
+		if dict["displayInSearchIn"] != nil {
+			displayInSearchIn = dict["displayInSearchIn"] as? String
 		}
 
 	}
@@ -1523,6 +1537,9 @@ open class BaseEntryBaseFilter: RelatedFilter {
 		}
 		if(displayInSearchEqual != nil) {
 			dict["displayInSearchEqual"] = displayInSearchEqual!.rawValue
+		}
+		if(displayInSearchIn != nil) {
+			dict["displayInSearchIn"] = displayInSearchIn!
 		}
 		return dict
 	}

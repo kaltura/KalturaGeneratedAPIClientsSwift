@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -42,13 +42,24 @@ open class VendorCatalogItemFilter: VendorCatalogItemBaseFilter {
 				return self.append("partnerIdEqual") 
 			}
 		}
+		
+		public var catalogItemIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("catalogItemIdEqual") 
+			}
+		}
 	}
 
 	public var partnerIdEqual: Int? = nil
+	public var catalogItemIdEqual: Int? = nil
 
 
 	public func setMultiRequestToken(partnerIdEqual: String) {
 		self.dict["partnerIdEqual"] = partnerIdEqual
+	}
+	
+	public func setMultiRequestToken(catalogItemIdEqual: String) {
+		self.dict["catalogItemIdEqual"] = catalogItemIdEqual
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class VendorCatalogItemFilter: VendorCatalogItemBaseFilter {
 		if dict["partnerIdEqual"] != nil {
 			partnerIdEqual = dict["partnerIdEqual"] as? Int
 		}
+		if dict["catalogItemIdEqual"] != nil {
+			catalogItemIdEqual = dict["catalogItemIdEqual"] as? Int
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class VendorCatalogItemFilter: VendorCatalogItemBaseFilter {
 		var dict: [String: Any] = super.toDictionary()
 		if(partnerIdEqual != nil) {
 			dict["partnerIdEqual"] = partnerIdEqual!
+		}
+		if(catalogItemIdEqual != nil) {
+			dict["catalogItemIdEqual"] = catalogItemIdEqual!
 		}
 		return dict
 	}

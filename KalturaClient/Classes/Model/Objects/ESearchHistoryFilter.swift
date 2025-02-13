@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -48,10 +48,20 @@ open class ESearchHistoryFilter: ESearchBaseFilter {
 				return self.append("searchedObjectIn") 
 			}
 		}
+		
+		public func timestampRange<T: ESearchRange.ESearchRangeTokenizer>() -> T {
+			return T(self.append("timestampRange"))
+		}
+		
+		public func aggregation<T: ESearchHistoryAggregationItem.ESearchHistoryAggregationItemTokenizer>() -> T {
+			return T(self.append("aggregation"))
+		}
 	}
 
 	public var searchTermStartsWith: String? = nil
 	public var searchedObjectIn: String? = nil
+	public var timestampRange: ESearchRange? = nil
+	public var aggregation: ESearchHistoryAggregationItem? = nil
 
 
 	public func setMultiRequestToken(searchTermStartsWith: String) {
@@ -71,6 +81,10 @@ open class ESearchHistoryFilter: ESearchBaseFilter {
 		if dict["searchedObjectIn"] != nil {
 			searchedObjectIn = dict["searchedObjectIn"] as? String
 		}
+		if dict["timestampRange"] != nil {
+		timestampRange = try JSONParser.parse(object: dict["timestampRange"] as! [String: Any])		}
+		if dict["aggregation"] != nil {
+		aggregation = try JSONParser.parse(object: dict["aggregation"] as! [String: Any])		}
 
 	}
 
@@ -81,6 +95,12 @@ open class ESearchHistoryFilter: ESearchBaseFilter {
 		}
 		if(searchedObjectIn != nil) {
 			dict["searchedObjectIn"] = searchedObjectIn!
+		}
+		if(timestampRange != nil) {
+			dict["timestampRange"] = timestampRange!.toDictionary()
+		}
+		if(aggregation != nil) {
+			dict["aggregation"] = aggregation!.toDictionary()
 		}
 		return dict
 	}

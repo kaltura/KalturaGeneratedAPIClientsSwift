@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -180,6 +180,10 @@ open class UiConf: ObjectBase {
 				return self.append("partnerTags") 
 			}
 		}
+		
+		public func v2Redirect<T: UiConfV2Redirect.UiConfV2RedirectTokenizer>() -> T {
+			return T(self.append("v2Redirect"))
+		}
 	}
 
 	public var id: Int? = nil
@@ -210,6 +214,7 @@ open class UiConf: ObjectBase {
 	/**  UiConf version  */
 	public var version: String? = nil
 	public var partnerTags: String? = nil
+	public var v2Redirect: UiConfV2Redirect? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -383,6 +388,8 @@ open class UiConf: ObjectBase {
 		if dict["partnerTags"] != nil {
 			partnerTags = dict["partnerTags"] as? String
 		}
+		if dict["v2Redirect"] != nil {
+		v2Redirect = try JSONParser.parse(object: dict["v2Redirect"] as! [String: Any])		}
 
 	}
 
@@ -438,6 +445,9 @@ open class UiConf: ObjectBase {
 		}
 		if(partnerTags != nil) {
 			dict["partnerTags"] = partnerTags!
+		}
+		if(v2Redirect != nil) {
+			dict["v2Redirect"] = v2Redirect!.toDictionary()
 		}
 		return dict
 	}

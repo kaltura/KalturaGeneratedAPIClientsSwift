@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -34,6 +34,7 @@
 public enum ESearchEntryFieldName: String {
 	case ACCESS_CONTROL_ID = "access_control_id"
 	case ADMIN_TAGS = "admin_tags"
+	case BROADCAST_ENTRY_ID = "broadcast_entry_id"
 	case CAPTIONS_CONTENT = "captions_content"
 	case CONVERSION_PROFILE_ID = "conversion_profile_id"
 	case CREATED_AT = "created_at"
@@ -62,8 +63,10 @@ public enum ESearchEntryFieldName: String {
 	case PUSH_PUBLISH = "push_publish"
 	case RANK = "rank"
 	case RECORDED_ENTRY_ID = "recorded_entry_id"
+	case RECYCLED_AT = "recycled_at"
 	case REDIRECT_ENTRY_ID = "redirect_entry_id"
 	case REFERENCE_ID = "reference_id"
+	case ROOM_TYPE = "room_type"
 	case ROOT_ID = "root_id"
 	case SITE_URL = "site_url"
 	case SOURCE_TYPE = "source_type"

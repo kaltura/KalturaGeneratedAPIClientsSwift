@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -84,12 +84,6 @@ open class UserEntry: ObjectBase {
 				return self.append("type") 
 			}
 		}
-		
-		public var extendedStatus: BaseTokenizedObject {
-			get {
-				return self.append("extendedStatus") 
-			}
-		}
 	}
 
 	/**  unique auto-generated identifier  */
@@ -101,7 +95,6 @@ open class UserEntry: ObjectBase {
 	public var createdAt: Int? = nil
 	public var updatedAt: Int? = nil
 	public var type: UserEntryType? = nil
-	public var extendedStatus: UserEntryExtendedStatus? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -136,10 +129,6 @@ open class UserEntry: ObjectBase {
 		self.dict["type"] = type
 	}
 	
-	public func setMultiRequestToken(extendedStatus: String) {
-		self.dict["extendedStatus"] = extendedStatus
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -167,9 +156,6 @@ open class UserEntry: ObjectBase {
 		if dict["type"] != nil {
 			type = UserEntryType(rawValue: "\(dict["type"]!)")
 		}
-		if dict["extendedStatus"] != nil {
-			extendedStatus = UserEntryExtendedStatus(rawValue: "\(dict["extendedStatus"]!)")
-		}
 
 	}
 
@@ -180,9 +166,6 @@ open class UserEntry: ObjectBase {
 		}
 		if(userId != nil) {
 			dict["userId"] = userId!
-		}
-		if(extendedStatus != nil) {
-			dict["extendedStatus"] = extendedStatus!.rawValue
 		}
 		return dict
 	}

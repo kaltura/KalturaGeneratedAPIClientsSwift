@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -108,6 +108,12 @@ open class CaptionAsset: Asset {
 				return self.append("associatedTranscriptIds") 
 			}
 		}
+		
+		public var usage: BaseTokenizedObject {
+			get {
+				return self.append("usage") 
+			}
+		}
 	}
 
 	/**  The Caption Params used to create this Caption Asset  */
@@ -134,6 +140,8 @@ open class CaptionAsset: Asset {
 	public var displayOnPlayer: Bool? = nil
 	/**  List of associated transcript asset id's, comma separated  */
 	public var associatedTranscriptIds: String? = nil
+	/**  The usage of the asset  */
+	public var usage: CaptionAssetUsage? = nil
 
 
 	public func setMultiRequestToken(captionParamsId: String) {
@@ -184,6 +192,10 @@ open class CaptionAsset: Asset {
 		self.dict["associatedTranscriptIds"] = associatedTranscriptIds
 	}
 	
+	public func setMultiRequestToken(usage: String) {
+		self.dict["usage"] = usage
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -223,6 +235,9 @@ open class CaptionAsset: Asset {
 		if dict["associatedTranscriptIds"] != nil {
 			associatedTranscriptIds = dict["associatedTranscriptIds"] as? String
 		}
+		if dict["usage"] != nil {
+			usage = CaptionAssetUsage(rawValue: "\(dict["usage"]!)")
+		}
 
 	}
 
@@ -257,6 +272,9 @@ open class CaptionAsset: Asset {
 		}
 		if(associatedTranscriptIds != nil) {
 			dict["associatedTranscriptIds"] = associatedTranscriptIds!
+		}
+		if(usage != nil) {
+			dict["usage"] = usage!.rawValue
 		}
 		return dict
 	}

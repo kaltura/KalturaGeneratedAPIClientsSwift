@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -34,4 +34,5 @@
 public enum ObjectFilterEngineType: String {
 	case ENTRY = "1"
 	case ENTRY_VENDOR_TASK = "2"
+	case RECYCLE_BIN_CLEANUP = "3"
 }

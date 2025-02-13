@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -110,6 +110,7 @@ public enum Language: String {
 	case BIN = "Bini"
 	case BPY = "Bishnupriya Manipuri"
 	case BI = "Bislama"
+	case BS = "Bosnian"
 	case BR = "Breton"
 	case BUG = "Buginese"
 	case BG = "Bulgarian"
@@ -174,6 +175,7 @@ public enum Language: String {
 	case EGL = "Emilian"
 	case EN = "English"
 	case EN_US = "English (American)"
+	case EN_AU = "English (Australian)"
 	case EN_GB = "English (British)"
 	case ENM = "English Middle (1100-1500)"
 	case MYV = "Erzya"
@@ -227,7 +229,7 @@ public enum Language: String {
 	case HNI = "Hani"
 	case HA = "Hausa"
 	case HAW = "Hawaiian"
-	case IW = "Hebrew"
+	case HE = "Hebrew"
 	case HEI = "Heiltsuk"
 	case HID = "Hidatsa"
 	case HIL = "Hiligaynon"
@@ -420,6 +422,7 @@ public enum Language: String {
 	case PS = "Pashto (Pushto)"
 	case PRP = "Persian"
 	case PRS = "Persian (Dari)"
+	case FA_IR = "Persian (Iran)"
 	case PFL = "Pfaelzisch"
 	case PCD = "Picard"
 	case PMS = "Piedmontese"
@@ -487,6 +490,7 @@ public enum Language: String {
 	case SID = "Sidamo"
 	case BLA = "Siksika"
 	case SZL = "Silesian"
+	case ZH_CN = "Simplified Chinese"
 	case SD = "Sindhi"
 	case SI = "Sinhalese"
 	case SS = "Siswati"
@@ -494,6 +498,7 @@ public enum Language: String {
 	case SCS = "Slavey North"
 	case XSL = "Slavey South"
 	case SK = "Slovak"
+	case SK_SK = "Slovakian"
 	case SL = "Slovenian"
 	case SO = "Somali"
 	case SNK = "Soninke"
@@ -549,6 +554,7 @@ public enum Language: String {
 	case TPI = "Tok Pisin"
 	case TO = "Tonga"
 	case TOG = "Tonga (Nyasa)"
+	case ZH_HK = "Traditional Chinese"
 	case DDO = "Tsez"
 	case TSI = "Tsimshian"
 	case TS = "Tsonga"
@@ -591,7 +597,7 @@ public enum Language: String {
 	case WYM = "Wymysorys"
 	case XH = "Xhosa"
 	case AME = "Yanesha"
-	case JI = "Yiddish"
+	case YI = "Yiddish"
 	case YO = "Yoruba"
 	case ZAI = "Zapotec Isthmus"
 	case DJE = "Zarma"

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -118,6 +118,54 @@ open class VendorCatalogItem: ObjectBase {
 				return self.append("allowResubmission") 
 			}
 		}
+		
+		public var vendorData: BaseTokenizedObject {
+			get {
+				return self.append("vendorData") 
+			}
+		}
+		
+		public var stage: BaseTokenizedObject {
+			get {
+				return self.append("stage") 
+			}
+		}
+		
+		public var lastBulkUpdateId: BaseTokenizedObject {
+			get {
+				return self.append("lastBulkUpdateId") 
+			}
+		}
+		
+		public var contract: BaseTokenizedObject {
+			get {
+				return self.append("contract") 
+			}
+		}
+		
+		public var createdBy: BaseTokenizedObject {
+			get {
+				return self.append("createdBy") 
+			}
+		}
+		
+		public var notes: BaseTokenizedObject {
+			get {
+				return self.append("notes") 
+			}
+		}
+		
+		public var partnerId: BaseTokenizedObject {
+			get {
+				return self.append("partnerId") 
+			}
+		}
+		
+		public var adminTagsToExclude: BaseTokenizedObject {
+			get {
+				return self.append("adminTagsToExclude") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -136,6 +184,14 @@ open class VendorCatalogItem: ObjectBase {
 	public var engineType: ReachVendorEngineType? = nil
 	public var sourceLanguage: CatalogItemLanguage? = nil
 	public var allowResubmission: Bool? = nil
+	public var vendorData: String? = nil
+	public var stage: VendorCatalogItemStage? = nil
+	public var lastBulkUpdateId: Int? = nil
+	public var contract: String? = nil
+	public var createdBy: String? = nil
+	public var notes: String? = nil
+	public var partnerId: Int? = nil
+	public var adminTagsToExclude: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -190,6 +246,38 @@ open class VendorCatalogItem: ObjectBase {
 		self.dict["allowResubmission"] = allowResubmission
 	}
 	
+	public func setMultiRequestToken(vendorData: String) {
+		self.dict["vendorData"] = vendorData
+	}
+	
+	public func setMultiRequestToken(stage: String) {
+		self.dict["stage"] = stage
+	}
+	
+	public func setMultiRequestToken(lastBulkUpdateId: String) {
+		self.dict["lastBulkUpdateId"] = lastBulkUpdateId
+	}
+	
+	public func setMultiRequestToken(contract: String) {
+		self.dict["contract"] = contract
+	}
+	
+	public func setMultiRequestToken(createdBy: String) {
+		self.dict["createdBy"] = createdBy
+	}
+	
+	public func setMultiRequestToken(notes: String) {
+		self.dict["notes"] = notes
+	}
+	
+	public func setMultiRequestToken(partnerId: String) {
+		self.dict["partnerId"] = partnerId
+	}
+	
+	public func setMultiRequestToken(adminTagsToExclude: String) {
+		self.dict["adminTagsToExclude"] = adminTagsToExclude
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -234,6 +322,30 @@ open class VendorCatalogItem: ObjectBase {
 		if dict["allowResubmission"] != nil {
 			allowResubmission = dict["allowResubmission"] as? Bool
 		}
+		if dict["vendorData"] != nil {
+			vendorData = dict["vendorData"] as? String
+		}
+		if dict["stage"] != nil {
+			stage = VendorCatalogItemStage(rawValue: (dict["stage"] as? Int)!)
+		}
+		if dict["lastBulkUpdateId"] != nil {
+			lastBulkUpdateId = dict["lastBulkUpdateId"] as? Int
+		}
+		if dict["contract"] != nil {
+			contract = dict["contract"] as? String
+		}
+		if dict["createdBy"] != nil {
+			createdBy = dict["createdBy"] as? String
+		}
+		if dict["notes"] != nil {
+			notes = dict["notes"] as? String
+		}
+		if dict["partnerId"] != nil {
+			partnerId = dict["partnerId"] as? Int
+		}
+		if dict["adminTagsToExclude"] != nil {
+			adminTagsToExclude = dict["adminTagsToExclude"] as? String
+		}
 
 	}
 
@@ -265,6 +377,30 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if(allowResubmission != nil) {
 			dict["allowResubmission"] = allowResubmission!
+		}
+		if(vendorData != nil) {
+			dict["vendorData"] = vendorData!
+		}
+		if(stage != nil) {
+			dict["stage"] = stage!.rawValue
+		}
+		if(lastBulkUpdateId != nil) {
+			dict["lastBulkUpdateId"] = lastBulkUpdateId!
+		}
+		if(contract != nil) {
+			dict["contract"] = contract!
+		}
+		if(createdBy != nil) {
+			dict["createdBy"] = createdBy!
+		}
+		if(notes != nil) {
+			dict["notes"] = notes!
+		}
+		if(partnerId != nil) {
+			dict["partnerId"] = partnerId!
+		}
+		if(adminTagsToExclude != nil) {
+			dict["adminTagsToExclude"] = adminTagsToExclude!
 		}
 		return dict
 	}

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -40,6 +40,12 @@ open class TagFilter: Filter {
 		public var objectTypeEqual: BaseTokenizedObject {
 			get {
 				return self.append("objectTypeEqual") 
+			}
+		}
+		
+		public var objectTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("objectTypeIn") 
 			}
 		}
 		
@@ -69,6 +75,7 @@ open class TagFilter: Filter {
 	}
 
 	public var objectTypeEqual: TaggedObjectType? = nil
+	public var objectTypeIn: String? = nil
 	public var tagEqual: String? = nil
 	public var tagStartsWith: String? = nil
 	public var instanceCountEqual: Int? = nil
@@ -77,6 +84,10 @@ open class TagFilter: Filter {
 
 	public func setMultiRequestToken(objectTypeEqual: String) {
 		self.dict["objectTypeEqual"] = objectTypeEqual
+	}
+	
+	public func setMultiRequestToken(objectTypeIn: String) {
+		self.dict["objectTypeIn"] = objectTypeIn
 	}
 	
 	public func setMultiRequestToken(tagEqual: String) {
@@ -101,6 +112,9 @@ open class TagFilter: Filter {
 		if dict["objectTypeEqual"] != nil {
 			objectTypeEqual = TaggedObjectType(rawValue: "\(dict["objectTypeEqual"]!)")
 		}
+		if dict["objectTypeIn"] != nil {
+			objectTypeIn = dict["objectTypeIn"] as? String
+		}
 		if dict["tagEqual"] != nil {
 			tagEqual = dict["tagEqual"] as? String
 		}
@@ -120,6 +134,9 @@ open class TagFilter: Filter {
 		var dict: [String: Any] = super.toDictionary()
 		if(objectTypeEqual != nil) {
 			dict["objectTypeEqual"] = objectTypeEqual!.rawValue
+		}
+		if(objectTypeIn != nil) {
+			dict["objectTypeIn"] = objectTypeIn!
 		}
 		if(tagEqual != nil) {
 			dict["tagEqual"] = tagEqual!

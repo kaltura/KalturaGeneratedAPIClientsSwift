@@ -26,13 +26,14 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobType: String {
 	case CONVERT = "0"
+	case REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler"
 	case CONVERT_CAPTION_ASSET = "caption.convertcaptionasset"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
 	case PARSE_CAPTION_ASSET = "captionSearch.parseCaptionAsset"
@@ -50,6 +51,7 @@ public enum BatchJobType: String {
 	case ENTRY_VENDOR_TASK_CSV = "reach.EntryVendorTasksCsv"
 	case SYNC_REACH_CREDIT_TASK = "reach.SyncReachCreditTask"
 	case SCHEDULED_TASK = "scheduledTask.ScheduledTask"
+	case SEARCH_TERM_CSV = "searchHistory.searchTermsCsv"
 	case INDEX_TAGS = "tagSearch.IndexTagsByPrivacyContext"
 	case TAG_RESOLVE = "tagSearch.TagResolve"
 	case VIRUS_SCAN = "virusScan.VirusScan"
@@ -106,4 +108,5 @@ public enum BatchJobType: String {
 	case STORAGE_PERIODIC_PURGE = "54"
 	case STORAGE_PERIODIC_DELETE_LOCAL = "55"
 	case REACH_JOB_CLEANER = "56"
+	case MULTI_CLIP_CONCAT = "57"
 }

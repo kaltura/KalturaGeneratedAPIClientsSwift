@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -66,6 +66,18 @@ open class LiveCaptionFeature: LiveFeature {
 				return self.append("inputDelay") 
 			}
 		}
+		
+		public var captionFormat: BaseTokenizedObject {
+			get {
+				return self.append("captionFormat") 
+			}
+		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
 	}
 
 	public var mediaUrl: String? = nil
@@ -73,6 +85,8 @@ open class LiveCaptionFeature: LiveFeature {
 	public var captionUrl: String? = nil
 	public var captionToken: String? = nil
 	public var inputDelay: Int? = nil
+	public var captionFormat: String? = nil
+	public var language: String? = nil
 
 
 	public func setMultiRequestToken(mediaUrl: String) {
@@ -95,6 +109,14 @@ open class LiveCaptionFeature: LiveFeature {
 		self.dict["inputDelay"] = inputDelay
 	}
 	
+	public func setMultiRequestToken(captionFormat: String) {
+		self.dict["captionFormat"] = captionFormat
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -112,6 +134,12 @@ open class LiveCaptionFeature: LiveFeature {
 		}
 		if dict["inputDelay"] != nil {
 			inputDelay = dict["inputDelay"] as? Int
+		}
+		if dict["captionFormat"] != nil {
+			captionFormat = dict["captionFormat"] as? String
+		}
+		if dict["language"] != nil {
+			language = dict["language"] as? String
 		}
 
 	}
@@ -132,6 +160,12 @@ open class LiveCaptionFeature: LiveFeature {
 		}
 		if(inputDelay != nil) {
 			dict["inputDelay"] = inputDelay!
+		}
+		if(captionFormat != nil) {
+			dict["captionFormat"] = captionFormat!
+		}
+		if(language != nil) {
+			dict["language"] = language!
 		}
 		return dict
 	}

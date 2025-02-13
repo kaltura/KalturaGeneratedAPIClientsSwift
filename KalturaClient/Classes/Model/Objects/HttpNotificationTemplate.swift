@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -142,6 +142,12 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("customHeaders"))
 			} 
 		}
+		
+		public var secureHashingAlgo: BaseTokenizedObject {
+			get {
+				return self.append("secureHashingAlgo") 
+			}
+		}
 	}
 
 	/**  Remote server URL  */
@@ -183,6 +189,8 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 	public var sslKeyPassword: String? = nil
 	/**  Adds a e-mail custom header  */
 	public var customHeaders: Array<KeyValue>? = nil
+	/**  The type of SHA to use.  */
+	public var secureHashingAlgo: SecureHashingAlgo? = nil
 
 
 	public func setMultiRequestToken(url: String) {
@@ -249,6 +257,10 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 		self.dict["sslKeyPassword"] = sslKeyPassword
 	}
 	
+	public func setMultiRequestToken(secureHashingAlgo: String) {
+		self.dict["secureHashingAlgo"] = secureHashingAlgo
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -304,6 +316,9 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 		}
 		if dict["customHeaders"] != nil {
 			customHeaders = try JSONParser.parse(array: dict["customHeaders"] as! [Any])
+		}
+		if dict["secureHashingAlgo"] != nil {
+			secureHashingAlgo = SecureHashingAlgo(rawValue: (dict["secureHashingAlgo"] as? Int)!)
 		}
 
 	}
@@ -363,6 +378,9 @@ open class HttpNotificationTemplate: EventNotificationTemplate {
 		}
 		if(customHeaders != nil) {
 			dict["customHeaders"] = customHeaders!.map { value in value.toDictionary() }
+		}
+		if(secureHashingAlgo != nil) {
+			dict["secureHashingAlgo"] = secureHashingAlgo!.rawValue
 		}
 		return dict
 	}

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -342,6 +342,18 @@ open class BaseEntry: ObjectBase {
 				return self.append("blockAutoTranscript") 
 			}
 		}
+		
+		public var defaultLanguage: BaseTokenizedObject {
+			get {
+				return self.append("defaultLanguage") 
+			}
+		}
+		
+		public var responseLanguage: BaseTokenizedObject {
+			get {
+				return self.append("responseLanguage") 
+			}
+		}
 	}
 
 	/**  Auto generated 10 characters alphanumeric string  */
@@ -458,6 +470,10 @@ open class BaseEntry: ObjectBase {
 	public var applicationVersion: String? = nil
 	/**  Block auto transcript on Entry  */
 	public var blockAutoTranscript: Bool? = nil
+	/**  Entry's default language if the entry is multi lingual  */
+	public var defaultLanguage: String? = nil
+	/**  The language in which the object is returned  */
+	public var responseLanguage: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -648,6 +664,14 @@ open class BaseEntry: ObjectBase {
 		self.dict["blockAutoTranscript"] = blockAutoTranscript
 	}
 	
+	public func setMultiRequestToken(defaultLanguage: String) {
+		self.dict["defaultLanguage"] = defaultLanguage
+	}
+	
+	public func setMultiRequestToken(responseLanguage: String) {
+		self.dict["responseLanguage"] = responseLanguage
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -803,6 +827,12 @@ open class BaseEntry: ObjectBase {
 		}
 		if dict["blockAutoTranscript"] != nil {
 			blockAutoTranscript = dict["blockAutoTranscript"] as? Bool
+		}
+		if dict["defaultLanguage"] != nil {
+			defaultLanguage = dict["defaultLanguage"] as? String
+		}
+		if dict["responseLanguage"] != nil {
+			responseLanguage = dict["responseLanguage"] as? String
 		}
 
 	}

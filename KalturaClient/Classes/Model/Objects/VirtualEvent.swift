@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -126,6 +126,18 @@ open class VirtualEvent: ObjectBase {
 				return self.append("registrationFormSchema") 
 			}
 		}
+		
+		public var eventUrl: BaseTokenizedObject {
+			get {
+				return self.append("eventUrl") 
+			}
+		}
+		
+		public var webhookRegistrationToken: BaseTokenizedObject {
+			get {
+				return self.append("webhookRegistrationToken") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -144,6 +156,10 @@ open class VirtualEvent: ObjectBase {
 	public var deletionDueDate: Int? = nil
 	/**  JSON-Schema of the Registration Form  */
 	public var registrationFormSchema: String? = nil
+	/**  The Virtual Event Url  */
+	public var eventUrl: String? = nil
+	/**  The Virtual Event WebHook registration token  */
+	public var webhookRegistrationToken: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -206,6 +222,14 @@ open class VirtualEvent: ObjectBase {
 		self.dict["registrationFormSchema"] = registrationFormSchema
 	}
 	
+	public func setMultiRequestToken(eventUrl: String) {
+		self.dict["eventUrl"] = eventUrl
+	}
+	
+	public func setMultiRequestToken(webhookRegistrationToken: String) {
+		self.dict["webhookRegistrationToken"] = webhookRegistrationToken
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -254,6 +278,12 @@ open class VirtualEvent: ObjectBase {
 		if dict["registrationFormSchema"] != nil {
 			registrationFormSchema = dict["registrationFormSchema"] as? String
 		}
+		if dict["eventUrl"] != nil {
+			eventUrl = dict["eventUrl"] as? String
+		}
+		if dict["webhookRegistrationToken"] != nil {
+			webhookRegistrationToken = dict["webhookRegistrationToken"] as? String
+		}
 
 	}
 
@@ -288,6 +318,12 @@ open class VirtualEvent: ObjectBase {
 		}
 		if(registrationFormSchema != nil) {
 			dict["registrationFormSchema"] = registrationFormSchema!
+		}
+		if(eventUrl != nil) {
+			dict["eventUrl"] = eventUrl!
+		}
+		if(webhookRegistrationToken != nil) {
+			dict["webhookRegistrationToken"] = webhookRegistrationToken!
 		}
 		return dict
 	}

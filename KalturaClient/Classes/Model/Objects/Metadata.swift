@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -104,7 +104,7 @@ open class Metadata: ObjectBase {
 		}
 	}
 
-	public var id: Int? = nil
+	public var id: Int64? = nil
 	public var partnerId: Int? = nil
 	public var metadataProfileId: Int? = nil
 	public var metadataProfileVersion: Int? = nil
@@ -165,7 +165,7 @@ open class Metadata: ObjectBase {
 		try super.populate(dict);
 		// set members values:
 		if dict["id"] != nil {
-			id = dict["id"] as? Int
+			id = Int64("\(dict["id"]!)")
 		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int

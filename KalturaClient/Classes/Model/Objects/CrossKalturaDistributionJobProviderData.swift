@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -58,18 +58,6 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 		public var distributedCaptionAssets: BaseTokenizedObject {
 			get {
 				return self.append("distributedCaptionAssets") 
-			}
-		}
-		
-		public var distributedFileAssets: BaseTokenizedObject {
-			get {
-				return self.append("distributedFileAssets") 
-			}
-		}
-		
-		public var distributedAttachmentAssets: BaseTokenizedObject {
-			get {
-				return self.append("distributedAttachmentAssets") 
 			}
 		}
 		
@@ -104,12 +92,6 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 	/**  Key-value array where the keys are IDs of distributed caption assets in the
 	  source account and the values are the matching IDs in the target account  */
 	public var distributedCaptionAssets: String? = nil
-	/**  Key-value array where the keys are IDs of distributed fileassets in the source
-	  account and the values are the matching IDs in the target account  */
-	public var distributedFileAssets: String? = nil
-	/**  Key-value array where the keys are IDs of distributed caption assets in the
-	  source account and the values are the matching IDs in the target account  */
-	public var distributedAttachmentAssets: String? = nil
 	/**  Key-value array where the keys are IDs of distributed cue points in the source
 	  account and the values are the matching IDs in the target account  */
 	public var distributedCuePoints: String? = nil
@@ -135,14 +117,6 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 	
 	public func setMultiRequestToken(distributedCaptionAssets: String) {
 		self.dict["distributedCaptionAssets"] = distributedCaptionAssets
-	}
-	
-	public func setMultiRequestToken(distributedFileAssets: String) {
-		self.dict["distributedFileAssets"] = distributedFileAssets
-	}
-	
-	public func setMultiRequestToken(distributedAttachmentAssets: String) {
-		self.dict["distributedAttachmentAssets"] = distributedAttachmentAssets
 	}
 	
 	public func setMultiRequestToken(distributedCuePoints: String) {
@@ -172,12 +146,6 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 		if dict["distributedCaptionAssets"] != nil {
 			distributedCaptionAssets = dict["distributedCaptionAssets"] as? String
 		}
-		if dict["distributedFileAssets"] != nil {
-			distributedFileAssets = dict["distributedFileAssets"] as? String
-		}
-		if dict["distributedAttachmentAssets"] != nil {
-			distributedAttachmentAssets = dict["distributedAttachmentAssets"] as? String
-		}
 		if dict["distributedCuePoints"] != nil {
 			distributedCuePoints = dict["distributedCuePoints"] as? String
 		}
@@ -203,12 +171,6 @@ open class CrossKalturaDistributionJobProviderData: ConfigurableDistributionJobP
 		}
 		if(distributedCaptionAssets != nil) {
 			dict["distributedCaptionAssets"] = distributedCaptionAssets!
-		}
-		if(distributedFileAssets != nil) {
-			dict["distributedFileAssets"] = distributedFileAssets!
-		}
-		if(distributedAttachmentAssets != nil) {
-			dict["distributedAttachmentAssets"] = distributedAttachmentAssets!
 		}
 		if(distributedCuePoints != nil) {
 			dict["distributedCuePoints"] = distributedCuePoints!

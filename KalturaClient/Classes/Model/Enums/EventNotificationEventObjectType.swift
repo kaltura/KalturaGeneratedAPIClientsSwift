@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -44,6 +44,7 @@ public enum EventNotificationEventObjectType: String {
 	case DROP_FOLDER_FILE = "dropFolderEventNotifications.DropFolderFile"
 	case METADATA = "metadataEventNotifications.Metadata"
 	case TRANSCRIPT_ASSET = "transcriptAssetEventNotifications.TranscriptAsset"
+	case VIRTUAL_EVENT = "virtualEventEventNotifications.VirtualEvent"
 	case ENTRY = "1"
 	case CATEGORY = "2"
 	case ASSET = "3"

@@ -26,18 +26,20 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchUserFieldName: String {
+	case CAPABILITIES = "capabilities"
 	case COMPANY = "company"
 	case COUNTRY = "country"
 	case CREATED_AT = "created_at"
 	case EMAIL = "email"
 	case EXTERNAL_ID = "external_id"
 	case FIRST_NAME = "first_name"
+	case FULL_NAME = "full_name"
 	case GROUP_IDS = "group_ids"
 	case IS_ADMIN = "is_admin"
 	case IS_HASHED = "is_hashed"

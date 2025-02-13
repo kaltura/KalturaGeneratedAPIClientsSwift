@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -63,6 +63,12 @@ open class FileSyncResource: ContentResource {
 				return self.append("version") 
 			}
 		}
+		
+		public var originEntryId: BaseTokenizedObject {
+			get {
+				return self.append("originEntryId") 
+			}
+		}
 	}
 
 	/**  The object type of the file sync object  */
@@ -73,6 +79,8 @@ open class FileSyncResource: ContentResource {
 	public var objectId: String? = nil
 	/**  The version of the file sync object  */
 	public var version: String? = nil
+	/**  The original entry ID, if exists  */
+	public var originEntryId: String? = nil
 
 
 	public func setMultiRequestToken(fileSyncObjectType: String) {
@@ -91,6 +99,10 @@ open class FileSyncResource: ContentResource {
 		self.dict["version"] = version
 	}
 	
+	public func setMultiRequestToken(originEntryId: String) {
+		self.dict["originEntryId"] = originEntryId
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -105,6 +117,9 @@ open class FileSyncResource: ContentResource {
 		}
 		if dict["version"] != nil {
 			version = dict["version"] as? String
+		}
+		if dict["originEntryId"] != nil {
+			originEntryId = dict["originEntryId"] as? String
 		}
 
 	}
@@ -122,6 +137,9 @@ open class FileSyncResource: ContentResource {
 		}
 		if(version != nil) {
 			dict["version"] = version!
+		}
+		if(originEntryId != nil) {
+			dict["originEntryId"] = originEntryId!
 		}
 		return dict
 	}

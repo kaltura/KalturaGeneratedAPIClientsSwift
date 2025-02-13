@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -36,6 +36,30 @@
 open class ClipConcatJobData: JobData {
 
 	public class ClipConcatJobDataTokenizer: JobData.JobDataTokenizer {
+		
+		public var destEntryId: BaseTokenizedObject {
+			get {
+				return self.append("destEntryId") 
+			}
+		}
+		
+		public var tempEntryId: BaseTokenizedObject {
+			get {
+				return self.append("tempEntryId") 
+			}
+		}
+		
+		public var sourceEntryId: BaseTokenizedObject {
+			get {
+				return self.append("sourceEntryId") 
+			}
+		}
+		
+		public var importUrl: BaseTokenizedObject {
+			get {
+				return self.append("importUrl") 
+			}
+		}
 		
 		public var partnerId: BaseTokenizedObject {
 			get {
@@ -54,16 +78,47 @@ open class ClipConcatJobData: JobData {
 				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
 			} 
 		}
+		
+		public var resourceOrder: BaseTokenizedObject {
+			get {
+				return self.append("resourceOrder") 
+			}
+		}
+		
+		public var conversionParams: BaseTokenizedObject {
+			get {
+				return self.append("conversionParams") 
+			}
+		}
 	}
 
-	/**  $partnerId  */
+	public var destEntryId: String? = nil
+	public var tempEntryId: String? = nil
+	public var sourceEntryId: String? = nil
+	public var importUrl: String? = nil
 	public var partnerId: Int? = nil
-	/**  $priority  */
 	public var priority: Int? = nil
-	/**  clip operations  */
 	public var operationAttributes: Array<OperationAttributes>? = nil
+	public var resourceOrder: Int? = nil
+	public var conversionParams: String? = nil
 
 
+	public func setMultiRequestToken(destEntryId: String) {
+		self.dict["destEntryId"] = destEntryId
+	}
+	
+	public func setMultiRequestToken(tempEntryId: String) {
+		self.dict["tempEntryId"] = tempEntryId
+	}
+	
+	public func setMultiRequestToken(sourceEntryId: String) {
+		self.dict["sourceEntryId"] = sourceEntryId
+	}
+	
+	public func setMultiRequestToken(importUrl: String) {
+		self.dict["importUrl"] = importUrl
+	}
+	
 	public func setMultiRequestToken(partnerId: String) {
 		self.dict["partnerId"] = partnerId
 	}
@@ -72,9 +127,29 @@ open class ClipConcatJobData: JobData {
 		self.dict["priority"] = priority
 	}
 	
+	public func setMultiRequestToken(resourceOrder: String) {
+		self.dict["resourceOrder"] = resourceOrder
+	}
+	
+	public func setMultiRequestToken(conversionParams: String) {
+		self.dict["conversionParams"] = conversionParams
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
+		if dict["destEntryId"] != nil {
+			destEntryId = dict["destEntryId"] as? String
+		}
+		if dict["tempEntryId"] != nil {
+			tempEntryId = dict["tempEntryId"] as? String
+		}
+		if dict["sourceEntryId"] != nil {
+			sourceEntryId = dict["sourceEntryId"] as? String
+		}
+		if dict["importUrl"] != nil {
+			importUrl = dict["importUrl"] as? String
+		}
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
 		}
@@ -84,11 +159,29 @@ open class ClipConcatJobData: JobData {
 		if dict["operationAttributes"] != nil {
 			operationAttributes = try JSONParser.parse(array: dict["operationAttributes"] as! [Any])
 		}
+		if dict["resourceOrder"] != nil {
+			resourceOrder = dict["resourceOrder"] as? Int
+		}
+		if dict["conversionParams"] != nil {
+			conversionParams = dict["conversionParams"] as? String
+		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
+		if(destEntryId != nil) {
+			dict["destEntryId"] = destEntryId!
+		}
+		if(tempEntryId != nil) {
+			dict["tempEntryId"] = tempEntryId!
+		}
+		if(sourceEntryId != nil) {
+			dict["sourceEntryId"] = sourceEntryId!
+		}
+		if(importUrl != nil) {
+			dict["importUrl"] = importUrl!
+		}
 		if(partnerId != nil) {
 			dict["partnerId"] = partnerId!
 		}
@@ -97,6 +190,12 @@ open class ClipConcatJobData: JobData {
 		}
 		if(operationAttributes != nil) {
 			dict["operationAttributes"] = operationAttributes!.map { value in value.toDictionary() }
+		}
+		if(resourceOrder != nil) {
+			dict["resourceOrder"] = resourceOrder!
+		}
+		if(conversionParams != nil) {
+			dict["conversionParams"] = conversionParams!
 		}
 		return dict
 	}

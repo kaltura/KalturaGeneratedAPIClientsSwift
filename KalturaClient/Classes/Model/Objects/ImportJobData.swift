@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -66,6 +66,18 @@ open class ImportJobData: JobData {
 				return self.append("destFileSharedPath") 
 			}
 		}
+		
+		public var urlHeaders: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("urlHeaders"))
+			} 
+		}
+		
+		public var shouldRedirect: BaseTokenizedObject {
+			get {
+				return self.append("shouldRedirect") 
+			}
+		}
 	}
 
 	public var srcFileUrl: String? = nil
@@ -73,6 +85,8 @@ open class ImportJobData: JobData {
 	public var flavorAssetId: String? = nil
 	public var fileSize: Int? = nil
 	public var destFileSharedPath: String? = nil
+	public var urlHeaders: Array<StringHolder>? = nil
+	public var shouldRedirect: Bool? = nil
 
 
 	public func setMultiRequestToken(srcFileUrl: String) {
@@ -95,6 +109,10 @@ open class ImportJobData: JobData {
 		self.dict["destFileSharedPath"] = destFileSharedPath
 	}
 	
+	public func setMultiRequestToken(shouldRedirect: String) {
+		self.dict["shouldRedirect"] = shouldRedirect
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -112,6 +130,12 @@ open class ImportJobData: JobData {
 		}
 		if dict["destFileSharedPath"] != nil {
 			destFileSharedPath = dict["destFileSharedPath"] as? String
+		}
+		if dict["urlHeaders"] != nil {
+			urlHeaders = try JSONParser.parse(array: dict["urlHeaders"] as! [Any])
+		}
+		if dict["shouldRedirect"] != nil {
+			shouldRedirect = dict["shouldRedirect"] as? Bool
 		}
 
 	}
@@ -132,6 +156,12 @@ open class ImportJobData: JobData {
 		}
 		if(destFileSharedPath != nil) {
 			dict["destFileSharedPath"] = destFileSharedPath!
+		}
+		if(urlHeaders != nil) {
+			dict["urlHeaders"] = urlHeaders!.map { value in value.toDictionary() }
+		}
+		if(shouldRedirect != nil) {
+			dict["shouldRedirect"] = shouldRedirect!
 		}
 		return dict
 	}

@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -41,4 +41,9 @@ public enum VendorServiceFeature: Int {
 	case DUBBING = 7
 	case LIVE_CAPTION = 8
 	case EXTENDED_AUDIO_DESCRIPTION = 9
+	case CLIPS = 10
+	case LIVE_TRANSLATION = 11
+	case QUIZ = 12
+	case SUMMARY = 13
+	case VIDEO_ANALYSIS = 14
 }

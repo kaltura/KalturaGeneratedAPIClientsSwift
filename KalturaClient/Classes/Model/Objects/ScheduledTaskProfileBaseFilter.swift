@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -126,6 +126,12 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 				return self.append("lastExecutionStartedAtLessThanOrEqualOrNull") 
 			}
 		}
+		
+		public var objectFilterEngineTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("objectFilterEngineTypeIn") 
+			}
+		}
 	}
 
 	public var idEqual: Int? = nil
@@ -143,6 +149,7 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 	public var lastExecutionStartedAtGreaterThanOrEqual: Int? = nil
 	public var lastExecutionStartedAtLessThanOrEqual: Int? = nil
 	public var lastExecutionStartedAtLessThanOrEqualOrNull: Int? = nil
+	public var objectFilterEngineTypeIn: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -205,6 +212,10 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		self.dict["lastExecutionStartedAtLessThanOrEqualOrNull"] = lastExecutionStartedAtLessThanOrEqualOrNull
 	}
 	
+	public func setMultiRequestToken(objectFilterEngineTypeIn: String) {
+		self.dict["objectFilterEngineTypeIn"] = objectFilterEngineTypeIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -252,6 +263,9 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		}
 		if dict["lastExecutionStartedAtLessThanOrEqualOrNull"] != nil {
 			lastExecutionStartedAtLessThanOrEqualOrNull = dict["lastExecutionStartedAtLessThanOrEqualOrNull"] as? Int
+		}
+		if dict["objectFilterEngineTypeIn"] != nil {
+			objectFilterEngineTypeIn = dict["objectFilterEngineTypeIn"] as? String
 		}
 
 	}
@@ -302,6 +316,9 @@ open class ScheduledTaskProfileBaseFilter: Filter {
 		}
 		if(lastExecutionStartedAtLessThanOrEqualOrNull != nil) {
 			dict["lastExecutionStartedAtLessThanOrEqualOrNull"] = lastExecutionStartedAtLessThanOrEqualOrNull!
+		}
+		if(objectFilterEngineTypeIn != nil) {
+			dict["objectFilterEngineTypeIn"] = objectFilterEngineTypeIn!
 		}
 		return dict
 	}

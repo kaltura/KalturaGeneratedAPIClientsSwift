@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -57,6 +57,12 @@ open class UrlResource: ContentResource {
 				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("urlHeaders"))
 			} 
 		}
+		
+		public var shouldRedirect: BaseTokenizedObject {
+			get {
+				return self.append("shouldRedirect") 
+			}
+		}
 	}
 
 	/**  Remote URL, FTP, HTTP or HTTPS  */
@@ -64,6 +70,7 @@ open class UrlResource: ContentResource {
 	/**  Force Import Job  */
 	public var forceAsyncDownload: Bool? = nil
 	public var urlHeaders: Array<StringHolder>? = nil
+	public var shouldRedirect: Bool? = nil
 
 
 	public func setMultiRequestToken(url: String) {
@@ -72,6 +79,10 @@ open class UrlResource: ContentResource {
 	
 	public func setMultiRequestToken(forceAsyncDownload: String) {
 		self.dict["forceAsyncDownload"] = forceAsyncDownload
+	}
+	
+	public func setMultiRequestToken(shouldRedirect: String) {
+		self.dict["shouldRedirect"] = shouldRedirect
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -86,6 +97,9 @@ open class UrlResource: ContentResource {
 		if dict["urlHeaders"] != nil {
 			urlHeaders = try JSONParser.parse(array: dict["urlHeaders"] as! [Any])
 		}
+		if dict["shouldRedirect"] != nil {
+			shouldRedirect = dict["shouldRedirect"] as? Bool
+		}
 
 	}
 
@@ -99,6 +113,9 @@ open class UrlResource: ContentResource {
 		}
 		if(urlHeaders != nil) {
 			dict["urlHeaders"] = urlHeaders!.map { value in value.toDictionary() }
+		}
+		if(shouldRedirect != nil) {
+			dict["shouldRedirect"] = shouldRedirect!
 		}
 		return dict
 	}

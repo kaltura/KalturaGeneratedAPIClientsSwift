@@ -26,12 +26,13 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryType: String {
+	case PERMISSION_LEVEL = "entryPermissionLevel.PERMISSION_LEVEL"
 	case QUIZ = "quiz.QUIZ"
 	case REGISTRATION = "registration.REGISTRATION"
 	case VIEW_HISTORY = "viewHistory.VIEW_HISTORY"

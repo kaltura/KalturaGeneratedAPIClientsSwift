@@ -26,14 +26,21 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType: String {
+	case AP_FEED = "ApFeedDropFolder.AP_FEED"
 	case FEED = "FeedDropFolder.FEED"
+	case MS_TEAMS = "MicrosoftTeamsDropFolder.MS_TEAMS"
+	case S3DROPFOLDER = "S3DropFolder.S3DROPFOLDER"
+	case TR_RDS_COMPANY = "TrRdsSyncDropFolder.TR_RDS_COMPANY"
+	case TR_RDS_TMCTERM = "TrRdsSyncDropFolder.TR_RDS_TMCTERM"
+	case WEBEX_API = "WebexAPIDropFolder.WEBEX_API"
 	case WEBEX = "WebexDropFolder.WEBEX"
+	case ZOOM = "ZoomDropFolder.ZOOM"
 	case LOCAL = "1"
 	case FTP = "2"
 	case SCP = "3"

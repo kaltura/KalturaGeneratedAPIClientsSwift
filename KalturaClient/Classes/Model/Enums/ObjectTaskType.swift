@@ -26,7 +26,7 @@
 // @ignore
 // ===================================================================================================
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -43,4 +43,5 @@ public enum ObjectTaskType: String {
 	case STORAGE_EXPORT = "6"
 	case MODIFY_ENTRY = "7"
 	case MAIL_NOTIFICATION = "8"
+	case RECYCLE_BIN_CLEANUP = "9"
 }

@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -47,6 +47,20 @@ public final class SearchHistoryService{
 	public static func delete(searchTerm: String) -> NullRequestBuilder<DeleteTokenizer> {
 		let request: NullRequestBuilder<DeleteTokenizer> = NullRequestBuilder<DeleteTokenizer>(service: "searchhistory_searchhistory", action: "delete")
 			.setParam(key: "searchTerm", value: searchTerm)
+
+		return request
+	}
+
+	public class ExportToCsvTokenizer: ClientTokenizer  {
+		
+		public func filter<T: ESearchHistoryFilter.ESearchHistoryFilterTokenizer>() -> T {
+			return T(self.append("filter"))
+		}
+	}
+
+	public static func exportToCsv(filter: ESearchHistoryFilter) -> RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> {
+		let request: RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer> = RequestBuilder<String, BaseTokenizedObject, ExportToCsvTokenizer>(service: "searchhistory_searchhistory", action: "exportToCsv")
+			.setParam(key: "filter", value: filter)
 
 		return request
 	}

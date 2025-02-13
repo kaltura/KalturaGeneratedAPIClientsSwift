@@ -27,7 +27,7 @@
 // ===================================================================================================
 
 /**
- * This class was generated using generate.php
+ * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
@@ -331,6 +331,23 @@ public final class LiveStreamService{
 	public static func getDetails(id: String) -> RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer> {
 		let request: RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer> = RequestBuilder<LiveStreamDetails, LiveStreamDetails.LiveStreamDetailsTokenizer, GetDetailsTokenizer>(service: "livestream", action: "getDetails")
 			.setParam(key: "id", value: id)
+
+		return request
+	}
+
+	public class GetLiveStreamStatsTokenizer: ClientTokenizer  {
+		
+		public var entryId: BaseTokenizedObject {
+			get {
+				return self.append("entryId") 
+			}
+		}
+	}
+
+	/**  Deliver information about the livestream  */
+	public static func getLiveStreamStats(entryId: String) -> RequestBuilder<LiveStreamStats, LiveStreamStats.LiveStreamStatsTokenizer, GetLiveStreamStatsTokenizer> {
+		let request: RequestBuilder<LiveStreamStats, LiveStreamStats.LiveStreamStatsTokenizer, GetLiveStreamStatsTokenizer> = RequestBuilder<LiveStreamStats, LiveStreamStats.LiveStreamStatsTokenizer, GetLiveStreamStatsTokenizer>(service: "livestream", action: "getLiveStreamStats")
+			.setParam(key: "entryId", value: entryId)
 
 		return request
 	}
