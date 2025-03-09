@@ -43,6 +43,12 @@ open class ReportExportJobData: JobData {
 			}
 		}
 		
+		public var recipientName: BaseTokenizedObject {
+			get {
+				return self.append("recipientName") 
+			}
+		}
+		
 		public var reportItems: ArrayTokenizedObject<ReportExportItem.ReportExportItemTokenizer> {
 			get {
 				return ArrayTokenizedObject<ReportExportItem.ReportExportItemTokenizer>(self.append("reportItems"))
@@ -75,6 +81,7 @@ open class ReportExportJobData: JobData {
 	}
 
 	public var recipientEmail: String? = nil
+	public var recipientName: String? = nil
 	public var reportItems: Array<ReportExportItem>? = nil
 	public var filePaths: String? = nil
 	public var reportsGroup: String? = nil
@@ -84,6 +91,10 @@ open class ReportExportJobData: JobData {
 
 	public func setMultiRequestToken(recipientEmail: String) {
 		self.dict["recipientEmail"] = recipientEmail
+	}
+	
+	public func setMultiRequestToken(recipientName: String) {
+		self.dict["recipientName"] = recipientName
 	}
 	
 	public func setMultiRequestToken(filePaths: String) {
@@ -103,6 +114,9 @@ open class ReportExportJobData: JobData {
 		// set members values:
 		if dict["recipientEmail"] != nil {
 			recipientEmail = dict["recipientEmail"] as? String
+		}
+		if dict["recipientName"] != nil {
+			recipientName = dict["recipientName"] as? String
 		}
 		if dict["reportItems"] != nil {
 			reportItems = try JSONParser.parse(array: dict["reportItems"] as! [Any])
@@ -126,6 +140,9 @@ open class ReportExportJobData: JobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(recipientEmail != nil) {
 			dict["recipientEmail"] = recipientEmail!
+		}
+		if(recipientName != nil) {
+			dict["recipientName"] = recipientName!
 		}
 		if(reportItems != nil) {
 			dict["reportItems"] = reportItems!.map { value in value.toDictionary() }

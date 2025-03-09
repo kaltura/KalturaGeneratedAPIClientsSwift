@@ -35,6 +35,7 @@ public enum UserEntryType: String {
 	case PERMISSION_LEVEL = "entryPermissionLevel.PERMISSION_LEVEL"
 	case QUIZ = "quiz.QUIZ"
 	case REGISTRATION = "registration.REGISTRATION"
+	case RSVP = "rsvp.RSVP"
 	case VIEW_HISTORY = "viewHistory.VIEW_HISTORY"
 	case WATCH_LATER = "watchLater.WATCH_LATER"
 }

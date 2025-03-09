@@ -49,6 +49,12 @@ open class DropFolderFileBaseFilter: Filter {
 			}
 		}
 		
+		public var idGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("idGreaterThanOrEqual") 
+			}
+		}
+		
 		public var partnerIdEqual: BaseTokenizedObject {
 			get {
 				return self.append("partnerIdEqual") 
@@ -202,6 +208,7 @@ open class DropFolderFileBaseFilter: Filter {
 
 	public var idEqual: Int? = nil
 	public var idIn: String? = nil
+	public var idGreaterThanOrEqual: Int? = nil
 	public var partnerIdEqual: Int? = nil
 	public var partnerIdIn: String? = nil
 	public var dropFolderIdEqual: Int? = nil
@@ -235,6 +242,10 @@ open class DropFolderFileBaseFilter: Filter {
 	
 	public func setMultiRequestToken(idIn: String) {
 		self.dict["idIn"] = idIn
+	}
+	
+	public func setMultiRequestToken(idGreaterThanOrEqual: String) {
+		self.dict["idGreaterThanOrEqual"] = idGreaterThanOrEqual
 	}
 	
 	public func setMultiRequestToken(partnerIdEqual: String) {
@@ -346,6 +357,9 @@ open class DropFolderFileBaseFilter: Filter {
 		if dict["idIn"] != nil {
 			idIn = dict["idIn"] as? String
 		}
+		if dict["idGreaterThanOrEqual"] != nil {
+			idGreaterThanOrEqual = dict["idGreaterThanOrEqual"] as? Int
+		}
 		if dict["partnerIdEqual"] != nil {
 			partnerIdEqual = dict["partnerIdEqual"] as? Int
 		}
@@ -431,6 +445,9 @@ open class DropFolderFileBaseFilter: Filter {
 		}
 		if(idIn != nil) {
 			dict["idIn"] = idIn!
+		}
+		if(idGreaterThanOrEqual != nil) {
+			dict["idGreaterThanOrEqual"] = idGreaterThanOrEqual!
 		}
 		if(partnerIdEqual != nil) {
 			dict["partnerIdEqual"] = partnerIdEqual!

@@ -60,12 +60,26 @@ open class S3DropFolder: DropFolder {
 				return self.append("s3Password") 
 			}
 		}
+		
+		public var useS3Arn: BaseTokenizedObject {
+			get {
+				return self.append("useS3Arn") 
+			}
+		}
+		
+		public var s3Arn: BaseTokenizedObject {
+			get {
+				return self.append("s3Arn") 
+			}
+		}
 	}
 
 	public var s3Host: String? = nil
 	public var s3Region: String? = nil
 	public var s3UserId: String? = nil
 	public var s3Password: String? = nil
+	public var useS3Arn: Bool? = nil
+	public var s3Arn: String? = nil
 
 
 	public func setMultiRequestToken(s3Host: String) {
@@ -84,6 +98,14 @@ open class S3DropFolder: DropFolder {
 		self.dict["s3Password"] = s3Password
 	}
 	
+	public func setMultiRequestToken(useS3Arn: String) {
+		self.dict["useS3Arn"] = useS3Arn
+	}
+	
+	public func setMultiRequestToken(s3Arn: String) {
+		self.dict["s3Arn"] = s3Arn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +120,12 @@ open class S3DropFolder: DropFolder {
 		}
 		if dict["s3Password"] != nil {
 			s3Password = dict["s3Password"] as? String
+		}
+		if dict["useS3Arn"] != nil {
+			useS3Arn = dict["useS3Arn"] as? Bool
+		}
+		if dict["s3Arn"] != nil {
+			s3Arn = dict["s3Arn"] as? String
 		}
 
 	}
@@ -115,6 +143,9 @@ open class S3DropFolder: DropFolder {
 		}
 		if(s3Password != nil) {
 			dict["s3Password"] = s3Password!
+		}
+		if(useS3Arn != nil) {
+			dict["useS3Arn"] = useS3Arn!
 		}
 		return dict
 	}

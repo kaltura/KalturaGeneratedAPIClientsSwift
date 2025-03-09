@@ -43,6 +43,12 @@ open class ReportExportParams: ObjectBase {
 			}
 		}
 		
+		public var recipientName: BaseTokenizedObject {
+			get {
+				return self.append("recipientName") 
+			}
+		}
+		
 		public var timeZoneOffset: BaseTokenizedObject {
 			get {
 				return self.append("timeZoneOffset") 
@@ -69,6 +75,7 @@ open class ReportExportParams: ObjectBase {
 	}
 
 	public var recipientEmail: String? = nil
+	public var recipientName: String? = nil
 	/**  Time zone offset in minutes (between client to UTC)  */
 	public var timeZoneOffset: Int? = nil
 	public var reportItems: Array<ReportExportItem>? = nil
@@ -78,6 +85,10 @@ open class ReportExportParams: ObjectBase {
 
 	public func setMultiRequestToken(recipientEmail: String) {
 		self.dict["recipientEmail"] = recipientEmail
+	}
+	
+	public func setMultiRequestToken(recipientName: String) {
+		self.dict["recipientName"] = recipientName
 	}
 	
 	public func setMultiRequestToken(timeZoneOffset: String) {
@@ -98,6 +109,9 @@ open class ReportExportParams: ObjectBase {
 		if dict["recipientEmail"] != nil {
 			recipientEmail = dict["recipientEmail"] as? String
 		}
+		if dict["recipientName"] != nil {
+			recipientName = dict["recipientName"] as? String
+		}
 		if dict["timeZoneOffset"] != nil {
 			timeZoneOffset = dict["timeZoneOffset"] as? Int
 		}
@@ -117,6 +131,9 @@ open class ReportExportParams: ObjectBase {
 		var dict: [String: Any] = super.toDictionary()
 		if(recipientEmail != nil) {
 			dict["recipientEmail"] = recipientEmail!
+		}
+		if(recipientName != nil) {
+			dict["recipientName"] = recipientName!
 		}
 		if(timeZoneOffset != nil) {
 			dict["timeZoneOffset"] = timeZoneOffset!
