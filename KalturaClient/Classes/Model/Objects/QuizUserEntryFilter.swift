@@ -36,13 +36,70 @@
 open class QuizUserEntryFilter: QuizUserEntryBaseFilter {
 
 	public class QuizUserEntryFilterTokenizer: QuizUserEntryBaseFilter.QuizUserEntryBaseFilterTokenizer {
+		
+		public var extendedStatusEqual: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusEqual") 
+			}
+		}
+		
+		public var extendedStatusIn: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusIn") 
+			}
+		}
+		
+		public var extendedStatusNotIn: BaseTokenizedObject {
+			get {
+				return self.append("extendedStatusNotIn") 
+			}
+		}
 	}
 
+	public var extendedStatusEqual: UserEntryExtendedStatus? = nil
+	public var extendedStatusIn: String? = nil
+	public var extendedStatusNotIn: String? = nil
 
 
+	public func setMultiRequestToken(extendedStatusEqual: String) {
+		self.dict["extendedStatusEqual"] = extendedStatusEqual
+	}
+	
+	public func setMultiRequestToken(extendedStatusIn: String) {
+		self.dict["extendedStatusIn"] = extendedStatusIn
+	}
+	
+	public func setMultiRequestToken(extendedStatusNotIn: String) {
+		self.dict["extendedStatusNotIn"] = extendedStatusNotIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["extendedStatusEqual"] != nil {
+			extendedStatusEqual = UserEntryExtendedStatus(rawValue: "\(dict["extendedStatusEqual"]!)")
+		}
+		if dict["extendedStatusIn"] != nil {
+			extendedStatusIn = dict["extendedStatusIn"] as? String
+		}
+		if dict["extendedStatusNotIn"] != nil {
+			extendedStatusNotIn = dict["extendedStatusNotIn"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(extendedStatusEqual != nil) {
+			dict["extendedStatusEqual"] = extendedStatusEqual!.rawValue
+		}
+		if(extendedStatusIn != nil) {
+			dict["extendedStatusIn"] = extendedStatusIn!
+		}
+		if(extendedStatusNotIn != nil) {
+			dict["extendedStatusNotIn"] = extendedStatusNotIn!
+		}
+		return dict
+	}
 }
 

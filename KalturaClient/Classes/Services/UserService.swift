@@ -71,6 +71,22 @@ public final class UserService{
 		return request
 	}
 
+	public class DemoteAdminTokenizer: ClientTokenizer  {
+		
+		public var userId: BaseTokenizedObject {
+			get {
+				return self.append("userId") 
+			}
+		}
+	}
+
+	public static func demoteAdmin(userId: String) -> RequestBuilder<User, User.UserTokenizer, DemoteAdminTokenizer> {
+		let request: RequestBuilder<User, User.UserTokenizer, DemoteAdminTokenizer> = RequestBuilder<User, User.UserTokenizer, DemoteAdminTokenizer>(service: "user", action: "demoteAdmin")
+			.setParam(key: "userId", value: userId)
+
+		return request
+	}
+
 	public class DisableLoginTokenizer: ClientTokenizer  {
 		
 		public var userId: BaseTokenizedObject {

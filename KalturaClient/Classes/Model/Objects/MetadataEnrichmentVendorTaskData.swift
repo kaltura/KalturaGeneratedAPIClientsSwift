@@ -33,96 +33,77 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class QuizUserEntry: UserEntry {
+open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 
-	public class QuizUserEntryTokenizer: UserEntry.UserEntryTokenizer {
+	public class MetadataEnrichmentVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
 		
-		public var score: BaseTokenizedObject {
+		public var detailLevel: BaseTokenizedObject {
 			get {
-				return self.append("score") 
+				return self.append("detailLevel") 
 			}
 		}
 		
-		public var calculatedScore: BaseTokenizedObject {
+		public var instruction: BaseTokenizedObject {
 			get {
-				return self.append("calculatedScore") 
+				return self.append("instruction") 
 			}
 		}
 		
-		public var feedback: BaseTokenizedObject {
+		public var outputJson: BaseTokenizedObject {
 			get {
-				return self.append("feedback") 
-			}
-		}
-		
-		public var version: BaseTokenizedObject {
-			get {
-				return self.append("version") 
-			}
-		}
-		
-		public var extendedStatus: BaseTokenizedObject {
-			get {
-				return self.append("extendedStatus") 
+				return self.append("outputJson") 
 			}
 		}
 	}
 
-	public var score: Double? = nil
-	public var calculatedScore: Double? = nil
-	public var feedback: String? = nil
-	public var version: Int? = nil
-	public var extendedStatus: UserEntryExtendedStatus? = nil
+	/**  The level of detail for the metadata enrichment process.  */
+	public var detailLevel: String? = nil
+	/**  Instructions describing what should be taken into account during the metadata
+	  enrichment process.  */
+	public var instruction: String? = nil
+	/**  Metadata enrichment result as JSON string.   For example: {"titles": ["The first
+	  title", "The second title"], "descriptions": ["The first description"], "tags":
+	  ["Tag1", "Tag2"]}  */
+	public var outputJson: String? = nil
 
 
-	public func setMultiRequestToken(score: String) {
-		self.dict["score"] = score
+	public func setMultiRequestToken(detailLevel: String) {
+		self.dict["detailLevel"] = detailLevel
 	}
 	
-	public func setMultiRequestToken(calculatedScore: String) {
-		self.dict["calculatedScore"] = calculatedScore
+	public func setMultiRequestToken(instruction: String) {
+		self.dict["instruction"] = instruction
 	}
 	
-	public func setMultiRequestToken(feedback: String) {
-		self.dict["feedback"] = feedback
-	}
-	
-	public func setMultiRequestToken(version: String) {
-		self.dict["version"] = version
-	}
-	
-	public func setMultiRequestToken(extendedStatus: String) {
-		self.dict["extendedStatus"] = extendedStatus
+	public func setMultiRequestToken(outputJson: String) {
+		self.dict["outputJson"] = outputJson
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["score"] != nil {
-			score = dict["score"] as? Double
+		if dict["detailLevel"] != nil {
+			detailLevel = dict["detailLevel"] as? String
 		}
-		if dict["calculatedScore"] != nil {
-			calculatedScore = dict["calculatedScore"] as? Double
+		if dict["instruction"] != nil {
+			instruction = dict["instruction"] as? String
 		}
-		if dict["feedback"] != nil {
-			feedback = dict["feedback"] as? String
-		}
-		if dict["version"] != nil {
-			version = dict["version"] as? Int
-		}
-		if dict["extendedStatus"] != nil {
-			extendedStatus = UserEntryExtendedStatus(rawValue: "\(dict["extendedStatus"]!)")
+		if dict["outputJson"] != nil {
+			outputJson = dict["outputJson"] as? String
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(feedback != nil) {
-			dict["feedback"] = feedback!
+		if(detailLevel != nil) {
+			dict["detailLevel"] = detailLevel!
 		}
-		if(extendedStatus != nil) {
-			dict["extendedStatus"] = extendedStatus!.rawValue
+		if(instruction != nil) {
+			dict["instruction"] = instruction!
+		}
+		if(outputJson != nil) {
+			dict["outputJson"] = outputJson!
 		}
 		return dict
 	}
