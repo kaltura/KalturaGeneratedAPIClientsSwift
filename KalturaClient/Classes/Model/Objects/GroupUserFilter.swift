@@ -36,13 +36,36 @@
 open class GroupUserFilter: GroupUserBaseFilter {
 
 	public class GroupUserFilterTokenizer: GroupUserBaseFilter.GroupUserBaseFilterTokenizer {
+		
+		public var groupType: BaseTokenizedObject {
+			get {
+				return self.append("groupType") 
+			}
+		}
 	}
 
+	public var groupType: GroupType? = nil
 
 
+	public func setMultiRequestToken(groupType: String) {
+		self.dict["groupType"] = groupType
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["groupType"] != nil {
+			groupType = GroupType(rawValue: (dict["groupType"] as? Int)!)
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(groupType != nil) {
+			dict["groupType"] = groupType!.rawValue
+		}
+		return dict
+	}
 }
 

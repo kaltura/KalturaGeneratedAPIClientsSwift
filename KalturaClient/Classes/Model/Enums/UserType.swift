@@ -34,4 +34,5 @@
 public enum UserType: Int {
 	case USER = 0
 	case GROUP = 1
+	case APPLICATIVE_GROUP = 2
 }

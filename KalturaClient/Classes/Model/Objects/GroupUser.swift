@@ -90,6 +90,12 @@ open class GroupUser: ObjectBase {
 				return self.append("userRole") 
 			}
 		}
+		
+		public var groupType: BaseTokenizedObject {
+			get {
+				return self.append("groupType") 
+			}
+		}
 	}
 
 	public var id: String? = nil
@@ -103,6 +109,7 @@ open class GroupUser: ObjectBase {
 	public var updatedAt: Int? = nil
 	public var creationMode: GroupUserCreationMode? = nil
 	public var userRole: GroupUserRole? = nil
+	public var groupType: GroupType? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -141,6 +148,10 @@ open class GroupUser: ObjectBase {
 		self.dict["userRole"] = userRole
 	}
 	
+	public func setMultiRequestToken(groupType: String) {
+		self.dict["groupType"] = groupType
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -170,6 +181,9 @@ open class GroupUser: ObjectBase {
 		}
 		if dict["userRole"] != nil {
 			userRole = GroupUserRole(rawValue: (dict["userRole"] as? Int)!)
+		}
+		if dict["groupType"] != nil {
+			groupType = GroupType(rawValue: (dict["groupType"] as? Int)!)
 		}
 
 	}

@@ -48,10 +48,17 @@ open class Group: BaseUser {
 				return self.append("processStatus") 
 			}
 		}
+		
+		public var groupType: BaseTokenizedObject {
+			get {
+				return self.append("groupType") 
+			}
+		}
 	}
 
 	public var membersCount: Int? = nil
 	public var processStatus: GroupProcessStatus? = nil
+	public var groupType: GroupType? = nil
 
 
 	public func setMultiRequestToken(membersCount: String) {
@@ -60,6 +67,10 @@ open class Group: BaseUser {
 	
 	public func setMultiRequestToken(processStatus: String) {
 		self.dict["processStatus"] = processStatus
+	}
+	
+	public func setMultiRequestToken(groupType: String) {
+		self.dict["groupType"] = groupType
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +82,9 @@ open class Group: BaseUser {
 		if dict["processStatus"] != nil {
 			processStatus = GroupProcessStatus(rawValue: (dict["processStatus"] as? Int)!)
 		}
+		if dict["groupType"] != nil {
+			groupType = GroupType(rawValue: (dict["groupType"] as? Int)!)
+		}
 
 	}
 
@@ -78,6 +92,9 @@ open class Group: BaseUser {
 		var dict: [String: Any] = super.toDictionary()
 		if(processStatus != nil) {
 			dict["processStatus"] = processStatus!.rawValue
+		}
+		if(groupType != nil) {
+			dict["groupType"] = groupType!.rawValue
 		}
 		return dict
 	}

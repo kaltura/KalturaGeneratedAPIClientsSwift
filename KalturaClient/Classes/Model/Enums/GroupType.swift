@@ -25,47 +25,13 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class GroupFilter: UserFilter {
-
-	public class GroupFilterTokenizer: UserFilter.UserFilterTokenizer {
-		
-		public var groupType: BaseTokenizedObject {
-			get {
-				return self.append("groupType") 
-			}
-		}
-	}
-
-	public var groupType: GroupType? = nil
-
-
-	public func setMultiRequestToken(groupType: String) {
-		self.dict["groupType"] = groupType
-	}
-	
-	public override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["groupType"] != nil {
-			groupType = GroupType(rawValue: (dict["groupType"] as? Int)!)
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(groupType != nil) {
-			dict["groupType"] = groupType!.rawValue
-		}
-		return dict
-	}
+public enum GroupType: Int {
+	case GROUP = 1
+	case APPLICATIVE_GROUP = 2
 }
-
