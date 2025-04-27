@@ -60,4 +60,5 @@ public enum ConditionType: String {
 	case ENTRY_SCHEDULED = "19"
 	case ACTION_NAME = "20"
 	case URL_AUTH_PARAMS = "21"
+	case SESSION_TYPE = "22"
 }

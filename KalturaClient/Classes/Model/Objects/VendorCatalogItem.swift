@@ -161,6 +161,12 @@ open class VendorCatalogItem: ObjectBase {
 			}
 		}
 		
+		public var defaultReachProfileId: BaseTokenizedObject {
+			get {
+				return self.append("defaultReachProfileId") 
+			}
+		}
+		
 		public var adminTagsToExclude: BaseTokenizedObject {
 			get {
 				return self.append("adminTagsToExclude") 
@@ -191,6 +197,7 @@ open class VendorCatalogItem: ObjectBase {
 	public var createdBy: String? = nil
 	public var notes: String? = nil
 	public var partnerId: Int? = nil
+	public var defaultReachProfileId: Int? = nil
 	public var adminTagsToExclude: String? = nil
 
 
@@ -274,6 +281,10 @@ open class VendorCatalogItem: ObjectBase {
 		self.dict["partnerId"] = partnerId
 	}
 	
+	public func setMultiRequestToken(defaultReachProfileId: String) {
+		self.dict["defaultReachProfileId"] = defaultReachProfileId
+	}
+	
 	public func setMultiRequestToken(adminTagsToExclude: String) {
 		self.dict["adminTagsToExclude"] = adminTagsToExclude
 	}
@@ -343,6 +354,9 @@ open class VendorCatalogItem: ObjectBase {
 		if dict["partnerId"] != nil {
 			partnerId = dict["partnerId"] as? Int
 		}
+		if dict["defaultReachProfileId"] != nil {
+			defaultReachProfileId = dict["defaultReachProfileId"] as? Int
+		}
 		if dict["adminTagsToExclude"] != nil {
 			adminTagsToExclude = dict["adminTagsToExclude"] as? String
 		}
@@ -398,6 +412,9 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if(partnerId != nil) {
 			dict["partnerId"] = partnerId!
+		}
+		if(defaultReachProfileId != nil) {
+			dict["defaultReachProfileId"] = defaultReachProfileId!
 		}
 		if(adminTagsToExclude != nil) {
 			dict["adminTagsToExclude"] = adminTagsToExclude!

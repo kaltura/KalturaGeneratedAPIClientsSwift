@@ -36,13 +36,55 @@
 open class VendorLiveCaptionCatalogItem: VendorLiveCatalogItem {
 
 	public class VendorLiveCaptionCatalogItemTokenizer: VendorLiveCatalogItem.VendorLiveCatalogItemTokenizer {
+		
+		public var startTimeBuffer: BaseTokenizedObject {
+			get {
+				return self.append("startTimeBuffer") 
+			}
+		}
+		
+		public var endTimeBuffer: BaseTokenizedObject {
+			get {
+				return self.append("endTimeBuffer") 
+			}
+		}
 	}
 
+	/**  How long before the live stream start should service activate? (in secs)  */
+	public var startTimeBuffer: Int? = nil
+	/**  How long after the live stream end should service de-activate? (in secs)  */
+	public var endTimeBuffer: Int? = nil
 
 
+	public func setMultiRequestToken(startTimeBuffer: String) {
+		self.dict["startTimeBuffer"] = startTimeBuffer
+	}
+	
+	public func setMultiRequestToken(endTimeBuffer: String) {
+		self.dict["endTimeBuffer"] = endTimeBuffer
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["startTimeBuffer"] != nil {
+			startTimeBuffer = dict["startTimeBuffer"] as? Int
+		}
+		if dict["endTimeBuffer"] != nil {
+			endTimeBuffer = dict["endTimeBuffer"] as? Int
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(startTimeBuffer != nil) {
+			dict["startTimeBuffer"] = startTimeBuffer!
+		}
+		if(endTimeBuffer != nil) {
+			dict["endTimeBuffer"] = endTimeBuffer!
+		}
+		return dict
+	}
 }
 

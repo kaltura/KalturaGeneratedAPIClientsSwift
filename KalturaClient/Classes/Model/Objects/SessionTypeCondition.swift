@@ -33,71 +33,38 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ReportResponseOptions: ObjectBase {
+open class SessionTypeCondition: Condition {
 
-	public class ReportResponseOptionsTokenizer: ObjectBase.ObjectBaseTokenizer {
+	public class SessionTypeConditionTokenizer: Condition.ConditionTokenizer {
 		
-		public var delimiter: BaseTokenizedObject {
+		public var sessionType: BaseTokenizedObject {
 			get {
-				return self.append("delimiter") 
-			}
-		}
-		
-		public var skipEmptyDates: BaseTokenizedObject {
-			get {
-				return self.append("skipEmptyDates") 
-			}
-		}
-		
-		public var useFriendlyHeadersNames: BaseTokenizedObject {
-			get {
-				return self.append("useFriendlyHeadersNames") 
+				return self.append("sessionType") 
 			}
 		}
 	}
 
-	public var delimiter: String? = nil
-	public var skipEmptyDates: Bool? = nil
-	public var useFriendlyHeadersNames: Bool? = nil
+	/**  The privelege needed to remove the restriction  */
+	public var sessionType: SessionType? = nil
 
 
-	public func setMultiRequestToken(delimiter: String) {
-		self.dict["delimiter"] = delimiter
-	}
-	
-	public func setMultiRequestToken(skipEmptyDates: String) {
-		self.dict["skipEmptyDates"] = skipEmptyDates
-	}
-	
-	public func setMultiRequestToken(useFriendlyHeadersNames: String) {
-		self.dict["useFriendlyHeadersNames"] = useFriendlyHeadersNames
+	public func setMultiRequestToken(sessionType: String) {
+		self.dict["sessionType"] = sessionType
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["delimiter"] != nil {
-			delimiter = dict["delimiter"] as? String
-		}
-		if dict["skipEmptyDates"] != nil {
-			skipEmptyDates = dict["skipEmptyDates"] as? Bool
-		}
-		if dict["useFriendlyHeadersNames"] != nil {
-			useFriendlyHeadersNames = dict["useFriendlyHeadersNames"] as? Bool
+		if dict["sessionType"] != nil {
+			sessionType = SessionType(rawValue: (dict["sessionType"] as? Int)!)
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(delimiter != nil) {
-			dict["delimiter"] = delimiter!
-		}
-		if(skipEmptyDates != nil) {
-			dict["skipEmptyDates"] = skipEmptyDates!
-		}
-		if(useFriendlyHeadersNames != nil) {
-			dict["useFriendlyHeadersNames"] = useFriendlyHeadersNames!
+		if(sessionType != nil) {
+			dict["sessionType"] = sessionType!.rawValue
 		}
 		return dict
 	}

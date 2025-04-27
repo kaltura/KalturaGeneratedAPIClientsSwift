@@ -43,12 +43,23 @@ public final class PartnerCatalogItemService{
 				return self.append("id") 
 			}
 		}
+		
+		public var defaultReachProfileId: BaseTokenizedObject {
+			get {
+				return self.append("defaultReachProfileId") 
+			}
+		}
+	}
+
+	public static func add(id: Int) -> RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, AddTokenizer> {
+		return add(id: id, defaultReachProfileId: nil)
 	}
 
 	/**  Assign existing catalogItem to specific account  */
-	public static func add(id: Int) -> RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, AddTokenizer> {
+	public static func add(id: Int, defaultReachProfileId: Int?) -> RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, AddTokenizer> {
 		let request: RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, AddTokenizer> = RequestBuilder<VendorCatalogItem, VendorCatalogItem.VendorCatalogItemTokenizer, AddTokenizer>(service: "reach_partnercatalogitem", action: "add")
 			.setParam(key: "id", value: id)
+			.setParam(key: "defaultReachProfileId", value: defaultReachProfileId)
 
 		return request
 	}
