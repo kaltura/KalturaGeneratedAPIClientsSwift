@@ -180,6 +180,24 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 				return self.append("expectedFinishTimeLessThanOrEqual") 
 			}
 		}
+		
+		public var entryObjectTypeEqual: BaseTokenizedObject {
+			get {
+				return self.append("entryObjectTypeEqual") 
+			}
+		}
+		
+		public var entryObjectTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("entryObjectTypeIn") 
+			}
+		}
+		
+		public var entryObjectTypeNotIn: BaseTokenizedObject {
+			get {
+				return self.append("entryObjectTypeNotIn") 
+			}
+		}
 	}
 
 	public var idEqual: Int64? = nil
@@ -206,6 +224,9 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 	public var contextEqual: String? = nil
 	public var expectedFinishTimeGreaterThanOrEqual: Int? = nil
 	public var expectedFinishTimeLessThanOrEqual: Int? = nil
+	public var entryObjectTypeEqual: EntryObjectType? = nil
+	public var entryObjectTypeIn: String? = nil
+	public var entryObjectTypeNotIn: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -304,6 +325,18 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		self.dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual
 	}
 	
+	public func setMultiRequestToken(entryObjectTypeEqual: String) {
+		self.dict["entryObjectTypeEqual"] = entryObjectTypeEqual
+	}
+	
+	public func setMultiRequestToken(entryObjectTypeIn: String) {
+		self.dict["entryObjectTypeIn"] = entryObjectTypeIn
+	}
+	
+	public func setMultiRequestToken(entryObjectTypeNotIn: String) {
+		self.dict["entryObjectTypeNotIn"] = entryObjectTypeNotIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -378,6 +411,15 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		}
 		if dict["expectedFinishTimeLessThanOrEqual"] != nil {
 			expectedFinishTimeLessThanOrEqual = dict["expectedFinishTimeLessThanOrEqual"] as? Int
+		}
+		if dict["entryObjectTypeEqual"] != nil {
+			entryObjectTypeEqual = EntryObjectType(rawValue: (dict["entryObjectTypeEqual"] as? Int)!)
+		}
+		if dict["entryObjectTypeIn"] != nil {
+			entryObjectTypeIn = dict["entryObjectTypeIn"] as? String
+		}
+		if dict["entryObjectTypeNotIn"] != nil {
+			entryObjectTypeNotIn = dict["entryObjectTypeNotIn"] as? String
 		}
 
 	}
@@ -455,6 +497,15 @@ open class EntryVendorTaskBaseFilter: RelatedFilter {
 		}
 		if(expectedFinishTimeLessThanOrEqual != nil) {
 			dict["expectedFinishTimeLessThanOrEqual"] = expectedFinishTimeLessThanOrEqual!
+		}
+		if(entryObjectTypeEqual != nil) {
+			dict["entryObjectTypeEqual"] = entryObjectTypeEqual!.rawValue
+		}
+		if(entryObjectTypeIn != nil) {
+			dict["entryObjectTypeIn"] = entryObjectTypeIn!
+		}
+		if(entryObjectTypeNotIn != nil) {
+			dict["entryObjectTypeNotIn"] = entryObjectTypeNotIn!
 		}
 		return dict
 	}

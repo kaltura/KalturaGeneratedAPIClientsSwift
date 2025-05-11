@@ -31,15 +31,6 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryApplication: String {
-	case KMC = "0"
-	case KMS = "1"
-	case KAF = "2"
-	case PITCH = "3"
-	case KMS_GO = "4"
-	case WEBCAST_APP = "5"
-	case PERSONAL_CAPTURE = "6"
-	case KALTURA_MEETING = "7"
-	case EP = "8"
-	case CONTENT_LAB = "9"
+public enum EntryObjectType: Int {
+	case ENTRY = 1
 }

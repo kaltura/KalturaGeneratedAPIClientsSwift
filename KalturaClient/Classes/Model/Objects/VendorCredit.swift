@@ -60,12 +60,19 @@ open class VendorCredit: BaseVendorCredit {
 				return self.append("addOn") 
 			}
 		}
+		
+		public var allowNegativeOverageCredit: BaseTokenizedObject {
+			get {
+				return self.append("allowNegativeOverageCredit") 
+			}
+		}
 	}
 
 	public var credit: Int? = nil
 	public var fromDate: Int? = nil
 	public var overageCredit: Int? = nil
 	public var addOn: Int? = nil
+	public var allowNegativeOverageCredit: Bool? = nil
 
 
 	public func setMultiRequestToken(credit: String) {
@@ -84,6 +91,10 @@ open class VendorCredit: BaseVendorCredit {
 		self.dict["addOn"] = addOn
 	}
 	
+	public func setMultiRequestToken(allowNegativeOverageCredit: String) {
+		self.dict["allowNegativeOverageCredit"] = allowNegativeOverageCredit
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -98,6 +109,9 @@ open class VendorCredit: BaseVendorCredit {
 		}
 		if dict["addOn"] != nil {
 			addOn = dict["addOn"] as? Int
+		}
+		if dict["allowNegativeOverageCredit"] != nil {
+			allowNegativeOverageCredit = dict["allowNegativeOverageCredit"] as? Bool
 		}
 
 	}
@@ -115,6 +129,9 @@ open class VendorCredit: BaseVendorCredit {
 		}
 		if(addOn != nil) {
 			dict["addOn"] = addOn!
+		}
+		if(allowNegativeOverageCredit != nil) {
+			dict["allowNegativeOverageCredit"] = allowNegativeOverageCredit!
 		}
 		return dict
 	}
