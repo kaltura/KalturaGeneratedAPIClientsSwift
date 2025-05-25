@@ -32,11 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum FileSyncObjectType: String {
-	case DISTRIBUTION_PROFILE = "contentDistribution.DistributionProfile"
-	case ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution"
-	case GENERIC_DISTRIBUTION_ACTION = "contentDistribution.GenericDistributionAction"
-	case EMAIL_NOTIFICATION_TEMPLATE = "emailNotification.EmailNotificationTemplate"
-	case HTTP_NOTIFICATION_TEMPLATE = "httpNotification.HttpNotificationTemplate"
 	case ENTRY = "1"
 	case UICONF = "2"
 	case BATCHJOB = "3"
@@ -46,4 +41,9 @@ public enum FileSyncObjectType: String {
 	case SYNDICATION_FEED = "7"
 	case CONVERSION_PROFILE = "8"
 	case FILE_ASSET = "9"
+	case DISTRIBUTION_PROFILE = "contentDistribution.DistributionProfile"
+	case ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution"
+	case GENERIC_DISTRIBUTION_ACTION = "contentDistribution.GenericDistributionAction"
+	case EMAIL_NOTIFICATION_TEMPLATE = "emailNotification.EmailNotificationTemplate"
+	case HTTP_NOTIFICATION_TEMPLATE = "httpNotification.HttpNotificationTemplate"
 }

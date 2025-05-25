@@ -33,6 +33,6 @@
  */
 public enum MediaParserType: String {
 	case MEDIAINFO = "0"
-	case REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo"
 	case FFMPEG = "1"
+	case REMOTE_MEDIAINFO = "remoteMediaInfo.RemoteMediaInfo"
 }

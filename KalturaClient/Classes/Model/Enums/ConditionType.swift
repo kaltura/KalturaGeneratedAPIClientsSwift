@@ -32,13 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ConditionType: String {
-	case ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark"
-	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
-	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
-	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"
-	case METADATA_FIELD_COMPARE = "metadata.FieldCompare"
-	case METADATA_FIELD_MATCH = "metadata.FieldMatch"
-	case EVENT_CATEGORY_ENTRY = "reach.CategoryEntry"
 	case AUTHENTICATED = "1"
 	case COUNTRY = "2"
 	case IP_ADDRESS = "3"
@@ -61,4 +54,11 @@ public enum ConditionType: String {
 	case ACTION_NAME = "20"
 	case URL_AUTH_PARAMS = "21"
 	case SESSION_TYPE = "22"
+	case ABC_WATERMARK = "abcScreenersWatermarkAccessControl.abcWatermark"
+	case EVENT_NOTIFICATION_FIELD = "eventNotification.BooleanField"
+	case EVENT_NOTIFICATION_OBJECT_CHANGED = "eventNotification.ObjectChanged"
+	case METADATA_FIELD_CHANGED = "metadata.FieldChanged"
+	case METADATA_FIELD_COMPARE = "metadata.FieldCompare"
+	case METADATA_FIELD_MATCH = "metadata.FieldMatch"
+	case EVENT_CATEGORY_ENTRY = "reach.CategoryEntry"
 }

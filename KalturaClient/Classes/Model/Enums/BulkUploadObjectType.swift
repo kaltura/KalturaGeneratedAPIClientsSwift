@@ -32,9 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadObjectType: String {
-	case JOB = "bulkUploadFilter.JOB"
-	case SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT"
-	case SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE"
 	case ENTRY = "1"
 	case CATEGORY = "2"
 	case USER = "3"
@@ -42,4 +39,7 @@ public enum BulkUploadObjectType: String {
 	case CATEGORY_ENTRY = "5"
 	case USER_ENTRY = "6"
 	case VENDOR_CATALOG_ITEM = "7"
+	case JOB = "bulkUploadFilter.JOB"
+	case SCHEDULE_EVENT = "scheduleBulkUpload.SCHEDULE_EVENT"
+	case SCHEDULE_RESOURCE = "scheduleBulkUpload.SCHEDULE_RESOURCE"
 }

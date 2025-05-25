@@ -32,6 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum IntegrationTriggerType: String {
-	case BPM_EVENT_NOTIFICATION = "bpmEventNotificationIntegration.BpmEventNotification"
 	case MANUAL = "1"
+	case BPM_EVENT_NOTIFICATION = "bpmEventNotificationIntegration.BpmEventNotification"
 }

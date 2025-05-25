@@ -119,9 +119,9 @@ open class VendorCatalogItem: ObjectBase {
 			}
 		}
 		
-		public var requiresOverages: BaseTokenizedObject {
+		public var payPerUse: BaseTokenizedObject {
 			get {
-				return self.append("requiresOverages") 
+				return self.append("payPerUse") 
 			}
 		}
 		
@@ -196,7 +196,7 @@ open class VendorCatalogItem: ObjectBase {
 	public var engineType: ReachVendorEngineType? = nil
 	public var sourceLanguage: CatalogItemLanguage? = nil
 	public var allowResubmission: Bool? = nil
-	public var requiresOverages: Bool? = nil
+	public var payPerUse: Bool? = nil
 	public var vendorData: String? = nil
 	public var stage: VendorCatalogItemStage? = nil
 	public var lastBulkUpdateId: Int? = nil
@@ -260,8 +260,8 @@ open class VendorCatalogItem: ObjectBase {
 		self.dict["allowResubmission"] = allowResubmission
 	}
 	
-	public func setMultiRequestToken(requiresOverages: String) {
-		self.dict["requiresOverages"] = requiresOverages
+	public func setMultiRequestToken(payPerUse: String) {
+		self.dict["payPerUse"] = payPerUse
 	}
 	
 	public func setMultiRequestToken(vendorData: String) {
@@ -344,8 +344,8 @@ open class VendorCatalogItem: ObjectBase {
 		if dict["allowResubmission"] != nil {
 			allowResubmission = dict["allowResubmission"] as? Bool
 		}
-		if dict["requiresOverages"] != nil {
-			requiresOverages = dict["requiresOverages"] as? Bool
+		if dict["payPerUse"] != nil {
+			payPerUse = dict["payPerUse"] as? Bool
 		}
 		if dict["vendorData"] != nil {
 			vendorData = dict["vendorData"] as? String
@@ -406,8 +406,8 @@ open class VendorCatalogItem: ObjectBase {
 		if(allowResubmission != nil) {
 			dict["allowResubmission"] = allowResubmission!
 		}
-		if(requiresOverages != nil) {
-			dict["requiresOverages"] = requiresOverages!
+		if(payPerUse != nil) {
+			dict["payPerUse"] = payPerUse!
 		}
 		if(vendorData != nil) {
 			dict["vendorData"] = vendorData!

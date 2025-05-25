@@ -121,6 +121,12 @@ open class EntryVendorTask: ObjectBase {
 			}
 		}
 		
+		public var unitsUsed: BaseTokenizedObject {
+			get {
+				return self.append("unitsUsed") 
+			}
+		}
+		
 		public var moderatingUser: BaseTokenizedObject {
 			get {
 				return self.append("moderatingUser") 
@@ -240,6 +246,7 @@ open class EntryVendorTask: ObjectBase {
 	/**  The ID of the user who created this task  */
 	public var userId: String? = nil
 	public var entryObjectType: EntryObjectType? = nil
+	public var unitsUsed: Int? = nil
 	/**  The user ID that approved this task for execution (in case moderation is
 	  requested)  */
 	public var moderatingUser: String? = nil
@@ -328,6 +335,10 @@ open class EntryVendorTask: ObjectBase {
 	
 	public func setMultiRequestToken(entryObjectType: String) {
 		self.dict["entryObjectType"] = entryObjectType
+	}
+	
+	public func setMultiRequestToken(unitsUsed: String) {
+		self.dict["unitsUsed"] = unitsUsed
 	}
 	
 	public func setMultiRequestToken(moderatingUser: String) {
@@ -439,6 +450,9 @@ open class EntryVendorTask: ObjectBase {
 		if dict["entryObjectType"] != nil {
 			entryObjectType = EntryObjectType(rawValue: (dict["entryObjectType"] as? Int)!)
 		}
+		if dict["unitsUsed"] != nil {
+			unitsUsed = dict["unitsUsed"] as? Int
+		}
 		if dict["moderatingUser"] != nil {
 			moderatingUser = dict["moderatingUser"] as? String
 		}
@@ -508,6 +522,9 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if(entryObjectType != nil) {
 			dict["entryObjectType"] = entryObjectType!.rawValue
+		}
+		if(unitsUsed != nil) {
+			dict["unitsUsed"] = unitsUsed!
 		}
 		if(errDescription != nil) {
 			dict["errDescription"] = errDescription!

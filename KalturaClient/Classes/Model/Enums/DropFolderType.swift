@@ -32,6 +32,11 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderType: String {
+	case LOCAL = "1"
+	case FTP = "2"
+	case SCP = "3"
+	case SFTP = "4"
+	case S3 = "6"
 	case AP_FEED = "ApFeedDropFolder.AP_FEED"
 	case FEED = "FeedDropFolder.FEED"
 	case MS_TEAMS = "MicrosoftTeamsDropFolder.MS_TEAMS"
@@ -41,9 +46,4 @@ public enum DropFolderType: String {
 	case WEBEX_API = "WebexAPIDropFolder.WEBEX_API"
 	case WEBEX = "WebexDropFolder.WEBEX"
 	case ZOOM = "ZoomDropFolder.ZOOM"
-	case LOCAL = "1"
-	case FTP = "2"
-	case SCP = "3"
-	case SFTP = "4"
-	case S3 = "6"
 }

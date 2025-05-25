@@ -32,16 +32,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum MetadataObjectType: String {
-	case AD_CUE_POINT = "adCuePointMetadata.AdCuePoint"
-	case ANNOTATION = "annotationMetadata.Annotation"
-	case CODE_CUE_POINT = "codeCuePointMetadata.CodeCuePoint"
-	case ANSWER_CUE_POINT = "quiz.AnswerCuePoint"
-	case QUESTION_CUE_POINT = "quiz.QuestionCuePoint"
-	case THUMB_CUE_POINT = "thumbCuePointMetadata.thumbCuePoint"
 	case ENTRY = "1"
 	case CATEGORY = "2"
 	case USER = "3"
 	case PARTNER = "4"
 	case DYNAMIC_OBJECT = "5"
 	case USER_ENTRY = "6"
+	case AD_CUE_POINT = "adCuePointMetadata.AdCuePoint"
+	case ANNOTATION = "annotationMetadata.Annotation"
+	case CODE_CUE_POINT = "codeCuePointMetadata.CodeCuePoint"
+	case ANSWER_CUE_POINT = "quiz.AnswerCuePoint"
+	case QUESTION_CUE_POINT = "quiz.QuestionCuePoint"
+	case THUMB_CUE_POINT = "thumbCuePointMetadata.thumbCuePoint"
 }

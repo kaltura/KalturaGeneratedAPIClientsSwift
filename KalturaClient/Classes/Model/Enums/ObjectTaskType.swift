@@ -32,9 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ObjectTaskType: String {
-	case DISTRIBUTE = "scheduledTaskContentDistribution.Distribute"
-	case DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification"
-	case EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt"
 	case DELETE_ENTRY = "1"
 	case MODIFY_CATEGORIES = "2"
 	case DELETE_ENTRY_FLAVORS = "3"
@@ -44,4 +41,7 @@ public enum ObjectTaskType: String {
 	case MODIFY_ENTRY = "7"
 	case MAIL_NOTIFICATION = "8"
 	case RECYCLE_BIN_CLEANUP = "9"
+	case DISTRIBUTE = "scheduledTaskContentDistribution.Distribute"
+	case DISPATCH_EVENT_NOTIFICATION = "scheduledTaskEventNotification.DispatchEventNotification"
+	case EXECUTE_METADATA_XSLT = "scheduledTaskMetadata.ExecuteMetadataXslt"
 }

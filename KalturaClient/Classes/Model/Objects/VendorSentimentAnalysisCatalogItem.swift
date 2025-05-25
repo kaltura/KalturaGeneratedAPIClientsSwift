@@ -25,23 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum BaseEntryCloneOptions: String {
-	case USERS = "1"
-	case CATEGORIES = "2"
-	case CHILD_ENTRIES = "3"
-	case ACCESS_CONTROL = "4"
-	case METADATA = "5"
-	case FLAVORS = "6"
-	case CAPTIONS = "7"
-	case AD_CUE_POINTS = "adCuePoint.AD_CUE_POINTS"
-	case ANNOTATION_CUE_POINTS = "annotation.ANNOTATION_CUE_POINTS"
-	case CODE_CUE_POINTS = "codeCuePoint.CODE_CUE_POINTS"
-	case SESSION_CUE_POINTS = "sessionCuePoint.SESSION_CUE_POINTS"
-	case THUMB_CUE_POINTS = "thumbCuePoint.THUMB_CUE_POINTS"
+
+open class VendorSentimentAnalysisCatalogItem: VendorCatalogItem {
+
+	public class VendorSentimentAnalysisCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+	}
+
+
+
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

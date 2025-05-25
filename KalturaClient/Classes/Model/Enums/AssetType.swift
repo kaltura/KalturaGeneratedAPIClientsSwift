@@ -32,6 +32,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum AssetType: String {
+	case FLAVOR = "1"
+	case THUMBNAIL = "2"
+	case LIVE = "3"
 	case ATTACHMENT = "attachment.Attachment"
 	case CAPTION = "caption.Caption"
 	case DOCUMENT = "document.Document"
@@ -41,7 +44,4 @@ public enum AssetType: String {
 	case TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb"
 	case TRANSCRIPT = "transcript.Transcript"
 	case WIDEVINE_FLAVOR = "widevine.WidevineFlavor"
-	case FLAVOR = "1"
-	case THUMBNAIL = "2"
-	case LIVE = "3"
 }

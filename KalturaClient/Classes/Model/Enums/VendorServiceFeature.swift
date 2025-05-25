@@ -48,4 +48,5 @@ public enum VendorServiceFeature: Int {
 	case VIDEO_ANALYSIS = 14
 	case MODERATION = 15
 	case METADATA_ENRICHMENT = 16
+	case SENTIMENT_ANALYSIS = 17
 }

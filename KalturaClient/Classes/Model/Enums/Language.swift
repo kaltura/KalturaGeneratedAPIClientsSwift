@@ -243,7 +243,7 @@ public enum Language: String {
 	case KPO = "Ikposo"
 	case ILO = "Iloko"
 	case SMN = "Inari Sami"
-	case IN = "Indonesian"
+	case ID = "Indonesian"
 	case IZH = "Ingrian"
 	case INH = "Ingush"
 	case IA = "Interlingua"

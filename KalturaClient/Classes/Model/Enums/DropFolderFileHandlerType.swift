@@ -32,8 +32,8 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DropFolderFileHandlerType: String {
+	case CONTENT = "1"
 	case TR_RDS = "TrRdsSyncDropFolder.TR_RDS"
 	case XML = "dropFolderXmlBulkUpload.XML"
 	case ICAL = "scheduleDropFolder.ICAL"
-	case CONTENT = "1"
 }

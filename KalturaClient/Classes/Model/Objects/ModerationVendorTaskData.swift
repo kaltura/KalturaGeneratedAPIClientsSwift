@@ -49,6 +49,12 @@ open class ModerationVendorTaskData: VendorTaskData {
 			}
 		}
 		
+		public var categoryIds: BaseTokenizedObject {
+			get {
+				return self.append("categoryIds") 
+			}
+		}
+		
 		public var moderationOutputJson: BaseTokenizedObject {
 			get {
 				return self.append("moderationOutputJson") 
@@ -60,6 +66,8 @@ open class ModerationVendorTaskData: VendorTaskData {
 	public var ruleIds: String? = nil
 	/**  A comma seperated string of policy IDs.  */
 	public var policyIds: String? = nil
+	/**  A comma seperated string of category IDs.  */
+	public var categoryIds: String? = nil
 	/**  JSON string containing the moderation output.  */
 	public var moderationOutputJson: String? = nil
 
@@ -70,6 +78,10 @@ open class ModerationVendorTaskData: VendorTaskData {
 	
 	public func setMultiRequestToken(policyIds: String) {
 		self.dict["policyIds"] = policyIds
+	}
+	
+	public func setMultiRequestToken(categoryIds: String) {
+		self.dict["categoryIds"] = categoryIds
 	}
 	
 	public func setMultiRequestToken(moderationOutputJson: String) {
@@ -85,6 +97,9 @@ open class ModerationVendorTaskData: VendorTaskData {
 		if dict["policyIds"] != nil {
 			policyIds = dict["policyIds"] as? String
 		}
+		if dict["categoryIds"] != nil {
+			categoryIds = dict["categoryIds"] as? String
+		}
 		if dict["moderationOutputJson"] != nil {
 			moderationOutputJson = dict["moderationOutputJson"] as? String
 		}
@@ -98,6 +113,9 @@ open class ModerationVendorTaskData: VendorTaskData {
 		}
 		if(policyIds != nil) {
 			dict["policyIds"] = policyIds!
+		}
+		if(categoryIds != nil) {
+			dict["categoryIds"] = categoryIds!
 		}
 		if(moderationOutputJson != nil) {
 			dict["moderationOutputJson"] = moderationOutputJson!

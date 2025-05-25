@@ -32,7 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BulkUploadAction: String {
-	case CANCEL = "scheduleBulkUpload.CANCEL"
 	case ADD = "1"
 	case UPDATE = "2"
 	case DELETE = "3"
@@ -42,4 +41,5 @@ public enum BulkUploadAction: String {
 	case ACTIVATE = "7"
 	case REJECT = "8"
 	case UPDATE_STATUS = "9"
+	case CANCEL = "scheduleBulkUpload.CANCEL"
 }

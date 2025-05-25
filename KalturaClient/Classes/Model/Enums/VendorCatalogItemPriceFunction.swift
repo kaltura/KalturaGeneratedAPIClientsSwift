@@ -35,4 +35,5 @@ public enum VendorCatalogItemPriceFunction: String {
 	case PRICE_PER_HOUR = "kReachUtils::calcPricePerHour"
 	case PRICE_PER_MINUTE = "kReachUtils::calcPricePerMinute"
 	case PRICE_PER_SECOND = "kReachUtils::calcPricePerSecond"
+	case PRICE_PER_TOKEN = "kReachUtils::calcPricePerToken"
 }

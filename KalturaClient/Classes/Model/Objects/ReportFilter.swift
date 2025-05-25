@@ -33,16 +33,58 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ReportFilter: ReportBaseFilter {
+open class ReportFilter: ObjectBase {
 
-	public class ReportFilterTokenizer: ReportBaseFilter.ReportBaseFilterTokenizer {
+	public class ReportFilterTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var dimension: BaseTokenizedObject {
+			get {
+				return self.append("dimension") 
+			}
+		}
+		
+		public var values: BaseTokenizedObject {
+			get {
+				return self.append("values") 
+			}
+		}
 	}
 
+	/**  The dimension whose values should be filtered  */
+	public var dimension: String? = nil
+	/**  The (comma separated) values to include in the filter  */
+	public var values: String? = nil
 
 
+	public func setMultiRequestToken(dimension: String) {
+		self.dict["dimension"] = dimension
+	}
+	
+	public func setMultiRequestToken(values: String) {
+		self.dict["values"] = values
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["dimension"] != nil {
+			dimension = dict["dimension"] as? String
+		}
+		if dict["values"] != nil {
+			values = dict["values"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(dimension != nil) {
+			dict["dimension"] = dimension!
+		}
+		if(values != nil) {
+			dict["values"] = values!
+		}
+		return dict
+	}
 }
 

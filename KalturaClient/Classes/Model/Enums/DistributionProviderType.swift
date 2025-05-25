@@ -32,6 +32,8 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DistributionProviderType: String {
+	case GENERIC = "1"
+	case SYNDICATION = "2"
 	case ATT_UVERSE = "attUverseDistribution.ATT_UVERSE"
 	case AVN = "avnDistribution.AVN"
 	case COMCAST_MRSS = "comcastMrssDistribution.COMCAST_MRSS"
@@ -63,6 +65,4 @@ public enum DistributionProviderType: String {
 	case YAHOO = "yahooDistribution.YAHOO"
 	case YOUTUBE = "youTubeDistribution.YOUTUBE"
 	case YOUTUBE_API = "youtubeApiDistribution.YOUTUBE_API"
-	case GENERIC = "1"
-	case SYNDICATION = "2"
 }

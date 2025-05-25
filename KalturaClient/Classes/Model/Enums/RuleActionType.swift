@@ -32,8 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum RuleActionType: String {
-	case DRM_POLICY = "drm.DRM_POLICY"
-	case ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK"
 	case BLOCK = "1"
 	case PREVIEW = "2"
 	case LIMIT_FLAVORS = "3"
@@ -42,4 +40,6 @@ public enum RuleActionType: String {
 	case SERVE_FROM_REMOTE_SERVER = "6"
 	case REQUEST_HOST_REGEX = "7"
 	case LIMIT_THUMBNAIL_CAPTURE = "8"
+	case DRM_POLICY = "drm.DRM_POLICY"
+	case ADD_ENTRY_VENDOR_TASK = "reach.ADD_ENTRY_VENDOR_TASK"
 }

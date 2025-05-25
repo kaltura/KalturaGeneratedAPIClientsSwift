@@ -35,8 +35,6 @@ public enum EntryStatus: String {
 	case ERROR_IMPORTING = "-2"
 	case ERROR_CONVERTING = "-1"
 	case IMPORT = "0"
-	case INFECTED = "virusScan.Infected"
-	case SCAN_FAILURE = "virusScan.ScanFailure"
 	case PRECONVERT = "1"
 	case READY = "2"
 	case DELETED = "3"
@@ -44,4 +42,6 @@ public enum EntryStatus: String {
 	case MODERATE = "5"
 	case BLOCKED = "6"
 	case NO_CONTENT = "7"
+	case INFECTED = "virusScan.Infected"
+	case SCAN_FAILURE = "virusScan.ScanFailure"
 }

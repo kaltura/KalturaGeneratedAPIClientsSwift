@@ -32,11 +32,11 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum StorageProfileProtocol: String {
-	case KONTIKI = "kontiki.KONTIKI"
 	case KALTURA_DC = "0"
 	case FTP = "1"
 	case SCP = "2"
 	case SFTP = "3"
 	case S3 = "6"
 	case LOCAL = "7"
+	case KONTIKI = "kontiki.KONTIKI"
 }

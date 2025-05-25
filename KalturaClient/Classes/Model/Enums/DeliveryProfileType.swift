@@ -32,13 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum DeliveryProfileType: String {
-	case EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP"
-	case EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP"
-	case KONTIKI_HTTP = "kontiki.KONTIKI_HTTP"
-	case UPLYNK_HTTP = "uplynk.UPLYNK_HTTP"
-	case UPLYNK_RTMP = "uplynk.UPLYNK_RTMP"
-	case VELOCIX_HDS = "velocix.VELOCIX_HDS"
-	case VELOCIX_HLS = "velocix.VELOCIX_HLS"
 	case APPLE_HTTP = "1"
 	case HDS = "3"
 	case HTTP = "4"
@@ -84,4 +77,11 @@ public enum DeliveryProfileType: String {
 	case LIVE_PACKAGER_DASH = "1009"
 	case LIVE_PACKAGER_MSS = "1010"
 	case LIVE_AKAMAI_HDS = "1013"
+	case EDGE_CAST_HTTP = "edgeCast.EDGE_CAST_HTTP"
+	case EDGE_CAST_RTMP = "edgeCast.EDGE_CAST_RTMP"
+	case KONTIKI_HTTP = "kontiki.KONTIKI_HTTP"
+	case UPLYNK_HTTP = "uplynk.UPLYNK_HTTP"
+	case UPLYNK_RTMP = "uplynk.UPLYNK_RTMP"
+	case VELOCIX_HDS = "velocix.VELOCIX_HDS"
+	case VELOCIX_HLS = "velocix.VELOCIX_HLS"
 }

@@ -32,8 +32,8 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum UserEntryStatus: String {
-	case QUIZ_SUBMITTED = "quiz.3"
 	case ACTIVE = "1"
 	case DELETED = "2"
 	case RECYCLED = "3"
+	case QUIZ_SUBMITTED = "quiz.3"
 }

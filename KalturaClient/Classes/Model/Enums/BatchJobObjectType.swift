@@ -32,14 +32,14 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum BatchJobObjectType: String {
-	case ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution"
-	case DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile"
-	case METADATA = "metadata.Metadata"
-	case METADATA_PROFILE = "metadata.MetadataProfile"
-	case SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile"
 	case ENTRY = "1"
 	case CATEGORY = "2"
 	case FILE_SYNC = "3"
 	case ASSET = "4"
 	case USER = "5"
+	case ENTRY_DISTRIBUTION = "contentDistribution.EntryDistribution"
+	case DROP_FOLDER_FILE = "dropFolderXmlBulkUpload.DropFolderFile"
+	case METADATA = "metadata.Metadata"
+	case METADATA_PROFILE = "metadata.MetadataProfile"
+	case SCHEDULED_TASK_PROFILE = "scheduledTask.ScheduledTaskProfile"
 }

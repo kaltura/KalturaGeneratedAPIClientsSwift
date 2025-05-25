@@ -58,12 +58,26 @@ open class ESearchParams: ObjectBase {
 				return self.append("ignoreSynonym") 
 			}
 		}
+		
+		public var objectIds: BaseTokenizedObject {
+			get {
+				return self.append("objectIds") 
+			}
+		}
+		
+		public var objectIdsNotIn: BaseTokenizedObject {
+			get {
+				return self.append("objectIdsNotIn") 
+			}
+		}
 	}
 
 	public var objectStatuses: String? = nil
 	public var objectId: String? = nil
 	public var orderBy: ESearchOrderBy? = nil
 	public var ignoreSynonym: Bool? = nil
+	public var objectIds: String? = nil
+	public var objectIdsNotIn: Bool? = nil
 
 
 	public func setMultiRequestToken(objectStatuses: String) {
@@ -76,6 +90,14 @@ open class ESearchParams: ObjectBase {
 	
 	public func setMultiRequestToken(ignoreSynonym: String) {
 		self.dict["ignoreSynonym"] = ignoreSynonym
+	}
+	
+	public func setMultiRequestToken(objectIds: String) {
+		self.dict["objectIds"] = objectIds
+	}
+	
+	public func setMultiRequestToken(objectIdsNotIn: String) {
+		self.dict["objectIdsNotIn"] = objectIdsNotIn
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -91,6 +113,12 @@ open class ESearchParams: ObjectBase {
 		orderBy = try JSONParser.parse(object: dict["orderBy"] as! [String: Any])		}
 		if dict["ignoreSynonym"] != nil {
 			ignoreSynonym = dict["ignoreSynonym"] as? Bool
+		}
+		if dict["objectIds"] != nil {
+			objectIds = dict["objectIds"] as? String
+		}
+		if dict["objectIdsNotIn"] != nil {
+			objectIdsNotIn = dict["objectIdsNotIn"] as? Bool
 		}
 
 	}
@@ -108,6 +136,12 @@ open class ESearchParams: ObjectBase {
 		}
 		if(ignoreSynonym != nil) {
 			dict["ignoreSynonym"] = ignoreSynonym!
+		}
+		if(objectIds != nil) {
+			dict["objectIds"] = objectIds!
+		}
+		if(objectIdsNotIn != nil) {
+			dict["objectIdsNotIn"] = objectIdsNotIn!
 		}
 		return dict
 	}
