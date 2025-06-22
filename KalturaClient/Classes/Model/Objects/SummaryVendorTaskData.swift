@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class SummaryVendorTaskData: VendorTaskData {
+open class SummaryVendorTaskData: LocalizedVendorTaskData {
 
-	public class SummaryVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+	public class SummaryVendorTaskDataTokenizer: LocalizedVendorTaskData.LocalizedVendorTaskDataTokenizer {
 		
 		public var typeOfSummary: BaseTokenizedObject {
 			get {
@@ -46,12 +46,6 @@ open class SummaryVendorTaskData: VendorTaskData {
 		public var writingStyle: BaseTokenizedObject {
 			get {
 				return self.append("writingStyle") 
-			}
-		}
-		
-		public var language: BaseTokenizedObject {
-			get {
-				return self.append("language") 
 			}
 		}
 		
@@ -66,8 +60,6 @@ open class SummaryVendorTaskData: VendorTaskData {
 	public var typeOfSummary: TypeOfSummaryTaskData? = nil
 	/**  Writing style of the summary.  */
 	public var writingStyle: SummaryWritingStyleTaskData? = nil
-	/**  Language code  */
-	public var language: LanguageCode? = nil
 	/**  JSON string containing the summary output.  */
 	public var summaryOutputJson: String? = nil
 
@@ -78,10 +70,6 @@ open class SummaryVendorTaskData: VendorTaskData {
 	
 	public func setMultiRequestToken(writingStyle: String) {
 		self.dict["writingStyle"] = writingStyle
-	}
-	
-	public func setMultiRequestToken(language: String) {
-		self.dict["language"] = language
 	}
 	
 	public func setMultiRequestToken(summaryOutputJson: String) {
@@ -97,9 +85,6 @@ open class SummaryVendorTaskData: VendorTaskData {
 		if dict["writingStyle"] != nil {
 			writingStyle = SummaryWritingStyleTaskData(rawValue: "\(dict["writingStyle"]!)")
 		}
-		if dict["language"] != nil {
-			language = LanguageCode(rawValue: "\(dict["language"]!)")
-		}
 		if dict["summaryOutputJson"] != nil {
 			summaryOutputJson = dict["summaryOutputJson"] as? String
 		}
@@ -113,9 +98,6 @@ open class SummaryVendorTaskData: VendorTaskData {
 		}
 		if(writingStyle != nil) {
 			dict["writingStyle"] = writingStyle!.rawValue
-		}
-		if(language != nil) {
-			dict["language"] = language!.rawValue
 		}
 		if(summaryOutputJson != nil) {
 			dict["summaryOutputJson"] = summaryOutputJson!

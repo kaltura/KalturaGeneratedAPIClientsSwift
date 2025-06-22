@@ -25,30 +25,66 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
-	case LIVE_CAPTION = 8
-	case EXTENDED_AUDIO_DESCRIPTION = 9
-	case CLIPS = 10
-	case LIVE_TRANSLATION = 11
-	case QUIZ = 12
-	case SUMMARY = 13
-	case VIDEO_ANALYSIS = 14
-	case MODERATION = 15
-	case METADATA_ENRICHMENT = 16
-	case SENTIMENT_ANALYSIS = 17
-	case DOCUMENT_ENRICHMENT = 18
-	case SIGN_LANGUAGE = 19
+
+open class LocalizedVendorTaskData: VendorTaskData {
+
+	public class LocalizedVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+		
+		public var outputLanguage: BaseTokenizedObject {
+			get {
+				return self.append("outputLanguage") 
+			}
+		}
+		
+		public var outputJson: BaseTokenizedObject {
+			get {
+				return self.append("outputJson") 
+			}
+		}
+	}
+
+	/**  Language code  */
+	public var outputLanguage: Language? = nil
+	/**  result as JSON string.  */
+	public var outputJson: String? = nil
+
+
+	public func setMultiRequestToken(outputLanguage: String) {
+		self.dict["outputLanguage"] = outputLanguage
+	}
+	
+	public func setMultiRequestToken(outputJson: String) {
+		self.dict["outputJson"] = outputJson
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["outputLanguage"] != nil {
+			outputLanguage = Language(rawValue: "\(dict["outputLanguage"]!)")
+		}
+		if dict["outputJson"] != nil {
+			outputJson = dict["outputJson"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(outputLanguage != nil) {
+			dict["outputLanguage"] = outputLanguage!.rawValue
+		}
+		if(outputJson != nil) {
+			dict["outputJson"] = outputJson!
+		}
+		return dict
+	}
 }
+

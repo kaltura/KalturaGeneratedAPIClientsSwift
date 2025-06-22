@@ -284,6 +284,29 @@ public final class EntryVendorTaskService{
 		return request
 	}
 
+	public class ReplaceOutputTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var newOutput: BaseTokenizedObject {
+			get {
+				return self.append("newOutput") 
+			}
+		}
+	}
+
+	public static func replaceOutput(id: Int, newOutput: String) -> RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ReplaceOutputTokenizer> {
+		let request: RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ReplaceOutputTokenizer> = RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ReplaceOutputTokenizer>(service: "reach_entryvendortask", action: "replaceOutput")
+			.setParam(key: "id", value: id)
+			.setParam(key: "newOutput", value: newOutput)
+
+		return request
+	}
+
 	public class ServeCsvTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {

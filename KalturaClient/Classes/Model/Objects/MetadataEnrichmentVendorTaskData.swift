@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class MetadataEnrichmentVendorTaskData: VendorTaskData {
+open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 
-	public class MetadataEnrichmentVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+	public class MetadataEnrichmentVendorTaskDataTokenizer: LocalizedVendorTaskData.LocalizedVendorTaskDataTokenizer {
 		
 		public var detailLevel: BaseTokenizedObject {
 			get {
@@ -48,12 +48,6 @@ open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 				return self.append("instruction") 
 			}
 		}
-		
-		public var outputJson: BaseTokenizedObject {
-			get {
-				return self.append("outputJson") 
-			}
-		}
 	}
 
 	/**  The level of detail for the metadata enrichment process.  */
@@ -61,10 +55,6 @@ open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 	/**  Instructions describing what should be taken into account during the metadata
 	  enrichment process.  */
 	public var instruction: String? = nil
-	/**  Metadata enrichment result as JSON string.   For example: {"titles": ["The first
-	  title", "The second title"], "descriptions": ["The first description"], "tags":
-	  ["Tag1", "Tag2"]}  */
-	public var outputJson: String? = nil
 
 
 	public func setMultiRequestToken(detailLevel: String) {
@@ -73,10 +63,6 @@ open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 	
 	public func setMultiRequestToken(instruction: String) {
 		self.dict["instruction"] = instruction
-	}
-	
-	public func setMultiRequestToken(outputJson: String) {
-		self.dict["outputJson"] = outputJson
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -88,9 +74,6 @@ open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 		if dict["instruction"] != nil {
 			instruction = dict["instruction"] as? String
 		}
-		if dict["outputJson"] != nil {
-			outputJson = dict["outputJson"] as? String
-		}
 
 	}
 
@@ -101,9 +84,6 @@ open class MetadataEnrichmentVendorTaskData: VendorTaskData {
 		}
 		if(instruction != nil) {
 			dict["instruction"] = instruction!
-		}
-		if(outputJson != nil) {
-			dict["outputJson"] = outputJson!
 		}
 		return dict
 	}

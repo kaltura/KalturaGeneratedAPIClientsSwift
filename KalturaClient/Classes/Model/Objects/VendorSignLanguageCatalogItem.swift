@@ -25,30 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
-	case LIVE_CAPTION = 8
-	case EXTENDED_AUDIO_DESCRIPTION = 9
-	case CLIPS = 10
-	case LIVE_TRANSLATION = 11
-	case QUIZ = 12
-	case SUMMARY = 13
-	case VIDEO_ANALYSIS = 14
-	case MODERATION = 15
-	case METADATA_ENRICHMENT = 16
-	case SENTIMENT_ANALYSIS = 17
-	case DOCUMENT_ENRICHMENT = 18
-	case SIGN_LANGUAGE = 19
+
+open class VendorSignLanguageCatalogItem: VendorCatalogItem {
+
+	public class VendorSignLanguageCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+		
+		public var targetLanguage: BaseTokenizedObject {
+			get {
+				return self.append("targetLanguage") 
+			}
+		}
+		
+		public var outputFormat: BaseTokenizedObject {
+			get {
+				return self.append("outputFormat") 
+			}
+		}
+	}
+
+	public var targetLanguage: CatalogItemSignLanguage? = nil
+	public var outputFormat: VendorCatalogItemSignLanguageOutputFormat? = nil
+
+
+	public func setMultiRequestToken(targetLanguage: String) {
+		self.dict["targetLanguage"] = targetLanguage
+	}
+	
+	public func setMultiRequestToken(outputFormat: String) {
+		self.dict["outputFormat"] = outputFormat
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["targetLanguage"] != nil {
+			targetLanguage = CatalogItemSignLanguage(rawValue: "\(dict["targetLanguage"]!)")
+		}
+		if dict["outputFormat"] != nil {
+			outputFormat = VendorCatalogItemSignLanguageOutputFormat(rawValue: (dict["outputFormat"] as? Int)!)
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(targetLanguage != nil) {
+			dict["targetLanguage"] = targetLanguage!.rawValue
+		}
+		if(outputFormat != nil) {
+			dict["outputFormat"] = outputFormat!.rawValue
+		}
+		return dict
+	}
 }
+

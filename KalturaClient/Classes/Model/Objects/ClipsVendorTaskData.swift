@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class ClipsVendorTaskData: VendorTaskData {
+open class ClipsVendorTaskData: LocalizedVendorTaskData {
 
-	public class ClipsVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+	public class ClipsVendorTaskDataTokenizer: LocalizedVendorTaskData.LocalizedVendorTaskDataTokenizer {
 		
 		public var clipsDuration: BaseTokenizedObject {
 			get {

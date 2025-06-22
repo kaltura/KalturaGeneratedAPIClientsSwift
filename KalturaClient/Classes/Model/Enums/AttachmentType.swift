@@ -36,4 +36,5 @@ public enum AttachmentType: String {
 	case MEDIA = "2"
 	case DOCUMENT = "3"
 	case JSON = "4"
+	case MARKDOWN = "5"
 }

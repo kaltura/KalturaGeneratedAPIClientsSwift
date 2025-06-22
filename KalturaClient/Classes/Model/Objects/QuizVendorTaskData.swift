@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class QuizVendorTaskData: VendorTaskData {
+open class QuizVendorTaskData: LocalizedVendorTaskData {
 
-	public class QuizVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+	public class QuizVendorTaskDataTokenizer: LocalizedVendorTaskData.LocalizedVendorTaskDataTokenizer {
 		
 		public var numberOfQuestions: BaseTokenizedObject {
 			get {
