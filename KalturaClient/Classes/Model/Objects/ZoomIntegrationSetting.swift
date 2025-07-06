@@ -114,6 +114,12 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 				return self.append("handleAlternativeHostsMode") 
 			}
 		}
+		
+		public var userSearchMethod: BaseTokenizedObject {
+			get {
+				return self.append("userSearchMethod") 
+			}
+		}
 	}
 
 	public var zoomCategory: String? = nil
@@ -129,6 +135,7 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 	public var groupParticipationType: ZoomGroupParticipationType? = nil
 	public var handleCohostsMode: HandleParticipantsMode? = nil
 	public var handleAlternativeHostsMode: HandleParticipantsMode? = nil
+	public var userSearchMethod: ZoomUsersSearchMethod? = nil
 
 
 	public func setMultiRequestToken(zoomCategory: String) {
@@ -183,6 +190,10 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		self.dict["handleAlternativeHostsMode"] = handleAlternativeHostsMode
 	}
 	
+	public func setMultiRequestToken(userSearchMethod: String) {
+		self.dict["userSearchMethod"] = userSearchMethod
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -224,6 +235,9 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if dict["handleAlternativeHostsMode"] != nil {
 			handleAlternativeHostsMode = HandleParticipantsMode(rawValue: (dict["handleAlternativeHostsMode"] as? Int)!)
+		}
+		if dict["userSearchMethod"] != nil {
+			userSearchMethod = ZoomUsersSearchMethod(rawValue: (dict["userSearchMethod"] as? Int)!)
 		}
 
 	}
@@ -268,6 +282,9 @@ open class ZoomIntegrationSetting: IntegrationSetting {
 		}
 		if(handleAlternativeHostsMode != nil) {
 			dict["handleAlternativeHostsMode"] = handleAlternativeHostsMode!.rawValue
+		}
+		if(userSearchMethod != nil) {
+			dict["userSearchMethod"] = userSearchMethod!.rawValue
 		}
 		return dict
 	}

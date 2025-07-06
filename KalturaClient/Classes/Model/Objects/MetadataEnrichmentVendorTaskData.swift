@@ -48,6 +48,24 @@ open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 				return self.append("instruction") 
 			}
 		}
+		
+		public var shouldApply: BaseTokenizedObject {
+			get {
+				return self.append("shouldApply") 
+			}
+		}
+		
+		public var applyMode: BaseTokenizedObject {
+			get {
+				return self.append("applyMode") 
+			}
+		}
+		
+		public var overrideFields: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("overrideFields"))
+			} 
+		}
 	}
 
 	/**  The level of detail for the metadata enrichment process.  */
@@ -55,6 +73,16 @@ open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 	/**  Instructions describing what should be taken into account during the metadata
 	  enrichment process.  */
 	public var instruction: String? = nil
+	/**  Indicates whether the metadata enrichment results should be automatically
+	  applied on the task entry.   Default is false.  */
+	public var shouldApply: Bool? = nil
+	/**  Specifies how metadata fields should be applied during enrichment.   If
+	  'FILL_EMPTY_AND_OVERRIDE_LIST', use overrideFields to specify which fields to
+	  override.  */
+	public var applyMode: MetadataEnrichmentApplyMode? = nil
+	/**  List of entry fields to override when applyMode is set to
+	  'FILL_EMPTY_AND_OVERRIDE_LIST'.  */
+	public var overrideFields: Array<StringHolder>? = nil
 
 
 	public func setMultiRequestToken(detailLevel: String) {
@@ -63,6 +91,14 @@ open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 	
 	public func setMultiRequestToken(instruction: String) {
 		self.dict["instruction"] = instruction
+	}
+	
+	public func setMultiRequestToken(shouldApply: String) {
+		self.dict["shouldApply"] = shouldApply
+	}
+	
+	public func setMultiRequestToken(applyMode: String) {
+		self.dict["applyMode"] = applyMode
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -74,6 +110,15 @@ open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 		if dict["instruction"] != nil {
 			instruction = dict["instruction"] as? String
 		}
+		if dict["shouldApply"] != nil {
+			shouldApply = dict["shouldApply"] as? Bool
+		}
+		if dict["applyMode"] != nil {
+			applyMode = MetadataEnrichmentApplyMode(rawValue: "\(dict["applyMode"]!)")
+		}
+		if dict["overrideFields"] != nil {
+			overrideFields = try JSONParser.parse(array: dict["overrideFields"] as! [Any])
+		}
 
 	}
 
@@ -84,6 +129,15 @@ open class MetadataEnrichmentVendorTaskData: LocalizedVendorTaskData {
 		}
 		if(instruction != nil) {
 			dict["instruction"] = instruction!
+		}
+		if(shouldApply != nil) {
+			dict["shouldApply"] = shouldApply!
+		}
+		if(applyMode != nil) {
+			dict["applyMode"] = applyMode!.rawValue
+		}
+		if(overrideFields != nil) {
+			dict["overrideFields"] = overrideFields!.map { value in value.toDictionary() }
 		}
 		return dict
 	}
