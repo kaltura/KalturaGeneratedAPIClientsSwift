@@ -41,6 +41,7 @@ public enum AssetType: String {
 	case IMAGE = "document.Image"
 	case PDF = "document.PDF"
 	case SWF = "document.SWF"
+	case MARKDOWN = "markdown.Markdown"
 	case TIMED_THUMB_ASSET = "thumbCuePoint.timedThumb"
 	case TRANSCRIPT = "transcript.Transcript"
 	case WIDEVINE_FLAVOR = "widevine.WidevineFlavor"

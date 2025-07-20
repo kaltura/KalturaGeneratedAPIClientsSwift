@@ -33,39 +33,28 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorSignLanguageCatalogItem: VendorCatalogItem {
+open class TextualAttachmentAssetListResponse: ListResponse {
 
-	public class VendorSignLanguageCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+	public class TextualAttachmentAssetListResponseTokenizer: ListResponse.ListResponseTokenizer {
 		
-		public var targetLanguage: BaseTokenizedObject {
+		public var objects: ArrayTokenizedObject<TextualAttachmentAsset.TextualAttachmentAssetTokenizer> {
 			get {
-				return self.append("targetLanguage") 
-			}
+				return ArrayTokenizedObject<TextualAttachmentAsset.TextualAttachmentAssetTokenizer>(self.append("objects"))
+			} 
 		}
 	}
 
-	public var targetLanguage: CatalogItemSignLanguage? = nil
+	public var objects: Array<TextualAttachmentAsset>? = nil
 
 
-	public func setMultiRequestToken(targetLanguage: String) {
-		self.dict["targetLanguage"] = targetLanguage
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["targetLanguage"] != nil {
-			targetLanguage = CatalogItemSignLanguage(rawValue: "\(dict["targetLanguage"]!)")
+		if dict["objects"] != nil {
+			objects = try JSONParser.parse(array: dict["objects"] as! [Any])
 		}
 
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(targetLanguage != nil) {
-			dict["targetLanguage"] = targetLanguage!.rawValue
-		}
-		return dict
-	}
 }
 

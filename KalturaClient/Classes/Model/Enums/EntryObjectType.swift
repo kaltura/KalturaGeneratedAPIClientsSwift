@@ -33,4 +33,5 @@
  */
 public enum EntryObjectType: Int {
 	case ENTRY = 1
+	case ASSET = 2
 }

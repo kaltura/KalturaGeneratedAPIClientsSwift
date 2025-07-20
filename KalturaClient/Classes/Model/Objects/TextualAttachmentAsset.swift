@@ -33,37 +33,56 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorSignLanguageCatalogItem: VendorCatalogItem {
+open class TextualAttachmentAsset: AttachmentAsset {
 
-	public class VendorSignLanguageCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+	public class TextualAttachmentAssetTokenizer: AttachmentAsset.AttachmentAssetTokenizer {
 		
-		public var targetLanguage: BaseTokenizedObject {
+		public var language: BaseTokenizedObject {
 			get {
-				return self.append("targetLanguage") 
+				return self.append("language") 
+			}
+		}
+		
+		public var humanVerified: BaseTokenizedObject {
+			get {
+				return self.append("humanVerified") 
 			}
 		}
 	}
 
-	public var targetLanguage: CatalogItemSignLanguage? = nil
+	/**  The language of the transcript  */
+	public var language: Language? = nil
+	/**  Was verified by human or machine  */
+	public var humanVerified: Bool? = nil
 
 
-	public func setMultiRequestToken(targetLanguage: String) {
-		self.dict["targetLanguage"] = targetLanguage
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(humanVerified: String) {
+		self.dict["humanVerified"] = humanVerified
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["targetLanguage"] != nil {
-			targetLanguage = CatalogItemSignLanguage(rawValue: "\(dict["targetLanguage"]!)")
+		if dict["language"] != nil {
+			language = Language(rawValue: "\(dict["language"]!)")
+		}
+		if dict["humanVerified"] != nil {
+			humanVerified = dict["humanVerified"] as? Bool
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(targetLanguage != nil) {
-			dict["targetLanguage"] = targetLanguage!.rawValue
+		if(language != nil) {
+			dict["language"] = language!.rawValue
+		}
+		if(humanVerified != nil) {
+			dict["humanVerified"] = humanVerified!
 		}
 		return dict
 	}

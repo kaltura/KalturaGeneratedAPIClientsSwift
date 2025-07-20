@@ -33,39 +33,16 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class VendorSignLanguageCatalogItem: VendorCatalogItem {
+open class TextualAttachmentAssetFilter: TextualAttachmentAssetBaseFilter {
 
-	public class VendorSignLanguageCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
-		
-		public var targetLanguage: BaseTokenizedObject {
-			get {
-				return self.append("targetLanguage") 
-			}
-		}
+	public class TextualAttachmentAssetFilterTokenizer: TextualAttachmentAssetBaseFilter.TextualAttachmentAssetBaseFilterTokenizer {
 	}
 
-	public var targetLanguage: CatalogItemSignLanguage? = nil
 
 
-	public func setMultiRequestToken(targetLanguage: String) {
-		self.dict["targetLanguage"] = targetLanguage
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
-		// set members values:
-		if dict["targetLanguage"] != nil {
-			targetLanguage = CatalogItemSignLanguage(rawValue: "\(dict["targetLanguage"]!)")
-		}
-
 	}
 
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(targetLanguage != nil) {
-			dict["targetLanguage"] = targetLanguage!.rawValue
-		}
-		return dict
-	}
 }
 

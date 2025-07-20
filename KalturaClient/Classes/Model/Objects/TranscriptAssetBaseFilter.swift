@@ -33,9 +33,9 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class TranscriptAssetBaseFilter: AttachmentAssetFilter {
+open class TranscriptAssetBaseFilter: TextualAttachmentAssetFilter {
 
-	public class TranscriptAssetBaseFilterTokenizer: AttachmentAssetFilter.AttachmentAssetFilterTokenizer {
+	public class TranscriptAssetBaseFilterTokenizer: TextualAttachmentAssetFilter.TextualAttachmentAssetFilterTokenizer {
 	}
 
 

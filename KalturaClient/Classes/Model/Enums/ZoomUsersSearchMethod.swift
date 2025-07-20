@@ -32,7 +32,6 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ZoomUsersSearchMethod: Int {
-	case ID = 0
-	case EMAIL = 1
-	case ALL = 2
+	case EMAIL = 0
+	case EXTERNAL = 1
 }

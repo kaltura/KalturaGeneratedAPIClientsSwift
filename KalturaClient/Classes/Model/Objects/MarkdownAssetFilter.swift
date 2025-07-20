@@ -25,13 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorCatalogItemSignLanguageOutputFormat: Int {
-	case ASPECT_RATIO_16_9 = 1
-	case ASPECT_RATIO_4_3 = 2
+
+open class MarkdownAssetFilter: MarkdownAssetBaseFilter {
+
+	public class MarkdownAssetFilterTokenizer: MarkdownAssetBaseFilter.MarkdownAssetBaseFilterTokenizer {
+	}
+
+
+
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

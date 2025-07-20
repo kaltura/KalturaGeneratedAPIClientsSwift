@@ -33,25 +33,13 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-open class TranscriptAsset: AttachmentAsset {
+open class TranscriptAsset: TextualAttachmentAsset {
 
-	public class TranscriptAssetTokenizer: AttachmentAsset.AttachmentAssetTokenizer {
+	public class TranscriptAssetTokenizer: TextualAttachmentAsset.TextualAttachmentAssetTokenizer {
 		
 		public var accuracy: BaseTokenizedObject {
 			get {
 				return self.append("accuracy") 
-			}
-		}
-		
-		public var humanVerified: BaseTokenizedObject {
-			get {
-				return self.append("humanVerified") 
-			}
-		}
-		
-		public var language: BaseTokenizedObject {
-			get {
-				return self.append("language") 
 			}
 		}
 		
@@ -64,24 +52,12 @@ open class TranscriptAsset: AttachmentAsset {
 
 	/**  The accuracy of the transcript - values between 0 and 1  */
 	public var accuracy: Double? = nil
-	/**  Was verified by human or machine  */
-	public var humanVerified: Bool? = nil
-	/**  The language of the transcript  */
-	public var language: Language? = nil
 	/**  The provider of the transcript  */
 	public var providerType: TranscriptProviderType? = nil
 
 
 	public func setMultiRequestToken(accuracy: String) {
 		self.dict["accuracy"] = accuracy
-	}
-	
-	public func setMultiRequestToken(humanVerified: String) {
-		self.dict["humanVerified"] = humanVerified
-	}
-	
-	public func setMultiRequestToken(language: String) {
-		self.dict["language"] = language
 	}
 	
 	public func setMultiRequestToken(providerType: String) {
@@ -94,12 +70,6 @@ open class TranscriptAsset: AttachmentAsset {
 		if dict["accuracy"] != nil {
 			accuracy = dict["accuracy"] as? Double
 		}
-		if dict["humanVerified"] != nil {
-			humanVerified = dict["humanVerified"] as? Bool
-		}
-		if dict["language"] != nil {
-			language = Language(rawValue: "\(dict["language"]!)")
-		}
 		if dict["providerType"] != nil {
 			providerType = TranscriptProviderType(rawValue: "\(dict["providerType"]!)")
 		}
@@ -110,12 +80,6 @@ open class TranscriptAsset: AttachmentAsset {
 		var dict: [String: Any] = super.toDictionary()
 		if(accuracy != nil) {
 			dict["accuracy"] = accuracy!
-		}
-		if(humanVerified != nil) {
-			dict["humanVerified"] = humanVerified!
-		}
-		if(language != nil) {
-			dict["language"] = language!.rawValue
 		}
 		if(providerType != nil) {
 			dict["providerType"] = providerType!.rawValue
