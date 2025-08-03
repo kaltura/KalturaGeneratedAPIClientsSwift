@@ -72,6 +72,12 @@ open class QuizVendorTaskData: LocalizedVendorTaskData {
 				return self.append("quizOutput") 
 			}
 		}
+		
+		public var instruction: BaseTokenizedObject {
+			get {
+				return self.append("instruction") 
+			}
+		}
 	}
 
 	/**  Number Of Questions.  */
@@ -86,6 +92,9 @@ open class QuizVendorTaskData: LocalizedVendorTaskData {
 	public var createQuiz: Bool? = nil
 	/**  Quiz entry Id  */
 	public var quizOutput: String? = nil
+	/**  Instructions describing what should be taken into account during the quiz
+	  creation process.  */
+	public var instruction: String? = nil
 
 
 	public func setMultiRequestToken(numberOfQuestions: String) {
@@ -112,6 +121,10 @@ open class QuizVendorTaskData: LocalizedVendorTaskData {
 		self.dict["quizOutput"] = quizOutput
 	}
 	
+	public func setMultiRequestToken(instruction: String) {
+		self.dict["instruction"] = instruction
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -132,6 +145,9 @@ open class QuizVendorTaskData: LocalizedVendorTaskData {
 		}
 		if dict["quizOutput"] != nil {
 			quizOutput = dict["quizOutput"] as? String
+		}
+		if dict["instruction"] != nil {
+			instruction = dict["instruction"] as? String
 		}
 
 	}
@@ -155,6 +171,9 @@ open class QuizVendorTaskData: LocalizedVendorTaskData {
 		}
 		if(quizOutput != nil) {
 			dict["quizOutput"] = quizOutput!
+		}
+		if(instruction != nil) {
+			dict["instruction"] = instruction!
 		}
 		return dict
 	}

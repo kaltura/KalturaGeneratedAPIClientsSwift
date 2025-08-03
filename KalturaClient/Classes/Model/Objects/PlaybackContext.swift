@@ -72,6 +72,10 @@ open class PlaybackContext: ObjectBase {
 				return ArrayTokenizedObject<ObjectBase.ObjectBaseTokenizer>(self.append("bumperData"))
 			} 
 		}
+		
+		public func activeLiveStreamTime<T: ActiveLiveStreamTime.ActiveLiveStreamTimeTokenizer>() -> T {
+			return T(self.append("activeLiveStreamTime"))
+		}
 	}
 
 	public var sources: Array<PlaybackSource>? = nil
@@ -82,6 +86,7 @@ open class PlaybackContext: ObjectBase {
 	/**  Array of actions as received from the rules that invalidated  */
 	public var messages: Array<AccessControlMessage>? = nil
 	public var bumperData: Array<ObjectBase>? = nil
+	public var activeLiveStreamTime: ActiveLiveStreamTime? = nil
 
 
 	public override func populate(_ dict: [String: Any]) throws {
@@ -105,6 +110,8 @@ open class PlaybackContext: ObjectBase {
 		if dict["bumperData"] != nil {
 			bumperData = try JSONParser.parse(array: dict["bumperData"] as! [Any])
 		}
+		if dict["activeLiveStreamTime"] != nil {
+		activeLiveStreamTime = try JSONParser.parse(object: dict["activeLiveStreamTime"] as! [String: Any])		}
 
 	}
 
@@ -127,6 +134,9 @@ open class PlaybackContext: ObjectBase {
 		}
 		if(bumperData != nil) {
 			dict["bumperData"] = bumperData!.map { value in value.toDictionary() }
+		}
+		if(activeLiveStreamTime != nil) {
+			dict["activeLiveStreamTime"] = activeLiveStreamTime!.toDictionary()
 		}
 		return dict
 	}
