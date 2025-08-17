@@ -54,6 +54,12 @@ open class SummaryVendorTaskData: LocalizedVendorTaskData {
 				return self.append("summaryOutputJson") 
 			}
 		}
+		
+		public var instruction: BaseTokenizedObject {
+			get {
+				return self.append("instruction") 
+			}
+		}
 	}
 
 	/**  Type of summary.  */
@@ -62,6 +68,8 @@ open class SummaryVendorTaskData: LocalizedVendorTaskData {
 	public var writingStyle: SummaryWritingStyleTaskData? = nil
 	/**  JSON string containing the summary output.  */
 	public var summaryOutputJson: String? = nil
+	/**  Additional instruction for the summary.  */
+	public var instruction: String? = nil
 
 
 	public func setMultiRequestToken(typeOfSummary: String) {
@@ -76,6 +84,10 @@ open class SummaryVendorTaskData: LocalizedVendorTaskData {
 		self.dict["summaryOutputJson"] = summaryOutputJson
 	}
 	
+	public func setMultiRequestToken(instruction: String) {
+		self.dict["instruction"] = instruction
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -87,6 +99,9 @@ open class SummaryVendorTaskData: LocalizedVendorTaskData {
 		}
 		if dict["summaryOutputJson"] != nil {
 			summaryOutputJson = dict["summaryOutputJson"] as? String
+		}
+		if dict["instruction"] != nil {
+			instruction = dict["instruction"] as? String
 		}
 
 	}
@@ -101,6 +116,9 @@ open class SummaryVendorTaskData: LocalizedVendorTaskData {
 		}
 		if(summaryOutputJson != nil) {
 			dict["summaryOutputJson"] = summaryOutputJson!
+		}
+		if(instruction != nil) {
+			dict["instruction"] = instruction!
 		}
 		return dict
 	}

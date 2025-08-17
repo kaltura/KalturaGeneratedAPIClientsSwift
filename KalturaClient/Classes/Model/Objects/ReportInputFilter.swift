@@ -328,6 +328,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("eventSessionContextIdIn") 
 			}
 		}
+		
+		public var videoCodecIn: BaseTokenizedObject {
+			get {
+				return self.append("videoCodecIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -425,6 +431,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var companyIn: String? = nil
 	/**  filter by event session context id  */
 	public var eventSessionContextIdIn: String? = nil
+	/**  filter by event video codec  */
+	public var videoCodecIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -619,6 +627,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["eventSessionContextIdIn"] = eventSessionContextIdIn
 	}
 	
+	public func setMultiRequestToken(videoCodecIn: String) {
+		self.dict["videoCodecIn"] = videoCodecIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -767,6 +779,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["eventSessionContextIdIn"] != nil {
 			eventSessionContextIdIn = dict["eventSessionContextIdIn"] as? String
+		}
+		if dict["videoCodecIn"] != nil {
+			videoCodecIn = dict["videoCodecIn"] as? String
 		}
 
 	}
@@ -919,6 +934,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(eventSessionContextIdIn != nil) {
 			dict["eventSessionContextIdIn"] = eventSessionContextIdIn!
+		}
+		if(videoCodecIn != nil) {
+			dict["videoCodecIn"] = videoCodecIn!
 		}
 		return dict
 	}
