@@ -42,14 +42,26 @@ open class AddEntryVendorTaskAction: RuleAction {
 				return self.append("catalogItemIds") 
 			}
 		}
+		
+		public var entryObjectType: BaseTokenizedObject {
+			get {
+				return self.append("entryObjectType") 
+			}
+		}
 	}
 
 	/**  Catalog Item Id  */
 	public var catalogItemIds: String? = nil
+	/**  Entry Object Type  */
+	public var entryObjectType: EntryObjectType? = nil
 
 
 	public func setMultiRequestToken(catalogItemIds: String) {
 		self.dict["catalogItemIds"] = catalogItemIds
+	}
+	
+	public func setMultiRequestToken(entryObjectType: String) {
+		self.dict["entryObjectType"] = entryObjectType
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -58,6 +70,9 @@ open class AddEntryVendorTaskAction: RuleAction {
 		if dict["catalogItemIds"] != nil {
 			catalogItemIds = dict["catalogItemIds"] as? String
 		}
+		if dict["entryObjectType"] != nil {
+			entryObjectType = EntryObjectType(rawValue: (dict["entryObjectType"] as? Int)!)
+		}
 
 	}
 
@@ -65,6 +80,9 @@ open class AddEntryVendorTaskAction: RuleAction {
 		var dict: [String: Any] = super.toDictionary()
 		if(catalogItemIds != nil) {
 			dict["catalogItemIds"] = catalogItemIds!
+		}
+		if(entryObjectType != nil) {
+			dict["entryObjectType"] = entryObjectType!.rawValue
 		}
 		return dict
 	}
