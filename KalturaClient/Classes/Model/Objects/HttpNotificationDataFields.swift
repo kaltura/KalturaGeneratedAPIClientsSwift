@@ -38,13 +38,36 @@
 open class HttpNotificationDataFields: HttpNotificationData {
 
 	public class HttpNotificationDataFieldsTokenizer: HttpNotificationData.HttpNotificationDataTokenizer {
+		
+		public var contentType: BaseTokenizedObject {
+			get {
+				return self.append("contentType") 
+			}
+		}
 	}
 
+	public var contentType: String? = nil
 
 
+	public func setMultiRequestToken(contentType: String) {
+		self.dict["contentType"] = contentType
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["contentType"] != nil {
+			contentType = dict["contentType"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(contentType != nil) {
+			dict["contentType"] = contentType!
+		}
+		return dict
+	}
 }
 

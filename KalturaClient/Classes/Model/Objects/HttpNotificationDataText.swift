@@ -40,16 +40,30 @@ open class HttpNotificationDataText: HttpNotificationData {
 		public func content<T: StringValue.StringValueTokenizer>() -> T {
 			return T(self.append("content"))
 		}
+		
+		public var contentType: BaseTokenizedObject {
+			get {
+				return self.append("contentType") 
+			}
+		}
 	}
 
 	public var content: StringValue? = nil
+	public var contentType: String? = nil
 
 
+	public func setMultiRequestToken(contentType: String) {
+		self.dict["contentType"] = contentType
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["content"] != nil {
 		content = try JSONParser.parse(object: dict["content"] as! [String: Any])		}
+		if dict["contentType"] != nil {
+			contentType = dict["contentType"] as? String
+		}
 
 	}
 
@@ -57,6 +71,9 @@ open class HttpNotificationDataText: HttpNotificationData {
 		var dict: [String: Any] = super.toDictionary()
 		if(content != nil) {
 			dict["content"] = content!.toDictionary()
+		}
+		if(contentType != nil) {
+			dict["contentType"] = contentType!
 		}
 		return dict
 	}

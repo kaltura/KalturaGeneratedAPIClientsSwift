@@ -44,7 +44,7 @@ open class VendorSignLanguageCatalogItem: VendorCatalogItem {
 		}
 	}
 
-	public var targetLanguage: CatalogItemSignLanguage? = nil
+	public var targetLanguage: CatalogItemLanguage? = nil
 
 
 	public func setMultiRequestToken(targetLanguage: String) {
@@ -55,7 +55,7 @@ open class VendorSignLanguageCatalogItem: VendorCatalogItem {
 		try super.populate(dict);
 		// set members values:
 		if dict["targetLanguage"] != nil {
-			targetLanguage = CatalogItemSignLanguage(rawValue: "\(dict["targetLanguage"]!)")
+			targetLanguage = CatalogItemLanguage(rawValue: "\(dict["targetLanguage"]!)")
 		}
 
 	}
