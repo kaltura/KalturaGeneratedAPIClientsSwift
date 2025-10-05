@@ -67,6 +67,12 @@ open class HttpNotificationObjectData: HttpNotificationData {
 				return ArrayTokenizedObject<KeyValue.KeyValueTokenizer>(self.append("dataStringReplacements"))
 			} 
 		}
+		
+		public var responseProfileId: BaseTokenizedObject {
+			get {
+				return self.append("responseProfileId") 
+			}
+		}
 	}
 
 	/**  Kaltura API object type  */
@@ -79,6 +85,7 @@ open class HttpNotificationObjectData: HttpNotificationData {
 	public var code: String? = nil
 	/**  An array of pattern-replacement pairs used for data string regex replacements  */
 	public var dataStringReplacements: Array<KeyValue>? = nil
+	public var responseProfileId: Int? = nil
 
 
 	public func setMultiRequestToken(apiObjectType: String) {
@@ -95,6 +102,10 @@ open class HttpNotificationObjectData: HttpNotificationData {
 	
 	public func setMultiRequestToken(code: String) {
 		self.dict["code"] = code
+	}
+	
+	public func setMultiRequestToken(responseProfileId: String) {
+		self.dict["responseProfileId"] = responseProfileId
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -115,6 +126,9 @@ open class HttpNotificationObjectData: HttpNotificationData {
 		if dict["dataStringReplacements"] != nil {
 			dataStringReplacements = try JSONParser.parse(array: dict["dataStringReplacements"] as! [Any])
 		}
+		if dict["responseProfileId"] != nil {
+			responseProfileId = dict["responseProfileId"] as? Int
+		}
 
 	}
 
@@ -134,6 +148,9 @@ open class HttpNotificationObjectData: HttpNotificationData {
 		}
 		if(dataStringReplacements != nil) {
 			dict["dataStringReplacements"] = dataStringReplacements!.map { value in value.toDictionary() }
+		}
+		if(responseProfileId != nil) {
+			dict["responseProfileId"] = responseProfileId!
 		}
 		return dict
 	}
