@@ -54,6 +54,12 @@ open class RoomEntry: BaseEntry {
 				return self.append("templateRoomEntryId") 
 			}
 		}
+		
+		public var recordedEntryId: BaseTokenizedObject {
+			get {
+				return self.append("recordedEntryId") 
+			}
+		}
 	}
 
 	public var roomType: RoomType? = nil
@@ -61,6 +67,8 @@ open class RoomEntry: BaseEntry {
 	public var broadcastEntryId: String? = nil
 	/**  The entryId of the room where settings will be taken from  */
 	public var templateRoomEntryId: String? = nil
+	/**  The entryId of the recording  */
+	public var recordedEntryId: String? = nil
 
 
 	public func setMultiRequestToken(roomType: String) {
@@ -75,6 +83,10 @@ open class RoomEntry: BaseEntry {
 		self.dict["templateRoomEntryId"] = templateRoomEntryId
 	}
 	
+	public func setMultiRequestToken(recordedEntryId: String) {
+		self.dict["recordedEntryId"] = recordedEntryId
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -86,6 +98,9 @@ open class RoomEntry: BaseEntry {
 		}
 		if dict["templateRoomEntryId"] != nil {
 			templateRoomEntryId = dict["templateRoomEntryId"] as? String
+		}
+		if dict["recordedEntryId"] != nil {
+			recordedEntryId = dict["recordedEntryId"] as? String
 		}
 
 	}
@@ -100,6 +115,9 @@ open class RoomEntry: BaseEntry {
 		}
 		if(templateRoomEntryId != nil) {
 			dict["templateRoomEntryId"] = templateRoomEntryId!
+		}
+		if(recordedEntryId != nil) {
+			dict["recordedEntryId"] = recordedEntryId!
 		}
 		return dict
 	}
