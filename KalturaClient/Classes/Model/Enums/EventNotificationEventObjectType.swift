@@ -71,6 +71,7 @@ public enum EventNotificationEventObjectType: String {
 	case REACH_PROFILE = "41"
 	case ENTRY_VENDOR_TASK = "42"
 	case GROUPUSER = "43"
+	case USER_ENTRY = "44"
 	case AD_CUE_POINT = "adCuePointEventNotifications.AdCuePoint"
 	case ANNOTATION = "annotationEventNotifications.Annotation"
 	case ATTACHMENT_ASSET = "attachmentAssetEventNotifications.AttachmentAsset"

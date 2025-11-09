@@ -42,13 +42,24 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 				return self.append("hasCaption") 
 			}
 		}
+		
+		public var language: BaseTokenizedObject {
+			get {
+				return self.append("language") 
+			}
+		}
 	}
 
 	public var hasCaption: Bool? = nil
+	public var language: Language? = nil
 
 
 	public func setMultiRequestToken(hasCaption: String) {
 		self.dict["hasCaption"] = hasCaption
+	}
+	
+	public func setMultiRequestToken(language: String) {
+		self.dict["language"] = language
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -57,6 +68,9 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 		if dict["hasCaption"] != nil {
 			hasCaption = dict["hasCaption"] as? Bool
 		}
+		if dict["language"] != nil {
+			language = Language(rawValue: "\(dict["language"]!)")
+		}
 
 	}
 
@@ -64,6 +78,9 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 		var dict: [String: Any] = super.toDictionary()
 		if(hasCaption != nil) {
 			dict["hasCaption"] = hasCaption!
+		}
+		if(language != nil) {
+			dict["language"] = language!.rawValue
 		}
 		return dict
 	}

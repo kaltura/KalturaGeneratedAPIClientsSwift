@@ -127,6 +127,12 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 			}
 		}
 		
+		public var dataContentFilenameXslt: BaseTokenizedObject {
+			get {
+				return self.append("dataContentFilenameXslt") 
+			}
+		}
+		
 		public var asperaPublicKey: BaseTokenizedObject {
 			get {
 				return self.append("asperaPublicKey") 
@@ -161,6 +167,7 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 	public var flavorAssetFilenameXslt: String? = nil
 	public var thumbnailAssetFilenameXslt: String? = nil
 	public var assetFilenameXslt: String? = nil
+	public var dataContentFilenameXslt: String? = nil
 	public var asperaPublicKey: String? = nil
 	public var asperaPrivateKey: String? = nil
 	public var sendMetadataAfterAssets: Bool? = nil
@@ -226,6 +233,10 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 		self.dict["assetFilenameXslt"] = assetFilenameXslt
 	}
 	
+	public func setMultiRequestToken(dataContentFilenameXslt: String) {
+		self.dict["dataContentFilenameXslt"] = dataContentFilenameXslt
+	}
+	
 	public func setMultiRequestToken(asperaPublicKey: String) {
 		self.dict["asperaPublicKey"] = asperaPublicKey
 	}
@@ -286,6 +297,9 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 		if dict["assetFilenameXslt"] != nil {
 			assetFilenameXslt = dict["assetFilenameXslt"] as? String
 		}
+		if dict["dataContentFilenameXslt"] != nil {
+			dataContentFilenameXslt = dict["dataContentFilenameXslt"] as? String
+		}
 		if dict["asperaPublicKey"] != nil {
 			asperaPublicKey = dict["asperaPublicKey"] as? String
 		}
@@ -344,6 +358,9 @@ open class FtpDistributionProfile: ConfigurableDistributionProfile {
 		}
 		if(assetFilenameXslt != nil) {
 			dict["assetFilenameXslt"] = assetFilenameXslt!
+		}
+		if(dataContentFilenameXslt != nil) {
+			dict["dataContentFilenameXslt"] = dataContentFilenameXslt!
 		}
 		if(asperaPublicKey != nil) {
 			dict["asperaPublicKey"] = asperaPublicKey!
