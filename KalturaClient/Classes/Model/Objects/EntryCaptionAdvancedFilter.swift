@@ -48,10 +48,45 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 				return self.append("language") 
 			}
 		}
+		
+		public var accuracyGreaterThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("accuracyGreaterThanOrEqual") 
+			}
+		}
+		
+		public var accuracyLessThanOrEqual: BaseTokenizedObject {
+			get {
+				return self.append("accuracyLessThanOrEqual") 
+			}
+		}
+		
+		public var accuracyGreaterThan: BaseTokenizedObject {
+			get {
+				return self.append("accuracyGreaterThan") 
+			}
+		}
+		
+		public var accuracyLessThan: BaseTokenizedObject {
+			get {
+				return self.append("accuracyLessThan") 
+			}
+		}
+		
+		public var usage: BaseTokenizedObject {
+			get {
+				return self.append("usage") 
+			}
+		}
 	}
 
 	public var hasCaption: Bool? = nil
 	public var language: Language? = nil
+	public var accuracyGreaterThanOrEqual: Int? = nil
+	public var accuracyLessThanOrEqual: Int? = nil
+	public var accuracyGreaterThan: Int? = nil
+	public var accuracyLessThan: Int? = nil
+	public var usage: CaptionAssetUsage? = nil
 
 
 	public func setMultiRequestToken(hasCaption: String) {
@@ -60,6 +95,26 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 	
 	public func setMultiRequestToken(language: String) {
 		self.dict["language"] = language
+	}
+	
+	public func setMultiRequestToken(accuracyGreaterThanOrEqual: String) {
+		self.dict["accuracyGreaterThanOrEqual"] = accuracyGreaterThanOrEqual
+	}
+	
+	public func setMultiRequestToken(accuracyLessThanOrEqual: String) {
+		self.dict["accuracyLessThanOrEqual"] = accuracyLessThanOrEqual
+	}
+	
+	public func setMultiRequestToken(accuracyGreaterThan: String) {
+		self.dict["accuracyGreaterThan"] = accuracyGreaterThan
+	}
+	
+	public func setMultiRequestToken(accuracyLessThan: String) {
+		self.dict["accuracyLessThan"] = accuracyLessThan
+	}
+	
+	public func setMultiRequestToken(usage: String) {
+		self.dict["usage"] = usage
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -71,6 +126,21 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 		if dict["language"] != nil {
 			language = Language(rawValue: "\(dict["language"]!)")
 		}
+		if dict["accuracyGreaterThanOrEqual"] != nil {
+			accuracyGreaterThanOrEqual = dict["accuracyGreaterThanOrEqual"] as? Int
+		}
+		if dict["accuracyLessThanOrEqual"] != nil {
+			accuracyLessThanOrEqual = dict["accuracyLessThanOrEqual"] as? Int
+		}
+		if dict["accuracyGreaterThan"] != nil {
+			accuracyGreaterThan = dict["accuracyGreaterThan"] as? Int
+		}
+		if dict["accuracyLessThan"] != nil {
+			accuracyLessThan = dict["accuracyLessThan"] as? Int
+		}
+		if dict["usage"] != nil {
+			usage = CaptionAssetUsage(rawValue: "\(dict["usage"]!)")
+		}
 
 	}
 
@@ -81,6 +151,21 @@ open class EntryCaptionAdvancedFilter: SearchItem {
 		}
 		if(language != nil) {
 			dict["language"] = language!.rawValue
+		}
+		if(accuracyGreaterThanOrEqual != nil) {
+			dict["accuracyGreaterThanOrEqual"] = accuracyGreaterThanOrEqual!
+		}
+		if(accuracyLessThanOrEqual != nil) {
+			dict["accuracyLessThanOrEqual"] = accuracyLessThanOrEqual!
+		}
+		if(accuracyGreaterThan != nil) {
+			dict["accuracyGreaterThan"] = accuracyGreaterThan!
+		}
+		if(accuracyLessThan != nil) {
+			dict["accuracyLessThan"] = accuracyLessThan!
+		}
+		if(usage != nil) {
+			dict["usage"] = usage!.rawValue
 		}
 		return dict
 	}

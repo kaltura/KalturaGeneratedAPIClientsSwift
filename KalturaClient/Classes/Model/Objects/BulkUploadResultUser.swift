@@ -132,6 +132,12 @@ open class BulkUploadResultUser: BulkUploadResult {
 				return self.append("capabilities") 
 			}
 		}
+		
+		public var groupUserCreationMode: BaseTokenizedObject {
+			get {
+				return self.append("groupUserCreationMode") 
+			}
+		}
 	}
 
 	public var userId: String? = nil
@@ -150,6 +156,7 @@ open class BulkUploadResultUser: BulkUploadResult {
 	public var group: String? = nil
 	public var externalId: String? = nil
 	public var capabilities: String? = nil
+	public var groupUserCreationMode: Int? = nil
 
 
 	public func setMultiRequestToken(userId: String) {
@@ -216,6 +223,10 @@ open class BulkUploadResultUser: BulkUploadResult {
 		self.dict["capabilities"] = capabilities
 	}
 	
+	public func setMultiRequestToken(groupUserCreationMode: String) {
+		self.dict["groupUserCreationMode"] = groupUserCreationMode
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -266,6 +277,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if dict["capabilities"] != nil {
 			capabilities = dict["capabilities"] as? String
+		}
+		if dict["groupUserCreationMode"] != nil {
+			groupUserCreationMode = dict["groupUserCreationMode"] as? Int
 		}
 
 	}
@@ -319,6 +333,9 @@ open class BulkUploadResultUser: BulkUploadResult {
 		}
 		if(capabilities != nil) {
 			dict["capabilities"] = capabilities!
+		}
+		if(groupUserCreationMode != nil) {
+			dict["groupUserCreationMode"] = groupUserCreationMode!
 		}
 		return dict
 	}

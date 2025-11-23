@@ -72,6 +72,18 @@ open class ESearchCaptionItemData: ESearchItemData {
 				return self.append("label") 
 			}
 		}
+		
+		public var accuracy: BaseTokenizedObject {
+			get {
+				return self.append("accuracy") 
+			}
+		}
+		
+		public var usage: BaseTokenizedObject {
+			get {
+				return self.append("usage") 
+			}
+		}
 	}
 
 	public var line: String? = nil
@@ -80,6 +92,8 @@ open class ESearchCaptionItemData: ESearchItemData {
 	public var language: String? = nil
 	public var captionAssetId: String? = nil
 	public var label: String? = nil
+	public var accuracy: Int? = nil
+	public var usage: Int? = nil
 
 
 	public func setMultiRequestToken(line: String) {
@@ -106,6 +120,14 @@ open class ESearchCaptionItemData: ESearchItemData {
 		self.dict["label"] = label
 	}
 	
+	public func setMultiRequestToken(accuracy: String) {
+		self.dict["accuracy"] = accuracy
+	}
+	
+	public func setMultiRequestToken(usage: String) {
+		self.dict["usage"] = usage
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -126,6 +148,12 @@ open class ESearchCaptionItemData: ESearchItemData {
 		}
 		if dict["label"] != nil {
 			label = dict["label"] as? String
+		}
+		if dict["accuracy"] != nil {
+			accuracy = dict["accuracy"] as? Int
+		}
+		if dict["usage"] != nil {
+			usage = dict["usage"] as? Int
 		}
 
 	}
@@ -149,6 +177,12 @@ open class ESearchCaptionItemData: ESearchItemData {
 		}
 		if(label != nil) {
 			dict["label"] = label!
+		}
+		if(accuracy != nil) {
+			dict["accuracy"] = accuracy!
+		}
+		if(usage != nil) {
+			dict["usage"] = usage!
 		}
 		return dict
 	}

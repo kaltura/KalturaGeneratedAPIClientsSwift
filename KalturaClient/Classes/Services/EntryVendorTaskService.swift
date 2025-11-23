@@ -307,6 +307,30 @@ public final class EntryVendorTaskService{
 		return request
 	}
 
+	public class ResetTokenizer: ClientTokenizer  {
+		
+		public var id: BaseTokenizedObject {
+			get {
+				return self.append("id") 
+			}
+		}
+		
+		public var catalogItemId: BaseTokenizedObject {
+			get {
+				return self.append("catalogItemId") 
+			}
+		}
+	}
+
+	/**  Reset entry vendor task. change status back to pending with a new catalog item  */
+	public static func reset(id: Int, catalogItemId: Int) -> RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ResetTokenizer> {
+		let request: RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ResetTokenizer> = RequestBuilder<EntryVendorTask, EntryVendorTask.EntryVendorTaskTokenizer, ResetTokenizer>(service: "reach_entryvendortask", action: "reset")
+			.setParam(key: "id", value: id)
+			.setParam(key: "catalogItemId", value: catalogItemId)
+
+		return request
+	}
+
 	public class ServeCsvTokenizer: ClientTokenizer  {
 		
 		public var id: BaseTokenizedObject {
