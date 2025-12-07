@@ -282,6 +282,12 @@ open class FlavorParams: AssetParams {
 				return self.append("clipDuration") 
 			}
 		}
+		
+		public var audioLanguages: ArrayTokenizedObject<StringHolder.StringHolderTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringHolder.StringHolderTokenizer>(self.append("audioLanguages"))
+			} 
+		}
 	}
 
 	/**  The video codec of the Flavor Params  */
@@ -338,6 +344,8 @@ open class FlavorParams: AssetParams {
 	public var chunkedEncodeMode: Int? = nil
 	public var clipOffset: Int? = nil
 	public var clipDuration: Int? = nil
+	/**  Audio languages extracted from multiStream field  */
+	public var audioLanguages: Array<StringHolder>? = nil
 
 
 	public func setMultiRequestToken(videoCodec: String) {
@@ -629,6 +637,9 @@ open class FlavorParams: AssetParams {
 		}
 		if dict["clipDuration"] != nil {
 			clipDuration = dict["clipDuration"] as? Int
+		}
+		if dict["audioLanguages"] != nil {
+			audioLanguages = try JSONParser.parse(array: dict["audioLanguages"] as! [Any])
 		}
 
 	}

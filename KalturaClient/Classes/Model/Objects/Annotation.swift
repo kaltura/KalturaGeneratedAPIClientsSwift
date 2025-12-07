@@ -90,6 +90,12 @@ open class Annotation: CuePoint {
 				return self.append("searchableOnEntry") 
 			}
 		}
+		
+		public var originalCuePointCreateAt: BaseTokenizedObject {
+			get {
+				return self.append("originalCuePointCreateAt") 
+			}
+		}
 	}
 
 	public var parentId: String? = nil
@@ -108,6 +114,8 @@ open class Annotation: CuePoint {
 	public var isPublic: Bool? = nil
 	/**  Should the cue point get indexed on the entry.  */
 	public var searchableOnEntry: Bool? = nil
+	/**  In case of cloned annotation it will hold source cuepoint createdAt.  */
+	public var originalCuePointCreateAt: Int? = nil
 
 
 	public func setMultiRequestToken(parentId: String) {
@@ -146,6 +154,10 @@ open class Annotation: CuePoint {
 		self.dict["searchableOnEntry"] = searchableOnEntry
 	}
 	
+	public func setMultiRequestToken(originalCuePointCreateAt: String) {
+		self.dict["originalCuePointCreateAt"] = originalCuePointCreateAt
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -176,6 +188,9 @@ open class Annotation: CuePoint {
 		if dict["searchableOnEntry"] != nil {
 			searchableOnEntry = dict["searchableOnEntry"] as? Bool
 		}
+		if dict["originalCuePointCreateAt"] != nil {
+			originalCuePointCreateAt = dict["originalCuePointCreateAt"] as? Int
+		}
 
 	}
 
@@ -195,6 +210,9 @@ open class Annotation: CuePoint {
 		}
 		if(searchableOnEntry != nil) {
 			dict["searchableOnEntry"] = searchableOnEntry!
+		}
+		if(originalCuePointCreateAt != nil) {
+			dict["originalCuePointCreateAt"] = originalCuePointCreateAt!
 		}
 		return dict
 	}

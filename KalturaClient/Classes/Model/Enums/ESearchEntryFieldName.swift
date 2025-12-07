@@ -48,6 +48,7 @@ public enum ESearchEntryFieldName: String {
 	case ENTITLED_USER_VIEW = "entitled_kusers_view"
 	case ENTRY_TYPE = "entry_type"
 	case EXTERNAL_SOURCE_TYPE = "external_source_type"
+	case FLAVOR_PARAMS_IDS = "flavor_params_ids"
 	case ID = "id"
 	case IS_LIVE = "is_live"
 	case IS_QUIZ = "is_quiz"
