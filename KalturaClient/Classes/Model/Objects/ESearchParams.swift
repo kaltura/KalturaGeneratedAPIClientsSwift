@@ -70,6 +70,10 @@ open class ESearchParams: ObjectBase {
 				return self.append("objectIdsNotIn") 
 			}
 		}
+		
+		public func scoreFunctionParams<T: ESearchScoreFunctionParams.ESearchScoreFunctionParamsTokenizer>() -> T {
+			return T(self.append("scoreFunctionParams"))
+		}
 	}
 
 	public var objectStatuses: String? = nil
@@ -78,6 +82,7 @@ open class ESearchParams: ObjectBase {
 	public var ignoreSynonym: Bool? = nil
 	public var objectIds: String? = nil
 	public var objectIdsNotIn: Bool? = nil
+	public var scoreFunctionParams: ESearchScoreFunctionParams? = nil
 
 
 	public func setMultiRequestToken(objectStatuses: String) {
@@ -120,6 +125,8 @@ open class ESearchParams: ObjectBase {
 		if dict["objectIdsNotIn"] != nil {
 			objectIdsNotIn = dict["objectIdsNotIn"] as? Bool
 		}
+		if dict["scoreFunctionParams"] != nil {
+		scoreFunctionParams = try JSONParser.parse(object: dict["scoreFunctionParams"] as! [String: Any])		}
 
 	}
 
@@ -142,6 +149,9 @@ open class ESearchParams: ObjectBase {
 		}
 		if(objectIdsNotIn != nil) {
 			dict["objectIdsNotIn"] = objectIdsNotIn!
+		}
+		if(scoreFunctionParams != nil) {
+			dict["scoreFunctionParams"] = scoreFunctionParams!.toDictionary()
 		}
 		return dict
 	}
