@@ -54,11 +54,18 @@ open class CortexApiDistributionJobProviderData: ConfigurableDistributionJobProv
 				return ArrayTokenizedObject<CortexApiCaptionDistributionInfo.CortexApiCaptionDistributionInfoTokenizer>(self.append("captionsInfo"))
 			} 
 		}
+		
+		public var mediaType: BaseTokenizedObject {
+			get {
+				return self.append("mediaType") 
+			}
+		}
 	}
 
 	public var videoAssetFilePath: String? = nil
 	public var thumbAssetFilePath: String? = nil
 	public var captionsInfo: Array<CortexApiCaptionDistributionInfo>? = nil
+	public var mediaType: MediaType? = nil
 
 
 	public func setMultiRequestToken(videoAssetFilePath: String) {
@@ -67,6 +74,10 @@ open class CortexApiDistributionJobProviderData: ConfigurableDistributionJobProv
 	
 	public func setMultiRequestToken(thumbAssetFilePath: String) {
 		self.dict["thumbAssetFilePath"] = thumbAssetFilePath
+	}
+	
+	public func setMultiRequestToken(mediaType: String) {
+		self.dict["mediaType"] = mediaType
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -81,6 +92,9 @@ open class CortexApiDistributionJobProviderData: ConfigurableDistributionJobProv
 		if dict["captionsInfo"] != nil {
 			captionsInfo = try JSONParser.parse(array: dict["captionsInfo"] as! [Any])
 		}
+		if dict["mediaType"] != nil {
+			mediaType = MediaType(rawValue: (dict["mediaType"] as? Int)!)
+		}
 
 	}
 
@@ -94,6 +108,9 @@ open class CortexApiDistributionJobProviderData: ConfigurableDistributionJobProv
 		}
 		if(captionsInfo != nil) {
 			dict["captionsInfo"] = captionsInfo!.map { value in value.toDictionary() }
+		}
+		if(mediaType != nil) {
+			dict["mediaType"] = mediaType!.rawValue
 		}
 		return dict
 	}

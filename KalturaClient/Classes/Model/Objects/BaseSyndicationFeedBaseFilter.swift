@@ -36,13 +36,53 @@
 open class BaseSyndicationFeedBaseFilter: Filter {
 
 	public class BaseSyndicationFeedBaseFilterTokenizer: Filter.FilterTokenizer {
+		
+		public var idEqual: BaseTokenizedObject {
+			get {
+				return self.append("idEqual") 
+			}
+		}
+		
+		public var idIn: BaseTokenizedObject {
+			get {
+				return self.append("idIn") 
+			}
+		}
 	}
 
+	public var idEqual: String? = nil
+	public var idIn: String? = nil
 
 
+	public func setMultiRequestToken(idEqual: String) {
+		self.dict["idEqual"] = idEqual
+	}
+	
+	public func setMultiRequestToken(idIn: String) {
+		self.dict["idIn"] = idIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
+		// set members values:
+		if dict["idEqual"] != nil {
+			idEqual = dict["idEqual"] as? String
+		}
+		if dict["idIn"] != nil {
+			idIn = dict["idIn"] as? String
+		}
+
 	}
 
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(idEqual != nil) {
+			dict["idEqual"] = idEqual!
+		}
+		if(idIn != nil) {
+			dict["idIn"] = idIn!
+		}
+		return dict
+	}
 }
 
