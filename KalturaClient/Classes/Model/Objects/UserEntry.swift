@@ -167,6 +167,9 @@ open class UserEntry: ObjectBase {
 		if(userId != nil) {
 			dict["userId"] = userId!
 		}
+		if(status != nil) {
+			dict["status"] = status!.rawValue
+		}
 		return dict
 	}
 }

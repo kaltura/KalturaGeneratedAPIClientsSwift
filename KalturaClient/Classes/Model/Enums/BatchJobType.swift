@@ -86,6 +86,7 @@ public enum BatchJobType: String {
 	case STORAGE_PERIODIC_DELETE_LOCAL = "55"
 	case REACH_JOB_CLEANER = "56"
 	case MULTI_CLIP_CONCAT = "57"
+	case UPDATE_USER_ENTRIES = "58"
 	case REACH_INTERNAL_QUEUE_HANDLER = "ReachInternal.ReachInternalQueueHandler"
 	case CONVERT_CAPTION_ASSET = "caption.convertcaptionasset"
 	case PARSE_MULTI_LANGUAGE_CAPTION_ASSET = "caption.parsemultilanguagecaptionasset"
