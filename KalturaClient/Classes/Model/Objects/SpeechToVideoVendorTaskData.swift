@@ -25,31 +25,66 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
-	case LIVE_CAPTION = 8
-	case EXTENDED_AUDIO_DESCRIPTION = 9
-	case CLIPS = 10
-	case LIVE_TRANSLATION = 11
-	case QUIZ = 12
-	case SUMMARY = 13
-	case VIDEO_ANALYSIS = 14
-	case MODERATION = 15
-	case METADATA_ENRICHMENT = 16
-	case SENTIMENT_ANALYSIS = 17
-	case DOCUMENT_ENRICHMENT = 18
-	case SIGN_LANGUAGE = 19
-	case SPEECH_TO_VIDEO = 20
+
+open class SpeechToVideoVendorTaskData: VendorTaskData {
+
+	public class SpeechToVideoVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+		
+		public var avatarId: BaseTokenizedObject {
+			get {
+				return self.append("avatarId") 
+			}
+		}
+		
+		public var conversionProfileId: BaseTokenizedObject {
+			get {
+				return self.append("conversionProfileId") 
+			}
+		}
+	}
+
+	/**  The identifier of the avatar to be used for generating the video  */
+	public var avatarId: String? = nil
+	/**  Optional. Conversion profile to be used for the generated video media entry  */
+	public var conversionProfileId: Int? = nil
+
+
+	public func setMultiRequestToken(avatarId: String) {
+		self.dict["avatarId"] = avatarId
+	}
+	
+	public func setMultiRequestToken(conversionProfileId: String) {
+		self.dict["conversionProfileId"] = conversionProfileId
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["avatarId"] != nil {
+			avatarId = dict["avatarId"] as? String
+		}
+		if dict["conversionProfileId"] != nil {
+			conversionProfileId = dict["conversionProfileId"] as? Int
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(avatarId != nil) {
+			dict["avatarId"] = avatarId!
+		}
+		if(conversionProfileId != nil) {
+			dict["conversionProfileId"] = conversionProfileId!
+		}
+		return dict
+	}
 }
+
