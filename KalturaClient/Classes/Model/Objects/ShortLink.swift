@@ -91,6 +91,12 @@ open class ShortLink: ObjectBase {
 			}
 		}
 		
+		public var uniqueId: BaseTokenizedObject {
+			get {
+				return self.append("uniqueId") 
+			}
+		}
+		
 		public var status: BaseTokenizedObject {
 			get {
 				return self.append("status") 
@@ -107,6 +113,7 @@ open class ShortLink: ObjectBase {
 	public var name: String? = nil
 	public var systemName: String? = nil
 	public var fullUrl: String? = nil
+	public var uniqueId: String? = nil
 	public var status: ShortLinkStatus? = nil
 
 
@@ -146,6 +153,10 @@ open class ShortLink: ObjectBase {
 		self.dict["fullUrl"] = fullUrl
 	}
 	
+	public func setMultiRequestToken(uniqueId: String) {
+		self.dict["uniqueId"] = uniqueId
+	}
+	
 	public func setMultiRequestToken(status: String) {
 		self.dict["status"] = status
 	}
@@ -180,6 +191,9 @@ open class ShortLink: ObjectBase {
 		if dict["fullUrl"] != nil {
 			fullUrl = dict["fullUrl"] as? String
 		}
+		if dict["uniqueId"] != nil {
+			uniqueId = dict["uniqueId"] as? String
+		}
 		if dict["status"] != nil {
 			status = ShortLinkStatus(rawValue: (dict["status"] as? Int)!)
 		}
@@ -202,6 +216,9 @@ open class ShortLink: ObjectBase {
 		}
 		if(fullUrl != nil) {
 			dict["fullUrl"] = fullUrl!
+		}
+		if(uniqueId != nil) {
+			dict["uniqueId"] = uniqueId!
 		}
 		if(status != nil) {
 			dict["status"] = status!.rawValue

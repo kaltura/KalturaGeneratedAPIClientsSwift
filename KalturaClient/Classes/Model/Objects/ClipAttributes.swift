@@ -73,6 +73,12 @@ open class ClipAttributes: OperationAttributes {
 				return ArrayTokenizedObject<CaptionAttributes.CaptionAttributesTokenizer>(self.append("captionAttributes"))
 			} 
 		}
+		
+		public var mediaCompositionAttributesArray: ArrayTokenizedObject<MediaCompositionAttributes.MediaCompositionAttributesTokenizer> {
+			get {
+				return ArrayTokenizedObject<MediaCompositionAttributes.MediaCompositionAttributesTokenizer>(self.append("mediaCompositionAttributesArray"))
+			} 
+		}
 	}
 
 	/**  Offset in milliseconds  */
@@ -85,6 +91,7 @@ open class ClipAttributes: OperationAttributes {
 	public var effectArray: Array<Effect>? = nil
 	public var cropAlignment: Int? = nil
 	public var captionAttributes: Array<CaptionAttributes>? = nil
+	public var mediaCompositionAttributesArray: Array<MediaCompositionAttributes>? = nil
 
 
 	public func setMultiRequestToken(offset: String) {
@@ -124,6 +131,9 @@ open class ClipAttributes: OperationAttributes {
 		if dict["captionAttributes"] != nil {
 			captionAttributes = try JSONParser.parse(array: dict["captionAttributes"] as! [Any])
 		}
+		if dict["mediaCompositionAttributesArray"] != nil {
+			mediaCompositionAttributesArray = try JSONParser.parse(array: dict["mediaCompositionAttributesArray"] as! [Any])
+		}
 
 	}
 
@@ -146,6 +156,9 @@ open class ClipAttributes: OperationAttributes {
 		}
 		if(captionAttributes != nil) {
 			dict["captionAttributes"] = captionAttributes!.map { value in value.toDictionary() }
+		}
+		if(mediaCompositionAttributesArray != nil) {
+			dict["mediaCompositionAttributesArray"] = mediaCompositionAttributesArray!.map { value in value.toDictionary() }
 		}
 		return dict
 	}

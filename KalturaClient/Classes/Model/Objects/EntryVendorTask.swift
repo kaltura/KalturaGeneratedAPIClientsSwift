@@ -226,12 +226,6 @@ open class EntryVendorTask: ObjectBase {
 				return self.append("externalTaskId") 
 			}
 		}
-		
-		public var isPayPerUse: BaseTokenizedObject {
-			get {
-				return self.append("isPayPerUse") 
-			}
-		}
 	}
 
 	public var id: Int64? = nil
@@ -285,8 +279,6 @@ open class EntryVendorTask: ObjectBase {
 	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
 	/**  The vendor's task internal Id  */
 	public var externalTaskId: String? = nil
-	/**  Indicates if the task is pay-per-use based on the catalog item  */
-	public var isPayPerUse: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -413,10 +405,6 @@ open class EntryVendorTask: ObjectBase {
 		self.dict["externalTaskId"] = externalTaskId
 	}
 	
-	public func setMultiRequestToken(isPayPerUse: String) {
-		self.dict["isPayPerUse"] = isPayPerUse
-	}
-	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -514,9 +502,6 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if dict["externalTaskId"] != nil {
 			externalTaskId = dict["externalTaskId"] as? String
-		}
-		if dict["isPayPerUse"] != nil {
-			isPayPerUse = dict["isPayPerUse"] as? Bool
 		}
 
 	}

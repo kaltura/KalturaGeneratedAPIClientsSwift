@@ -132,6 +132,12 @@ open class ShortLinkBaseFilter: Filter {
 				return self.append("statusIn") 
 			}
 		}
+		
+		public var uniqueIdEqual: BaseTokenizedObject {
+			get {
+				return self.append("uniqueIdEqual") 
+			}
+		}
 	}
 
 	public var idEqual: String? = nil
@@ -150,6 +156,7 @@ open class ShortLinkBaseFilter: Filter {
 	public var systemNameIn: String? = nil
 	public var statusEqual: ShortLinkStatus? = nil
 	public var statusIn: String? = nil
+	public var uniqueIdEqual: String? = nil
 
 
 	public func setMultiRequestToken(idEqual: String) {
@@ -216,6 +223,10 @@ open class ShortLinkBaseFilter: Filter {
 		self.dict["statusIn"] = statusIn
 	}
 	
+	public func setMultiRequestToken(uniqueIdEqual: String) {
+		self.dict["uniqueIdEqual"] = uniqueIdEqual
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -266,6 +277,9 @@ open class ShortLinkBaseFilter: Filter {
 		}
 		if dict["statusIn"] != nil {
 			statusIn = dict["statusIn"] as? String
+		}
+		if dict["uniqueIdEqual"] != nil {
+			uniqueIdEqual = dict["uniqueIdEqual"] as? String
 		}
 
 	}
@@ -319,6 +333,9 @@ open class ShortLinkBaseFilter: Filter {
 		}
 		if(statusIn != nil) {
 			dict["statusIn"] = statusIn!
+		}
+		if(uniqueIdEqual != nil) {
+			dict["uniqueIdEqual"] = uniqueIdEqual!
 		}
 		return dict
 	}

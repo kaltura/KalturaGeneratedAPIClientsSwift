@@ -43,6 +43,12 @@ open class ConcatJobData: JobData {
 			} 
 		}
 		
+		public var inputFiles: ArrayTokenizedObject<StringArrayObject.StringArrayObjectTokenizer> {
+			get {
+				return ArrayTokenizedObject<StringArrayObject.StringArrayObjectTokenizer>(self.append("inputFiles"))
+			} 
+		}
+		
 		public var destFilePath: BaseTokenizedObject {
 			get {
 				return self.append("destFilePath") 
@@ -94,6 +100,8 @@ open class ConcatJobData: JobData {
 
 	/**  Source files to be concatenated  */
 	public var srcFiles: Array<StringHolder>? = nil
+	/**  Additional input files to be used in conversion pre concatenation  */
+	public var inputFiles: Array<StringArrayObject>? = nil
 	/**  Output file  */
 	public var destFilePath: String? = nil
 	/**  Flavor asset to be ingested with the output  */
@@ -145,6 +153,9 @@ open class ConcatJobData: JobData {
 		if dict["srcFiles"] != nil {
 			srcFiles = try JSONParser.parse(array: dict["srcFiles"] as! [Any])
 		}
+		if dict["inputFiles"] != nil {
+			inputFiles = try JSONParser.parse(array: dict["inputFiles"] as! [Any])
+		}
 		if dict["destFilePath"] != nil {
 			destFilePath = dict["destFilePath"] as? String
 		}
@@ -176,6 +187,9 @@ open class ConcatJobData: JobData {
 		var dict: [String: Any] = super.toDictionary()
 		if(srcFiles != nil) {
 			dict["srcFiles"] = srcFiles!.map { value in value.toDictionary() }
+		}
+		if(inputFiles != nil) {
+			dict["inputFiles"] = inputFiles!.map { value in value.toDictionary() }
 		}
 		if(destFilePath != nil) {
 			dict["destFilePath"] = destFilePath!
