@@ -34,6 +34,9 @@
 public enum CatalogItemLanguage: String {
 	case AF = "Afrikaans"
 	case AR = "Arabic"
+	case AR_LB = "Arabic (Lebanon)"
+	case AR_QA = "Arabic (Qatar)"
+	case AR_SA = "Arabic (Saudi Arabia)"
 	case AUTO_DETECT = "Auto Detect"
 	case AZ = "Azerbaijani"
 	case BA = "Bashkir"
