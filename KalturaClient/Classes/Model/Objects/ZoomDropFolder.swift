@@ -52,11 +52,19 @@ open class ZoomDropFolder: DropFolder {
 				return self.append("lastHandledMeetingTime") 
 			}
 		}
+		
+		public var fileProcessingGracePeriod: BaseTokenizedObject {
+			get {
+				return self.append("fileProcessingGracePeriod") 
+			}
+		}
 	}
 
 	public var zoomVendorIntegrationId: Int? = nil
 	public var zoomVendorIntegration: ZoomIntegrationSetting? = nil
 	public var lastHandledMeetingTime: Int? = nil
+	/**  The amount of time, in seconds, to wait before processing a drop folder file  */
+	public var fileProcessingGracePeriod: Int? = nil
 
 
 	public func setMultiRequestToken(zoomVendorIntegrationId: String) {
@@ -65,6 +73,10 @@ open class ZoomDropFolder: DropFolder {
 	
 	public func setMultiRequestToken(lastHandledMeetingTime: String) {
 		self.dict["lastHandledMeetingTime"] = lastHandledMeetingTime
+	}
+	
+	public func setMultiRequestToken(fileProcessingGracePeriod: String) {
+		self.dict["fileProcessingGracePeriod"] = fileProcessingGracePeriod
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
@@ -78,6 +90,9 @@ open class ZoomDropFolder: DropFolder {
 		if dict["lastHandledMeetingTime"] != nil {
 			lastHandledMeetingTime = dict["lastHandledMeetingTime"] as? Int
 		}
+		if dict["fileProcessingGracePeriod"] != nil {
+			fileProcessingGracePeriod = dict["fileProcessingGracePeriod"] as? Int
+		}
 
 	}
 
@@ -85,6 +100,9 @@ open class ZoomDropFolder: DropFolder {
 		var dict: [String: Any] = super.toDictionary()
 		if(lastHandledMeetingTime != nil) {
 			dict["lastHandledMeetingTime"] = lastHandledMeetingTime!
+		}
+		if(fileProcessingGracePeriod != nil) {
+			dict["fileProcessingGracePeriod"] = fileProcessingGracePeriod!
 		}
 		return dict
 	}

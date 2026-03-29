@@ -25,33 +25,48 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
-	case LIVE_CAPTION = 8
-	case EXTENDED_AUDIO_DESCRIPTION = 9
-	case CLIPS = 10
-	case LIVE_TRANSLATION = 11
-	case QUIZ = 12
-	case SUMMARY = 13
-	case VIDEO_ANALYSIS = 14
-	case MODERATION = 15
-	case METADATA_ENRICHMENT = 16
-	case SENTIMENT_ANALYSIS = 17
-	case DOCUMENT_ENRICHMENT = 18
-	case SIGN_LANGUAGE = 19
-	case SPEECH_TO_VIDEO = 20
-	case IMMERSIVE_AGENT_CALL = 21
-	case IMMERSIVE_AGENT_CHAT = 22
+
+open class ImmersiveAgentCallVendorTaskData: VendorTaskData {
+
+	public class ImmersiveAgentCallVendorTaskDataTokenizer: VendorTaskData.VendorTaskDataTokenizer {
+		
+		public var callId: BaseTokenizedObject {
+			get {
+				return self.append("callId") 
+			}
+		}
+	}
+
+	/**  The unique identifier for the immersive agent call  */
+	public var callId: String? = nil
+
+
+	public func setMultiRequestToken(callId: String) {
+		self.dict["callId"] = callId
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["callId"] != nil {
+			callId = dict["callId"] as? String
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(callId != nil) {
+			dict["callId"] = callId!
+		}
+		return dict
+	}
 }
+

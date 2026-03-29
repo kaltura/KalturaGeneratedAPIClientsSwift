@@ -25,33 +25,64 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum VendorServiceFeature: Int {
-	case CAPTIONS = 1
-	case TRANSLATION = 2
-	case ALIGNMENT = 3
-	case AUDIO_DESCRIPTION = 4
-	case CHAPTERING = 5
-	case INTELLIGENT_TAGGING = 6
-	case DUBBING = 7
-	case LIVE_CAPTION = 8
-	case EXTENDED_AUDIO_DESCRIPTION = 9
-	case CLIPS = 10
-	case LIVE_TRANSLATION = 11
-	case QUIZ = 12
-	case SUMMARY = 13
-	case VIDEO_ANALYSIS = 14
-	case MODERATION = 15
-	case METADATA_ENRICHMENT = 16
-	case SENTIMENT_ANALYSIS = 17
-	case DOCUMENT_ENRICHMENT = 18
-	case SIGN_LANGUAGE = 19
-	case SPEECH_TO_VIDEO = 20
-	case IMMERSIVE_AGENT_CALL = 21
-	case IMMERSIVE_AGENT_CHAT = 22
+
+open class Position: ObjectBase {
+
+	public class PositionTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var x: BaseTokenizedObject {
+			get {
+				return self.append("x") 
+			}
+		}
+		
+		public var y: BaseTokenizedObject {
+			get {
+				return self.append("y") 
+			}
+		}
+	}
+
+	public var x: Double? = nil
+	public var y: Double? = nil
+
+
+	public func setMultiRequestToken(x: String) {
+		self.dict["x"] = x
+	}
+	
+	public func setMultiRequestToken(y: String) {
+		self.dict["y"] = y
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["x"] != nil {
+			x = dict["x"] as? Double
+		}
+		if dict["y"] != nil {
+			y = dict["y"] as? Double
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(x != nil) {
+			dict["x"] = x!
+		}
+		if(y != nil) {
+			dict["y"] = y!
+		}
+		return dict
+	}
 }
+

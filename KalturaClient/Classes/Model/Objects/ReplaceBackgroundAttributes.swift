@@ -40,17 +40,52 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		public func resource<T: ContentResource.ContentResourceTokenizer>() -> T {
 			return T(self.append("resource"))
 		}
+		
+		public var backgroundColorCode: BaseTokenizedObject {
+			get {
+				return self.append("backgroundColorCode") 
+			}
+		}
+		
+		public var foregroundScalePercentage: BaseTokenizedObject {
+			get {
+				return self.append("foregroundScalePercentage") 
+			}
+		}
+		
+		public func foregroundPositionPercentage<T: Position.PositionTokenizer>() -> T {
+			return T(self.append("foregroundPositionPercentage"))
+		}
 	}
 
 	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
 	public var resource: ContentResource? = nil
+	public var backgroundColorCode: String? = nil
+	public var foregroundScalePercentage: Double? = nil
+	public var foregroundPositionPercentage: Position? = nil
 
 
+	public func setMultiRequestToken(backgroundColorCode: String) {
+		self.dict["backgroundColorCode"] = backgroundColorCode
+	}
+	
+	public func setMultiRequestToken(foregroundScalePercentage: String) {
+		self.dict["foregroundScalePercentage"] = foregroundScalePercentage
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
 		if dict["resource"] != nil {
 		resource = try JSONParser.parse(object: dict["resource"] as! [String: Any])		}
+		if dict["backgroundColorCode"] != nil {
+			backgroundColorCode = dict["backgroundColorCode"] as? String
+		}
+		if dict["foregroundScalePercentage"] != nil {
+			foregroundScalePercentage = dict["foregroundScalePercentage"] as? Double
+		}
+		if dict["foregroundPositionPercentage"] != nil {
+		foregroundPositionPercentage = try JSONParser.parse(object: dict["foregroundPositionPercentage"] as! [String: Any])		}
 
 	}
 
@@ -58,6 +93,15 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		var dict: [String: Any] = super.toDictionary()
 		if(resource != nil) {
 			dict["resource"] = resource!.toDictionary()
+		}
+		if(backgroundColorCode != nil) {
+			dict["backgroundColorCode"] = backgroundColorCode!
+		}
+		if(foregroundScalePercentage != nil) {
+			dict["foregroundScalePercentage"] = foregroundScalePercentage!
+		}
+		if(foregroundPositionPercentage != nil) {
+			dict["foregroundPositionPercentage"] = foregroundPositionPercentage!.toDictionary()
 		}
 		return dict
 	}
