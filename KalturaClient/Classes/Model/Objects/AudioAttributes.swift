@@ -25,14 +25,47 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType: Int {
-	case ENTRY = 1
-	case ASSET = 2
-	case EXTERNAL_OBJECT = 3
+
+open class AudioAttributes: ObjectBase {
+
+	public class AudioAttributesTokenizer: ObjectBase.ObjectBaseTokenizer {
+		
+		public var volume: BaseTokenizedObject {
+			get {
+				return self.append("volume") 
+			}
+		}
+	}
+
+	public var volume: Double? = nil
+
+
+	public func setMultiRequestToken(volume: String) {
+		self.dict["volume"] = volume
+	}
+	
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+		// set members values:
+		if dict["volume"] != nil {
+			volume = dict["volume"] as? Double
+		}
+
+	}
+
+	internal override func toDictionary() -> [String: Any] {
+		var dict: [String: Any] = super.toDictionary()
+		if(volume != nil) {
+			dict["volume"] = volume!
+		}
+		return dict
+	}
 }
+

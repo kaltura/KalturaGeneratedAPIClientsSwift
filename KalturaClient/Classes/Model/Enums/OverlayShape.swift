@@ -31,8 +31,9 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType: Int {
-	case ENTRY = 1
-	case ASSET = 2
-	case EXTERNAL_OBJECT = 3
+public enum OverlayShape: Int {
+	case CIRCLE = 1
+	case RECTANGLE = 2
+	case RECTANGLE_ROUNDED_CORNERS = 3
+	case ELLIPSE = 4
 }

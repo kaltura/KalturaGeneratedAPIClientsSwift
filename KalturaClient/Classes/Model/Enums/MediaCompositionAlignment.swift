@@ -31,8 +31,14 @@
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType: Int {
-	case ENTRY = 1
-	case ASSET = 2
-	case EXTERNAL_OBJECT = 3
+public enum MediaCompositionAlignment: Int {
+	case BOTTOM_LEFT = 1
+	case BOTTOM_CENTER = 2
+	case BOTTOM_RIGHT = 3
+	case TOP_LEFT = 4
+	case TOP_CENTER = 6
+	case TOP_RIGHT = 7
+	case CENTER_LEFT = 8
+	case CENTER_CENTER = 10
+	case CENTER_RIGHT = 11
 }

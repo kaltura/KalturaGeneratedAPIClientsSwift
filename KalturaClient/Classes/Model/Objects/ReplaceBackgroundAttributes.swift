@@ -56,6 +56,10 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		public func foregroundPositionPercentage<T: Position.PositionTokenizer>() -> T {
 			return T(self.append("foregroundPositionPercentage"))
 		}
+		
+		public func audioAttributes<T: AudioAttributes.AudioAttributesTokenizer>() -> T {
+			return T(self.append("audioAttributes"))
+		}
 	}
 
 	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
@@ -63,6 +67,7 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 	public var backgroundColorCode: String? = nil
 	public var foregroundScalePercentage: Double? = nil
 	public var foregroundPositionPercentage: Position? = nil
+	public var audioAttributes: AudioAttributes? = nil
 
 
 	public func setMultiRequestToken(backgroundColorCode: String) {
@@ -86,6 +91,8 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		}
 		if dict["foregroundPositionPercentage"] != nil {
 		foregroundPositionPercentage = try JSONParser.parse(object: dict["foregroundPositionPercentage"] as! [String: Any])		}
+		if dict["audioAttributes"] != nil {
+		audioAttributes = try JSONParser.parse(object: dict["audioAttributes"] as! [String: Any])		}
 
 	}
 
@@ -102,6 +109,9 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		}
 		if(foregroundPositionPercentage != nil) {
 			dict["foregroundPositionPercentage"] = foregroundPositionPercentage!.toDictionary()
+		}
+		if(audioAttributes != nil) {
+			dict["audioAttributes"] = audioAttributes!.toDictionary()
 		}
 		return dict
 	}

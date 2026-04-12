@@ -46,14 +46,63 @@ open class OverlayAttributes: MediaCompositionAttributes {
 				return ArrayTokenizedObject<MediaCompositionAttributes.MediaCompositionAttributesTokenizer>(self.append("resourceMediaCompositionAttributesArray"))
 			} 
 		}
+		
+		public var marginsPercentage: BaseTokenizedObject {
+			get {
+				return self.append("marginsPercentage") 
+			}
+		}
+		
+		public var overlayScalePercentage: BaseTokenizedObject {
+			get {
+				return self.append("overlayScalePercentage") 
+			}
+		}
+		
+		public var overlayPlacement: BaseTokenizedObject {
+			get {
+				return self.append("overlayPlacement") 
+			}
+		}
+		
+		public var overlayShape: BaseTokenizedObject {
+			get {
+				return self.append("overlayShape") 
+			}
+		}
+		
+		public func audioAttributes<T: AudioAttributes.AudioAttributesTokenizer>() -> T {
+			return T(self.append("audioAttributes"))
+		}
 	}
 
 	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
 	public var resource: ContentResource? = nil
 	/**  Only KalturaReplaceBackgroundAttributes is supported  */
 	public var resourceMediaCompositionAttributesArray: Array<MediaCompositionAttributes>? = nil
+	public var marginsPercentage: Double? = nil
+	public var overlayScalePercentage: Double? = nil
+	public var overlayPlacement: MediaCompositionAlignment? = nil
+	public var overlayShape: OverlayShape? = nil
+	public var audioAttributes: AudioAttributes? = nil
 
 
+	public func setMultiRequestToken(marginsPercentage: String) {
+		self.dict["marginsPercentage"] = marginsPercentage
+	}
+	
+	public func setMultiRequestToken(overlayScalePercentage: String) {
+		self.dict["overlayScalePercentage"] = overlayScalePercentage
+	}
+	
+	public func setMultiRequestToken(overlayPlacement: String) {
+		self.dict["overlayPlacement"] = overlayPlacement
+	}
+	
+	public func setMultiRequestToken(overlayShape: String) {
+		self.dict["overlayShape"] = overlayShape
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -62,6 +111,20 @@ open class OverlayAttributes: MediaCompositionAttributes {
 		if dict["resourceMediaCompositionAttributesArray"] != nil {
 			resourceMediaCompositionAttributesArray = try JSONParser.parse(array: dict["resourceMediaCompositionAttributesArray"] as! [Any])
 		}
+		if dict["marginsPercentage"] != nil {
+			marginsPercentage = dict["marginsPercentage"] as? Double
+		}
+		if dict["overlayScalePercentage"] != nil {
+			overlayScalePercentage = dict["overlayScalePercentage"] as? Double
+		}
+		if dict["overlayPlacement"] != nil {
+			overlayPlacement = MediaCompositionAlignment(rawValue: (dict["overlayPlacement"] as? Int)!)
+		}
+		if dict["overlayShape"] != nil {
+			overlayShape = OverlayShape(rawValue: (dict["overlayShape"] as? Int)!)
+		}
+		if dict["audioAttributes"] != nil {
+		audioAttributes = try JSONParser.parse(object: dict["audioAttributes"] as! [String: Any])		}
 
 	}
 
@@ -72,6 +135,21 @@ open class OverlayAttributes: MediaCompositionAttributes {
 		}
 		if(resourceMediaCompositionAttributesArray != nil) {
 			dict["resourceMediaCompositionAttributesArray"] = resourceMediaCompositionAttributesArray!.map { value in value.toDictionary() }
+		}
+		if(marginsPercentage != nil) {
+			dict["marginsPercentage"] = marginsPercentage!
+		}
+		if(overlayScalePercentage != nil) {
+			dict["overlayScalePercentage"] = overlayScalePercentage!
+		}
+		if(overlayPlacement != nil) {
+			dict["overlayPlacement"] = overlayPlacement!.rawValue
+		}
+		if(overlayShape != nil) {
+			dict["overlayShape"] = overlayShape!.rawValue
+		}
+		if(audioAttributes != nil) {
+			dict["audioAttributes"] = audioAttributes!.toDictionary()
 		}
 		return dict
 	}

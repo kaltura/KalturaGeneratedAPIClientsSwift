@@ -54,4 +54,5 @@ public enum VendorServiceFeature: Int {
 	case SPEECH_TO_VIDEO = 20
 	case IMMERSIVE_AGENT_CALL = 21
 	case IMMERSIVE_AGENT_CHAT = 22
+	case AVATAR_VOD = 23
 }

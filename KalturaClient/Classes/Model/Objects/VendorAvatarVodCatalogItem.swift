@@ -25,14 +25,24 @@
 //
 // @ignore
 // ===================================================================================================
+
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-public enum EntryObjectType: Int {
-	case ENTRY = 1
-	case ASSET = 2
-	case EXTERNAL_OBJECT = 3
+
+open class VendorAvatarVodCatalogItem: VendorCatalogItem {
+
+	public class VendorAvatarVodCatalogItemTokenizer: VendorCatalogItem.VendorCatalogItemTokenizer {
+	}
+
+
+
+	public override func populate(_ dict: [String: Any]) throws {
+		try super.populate(dict);
+	}
+
 }
+

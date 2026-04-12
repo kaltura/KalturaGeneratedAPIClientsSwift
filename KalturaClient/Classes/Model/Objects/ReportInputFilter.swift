@@ -334,6 +334,24 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("videoCodecIn") 
 			}
 		}
+		
+		public var agentIdIn: BaseTokenizedObject {
+			get {
+				return self.append("agentIdIn") 
+			}
+		}
+		
+		public var genieIdIn: BaseTokenizedObject {
+			get {
+				return self.append("genieIdIn") 
+			}
+		}
+		
+		public var reachProfileIdIn: BaseTokenizedObject {
+			get {
+				return self.append("reachProfileIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -433,6 +451,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var eventSessionContextIdIn: String? = nil
 	/**  filter by event video codec  */
 	public var videoCodecIn: String? = nil
+	/**  filter by agent id  */
+	public var agentIdIn: String? = nil
+	/**  filter by Genie id  */
+	public var genieIdIn: String? = nil
+	/**  filter by reach profile id  */
+	public var reachProfileIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -631,6 +655,18 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["videoCodecIn"] = videoCodecIn
 	}
 	
+	public func setMultiRequestToken(agentIdIn: String) {
+		self.dict["agentIdIn"] = agentIdIn
+	}
+	
+	public func setMultiRequestToken(genieIdIn: String) {
+		self.dict["genieIdIn"] = genieIdIn
+	}
+	
+	public func setMultiRequestToken(reachProfileIdIn: String) {
+		self.dict["reachProfileIdIn"] = reachProfileIdIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -782,6 +818,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["videoCodecIn"] != nil {
 			videoCodecIn = dict["videoCodecIn"] as? String
+		}
+		if dict["agentIdIn"] != nil {
+			agentIdIn = dict["agentIdIn"] as? String
+		}
+		if dict["genieIdIn"] != nil {
+			genieIdIn = dict["genieIdIn"] as? String
+		}
+		if dict["reachProfileIdIn"] != nil {
+			reachProfileIdIn = dict["reachProfileIdIn"] as? String
 		}
 
 	}
@@ -937,6 +982,15 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(videoCodecIn != nil) {
 			dict["videoCodecIn"] = videoCodecIn!
+		}
+		if(agentIdIn != nil) {
+			dict["agentIdIn"] = agentIdIn!
+		}
+		if(genieIdIn != nil) {
+			dict["genieIdIn"] = genieIdIn!
+		}
+		if(reachProfileIdIn != nil) {
+			dict["reachProfileIdIn"] = reachProfileIdIn!
 		}
 		return dict
 	}
