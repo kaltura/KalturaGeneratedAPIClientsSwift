@@ -352,6 +352,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("reachProfileIdIn") 
 			}
 		}
+		
+		public var isPreview: BaseTokenizedObject {
+			get {
+				return self.append("isPreview") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -457,6 +463,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var genieIdIn: String? = nil
 	/**  filter by reach profile id  */
 	public var reachProfileIdIn: String? = nil
+	/**  filter by preview mode  */
+	public var isPreview: Bool? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -667,6 +675,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["reachProfileIdIn"] = reachProfileIdIn
 	}
 	
+	public func setMultiRequestToken(isPreview: String) {
+		self.dict["isPreview"] = isPreview
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -827,6 +839,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["reachProfileIdIn"] != nil {
 			reachProfileIdIn = dict["reachProfileIdIn"] as? String
+		}
+		if dict["isPreview"] != nil {
+			isPreview = dict["isPreview"] as? Bool
 		}
 
 	}
@@ -991,6 +1006,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(reachProfileIdIn != nil) {
 			dict["reachProfileIdIn"] = reachProfileIdIn!
+		}
+		if(isPreview != nil) {
+			dict["isPreview"] = isPreview!
 		}
 		return dict
 	}

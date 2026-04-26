@@ -452,6 +452,9 @@ open class ReachProfile: ObjectBase {
 		if(credit != nil) {
 			dict["credit"] = credit!.toDictionary()
 		}
+		if(usedCredit != nil) {
+			dict["usedCredit"] = usedCredit!
+		}
 		if(dictionaries != nil) {
 			dict["dictionaries"] = dictionaries!.map { value in value.toDictionary() }
 		}

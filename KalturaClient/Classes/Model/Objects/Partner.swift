@@ -552,6 +552,12 @@ open class Partner: ObjectBase {
 				return self.append("allowedEmailDomainsForAdmins") 
 			}
 		}
+		
+		public var externalIdentifier: BaseTokenizedObject {
+			get {
+				return self.append("externalIdentifier") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -646,6 +652,7 @@ open class Partner: ObjectBase {
 	public var recycleBinRetentionPeriod: Int? = nil
 	public var customAnalyticsDomain: String? = nil
 	public var allowedEmailDomainsForAdmins: String? = nil
+	public var externalIdentifier: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -972,6 +979,10 @@ open class Partner: ObjectBase {
 		self.dict["allowedEmailDomainsForAdmins"] = allowedEmailDomainsForAdmins
 	}
 	
+	public func setMultiRequestToken(externalIdentifier: String) {
+		self.dict["externalIdentifier"] = externalIdentifier
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1233,6 +1244,9 @@ open class Partner: ObjectBase {
 		if dict["allowedEmailDomainsForAdmins"] != nil {
 			allowedEmailDomainsForAdmins = dict["allowedEmailDomainsForAdmins"] as? String
 		}
+		if dict["externalIdentifier"] != nil {
+			externalIdentifier = dict["externalIdentifier"] as? String
+		}
 
 	}
 
@@ -1372,6 +1386,9 @@ open class Partner: ObjectBase {
 		}
 		if(allowedEmailDomainsForAdmins != nil) {
 			dict["allowedEmailDomainsForAdmins"] = allowedEmailDomainsForAdmins!
+		}
+		if(externalIdentifier != nil) {
+			dict["externalIdentifier"] = externalIdentifier!
 		}
 		return dict
 	}
