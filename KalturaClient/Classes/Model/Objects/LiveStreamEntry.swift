@@ -133,6 +133,12 @@ open class LiveStreamEntry: LiveEntry {
 			}
 		}
 		
+		public var readyForDeletion: BaseTokenizedObject {
+			get {
+				return self.append("readyForDeletion") 
+			}
+		}
+		
 		public var urlManager: BaseTokenizedObject {
 			get {
 				return self.append("urlManager") 
@@ -209,6 +215,8 @@ open class LiveStreamEntry: LiveEntry {
 	public var streamUrl: String? = nil
 	/**  HLS URL - URL for live stream playback on mobile device  */
 	public var hlsStreamUrl: String? = nil
+	/**  Indicates whether the live entry is ready to be deleted  */
+	public var readyForDeletion: Bool? = nil
 	/**  URL Manager to handle the live stream URL (for instance, add token)  */
 	public var urlManager: String? = nil
 	/**  The broadcast primary ip  */
@@ -284,6 +292,10 @@ open class LiveStreamEntry: LiveEntry {
 	
 	public func setMultiRequestToken(hlsStreamUrl: String) {
 		self.dict["hlsStreamUrl"] = hlsStreamUrl
+	}
+	
+	public func setMultiRequestToken(readyForDeletion: String) {
+		self.dict["readyForDeletion"] = readyForDeletion
 	}
 	
 	public func setMultiRequestToken(urlManager: String) {
@@ -372,6 +384,9 @@ open class LiveStreamEntry: LiveEntry {
 		}
 		if dict["hlsStreamUrl"] != nil {
 			hlsStreamUrl = dict["hlsStreamUrl"] as? String
+		}
+		if dict["readyForDeletion"] != nil {
+			readyForDeletion = dict["readyForDeletion"] as? Bool
 		}
 		if dict["urlManager"] != nil {
 			urlManager = dict["urlManager"] as? String

@@ -52,4 +52,5 @@ public enum ESearchGroupFieldName: String {
 	case TITLE = "title"
 	case UPDATED_AT = "updated_at"
 	case USER_ID = "user_id"
+	case TYPE = "user_type"
 }
