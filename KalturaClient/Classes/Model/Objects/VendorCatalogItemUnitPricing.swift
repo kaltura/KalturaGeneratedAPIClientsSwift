@@ -33,66 +33,47 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A resource that perform operation (transcoding, clipping, cropping) before the
-  flavor is ready.  */
-open class OperationResource: ContentResource {
+open class VendorCatalogItemUnitPricing: ObjectBase {
 
-	public class OperationResourceTokenizer: ContentResource.ContentResourceTokenizer {
+	public class VendorCatalogItemUnitPricingTokenizer: ObjectBase.ObjectBaseTokenizer {
 		
-		public func resource<T: ContentResource.ContentResourceTokenizer>() -> T {
-			return T(self.append("resource"))
-		}
-		
-		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {
+		public var serviceName: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
-			} 
-		}
-		
-		public var assetParamsId: BaseTokenizedObject {
-			get {
-				return self.append("assetParamsId") 
+				return self.append("serviceName") 
 			}
+		}
+		
+		public func priceUnit<T: VendorCatalogItemPricing.VendorCatalogItemPricingTokenizer>() -> T {
+			return T(self.append("priceUnit"))
 		}
 	}
 
-	/**  Only KalturaEntryResource, KalturaAssetResource and
-	  KalturaDocumentImagesResource are supported  */
-	public var resource: ContentResource? = nil
-	public var operationAttributes: Array<OperationAttributes>? = nil
-	/**  ID of alternative asset params to be used instead of the system default flavor
-	  params  */
-	public var assetParamsId: Int? = nil
+	public var serviceName: String? = nil
+	public var priceUnit: VendorCatalogItemPricing? = nil
 
 
-	public func setMultiRequestToken(assetParamsId: String) {
-		self.dict["assetParamsId"] = assetParamsId
+	public func setMultiRequestToken(serviceName: String) {
+		self.dict["serviceName"] = serviceName
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["resource"] != nil {
-		resource = try JSONParser.parse(object: dict["resource"] as! [String: Any])		}
-		if dict["operationAttributes"] != nil {
-			operationAttributes = try JSONParser.parse(array: dict["operationAttributes"] as! [Any])
+		if dict["serviceName"] != nil {
+			serviceName = dict["serviceName"] as? String
 		}
-		if dict["assetParamsId"] != nil {
-			assetParamsId = dict["assetParamsId"] as? Int
-		}
+		if dict["priceUnit"] != nil {
+		priceUnit = try JSONParser.parse(object: dict["priceUnit"] as! [String: Any])		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(resource != nil) {
-			dict["resource"] = resource!.toDictionary()
+		if(serviceName != nil) {
+			dict["serviceName"] = serviceName!
 		}
-		if(operationAttributes != nil) {
-			dict["operationAttributes"] = operationAttributes!.map { value in value.toDictionary() }
-		}
-		if(assetParamsId != nil) {
-			dict["assetParamsId"] = assetParamsId!
+		if(priceUnit != nil) {
+			dict["priceUnit"] = priceUnit!.toDictionary()
 		}
 		return dict
 	}

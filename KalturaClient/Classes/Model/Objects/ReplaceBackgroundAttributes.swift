@@ -62,7 +62,8 @@ open class ReplaceBackgroundAttributes: MediaCompositionAttributes {
 		}
 	}
 
-	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
+	/**  Only KalturaEntryResource, KalturaAssetResource and
+	  KalturaDocumentImagesResource are supported  */
 	public var resource: ContentResource? = nil
 	public var backgroundColorCode: String? = nil
 	public var foregroundScalePercentage: Double? = nil

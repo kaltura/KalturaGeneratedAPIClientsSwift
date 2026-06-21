@@ -72,7 +72,8 @@ open class OverlayAttributes: MediaCompositionAttributes {
 		}
 	}
 
-	/**  Only KalturaEntryResource and KalturaAssetResource are supported  */
+	/**  Only KalturaEntryResource, KalturaAssetResource and
+	  KalturaDocumentImagesResource are supported  */
 	public var resource: ContentResource? = nil
 	/**  Only KalturaReplaceBackgroundAttributes is supported  */
 	public var resourceMediaCompositionAttributesArray: Array<MediaCompositionAttributes>? = nil

@@ -127,6 +127,12 @@ open class EntryVendorTask: ObjectBase {
 			}
 		}
 		
+		public var unitsUsedArray: ArrayTokenizedObject<EntryVendorTaskUnit.EntryVendorTaskUnitTokenizer> {
+			get {
+				return ArrayTokenizedObject<EntryVendorTaskUnit.EntryVendorTaskUnitTokenizer>(self.append("unitsUsedArray"))
+			} 
+		}
+		
 		public var moderatingUser: BaseTokenizedObject {
 			get {
 				return self.append("moderatingUser") 
@@ -253,6 +259,7 @@ open class EntryVendorTask: ObjectBase {
 	public var userId: String? = nil
 	public var entryObjectType: EntryObjectType? = nil
 	public var unitsUsed: Int? = nil
+	public var unitsUsedArray: Array<EntryVendorTaskUnit>? = nil
 	/**  The user ID that approved this task for execution (in case moderation is
 	  requested)  */
 	public var moderatingUser: String? = nil
@@ -465,6 +472,9 @@ open class EntryVendorTask: ObjectBase {
 		if dict["unitsUsed"] != nil {
 			unitsUsed = dict["unitsUsed"] as? Int
 		}
+		if dict["unitsUsedArray"] != nil {
+			unitsUsedArray = try JSONParser.parse(array: dict["unitsUsedArray"] as! [Any])
+		}
 		if dict["moderatingUser"] != nil {
 			moderatingUser = dict["moderatingUser"] as? String
 		}
@@ -540,6 +550,9 @@ open class EntryVendorTask: ObjectBase {
 		}
 		if(unitsUsed != nil) {
 			dict["unitsUsed"] = unitsUsed!
+		}
+		if(unitsUsedArray != nil) {
+			dict["unitsUsedArray"] = unitsUsedArray!.map { value in value.toDictionary() }
 		}
 		if(errDescription != nil) {
 			dict["errDescription"] = errDescription!

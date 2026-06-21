@@ -101,6 +101,12 @@ open class VendorCatalogItem: ObjectBase {
 			return T(self.append("pricing"))
 		}
 		
+		public var pricingArray: ArrayTokenizedObject<VendorCatalogItemUnitPricing.VendorCatalogItemUnitPricingTokenizer> {
+			get {
+				return ArrayTokenizedObject<VendorCatalogItemUnitPricing.VendorCatalogItemUnitPricingTokenizer>(self.append("pricingArray"))
+			} 
+		}
+		
 		public var engineType: BaseTokenizedObject {
 			get {
 				return self.append("engineType") 
@@ -191,6 +197,7 @@ open class VendorCatalogItem: ObjectBase {
 	public var serviceFeature: VendorServiceFeature? = nil
 	public var turnAroundTime: VendorServiceTurnAroundTime? = nil
 	public var pricing: VendorCatalogItemPricing? = nil
+	public var pricingArray: Array<VendorCatalogItemUnitPricing>? = nil
 	/**  Property showing the catalog item's engine type, in case a vendor can offer the
 	  same service via different engines.  */
 	public var engineType: ReachVendorEngineType? = nil
@@ -335,6 +342,9 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if dict["pricing"] != nil {
 		pricing = try JSONParser.parse(object: dict["pricing"] as! [String: Any])		}
+		if dict["pricingArray"] != nil {
+			pricingArray = try JSONParser.parse(array: dict["pricingArray"] as! [Any])
+		}
 		if dict["engineType"] != nil {
 			engineType = ReachVendorEngineType(rawValue: "\(dict["engineType"]!)")
 		}
@@ -396,6 +406,9 @@ open class VendorCatalogItem: ObjectBase {
 		}
 		if(pricing != nil) {
 			dict["pricing"] = pricing!.toDictionary()
+		}
+		if(pricingArray != nil) {
+			dict["pricingArray"] = pricingArray!.map { value in value.toDictionary() }
 		}
 		if(engineType != nil) {
 			dict["engineType"] = engineType!.rawValue

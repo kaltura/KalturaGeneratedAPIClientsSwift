@@ -33,66 +33,59 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 
-/**  A resource that perform operation (transcoding, clipping, cropping) before the
-  flavor is ready.  */
-open class OperationResource: ContentResource {
+/**  Used to ingest a single image extracted from a document entry's  generated image
+  list. The image is selected by its zero-based index  within the document's
+  imagesList.xml.  */
+open class DocumentImagesResource: ContentResource {
 
-	public class OperationResourceTokenizer: ContentResource.ContentResourceTokenizer {
+	public class DocumentImagesResourceTokenizer: ContentResource.ContentResourceTokenizer {
 		
-		public func resource<T: ContentResource.ContentResourceTokenizer>() -> T {
-			return T(self.append("resource"))
+		public var flavorAssetId: BaseTokenizedObject {
+			get {
+				return self.append("flavorAssetId") 
+			}
 		}
 		
-		public var operationAttributes: ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer> {
+		public var index: BaseTokenizedObject {
 			get {
-				return ArrayTokenizedObject<OperationAttributes.OperationAttributesTokenizer>(self.append("operationAttributes"))
-			} 
-		}
-		
-		public var assetParamsId: BaseTokenizedObject {
-			get {
-				return self.append("assetParamsId") 
+				return self.append("index") 
 			}
 		}
 	}
 
-	/**  Only KalturaEntryResource, KalturaAssetResource and
-	  KalturaDocumentImagesResource are supported  */
-	public var resource: ContentResource? = nil
-	public var operationAttributes: Array<OperationAttributes>? = nil
-	/**  ID of alternative asset params to be used instead of the system default flavor
-	  params  */
-	public var assetParamsId: Int? = nil
+	/**  ID of the flavor asset containing the image list  */
+	public var flavorAssetId: String? = nil
+	/**  Zero-based index of the image to retrieve from the list  */
+	public var index: Int? = nil
 
 
-	public func setMultiRequestToken(assetParamsId: String) {
-		self.dict["assetParamsId"] = assetParamsId
+	public func setMultiRequestToken(flavorAssetId: String) {
+		self.dict["flavorAssetId"] = flavorAssetId
+	}
+	
+	public func setMultiRequestToken(index: String) {
+		self.dict["index"] = index
 	}
 	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
-		if dict["resource"] != nil {
-		resource = try JSONParser.parse(object: dict["resource"] as! [String: Any])		}
-		if dict["operationAttributes"] != nil {
-			operationAttributes = try JSONParser.parse(array: dict["operationAttributes"] as! [Any])
+		if dict["flavorAssetId"] != nil {
+			flavorAssetId = dict["flavorAssetId"] as? String
 		}
-		if dict["assetParamsId"] != nil {
-			assetParamsId = dict["assetParamsId"] as? Int
+		if dict["index"] != nil {
+			index = dict["index"] as? Int
 		}
 
 	}
 
 	internal override func toDictionary() -> [String: Any] {
 		var dict: [String: Any] = super.toDictionary()
-		if(resource != nil) {
-			dict["resource"] = resource!.toDictionary()
+		if(flavorAssetId != nil) {
+			dict["flavorAssetId"] = flavorAssetId!
 		}
-		if(operationAttributes != nil) {
-			dict["operationAttributes"] = operationAttributes!.map { value in value.toDictionary() }
-		}
-		if(assetParamsId != nil) {
-			dict["assetParamsId"] = assetParamsId!
+		if(index != nil) {
+			dict["index"] = index!
 		}
 		return dict
 	}
