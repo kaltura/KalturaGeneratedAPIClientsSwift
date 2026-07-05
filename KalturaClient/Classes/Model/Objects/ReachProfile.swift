@@ -190,6 +190,12 @@ open class ReachProfile: ObjectBase {
 				return self.append("vendorTaskProcessingRegion") 
 			}
 		}
+		
+		public var allowedCatalogItemIds: BaseTokenizedObject {
+			get {
+				return self.append("allowedCatalogItemIds") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -222,6 +228,9 @@ open class ReachProfile: ObjectBase {
 	public var flavorParamsIds: String? = nil
 	/**  Indicates in which region the task processing should task place  */
 	public var vendorTaskProcessingRegion: VendorTaskProcessingRegion? = nil
+	/**  Comma separated catalogItemIds that are allowed for ordering using this reach
+	  profile  */
+	public var allowedCatalogItemIds: String? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -316,6 +325,10 @@ open class ReachProfile: ObjectBase {
 		self.dict["vendorTaskProcessingRegion"] = vendorTaskProcessingRegion
 	}
 	
+	public func setMultiRequestToken(allowedCatalogItemIds: String) {
+		self.dict["allowedCatalogItemIds"] = allowedCatalogItemIds
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -396,6 +409,9 @@ open class ReachProfile: ObjectBase {
 		if dict["vendorTaskProcessingRegion"] != nil {
 			vendorTaskProcessingRegion = VendorTaskProcessingRegion(rawValue: (dict["vendorTaskProcessingRegion"] as? Int)!)
 		}
+		if dict["allowedCatalogItemIds"] != nil {
+			allowedCatalogItemIds = dict["allowedCatalogItemIds"] as? String
+		}
 
 	}
 
@@ -463,6 +479,9 @@ open class ReachProfile: ObjectBase {
 		}
 		if(vendorTaskProcessingRegion != nil) {
 			dict["vendorTaskProcessingRegion"] = vendorTaskProcessingRegion!.rawValue
+		}
+		if(allowedCatalogItemIds != nil) {
+			dict["allowedCatalogItemIds"] = allowedCatalogItemIds!
 		}
 		return dict
 	}
