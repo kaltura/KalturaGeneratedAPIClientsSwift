@@ -558,6 +558,30 @@ open class Partner: ObjectBase {
 				return self.append("externalIdentifier") 
 			}
 		}
+		
+		public var htmlPurifierBehaviour: BaseTokenizedObject {
+			get {
+				return self.append("htmlPurifierBehaviour") 
+			}
+		}
+		
+		public var htmlPurifierBaseListUsage: BaseTokenizedObject {
+			get {
+				return self.append("htmlPurifierBaseListUsage") 
+			}
+		}
+		
+		public var purifyImageContent: BaseTokenizedObject {
+			get {
+				return self.append("purifyImageContent") 
+			}
+		}
+		
+		public var fileTypeRestrictionEnabled: BaseTokenizedObject {
+			get {
+				return self.append("fileTypeRestrictionEnabled") 
+			}
+		}
 	}
 
 	public var id: Int? = nil
@@ -653,6 +677,10 @@ open class Partner: ObjectBase {
 	public var customAnalyticsDomain: String? = nil
 	public var allowedEmailDomainsForAdmins: String? = nil
 	public var externalIdentifier: String? = nil
+	public var htmlPurifierBehaviour: HTMLPurifierBehaviourType? = nil
+	public var htmlPurifierBaseListUsage: Bool? = nil
+	public var purifyImageContent: Bool? = nil
+	public var fileTypeRestrictionEnabled: Bool? = nil
 
 
 	public func setMultiRequestToken(id: String) {
@@ -983,6 +1011,22 @@ open class Partner: ObjectBase {
 		self.dict["externalIdentifier"] = externalIdentifier
 	}
 	
+	public func setMultiRequestToken(htmlPurifierBehaviour: String) {
+		self.dict["htmlPurifierBehaviour"] = htmlPurifierBehaviour
+	}
+	
+	public func setMultiRequestToken(htmlPurifierBaseListUsage: String) {
+		self.dict["htmlPurifierBaseListUsage"] = htmlPurifierBaseListUsage
+	}
+	
+	public func setMultiRequestToken(purifyImageContent: String) {
+		self.dict["purifyImageContent"] = purifyImageContent
+	}
+	
+	public func setMultiRequestToken(fileTypeRestrictionEnabled: String) {
+		self.dict["fileTypeRestrictionEnabled"] = fileTypeRestrictionEnabled
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -1247,6 +1291,18 @@ open class Partner: ObjectBase {
 		if dict["externalIdentifier"] != nil {
 			externalIdentifier = dict["externalIdentifier"] as? String
 		}
+		if dict["htmlPurifierBehaviour"] != nil {
+			htmlPurifierBehaviour = HTMLPurifierBehaviourType(rawValue: "\(dict["htmlPurifierBehaviour"]!)")
+		}
+		if dict["htmlPurifierBaseListUsage"] != nil {
+			htmlPurifierBaseListUsage = dict["htmlPurifierBaseListUsage"] as? Bool
+		}
+		if dict["purifyImageContent"] != nil {
+			purifyImageContent = dict["purifyImageContent"] as? Bool
+		}
+		if dict["fileTypeRestrictionEnabled"] != nil {
+			fileTypeRestrictionEnabled = dict["fileTypeRestrictionEnabled"] as? Bool
+		}
 
 	}
 
@@ -1389,6 +1445,18 @@ open class Partner: ObjectBase {
 		}
 		if(externalIdentifier != nil) {
 			dict["externalIdentifier"] = externalIdentifier!
+		}
+		if(htmlPurifierBehaviour != nil) {
+			dict["htmlPurifierBehaviour"] = htmlPurifierBehaviour!.rawValue
+		}
+		if(htmlPurifierBaseListUsage != nil) {
+			dict["htmlPurifierBaseListUsage"] = htmlPurifierBaseListUsage!
+		}
+		if(purifyImageContent != nil) {
+			dict["purifyImageContent"] = purifyImageContent!
+		}
+		if(fileTypeRestrictionEnabled != nil) {
+			dict["fileTypeRestrictionEnabled"] = fileTypeRestrictionEnabled!
 		}
 		return dict
 	}

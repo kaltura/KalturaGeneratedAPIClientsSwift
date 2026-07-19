@@ -25,63 +25,15 @@
 //
 // @ignore
 // ===================================================================================================
-
 /**
  * This class was generated using exec.php
  * against an XML schema provided by Kaltura.
  * 
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
-
-open class VendorTaskData: ObjectBase {
-
-	public class VendorTaskDataTokenizer: ObjectBase.ObjectBaseTokenizer {
-		
-		public var entryDuration: BaseTokenizedObject {
-			get {
-				return self.append("entryDuration") 
-			}
-		}
-		
-		public var vendorComment: BaseTokenizedObject {
-			get {
-				return self.append("vendorComment") 
-			}
-		}
-	}
-
-	/**  The duration of the entry for which the task was created for in milliseconds  */
-	public var entryDuration: Int? = nil
-	/**  string containing the comment provided by vendor  */
-	public var vendorComment: String? = nil
-
-
-	public func setMultiRequestToken(entryDuration: String) {
-		self.dict["entryDuration"] = entryDuration
-	}
-	
-	public func setMultiRequestToken(vendorComment: String) {
-		self.dict["vendorComment"] = vendorComment
-	}
-	
-	public override func populate(_ dict: [String: Any]) throws {
-		try super.populate(dict);
-		// set members values:
-		if dict["entryDuration"] != nil {
-			entryDuration = dict["entryDuration"] as? Int
-		}
-		if dict["vendorComment"] != nil {
-			vendorComment = dict["vendorComment"] as? String
-		}
-
-	}
-
-	internal override func toDictionary() -> [String: Any] {
-		var dict: [String: Any] = super.toDictionary()
-		if(vendorComment != nil) {
-			dict["vendorComment"] = vendorComment!
-		}
-		return dict
-	}
+public enum HTMLPurifierBehaviourType: String {
+	case IGNORE = "0"
+	case NOTIFY = "1"
+	case SANITIZE = "2"
+	case BLOCK = "3"
 }
-

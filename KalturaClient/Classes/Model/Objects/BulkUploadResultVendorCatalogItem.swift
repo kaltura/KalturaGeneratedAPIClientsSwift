@@ -113,6 +113,12 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 			return T(self.append("pricing"))
 		}
 		
+		public var pricingArray: ArrayTokenizedObject<VendorCatalogItemUnitPricing.VendorCatalogItemUnitPricingTokenizer> {
+			get {
+				return ArrayTokenizedObject<VendorCatalogItemUnitPricing.VendorCatalogItemUnitPricingTokenizer>(self.append("pricingArray"))
+			} 
+		}
+		
 		public var flavorParamsId: BaseTokenizedObject {
 			get {
 				return self.append("flavorParamsId") 
@@ -139,6 +145,7 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 	public var enableSpeakerId: Bool? = nil
 	public var fixedPriceAddons: Int? = nil
 	public var pricing: VendorCatalogItemPricing? = nil
+	public var pricingArray: Array<VendorCatalogItemUnitPricing>? = nil
 	public var flavorParamsId: Int? = nil
 	public var clearAudioFlavorParamsId: Int? = nil
 
@@ -240,6 +247,9 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 		}
 		if dict["pricing"] != nil {
 		pricing = try JSONParser.parse(object: dict["pricing"] as! [String: Any])		}
+		if dict["pricingArray"] != nil {
+			pricingArray = try JSONParser.parse(array: dict["pricingArray"] as! [Any])
+		}
 		if dict["flavorParamsId"] != nil {
 			flavorParamsId = dict["flavorParamsId"] as? Int
 		}
@@ -289,6 +299,9 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 		}
 		if(pricing != nil) {
 			dict["pricing"] = pricing!.toDictionary()
+		}
+		if(pricingArray != nil) {
+			dict["pricingArray"] = pricingArray!.map { value in value.toDictionary() }
 		}
 		if(flavorParamsId != nil) {
 			dict["flavorParamsId"] = flavorParamsId!
