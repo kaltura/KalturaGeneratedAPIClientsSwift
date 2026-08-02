@@ -52,6 +52,7 @@ public enum ESearchEntryFieldName: String {
 	case ID = "id"
 	case IS_LIVE = "is_live"
 	case IS_QUIZ = "is_quiz"
+	case IS_SCHEDULED = "is_scheduled"
 	case USER_ID = "kuser_id"
 	case LAST_PLAYED_AT = "last_played_at"
 	case LENGTH_IN_MSECS = "length_in_msecs"

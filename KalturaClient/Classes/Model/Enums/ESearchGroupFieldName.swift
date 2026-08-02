@@ -32,6 +32,7 @@
  * MANUAL CHANGES TO THIS CLASS WILL BE OVERWRITTEN.
  */
 public enum ESearchGroupFieldName: String {
+	case ADMIN_TAGS = "admin_tags"
 	case CAPABILITIES = "capabilities"
 	case COMPANY = "company"
 	case COUNTRY = "country"
