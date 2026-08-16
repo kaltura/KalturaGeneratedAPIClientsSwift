@@ -97,6 +97,12 @@ open class ReachProfile: ObjectBase {
 			}
 		}
 		
+		public var enableHybridModeration: BaseTokenizedObject {
+			get {
+				return self.append("enableHybridModeration") 
+			}
+		}
+		
 		public var autoDisplayMachineCaptionsOnPlayer: BaseTokenizedObject {
 			get {
 				return self.append("autoDisplayMachineCaptionsOnPlayer") 
@@ -106,6 +112,12 @@ open class ReachProfile: ObjectBase {
 		public var autoDisplayHumanCaptionsOnPlayer: BaseTokenizedObject {
 			get {
 				return self.append("autoDisplayHumanCaptionsOnPlayer") 
+			}
+		}
+		
+		public var autoDisplayHybridCaptionsOnPlayer: BaseTokenizedObject {
+			get {
+				return self.append("autoDisplayHybridCaptionsOnPlayer") 
 			}
 		}
 		
@@ -148,6 +160,12 @@ open class ReachProfile: ObjectBase {
 		public var labelAdditionForHumanServiceType: BaseTokenizedObject {
 			get {
 				return self.append("labelAdditionForHumanServiceType") 
+			}
+		}
+		
+		public var labelAdditionForHybridServiceType: BaseTokenizedObject {
+			get {
+				return self.append("labelAdditionForHybridServiceType") 
 			}
 		}
 		
@@ -209,8 +227,10 @@ open class ReachProfile: ObjectBase {
 	public var defaultOutputFormat: VendorCatalogItemOutputFormat? = nil
 	public var enableMachineModeration: Bool? = nil
 	public var enableHumanModeration: Bool? = nil
+	public var enableHybridModeration: Bool? = nil
 	public var autoDisplayMachineCaptionsOnPlayer: Bool? = nil
 	public var autoDisplayHumanCaptionsOnPlayer: Bool? = nil
+	public var autoDisplayHybridCaptionsOnPlayer: Bool? = nil
 	public var enableMetadataExtraction: Bool? = nil
 	public var enableSpeakerChangeIndication: Bool? = nil
 	public var enableAudioTags: Bool? = nil
@@ -218,6 +238,7 @@ open class ReachProfile: ObjectBase {
 	public var maxCharactersPerCaptionLine: Int? = nil
 	public var labelAdditionForMachineServiceType: String? = nil
 	public var labelAdditionForHumanServiceType: String? = nil
+	public var labelAdditionForHybridServiceType: String? = nil
 	public var contentDeletionPolicy: ReachProfileContentDeletionPolicy? = nil
 	public var rules: Array<Rule>? = nil
 	public var credit: BaseVendorCredit? = nil
@@ -273,12 +294,20 @@ open class ReachProfile: ObjectBase {
 		self.dict["enableHumanModeration"] = enableHumanModeration
 	}
 	
+	public func setMultiRequestToken(enableHybridModeration: String) {
+		self.dict["enableHybridModeration"] = enableHybridModeration
+	}
+	
 	public func setMultiRequestToken(autoDisplayMachineCaptionsOnPlayer: String) {
 		self.dict["autoDisplayMachineCaptionsOnPlayer"] = autoDisplayMachineCaptionsOnPlayer
 	}
 	
 	public func setMultiRequestToken(autoDisplayHumanCaptionsOnPlayer: String) {
 		self.dict["autoDisplayHumanCaptionsOnPlayer"] = autoDisplayHumanCaptionsOnPlayer
+	}
+	
+	public func setMultiRequestToken(autoDisplayHybridCaptionsOnPlayer: String) {
+		self.dict["autoDisplayHybridCaptionsOnPlayer"] = autoDisplayHybridCaptionsOnPlayer
 	}
 	
 	public func setMultiRequestToken(enableMetadataExtraction: String) {
@@ -307,6 +336,10 @@ open class ReachProfile: ObjectBase {
 	
 	public func setMultiRequestToken(labelAdditionForHumanServiceType: String) {
 		self.dict["labelAdditionForHumanServiceType"] = labelAdditionForHumanServiceType
+	}
+	
+	public func setMultiRequestToken(labelAdditionForHybridServiceType: String) {
+		self.dict["labelAdditionForHybridServiceType"] = labelAdditionForHybridServiceType
 	}
 	
 	public func setMultiRequestToken(contentDeletionPolicy: String) {
@@ -362,11 +395,17 @@ open class ReachProfile: ObjectBase {
 		if dict["enableHumanModeration"] != nil {
 			enableHumanModeration = dict["enableHumanModeration"] as? Bool
 		}
+		if dict["enableHybridModeration"] != nil {
+			enableHybridModeration = dict["enableHybridModeration"] as? Bool
+		}
 		if dict["autoDisplayMachineCaptionsOnPlayer"] != nil {
 			autoDisplayMachineCaptionsOnPlayer = dict["autoDisplayMachineCaptionsOnPlayer"] as? Bool
 		}
 		if dict["autoDisplayHumanCaptionsOnPlayer"] != nil {
 			autoDisplayHumanCaptionsOnPlayer = dict["autoDisplayHumanCaptionsOnPlayer"] as? Bool
+		}
+		if dict["autoDisplayHybridCaptionsOnPlayer"] != nil {
+			autoDisplayHybridCaptionsOnPlayer = dict["autoDisplayHybridCaptionsOnPlayer"] as? Bool
 		}
 		if dict["enableMetadataExtraction"] != nil {
 			enableMetadataExtraction = dict["enableMetadataExtraction"] as? Bool
@@ -388,6 +427,9 @@ open class ReachProfile: ObjectBase {
 		}
 		if dict["labelAdditionForHumanServiceType"] != nil {
 			labelAdditionForHumanServiceType = dict["labelAdditionForHumanServiceType"] as? String
+		}
+		if dict["labelAdditionForHybridServiceType"] != nil {
+			labelAdditionForHybridServiceType = dict["labelAdditionForHybridServiceType"] as? String
 		}
 		if dict["contentDeletionPolicy"] != nil {
 			contentDeletionPolicy = ReachProfileContentDeletionPolicy(rawValue: (dict["contentDeletionPolicy"] as? Int)!)
@@ -432,11 +474,17 @@ open class ReachProfile: ObjectBase {
 		if(enableHumanModeration != nil) {
 			dict["enableHumanModeration"] = enableHumanModeration!
 		}
+		if(enableHybridModeration != nil) {
+			dict["enableHybridModeration"] = enableHybridModeration!
+		}
 		if(autoDisplayMachineCaptionsOnPlayer != nil) {
 			dict["autoDisplayMachineCaptionsOnPlayer"] = autoDisplayMachineCaptionsOnPlayer!
 		}
 		if(autoDisplayHumanCaptionsOnPlayer != nil) {
 			dict["autoDisplayHumanCaptionsOnPlayer"] = autoDisplayHumanCaptionsOnPlayer!
+		}
+		if(autoDisplayHybridCaptionsOnPlayer != nil) {
+			dict["autoDisplayHybridCaptionsOnPlayer"] = autoDisplayHybridCaptionsOnPlayer!
 		}
 		if(enableMetadataExtraction != nil) {
 			dict["enableMetadataExtraction"] = enableMetadataExtraction!
@@ -458,6 +506,9 @@ open class ReachProfile: ObjectBase {
 		}
 		if(labelAdditionForHumanServiceType != nil) {
 			dict["labelAdditionForHumanServiceType"] = labelAdditionForHumanServiceType!
+		}
+		if(labelAdditionForHybridServiceType != nil) {
+			dict["labelAdditionForHybridServiceType"] = labelAdditionForHybridServiceType!
 		}
 		if(contentDeletionPolicy != nil) {
 			dict["contentDeletionPolicy"] = contentDeletionPolicy!.rawValue

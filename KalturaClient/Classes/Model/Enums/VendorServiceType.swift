@@ -34,4 +34,5 @@
 public enum VendorServiceType: Int {
 	case HUMAN = 1
 	case MACHINE = 2
+	case HYBRID = 3
 }

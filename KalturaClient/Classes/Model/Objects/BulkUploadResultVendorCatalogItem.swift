@@ -130,6 +130,12 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 				return self.append("clearAudioFlavorParamsId") 
 			}
 		}
+		
+		public var vendorData: BaseTokenizedObject {
+			get {
+				return self.append("vendorData") 
+			}
+		}
 	}
 
 	public var vendorCatalogItemId: Int? = nil
@@ -148,6 +154,7 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 	public var pricingArray: Array<VendorCatalogItemUnitPricing>? = nil
 	public var flavorParamsId: Int? = nil
 	public var clearAudioFlavorParamsId: Int? = nil
+	public var vendorData: String? = nil
 
 
 	public func setMultiRequestToken(vendorCatalogItemId: String) {
@@ -206,6 +213,10 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 		self.dict["clearAudioFlavorParamsId"] = clearAudioFlavorParamsId
 	}
 	
+	public func setMultiRequestToken(vendorData: String) {
+		self.dict["vendorData"] = vendorData
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -255,6 +266,9 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 		}
 		if dict["clearAudioFlavorParamsId"] != nil {
 			clearAudioFlavorParamsId = dict["clearAudioFlavorParamsId"] as? Int
+		}
+		if dict["vendorData"] != nil {
+			vendorData = dict["vendorData"] as? String
 		}
 
 	}
@@ -308,6 +322,9 @@ open class BulkUploadResultVendorCatalogItem: BulkUploadResult {
 		}
 		if(clearAudioFlavorParamsId != nil) {
 			dict["clearAudioFlavorParamsId"] = clearAudioFlavorParamsId!
+		}
+		if(vendorData != nil) {
+			dict["vendorData"] = vendorData!
 		}
 		return dict
 	}

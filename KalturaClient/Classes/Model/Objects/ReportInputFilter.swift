@@ -358,6 +358,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("isPreview") 
 			}
 		}
+		
+		public var streamTypeIn: BaseTokenizedObject {
+			get {
+				return self.append("streamTypeIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -465,6 +471,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var reachProfileIdIn: String? = nil
 	/**  filter by preview mode  */
 	public var isPreview: Bool? = nil
+	/**  filter by stream type  */
+	public var streamTypeIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -679,6 +687,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["isPreview"] = isPreview
 	}
 	
+	public func setMultiRequestToken(streamTypeIn: String) {
+		self.dict["streamTypeIn"] = streamTypeIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -842,6 +854,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["isPreview"] != nil {
 			isPreview = dict["isPreview"] as? Bool
+		}
+		if dict["streamTypeIn"] != nil {
+			streamTypeIn = dict["streamTypeIn"] as? String
 		}
 
 	}
@@ -1009,6 +1024,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(isPreview != nil) {
 			dict["isPreview"] = isPreview!
+		}
+		if(streamTypeIn != nil) {
+			dict["streamTypeIn"] = streamTypeIn!
 		}
 		return dict
 	}
