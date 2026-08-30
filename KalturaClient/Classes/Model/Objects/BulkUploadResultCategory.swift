@@ -120,6 +120,12 @@ open class BulkUploadResultCategory: BulkUploadResult {
 				return self.append("moderation") 
 			}
 		}
+		
+		public var adminTags: BaseTokenizedObject {
+			get {
+				return self.append("adminTags") 
+			}
+		}
 	}
 
 	public var relativePath: String? = nil
@@ -136,6 +142,7 @@ open class BulkUploadResultCategory: BulkUploadResult {
 	public var contributionPolicy: Int? = nil
 	public var partnerSortValue: Int? = nil
 	public var moderation: Bool? = nil
+	public var adminTags: String? = nil
 
 
 	public func setMultiRequestToken(relativePath: String) {
@@ -194,6 +201,10 @@ open class BulkUploadResultCategory: BulkUploadResult {
 		self.dict["moderation"] = moderation
 	}
 	
+	public func setMultiRequestToken(adminTags: String) {
+		self.dict["adminTags"] = adminTags
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -238,6 +249,9 @@ open class BulkUploadResultCategory: BulkUploadResult {
 		}
 		if dict["moderation"] != nil {
 			moderation = dict["moderation"] as? Bool
+		}
+		if dict["adminTags"] != nil {
+			adminTags = dict["adminTags"] as? String
 		}
 
 	}
@@ -285,6 +299,9 @@ open class BulkUploadResultCategory: BulkUploadResult {
 		}
 		if(moderation != nil) {
 			dict["moderation"] = moderation!
+		}
+		if(adminTags != nil) {
+			dict["adminTags"] = adminTags!
 		}
 		return dict
 	}

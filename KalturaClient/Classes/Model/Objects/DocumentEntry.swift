@@ -48,12 +48,20 @@ open class DocumentEntry: BaseEntry {
 				return self.append("assetParamsIds") 
 			}
 		}
+		
+		public var views: BaseTokenizedObject {
+			get {
+				return self.append("views") 
+			}
+		}
 	}
 
 	/**  The type of the document  */
 	public var documentType: DocumentType? = nil
 	/**  Comma separated asset params ids that exists for this media entry  */
 	public var assetParamsIds: String? = nil
+	/**  Number of views  */
+	public var views: Int? = nil
 
 
 	public func setMultiRequestToken(documentType: String) {
@@ -64,6 +72,10 @@ open class DocumentEntry: BaseEntry {
 		self.dict["assetParamsIds"] = assetParamsIds
 	}
 	
+	public func setMultiRequestToken(views: String) {
+		self.dict["views"] = views
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -72,6 +84,9 @@ open class DocumentEntry: BaseEntry {
 		}
 		if dict["assetParamsIds"] != nil {
 			assetParamsIds = dict["assetParamsIds"] as? String
+		}
+		if dict["views"] != nil {
+			views = dict["views"] as? Int
 		}
 
 	}
