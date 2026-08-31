@@ -1,0 +1,36 @@
+name: "CI"
+
+on:
+  workflow_dispatch:
+  push:
+
+concurrency: 
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: "Build and test iOS"
+    runs-on: macos-latest
+    #timeout-minutes: 30
+    environment: Kaltura_2222401
+
+    strategy:
+      matrix:
+        ios: [15.2]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Updating CocoaPods repo
+      run: pod repo update
+    - name: Setup Environment
+      run: |
+        sed -e "s#@YOUR_PARTNER_ID@#${{ secrets.PARTNER_ID }}#g" -e "s#@YOUR_ADMIN_SECRET@#${{ secrets.SECRET }}#g" -e "s#@SERVER_URL@#${{ secrets.SERVER_URL }}#g" Example/Tests/TestsConfig.template.plist > Example/Tests/TestsConfig.plist
+    - name: Install CocoaPods
+      working-directory: ./Example
+      run: pod install
+    - name: Build
+      working-directory: ./Example
+      run: set -o pipefail && xcodebuild -workspace "KalturaClient.xcworkspace" -scheme "KalturaClient-Example" -destination 'platform=iOS Simulator,name=iPhone 11,OS=${{ matrix.ios }}' clean test | xcpretty
+
+#xcodebuild clean build test -workspace Example/KalturaClient.xcworkspace -scheme KalturaClient_Tests -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3.1' > $BUILD_OUTPUT 2>&1
