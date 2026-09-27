@@ -364,6 +364,12 @@ open class ReportInputFilter: ReportInputBaseFilter {
 				return self.append("streamTypeIn") 
 			}
 		}
+		
+		public var reachCatalogItemIdIn: BaseTokenizedObject {
+			get {
+				return self.append("reachCatalogItemIdIn") 
+			}
+		}
 	}
 
 	/**  Search keywords to filter objects  */
@@ -473,6 +479,8 @@ open class ReportInputFilter: ReportInputBaseFilter {
 	public var isPreview: Bool? = nil
 	/**  filter by stream type  */
 	public var streamTypeIn: String? = nil
+	/**  filter by reach catalog item id  */
+	public var reachCatalogItemIdIn: String? = nil
 
 
 	public func setMultiRequestToken(keywords: String) {
@@ -691,6 +699,10 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		self.dict["streamTypeIn"] = streamTypeIn
 	}
 	
+	public func setMultiRequestToken(reachCatalogItemIdIn: String) {
+		self.dict["reachCatalogItemIdIn"] = reachCatalogItemIdIn
+	}
+	
 	public override func populate(_ dict: [String: Any]) throws {
 		try super.populate(dict);
 		// set members values:
@@ -857,6 +869,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if dict["streamTypeIn"] != nil {
 			streamTypeIn = dict["streamTypeIn"] as? String
+		}
+		if dict["reachCatalogItemIdIn"] != nil {
+			reachCatalogItemIdIn = dict["reachCatalogItemIdIn"] as? String
 		}
 
 	}
@@ -1027,6 +1042,9 @@ open class ReportInputFilter: ReportInputBaseFilter {
 		}
 		if(streamTypeIn != nil) {
 			dict["streamTypeIn"] = streamTypeIn!
+		}
+		if(reachCatalogItemIdIn != nil) {
+			dict["reachCatalogItemIdIn"] = reachCatalogItemIdIn!
 		}
 		return dict
 	}

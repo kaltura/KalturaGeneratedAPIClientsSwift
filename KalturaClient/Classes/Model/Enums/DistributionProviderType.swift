@@ -54,6 +54,7 @@ public enum DistributionProviderType: String {
 	case PODCAST = "podcastDistribution.PODCAST"
 	case PUSH_TO_NEWS = "pushToNewsDistribution.PUSH_TO_NEWS"
 	case QUICKPLAY = "quickPlayDistribution.QUICKPLAY"
+	case RAIN_FOCUS = "rainFocusDistribution.RAIN_FOCUS"
 	case SYNACOR_HBO = "synacorHboDistribution.SYNACOR_HBO"
 	case TIME_WARNER = "timeWarnerDistribution.TIME_WARNER"
 	case TVCOM = "tvComDistribution.TVCOM"

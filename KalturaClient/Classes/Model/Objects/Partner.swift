@@ -577,6 +577,12 @@ open class Partner: ObjectBase {
 			}
 		}
 		
+		public var htmlPurifierAllowedTags: BaseTokenizedObject {
+			get {
+				return self.append("htmlPurifierAllowedTags") 
+			}
+		}
+		
 		public var fileTypeRestrictionEnabled: BaseTokenizedObject {
 			get {
 				return self.append("fileTypeRestrictionEnabled") 
@@ -680,6 +686,7 @@ open class Partner: ObjectBase {
 	public var htmlPurifierBehaviour: HTMLPurifierBehaviourType? = nil
 	public var htmlPurifierBaseListUsage: Bool? = nil
 	public var purifyImageContent: Bool? = nil
+	public var htmlPurifierAllowedTags: String? = nil
 	public var fileTypeRestrictionEnabled: Bool? = nil
 
 
@@ -1023,6 +1030,10 @@ open class Partner: ObjectBase {
 		self.dict["purifyImageContent"] = purifyImageContent
 	}
 	
+	public func setMultiRequestToken(htmlPurifierAllowedTags: String) {
+		self.dict["htmlPurifierAllowedTags"] = htmlPurifierAllowedTags
+	}
+	
 	public func setMultiRequestToken(fileTypeRestrictionEnabled: String) {
 		self.dict["fileTypeRestrictionEnabled"] = fileTypeRestrictionEnabled
 	}
@@ -1300,6 +1311,9 @@ open class Partner: ObjectBase {
 		if dict["purifyImageContent"] != nil {
 			purifyImageContent = dict["purifyImageContent"] as? Bool
 		}
+		if dict["htmlPurifierAllowedTags"] != nil {
+			htmlPurifierAllowedTags = dict["htmlPurifierAllowedTags"] as? String
+		}
 		if dict["fileTypeRestrictionEnabled"] != nil {
 			fileTypeRestrictionEnabled = dict["fileTypeRestrictionEnabled"] as? Bool
 		}
@@ -1454,6 +1468,9 @@ open class Partner: ObjectBase {
 		}
 		if(purifyImageContent != nil) {
 			dict["purifyImageContent"] = purifyImageContent!
+		}
+		if(htmlPurifierAllowedTags != nil) {
+			dict["htmlPurifierAllowedTags"] = htmlPurifierAllowedTags!
 		}
 		if(fileTypeRestrictionEnabled != nil) {
 			dict["fileTypeRestrictionEnabled"] = fileTypeRestrictionEnabled!
