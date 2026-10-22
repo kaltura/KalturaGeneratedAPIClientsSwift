@@ -59,4 +59,5 @@ public enum VendorServiceFeature: Int {
 	case IMMERSIVE_AGENT_EVAL = 25
 	case IMMERSIVE_AGENT_PREVIEW = 26
 	case VIDEO_GENERATION = 27
+	case VISUAL_DESCRIPTION = 28
 }
